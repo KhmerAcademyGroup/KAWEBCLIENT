@@ -1,0 +1,78 @@
+.text-black{color:black}
+.clear-padding{padding:0px !important}
+.clear-margin{margin:0px !important}
+.block{display:block !important}
+.fixed{position:fixed !important}
+.block > li{
+	display:block !important;
+}
+.hr-style-one{
+	padding:0px !important;
+	margin:5px !important;
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.contentHolder { position:relative; height:750px; overflow: hidden;}
+.content .store-list:hover ,.bg-gray{
+	background:#4b4a4a;
+	cursor:pointer;
+}
+.bg-gray{
+	background:#3d3c3c;
+}
+.view-category{
+	margin:0px;
+}
+.view-category:hover{
+	background:#f5f5f5;
+	cursor:pointer;
+}
+.box-shadow{
+	box-shadow:2px 2px 5px 0px;
+}
+.topic-box{
+	background:url("../img/Exclusive-paper-White-Seamless-Pattern.jpg");
+	margin:0px;
+	padding:10px;
+	min-height:150px;
+}
+.align-center{
+	text-align:center;
+}
+.center{
+	margin:0px auto;
+}
+.topic-arrow{
+	width:30px;
+	position:absolute;
+	left:-15px;
+	top:20px;
+}
+.topic-content{
+	position:relative;
+}
+#answer-botton{
+	cursor:pointer;
+}
+@media (min-width: 1200px) {
+	.view-category{
+		width:60%;
+		margin-left:20%;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.view-category{
+		width:80%;
+		margin-left:10%;
+	}
+}
+@media (max-width: 991px) {
+	.view-category{
+		width:100%;
+		margin-left:0%;
+	}
+}
+
+
