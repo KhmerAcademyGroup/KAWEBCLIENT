@@ -14,5 +14,11 @@ public class MainController {
 		m.addAttribute("msg","Main Page");
 		return "home";
 	}
+	
+	@RequestMapping(value="/test" , method = RequestMethod.GET)
+	public String  testPage(ModelMap m){
+		m.addAttribute("msg","Main Page");
+		return "test";
+	}
 
 }
