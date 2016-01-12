@@ -1,10 +1,7 @@
-<%@page import="model.dto.User"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-     <%
- 		User usr = (User) session.getAttribute("ka_user");	
-%>
-    
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,7 +69,7 @@
 		<div class="wrapper">
 			
 			<!-- Header -->
-			<jsp:include page="_header.jsp"></jsp:include>
+			<jsp:include page="header.jsp"></jsp:include>
 			<!-- /Header -->
 			
 			<div class="col-sm-12" style="height:52px">

@@ -20,7 +20,8 @@
 		});
 
 
-		countuservideo();
+		//countuservideo();
+		
 		function countuservideo(){
 			$.post("admin/countuservideo.act",function(data){
 				//alert(data.countalluser);
@@ -42,6 +43,19 @@
 			});
 		}
 
+		
+		$('.slider-intro .slides').owlCarousel({
+			loop: true,
+			//autoplay: true,
+			//autoplayHoverPause : true,
+			//autoplayTimeout: 5000,
+			smartSpeed: 500,
+			nav: true,
+			navContainer: '.slider-intro .slider-actions',
+			navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+			items: 1,
+			margin: 0
+		});
 		// Slider Featured
 		$('.slider-featured .slides').owlCarousel({
 			loop: true,

@@ -1,8 +1,6 @@
-<%@page import="model.dto.User"%>
-<%@page import="Controller.Common_method"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +11,9 @@
 	<meta name="keywords" content="Khmer Academy, Khmer Learning Online, Khmer Studying IT, IT Traning in Cambodia, Khmer Forum, IT Chatting">
 	<meta name="author" content="Khmer Academy">
 	<title>Khmer Academy | Main Page</title>
-	<!-- <link rel="shortcut icon" type="image/x-icon" href=" sources/images/favicon.ico" /> -->
+	<!-- <link rel="shortcut icon" type="image/x-icon" href=" ${pageContext.request.contextPath}/resources/sources/images/favicon.ico" /> -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic">
-	<link rel="stylesheet" href=" sources/css/style.css" />
+	<link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/sources/css/style.css" />
 	
 	<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -46,7 +44,7 @@
 			<ul class="slides owl-carousel">
 				<li class="slide">
 					<div class="slide-image fullscreener">
-						<img src=" sources/images/temp/slider-intro-image.jpg" height="890" width="1800" alt="">
+						<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/slider-intro-image.jpg" height="890" width="1800" alt="">
 					</div><!-- /.slide-image -->
 
 					<div class="slide-content">
@@ -67,13 +65,13 @@
 										<div class="slide-raised">
 											<span>Users</span>
 
-											<strong><span id="countusers"></span></strong>
+											<strong><span id="countusers">7000</span></strong>
 										</div><!-- /.slide-raised -->
 
 										<div class="slide-to-go">
 											<span>Videos</span>
 
-											<strong><span id="countvideos"></span></strong>
+											<strong><span id="countvideos">789</span></strong>
 										</div><!-- /.slide-to-go -->
 									</div><!-- /.slide-progress -->
 
@@ -88,7 +86,7 @@
 
 				<li class="slide-alt">
 					<div class="slide-image fullscreener">
-						<img src=" sources/images/temp/slider-intro-image2.jpg" height="890" width="1800" alt="">
+						<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/slider-intro-image2.jpg" height="890" width="1800" alt="">
 					</div><!-- /.slide-image -->
 
 					<div class="slide-content">
@@ -109,7 +107,7 @@
 				</li><!-- /.slide-alt --><!-- /.slide-alt -->
 				<li class="slide-alt">
 					<div class="slide-image fullscreener">
-						<img src=" sources/images/temp/precourse.png" height="890" width="1800" alt="">
+						<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/precourse.png" height="890" width="1800" alt="">
 					</div><!-- /.slide-image -->
 
 					<div class="slide-content">
@@ -138,10 +136,10 @@
 		<div class="row">
 			<div class="columns small-12">
 				<header class="section-head">
-					<h2 class="section-title"><%= Common_method.getBundleValue(request, "lang", "services") %></h2><!-- /.section-title -->	
+					<h2 class="section-title"><spring:message code="services"/> </h2><!-- /.section-title -->	
 			
 					<div class="section-image">
-						<img src=" sources/images/temp/ico-droplet.png" height="22" width="14" alt="">
+						<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/ico-droplet.png" height="22" width="14" alt="">
 					</div><!-- /.section-image -->
 			
 					<p>
@@ -156,7 +154,7 @@
 							<div class="row">
 								<div class="columns large-4 medium-12">
 									<div class="slide-image">
-									<img src=" sources/images/temp/featured-1.jpg" height="175" width="270" alt="">
+									<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-1.jpg" height="175" width="270" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -168,13 +166,13 @@
 									<div class="slide-content">
 										<a href="elearning/"><h3>E-Learning Videos</h3></a>
 										
-										<p><%= Common_method.getBundleValue(request, "lang", "elearningtext") %> </p>
+										<p><spring:message code="elearningtext"/> </p>
 									</div>
 								</div><!-- /.columns large-3 medium-12 -->
 								
 								<div class="columns large-4 medium-12">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-3.jpg" height="175" width="269" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-3.jpg" height="175" width="269" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -185,14 +183,14 @@
 			
 									<div class="slide-content">
 										<a href="tutorials/"><h3>Tutorials</h3></a>
-										<p><%= Common_method.getBundleValue(request, "lang", "tutorialtext") %> </p>
+										<p><spring:message code="tutorialtext"/> </p>
 		
 									</div>
 								</div><!-- /.columns large-3 medium-12 -->
 								
 								<div class="columns large-4 medium-12">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-2.jpg" height="175" width="269" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-2.jpg" height="175" width="269" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -203,7 +201,7 @@
 			
 									<div class="slide-content">
 										<a href="forum/"><h3>Forum Discussion</h3></a>
-											<p><%= Common_method.getBundleValue(request, "lang", "forumtext") %> </p>
+											<p><spring:message code="forumtext"/> </p>
 									</div>
 								</div><!-- /.columns large-3 medium-12 -->
 							</div><!-- /.row -->
@@ -215,7 +213,7 @@
 								
 								<li class="slide">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-1.jpg" height="175" width="270" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-1.jpg" height="175" width="270" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -235,7 +233,7 @@
 							
 								<li class="slide">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-3.jpg" height="175" width="269" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-3.jpg" height="175" width="269" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -255,7 +253,7 @@
 							
 								<li class="slide">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-2.jpg" height="175" width="269" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-2.jpg" height="175" width="269" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -275,7 +273,7 @@
 								
 								<li class="slide">
 									<div class="slide-image">
-										<img src=" sources/images/temp/featured-4.jpg" height="175" width="269" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/featured-4.jpg" height="175" width="269" alt="">
 			
 										<div class="slide-overlay">
 											<div class="slide-overlay-inner">
@@ -310,13 +308,13 @@
 				<ul class="slides owl-carousel">
 					<li class="slide">
 						<div class="slide-image fullscreener">
-							<img src=" sources/images/temp/sponsor-image2.jpg" height="526" width="899" alt="">
+							<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/sponsor-image2.jpg" height="526" width="899" alt="">
 						</div><!-- /.slide-image -->
 					</li><!-- /.slide -->
 				
 					<li class="slide">
 						<div class="slide-image fullscreener">
-							<img src=" sources/images/temp/sponsor-image.jpg" height="526" width="899" alt="">
+							<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/sponsor-image.jpg" height="526" width="899" alt="">
 						</div><!-- /.slide-image -->
 					</li><!-- /.slide -->
 				</ul><!-- /.slides -->
@@ -369,7 +367,7 @@
 								<ul class="slides owl-carousel">
 									<li class="slide">
 										<div class="slide-image">
-											<img src=" sources/images/temp/news-image.jpg" height="178" width="269" alt="">
+											<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/news-image.jpg" height="178" width="269" alt="">
 		
 											<div class="slide-bar">
 												<span>
@@ -393,7 +391,7 @@
 								
 									<li class="slide">
 										<div class="slide-image">
-											<img src=" sources/images/temp/news-image.jpg" height="178" width="269" alt="">
+											<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/news-image.jpg" height="178" width="269" alt="">
 		
 											<div class="slide-bar">
 												<span>
@@ -430,7 +428,7 @@
 							<li class="latest-news-item">
 								<div class="latest-news-item-image">
 									<a href="#">
-										<img src=" sources/images/temp/latest-news-1.jpg" height="66" width="80" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/latest-news-1.jpg" height="66" width="80" alt="">
 									</a>
 								</div>/.latest-news-item-image
 								
@@ -446,7 +444,7 @@
 							<li class="latest-news-item">
 								<div class="latest-news-item-image">
 									<a href="#">
-										<img src=" sources/images/temp/latest-news-2.jpg" height="66" width="80" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/latest-news-2.jpg" height="66" width="80" alt="">
 									</a>
 								</div>/.latest-news-item-image
 								
@@ -462,7 +460,7 @@
 							<li class="latest-news-item">
 								<div class="latest-news-item-image">
 									<a href="#">
-										<img src=" sources/images/temp/latest-news-3.jpg" height="66" width="80" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/latest-news-3.jpg" height="66" width="80" alt="">
 									</a>
 								</div>/.latest-news-item-image
 								
@@ -478,7 +476,7 @@
 							<li class="latest-news-item">
 								<div class="latest-news-item-image">
 									<a href="#">
-										<img src=" sources/images/temp/latest-news-3.jpg" height="66" width="80" alt="">
+										<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/latest-news-3.jpg" height="66" width="80" alt="">
 									</a>
 								</div>/.latest-news-item-image
 								
@@ -511,7 +509,7 @@
 						<div class="event-alt" itemscope itemtype="https://schema.org/Event">
 							<div class="event-image">
 								<a href="#">
-									<img src=" sources/images/temp/upcoming-event.jpg" height="293" width="528" alt="" itemprop="image">
+									<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/upcoming-event.jpg" height="293" width="528" alt="" itemprop="image">
 								</a>
 							</div>/.event-image
 		
@@ -558,7 +556,7 @@
 									<ul class="staff-items large-block-grid-2">
 										<li class="staff-item" itemscope itemtype="https://schema.org/Person">
 											<div class="staff-item-image">
-												<img src=" sources/images/temp/staff-image-1.jpg" height="248" width="285" alt="" itemprop="image">
+												<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/staff-image-1.jpg" height="248" width="285" alt="" itemprop="image">
 											</div>/.staff-item-image
 											
 											<div class="staff-item-content">
@@ -594,7 +592,7 @@
 										
 										<li class="staff-item" itemscope itemtype="https://schema.org/Person">
 											<div class="staff-item-image">
-												<img src=" sources/images/temp/staff-image-2.jpg" height="248" width="285" alt="" itemprop="image">
+												<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/staff-image-2.jpg" height="248" width="285" alt="" itemprop="image">
 											</div>/.staff-item-image
 											
 											<div class="staff-item-content">
@@ -630,7 +628,7 @@
 										
 										<li class="staff-item staff-item-alt" itemscope itemtype="https://schema.org/Person">
 											<div class="staff-item-image">
-												<img src=" sources/images/temp/staff-image-3.jpg" height="248" width="297" alt="" itemprop="image">
+												<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/staff-image-3.jpg" height="248" width="297" alt="" itemprop="image">
 											</div>/.staff-item-image
 											
 											<div class="staff-item-content">
@@ -666,7 +664,7 @@
 										
 										<li class="staff-item staff-item-alt" itemscope itemtype="https://schema.org/Person">
 											<div class="staff-item-image">
-												<img src=" sources/images/temp/staff-image-4.jpg" height="248" width="297" alt="" itemprop="image">
+												<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/staff-image-4.jpg" height="248" width="297" alt="" itemprop="image">
 											</div>/.staff-item-image
 											
 											<div class="staff-item-content">
@@ -719,7 +717,7 @@
 					<h2 class="section-title">Proffessor Says About Us</h2><!-- /.section-title -->
 					
 					<div class="section-image">
-						<img src=" sources/images/temp/ico-droplet.png" height="22" width="14" alt="">
+						<img src=" ${pageContext.request.contextPath}/resources/sources/images/temp/ico-droplet.png" height="22" width="14" alt="">
 					</div><!-- /.section-image -->
 					
 					<!-- <p>
@@ -762,10 +760,10 @@
 			<div class="row">
 				<div class="columns large-6 medium-12">
 					<div class="footer-section">
-						<h4 class="footer-section-title"><%= Common_method.getBundleValue(request, "lang", "aboutus") %></h4><!-- /.footer-section-title -->
+						<h4 class="footer-section-title"><spring:message code="aboutus"/></h4><!-- /.footer-section-title -->
 						
 						<div class="footer-section-body">
-							<p><%= Common_method.getBundleValue(request, "lang", "aboutustext") %> </p>
+							<p><spring:message code="aboutustext"/></p>
 						</div><!-- /.footer-section-body -->
 					</div><!-- /.footer-section -->
 				</div><!-- /.columns large-3 medium-12 -->
@@ -783,10 +781,10 @@
 				
 				<div class="columns large-4 medium-12">
 					<div class="footer-section">
-						<h4 class="footer-section-title"><%= Common_method.getBundleValue(request, "lang", "contactus") %></h4><!-- /.footer-section-title -->
+						<h4 class="footer-section-title"><spring:message code="contactus"/></h4><!-- /.footer-section-title -->
 						
 						<div class="footer-section-body">
-							<p><%= Common_method.getBundleValue(request, "lang", "contactustext") %></p>
+							<p><spring:message code="contactustext"/></p>
 
 							
 						</div><!-- /.footer-section-body -->
@@ -800,7 +798,7 @@
 				<div class="columns small-12">
 					<div class="footer-credits">
 						<p>
-							<%= Common_method.getBundleValue(request, "lang", "copyright") %>
+							<spring:message code="copyright"/>
 						</p>
 					</div><!-- /.footer-credits -->
 					
@@ -836,8 +834,8 @@
 		</div><!-- /.footer-bar -->
 	</footer><!-- /.footer -->
 </div><!-- /.wrapper -->
-<script src=" sources/javascripts/vendor.js"></script>
-<script src=" sources/javascripts/app.js"></script>
+<script src=" ${pageContext.request.contextPath}/resources/sources/javascripts/vendor.js"></script>
+<script src=" ${pageContext.request.contextPath}/resources/sources/javascripts/app.js"></script>
 <!-- <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script> -->
 <script>
 	

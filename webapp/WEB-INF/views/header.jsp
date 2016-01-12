@@ -1,17 +1,17 @@
 	<%@page import="java.util.ArrayList"%>
-<%@page import="model.dto.Department"%>
+<%-- <%@page import="model.dto.Department"%>
 <%@page import="model.dto.University"%>
-<%@page import="model.dto.User"%>
+<%@page import="model.dto.User"%> --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="UTF-8"%>
-<%@page import="Controller.Common_method"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+ <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%
- 		User usr = (User) session.getAttribute("ka_user");
+ 	/* 	User usr = (User) session.getAttribute("ka_user"); */
  		ArrayList listDepartment = (ArrayList)request.getAttribute("listDepartment");
  		ArrayList listUniversity = (ArrayList)request.getAttribute("listUnivsersity");
 %>
-<script src="assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
 <script>
 	//CHECKING COOKIE
 	var ca = document.cookie.split(';');
@@ -35,7 +35,7 @@
 	<header class="header">
 		<div class="row">
 			<div class="columns small-12"><a href="#" class="header-logo">
-					<img src="assets/img/main_page/khmeracademy.png" alt="Khmer Academy">
+					<img src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" alt="Khmer Academy">
 					
 				</a>
 				
@@ -47,20 +47,20 @@
 					<nav class="nav">
 						
 						<ul id="menu">
-								<li><a href="."><%= Common_method.getBundleValue(request, "lang", "hometext") %></a></li>
-								<li><a href="elearning"><%= Common_method.getBundleValue(request, "lang", "elearning") %></a></li>
-								<li><a href="forum/index.act"><%= Common_method.getBundleValue(request, "lang", "forum") %></a></li>
-								<li><a href="tutorials/index.act"><%= Common_method.getBundleValue(request, "lang", "tutorial") %></a></li>
+								<li><a href="."><spring:message code="hometext"/></a></li>
+								<li><a href="elearning"><spring:message code="elearning"/></a></li>
+								<li><a href="forum/index.act"><spring:message code="forum"/></a></li>
+								<li><a href="tutorials/index.act"><spring:message code="tutorial"/></a></li>
 								<li><a href="http://news.khmeracademy.org">ព័ត៌មាន</a></li>
 								
 								<% if( session.getAttribute("ka_user") != null){ %>
 								<li class="dropdown">
 								  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #fff">
-									<img src="uploads/<%=usr.getUserimageurl() %>" class="avatar img-circle" alt="Avatar" width="30px">
-									<strong><%= usr.getUsername() %></strong>
+									<img src="uploads/<%-- <%=usr.getUserimageurl() %> --%>" class="avatar img-circle" alt="Avatar" width="30px">
+									<strong><%-- <%= usr.getUsername() %> --%> Vuthea</strong>
 								  </a>
 								  <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
-									<li><a href="elearning/account.act"><%= Common_method.getBundleValue(request, "lang", "accinfo") %></a></li>
+									<li><a href="elearning/account.act"><spring:message code="accinfo"/></a></li>
 									
 									<li><a class="dropdown-toggle" href="#" data-reveal-id="form-chpwd">Change password</a></li>
 									<li><a href="elearning/mypublicprofile.act">My public profile</a></li>
@@ -73,12 +73,12 @@
 								
 								<li>
 									<a  class="dropdown-toggle" href="#" data-reveal-id="form-login">
-										<strong><%= Common_method.getBundleValue(request, "lang", "login") %></strong>
+										<strong><spring:message code="login"/></strong>
 									</a>
 								</li>
 								<li>
 									<a data-reveal-id="form-register"  href="#" >
-									<%= Common_method.getBundleValue(request, "lang", "signup") %>
+									<spring:message code="signup"/>
 									</a>
 								</li>
 								
@@ -100,16 +100,16 @@
 								<div id="form-login" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="border-radius:5px">
 									<form id="myformlogin" data-abide>
 										<div class="form-group">
-										<label for="exampleInputEmail1"><h3><%= Common_method.getBundleValue(request, "lang", "loginuracc") %></h3></label>
+										<label for="exampleInputEmail1"><h3><spring:message code="loginuracc"/></h3></label>
 									  </div>
 									  
 									  <div class="form-group">
-										<label for="exampleInputEmail1"><%= Common_method.getBundleValue(request, "lang", "email") %></label>
+										<label for="exampleInputEmail1"><spring:message code="email"/></label>
 										<input required type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
 										<small class="error">Email is required.</small>
 									  </div>
 									  <div class="form-group">
-										<label for="exampleInputPassword1"><%= Common_method.getBundleValue(request, "lang", "password") %></label>
+										<label for="exampleInputPassword1"><spring:message code="password"/></label>
 										<input required type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 										<small class="error">Password is required.</small>
 									  </div>
@@ -119,7 +119,7 @@
 									  <div class="form-group">
 									  	<div class="col-lg-offset-5">
 									 		 <!-- <button type="button" onclick="$.magnificPopup.close();" class="btn btn-default btn-perspective">Close</button> -->
-									 		 <button type="submit" onclick="login()" class="button tiny success radius"><%= Common_method.getBundleValue(request, "lang", "login") %></button>
+									 		 <button type="submit" onclick="login()" class="button tiny success radius"><spring:message code="login"/></button>
 									 		 
 										</div>
 									   </div>
@@ -127,7 +127,7 @@
 									   <div class="form-group">
 									  	<div class="col-lg-offset-5">
 									 		  <label>
-												 <span><a class="dropdown-toggle" href="#" data-reveal-id="forgotpwd" ><%= Common_method.getBundleValue(request, "lang", "forgetpass") %></a></span>
+												 <span><a class="dropdown-toggle" href="#" data-reveal-id="forgotpwd" ><spring:message code="forgetpass"/></a></span>
 											  </label>
 										</div>
 									   </div>
@@ -135,7 +135,7 @@
 									    <div class="form-group">
 									  	<div class="col-lg-offset-4">
 									 		  <label>
-												  <%= Common_method.getBundleValue(request, "lang", "donthaveacc") %>  <span><a class="dropdown-toggle" href="#" data-reveal-id="form-register"><%= Common_method.getBundleValue(request, "lang", "signup") %></a></span>
+												 <spring:message code="donthaveacc"/> <span><a class="dropdown-toggle" href="#" data-reveal-id="form-register"><spring:message code="signup"/></a></span>
 											  </label>
 										</div>
 									   </div>
@@ -149,14 +149,14 @@
 								<div id="form-register" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="border-radius:5px">
 									
 									 <div class="form-group">
-										<label for="exampleInputEmail1"><h3><%= Common_method.getBundleValue(request, "lang", "createacc") %></h3></label>
+										<label for="exampleInputEmail1"><h3> <spring:message code="createacc"/></h3></label>
 									  </div>
 									  
 																																			
 										<form class="form-horizontal" id="myformvalidator" action="actionregisteruser.act" method="post" data-abide>	
 										<div class="col-sm-12">	
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "username") %><span class="required">*</span></label>
+											<label class="control-label"> <spring:message code="username"/><span class="required">*</span></label>
 											<div>
 												<input type="text" class="form-control" name="username" required  />
 												 <small class="error">Name is required and must be a string.</small>
@@ -164,7 +164,7 @@
 										</div>
 		
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "email") %><span class="required">*</span></label>
+											<label class="control-label"> <spring:message code="email"/><span class="required">*</span></label>
 											<div>
 												<input type="text" class="form-control" id="txtemail" name="email" onblur="checkemail()" required/>
 												 <small class="error">An email address is required.</small>
@@ -174,29 +174,31 @@
 										</div>
 										<%if(listDepartment!=null){ %>
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "department") %><span class="required">*</span></label>
+											<label class="control-label"><spring:message code="department"/><span class="required">*</span></label>
 											<select name="department" class="form-control">
-												<%for(int i=0;i<listDepartment.size();i++){ 
+												<%-- <%for(int i=0;i<listDepartment.size();i++){ 
 												Department department = (Department)listDepartment.get(i);
 												%>
 												<option value="<%=department.getDepartmentId()%>"><%=department.getDepartmentName() %></option>
-												<%} %>
+												<%} %> --%>
+												<option value="12">Other</option>
 											</select>
 											
 										</div>
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "school") %><span class="required">*</span></label>
+											<label class="control-label"><spring:message code="school"/><span class="required">*</span></label>
 											<select name="university" class="form-control">
-												<%for(int i=0;i<listUniversity.size();i++){ 
+												<%-- <%for(int i=0;i<listUniversity.size();i++){ 
 												University university = (University)listUniversity.get(i);
 												%>
 												<option value="<%=university.getUniversityId()%>"><%=university.getUniversityName() %></option>
-												<%} %>
+												<%} %> --%>
+												<option value="36">Other</option>
 											</select>
 										</div>
 										<%} %>
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "password") %><span class="required">*</span></label>
+											<label class="control-label"><spring:message code="password"/><span class="required">*</span></label>
 											<div class="password-field">
 												<input id="password" type="password" class="form-control" name="password" required />
 												 <small class="error">An password is required.</small>
@@ -204,7 +206,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "confirmpwd") %><span class="required">*</span></label>
+											<label class="control-label"><spring:message code="confirmpwd"/><span class="required">*</span></label>
 											<div class="password-confirmation-field">
 												<input type="password" class="form-control" name="confirmpassword" required data-equalto="password" />
 												 <small class="error">The password did not match.</small>
@@ -212,13 +214,13 @@
 										</div>
 										
 										<div class="form-group">
-												<label class="control-label"><%= Common_method.getBundleValue(request, "lang", "gender") %><span class="required">*</span></label>
+												<label class="control-label"><spring:message code="gender"/><span class="required">*</span></label>
 												<div >
 													
-												<input required type="radio" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender"> <%= Common_method.getBundleValue(request, "lang", "male") %>
+												<input required type="radio" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender"> <spring:message code="male"/>
 													
 													
-												<input required type="radio" name="gender" value="female" > <%= Common_method.getBundleValue(request, "lang", "female") %>
+												<input required type="radio" name="gender" value="female" > <spring:message code="female"/>
 														
 												 <small class="error">An gender is required.</small>
 											</div>
@@ -230,7 +232,7 @@
 										<div class="form-group">
 											<div class="col-lg-offset-5">
 												
-												<button class="button tiny success radius" id="msignup" type="submit"><%= Common_method.getBundleValue(request, "lang", "signup") %></button>
+												<button class="button tiny success radius" id="msignup" type="submit"><spring:message code="signup"/></button>
 											</div>
 										</div>
 										<!-- Button Post -->
@@ -292,7 +294,7 @@
 										  
 										  <div class="form-group" id="setting"  style="display:none">
 										  		<div class="col-lg-offset-5">
-													<img src="assets/img/SendingMail.gif" height="120px"  >
+													<img src="${pageContext.request.contextPath}/resources/assets/img/SendingMail.gif" height="120px"  >
 												</div>
 										  </div>
 										  
@@ -366,7 +368,7 @@
 										
 									  <div class="form-group" id="processing">
 										  		<div class="col-lg-offset-5">
-													<img src="assets/img/processing.gif" height="150px"  >
+													<img src="${pageContext.request.contextPath}/resources/assets/img/processing.gif" height="150px"  >
 												</div>
 									  </div>
 									  
@@ -597,5 +599,5 @@
 				document.location.reload(true);
 			}			
 		</script>
-		<script src="sources/ienotsupport.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/sources/ienotsupport.js"></script>
 		
