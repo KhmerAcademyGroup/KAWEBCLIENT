@@ -13,7 +13,7 @@
 	<title>Khmer Academy | Main Page</title>
 	<!-- <link rel="shortcut icon" type="image/x-icon" href=" ${pageContext.request.contextPath}/resources/sources/images/favicon.ico" /> -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic">
-	<link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/sources/css/style.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/sources/css/style.css" />
 	
 	<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

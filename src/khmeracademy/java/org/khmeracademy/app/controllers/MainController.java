@@ -12,7 +12,7 @@ public class MainController {
 	@RequestMapping(value="/" , method = RequestMethod.GET)
 	public String  mainPage(ModelMap m){
 		m.addAttribute("msg","Main Page");
-		return "dashboard";
+		return "home";
 	}
 	
 	@RequestMapping(value="/test" , method = RequestMethod.GET)
