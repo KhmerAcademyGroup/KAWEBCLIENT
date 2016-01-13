@@ -1,8 +1,8 @@
-<%@page import="model.dto.User"%>
+<%-- <%@page import="model.dto.User"%> --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
- <%
+ <%-- <%
 	 if( session.getAttribute("ka_user") == null){
 			out.println("<script>window.location.href='../index.act'; </script>");return;
 	 }
@@ -13,7 +13,7 @@
  	 if(usr.getUsertypeid() !=5 && usr.getUsertypeid() !=4  ){
  		out.println("<script>window.location.href='../index.act'; </script>");return;
  	 }
-%>
+%> --%>
 
 
 <script src="assets/js/jquery.min.js"></script>
@@ -136,8 +136,8 @@ mysearch
 						 	
 							<li class="dropdown">
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #fff">
-								<img src="../uploads/<%=usr.getUserimageurl() %>" class="avatar img-circle" alt="Avatar">
-								Hi, <strong><%= usr.getUsername() %></strong>
+								<img src="../uploads/<%-- <%=usr.getUserimageurl() %> --%>" class="avatar img-circle" alt="Avatar">
+								Hi, <strong><%-- <%= usr.getUsername() %> --%>Admin</strong>
 							  </a>
 							  <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
 							    <li><a href=".">Home</a></li>

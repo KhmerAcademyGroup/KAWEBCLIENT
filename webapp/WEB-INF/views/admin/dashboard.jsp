@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="model.dto.Video, model.dto.User" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.dto.User"%>
+<%-- <%@ page import="model.dto.Video, model.dto.User" %>
+<%@page import="model.dto.User"%> --%>
 
- <%
+ <%-- <%
 	if(session.getAttribute("ka_user")!=null) {
  	 User users = (User) session.getAttribute("ka_user");	 
  	 if(users.getUsertypeid() ==4){
  		out.println("<script>window.location.href='listtutorial.act'; </script>");return;
  	 }
 	}
-%>
+%> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,7 +179,7 @@
 					<h4 class="small-title">
 						<strong><i class="fa fa-users"></i>New users</strong>
 					</h4>
-
+<%-- 
 				<%
 					ArrayList<User> usr= (ArrayList<User>)request.getAttribute("listuserlastest");
 					for(int i=0; i<5; i++){
@@ -208,8 +208,27 @@
 					<!-- /.the-box .no-border -->
 					<!-- BEGIN USER CARD LONG -->
 
-				<%} %>	
-					
+				<%} %>	 --%>
+				
+				<div class="the-box bg-success no-border">
+						<div class="media user-card-sm">
+							<a class="pull-left" href="#"> <img
+								class="media-object img-circle"
+								src="../uploads/" alt="Avatar">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">Vuthea</h4>
+								<p class="text-success">chheang.vuthea@gmail.com</p>
+							</div>
+							<div class="right-button">
+								<a data-toggle="tooltip" title="View" href="user.act"
+									class="btn btn-success active">
+									<i class="fa fa-check"></i>
+								</a>
+							</div>
+							<!-- /.right-button -->
+						</div>
+					</div>	
 					
 					
 					
@@ -221,7 +240,7 @@
 				<div class="col-lg-8">
 
 					<div id="list_videos_in_category">
-					<%
+					<%-- <%
 						ArrayList<Video> arr= (ArrayList<Video>) request.getAttribute("videodto");
 					
 						for(int i=0; i<5; i++){
@@ -251,8 +270,32 @@
 							<!-- /.media -->
 						</div>
 						
-					<%} %>	
-						
+					<%} %>	 --%>
+					<div class="the-box no-border store-list view-category">
+							<div class="media">
+								<a class="pull-left" href="../elearning/play.act?v=32" target="_blank"><img alt="image"
+									class="store-image"
+									src="https://i.ytimg.com/vi//mqdefault.jpg"
+									style="width: 196px; height: 110px"></a>
+								<div class="clearfix visible-xs"></div>
+								<div class="media-body">
+									<a href="#"></a>
+									<h4 class="media-heading" style="padding: 0px; margin: 0px">
+										<a href="../elearning/play.act?v=32 %>"><strong class="text-black">HRD Videos</strong></a>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li><a href="#" class="text-muted small">by
+												Vuthea</a></li>
+										<li class="text-muted small">13/01/2016- 23 views</li>
+										<li class="text-muted small"></li>
+									</ul>
+								</div>
+								<!-- /.media-body -->
+							</div>
+							<!-- /.media -->
+						</div>
+							
+					
 					</div>
 
 				</div>

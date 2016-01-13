@@ -1,14 +1,14 @@
-<%@page import="model.dto.User"%>
+<%-- <%@page import="model.dto.User"%>
 
  <%
  if(session.getAttribute("ka_user")!=null) { 
  	 User usr = (User) session.getAttribute("ka_user");	 
  
-%>
+%> --%>
 			
 			<div class="sidebar-left sidebar-nicescroller light-color" style="padding-top: 10px;">
 				<div class="col-sm-12">
-				<% if(usr.getUsertypeid() ==5) {%>
+				
 							<div id="accordion-1" class="panel-group">
 								<div class="panel panel-primary">
 								  <div class="panel-heading">
@@ -232,7 +232,7 @@
 								
 								
 							</div><!-- /.panel-group -->
-				<%} %>
+				
 				
 							<div id="accordion-3" class="panel-group">
 								
@@ -264,4 +264,4 @@
 							</div><!-- /.panel-group -->
 				</div>
 			</div>
-<%}%>
+<%-- <%}%> --%>
