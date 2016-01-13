@@ -23,7 +23,7 @@
 		
 		<!-- MAIN CSS (REQUIRED ALL PAGE)-->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/assets/css/style-front.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/css/style-responsive.css" rel="stylesheet">
  
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -16,7 +16,7 @@
 %> --%>
 
 
-<script src="assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
 <style>
 			.required{
 				color: red;
@@ -117,7 +117,7 @@ mysearch
 					
 					<!-- Begin Logo brand -->
 					<div class="logo-brand">
-						<a href="../"><img alt="KhmerAcademy" src="assets/img/khmeracademy.png" height="60px" ></a>
+						<a href="../"><img alt="KhmerAcademy" src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" height="60px" ></a>
 					</div><!-- /.logo-brand -->
 					<!-- End Logo brand -->
 					
@@ -256,7 +256,7 @@ mysearch
 										  
 										  <div class="form-group" id="setting"  style="display:none">
 										  		<div class="col-lg-offset-5">
-													<img src="assets/img/SendingMail.gif" height="120px"  >
+													<img src="${pageContext.request.contextPath}/resources/assets/img/SendingMail.gif" height="120px"  >
 												</div>
 										  </div>
 										  
@@ -330,7 +330,7 @@ mysearch
 										
 									  <div class="form-group" id="processing">
 										  		<div class="col-lg-offset-5">
-													<img src="assets/img/processing.gif" height="150px"  >
+													<img src="${pageContext.request.contextPath}/resources/assets/img/processing.gif" height="150px"  >
 												</div>
 									  </div>
 									  
@@ -665,7 +665,7 @@ mysearch
 			);				
 		} */
 		</script>	
-		<script src="assets/plugins/validator/example.js"></script>
-		<script src="assets/js/myvalidator.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/plugins/validator/example.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/myvalidator.js"></script>
 								
 							
