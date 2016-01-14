@@ -6,24 +6,22 @@
 		<jsp:include page="../shared/_header.jsp" />
 	</head>
 	<body>
-	
 		<!--
 		===========================================================
 		BEGIN PAGE
 		===========================================================
 		-->
-	
-		
-		<jsp:include page="../shared/_menu.jsp" />
-		
+		<jsp:include page="../shared/_menu.jsp" />	
 	
 		<!-- BEGIN LATEST WORK SECTION -->
 		<div class="section work-section">
 			<div class="container">
+			
 				<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3>E-LEARNING</h3>
+					<h3 style="color:#4c954d;">E-LEARNING</h3>
 				</div><!-- /.section-heading -->
+				
 				<ul class="work-category-wrap">
 					<li class="filter" data-filter="all">ALL</li>
 					<li class="filter" data-filter="template">TEMPLATE</li>
@@ -220,8 +218,6 @@
 			</div><!-- /.container -->
 		</div><!-- /.section -->
 		<!-- END CLIENT LOGO SECTION -->
-		
-		
 		
 		<jsp:include page="../shared/_footer.jsp" />
 		

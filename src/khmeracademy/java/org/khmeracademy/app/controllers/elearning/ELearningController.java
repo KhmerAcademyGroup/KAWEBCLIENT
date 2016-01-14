@@ -15,5 +15,11 @@ public class ELearningController {
 		return "/elearning/index";
 	}
 	
+	@RequestMapping(value="/playvideo" , method = RequestMethod.GET)
+	public String  playVideo(ModelMap m){
+		m.addAttribute("title","E-Learning");
+		return "/elearning/playvideo";
+	}
+	
 	
 }
