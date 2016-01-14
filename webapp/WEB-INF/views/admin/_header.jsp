@@ -117,7 +117,7 @@ mysearch
 					
 					<!-- Begin Logo brand -->
 					<div class="logo-brand">
-						<a href="../"><img alt="KhmerAcademy" src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" height="60px" ></a>
+						<a href="../"><img alt="KhmerAcademy" src="${pageContext.request.contextPath}/resources/assets/img/khmeracademy.png" height="60px" ></a>
 					</div><!-- /.logo-brand -->
 					<!-- End Logo brand -->
 					
