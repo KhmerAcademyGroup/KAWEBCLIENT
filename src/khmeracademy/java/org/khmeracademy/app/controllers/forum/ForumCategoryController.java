@@ -29,7 +29,7 @@ public class ForumCategoryController {
 	@RequestMapping(value="/rest/category" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> listCategory(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange("http://api.khmeracademy.org/api/forum/category", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/category", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 
