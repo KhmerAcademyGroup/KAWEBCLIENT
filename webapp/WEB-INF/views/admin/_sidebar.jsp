@@ -111,8 +111,7 @@
 								  </div>
 									<div class="collapse" id="accordion-2-child-1" style="height: 0px;">
 									  <div class="panel-body">
-										<i ></i>&nbsp;<a href="forumcategory.act">List Category</a><br><br>
-										<i ></i>&nbsp;<a href="addforumcategory.act">Add Category</a><br><br>
+										<i ></i>&nbsp;<a href="${pageContext.request.contextPath}/admin/forumcategory">Forum Category</a><br><br>
 										
 									  </div><!-- /.panel-body -->
 									</div><!-- /.collapse in -->
