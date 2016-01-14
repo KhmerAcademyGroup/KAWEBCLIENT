@@ -152,7 +152,8 @@ NAVBAR
 	right: 0;
 	z-index: 99;
 	display: block;
-	background: rgba(1,1,1,0.2);
+	background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border-color: #8cc152;
 	-webkit-transition:All 0.2s ease;
 	-moz-transition:All 0.2s ease;
 	-o-transition:All 0.2s ease;
@@ -423,7 +424,7 @@ NAVBAR
 
 /** NAVBAR DARK COLOR **/
 .top-navbar.dark-color{
-	background: #2C343E;
+		background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .top-navbar.dark-color ul.menus li.parent a{
 	color: #fff;
@@ -6237,4 +6238,8 @@ RESPONSIVE IFRAME
 iframe {
 	width: 100%;
 	border: none;
+}
+
+.ka-container{
+	margin-top: 100px;
 }

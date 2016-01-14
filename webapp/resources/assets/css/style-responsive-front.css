@@ -74,7 +74,7 @@ STANDARD DESKTOP < 1024px
 	.top-navbar{
 		min-height: 60px;
 		height: auto;
-		background: #2C343E;
+		background: rgba(0, 0, 0, 0) linear-gradient(#50a253, #4c954d) repeat scroll 0 0;
 	}
 	.top-navbar ul.menus {
 		display: block;
@@ -97,8 +97,8 @@ STANDARD DESKTOP < 1024px
 	.top-navbar.shrink-nav ul.menus li.parent a{
 		height: 50px;
 		padding: 16px 25px;
-		background: #1A212B;
-		border-bottom: 1px solid #171C24;
+		background: green;
+		border-bottom: 1px solid;
 	}
 	.top-navbar ul.menus li.parent.right-icon,
 	.top-navbar.shrink-nav ul.menus li.parent.right-icon{
