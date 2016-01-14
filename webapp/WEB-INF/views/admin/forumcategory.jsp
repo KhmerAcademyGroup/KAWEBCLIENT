@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@page import="java.util.ArrayList"%>
-<%-- <%@ page import="model.dto.Video, model.dto.User" %>
-<%@page import="model.dto.User"%> --%>
-
-<%-- <%
-	if(session.getAttribute("ka_user")!=null) {
- 	 User users = (User) session.getAttribute("ka_user");	 
- 	 if(users.getUsertypeid() ==4){
- 		out.println("<script>window.location.href='listtutorial.act'; </script>");return;
- 	 }
-	}
-%> --%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +11,9 @@
 	content="We share Knowledge with IT lessons, IT Traing to students. Enjoy with Khmer Academy!">
 <meta name="keywords"
 	content="Khmer Academy, Khmer Learning Online, Khmer Studying IT, IT Traning in Cambodia, Khmer Forum, IT Chatting">
+	
 <meta name="author" content="Vuthea Chheang">
-<title>Khmer Academy Control Panel</title>
+<title>Forum Category Admin Khmer Academy</title>
 
 
 <!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
