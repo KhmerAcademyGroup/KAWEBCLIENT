@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/admin")
-public class ForumCategoryController {
+public class ForumCategoryRestController {
 	
 	@Autowired
 	private HttpHeaders header;
