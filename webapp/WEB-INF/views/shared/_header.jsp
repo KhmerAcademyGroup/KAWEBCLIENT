@@ -35,89 +35,29 @@
 				<!-- Begin nav menu -->
 				<ul class="menus">
 					<li class="parent">
-						<a href="#fakelink">Home</a>
-						<ul class="sub-menus">
-							<li class="sub-list"><a href="index.html">Default</a></li>
-							
-							<li class="sub-list"><a href="index-fancy-color.html">Fancy color navbar <span class="label label-danger">HOT</span></a></li>
-							<li class="sub-list"><a href="index-static-nav.html">Static nav position</a></li>
-							<li class="sub-list">
-								<a href="#fakelink">Dark nav color <span class="badge badge-success">3</span></a>
-								<ul class="subsub-menus">
-									<li class="subsub-list"><a href="index-dark-nav-static-image.html">Static image header</a></li>
-									<li class="subsub-list"><a href="index-dark-nav-image-slide.html">Image slide</a></li>
-									<li class="subsub-list"><a href="index-dark-nav-content-slide.html">Content slide</a></li>
-								</ul>
-							</li>
-							<li class="sub-list">
-								<a href="#fakelink">Light nav color <span class="badge badge-warning">3</span></a>
-								<ul class="subsub-menus">
-									<li class="subsub-list"><a href="index-light-nav-static-image.html">Static image header</a></li>
-									<li class="subsub-list"><a href="index-light-nav-image-slide.html">Image slide</a></li>
-									<li class="subsub-list"><a href="index-light-nav-content-slide.html">Content slide</a></li>
-								</ul>
-							</li>
-							<li class="sub-list">
-								<a href="#fakelink">Transparent nav <span class="badge badge-info">3</span></a>
-								<ul class="subsub-menus">
-									<li class="subsub-list"><a href="index-trans-nav-static-image.html">Static image header</a></li>
-									<li class="subsub-list"><a href="index.html">Image slide <span class="label label-primary">DEFAULT</span></a></li>
-									<li class="subsub-list"><a href="index-trans-nav-content-slide.html">Content slide</a></li>
-								</ul>
-							</li>
-							
-							<li class="sub-list"><a href="index-background-color.html">Background color</a></li>
-							<li class="sub-list">
-								<a href="#fakelink">Templates <span class="label label-primary">PACKAGE</span></a>
-								<ul class="subsub-menus">
-									<li class="subsub-list"><a href="../../index.html" target="_blank">Sentir - Admin template</a></li>
-									<li class="subsub-list"><a href="index-onepage.html">Sentir - One page</a></li>
-									<li class="subsub-list"><a href="../comingsoon/index.html">Sentir - Coming soon</a></li>
-								</ul>
-							</li>
-						</ul>
+						<a href="#">Home</a>
 					</li>
 					<li class="parent">
-						<a href="#fakelink">Pages</a>
-						<ul class="sub-menus">
-							<li class="sub-list"><a href="about-us.html">About us</a></li>
-							<li class="sub-list"><a href="full-width.html">Full width</a></li>
-							<li class="sub-list"><a href="sidebar-left.html">Sidebar left</a></li>
-							<li class="sub-list"><a href="sidebar-right.html">Sidebar right</a></li>
-							<li class="sub-list"><a href="service.html">Services</a></li>
-							<li class="sub-list"><a href="testimonial.html">Testimonial</a></li>
-							<li class="sub-list"><a href="pricing-table.html">Pricing table</a></li>
-							<li class="sub-list"><a href="blank.html">Blank page</a></li>
-						</ul>
+						<a href="#">E-Learning</a>
 					</li>
 					<li class="parent">
-						<a href="shortcodes.html">Shortcodes</a>
+						<a href="#">Forum</a>
 					</li>
 					<li class="parent">
-						<a href="#fakelink">Portfolio</a>
-						<ul class="sub-menus">
-							<li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>
-							<li class="sub-list"><a href="portfolio-3-column.html">3 columns</a></li>
-							<li class="sub-list"><a href="portfolio-single.html">Portfolio single</a></li>
-						</ul>
+						<a href="#">Tutorial</a>
 					</li>
 					<li class="parent">
-						<a href="#fakelink">Blog</a>
-						<ul class="sub-menus">
-							<li class="sub-list"><a href="blog-list.html">Blog list</a></li>
-							<li class="sub-list"><a href="blog-detail.html">Blog detail</a></li>
-						</ul>
+						<a href="#">News</a>
 					</li>
-					<li class="parent"><a href="contact.html">Contact</a></li>
-					
-					<!-- Begin right icon -->
+					<li class="parent">
+						<a href="#">Login</a>
+					</li>
+					<li class="parent">
+						<a href="#">Register</a>
+					</li>
 					<li class="parent right-icon">
 						<i class="fa fa-search" id="nav-icon-search"></i>
 					</li>
-					<li class="parent right-icon">
-						<i class="fa fa-phone" id="nav-icon-phone"></i>
-					</li>
-					<!-- End right icon -->
 				</ul>
 				<!-- End nav menu -->
 			</div><!-- /.container -->
