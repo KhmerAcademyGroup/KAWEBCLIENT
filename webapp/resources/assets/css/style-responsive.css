@@ -1,8 +1,8 @@
 /**
 ==============================================================
  * Sentir - Responsive admin & dashboard template
- * Version 	1.3.0
- * Release	February 14, 2015
+ * Version 	1.0.0
+ * Release	May 15, 2014
 ==============================================================
 **/
 
@@ -225,23 +225,6 @@ TABLET < 800px
 	}
 	.carousel.blog-carousel .carousel-caption h2{
 		font-size: 24px;
-	}
-	
-	
-	
-	/**
-	-------------------------------------------
-	TOP MAIN NAVIGATION
-	-------------------------------------------
-	**/
-	body.top-navigation{
-		padding-top: 170px;
-	}
-	.top-main-navigation{
-		top: 120px;
-	}
-	.top-main-navigation.full-top{
-		top: 60px;
 	}
 
 }
@@ -480,39 +463,6 @@ TABLET < 767px
 		bottom: -50px;
 	}
 	
-	
-	/**
-	-------------------------------------------
-	TOP MAIN NAVIGATION
-	-------------------------------------------
-	**/
-	body.top-navigation{
-		padding-top: 120px;
-	}
-	.top-main-navigation{
-		top: 120px;
-	}
-	.top-main-navigation .navbar{
-		min-height: 0px;
-	}
-	.btn-collapse-main-navigation{
-		display: block;
-	}
-	
-	
-	/**
-	-------------------------------------------
-	MEDIA LIBRARY
-	-------------------------------------------
-	**/
-	.media-menu ul.menus li.menu-item{
-		display: block;
-	}
-	.media-menu ul.menus li.menu-item a{
-		border-right: none;
-		border-bottom: 1px solid #F3F8FE;
-	}
-	
 }
 
 
@@ -732,11 +682,6 @@ PHONE < 480px
 	.list-group-item.mail-list span.attachment,
 	.list-group-item.mail-list span.subject{
 		display: none;
-	}
-	
-	
-	.widget-newsticker li .media-object{
-		width: 50px;
 	}
 }
 
