@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<jsp:include page="../shared/_header.jsp" />
-		<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	</head>
 	<body>
 	
-		<div ng-app="myApp" ng-controller="myController">
 		<!--
 		===========================================================
 		BEGIN PAGE
@@ -28,43 +26,39 @@
 				
 				<ul class="work-category-wrap">
 					<li class="filter" data-filter="all">ALL</li>
-					<li class="filter" data-filter="{{ x.maincategoryname }}" ng-repeat="x in myCategory">{{ x.maincategoryname }}</li>
-					<li class="filter" data-filter="Web">TEMPLATE</li> 
-					<li class="filter" data-filter="Mobile">MOBILE APPS</li>
-					<!-- <li class="filter" data-filter="printing">PRINTING</li>
-					<li class="filter" data-filter="other">OTHER</li> -->
+					<c:forEach items="${data.MAINCATEGORY}" var="category">
+						<li class="filter" data-filter="${category.maincategoryname}">${category.maincategoryname}</li>
+					</c:forEach>
 				</ul>
 				
 				<div id="work-mixitup" class="work-content">
 					<div class="row">
-						
+					
 						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix {{p.maincategoryname}}" ng-repeat="p in myPlaylist">
+						<c:forEach items="${data.PLAYLIST}" var="playlist">
+						<div class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
 							<div class="work-item">
 								<div class="hover-wrap">
-									<a ng-href="${pageContext.request.contextPath}/elearning/playvideo?playlist={{p.playlistId}}">	
+									<a href="${pageContext.request.contextPath}/elearning/playvideo?playlist=${playlist.playlistId}">	
 									<i class="glyphicon glyphicon-plus icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
-								<img ng-src="${pageContext.request.contextPath}/{{ p.bgImage }}" alt="Img work">
+								<img src="${pageContext.request.contextPath}/${playlist.bgImage}" alt="Img work">
 								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">{{ p.playlistName }}</p>
-									<p class="project-category">{{ p.maincategoryname }}</p>
+									<p class="project-name">${playlist.playlistName}</p>
+									<p class="project-category">${playlist.maincategoryname}</p>
 								</div><!-- /.the-box no-border transparent -->
 							</div><!-- /.work-item -->
 						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+						</c:forEach>
 						<!-- End work item -->
 					
-						
 					</div><!-- /.row -->
 				</div><!-- /#work-mixitup -->
 				
 			</div><!-- /.container -->
 		</div><!-- /.section -->
 		<!-- END LATEST WORK SECTION -->
-		
-		
-		
 		
 		<!-- BEGIN CLIENT LOGO SECTION -->
 		<div class="section">
@@ -105,25 +99,7 @@
 		</div><!-- /.section -->
 		<!-- END CLIENT LOGO SECTION -->
 		
-		</div>
 		
 		<jsp:include page="../shared/_footer.jsp" />
-		
-		<script>
-		var app = angular.module('myApp', []);
-		app.controller('myController', function($scope, $http) {
-		  $http.get("${pageContext.request.contextPath}/admin/rest/elearning/index").then(function (response) {
-		      $scope.myCategory = response.data.MAINCATEGORY;
-		      $scope.myPlaylist = response.data.PLAYLIST;
-		  });
-		});
-		
-		if ($('#work-mixitup').length > 0){
-			$('#work-mixitup').mixitup({
-				effects: ['fade','scale','grayscale']
-			});
-		}
-		</script>
-		
 	</body>
 </html>

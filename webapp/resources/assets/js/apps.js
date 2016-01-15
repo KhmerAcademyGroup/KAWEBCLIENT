@@ -85,11 +85,11 @@ $(document).ready(function(){
 
 
 	/** BEGIN WORK FILTER **/
-	/*if ($('#work-mixitup').length > 0){
+	if ($('#work-mixitup').length > 0){
 		$('#work-mixitup').mixitup({
 			effects: ['fade','scale','grayscale']
 		});
-	}*/      
+	}      
 	/** END WORK FILTER **/
 
 
