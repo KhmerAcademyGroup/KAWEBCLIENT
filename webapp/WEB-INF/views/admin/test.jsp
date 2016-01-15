@@ -183,6 +183,7 @@
 			<jsp:include page="shared/_adminfooter.jsp"></jsp:include>
 			<!-- END FOOTER -->
 
+
 		</div>
 		<!-- /.page-content -->
 	</div>

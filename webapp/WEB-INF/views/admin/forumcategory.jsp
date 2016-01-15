@@ -4,99 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description"
-	content="We share Knowledge with IT lessons, IT Traing to students. Enjoy with Khmer Academy!">
-<meta name="keywords"
-	content="Khmer Academy, Khmer Learning Online, Khmer Studying IT, IT Traning in Cambodia, Khmer Forum, IT Chatting">
-	
-<meta name="author" content="Vuthea Chheang">
-<title>Forum Category Admin Khmer Academy</title>
-
-
-<!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
-<link
-	href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- PLUGINS CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/weather-icon/css/weather-icons.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/prettify/prettify.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/magnific-popup/magnific-popup.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/icheck/skins/all.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/datepicker.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/timepicker/bootstrap-timepicker.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/validator/bootstrapValidator.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/markdown/bootstrap-markdown.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/datatable/css/bootstrap.datatable.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/morris.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/c3.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/slider/slider.min.css"
-	rel="stylesheet">
-
-<!-- MAIN CSS (REQUIRED ALL PAGE)-->
-<link
-	href="${pageContext.request.contextPath}/resources/assets/plugins/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/css/style-backend.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/assets/css/style-responsive.css"
-	rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-<!--  CSS (REQUIRED ALL PAGE)-->
-<link
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
-
+	<jsp:include page="shared/_adminheader.jsp" />
 </head>
 
 <body class="tooltips">
@@ -109,15 +17,26 @@
 		===========================================================
 		-->
 	<div class="wrapper">
-		<!-- BEGIN TOP NAV -->
-		<jsp:include page="_header.jsp"></jsp:include>
-		<!-- END TOP NAV -->
-
-
-
-		<!-- BEGIN SIDEBAR LEFT -->
-		<jsp:include page="_sidebar.jsp"></jsp:include>
-		<!-- END SIDEBAR LEFT -->
+	
+			<!-- BEGIN TOP NAV -->
+			<jsp:include page="shared/_topnav.jsp" />
+			<!-- END TOP NAV -->
+			
+			
+			
+			<!-- BEGIN SIDEBAR LEFT -->
+			<jsp:include page="shared/_leftsidebar.jsp" />
+			<!-- END SIDEBAR LEFT -->
+			
+			
+			
+			
+			
+			
+			<!-- BEGIN SIDEBAR RIGHT -->
+			<jsp:include page="shared/_rightsidebar.jsp" />
+			<!-- END SIDEBAR RIGHT -->
+			
 
 
 
@@ -129,7 +48,7 @@
 		<div class="page-content">
 			<div class="container-fluid">
 
-			
+			   <h1 class="page-heading">Forum Category</h1>
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
@@ -143,7 +62,7 @@
 						<div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
-									placeholder="Search user">
+									placeholder="Search category">
 							</form>
 
 						</div>
@@ -214,9 +133,10 @@
 
 
 
-			<!-- BEGIN FOOTER -->
-			<jsp:include page="_footer.jsp"></jsp:include>
-			<!-- END FOOTER -->
+				<!-- BEGIN FOOTER -->
+				<jsp:include page="shared/_adminfooter.jsp" />
+				<!-- END FOOTER -->
+				
 
 
 		</div>
