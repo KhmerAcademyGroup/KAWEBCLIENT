@@ -135,7 +135,7 @@
 							<div class="tiles facebook-tile text-center">
 								<i class="fa fa-user icon-lg-size"></i>
 								<h4>
-									<a href="#">555 Users</a>
+									<a href="#" id="countuser"></a>
 								</h4>
 							</div>
 							<!-- /.tiles .facebook-tile -->
@@ -145,7 +145,7 @@
 							<div class="tiles twitter-tile text-center">
 								<i class="fa fa-toggle-right icon-lg-size"></i>
 								<h4>
-									<a href="#">65 Playlists</a>
+									<a href="#" id="countplaylist"></a>
 								</h4>
 							</div>
 							<!-- /.tiles .twitter-tile -->
@@ -155,7 +155,7 @@
 							<div class="tiles dribbble-tile text-center">
 								<i class="fa fa-comments icon-lg-size"></i>
 								<h4>
-									<a href="#">78 Questions</a>
+									<a href="#" id="countquestion"></a>
 								</h4>
 							</div>
 							<!-- /.tiles .dribbble-tile -->
@@ -165,7 +165,7 @@
 							<div class="tiles linkedin-tile text-center">
 								<i class="fa fa-film icon-lg-size"></i>
 								<h4>
-									<a href="#">1000 Videos</a>
+									<a href="#" id="countvideo"></a>
 								</h4>
 							</div>
 							<!-- /.tiles .dribbble-tile -->
@@ -179,56 +179,10 @@
 					<h4 class="small-title">
 						<strong><i class="fa fa-users"></i>New users</strong>
 					</h4>
-<%-- 
-				<%
-					ArrayList<User> usr= (ArrayList<User>)request.getAttribute("listuserlastest");
-					for(int i=0; i<5; i++){
-				%>
-
-					<!-- BEGIN USER CARD LONG -->
-					<div class="the-box bg-success no-border">
-						<div class="media user-card-sm">
-							<a class="pull-left" href="#"> <img
-								class="media-object img-circle"
-								src="../uploads/<%= usr.get(i).getUserimageurl() %>" alt="Avatar">
-							</a>
-							<div class="media-body">
-								<h4 class="media-heading"><%= usr.get(i).getUsername() %></h4>
-								<p class="text-success"><%= usr.get(i).getEmail() %></p>
-							</div>
-							<div class="right-button">
-								<a data-toggle="tooltip" title="View" href="user.act"
-									class="btn btn-success active">
-									<i class="fa fa-check"></i>
-								</a>
-							</div>
-							<!-- /.right-button -->
-						</div>
-					</div>
-					<!-- /.the-box .no-border -->
-					<!-- BEGIN USER CARD LONG -->
-
-				<%} %>	 --%>
 				
-				<div class="the-box bg-success no-border">
-						<div class="media user-card-sm">
-							<a class="pull-left" href="#"> <img
-								class="media-object img-circle"
-								src="../uploads/" alt="Avatar">
-							</a>
-							<div class="media-body">
-								<h4 class="media-heading">Vuthea</h4>
-								<p class="text-success">chheang.vuthea@gmail.com</p>
-							</div>
-							<div class="right-button">
-								<a data-toggle="tooltip" title="View" href="user.act"
-									class="btn btn-success active">
-									<i class="fa fa-check"></i>
-								</a>
-							</div>
-							<!-- /.right-button -->
-						</div>
-					</div>	
+				<div id="listnewusers">
+						
+				</div>	
 					
 					
 					
@@ -271,29 +225,10 @@
 						</div>
 						
 					<%} %>	 --%>
-					<div class="the-box no-border store-list view-category">
-							<div class="media">
-								<a class="pull-left" href="../elearning/play.act?v=32" target="_blank"><img alt="image"
-									class="store-image"
-									src="https://i.ytimg.com/vi//mqdefault.jpg"
-									style="width: 196px; height: 110px"></a>
-								<div class="clearfix visible-xs"></div>
-								<div class="media-body">
-									<a href="#"></a>
-									<h4 class="media-heading" style="padding: 0px; margin: 0px">
-										<a href="../elearning/play.act?v=32 %>"><strong class="text-black">HRD Videos</strong></a>
-									</h4>
-									<ul style="list-style: none; padding: 0px; margin: 0px;">
-										<li><a href="#" class="text-muted small">by
-												Vuthea</a></li>
-										<li class="text-muted small">13/01/2016- 23 views</li>
-										<li class="text-muted small"></li>
-									</ul>
-								</div>
-								<!-- /.media-body -->
-							</div>
-							<!-- /.media -->
-						</div>
+					
+					<div id="listvideos">
+					
+					</div>
 							
 					
 					</div>
@@ -393,7 +328,78 @@
 
 	<!-- MAIN APPS JS -->
 	<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+	
+	<!-- New JS Plugin -->
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
+        
+    <script id="jlistusers" type="text/x-jquery-tmpl">
+		<div class="the-box bg-success no-border">
+    		<div class="media user-card-sm">
+							<a class="pull-left" href="#"> <img class="media-object img-circle" src="${pageContext.request.contextPath}/resources/uploads/{{= userImageUrl}}" alt="Avatar"></a>
+							<div class="media-body">
+								<h4 class="media-heading">{{= username}}</h4>
+								<p class="text-success">{{= email}}</p>
+							</div>
+							<div class="right-button">
+								<a data-toggle="tooltip" title="View" href="user.act"
+									class="btn btn-success active">
+									<i class="fa fa-check"></i>
+								</a>
+							</div>
+						</div>
+		</div>
+    </script> 
+    <script id="jlistvideos" type="text/x-jquery-tmpl">
+			<div class="the-box no-border store-list view-category">
+							<div class="media">
+								<a class="pull-left" href="../elearning/play.act?v={{= videoId}}" target="_blank"><img alt="image" class="store-image" src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
+									style="width: 196px; height: 110px"></a>
+								<div class="clearfix visible-xs"></div>
+								<div class="media-body">
+									<a href="#"></a>
+									<h4 class="media-heading" style="padding: 0px; margin: 0px">
+										<a href="../elearning/play.act?v={{= videoId}}"><strong class="text-black">{{= videoName}}</strong></a>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li><a href="#" class="text-muted small">by
+												{{= username}}</a></li>
+										<li class="text-muted small">{{= postDate}} - {{= viewCounts}} views</li>
+										<li class="text-muted small"></li>
+									</ul>
+								</div>
+								<!-- /.media-body -->
+							</div>
+							<!-- /.media -->
+						</div>	
 
+	</script>  
+        
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/rest/dashboard",
+				method: "GET",
+				success: function(data){
+					$("#countuser").text(data.countusers +" Users");
+					$("#countplaylist").text(data.countplaylists +" Playlists");
+					$("#countvideo").text(data.countvideos +" Videos");
+					$("#countquestion").text(data.countforum +" Questions");
+					
+					if(data.listuser !=null){						
+						$("#jlistusers").tmpl(data.listuser).appendTo("#listnewusers");						
+					}
+					if(data.listvideo !=null){
+						$("#jlistvideos").tmpl(data.listvideo).appendTo("#listvideos");
+					}
+				}
+			});
+			
+			
+			
+		});
+	</script>
 </body>
 
 

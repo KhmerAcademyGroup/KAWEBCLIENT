@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
 		<jsp:include page="shared/_header.jsp" />
+
 	</head>
  
 	<body class="tooltips no-padding">

@@ -14,4 +14,6 @@ public class AdminController {
 		m.addAttribute("msg","Main Page");
 		return "/admin/dashboard";
 	}
+	
+	
 }
