@@ -73,8 +73,10 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
 		return environment.getProperty("KHMERACADEMY.API.URL");
 	}
 	
-	
-	
+	@Bean
+	public String WebURL(){
+		return environment.getProperty("KHMERACADEMY.URL");
+	}
 	
 	@Bean
 	public MessageSource messageSource() {
