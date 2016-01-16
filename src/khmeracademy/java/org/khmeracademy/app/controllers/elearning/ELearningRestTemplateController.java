@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
 public class ELearningRestTemplateController {
 
 	@Autowired
