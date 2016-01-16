@@ -89,7 +89,7 @@ $(document).ready(function(){
 		$('#work-mixitup').mixitup({
 			effects: ['fade','scale','grayscale']
 		});
-	}
+	}      
 	/** END WORK FILTER **/
 
 

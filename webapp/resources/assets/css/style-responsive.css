@@ -1,9 +1,8 @@
 /**
 ==============================================================
  * Sentir - Responsive admin & dashboard template
- * Version 		1.2.0
- * Release		July 19, 2014
- * Additional	Sentir Agency Template
+ * Version 	1.0.0
+ * Release	May 15, 2014
 ==============================================================
 **/
 
@@ -30,273 +29,51 @@ STANDARD DESKTOP 992px <> 1200px
 @media (min-width: 992px) and (max-width: 1199px) {
 	/**
 	-------------------------------------------
-	HAPPY CLIENT
+	PRICING TABLE
 	-------------------------------------------
 	**/
-	.testimonial-item .rates{
-		bottom: -30px;
-		right: 15px;
+	.pricing-table-wrap{
+		margin: 60px;
 	}
-	.testimonial-item .body {
-		padding-top: 30px;
+	.table-item .circle-best{
+		width: 60px;
+		height: 60px;
+		font-size: 16px;
+		top: -30px;
+	}
+	
+	/**
+	-------------------------------------------
+	WEATHER ICON SVG
+	-------------------------------------------
+	**/
+	.weather-widget h1.degrees{
+		font-size: 50px;
 	}
 }
 
 
 
 
-
 /**
 =================================
-STANDARD DESKTOP < 1024px
+TABLET < 1025px
 =================================
 **/
-@media (max-width: 1023px) {
-	body{
-		padding-top: 60px;
-	}
-	
-	
-	
+@media (max-width: 1025px) {
 	/**
 	-------------------------------------------
-	NAVBAR
+	MAIN LAYOUT
 	-------------------------------------------
 	**/
-	.top-navbar .logo{
-		float: none;
-		padding: 0;
-	}
-	.top-navbar.shrink-nav{
-		min-height: 60px;
-		height: auto;
-	}
-	.top-navbar{
-		min-height: 60px;
-		height: auto;
-		background: #2C343E;
-	}
-	.top-navbar ul.menus {
-		display: block;
-		float: none;
-		height: 0px;
-		-webkit-transition:All 0.2s ease;
-		-moz-transition:All 0.2s ease;
-		-o-transition:All 0.2s ease;
-		overflow: hidden;
-	}
-	.top-navbar ul.menus.toggle-nav {
-		height: 250px;
+	.sidebar-left,
+	.sidebar-right{
 		overflow-y: auto;
-	}
-	.top-navbar ul.menus li.parent{
-		display: block;
-		float: none;
-	}
-	.top-navbar ul.menus li.parent a,
-	.top-navbar.shrink-nav ul.menus li.parent a{
-		height: 50px;
-		padding: 16px 25px;
-		background: #1A212B;
-		border-bottom: 1px solid #171C24;
-	}
-	.top-navbar ul.menus li.parent.right-icon,
-	.top-navbar.shrink-nav ul.menus li.parent.right-icon{
-		display: none;
-	}
-	.top-navbar ul.menus li.parent ul.sub-menus{
-		display: block;
-		width: 100%;
-		position: relative;
-		left: 0;
-		top: 0;
-		background: #1A212B;
-	}
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:hover,
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:focus{
-		color: #fff;
-		background: #1A212B;
-	}
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a,
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a{
-		height: 40px;
-		padding: 15px 35px;
-	}
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:hover,
-	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:focus,
-	.top-navbar.dark-color ul.menus li.parent ul.sub-menus li.sub-list a:hover,
-	.top-navbar.dark-color ul.menus li.parent ul.sub-menus li.sub-list a:focus{
-		background: #1A212B;
-	}
-	.top-navbar ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a,
-	.top-navbar ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a{
-		color: #fff;
-		color: rgba(255,255,255,0.71);
-	}
-	.top-navbar ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a:hover,
-	.top-navbar ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a:hover
-	.top-navbar ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a:hover,
-	.top-navbar ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a:focus{
-		color: #fff;
-		color: rgba(255,255,255,1);
-	}
-	.top-navbar ul.menus ul.sub-menus ul.subsub-menus{
-		display: block;
-		width: 100%;
-		position: relative;
-		left: 0;
-		top: 0;
-		background: #1A212B;
-	}
-	.top-navbar ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a{
-		padding: 15px 35px 15px 50px;
-	}
-	.top-navbar.light-color.shrink-nav ul.menus ,
-	.top-navbar.light-color ul.menus,
-	.top-navbar.fancy-color.shrink-nav ul.menus ,
-	.top-navbar.fancy-color ul.menus {
-		background: #e8e9ee;
-	}
-	.top-navbar.fancy-color ul.menus li.parent a,
-	.top-navbar.fancy-color.shrink-nav ul.menus li.parent a,
-	.top-navbar.light-color ul.menus li.parent a,
-	.top-navbar.light-color.shrink-nav ul.menus li.parent a{
-		background: #e8e9ee;
-		border-bottom: 1px solid #dddfe7;
-		color: #777f8c;
-	}
-	.top-navbar.fancy-color ul.menus li.parent ul.sub-menus,
-	.top-navbar.light-color ul.menus li.parent ul.sub-menus{
-		background: #e8e9ee;
-		-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0);
-		-moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0);
-		box-shadow: 0px 3px 3px 0px rgba(0,0,0,0);
-	}
-	.top-navbar.light-color ul.menus li.parent ul.sub-menus li.sub-list a{
-		color: #777f8c;
-	}
-	.top-navbar.fancy-color ul.menus li.parent ul.sub-menus li.sub-list a:hover,
-	.top-navbar.fancy-color ul.menus li.parent ul.sub-menus li.sub-list a:focus,
-	.top-navbar.light-color ul.menus li.parent ul.sub-menus li.sub-list a:hover,
-	.top-navbar.light-color ul.menus li.parent ul.sub-menus li.sub-list a:focus{
-		color: #676b74;
-		background: #d3d8de;
-	}
-	.top-navbar.light-color ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a,
-	.top-navbar.light-color ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a{
-		color: #777f8c;
-	}
-	.top-navbar.light-color ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a:hover,
-	.top-navbar.light-color ul.menus ul.sub-menus li.sub-list:hover ul.subsub-menus li.subsub-list a:hover
-	.top-navbar.light-color ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a:hover,
-	.top-navbar.light-color ul.menus ul.sub-menus ul.subsub-menus li.subsub-list a:focus{
-		color: #676b74;
-	}
-	.top-navbar.fancy-color ul.menus ul.sub-menus ul.subsub-menus,
-	.top-navbar.light-color ul.menus ul.sub-menus ul.subsub-menus{
-		background: #e8e9ee;
-		-webkit-box-shadow: 3px 0px 3px 0px rgba(0,0,0,0);
-		-moz-box-shadow: 3px 0px 3px 0px rgba(0,0,0,0);
-		box-shadow: 3px 0px 3px 0px rgba(0,0,0,0);
-	}
-	
-	.top-navbar.fancy-color ul.menus li.parent a{
-		-webkit-box-shadow: inset 0px 0px 0px 0px #fff;
-		-moz-box-shadow: inset 0px 0px 0px 0px #fff;
-		box-shadow: inset 0px 0px 0px 0px #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.primary a{
-		-webkit-box-shadow: inset 0px 0px 0px 0px #34BC9B;
-		-moz-box-shadow: inset 0px 0px 0px 0px #34BC9B;
-		box-shadow: inset 0px 0px 0px 0px #34BC9B;
-		background: #34BC9B;
-		border-bottom-color: #48CFAE;
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.primary li.sub-list a,
-	.top-navbar.fancy-color ul.menus li.parent.success li.sub-list a,
-	.top-navbar.fancy-color ul.menus li.parent.info li.sub-list a,
-	.top-navbar.fancy-color ul.menus li.parent.danger li.sub-list a,
-	.top-navbar.fancy-color ul.menus li.parent.warning li.sub-list a,
-	.top-navbar.fancy-color ul.menus li.parent.pink li.sub-list a{
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.success a{
-		-webkit-box-shadow: inset 0px 0px 0px 0px #8EC051;
-		-moz-box-shadow: inset 0px 0px 0px 0px #8EC051;
-		box-shadow: inset 0px 0px 0px 0px #8EC051;
-		background: #8EC051;
-		border-bottom-color: #A2D368;
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.info a{
-		-webkit-box-shadow: inset 0px 5px 0px 0px #3EAFDB;
-		-moz-box-shadow: inset 0px 5px 0px 0px #3EAFDB;
-		box-shadow: inset 0px 5px 0px 0px #3EAFDB;
-		background: #3EAFDB;
-		border-bottom-color: #4EC0E8;
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.danger a{
-		-webkit-box-shadow: inset 0px 5px 0px 0px #E7573E;
-		-moz-box-shadow: inset 0px 5px 0px 0px #E7573E;
-		box-shadow: inset 0px 5px 0px 0px #E7573E;
-		background: #E7573E;
-		border-bottom-color: #FF7257;
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.warning a{
-		-webkit-box-shadow: inset 0px 5px 0px 0px #F6BB43;
-		-moz-box-shadow: inset 0px 5px 0px 0px #F6BB43;
-		box-shadow: inset 0px 5px 0px 0px #F6BB43;
-		background: #F6BB43;
-		border-bottom-color: #FFCE54;
-		color: #fff;
-	}
-	.top-navbar.fancy-color ul.menus li.parent.pink a{
-		-webkit-box-shadow: inset 0px 5px 0px 0px #D971AC;
-		-moz-box-shadow: inset 0px 5px 0px 0px #D971AC;
-		box-shadow: inset 0px 5px 0px 0px #D971AC;
-		background: #D971AC;
-		border-bottom-color: #EB88BF;
-		color: #fff;
-	}
-	.nav-right-info{
-		left: 200px;
-	}
-	.nav-right-info p.phone{
-		font-size: 35px;
-		margin: 0px 5px;
-	}
-	.nav-right-info .times-icon{
-		font-size: 22px;
-		padding: 20px 0;
-		width: 40px;
-	}
-	.nav-right-info form{
-		margin: 0 40px 0 0;
-	}
-	.nav-right-info .form-control{
-		height: 30px;
-		font-size: 16px;
-		padding: 5px 10px;
-		margin: 5px 0;
-	}
-	.btn-toggle-nav{display: block;}
-	.btn-toggle-search{display: block;}
-	.btn-toggle-phone{display: block;}
-	
-	
-	
-	/**
-	-------------------------------------------
-	BACK TO TOP
-	-------------------------------------------
-	**/
-	#back-top{
-		right: 0px;
-		bottom: 0px;
-		border-radius: 0;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		-moz-overflow-scrolling: touch;
+		-o-overflow-scrolling: touch;
+		overflow-scrolling: touch;
 	}
 }
 
@@ -312,44 +89,127 @@ SMALL DESKTOP 768px <> 991px
 @media (min-width: 768px) and (max-width: 991px) {
 	/**
 	-------------------------------------------
-	LATEST WORK
+	MAIN LAYOUT
 	-------------------------------------------
 	**/
-	ul.work-category-wrap li{
-		width: 100px;
-		height: 30px;
-		font-size: 13px;
-		margin: 10px 5px;
-		padding: 5px 0;
+	body{overflow-x: hidden;}
+	.wrapper{overflow-x: hidden;}
+	.top-navbar.toggle{
+		left: 250px;
+		right: -250px;
 	}
-	
-	
-	
+	.sidebar-left{
+		left: -250px;
+		top: 0;
+	}
+	.sidebar-left.toggle{
+		left: 0px;
+	}
+	.icon-dinamic{
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.icon-dinamic.rotate-180{
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	.page-content{
+		margin-left: 0px;
+	}
+	.page-content.toggle{
+		margin-left: 250px;
+		margin-right: -250px;
+	}
+	.page-content.toggle-left{
+		margin-left: -250px;
+		margin-right: 250px;
+	}
 	
 	/**
 	-------------------------------------------
-	TESTIMONIAL
+	PRICING TABLE
 	-------------------------------------------
 	**/
-	.testimonial-item .heading {
+	.pricing-table-wrap{
+		margin: 60px 0;
+	}
+	.table-item .circle-best{
+		width: 60px;
+		height: 60px;
+		font-size: 16px;
+		top: -30px;
+	}
+	
+	/**
+	-------------------------------------------
+	WEATHER ICON SVG
+	-------------------------------------------
+	**/
+	.weather-widget h1.degrees{
+		font-size: 50px;
+	}
+
+}
+
+
+
+
+/**
+=================================
+TABLET < 800px
+=================================
+**/
+@media (max-width: 800px) {
+	/**
+	-------------------------------------------
+	MAIN LAYOUT
+	-------------------------------------------
+	**/
+	body{
+		padding-top: 120px;
+	}
+	.wrapper{overflow-x: hidden;}
+	.top-navbar{
 		height: auto;
-		min-height: 60px;
 	}
-	.testimonial-item .client-content {
+	.logo-brand {
+		width: 100%;
+		height: 60px;
 		position: relative;
+		padding-left: 10px;
+		text-align: left;
+	}
+	.top-nav-content{
+		margin-left: 0px;
+		height: 60px;
+	}
+	
+	/**
+	-------------------------------------------
+	PRICING TABLE
+	-------------------------------------------
+	**/
+	.table-item-2 .table-heading h1 sup,
+	.table-item-2 .table-heading h1 sub{
+		top: -5px;
 		display: block;
-		left: auto;
-		top: auto;
-		bottom: auto;
-		right: auto;
-		margin-left: 85px;
 	}
-	.testimonial-item .rates{
-		bottom: -30px;
-		right: 15px;
+	.table-item-2 .table-heading h1 sub{
+		top: 10px;
+		bottom: 0px;
 	}
-	.testimonial-item .body {
-		padding-top: 30px;
+	.table-item-2 .table-heading h1{
+		font-size: 50px;
+		margin-bottom: 20px;
+		padding: 30px 0;
 	}
 	
 	
@@ -357,66 +217,16 @@ SMALL DESKTOP 768px <> 991px
 	
 	/**
 	-------------------------------------------
-	FUN FACTS
+	BLOG APPS
 	-------------------------------------------
 	**/
-	h1.number-fact{
-		font-size: 40px;
-	}
-	
-	
-	
-	
-	/**
-	-------------------------------------------
-	THE TEAM
-	-------------------------------------------
-	**/
-	.team-item .avatar{
-		width: 100px;
-	}
-	.team-item h4.name{
-		font-size: 18px;
-	}
-	.team-item .position{
-		font-size: 14px;
-	}
-	
-	
-	
-	
-	/**
-	-------------------------------------------
-	BLOG
-	-------------------------------------------
-	**/
-	.blog-list .media .img-post{
+	.carousel.blog-carousel .carousel-caption p{
 		display: none;
 	}
-	
-	
-	
-	/**
-	-------------------------------------------
-	SIDEBAR
-	-------------------------------------------
-	**/
-	.sidebar .media-list .media .img-post{
-		display: none;
+	.carousel.blog-carousel .carousel-caption h2{
+		font-size: 24px;
 	}
-	
-	
-	
-	
-	/**
-	-------------------------------------------
-	FOOTER
-	-------------------------------------------
-	**/
-	footer h4{
-		margin-top: 40px;
-		margin-bottom: 10px;
-	}
+
 }
 
 
@@ -430,138 +240,229 @@ TABLET < 767px
 @media (max-width: 767px) {
 	/**
 	-------------------------------------------
-	HEADER SLIDE
+	MAIN LAYOUT
 	-------------------------------------------
 	**/
-	.slide-inner.more-padding	{padding:60px 0 0 0;}
-	.slide-text-content{
-		padding: 130px 0 110px;
+	body{
+		padding-top: 120px;
 	}
-	.slide-text-content h1{
-		font-size: 35px;
+	.wrapper{overflow-x: hidden;}
+	.top-navbar{
+		height: auto;
 	}
-	.slide-text-content h3{
-		font-size: 18px;
-		line-height: 24px;
+	.top-navbar.toggle{
+		left: 250px;
+		right: -250px;
+	}
+	.logo-brand {
+		width: 100%;
+		height: 60px;
+		position: relative;
+	}
+	.top-nav-content{
+		margin-left: 0px;
+		height: auto;
+		padding: 0;
+	}
+	.sidebar-left{
+		top: 0;
+		left: -250px;
+	}
+	.sidebar-right{
+		top: 60px;
+		right: -250px;
+		bottom: 0;
+		width: 250px;
+	}
+	.sidebar-left.toggle{
+		left: 0px;
+	}
+	.page-content{
+		margin-left: 0px;
+		left: 0;
+	}
+	.page-content.toggle{
+		left: 0;
+		margin-left: 250px;
+		margin-right: -250px;
+	}
+	.page-content.toggle-left{
+		margin-left: -250px;
+		margin-right: 250px;
+	}
+	.sidebar-right.toggle-left{
+		right: 0px;
+	}
+	.nav-dropdown-content{
+		height: auto;
+		max-width: 100%;
+	}
+	
+	.btn-collapse-sidebar-right{
+		top: -60px;
+	}
+	.btn-collapse-nav{
+		display: block;
+	}
+	.icon-dinamic{
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.icon-dinamic.rotate-180{
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	.icon-plus{
+		-webkit-transition:All 0.2 ease;
+		-moz-transition:All 0.2s ease;
+		-o-transition:All 0.2s ease;
+	}
+	.icon-plus.rotate-45{
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	.top-nav-content .navbar-nav > li > a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		height: auto;
+	}
+	
+	.top-nav-content .navbar-nav > li > a .icon-count {
+		top: 10px;
+		right: auto;
+		left: 40px;
+	}
+	ul.nav-user{
+		right: 0px;
+		left: 0px;
+		text-align: center;
+		position: relative;
+		margin-left: 50px;
+		margin-right: 50px;
+	}
+	ul.nav-user li.dropdown{
+		display: block;
+	}
+	ul.nav-user li.dropdown .dropdown-menu{
+		text-align: left;
+		left: 0;
+		right: 0;
+	}
+	ul.nav-user li.dropdown a.dropdown-toggle{
+		height: 60px;
+		max-width: 100%;
+	}
+	.navbar-collapse {
+	  max-height: 280px;
+	}
+	
+	/**
+	-------------------------------------------
+	MASONRY
+	-------------------------------------------
+	**/
+	.container-masonry ol{
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
 	}
 	
 	
 	
 	/**
 	-------------------------------------------
-	FEATURE
+	BLOG APPS
 	-------------------------------------------
 	**/
-	.box-feature{margin: 0 0 30px 0;}
+	.col-full-width-right,
+	.col-full-width-left{
+		padding: 0 15px;
+	}
+	
+	.blog-detail-image .blog-title,
+	.blog-detail-image:hover .blog-title{
+		position: relative;
+		background: #fff;
+		opacity: 1;
+		color: #434A54;
+	}
+	.blog-detail-image .blog-title a{
+		color: #37BC9B;
+		text-decoration: none;
+	}
+	.blog-detail-image .blog-title h1,
+	.blog-detail-image .blog-title h2,
+	.blog-detail-image .blog-title h3,
+	.blog-detail-image .blog-title h4,
+	.blog-detail-image .blog-title h5{
+		color: #656D78;
+	}
+	.featured-post-wide .featured-text{
+		padding: 5px 5px 5px 40px;
+	}
 
 	
 	
 	
 	/**
 	-------------------------------------------
-	TOP FEATURE
+	REAL ESTATE APPS
 	-------------------------------------------
 	**/
-	.section-top-features h5.text-heading{
-		margin-top: 15px;
+	.store-list .store-image,
+	.blog-list .blog-image,
+	.property-list .property-image {
+		width: 100%;
+		margin-bottom: 30px;
+		padding-right: 0;
 	}
+	.store-list .pull-left,
+	.blog-list .pull-left,
+	.property-list .pull-left {
+		margin-right: 0;
+	}
+
 	
 	
 	
 	/**
 	-------------------------------------------
-	LATEST WORK
+	PRICING TABLE
 	-------------------------------------------
 	**/
-	ul.work-category-wrap li{
-		width: 120px;
-		height: 30px;
-		font-size: 13px;
-		margin: 10px 5px;
-		padding: 5px 0;
+	.pricing-table-wrap{margin: 50px 0;}
+	.table-item .circle-best{
+		width: 60px;
+		height: 60px;
+		font-size: 16px;
+		top: -30px;
+	}
+	.table-item-2 .table-heading h1{
+		font-size: 80px;
+		margin-bottom: 30px;
+	}
+	.table-item-2 .table-heading h1 sup,
+	.table-item-2 .table-heading h1 sub{
+		top: -50px;
+		display: inline;
+	}
+	.table-item-2 .table-heading h1 sub{
+		top: 0;
+		bottom: -50px;
 	}
 	
-	
-	
-	
-	/**
-	-------------------------------------------
-	TESTIMONIAL
-	-------------------------------------------
-	**/
-	.testimonial-item .heading {
-		min-height: 60px;
-		height: auto;
-	}
-	.testimonial-item .heading {
-		height: auto;
-		min-height: 60px;
-	}
-	.testimonial-item .client-content {
-		position: relative;
-		display: block;
-		left: auto;
-		top: auto;
-		bottom: auto;
-		right: auto;
-		margin-left: 85px;
-	}
-	.testimonial-item .rates{
-		bottom: -30px;
-		right: 15px;
-	}
-	.testimonial-item .body {
-		padding-top: 30px;
-	}
-	
-	
-	
-	
-	/**
-	-------------------------------------------
-	FUN FACTS
-	-------------------------------------------
-	**/
-	h1.number-fact{
-		font-size: 40px;
-	}
-	
-	
-	
-	/**
-	-------------------------------------------
-	THE TEAM
-	-------------------------------------------
-	**/
-	.team-item{
-		margin: 0 0 30px 0;
-	}
-	
-	
-	
-	/**
-	-------------------------------------------
-	FOOTER
-	-------------------------------------------
-	**/
-	footer{padding: 10px 0 50px;}
-	footer h4{
-		margin-top: 40px;
-		margin-bottom: 10px;
-	}
-	.footer{
-		min-height: 80px;
-		height: auto;
-		text-align: center;
-	}
-	.footer .text-right{text-align: center;}
-	.footer .list-inline {
-		margin-top: 15px;
-	}
-	.footer .list-inline > li {
-		padding-left: 3px;
-		padding-right: 3px;
-	}
 }
 
 
@@ -573,43 +474,7 @@ PHONE < 640px
 =================================
 **/
 @media (max-width: 640px){
-	/**
-	-------------------------------------------
-	NAVBAR
-	-------------------------------------------
-	**/
-	/** TOP NAVBAR SHRINK **/
-	.top-navbar.shrink-nav .nav-right-info p.phone,
-	.nav-right-info p.phone{
-		font-size: 28px;
-		margin: 5px 0;
-	}
-	
-	
-	
 
-	/**
-	-------------------------------------------
-	HEADER SLIDE
-	-------------------------------------------
-	**/
-	.slide-text-content{
-		padding: 80px 0 60px;
-	}
-	.slide-text-content h1{
-		font-size: 35px;
-	}
-	.slide-text-content h3{
-		font-size: 18px;
-		line-height: 24px;
-	}
-	.slide-text-content .btn-learn-more{
-		padding: 17px 40px;
-		font-size: 14px;
-		font-weight: 700;
-		line-height: 100%;
-		margin: 30px 10px;
-	}
 }
 
 
@@ -621,52 +486,77 @@ PHONE < 600px
 =================================
 **/
 @media (max-width: 600px){
+
 	/**
 	-------------------------------------------
-	NAVBAR
+	SOCIAL APPS
 	-------------------------------------------
 	**/
-	/** TOP NAVBAR SHRINK **/
-	.top-navbar.shrink-nav .nav-right-info,
-	.nav-right-info{
-		left: 0px;
-		background: #2C343E;
+	ul.timeline li.centering-line{
+		left: 15px;
+		margin-left: 0px;
 	}
-	.top-navbar.fancy-color.shrink-nav .nav-right-info,
-	.top-navbar.fancy-color .nav-right-info,
-	.top-navbar.light-color.shrink-nav .nav-right-info,
-	.top-navbar.light-color .nav-right-info{
-		left: 0px;
-		background: #fff;
+	ul.timeline li.item-timeline{
+		width: 100%;
 	}
-	.top-navbar.shrink-nav .nav-right-info p.phone,
-	.nav-right-info p.phone{
-		font-size: 35px;
-		margin: 0px 5px;
+	ul.timeline li:nth-child(even).item-timeline{
+		float: left;
+		clear: left;
 	}
-	.top-navbar.shrink-nav .nav-right-info .times-icon,
-	.nav-right-info .times-icon{
-		padding: 18px 0;
-		width: 60px;
+	ul.timeline li:nth-child(odd).item-timeline{
+		float: left;
+		clear: left;
 	}
-	.top-navbar.shrink-nav .nav-right-info form,
-	.nav-right-info form{
-		margin: 0 60px 0 0;
+	ul.timeline li:nth-child(odd).item-timeline.highlight,
+	ul.timeline li:nth-child(odd).item-timeline.highlight{
+		float: left;
+		clear: left;
+	}
+	ul.timeline li.item-timeline .inner-content{
+		margin: 10px;
+		margin-left: 35px;
+	}
+	ul.timeline li:nth-child(even).item-timeline.highlight .buletan,
+	ul.timeline li:nth-child(odd).item-timeline.highlight .buletan,
+	ul.timeline li:nth-child(even).item-timeline .buletan,
+	ul.timeline li:nth-child(odd).item-timeline .buletan{
+		left: 11px;
+		top: 35px;
+		margin-left: 0;
+	}
+	ul.timeline li.item-timeline:nth-child(even):before{
+		top: 29px;
+		right: auto;
+		left: 25px;
+		border-left: 0px solid #fff;
+		border-right: 12px solid #fff;
+		border-right-color: #fff;
+	}
+	ul.timeline li.item-timeline:nth-child(odd).highlight:before,
+	ul.timeline li.item-timeline:nth-child(even).highlight:before,
+	ul.timeline li.item-timeline:nth-child(odd):before{
+		top: 29px;
+		left: 25px;
+		display: inline-block;
+		border-top: 12px solid transparent;
+		border-right: 12px solid #fff;
+		border-bottom: 12px solid transparent;
+		border-right-color: #fff;
+		content: '';
+	}
+	ul.timeline li.center-timeline-cat .inner{
+		border-radius: 0 5px 5px 0;
+		margin: 20px 0 20px 19px;
+	}
+	ul.timeline li:first-child.center-timeline-cat .inner,
+	ul.timeline li:last-child.center-timeline-cat .inner{
+		margin: 20px 0 20px 19px;
 	}
 	
-	
-	
-	/**
-	-------------------------------------------
-	BLOG
-	-------------------------------------------
-	**/
-	.blog-list .media .img-post{
-		width: 120px;
-		margin-right: 5px;
-	}
-	.blog-detail img.img-detail{
-		margin: 0 0 20px 0;
+	.featured-post-wide .featured-text{
+		position: relative;
+		width: 100%;
+		padding: 5px 15px 15px 15px;
 	}
 }
 
@@ -679,6 +569,29 @@ PHONE < 548px
 **/
 @media (max-width: 548px){
 
+	/**
+	-------------------------------------------
+	PRICING TABLE
+	-------------------------------------------
+	**/
+	.pricing-table-wrap{
+		margin: 40px 0;
+	}
+	.table-item{
+		width: 100%;
+		margin-bottom: 40px;
+		margin-top: 0;
+	}
+	.table-item.best-choice{
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 0px;
+		margin-bottom: 40px;
+	}
+	.table-item:first-child,
+	.table-item:last-child{
+		border-radius: 5px;
+	}
 }
 
 
@@ -689,75 +602,86 @@ PHONE < 480px
 =================================
 **/
 @media (max-width: 480px){
-	/**
-	-------------------------------------------
-	HEADER SLIDE
-	-------------------------------------------
-	**/
-	.slide-text-content{
-		padding: 80px 0 60px;
+	.login-header{
+		height: 140px;
 	}
-	.slide-text-content h1{
-		font-size: 28px;
+	.login-header .logo{
+		margin-top: 50px;
 	}
-	.slide-text-content h3{
-		font-size: 16px;
-		line-height: 20px;
+	.login-wrapper{
+		max-width: 250px;
+		margin: 150px auto 0;
 	}
-	.slide-text-content .btn-learn-more{
-		padding: 13px 20px;
-		font-size: 14px;
-		font-weight: 700;
-		line-height: 100%;
-		margin: 15px 10px;
-	}
-	
-	
 	
 	/**
 	-------------------------------------------
-	FEATURE
+	MASONRY
 	-------------------------------------------
 	**/
-	p.text-slogan{
-		font-size: 16px;
-		line-height: 25px;
-		padding-top: 10px;
+	.container-masonry ol{
+		-moz-column-count: 1;
+		-webkit-column-count: 1;
+		column-count: 1;
 	}
 	
+	/**
+	-------------------------------------------
+	SOCIAL APPS
+	-------------------------------------------
+	**/
+	.img-wrap-col .img-col-3,
+	.img-wrap-col .img-col-4,
+	.img-wrap-col .img-col-5{
+		width: 50%;
+	}
+	.profile-heading img.avatar{
+		left: 50%;
+		margin-left: -35px;
+		bottom: 190px;
+		z-index: 3;
+		width: 70px;
+		height: 70px;
+	}
+	.profile-heading .user-name{
+		position: relative;
+		left: auto;
+		bottom: auto;
+		color: #434A54;
+	}
+	.profile-heading .right-button{
+		position: relative;
+		bottom: auto;
+		right: auto;
+	}
+	.profile-heading .profile-info{
+		position: relative;
+		padding-left: 10px;
+		padding-top: 40px;
+		text-align: center;
+		height: auto;
+	}
 	
 	
 	/**
 	-------------------------------------------
-	SECTION
+	STORE APPS
 	-------------------------------------------
 	**/
-	body.onepage .section{
-		padding: 80px 0;
+	.item-lg .item-des{
+		position: relative;
+		width: 100%;
+		overflow-y: none;
 	}
-	.section{
-		padding: 25px 0;
-	}
-	.section-top-features .btn-lg-text-xs{width: 100%;}
-	
-	
 	
 	
 	/**
 	-------------------------------------------
-	BLOG
+	MAIL APPS
 	-------------------------------------------
 	**/
-	.comment-wrap .media .media-object{
-		width: 40px;
-		margin-right: 5px;
-	}
-	.blog-list .media .pull-left{
+	.list-group-item.mail-list span.attachment,
+	.list-group-item.mail-list span.subject{
 		display: none;
-	}
-	.blog-list .media .img-post{
-		width: auto;
-		max-width: 100%;
 	}
 }
 
@@ -770,17 +694,7 @@ PHONE < 360px
 =================================
 **/
 @media (max-width: 360px){
-	/**
-	-------------------------------------------
-	NAVBAR
-	-------------------------------------------
-	**/
-	/** TOP NAVBAR SHRINK **/
-	.top-navbar.shrink-nav .nav-right-info p.phone,
-	.nav-right-info p.phone{
-		font-size: 20px;
-		padding: 10px 0;
-	}
+
 }
 
 
@@ -792,15 +706,4 @@ PHONE < 320px
 =================================
 **/
 @media (max-width: 320px){
-	/**
-	-------------------------------------------
-	HEADER SLIDE
-	-------------------------------------------
-	**/
-	.slide-text-content h1{
-		font-size: 24px;
-	}
-	.slide-text-content{
-		padding: 50px 0 40px;
-	}
 }
