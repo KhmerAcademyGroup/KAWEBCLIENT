@@ -1,12 +1,23 @@
 package org.khmeracademy.app.entities;
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * @author User
  *
  */
-public class User {
+public class User implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	private String userId;
 	private String email;
 	private String password;
@@ -35,6 +46,9 @@ public class User {
 	private String universityName;
 	private String departmentName;
 	private int point;
+	private boolean userStatus;
+	
+	private List<UserRole> roles;
 	
 	public String getUserId() {
 		return userId;
@@ -197,6 +211,60 @@ public class User {
 	}
 	public void setPoint(int point) {
 		this.point = point;
+	}
+	
+	public boolean isUserStatus() {
+		return userStatus;
+	}
+	public void setUserStatus(boolean userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	private boolean accountNonExpired = true;
+    private boolean accountNonLocked = true;
+    private boolean credentialsNonExpired = true;
+    private boolean enabled = true;
+	
+    
+    
+	public List<UserRole> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<UserRole> roles) {
+		this.roles = roles;
+	}
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return roles;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+	@Override
+	public boolean isEnabled() {
+		return enabled;
 	}
 
 }

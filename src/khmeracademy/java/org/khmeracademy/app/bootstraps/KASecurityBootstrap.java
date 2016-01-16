@@ -1,5 +1,7 @@
 package org.khmeracademy.app.bootstraps;
 
-public class KASecurityBootstrap {
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+
+public class KASecurityBootstrap  extends AbstractSecurityWebApplicationInitializer{
 
 }
