@@ -147,3 +147,57 @@ Placed at the end of the document so the pages load faster
 	})
 </script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+
+<!-- BPOP UP -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
+
+<script type="text/javascript">
+            /* ==============================================
+            Counter Up
+            =============================================== */
+            $(document).ready(function(){
+               
+                $("#login").click(function(){
+                
+                	
+                	alert(11);
+                	
+                	$("#frmLogin").bPopup(/* {modalClose: false} */);
+                	/* 
+                	$.ajax({ 
+       				    url: "${pageContext.request.contextPath}/admin/sell/"+id, 
+       				    type: 'POST', 
+       				    dataType: 'JSON', 
+       					
+       				    //data: JSON.stringify(json), 
+       				    beforeSend: function(xhr) {
+       	                    xhr.setRequestHeader("Accept", "application/json");
+       	                    xhr.setRequestHeader("Content-Type", "application/json");
+       	                },
+       	                
+       				    success: function(data) { 
+       				        console.log(data.length);
+       				        var str = "";
+       				        for(i = 0; i < data.length; i++){
+       				        	str += "<tr>"
+								str += "<td>" + data[i].productName + "</td>"
+								str += "<td>" + data[i].SalePrice + "</td>"
+								str += "<td>" + data[i].ProQty + "</td>"
+								str += "<td>" + data[i].ProUnitPrrice + "</td>"	
+								str += "<td>" + data[i].orderDate + "</td>"	
+								str += "<td>" + data[i].ProComment + "</td>"	
+								str += "</tr>"
+								$("#orderProdetail").html(str);
+       				        }
+       				    },
+       				    error:function(data,status,er) { 
+       				        console.log("error: "+data+" status: "+status+" er:"+er);
+       				    }
+       				}); */
+                	
+                })
+                
+            });
+            
+            
+        </script>
