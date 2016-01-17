@@ -6,7 +6,7 @@
 	
 		<!-- Begin logo -->
 		<div class="logo">
-			<a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" alt="Logo"></a>
+			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" alt="Logo"></a>
 		</div><!-- /.logo -->
 		<!-- End logo -->
 		
@@ -32,7 +32,7 @@
 		<!-- Begin nav menu -->
 		<ul class="menus">
 			<li class="parent">
-				<a href="${pageContext.request.contextPath}">Home</a>
+				<a href="${pageContext.request.contextPath}/">Home</a>
 			</li>
 			<li class="parent">
 				<a href="#">E-Learning</a>
@@ -46,13 +46,31 @@
 			<li class="parent">
 				<a href="#">News</a>
 			</li>
-			<li class="parent">
-				<sec:authorize access="isAuthenticated()"><a href="${pageContext.request.contextPath}/logout">Logout</a></sec:authorize>
-				<sec:authorize access="isAnonymous()"><a href="#" id="login">Login</a></sec:authorize>
-			</li>
-			<li class="parent">
-				<a href="#" id="register">Register</a>
-			</li>
+			<sec:authorize access="isAuthenticated()">
+<!-- 				<li class="parent"> -->
+<%-- 					<img style="padding-top: 12px;" width="50px" src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"> --%>
+<!-- 				</li> -->
+				<li class="parent" >
+					 <a href="#fakelink"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						    <img     style="height:140%"  src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar">
+						    Paris Hawker
+					 </a>
+					 <ul class="sub-menus">
+						<li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>
+						<li class="sub-list"><a href="portfolio-3-column.html">3 columns</a></li>
+						<li class="sub-list"><a href="portfolio-single.html">Portfolio single</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+					</ul>
+				</li>
+			</sec:authorize>
+			<sec:authorize access="isAnonymous()">
+				<li class="parent">
+					<a href="#" id="login">Login</a>
+				</li>
+				<li class="parent">
+					<a href="#" id="register">Register</a>
+				</li>
+			</sec:authorize>
 			<li class="parent right-icon">
 				<i class="fa fa-search" id="nav-icon-search"></i>
 			</li>

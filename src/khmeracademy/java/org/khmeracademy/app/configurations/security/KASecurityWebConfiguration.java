@@ -65,6 +65,7 @@ public class KASecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http
 			.authorizeRequests()
+			.antMatchers("/").permitAll()
 			.antMatchers("/user/**","/elearning/playvideo").hasAnyRole("Subscriber" ,"Editor", "Admin")
 			.antMatchers("/admin/**").hasRole("Admin");
 		http
@@ -76,7 +77,7 @@ public class KASecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 			.passwordParameter("ka_password")
 			.failureUrl("/login?error")
 			.failureHandler(ajaxAuthenticationFailureHandler);
-		/*http
+		http
 			.sessionManagement()
 			.sessionAuthenticationErrorUrl("/login")
 //			.sessionFixation()
@@ -84,7 +85,7 @@ public class KASecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 			.maximumSessions(1)
 			.maxSessionsPreventsLogin(true)
 			.expiredUrl("/login")
-			.sessionRegistry(sessionRegistryImpl());*/
+			.sessionRegistry(sessionRegistryImpl());
 		http
 			.logout()
 			.logoutUrl("/logout")

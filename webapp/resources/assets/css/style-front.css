@@ -341,7 +341,6 @@ NAVBAR
 	color: #fff;
 	color: rgba(255,255,255,1);
 }
-
 /** SUB MENU **/
 .top-navbar ul.menus li.parent:hover a,
 .top-navbar ul.menus li.parent:focus a{
@@ -353,7 +352,7 @@ NAVBAR
 	position: absolute;
 	left: 0;
 	top: 100%;
-	background: #fff;
+	background: #1A212B;
 	padding: 0;
 	margin: 0;
 	list-style: none;

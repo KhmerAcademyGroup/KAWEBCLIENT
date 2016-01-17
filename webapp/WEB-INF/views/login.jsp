@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +30,22 @@
 							
 <!-- 							<h4 class="small-title">You are not authorized to access this page!</h4> -->
 							
-								<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
-<!-- 								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-								 <strong>Please login to your Khmer Academy account to access this page!</strong>
-								</div>
+								<c:choose>
+									<c:when test="${parem.logout == null} }">
+										<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
+		<!-- 								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+											  <strong>Please login to your Khmer Academy account!</strong>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="alert alert-info alert-bold-border square fade in alert-dismissable">
+	<!-- 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+										  	<strong>You've been logout successfully!</strong>
+										</div>
+									</c:otherwise>
+								</c:choose>
+
+								
 								<hr>
 								<form role="form" id="frmLogin" action="${pageContext.request.contextPath}/login">
 									 

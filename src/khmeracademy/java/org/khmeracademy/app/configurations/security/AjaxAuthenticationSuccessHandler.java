@@ -30,7 +30,7 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 //			
 //			String json = new Gson().toJson(map);
 			SavedRequest savedRequest = requestCache.getRequest(request, response);
-			String targetUrl = request.getContextPath();
+			String targetUrl = request.getContextPath()+"/";
 			if (savedRequest != null) {
 				targetUrl = savedRequest.getRedirectUrl();
 			}

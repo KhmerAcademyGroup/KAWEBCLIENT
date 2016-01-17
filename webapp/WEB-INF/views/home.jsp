@@ -28,7 +28,7 @@
 		<div class="full-slide-image" id="full-img-slide">
 			<div class="slide-inner more-padding">
 				<div class="slide-text-content">
-					<div class="container-fluid">
+					<div class="container-fluid" style="visibility:hidden;">
 						<h1>BOOTSTRAP TEMPLATE SPECIALIST</h1>
 						<div class="clear"></div>
 						<h3>
@@ -282,56 +282,7 @@
 						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
 						<!-- End work item -->
 						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix mobile_apps">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/6.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">MOBILE APPS</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
 						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix printing">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/7.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">PRINTING</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix other">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/8.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">OTHER</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
 						
 					</div><!-- /.row -->
 				</div><!-- /#work-mixitup -->
@@ -341,45 +292,63 @@
 		<!-- END LATEST WORK SECTION -->
 		
 		
+		<div class="section bg-success text-center">
+			<div class="container">
+				<h4 class="margin-bottom-30">START E-ELEARNING WITH KHMER ACADEMY</h4>
+				<div class="row">
+					<div class="col-sm-3">
+						<h1 class="number-fact">8000</h1>
+						<p class="content-fact">Users</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">800 </h1>
+						<p class="content-fact">Videos</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">325</h1>
+						<p class="content-fact">Courses</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">200</h1>
+						<p class="content-fact">Categories</p>
+					</div><!-- /.col-sm-4 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div>
+		
 		
 		<!-- BEGIN HAPPY CLIENT SECTION -->
 		<div class="section bg-light">
 			<div class="container">
 				<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3>HAPPY CLIENT</h3>
+					<h3>PROFFESSOR SAYS ABOUT US</h3>
 				</div><!-- /.section-heading -->
 				
 				<div id="owl-testimonial" class="owl-carousel testimonial">
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
-							dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et 
-							iusto odio dignissim qui blandit praesent
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-25.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Karen Wallace</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-25.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
-							dolor in hendrerit in vulputate velit esse molestie consequat
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Phillip Lucas</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Sandra Myers</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 				</div><!-- /#owl-testimonial -->
 			</div><!-- /.container -->
@@ -432,6 +401,18 @@
 		<!-- BEGIN FOOTER -->
 		<jsp:include page="shared/_footer.jsp" />
 		
+		<script>
+			$("#full-img-slide").backstretch([
+			  "resources/assets/img/image-1.jpg",
+			  "resources/assets/img/image-2.jpg",
+			  "resources/assets/img/image-3.jpg",
+			  "resources/assets/img/image-4.jpg",
+			  "resources/assets/img/image-5.jpg"
+			  ], {
+				fade: 750,
+				duration: 6000
+			});
+		</script>
 		
 	</body>
 </html>
