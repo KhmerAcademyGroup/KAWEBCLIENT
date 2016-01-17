@@ -39,7 +39,7 @@
 						<div class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
 							<div class="work-item">
 								<div class="hover-wrap">
-									<a href="${pageContext.request.contextPath}/elearning/playvideo?playlist=${playlist.playlistId}">	
+									<a href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">	
 									<i class="glyphicon glyphicon-plus icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->

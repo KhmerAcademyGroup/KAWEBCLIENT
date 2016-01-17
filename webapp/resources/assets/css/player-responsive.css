@@ -1,0 +1,352 @@
+/**
+==============================================================
+ * Player Responsive By Chheang vuthea
+ * Version 	1.0.0
+ * Release	 2014
+==============================================================
+**/
+
+
+
+/**
+=================================
+LARGE DESKTOP > 1200px
+=================================
+**/
+@media (min-width: 1200px) {
+	#myplayerwrapper{
+		height: 500px;
+		width: 100%;
+	}
+	#SuppressScrollX_1{
+		height:500px;
+		width:350px;
+	}
+	.media-heading{
+		font-size:14px;
+	}
+	.list-inline{
+		font-size:12px;
+	}
+	.related_videos{
+		width:350px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+}
+
+
+
+
+
+/**
+=================================
+STANDARD DESKTOP 992px <> 1200px
+=================================
+**/
+@media (min-width: 992px) and (max-width: 1199px) {
+	#myplayerwrapper{
+		height: 350px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:350px;
+		width:340px;
+	}
+	.media-heading{
+		font-size:14px;
+	}
+	.list-inline{
+		font-size:12px;
+	}
+	.related_videos{
+		width:340px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+	
+}
+
+
+
+
+/**
+=================================
+TABLET < 1025px
+=================================
+**/
+@media (max-width: 1025px) {
+	
+	#myplayerwrapper{
+		height: 320px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:320px;
+		width:305px;
+	}
+	.media-heading{
+		font-size:13px;
+	}
+	.list-inline{
+		font-size:11px;
+	}
+	.related_videos{
+		width:305px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+	
+}
+
+
+
+
+
+/**
+=================================
+SMALL DESKTOP 768px <> 991px
+=================================
+**/
+@media (min-width: 768px) and (max-width: 991px) {
+	#myplayerwrapper{
+		height: 300px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:300px;
+		width:290px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:290px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+
+}
+
+
+
+
+/**
+=================================
+TABLET < 800px
+=================================
+**/
+@media (max-width: 800px) {
+	
+	#myplayerwrapper{
+		height: 300px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:300px;
+		width:270px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:270px;
+	}
+	#left_side{
+		left:-30px;
+	}
+	#right_side{
+		left:-30px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}	
+
+}
+
+
+
+
+/**
+=================================
+TABLET < 767px
+=================================
+**/
+@media (max-width: 767px) {
+	#myplayerwrapper{
+		height: 280px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:280px;
+		width:196px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:100%;
+	}
+	#left_side{
+		left:-8px;
+	}
+	#right_side{
+		left:-8px;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+	body{
+		font-size:12px;
+	}
+	h3,h4{
+		font-size:14px;
+	}	
+}
+
+
+
+
+/**
+=================================
+PHONE < 640px
+=================================
+**/
+@media (max-width: 640px){
+	#myplayerwrapper{
+		height: 270px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:270px;
+		width:189px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:100%;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}	
+}
+
+
+
+
+/**
+=================================
+PHONE < 600px
+=================================
+**/
+@media (max-width: 600px){
+	#myplayerwrapper{
+		height: 260px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:260px;
+		width:182px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:100%;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}	
+}
+
+
+
+
+/**
+=================================
+PHONE < 360px
+=================================
+**/
+@media (max-width: 360px){
+	#myplayerwrapper{
+		height: 150px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:150px;
+		width:105px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:100%;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+}
+
+
+
+
+/**
+=================================
+PHONE < 320px
+=================================
+**/
+@media (max-width: 320px){
+	#myplayerwrapper{
+		height: 140px ;
+		width: 100% ;
+	}
+	#SuppressScrollX_1{
+		height:140px;
+		width:98px;
+	}
+	.media-heading{
+		font-size:12px;
+	}
+	.list-inline{
+		font-size:10px	
+	}
+	.related_videos{
+		width:100%;
+	}
+	#vid1{
+		height: 100% !important;
+		width: 100% !important;
+	}
+}
