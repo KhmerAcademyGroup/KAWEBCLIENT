@@ -12,14 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class KAAPISecurityWebConfiguration extends WebSecurityConfigurerAdapter{
+public class KASecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 	
-
 	
 	@Autowired
 	@Qualifier(value="ajaxAuthenticationSuccessHandler")
@@ -68,8 +65,8 @@ public class KAAPISecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http
 			.authorizeRequests()
-			.antMatchers("/user/**").hasAnyRole("USER" , "ADMIN")
-			.antMatchers("/admin/**").hasRole("ADMIN");
+			.antMatchers("/user/**","/elearning/playvideo").hasAnyRole("Subscriber" ,"Editor", "Admin")
+			.antMatchers("/admin/**").hasRole("Admin");
 		http
 			.formLogin()
 			.permitAll()
@@ -79,7 +76,7 @@ public class KAAPISecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 			.passwordParameter("ka_password")
 			.failureUrl("/login?error")
 			.failureHandler(ajaxAuthenticationFailureHandler);
-		http
+		/*http
 			.sessionManagement()
 			.sessionAuthenticationErrorUrl("/login")
 //			.sessionFixation()
@@ -87,7 +84,7 @@ public class KAAPISecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 			.maximumSessions(1)
 			.maxSessionsPreventsLogin(true)
 			.expiredUrl("/login")
-			.sessionRegistry(sessionRegistryImpl());
+			.sessionRegistry(sessionRegistryImpl());*/
 		http
 			.logout()
 			.logoutUrl("/logout")

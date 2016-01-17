@@ -26,4 +26,4 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
+<link href="${pageContext.request.contextPath}/resources/assets/css/mystyle.css" rel="stylesheet">

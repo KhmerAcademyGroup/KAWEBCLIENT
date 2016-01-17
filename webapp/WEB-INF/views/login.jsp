@@ -23,7 +23,6 @@
 		<!-- My Contend -->
 		
 		<div class="container ka-container" >
-		
 	
 						<div class="col-sm-6">
 							<div class="the-box bg-default no-border">
@@ -35,41 +34,42 @@
 								 <strong>Please login to your Khmer Academy account to access this page!</strong>
 								</div>
 								<hr>
-								<form role="form">
-								  <div class="form-group">
-									<label>Email address</label>
-									<input type="email" class="form-control" placeholder="Enter email">
-								  </div>
-								  <div class="form-group">
-									<label>Password</label>
-									<input type="password" class="form-control" placeholder="Password">
-								  </div>
-								  
-								  
-								   <div class="form-group ">
-				                        <div class="col-xs-12">
-				                            <div class="checkbox checkbox-primary">
-				                                <input id="checkbox-signup" type="checkbox">
-				                                <label for="checkbox-signup">
-				                                    Remember me
-				                                </label>
-				                            </div>
-				                            
-				                        </div>
-				                    </div>
-				                    
-				                    <div class="form-group text-center">
-				                    	<button type="submit" class="btn btn-primary">Button danger</button>
-				                    </div>
-				                    
-				                    <div class="form-group m-t-30">
-				                        <div class="col-sm-7">
-				                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-				                        </div>
-				                        <div class="col-sm-5 text-right">
-				                            <a href="/register">Create an account</a>
-				                        </div>
-				                    </div>
+								<form role="form" id="frmLogin" action="${pageContext.request.contextPath}/login">
+									 
+									  <div class="form-group">
+										<label>Email address</label>
+										<input type="text" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
+									  </div>
+									  <div class="form-group">
+										<label>Password</label>
+										<input type="password" class="form-control" placeholder="Password" required="required"  oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password">
+									  </div>
+									  
+									  
+									   <div class="form-group ">
+					                        <div class="col-xs-12">
+					                            <div class="checkbox checkbox-primary">
+					                                <input id="checkbox-signup" type="checkbox">
+					                                <label for="checkbox-signup">
+					                                    Remember me
+					                                </label>
+					                            </div>
+					                            
+					                        </div>
+					                    </div>
+					                    
+					                    <div class="form-group text-center">
+					                    	<button type="submit" class="btn btn-primary">Login</button>
+					                    </div>
+					                    
+					                    <div class="form-group m-t-30">
+					                        <div class="col-sm-7">
+					                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+					                        </div>
+					                        <div class="col-sm-5 text-right">
+					                            <a href="/register">Create an account</a>
+					                        </div>
+					                    </div>
 								  
 								</form>
 								<hr>

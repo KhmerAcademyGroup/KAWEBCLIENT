@@ -85,8 +85,10 @@ public class UserServiceImpl implements UserService{
 				List<UserRole> roles = new ArrayList<UserRole>();
 				UserRole role = new UserRole();
 				role.setRoleId((String)userMap.get("userTypeId"));
-				role.setRoleName((String)userMap.get("userTypeName"));
+				role.setRoleName("ROLE_"+(String)userMap.get("userTypeName"));
+				roles.add(role);
 				u.setRoles(roles);
+				System.out.println("Password " +u.getPassword());
 				return u;
 			}
 		}catch(Exception e){
