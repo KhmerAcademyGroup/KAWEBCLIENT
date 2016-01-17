@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<head>
@@ -20,9 +21,7 @@
 			.vjs-default-skin .vjs-big-play-button{
 				left: 40%;
 				top: 40%;
-				
-				
-				}
+			 }
 			
 			 @media (max-width: 1236px) {
 				#btngr{
@@ -45,145 +44,46 @@
 	            
 	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
 	            
-					<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
-						<h3 class="panel-title">
-							<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#accordion-2-child-1" aria-expanded="false">
-							<b>Collapse group item 1</b>
-							<span class="right-content">
-								<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="accordion-2-child-1" class="collapse" aria-expanded="false" style="height: 0px;">
-						  <div class="panel-body" style="background:#cccccc;">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
+	            
+	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
 					
-					<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
-						<h3 class="panel-title">
-							<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#accordion-2-child-2" aria-expanded="false">
-							<b>Collapse group item 1</b>
-							<span class="right-content">
-								<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="accordion-2-child-2" class="collapse" aria-expanded="false" style="height: 0px;">
-						  <div class="panel-body">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
+						<div class="panel panel-primary">
+						  <div class="panel-heading" style="background:#fff;">
+							<h3 class="panel-title">
+								<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
+								<b>${category.maincategoryname}</b>
+								<span class="right-content">
+									<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
+								</span>
+								</a>
+							</h3>
+						  </div>
+							
+							
+
+							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
+							  <div class="panel-body" style="background:#cccccc;">
+							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
+							  	
+									<c:if test="${playlist.maincategory==category.maincategory}">
+									
+										<a>${playlist.playlistName}</a><br /> 
+										
+								
+									</c:if>
+								</c:forEach>
+							  </div><!-- /.panel-body -->
+							</div><!-- /.collapse in -->
+							
+							
+						</div><!-- /.panel panel-primary -->
+						
+						
 					
-					<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
-						<h3 class="panel-title">
-							<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#accordion-2-child-3" aria-expanded="false">
-							<b>Collapse group item 1</b>
-							<span class="right-content">
-								<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="accordion-2-child-3" class="collapse" aria-expanded="false" style="height: 0px;">
-						  <div class="panel-body" style="background:#cccccc;">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
+					</c:forEach>
 					
-					<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
-						<h3 class="panel-title">
-							<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#accordion-2-child-4" aria-expanded="false">
-							<b>Collapse group item 1</b>
-							<span class="right-content">
-								<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="accordion-2-child-4" class="collapse" aria-expanded="false" style="height: 0px;">
-						  <div class="panel-body" style="background:#cccccc;">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
-					
-					<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
-						<h3 class="panel-title">
-							<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#accordion-2-child-5" aria-expanded="false">
-							<b>Collapse group item 1</b>
-							<span class="right-content">
-								<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="accordion-2-child-5" class="collapse" aria-expanded="false" style="height: 0px;">
-						  <div class="panel-body" style="background:#cccccc;">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
-					
-				</div>
+				</div><!-- End panel group -->
 	            
-	            
-	            
-	            
-	            
-	            
-	            <!-- <div class="list-group square">
-	            
-					<div class="btn-group" style="width:100%;">
-						  <a href="#fakelink" class="list-group-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						  	Dapuranmu kui <span class="badge badge-primary"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-						  </a>
-						  <ul class="dropdown-menu" role="menu" style="width:100%;">
-							<li><a href="#fakelink">Action</a></li>
-							<li><a href="#fakelink">Another action</a></li>
-							<li><a href="#fakelink">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#fakelink">Separated link</a></li>
-						  </ul>
-					  </div>
-					  <div class="btn-group" style="width:100%;">
-						  <a href="#fakelink" class="list-group-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						  	Dapuranmu kui <span class="badge badge-primary"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-						  </a>
-						  <ul class="dropdown-menu" role="menu" style="width:100%;">
-							<li><a href="#fakelink">Action</a></li>
-							<li><a href="#fakelink">Another action</a></li>
-							<li><a href="#fakelink">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#fakelink">Separated link</a></li>
-						  </ul>
-					  </div>
-					  <div class="btn-group" style="width:100%;">
-						  <a href="#fakelink" class="list-group-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						  	Dapuranmu kui <span class="badge badge-primary"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-						  </a>
-						  <ul class="dropdown-menu" role="menu" style="width:100%;">
-							<li><a href="#fakelink">Action</a></li>
-							<li><a href="#fakelink">Another action</a></li>
-							<li><a href="#fakelink">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#fakelink">Separated link</a></li>
-						  </ul>
-					  </div>
-					  
-				</div> -->
-				
-				
 	        </div>
 	        <!-- /#sidebar-wrapper -->
 	
