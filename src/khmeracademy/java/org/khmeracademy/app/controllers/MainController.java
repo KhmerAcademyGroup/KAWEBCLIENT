@@ -21,12 +21,20 @@ public class MainController {
 	@RequestMapping(value="/test" , method = RequestMethod.GET)
 	public String  testPage(ModelMap m){
 		m.addAttribute("msg","Main Page");
-//		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
-//		User user = (User) authentication.getPrincipal();
-//		System.out.println("MainController " + user.getUsername());
+		
 
-//		System.out.println("ajaxAuthenticationSuccessHandler " + user.getRoles().size());
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		
 		return "test";
 	}
+	
+
 
 }

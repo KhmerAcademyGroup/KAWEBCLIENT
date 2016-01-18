@@ -129,13 +129,13 @@ END PAGE
 	                    
 	                    <div class="form-group ">
 	                        <div class="col-xs-12">
-	                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username" placeholder="Email">
+	                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_email" id="ka_email" placeholder="Email">
 	                        </div>
 	                    </div>
 	
 	                    <div class="form-group">
 	                        <div class="col-xs-12">
-	                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password" placeholder="Password">
+	                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password"  id="ka_password" placeholder="Password">
 	                        </div>
 	                    </div>
 	
@@ -235,13 +235,17 @@ Placed at the end of the document so the pages load faster
                 
 				$("#frmLogin").submit(function(e){
            		
-	         		  e.preventDefault();
-	         		  frmData = $("#frmLogin").serialize();
+	         		  e.preventDefault(); // alert($(this).serialize());
+	         		  frmData = { ka_username : $("#ka_email").val(),
+	         				  	  ka_password : $("#ka_password").val()
+	         				     }; 
+	         		 // alert( JSON.stringify(frmData) + "   "+$("#ka_password").val());
 	         		  KA.createProgressBarWithPopup();
 	         		  $.ajax({
 		    	            url: "${pageContext.request.contextPath}/login",
 		    	            type: "POST",
-		    	            data: frmData,
+		    	            datatype : "JSON",
+		    	            data: frmData, 
 		    	            success: function(data) {
 		    	            	KA.destroyProgressBarWithPopup();
 		    	            	/* if(data == "User account is locked"){

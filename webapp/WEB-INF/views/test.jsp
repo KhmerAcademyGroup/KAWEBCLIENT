@@ -22,9 +22,9 @@ Locale: ${pageContext.response.locale}
  <sec:authorize access="isAuthenticated()">Logout</sec:authorize>
 
 								  <%
-                                        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                                		User user = (User)authentication.getPrincipal();
-                                		out.print("____________username " +user.getUsername());
+//                                         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//                                 		User user = (User)authentication.getPrincipal();
+//                                 		out.print("____________username " +user.getUsername());
                                    %>
 
 </body>

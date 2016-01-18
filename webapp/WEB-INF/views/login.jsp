@@ -29,33 +29,33 @@
 							<div class="the-box bg-default no-border">
 							
 <!-- 							<h4 class="small-title">You are not authorized to access this page!</h4> -->
-							
-								<c:choose>
-									<c:when test="${parem.logout == null} }">
-										<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
-		<!-- 								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-											  <strong>Please login to your Khmer Academy account!</strong>
-										</div>
-									</c:when>
-									<c:otherwise>
-										<div class="alert alert-info alert-bold-border square fade in alert-dismissable">
-	<!-- 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-										  	<strong>You've been logout successfully!</strong>
-										</div>
-									</c:otherwise>
-								</c:choose>
+							<c:if test="${param.logout == null}">
+								<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
+		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+									<strong class="alert-link">Please login to your Khmer Academy account!</strong>
+								</div>
+							</c:if>
+							<c:if test="${param.logout != null}">
+								<div class="alert alert-info alert-bold-border square fade in alert-dismissable">
+	<!-- 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+									<strong class="alert-link">You've been logout successfully!</strong>
+								</div>
+							</c:if>
+								
 
 								
 								<hr>
 								<form role="form" id="frmLogin" action="${pageContext.request.contextPath}/login">
 									 
+									  <div id="message"></div>
+									  
 									  <div class="form-group">
 										<label>Email address</label>
-										<input type="text" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
+										<input type="email" id="ka_email" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
 									  </div>
 									  <div class="form-group">
 										<label>Password</label>
-										<input type="password" class="form-control" placeholder="Password" required="required"  oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password">
+										<input type="password" id="ka_password" class="form-control" placeholder="Password" required="required"  oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password">
 									  </div>
 									  
 									  
