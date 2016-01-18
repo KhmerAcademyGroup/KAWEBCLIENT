@@ -254,8 +254,70 @@
 		src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/c3.min.js"></script>
 
 	<!-- MAIN APPS JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+
+
+
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
+	
+	
+	<script id="CONTENT_TEMPLATE" type="text/x-jquery-tmpl">
+	    	<tr>
+				<td>{{= id}}</td>
+				<td>{{= username}}</td>
+				<td>{{= email}}</td>
+				<td>{{= position}}</td>
+				<td>{{= roles}}</td>
+				<td>{{= createdDate}}</td>
+				<td>{{= approvedDate}}</td>
+				<!--<td>{{if accountNonLocked == true}} <i class="ion-android-close" style="color: red;"></i> {{else}} <i class="ion-android-close" style="color: green;"></i> {{/if}}</td>
+				<td>{{if enabled == true}} <i class="ion-android-close" style="color: green;"></i> {{else}} <i class="ion-android-close" style="color: red;"></i> {{/if}}</td>
+				-->
+				<td>Action</td>
+			</tr>
+   </script>
+   
+		<script type="text/javascript">		
+		
+		var category = {};
+		
+		$(document).ready(function(){
+			
+			category.listCategory = function(currentPage){
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/admin/rest/category", 
+				    type: 'GET', 
+				    data: {
+				    		"currentPage" : currentPage,
+				    		"perPage"     : 20
+				    },
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+						if(data.RESP_DATA.length>0){
+							$("tbody#CONTENTS").html('');
+							$("#CONTENT_TEMPLATE").tmpl(data.RESP_DATA).appendTo("tbody#CONTENTS");
+						}else{
+							$("tbody#CONTENTS").html('<tr>NO CONTENTS</tr>');
+						}
+				    	if(check){
+				    		users.setPagination(data.PAGINATION.totalPages,1);
+				    		check=false;
+				    	}
+				    },
+				    error:function(data,status,er) { 
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			
+			
+		});
+		</script>
 
 </body>
 

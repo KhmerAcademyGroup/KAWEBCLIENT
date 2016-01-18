@@ -51,7 +51,7 @@
 									  
 									  <div class="form-group">
 										<label>Email address</label>
-										<input type="email" id="ka_email" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
+										<input type="text" id="ka_email" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
 									  </div>
 									  <div class="form-group">
 										<label>Password</label>

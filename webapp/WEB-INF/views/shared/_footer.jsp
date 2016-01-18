@@ -129,7 +129,7 @@ END PAGE
 	                    
 	                    <div class="form-group ">
 	                        <div class="col-xs-12">
-	                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_email" id="ka_email" placeholder="Email">
+	                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_email" id="ka_email" placeholder="Email">
 	                        </div>
 	                    </div>
 	
