@@ -116,9 +116,9 @@
 							<div class="the-box transparent full no-margin profile-heading">
 								<form enctype="multipart/form-data" action="changeusercover.act" method="post">
 								<div class="right-action">
-									<input type="file" id="photoimage" name="cover" class="filestyle" data-input="false" data-iconName="fa fa-edit" onchange="return ValidateFileUpload()" >
+									<input type="file" id="photoimage" name="cover" class="filestyle" data-input="false" data-iconname="fa fa-edit" onchange="return ValidateFileUpload()" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><span class="group-span-filestyle " tabindex="0"><label for="photoimage" class="btn btn-default "><span class="glyphicon fa fa-edit"></span> <span class="buttonText">Choose Cover</span></label></span></div>
 									<!-- <button class="btn btn-warning btn-square btn-xs" onchange="return ValidateFileUpload()">Change cover</button> -->
-								</div><!-- /.right-action -->
+								</div>
 								<img id="photoimg" src="${pageContext.request.contextPath}/resources/uploads/cover/profile.jpg" height="300px" class="bg-cover" alt="Image">
 								
 								<img src="${pageContext.request.contextPath}/resources/uploads/user/avatar.jpg" class="avatar" alt="Avatar">
