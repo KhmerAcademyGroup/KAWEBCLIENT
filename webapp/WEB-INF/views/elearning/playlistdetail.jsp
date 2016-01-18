@@ -71,139 +71,364 @@
 
 
 
-		<div class="row">
-			<!-- start row -->
+	
 
 
-			<div class="col-sm-3">
-				<!-- col sm 3 -->
-				<div class="the-box  box-feature text-center">
+		<div id="work-mixitup" class="work-content">
+			<div class="row">
 
-					<i> <a href="playlistdetail.act?playlistid=1"><img
-							style="width: 100%; height: 100%;"
-							src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg" alt="..."></a>
-					</i>
-					<!-- /.p-wrap -->
-					<div class="btn-wrap" style="height: 100%;">
-						<div class="media-body" class="color:blue;">
-							<a></a>
-							<h4 class="media-heading" style="padding: 0px; margin: 0px">
-								<a><strong class="text-black">ccx</strong></a>&nbsp;
-							</h4>
-							<ul style="list-style: none; padding: 0px; margin: 0px;">
-								<li><a class="text-muted small">by Admin | Jan 2, 2015
-								</a></li>
-								<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
-									<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp; <i
-									class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
-							</ul>
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
 						</div>
+						<!-- /.work-item -->
 					</div>
-					<!-- /.btn-wrap -->
-				</div>
-				<!-- /.the-box bg-danger no-border box-feature text-center -->
-			</div>
-			<!-- col sm 3 -->
-
-
-			<div class="col-sm-3">
-				<!-- col sm 3 -->
-				<div class="the-box  box-feature text-center">
-					<div >
-						
-					</div>
-					<i> <a href="playlistdetail.act?playlistid=1"><img
-							style="width: 100%; height: 100%;"
-							src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg" alt="..."></a>
-					</i>
-					<!-- /.p-wrap -->
-					<div class="btn-wrap" style="height: 100%;">
-						<div class="media-body" class="color:blue;">
-							<a></a>
-							<h4 class="media-heading" style="padding: 0px; margin: 0px">
-								<a><strong class="text-black">ccx</strong></a>&nbsp;
-							</h4>
-							<ul style="list-style: none; padding: 0px; margin: 0px;">
-								<li><a class="text-muted small">by Admin | Jan 2, 2015
-								</a></li>
-								<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
-									<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp; <i
-									class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
-							</ul>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
 						</div>
+						<!-- /.work-item -->
 					</div>
-					<!-- /.btn-wrap -->
-				</div>
-				<!-- /.the-box bg-danger no-border box-feature text-center -->
-			</div>
-			<!-- col sm 3 -->
-
-
-			<div class="col-sm-3">
-				<!-- col sm 3 -->
-				<div class="the-box  box-feature text-center">
-
-					<i> <a href="playlistdetail.act?playlistid=1"><img
-							style="width: 100%; height: 100%;"
-							src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg" alt="..."></a>
-					</i>
-					<!-- /.p-wrap -->
-					<div class="btn-wrap" style="height: 100%;">
-						<div class="media-body" class="color:blue;">
-							<a></a>
-							<h4 class="media-heading" style="padding: 0px; margin: 0px">
-								<a><strong class="text-black">ccx</strong></a>&nbsp;
-							</h4>
-							<ul style="list-style: none; padding: 0px; margin: 0px;">
-								<li><a class="text-muted small">by Admin | Jan 2, 2015
-								</a></li>
-								<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
-									<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp; <i
-									class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
-							</ul>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+							<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
 						</div>
+						<!-- /.work-item -->
 					</div>
-					<!-- /.btn-wrap -->
-				</div>
-				<!-- /.the-box bg-danger no-border box-feature text-center -->
-			</div>
-			<!-- col sm 3 -->
-
-
-			<div class="col-sm-3">
-				<!-- col sm 3 -->
-				<div class="the-box  box-feature text-center">
-
-					<i> <a href="playlistdetail.act?playlistid=1"><img
-							style="width: 100%; height: 100%;"
-							src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg" alt="..."></a>
-					</i>
-					<!-- /.p-wrap -->
-					<div class="btn-wrap" style="height: 100%;">
-						<div class="media-body" class="color:blue;">
-							<a></a>
-							<h4 class="media-heading" style="padding: 0px; margin: 0px">
-								<a><strong class="text-black">ccx</strong></a>&nbsp;
-							</h4>
-							<ul style="list-style: none; padding: 0px; margin: 0px;">
-								<li><a class="text-muted small">by Admin | Jan 2, 2015
-								</a></li>
-								<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
-									<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp; <i
-									class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
-							</ul>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
 						</div>
+						<!-- /.work-item -->
 					</div>
-					<!-- /.btn-wrap -->
-				</div>
-				<!-- /.the-box bg-danger no-border box-feature text-center -->
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
+						</div>
+						<!-- /.work-item -->
+					</div>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
+						</div>
+						<!-- /.work-item -->
+					</div>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+							<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
+						</div>
+						<!-- /.work-item -->
+					</div>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				<!-- Begin work item -->
+				<c:forEach items="${data.PLAYLIST}" var="playlist">
+					<div
+						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
+									<i class="glyphicon glyphicon-remove-sign " style="margin-left:89% "></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/-lBkTdheyqw/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+									
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">ccx</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li  class="text-muted small">by Admin | Jan 2,
+												2015 </li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;1000&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;10000&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
+						</div>
+						<!-- /.work-item -->
+					</div>
+					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
+				</c:forEach>
+				<!-- End work item -->
+				
+				
+
 			</div>
-			<!-- col sm 3 -->
-
-
-
+			<!-- /.row -->
 		</div>
-		<!-- end  row -->
+		<!-- /#work-mixitup -->
 
 
 
