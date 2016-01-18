@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ForumController {
 	
-	@RequestMapping(value="/forum/" , method =  RequestMethod.GET)
+	@RequestMapping(value="/forum" , method =  RequestMethod.GET)
 	public String indexPage(){
 		return "forum/index";
 	}
