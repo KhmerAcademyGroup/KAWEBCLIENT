@@ -53,18 +53,18 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button id="showFrmCategory" type="button" class="btn btn-success">
+							<button id="showFrmAddCategory" type="button" class="btn btn-success">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
 
-						<div class="btn-group pull-right">
+						<!-- <div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
 									placeholder="Search category">
 							</form>
 
-						</div>
+						</div> -->
 						<!-- /.btn-group .pull-right -->
 					</div>
 
@@ -97,7 +97,7 @@
 			</div>
 			<!-- /.container-fluid -->
 
-		<div id="p-frmCategory" class="ka-popup" style="display: none;width: 30%;">
+		<div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
 			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/category" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -107,6 +107,9 @@
 						<h4 class="modal-title">Forum Category</h4>
 					</div>
 					<div class="modal-body" >
+									
+									<input type="hidden"  id="categoryId" class="form-control"  name="categoryId">
+										
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Category name</label>
 										<div class="col-lg-5">
@@ -115,7 +118,7 @@
 									</div>
 					</div>
 					<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Save</button>
+							<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
 					</div>
 				</div>
 			</form>	
@@ -149,7 +152,7 @@
 				<td>{{= NO }}</td>
 				<td>{{= categoryName}}</td>
 				<td> 
-   		 			<i data-cateid="{{= categoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" data-target="#frmFroumCategory" data-backdrop="static"></i>
+   		 			<i data-cateid="{{= categoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
             		<!-- <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i> -->
          		</td>
 			</tr>
@@ -197,7 +200,6 @@
 				});
 			};
 			
-			
 			category.setPagination = function(totalPage, currentPage){
    		    	$('#pagination').bootpag({
    			        total: totalPage,
@@ -220,11 +222,88 @@
    			    }); 
     		};
     		
-    		
+    		category.addOrUpdateCategory = function(){
+				KA.createProgressBarWithPopup();
+				frmData = {
+						"categoryId"   : $("#categoryId").val(),
+						"categoryName" : $("#categoryName").val()
+				};
+				$.ajax({ 
+				    url:  $("#frmCategory").attr("action"), 
+				    type: $("#frmCategory").attr("method"),
+				    data: JSON.stringify(frmData),
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+				    	KA.destroyProgressBarWithPopup();
+				    	category.listCategory(1);
+				    	$("#p-frmCategory").bPopup().close();
+				    },
+				    error:function(data,status,er) { 
+				    	KA.destroyProgressBarWithPopup();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			// Get one forum category
+			category.getCategory = function(cateid){
+				KA.createProgressBarWithPopup();
+				console.log(cateid);
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/rest/category/"+cateid, 
+				    type: 'GET',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+						if(data.RES_DATA != null){
+							$("#categoryId").val(data.RES_DATA.categoryId); 
+							$("#categoryName").val(data.RES_DATA.categoryName); 
+						}
+						KA.destroyProgressBarWithPopup();
+				    },
+				    error:function(data,status,er) { 
+						KA.destroyProgressBarWithPopup();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			
+			// load all forum cateoty
 			category.listCategory(1);
 			
-			$("#showFrmCategory").click(function(){
+			
+			
+			
+			// Show Form Add Category Popup
+			$("#showFrmAddCategory").click(function(){
 				$("#p-frmCategory").bPopup({modalClose: false});
+				$("#frmCategory").attr("method", "POST");
+				$("#frmCategory").trigger("reset");
+				$("#btSubmit").text("Add");
+			});
+			
+			// Show Form Update Category Popup
+			$(document).on('click',"#showFrmUpdateCategory", function(){
+				//alert($(this).data("cateid"));
+				$("#p-frmCategory").bPopup({modalClose: false});
+				category.getCategory($(this).data("cateid"));
+				$("#frmCategory").trigger("reset");
+				$("#frmCategory").attr("method", "PUT");
+				$("#btSubmit").text("Update");
+			});
+			
+			// Add or update Forum Category
+			$("#frmCategory").submit(function(e){
+				 e.preventDefault();
+				 category.addOrUpdateCategory();
 			});
 			
 			
