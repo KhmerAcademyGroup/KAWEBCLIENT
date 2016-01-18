@@ -45,7 +45,7 @@
 	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
 	            
 	            
-	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
+	            <%-- 	<c:forEach items="${data.MAINCATEGORY}" var="category">
 					
 						<div class="panel panel-primary">
 						  <div class="panel-heading" style="background:#fff;">
@@ -80,7 +80,7 @@
 						
 						
 					
-					</c:forEach>
+					</c:forEach> --%>
 					
 				</div><!-- End panel group -->
 	            
