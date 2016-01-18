@@ -28,7 +28,7 @@
 		<div class="full-slide-image" id="full-img-slide">
 			<div class="slide-inner more-padding">
 				<div class="slide-text-content">
-					<div class="container-fluid">
+					<div class="container-fluid" style="visibility:hidden;">
 						<h1>BOOTSTRAP TEMPLATE SPECIALIST</h1>
 						<div class="clear"></div>
 						<h3>
@@ -282,56 +282,7 @@
 						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
 						<!-- End work item -->
 						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix mobile_apps">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/6.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">MOBILE APPS</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
 						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix printing">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/7.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">PRINTING</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix other">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/8.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">OTHER</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
 						
 					</div><!-- /.row -->
 				</div><!-- /#work-mixitup -->
@@ -341,45 +292,63 @@
 		<!-- END LATEST WORK SECTION -->
 		
 		
+		<div class="section bg-success text-center">
+			<div class="container">
+				<h4 class="margin-bottom-30">START E-ELEARNING WITH KHMER ACADEMY</h4>
+				<div class="row">
+					<div class="col-sm-3">
+						<h1 class="number-fact">8000</h1>
+						<p class="content-fact">Users</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">800 </h1>
+						<p class="content-fact">Videos</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">325</h1>
+						<p class="content-fact">Courses</p>
+					</div><!-- /.col-sm-4 -->
+					<div class="col-sm-3">
+						<h1 class="number-fact">200</h1>
+						<p class="content-fact">Categories</p>
+					</div><!-- /.col-sm-4 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div>
+		
 		
 		<!-- BEGIN HAPPY CLIENT SECTION -->
 		<div class="section bg-light">
 			<div class="container">
 				<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3>HAPPY CLIENT</h3>
+					<h3>PROFFESSOR SAYS ABOUT US</h3>
 				</div><!-- /.section-heading -->
 				
 				<div id="owl-testimonial" class="owl-carousel testimonial">
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
-							dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et 
-							iusto odio dignissim qui blandit praesent
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-25.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Karen Wallace</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-25.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
-							dolor in hendrerit in vulputate velit esse molestie consequat
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Phillip Lucas</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 					<div class="item">
 						<p class="text-testi">
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure
+							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar">
-						<p class="client-name">Sandra Myers</p>
-						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p>
+<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
+<!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
 				</div><!-- /#owl-testimonial -->
 			</div><!-- /.container -->
@@ -430,162 +399,20 @@
 		
 		
 		<!-- BEGIN FOOTER -->
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-4">
-						<h4>ABOUT SENTIR AGENCY</h4>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed 
-						diam nonummy nibh euismod tincidunt ut laoreet dolore 
-						magna aliquam erat volutpat. Ut wisi enim ad minim veniam, 
-						quis nostrud exerci tation ullamcorper suscipit lobortis 
-						</p>
-						<p>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Facebook" class="fa fa-facebook icon-sm icon-rounded icon-social-footer icon-facebook"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Twitter" class="fa fa-twitter icon-sm icon-rounded icon-social-footer icon-twitter"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Google plus" class="fa fa-google-plus icon-sm icon-rounded icon-social-footer icon-google-plus"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Dribbble" class="fa fa-dribbble icon-sm icon-rounded icon-social-footer icon-dribbble"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Pinterest" class="fa fa-pinterest icon-sm icon-rounded icon-social-footer icon-pinterest"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="Github" class="fa fa-github icon-sm icon-rounded icon-social-footer icon-github"></i></a>
-						</p>
-					</div><!-- /.col-sm-4 -->
-					<div class="col-sm-6 col-md-3">
-						<h4>CONTACT</h4>
-						<div class="media media-contact">
-						  <span class="pull-left">
-							<i class="fa fa-map-marker media-object"></i>
-						  </span>
-						  <div class="media-body">
-							<address>
-							  Twitter, Inc.<br>
-							  795 Folsom Ave, Suite 600<br>
-							  San Francisco, CA 94107<br>
-							  <abbr title="Phone">P:</abbr> (123) 456-7890
-							</address>
-						  </div><!-- /.media-body -->
-						</div><!-- /.media -->
-						<div class="media media-contact">
-						  <span class="pull-left">
-							<i class="fa fa-envelope media-object"></i>
-						  </span>
-						  <div class="media-body">
-							<address>
-							  Full Name<br>
-							  <a href="mailto:#">first.last@example.com</a>
-							</address>
-						  </div><!-- /.media-body -->
-						</div><!-- /.media -->
-					</div><!-- /.col-sm-3 -->
-					<div class="clearfix visible-sm"></div>
-					<div class="col-sm-6 col-md-2">
-						<h4>NAVIGATION</h4>
-						<ul class="list">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="index.html">About us</a></li>
-							<li><a href="index.html">Our services</a></li>
-							<li><a href="index.html">Portfolio</a></li>
-							<li><a href="index.html">Pricing</a></li>
-							<li><a href="index.html">Blog</a></li>
-						</ul>
-					</div><!-- /.col-sm-2 -->
-					<div class="col-sm-6 col-md-3">
-						<h4>SIGN UP NEWSLETTER</h4>
-						<p>
-						Laritas est etiam processus dynamicus, qui
-						sequitur mutationem consuetudium
-						lectorum. Mirum est notare quam littera.
-						</p>
-						<form role="form">
-							<div class="input-group subscribe">
-							  <input type="text" class="form-control" placeholder="Enter email address">
-							  <span class="input-group-btn">
-								<button class="btn btn-info" type="button"><i class="fa fa-chevron-right"></i></button>
-							  </span>
-							</div><!-- /input-group -->
-						</form>
-					</div><!-- /.col-sm-3 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</footer><!-- /.section -->
+		<jsp:include page="shared/_footer.jsp" />
 		
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-5">
-						Copyright &copy; 2014 <a href="#fakelink">Your company</a>
-					</div><!-- /.col-sm-5 -->
-					<div class="col-sm-7 text-right">
-						<ul class="list-inline">
-						  <li><a href="#fakelink">Terms and condition</a></li>
-						  <li><a href="#fakelink">Privacy policy</a></li>
-						  <li><a href="#fakelink">FAQ</a></li>
-						</ul>
-					</div><!-- /.col-sm-7 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /.footer -->
-		<!-- END FOOTER -->
-		
-		
-		
-		<!-- BEGIN BACK TO TOP BUTTON -->
-		<div id="back-top">
-			<i class="fa fa-chevron-up"></i>
-		</div>
-		<!-- END BACK TO TOP -->
-		
-		<!--
-		===========================================================
-		END PAGE
-		===========================================================
-		-->
-		
-		
-		
-		<!--
-		===========================================================
-		Placed at the end of the document so the pages load faster
-		===========================================================
-		-->
-		<!-- MAIN JAVASRCIPT (REQUIRED ALL PAGE)-->
-		<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/plugins/retina/retina.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/plugins/backstretch/jquery.backstretch.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/plugins/mixitup/jquery.mixitup.js"></script>
 		<script>
 			$("#full-img-slide").backstretch([
-			  "${pageContext.request.contextPath}/resources/sources/images/temp/slider-intro-image.jpg"
-			  /* "${pageContext.request.contextPath}/resources/sources/images/temp/slider-intro-image2.jpg" */
+			  "resources/assets/img/image-1.jpg",
+			  "resources/assets/img/image-2.jpg",
+			  "resources/assets/img/image-3.jpg",
+			  "resources/assets/img/image-4.jpg",
+			  "resources/assets/img/image-5.jpg"
 			  ], {
 				fade: 750,
 				duration: 6000
 			});
 		</script>
-		<script>
-			$(document).ready(function(){
-				$(function(){
-				 var shrinkHeader = 250;
-				  $(window).scroll(function() {
-					var scroll = getCurrentScroll();
-					  if ( scroll >= shrinkHeader ) {
-						   $('.top-navbar').addClass('shrink-nav');
-						   $('.top-navbar').addClass('dark-color');
-						}
-						else {
-						   $('.top-navbar').removeClass('shrink-nav');
-						   $('.top-navbar').removeClass('dark-color');
-						}
-				  });
-					function getCurrentScroll() {
-						return window.pageYOffset || document.documentElement.scrollTop;
-					}
-				});
-			})
-		</script>
-		<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+		
 	</body>
 </html>
