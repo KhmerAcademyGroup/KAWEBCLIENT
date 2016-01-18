@@ -15,9 +15,9 @@
 		<!-- Player Responsive -->
 		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
 		<!-- style -->
-		<%-- <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/style-responsive.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/mycss.css" rel="stylesheet"> --%>
+		<link href="${pageContext.request.contextPath}/resources/assets/css/mycss.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/assets/css/perfect-scrollbar.css" rel="stylesheet">
+		
 		
  		  <style>
 			.vjs-default-skin .vjs-big-play-button{
@@ -30,27 +30,20 @@
 					width:150px;
 				}
 			 } 
-			 
-			 .hr-style-one{
-				padding:0px;
-				margin:5px;
-				border: 0;
-				height: 0;
-				border-top: 1px solid rgba(0, 0, 0, 0.1);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-			}
  		 </style>
 	</head>
 	<body>
 	
 		<jsp:include page="../shared/_menu.jsp" />
 		
-		
 		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
+		
 		
 		<div ng-app="myApp" ng-controller="myController"> 
 		
 		<div id="wrapper">
+		
+		
 
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
@@ -134,24 +127,24 @@
 								<div class="col-sm-8 col-xs-12">
 									<ul class="pull-right" style="list-style:none" id="btngr">
 										<li><br></li>
-										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>viewCounts</strong></li>
+										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}</strong></li>
 										<li style="font-size:12px">
 										
 											<span id="vote">
 												<%if(request.getSession().getAttribute("ka_user") != null){ %>
 												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote>0 ? 0 : 1%>')">
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">getCountvoteplus()</strong>
+														<strong id="plus">+</strong>
 												</a>
 												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus">getCountvoteminus()</strong>
+													<strong id="minus">-</strong>
 												</a>
 												<%}else{ %>
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">getCountvoteplus()</strong>
+														<strong id="plus">+</strong>
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus">getCountvoteminus()</strong>	
+													<strong id="minus">-</strong>	
 												<%} %>
 											</span> 
 											
@@ -168,13 +161,21 @@
 													</div>
 												  </ul>
 											</div>
-											<c:if test="{{VIDEO.fileUrl}}!='' && {{VIDEO.fileUrl}}!=null && {{VIDEO.fileUrl}}!='#'}">
+											
+												<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+													<i class="fa fa-download"></i> Download 
+												  </a>
+												</div>
+												
+											
+											<%-- <c:if test="{{VIDEO.fileUrl}}!='' && {{VIDEO.fileUrl}}!=null && {{VIDEO.fileUrl}}!='#'}">
 												<div class="btn-group">
 												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
 													<i class="fa fa-download"></i> Download 
 												  </a>
 												</div>
-											</c:if>
+											</c:if> --%>
 										</li>
 									</ul>
 								</div>
@@ -233,60 +234,55 @@
 						<div class="col-sm-3 col-xs-12 the-box no-border clear-padding" id="right_side">
 						
 							<!-- PLAY LIST -->
-							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1">
+							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
 								<div class="content" id="playlist">
+								
+								
+								<c:forEach items="${data.PLAYLIST}" var="plist">
+									<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" onclick="">
+										<div class="media">
+											<a class="pull-left">
+									    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
+									    	</a>
+									    	<div class="clearfix visible-xs"></div>
+									    	<div class="media-body">
+									        <h4 class="media-heading">
+									        	<a style="color:white">${plist.videoName}</a>
+											</h4>
+									        <ul class="list-inline">
+									            <li class="text-muted">by ${plist.username }</li>
+									        </ul>
+									        </div><!-- /.media-body -->
+									    </div><!-- /.media -->
+									</div>
+
+								</c:forEach>
+								
+								
+								
 								</div><!-- /.content -->
 							</div>
 							<!-- END PLAYLIST -->
-							<%-- <%if(request.getAttribute("playlist_json")!=null){ %>
-							<!-- PLAY LIST -->
-							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1">
-								<div class="content" id="playlist">
-								</div><!-- /.content -->
-							</div>
-							<!-- END PLAYLIST -->
 							
-							
-							
-							
-							<%}else{ %>
-								<script>
-									$(document).ready(function(){
-										var screenwidth = window.innerWidth;
-										if(screenwidth >= 992){
-											$(".top-navbar").addClass("toggle");
-											$(".sidebar-left").addClass("toggle");
-											$(".page-content").addClass("toggle");
-										}else{
-											$(".top-navbar").removeClass("toggle");
-											$(".sidebar-left").removeClass("toggle");
-											$(".page-content").removeClass("toggle");
-										}
-									});
-								</script>
-							<%} %>
-						<%
-						ArrayList<Video> a=(ArrayList<Video>)request.getAttribute("relate");
-						for(int i=0;i<a.size();i++){ %>
 						
-						 	<div class="related_videos">
-								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px">
+						 	<div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
+								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
-			                            <a class="pull-left" href="play.act?v=<%=a.get(i).getVideoid() %>" style="width:40%">
-			                            <img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/<%=a.get(i).getYoutubeurl() %>/mqdefault.jpg" style="width:100%;"></a>
+			                            <a class="pull-left" ng-href="play.act?v={{relate.videoId}}" style="width:40%">
+			                            <img alt="image" class="store-image img-responsive" ng-src="https://i.ytimg.com/vi/{{relate.youtubeUrl}}/mqdefault.jpg" style="width:100%;"></a>
 			                            <div class="media-body">                                
 			                                <h4 class="media-heading">
-			                                  <a href="play.act?v=<%=a.get(i).getVideoid() %>"><strong class="text-black"><%=a.get(i).getVideoname()%></strong></a>
+			                                  <a><strong class="text-black">{{relate.videoName}}</strong></a>
+			                                  <!-- <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black">{{relate.videoName}}</strong></a> -->
 											 </h4>
 			                                <ul class="list-inline">
-			                                	<li><%= a.get(i).getViewcounts() %> Views</li>
-			                                    <li>by <%=a.get(i).getUsername() %></li>
+			                                	<li>{{relate.viewCounts}} Views</li>
+			                                    <li>by {{relate.username}}</li>
 			                                </ul>
 			                            </div>
 			                        </div>
 								</div>
 							</div> 
-					<%} %> --%>
 							
 						</div>
 						<!-- end right side -->
@@ -303,51 +299,26 @@
 	    
 	    <jsp:include page="../shared/_footer.jsp" />
 		
-		<script>
-		$(document).ready(function() {
-			alert(getURLParameter("v"));
-			alert(getURLParameter("playlist"));
-			$("title").text("{{VIDEO.videoName }}");
-			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
-		    $("#menu-toggle").click(function(e) {
-		        $("#wrapper").toggleClass("toggled");
-		    });
-		});
-	    </script>
-	    
 	    
 	    </div><!-- controller angular -->
 		
 	
 		
 	    
-		<!-- <script>
+		<script>
 	      jQuery(document).ready(function ($) {
 	        "use strict";
 			$('#SuppressScrollX_1').perfectScrollbar({suppressScrollX: true});
 	      }); 
-	    </script> -->
+	    </script>
 	    
 	    <script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
 	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
 		
-		 <script>
-			// save a reference to the video element
-			video = document.querySelector('video'),
-			
-			// save a reference to the video.js player for that element
-			player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v=K7Eh__GxQeQ'});
-
-			// initialize the plugin with some custom options:
-			player.logobrand({
-				//height: "32px",
-				//width: "32px",
-				image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
-				destination: "http://www.khmeracademy.org/"
-			});
-		</script>
+		 
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
@@ -391,9 +362,47 @@
 			        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 			        $scope.COMMENT = response.data.COMMENT;
 			        $scope.VIDEO = response.data.VIDEO;
-			        alert(response.data);
+			        $("title").text(response.data.VIDEO.videoName);
+			        
+			     	// save a reference to the video element
+					video = document.querySelector('video');
+					
+					// save a reference to the video.js player for that element
+					player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+response.data.VIDEO.youtubeUrl});
+
+					// initialize the plugin with some custom options:
+					player.logobrand({
+						//height: "32px",
+						//width: "32px",
+						image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
+						destination: "http://www.khmeracademy.org/"
+					});
+			        
+			        
 			    });
 			});
+			
+			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
+		    $("#menu-toggle").click(function(e) {
+		        $("#wrapper").toggleClass("toggled");
+		    });
+		    
+		    
+		 	/* // save a reference to the video element
+			video = document.querySelector('video');
+			
+			// save a reference to the video.js player for that element
+			player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+myUrl});
+
+			// initialize the plugin with some custom options:
+			player.logobrand({
+				//height: "32px",
+				//width: "32px",
+				image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
+				destination: "http://www.khmeracademy.org/"
+			}); */
+		    
+		    
 		</script>
 		
 	    
