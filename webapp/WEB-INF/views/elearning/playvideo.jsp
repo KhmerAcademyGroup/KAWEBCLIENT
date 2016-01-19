@@ -234,7 +234,7 @@
 						<div class="col-sm-3 col-xs-12 the-box no-border clear-padding" id="right_side">
 						
 							<!-- PLAY LIST -->
-							<div class="contentHolder bg-gray myPlaylistHolder hidden-xs" style="left:-15px" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
+							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
 								<div class="content" id="playlist">
 								
 								
@@ -269,12 +269,11 @@
 								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
 			                            <!-- <a class="pull-left" ng-href="play.act?v={{relate.videoId}}" style="width:40%"> -->
-			                            <a class="pull-left" ng-click="changeUrlRelatedVideo(relate.videoId)" style="width:40%">
+			                            <a class="pull-left" ng-href="playvideo?v={{relate.videoId}}" style="width:40%">
 			                            <img alt="image" class="store-image img-responsive" ng-src="https://i.ytimg.com/vi/{{relate.youtubeUrl}}/mqdefault.jpg" style="width:100%;"></a>
 			                            <div class="media-body">                                
 			                                <h4 class="media-heading">
-			                                  <a ng-click="changeUrlRelatedVideo(relate.videoId)"><strong class="text-black">{{relate.videoName}}</strong></a>
-			                                  <!-- <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black">{{relate.videoName}}</strong></a> -->
+			                                   <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black">{{relate.videoName}}</strong></a> -->
 											 </h4>
 			                                <ul class="list-inline">
 			                                	<li>{{relate.viewCounts}} Views</li>
@@ -386,12 +385,6 @@
 				$scope.changeUrlVideo = function(vid){
 					var newParam = vid + "&playlist=" + getURLParameter("playlist");
 					changeUrlParam ("v", newParam);
-					loadVideo(vid);
-				}
-				
-				$scope.changeUrlRelatedVideo = function(vid){
-					changeUrlParam ("v", vid);
-					$('.myPlaylistHolder').hide();
 					loadVideo(vid);
 				}
 				
