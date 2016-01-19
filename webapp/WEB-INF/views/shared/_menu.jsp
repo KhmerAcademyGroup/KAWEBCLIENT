@@ -65,10 +65,10 @@
 			</sec:authorize>
 			<sec:authorize access="isAnonymous()">
 				<li class="parent">
-					<a href="#" id="login">Login</a>
+					<a href="#" id="btLogin">Login</a>
 				</li>
 				<li class="parent">
-					<a href="#" id="register">Register</a>
+					<a href="#" id="btSignUp">Register</a>
 				</li>
 			</sec:authorize>
 			<li class="parent right-icon">

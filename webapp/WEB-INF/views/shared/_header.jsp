@@ -27,3 +27,8 @@
 <![endif]-->
 
 <link href="${pageContext.request.contextPath}/resources/assets/css/mystyle.css" rel="stylesheet">
+
+
+
+<link href="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
+		
