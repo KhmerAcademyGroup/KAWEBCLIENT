@@ -15,7 +15,7 @@
 					
 					
 					<li>&nbsp Forum</li>
-					<li><a href="${pageContext.request.contextPath}/admin/forum/forumcommment"><i class="fa fa-dashboard icon-sidebar"></i>Forum Comment</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/forum/forumcomment"><i class="fa fa-dashboard icon-sidebar"></i>Forum Comment</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/forumcategory"><i class="fa fa-dashboard icon-sidebar"></i>Category</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/forum/forumtag"><i class="fa fa-dashboard icon-sidebar"></i>Tag</a></li>
 					
