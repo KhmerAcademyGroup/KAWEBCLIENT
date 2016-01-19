@@ -37,7 +37,7 @@ public class ELearningController {
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
-		return "/elearning/playvideos";
+		return "/elearning/playvideo";
 	}
 	
 	
