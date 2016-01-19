@@ -70,9 +70,10 @@ TABLE OF CONTENT
 
 
 @import url(http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Hanuman:400,700);
 body{
 	background: #fff;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-family: 'Lato', Calibri, Arial,'Hanuman', serif, sans-serif; 
 	font-size: 14px;
 	color: #656D78;
 	overflow-x: hidden;

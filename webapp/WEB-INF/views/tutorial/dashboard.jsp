@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+ <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>   
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -32,9 +32,8 @@
 
 		<div class="container">
 
-			<div class="text-center"
-				style="color: #2a5893; font-family: 'Lato', sans-serif;">
-				<h1> <spring:message code="welcometutorialtext"/> </h1>
+			<div class="text-center" style="color: #2a5893; font-family: 'Lato', sans-serif;">
+				<h1><spring:message code="welcometutorialtext"/><h1>
 			</div>
 			<br />
 			
@@ -52,10 +51,10 @@
 			<jsp:include page="../shared/_footer.jsp" />
 		<!-- END FOOTER -->
 		<script id="tlistcategory" type="text/x-jquery-tmpl">
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<!-- BEGIN ITEM STORE -->
 					<div class="the-box no-border full store-item text-center">
-						<a href="detail/{{= categoryId}}">
+						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
 							<img alt="Image" class="item-image img-responsive" src="${pageContext.request.contextPath}/resources/uploads/{{= categoryLogoUrl}}">
 						</a>
 						<div class="the-box bg-primary no-margin no-border item-des">
@@ -68,7 +67,7 @@
 								<i class="fa fa-star"></i>
 							</p>
 							<div class="btn-group">
-								<a href="detail/{{= categoryId}}" class="btn btn-primary active">View</a>
+								<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" class="btn btn-primary active">View</a>
 							</div>
 							<!-- /.btn-group -->
 						</div>
