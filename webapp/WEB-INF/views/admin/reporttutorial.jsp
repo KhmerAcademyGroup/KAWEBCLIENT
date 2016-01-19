@@ -48,15 +48,15 @@
 		<div class="page-content">
 			<div class="container-fluid">
 
-			   <h1 class="page-heading">List University</h1>
+			   <h1 class="page-heading">List Tutorials</h1>
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
-						<div class="btn-group" id="btcheck">
+						<!-- <div class="btn-group" id="btcheck">
 							<button id="showFrmAddCategory" type="button" class="btn btn-success">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
-						</div>
+						</div> -->
 
 						<!-- <div class="btn-group pull-right">
 							<form role="form">
@@ -73,12 +73,15 @@
 							<thead>
 								<tr>
 									<th style="width: 30px;">No</th>
-									<th>University name</th>
+									<th>Title</th>									
+									<th>Index</th>
+									<th>Category</th>
+									<th>User Name</th>									
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="content">
-							
+								
 							</tbody>
 							
 						</table>
@@ -97,21 +100,21 @@
 			</div>
 			<!-- /.container-fluid -->
 
-		<div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/category" method="POST">
+		<%-- <div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
+			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/department" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">List university</h4>
+						<h4 class="modal-title">List Log University</h4>
 					</div>
 					<div class="modal-body" >
 									
 									<input type="hidden"  id="categoryId" class="form-control"  name="categoryId">
 										
 									<div class="form-group">
-										<label class="col-lg-3 control-label">University name</label>
+										<label class="col-lg-3 control-label">Department name</label>
 										<div class="col-lg-5">
 											<input type="text" id="categoryName" class="form-control" required="required" name="categoryName">
 										</div>	
@@ -122,7 +125,7 @@
 					</div>
 				</div>
 			</form>	
-		</div>
+		</div> --%>
 
 
 
