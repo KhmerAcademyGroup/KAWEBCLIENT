@@ -220,18 +220,8 @@ END PAGE
 	                    <div class="form-group">
 	                    	<div class="col-xs-12">
 	                    			<label>Department <span style="color:red">*</span></label>
-									<select placeholder="Choose a Country..." class="form-control rounded bold-border">
-										<option value="Empty">&nbsp;</option>
-										<option value="United States">United States</option>
-										<option value="United Kingdom">United Kingdom</option>
-										<option value="Afghanistan">Afghanistan</option>
-										<option value="Aland Islands">Aland Islands</option>
-										<option value="Albania">Albania</option>
-										<option value="Algeria">Algeria</option>
-										<option value="American Samoa">American Samoa</option>
-										<option value="Andorra">Andorra</option>
-										<option value="Angola">Angola</option>
-										<option value="Anguilla">Anguilla</option>
+									<select placeholder="Choose a department" class="form-control rounded bold-border" id="getDepartment">
+										
 									</select>
 							</div>
 						</div>
@@ -239,18 +229,8 @@ END PAGE
 	                    <div class="form-group">
 	                    	<div class="col-xs-12">
 	                    			<label>University <span style="color:red">*</span></label>
-									<select placeholder="Choose a Country..." class="form-control rounded bold-border">
-										<option value="Empty">&nbsp;</option>
-										<option value="United States">United States</option>
-										<option value="United Kingdom">United Kingdom</option>
-										<option value="Afghanistan">Afghanistan</option>
-										<option value="Aland Islands">Aland Islands</option>
-										<option value="Albania">Albania</option>
-										<option value="Algeria">Algeria</option>
-										<option value="American Samoa">American Samoa</option>
-										<option value="Andorra">Andorra</option>
-										<option value="Angola">Angola</option>
-										<option value="Anguilla">Anguilla</option>
+									<select placeholder="Choose a university" class="form-control rounded bold-border" id="getUniversity">
+										
 									</select>
 							</div>
 						</div>
@@ -259,18 +239,16 @@ END PAGE
 	                    
 	                    <div class="form-group text-center m-t-40">
 	                        <div class="col-xs-12">
-	                            <button class="btn btn-primary w-lg waves-effect waves-light" type="submit">Login</button>
+	                            <button class="btn btn-primary w-lg waves-effect waves-light" type="submit">Sign Up</button>
 	                        </div>
 	                    </div>
-	
-	                    <div class="form-group m-t-30">
-	                        <div class="col-sm-7">
-	                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-	                        </div>
-	                        <div class="col-sm-5 text-right">
-	                            <a href="/register">Create an account</a>
+		
+		 				<div class="form-group text-center m-t-40">
+	                        <div class="col-xs-12">
+	                            Already have an account? <a href="#" id="btSLogin">Login</a>
 	                        </div>
 	                    </div>
+	                    
 	                </form>
 					
 				</div>
@@ -290,11 +268,9 @@ Placed at the end of the document so the pages load faster
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/mixitup/jquery.mixitup.js"></script>
-
-
-
-
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.jquery.min.js" ></script>
+
+
 
 		
 
@@ -321,20 +297,26 @@ Placed at the end of the document so the pages load faster
 		});
 	})
 </script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
+<!-- BPOP UP -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
 <!-- Progress Bar -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/progressbar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.blockUI.js"></script>
-<!-- BPOP UP -->
-<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
+<!-- jQuery Template -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
+
+
+
+ 
 <script type="text/javascript">
             /* ==============================================
             Counter Up
             =============================================== */
             $(document).ready(function(){
                
-                $("#btLogin").click(function(){
+                $("#btLogin").click(function(){ 
                 	$("#frmLogin").trigger("reset");
                 	$("#p-frmLogin").bPopup({modalClose: false});
 // 					KA.createProgressBar();	
@@ -342,12 +324,7 @@ Placed at the end of the document so the pages load faster
 // 						KA.destroyProgressBar();
 // 					}, 1000 );
                 	
-                })
-                
-                 $("#register").click(function(){
-//                 	$("#frmLogin").bPopup(/* {modalClose: false} */);
-                	
-                })
+                });
                 
 				$("#frmLogin").submit(function(e){
            		
@@ -401,13 +378,81 @@ Placed at the end of the document so the pages load faster
                 $("#btSignUp").click(function(){
                 	$("#frmSignUp").trigger("reset");
                 	$("#p-frmSignUp").bPopup({modalClose: false});
+                	if( $('#getDepartment').has('option').length == 0 ) {
+                		listDepartment();                		
+                	}
+					if( $('#getUniversity').has('option').length == 0 ) {
+                		listUniversity();
+                	}
 // 					KA.createProgressBar();	
 // 					setTimeout(function(){
 // 						KA.destroyProgressBar();
 // 					}, 1000 );
                 	
                 })
+                
+                $(document).on('click',"#btSLogin", function(){ 
+                	$("#frmLogin").trigger("reset");
+                	$("#p-frmLogin").bPopup({modalClose: false});
+                	$("#p-frmSignUp").bPopup().close();
+                });
+                
+                listUniversity = function(){
+                	KA.createProgressBarWithPopup();
+    				$.ajax({ 
+    				    url: "${pageContext.request.contextPath}/rest/university?page=1&item=100", 
+    				    type: 'GET',
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    						console.log(data);
+    						if(data.RESP_DATA.length>0){
+    							$("#university_tmpl").tmpl(data.RESP_DATA).appendTo("#getUniversity");
+    						}
+    	                	KA.destroyProgressBarWithPopup();
+    				    },
+    				    error:function(data,status,er) { 
+    	                	KA.destroyProgressBarWithPopup();
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    			};
+    			
+    			listDepartment = function(){
+    				KA.createProgressBarWithPopup();
+    				$.ajax({ 
+    				    url: "${pageContext.request.contextPath}/rest/department?page=1&item=100", 
+    				    type: 'GET',
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    						console.log(data);
+    						if(data.RESP_DATA.length>0){
+    							$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
+    						}
+    						KA.destroyProgressBarWithPopup();
+    				    },
+    				    error:function(data,status,er) { 
+    				    	KA.destroyProgressBarWithPopup();
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    			};
+    			
+    			
             });
             
             
         </script>
+        
+        <script id="university_tmpl" type="text/x-jquery-tmpl">
+	    	<option value="{{= universityId }}">{{= universityName }}</option>
+   		</script>
+   		
+        <script id="department_tmpl" type="text/x-jquery-tmpl">
+	    	<option value="{{= departmentId }}">{{= departmentName }}</option>
+   		</script>
