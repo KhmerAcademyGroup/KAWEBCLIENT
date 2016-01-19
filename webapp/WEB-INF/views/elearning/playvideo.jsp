@@ -70,7 +70,7 @@
 							  <div class="panel-body" style="background:#cccccc;">
 							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
 									<c:if test="${playlist.maincategory==category.maincategory}">
-										<a>${playlist.playlistName}</a><br /> 
+										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;">${playlist.playlistName}</a><br /> 
 									</c:if>
 								</c:forEach>
 							  </div><!-- /.panel-body -->
