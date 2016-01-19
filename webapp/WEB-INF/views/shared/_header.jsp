@@ -1,3 +1,4 @@
+ <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>   
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Sentir, Responsive admin and dashboard UI kits template">

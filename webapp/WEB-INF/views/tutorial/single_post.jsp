@@ -96,12 +96,14 @@
 		END PAGE
 		===========================================================
 		-->
-		<script src="${pageContext.request.contextPath}/resources/assets/js/script/tutorialsingle.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/js/script/listalltutorials.js"></script>
+		
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		<script>
+		var pageContext = "${pageContext.request.contextPath}";
 			$(document).ready(function(){
+				
+				
 				$.get("${pageContext.request.contextPath}/tutorial/rest/listtitles/${cid}" ,
 						function(data){
 							
@@ -124,7 +126,8 @@
 				
 			});
 			</script> 
-		
+			<script src="${pageContext.request.contextPath}/resources/assets/js/script/tutorialsingle.js"></script>
+			<script src="${pageContext.request.contextPath}/resources/assets/js/script/listalltutorials.js"></script>
 		
 		<div id="fb-root"></div>
 <script>(function(d, s, id) {

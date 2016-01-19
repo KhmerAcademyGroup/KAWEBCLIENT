@@ -17,7 +17,7 @@ function getTutorialLists(data){
 						  	'<div class="list-group success square no-side-border">';
 						  		for(var i=0; i<data.length; i++){
 						  		
-						  				txt+= '<a onclick="linktocontent(\"'+ data[i].tutorialId +'\")" href="#" class="list-group-item tutorial-list">	<span>'+ i +'. </span><span>'+ data[i].title +'</span>	</a>';
+						  				txt+= '<a onclick="linktocontent(\''+ data[i].tutorialId +'\')" href="#" class="list-group-item tutorial-list">	<span>'+ i +'. </span><span>'+ data[i].title +'</span>	</a>';
 						  		
 									}
 						  	txt+= '</div>	'+						
@@ -31,11 +31,11 @@ function getTutorialLists(data){
 function linktocontent(id){
 	var dis ="";
 	dis += '<center><div>'+
-								'<img class="img-responsive" src="${pageContext.request.contextPath}/resources/uploads/thumnail/loading2.gif"/>'+
+								'<img class="img-responsive" src="'+ pageContext +'/resources/uploads/thumnail/loading2.gif"/>'+
 			'</div></center>';
 	$("#tutorialdetail").html(dis);
 	
-	$.get("${pageContext.request.contextPath}/tutorial/rest/getdetail/${id}" , 
+	$.get(pageContext+ "/tutorial/rest/getdetail/"+ id , 
 			function(data){		
 				$("#tutorialdetail").html(getTutorialDetail(data));
 				$("#tutorialdetail img").addClass("img-responsive");
