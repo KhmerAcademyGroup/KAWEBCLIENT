@@ -153,10 +153,13 @@ NAVBAR
 	z-index: 99;
 	display: block;
 	background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);
+/* 	background : #37BC9B; */
 	border-color: #8cc152;
+/* 	border-color:#37BC9B; */
 	-webkit-transition:All 0.2s ease;
 	-moz-transition:All 0.2s ease;
 	-o-transition:All 0.2s ease;
+	 border-bottom: 4px solid #17aa1c;
 }
 .top-navbar.static{
 	position: relative;
@@ -424,6 +427,7 @@ NAVBAR
 /** NAVBAR DARK COLOR **/
 .top-navbar.dark-color{
 		background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);
+/* 	background:#37BC9B; */
 }
 .top-navbar.dark-color ul.menus li.parent a{
 	color: #fff;
@@ -436,7 +440,8 @@ NAVBAR
 .top-navbar.dark-color ul.menus li.parent a:focus{
 	color: #fff;
 	color: rgba(255,255,255,1);
-	background: #1A212B;
+/* 	background: #1A212B; */
+	background: #17aa1c;
 }
 .top-navbar.dark-color ul.menus li.parent.right-icon{
 	color: #fff;
@@ -445,7 +450,6 @@ NAVBAR
 .top-navbar.dark-color ul.menus li.parent.right-icon:hover,
 .top-navbar.dark-color ul.menus li.parent.right-icon:focus{
 	color: #fff;
-	color: rgba(255,255,255,1);
 }
 .top-navbar.dark-color ul.menus li.parent:hover a,
 .top-navbar.dark-color ul.menus li.parent:focus a{
@@ -3984,7 +3988,7 @@ LIST GROUP
 **/
 .list-group-item {
 	border-color: #ccd0db;
-	background-color: #f2f7fd;
+	background-color: white;
 	height: 50px;
 	padding: 14px 25px;
 }
@@ -6239,6 +6243,18 @@ iframe {
 	border: none;
 }
 
+/*  Add */
 .ka-container{
 	margin-top: 100px;
 }
+.ka-question {
+    width: 100px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+/*     font-weight: 700; */
+    color:#428bca;
+    font-size:17px;
+}
+
