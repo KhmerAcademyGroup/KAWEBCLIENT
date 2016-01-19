@@ -40,6 +40,91 @@
 		    right: 0;
 		    z-index: 9;
 		}
+		.profile-heading .user-name {
+		    position: absolute;
+		    bottom: 70px;
+		    left: 140px;
+		    padding: 10px 0;
+		    color: #fff;
+		    font-size: 24px;
+		    font-weight: 700;
+		    z-index: 3;
+		}
+		@media (max-width: 480px){
+		.profile-heading img.avatar {
+		    left: 50%;
+		    top: 35%;
+		    margin-left: -35px;
+		    bottom: 190px;
+		    z-index: 3;
+		    width: 70px;
+		    height: 70px;
+			}
+			.profile-heading img.bg-cover {
+		    width: 100%;
+		   	height: 150px;
+		    position: relative;
+		    z-index: 1;
+			}
+			
+			.profile-heading .user-name {
+		    position: absolute;
+		    bottom: 0px;
+		    left: 40%;
+		    color: #fff;
+		    font-size: 20px;
+		    font-weight: 700;
+		    z-index: 3;
+		}
+		}
+		
+		/* for video tap*/
+		.the-box.no-border {
+		    border: none;
+		}
+		.the-box {
+		    padding: 15px;
+		    margin-bottom: 30px;
+		    background: #fff;
+		    border: 1px solid #D5DAE0;
+		    position: relative;
+		}
+		.store-list .store-image {
+		    width: 200px;
+		}
+		.text-black {
+		     font-size: 15px;
+		}
+		.dropdown-menu > li > a {
+		    padding: 0px 14px;
+		}
+		.btn .fa, .btn .glyphicon {
+		    margin: 0 3px;
+		}
+		@media (max-width: 480px){
+		.store-list .store-image, .blog-list .blog-image, .property-list .property-image {
+		    width: 100%;
+		    margin-bottom: 30px;
+		    padding-right: 0;
+		}
+		
+		}
+		
+		/* for profile tap*/
+		.btn-file input[type=file] {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    min-width: 100%;
+		    min-height: 100%;
+		    font-size: 999px;
+		    text-align: left;
+		    filter: alpha(opacity=0);
+		    opacity: 0;
+		    background: red;
+		    cursor: inherit;
+		    display: block;
+		}
 		</style>
 </head>
 <body >
@@ -136,107 +221,378 @@
 							<div class="panel with-nav-tabs panel-primary panel-square panel-no-border">
 							  <div class="panel-heading" style="background-color:#558d48">
 								<ul class="nav nav-tabs">
+								
 									<li class="active"><a href="#panel-videos" data-toggle="tab"><i class="fa fa fa-eye"></i> Videos</a></li>
 									<li><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
 									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> History</a></li>
-									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> About</a></li>
+									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
 									<li class="pull-right">
 <!-- 										 <span class="btn btn-group inline-popups"> -->
-																<a class="btn btn-success btn-rounded-lg" href="video.act"  data-effect="mfp-zoom-in">
-																	<i class="fa fa-cloud-upload"></i> Upload video
-																</a>
+												<a class="btn btn-success btn-rounded-lg" href="video.act"  data-effect="mfp-zoom-in">
+													<i class="fa fa-cloud-upload"></i> Upload video
+												</a>
 <!-- 										</span> -->
-									</li>
-													
+									</li>			
 								</ul>
 							  </div>
 								<div id="panel-collapse-1" class="collapse in">
 									<div class="panel-body">
 										<div class="tab-content">
-											<!-- Videos -->
-											
+										
+											<!-- ****************Videos tap *********************-->
 											<div class="tab-pane fade in active" id="panel-videos">
-													
-													<div id="v"></div>
-													
 													<div class="btn-toolbar top-table" role="toolbar">
-															
-								
-															<div class="btn-group pull-right">
-																<form role="form">
-																	<input type="text" id="searchVideo" class="form-control" placeholder="Search by Video title">
-																</form>
-																
-															</div><!-- /.btn-group .pull-right -->
-															
-															
-															
-															
-															
+													<div class="btn-group">
+														<form role="form" id="frmSetNumrowHistory">
+															<select class="form-control" id="setNumrowHistory">
+																<option>10</option>
+																<option>20</option>
+																<option>30</option>
+																<option>50</option>
+															</select>
+														</form>
+													</div>
+													
+													<div class="btn-group pull-right">
+														<form role="form">
+															<input type="text" class="form-control" id="tfsearchHistory" placeholder="Search Video">
+														</form>
+										
+													</div>
+													
+												</div>
+													<!-- start stor-list -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
 														</div>
-														
-														
-														
-														<div id="getUserVideos">
-															
+													</div><!-- end stor-list -->
+													
+													<!-- start stor-list -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
 														</div>
-														
+													</div><!-- end stor-list -->
+													
+													<!-- start stor-list -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
+														</div>
+													</div><!-- end stor-list -->
+													<!-- page gination -->
+													<div class='text-center'>
+													<nav>
+													  <ul class="pagination">
+													    <li>
+													      <a href="#" aria-label="Previous">
+													        <span aria-hidden="true">&laquo;</span>
+													      </a>
+													    </li>
+													    <li class="active"><a href="#" >1</a></li>
+													    <li><a href="#">2</a></li>
+													    <li><a href="#">3</a></li>
+													    <li><a href="#">4</a></li>
+													    <li><a href="#">5</a></li>
+													    <li>
+													      <a href="#" aria-label="Next">
+													        <span aria-hidden="true">&raquo;</span>
+													      </a>
+													    </li>
+													  </ul>
+													</nav>
+													</div>
 											</div>
 											
 											
-											<!-- Info -->
-										
-										
+											<!--***********************user Prfile Tap ****************-->
 											<div class="tab-pane fade" id="panel-myinfo">
 												<div class="tab-pane fade in" id="panel-about">
-												<h4 class="small-heading more-margin-bottom">MY INFOR</h4>
-												<form class="form-horizontal" role="form">
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Username</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">hello</p>
-													</div>
-												</div><!-- /.form-group -->
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Email</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">test@gmail.com</p>
-													</div>
-												</div><!-- /.form-group -->
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Gender</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">female</p>
-													</div>
-												</div><!-- /.form-group -->
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Date of birth</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static"></p>
-													</div>
-												</div><!-- /.form-group -->
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Phone numebr</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">	  </p>
-													</div>
-												</div><!-- /.form-group -->
-												<div class="form-group">
-													<label class="col-sm-2 control-label">Register date</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">2015-03-04	  </p>
-													</div>
-												</div><!-- /.form-group -->
 												
-												<div class="form-group">
-													<label class="col-sm-2 control-label"> playlists</label>
-													<div class="col-sm-10">
-													  <p class="form-control-static">0	  </p>
-													</div>
-												</div><!-- /.form-group -->
-												</form>
+													<form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1" action="updateusrinfo.act" method="post" novalidate="novalidate">	
+														<div class="col-sm-8">
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Username<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="text" class="form-control" name="username" value="hello" data-bv-field="username">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The username is required and can't be empty</small><small data-bv-validator="stringLength" class="help-block" style="display: none;">The username must be more than 4 and less than 30 characters long</small></div>
+														</div>
+						
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Email<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="text" class="form-control" name="email" value="test@gmail.com" disabled="" data-bv-field="email">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The email address is required and can't be empty</small><small data-bv-validator="emailAddress" class="help-block" style="display: none;">The input is not a valid email address</small></div>
+														</div>
+														
+														
+					
+														
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Department<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<select name="department" class="form-control" data-bv-field="department">
+																	
+																	<option value="1">Computer Science Department</option>
+																	
+																	<option value="2">Business and Economic Department</option>
+																	
+																	<option value="5">Law and Public Affairs Department</option>
+																	
+																	<option value="4">Art, Letter and Humanities Department</option>
+																	
+																	<option value="6">Communication and Media Art Department</option>
+																	
+																	<option value="7">Architecture and Design Department</option>
+																	
+																	<option value="8">Management and Economic Department</option>
+																	
+																	<option value="9">Social Sciences and International Relations Department</option>
+																	
+																	<option value="11">Department of Science</option>
+																	
+																	<option value="12">Other</option>
+																	
+																</select>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class=" col-lg-3 control-label">University<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<select name="university" class="form-control" data-bv-field="university">
+																	
+																	<option value="1">BBU</option>
+																	
+																	<option value="2">RUPP</option>
+																	
+																	<option value="3">SETEC</option>
+																	
+																	<option value="4">PUC</option>
+																	
+																	<option value="5">PPIU</option>
+																	
+																	<option value="6">NU</option>
+																	
+																	<option value="7">UBB</option>
+																	
+																	<option value="8">AEU</option>
+																	
+																	<option value="9">UME</option>
+																	
+																	<option value="10">RAC</option>
+																	
+																	<option value="11">CARDI</option>
+																	
+																	<option value="12">ITC</option>
+																	
+																	<option value="13">CSUK</option>
+																	
+																	<option value="14">NIE</option>
+																	
+																	<option value="15">NTTI</option>
+																	
+																	<option value="16">PNCA</option>
+																	
+																	<option value="17">RUA</option>
+																	
+																	<option value="18">RUFA</option>
+																	
+																	<option value="19">RULE</option>
+																	
+																	<option value="20">SRU</option>
+																	
+																	<option value="21">UHS</option>
+																	
+																	<option value="22">IIC</option>
+																	
+																	<option value="23">UC</option>
+																	
+																	<option value="24">UP</option>
+																	
+																	<option value="25">PPIT</option>
+																	
+																	<option value="26">CamEd</option>
+																	
+																	<option value="27">SPI</option>
+																	
+																	<option value="28">BELTEI</option>
+																	
+																	<option value="29">CMU</option>
+																	
+																	<option value="30">AUPP</option>
+																	
+																	<option value="31">ZAMAN</option>
+																	
+																	<option value="32">CUS</option>
+																	
+																	<option value="33">NUM</option>
+																	
+																	<option value="35">PCU</option>
+																	
+																	<option value="36">Other</option>
+																	
+																</select>
+															</div>
+					
+														</div>
+														
+														<div class="form-group">
+																<label class="col-lg-3 control-label">Gender</label>
+																<div class="col-lg-5">
+																	<div class="radio">
+																		<label>
+																			<input type="radio" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender" checked=""> Male
+																		</label>
+																	</div>
+																	<div class="radio">
+																		<label>
+																			<input type="radio" name="gender" value="female" checked="" data-bv-field="gender"> Female
+																		</label>
+																	</div>
+															
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The gender is required</small></div>
+														</div>
+														
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Date of birth<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="text" value="" name="dateofbirth" data-date-format="dd-mm-yyyy" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The date of birth  is required and can't be empty</small></div>
+														</div>
+														
+														
+														
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Phone number<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="text" class="form-control" name="phonenumber" value="" data-bv-field="phonenumber">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Phonenumber is required and can't be empty</small><small data-bv-validator="digits" class="help-block" style="display: none;">The value can contain only digits</small></div>
+														</div>
+										
+														
+														<div class="form-group">
+															<label class="col-lg-3 control-label">User Type<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="text" class="form-control" name="usertype" disabled="" value="Subscriber" data-bv-field="usertype">
+																
+														<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The register date is required and can't be empty</small></div>
+														</div>	
+														<div class="form-group">
+															<label class="col-lg-3 control-label">Current Password<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="password" class="form-control" name="oldpassword" id="oldpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Password is required and can't be empty</small></div>
+															<small id="pwdvalid" style="display: block; color: red;" class="help-block"></small>
+														</div>
+														<div class="form-group">
+															<label class="col-lg-3 control-label">New Password<span class="required">*</span></label>
+															<div class="col-lg-5">
+																<input type="password" class="form-control" name="oldpassword" id="oldpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
+															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Password is required and can't be empty</small></div>
+															<small id="pwdvalid" style="display: block; color: red;" class="help-block"></small>
+														</div>
+														</div>
+														<div class="col-sm-4">
+																							
+															<div class="col-xs-6 col-md-7">
+																<div class="imgstyle">
+																<a title="Image title here" href="" class="zooming">
+																		<img id="photoimg" class="mfp-fade item-gallery img-responsive" alt="Image" src="${pageContext.request.contextPath}/resources/uploads/user/avatar.jpg">
+																</a>
+																</div>
+																<div style="height:10px"></div>
+																	<div class="form-group">
+																		<div class="input-group">
+																			<input type="text" readonly="" class="form-control">
+																		<span class="input-group-btn">
+																		<span class="btn btn-default btn-file">
+																				Browse ... <input type="file" name="photo" id="photoimage" value="" onchange="return ValidateFileUpload()" data-bv-field="photo">																							
+																		</span>
+																		</span>
+																	</div><!-- /.input-group -->
+																</div>
+															</div>
+																							
+																							
+														</div>	
+																							
+																						
+																						
+															
+																						
+														<!-- Button Post -->
+														<div class="form-group">
+															<div class="col-lg-9 col-lg-offset-3">
+																<button type="reset" class="btn btn-default btn-perspective">Cancel</button>
+																<button id="msubmit" class="btn btn-info btn-perspective">Update</button>
+															</div>
+														</div>
+														<!-- Button Post -->
+														
+																	
+																				
+														<!-- /From -->
+														</form>
+												
 											</div>
 											</div>
+											
+											<!-- *******************start history****************** -->
 											<div class="tab-pane fade in" id="panel-history">
 												
 														<div class="btn-toolbar top-table" role="toolbar">
@@ -265,13 +621,105 @@
 															<!-- /.btn-group .pull-right -->
 														</div>
 														
-														
-														<div id="getHistory">
-														
-														
-														</div>
 													
-											</div><!-- /#panel-about -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
+														</div>
+													</div><!-- end history -->
+													
+													<!-- start history -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
+														</div>
+													</div><!-- end history -->
+													
+													<!-- start history -->
+													<div class="the-box no-border store-list">
+														<div class="media">
+															<a class="pull-left" href="../elearning/play.act?v=827">
+																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
+															</a><div class="clearfix visible-xs"></div>   
+															<div class="media-body" style="overflow:visible">       
+																<a href="#fakelink"></a>  
+																<div class="btn-group pull-right"> 	  
+																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
+																	<ul class="dropdown-menu" role="menu"> 
+																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
+																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
+																	</ul> 
+																</div> 
+																<ul class="list-inline"> 
+																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
+																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
+																</ul>
+																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
+																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
+															</div>
+														</div>
+													</div><!-- end history -->
+													<!-- page gination -->
+													<div class='text-center'>
+													<nav>
+													  <ul class="pagination">
+													    <li>
+													      <a href="#" aria-label="Previous">
+													        <span aria-hidden="true">&laquo;</span>
+													      </a>
+													    </li>
+													    <li class="active"><a href="#" >1</a></li>
+													    <li><a href="#">2</a></li>
+													    <li><a href="#">3</a></li>
+													    <li><a href="#">4</a></li>
+													    <li><a href="#">5</a></li>
+													    <li>
+													      <a href="#" aria-label="Next">
+													        <span aria-hidden="true">&raquo;</span>
+													      </a>
+													    </li>
+													  </ul>
+													</nav>
+													</div>
+													
+													
+											</div><!-- ***************#panel-about****************** -->
 											<div class="tab-pane fade in" id="panel-playlist">
 													<div class="the-box no-border">
 					
