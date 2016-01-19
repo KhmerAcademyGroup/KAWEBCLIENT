@@ -1,5 +1,5 @@
 <!-- BEGIN FOOTER -->
-<footer>
+<footer class="light-color">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
@@ -78,7 +78,7 @@
 	</div><!-- /.container -->
 </footer><!-- /.section -->
 
-<div class="footer">
+<div class="footer light-color">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">

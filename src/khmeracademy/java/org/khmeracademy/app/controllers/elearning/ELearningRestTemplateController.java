@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-//@RequestMapping("/admin")
 public class ELearningRestTemplateController {
 
 	@Autowired
@@ -35,18 +34,20 @@ public class ELearningRestTemplateController {
 	}
 	
 	@RequestMapping(value="/rest/elearning/playvideo" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> playVideo(
-			@RequestParam(value="v") String vid, 
+	public ResponseEntity<Map<String , Object>> playVideo( 
 			@RequestParam(value="playlist", required=false) String pid){
-		String playlistParam = "";
-		if(pid!=null){
-			playlistParam = "&playlist=" + pid;
-		}
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/playvideo?v=" + vid + playlistParam, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/playvideo?playlist=" + pid, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/elearning/getplayvideo" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getPlayVideo( 
+			@RequestParam(value="v", required=false) String vid){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/getplayvideo?v=" + vid, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 	
 }

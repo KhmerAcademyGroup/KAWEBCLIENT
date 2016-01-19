@@ -35,13 +35,13 @@
 				<a href="${pageContext.request.contextPath}/">Home</a>
 			</li>
 			<li class="parent">
-				<a href="#">E-Learning</a>
+				<a href="${pageContext.request.contextPath}/elearning">E-Learning</a>
 			</li>
 			<li class="parent">
-				<a href="#">Forum</a>
+				<a href="${pageContext.request.contextPath}/forum">Forum</a>
 			</li>
 			<li class="parent">
-				<a href="#">Tutorial</a>
+				<a href="${pageContext.request.contextPath}/tutorial">Tutorial</a>
 			</li>
 			<li class="parent">
 				<a href="#">News</a>
@@ -52,8 +52,8 @@
 <!-- 				</li> -->
 				<li class="parent" >
 					 <a href="#fakelink"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						    <img     style="height:140%"  src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar">
-						    Paris Hawker
+						    <img   style="height:140%"  src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar">
+						   <sec:authentication property="principal.username" />
 					 </a>
 					 <ul class="sub-menus">
 						<li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>

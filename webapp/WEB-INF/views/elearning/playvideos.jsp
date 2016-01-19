@@ -5,6 +5,8 @@
 <html lang="en">
 	<head>
 		<jsp:include page="../shared/_header.jsp" />
+		<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/angular.min.js"></script>
 		<!-- Side Bar -->
   		<link href="${pageContext.request.contextPath}/resources/assets/css/simple-sidebar.css" rel="stylesheet" />
   		<!-- Player -->
@@ -13,9 +15,9 @@
 		<!-- Player Responsive -->
 		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
 		<!-- style -->
-		<%-- <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/style-responsive.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/mycss.css" rel="stylesheet"> --%>
+		<link href="${pageContext.request.contextPath}/resources/assets/css/mycss.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/assets/css/perfect-scrollbar.css" rel="stylesheet">
+		
 		
  		  <style>
 			.vjs-default-skin .vjs-big-play-button{
@@ -28,7 +30,6 @@
 					width:150px;
 				}
 			 } 
- 
  		 </style>
 	</head>
 	<body>
@@ -37,7 +38,12 @@
 		
 		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
 		
+		
+		<div ng-app="myApp" ng-controller="myController"> 
+		
 		<div id="wrapper">
+		
+		
 
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
@@ -60,16 +66,11 @@
 						  </div>
 							
 							
-
 							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
 							  <div class="panel-body" style="background:#cccccc;">
 							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
-							  	
 									<c:if test="${playlist.maincategory==category.maincategory}">
-									
 										<a>${playlist.playlistName}</a><br /> 
-										
-								
 									</c:if>
 								</c:forEach>
 							  </div><!-- /.panel-body -->
@@ -105,25 +106,19 @@
 								<!-- End Video End -->
 								<!-- Video Info -->
 								<div class="col-sm-12">
-									<h3><strong class="text-black"><a >Video Name</a></strong></h3>
+									<h3><strong class="text-black"><a>{{VIDEO.videoName}} </a></strong></h3>
 								</div>
-								
-								<%-- <script>
-									$(document).ready(function(){
-										$("title").text("<%=dto.getVideoname() %>");
-									});						
-								</script> --%>
 								
 								<div class="col-sm-4 col-xs-12" style="height:75px">
 									<div class="the-box no-border store-list">
 									 <div class="media">
 			                            <a class="pull-left" >
-			                            <img class="media-object img-circle" src="../uploads/userImageurl" alt="Avatar" style="width:50px">
+			                            <img class="media-object img-circle" ng-src="${pageContext.request.contextPath}/resources/uploads/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
 			                            <div class="clearfix visible-xs"></div>
 			                            <div class="media-body">
 			                                <a href="#"></a>
 			                                <h4 class="media-heading" style="font-size:14px">
-			                                 <strong class="text-black">UserName</strong>
+			                                 <strong class="text-black">{{VIDEO.username}}</strong>
 											 </h4>
 			                            </div><!-- /.media-body -->
 			                        </div><!-- /.media -->
@@ -132,25 +127,27 @@
 								<div class="col-sm-8 col-xs-12">
 									<ul class="pull-right" style="list-style:none" id="btngr">
 										<li><br></li>
-										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>ViewCount</strong></li>
+										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}</strong></li>
 										<li style="font-size:12px">
-											<%-- <span id="vote">
+										
+											<span id="vote">
 												<%if(request.getSession().getAttribute("ka_user") != null){ %>
-												<a href="javascript:votes('vote.act?v=<%= dto.getVideoid() %>&type=<%= uservote>0 ? 0 : 1%>')">
+												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote>0 ? 0 : 1%>')">
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus"><%= dto.getCountvoteplus() %></strong>
+														<strong id="plus">+</strong>
 												</a>
-												<a href="javascript:votes('vote.act?v=<%= dto.getVideoid() %>&type=<%= uservote<0 ? 0 : -1%>')">
+												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus"><%= dto.getCountvoteminus() %></strong>
+													<strong id="minus">-</strong>
 												</a>
 												<%}else{ %>
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus"><%= dto.getCountvoteplus() %></strong>
+														<strong id="plus">+</strong>
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus"><%= dto.getCountvoteminus() %></strong>	
+													<strong id="minus">-</strong>	
 												<%} %>
-											</span> --%>
+											</span> 
+											
 											<div class="btn-group">
 												  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<i class="fa  fa-plus"></i> Add To <span class="caret"></span>
@@ -164,15 +161,21 @@
 													</div>
 												  </ul>
 											</div>
-											<%-- <%if(dto.getVideoid()!=0){ %>
-											<%if(!dto.getFileurl().equalsIgnoreCase("") && dto.getFileurl()!=null && !dto.getFileurl().equalsIgnoreCase("#")){ 									
-											%>
-											<div class="btn-group">
-												  <a class="btn btn-success" href="<%=dto.getFileurl() %>" target="_blank">
+											
+												<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
 													<i class="fa fa-download"></i> Download 
 												  </a>
-											</div>
-											<%}} %> --%>
+												</div>
+												
+											
+											<%-- <c:if test="{{VIDEO.fileUrl}}!='' && {{VIDEO.fileUrl}}!=null && {{VIDEO.fileUrl}}!='#'}">
+												<div class="btn-group">
+												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+													<i class="fa fa-download"></i> Download 
+												  </a>
+												</div>
+											</c:if> --%>
 										</li>
 									</ul>
 								</div>
@@ -180,9 +183,9 @@
 								<!-- Video Description -->
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<hr class="hr-style-one">
-									<%-- <span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp;<% if(dto.getPostdate()!=null)out.print(new SimpleDateFormat("dd-MMM-yyyy").format(dto.getPostdate()));else out.print(dto.getPostdate());%> <i class="fa fa-folder-open"></i>&nbsp;<%= dto.getCategorynames() %></span>
+									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; {{VIDEO.categoryName}}</span>
 									<div class="pull-right"><div class="rw-ui-container"></div></div><br>
-									<p><%= dto.getDescription() %></p> --%>
+									<p>{{VIDEO.description}}</p>
 								</div>
 								<!-- End Video Description -->
 								<div class="col-sm-12 col-sm-12 col-xs-12">
@@ -191,6 +194,7 @@
 									<div class="addthis_sharing_toolbox"></div>
 									
 								</div>
+								
 								
 								<!-- Video Comment -->
 								<div class="col-sm-12 col-xs-12">
@@ -228,53 +232,57 @@
 						
 						<!-- right side -->
 						<div class="col-sm-3 col-xs-12 the-box no-border clear-padding" id="right_side">
-							<%-- <%if(request.getAttribute("playlist_json")!=null){ %>
+						
 							<!-- PLAY LIST -->
-							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1">
+							<div class="contentHolder bg-gray hidden-xs" style="left:-15px" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
 								<div class="content" id="playlist">
+								
+								
+								<c:forEach items="${data.PLAYLIST}" var="plist">
+									<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" onclick="">
+										<div class="media">
+											<a class="pull-left">
+									    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
+									    	</a>
+									    	<div class="clearfix visible-xs"></div>
+									    	<div class="media-body">
+									        <h4 class="media-heading">
+									        	<a style="color:white">${plist.videoName}</a>
+											</h4>
+									        <ul class="list-inline">
+									            <li class="text-muted">by ${plist.username }</li>
+									        </ul>
+									        </div><!-- /.media-body -->
+									    </div><!-- /.media -->
+									</div>
+
+								</c:forEach>
+								
+								
+								
 								</div><!-- /.content -->
 							</div>
 							<!-- END PLAYLIST -->
 							
-							
-							<%}else{ %>
-								<script>
-									$(document).ready(function(){
-										var screenwidth = window.innerWidth;
-										if(screenwidth >= 992){
-											$(".top-navbar").addClass("toggle");
-											$(".sidebar-left").addClass("toggle");
-											$(".page-content").addClass("toggle");
-										}else{
-											$(".top-navbar").removeClass("toggle");
-											$(".sidebar-left").removeClass("toggle");
-											$(".page-content").removeClass("toggle");
-										}
-									});
-								</script>
-							<%} %>
-						<%
-						ArrayList<Video> a=(ArrayList<Video>)request.getAttribute("relate");
-						for(int i=0;i<a.size();i++){ %>
 						
-						 	<div class="related_videos">
-								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px">
+						 	<div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
+								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
-			                            <a class="pull-left" href="play.act?v=<%=a.get(i).getVideoid() %>" style="width:40%">
-			                            <img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/<%=a.get(i).getYoutubeurl() %>/mqdefault.jpg" style="width:100%;"></a>
+			                            <a class="pull-left" ng-href="play.act?v={{relate.videoId}}" style="width:40%">
+			                            <img alt="image" class="store-image img-responsive" ng-src="https://i.ytimg.com/vi/{{relate.youtubeUrl}}/mqdefault.jpg" style="width:100%;"></a>
 			                            <div class="media-body">                                
 			                                <h4 class="media-heading">
-			                                  <a href="play.act?v=<%=a.get(i).getVideoid() %>"><strong class="text-black"><%=a.get(i).getVideoname()%></strong></a>
+			                                  <a><strong class="text-black">{{relate.videoName}}</strong></a>
+			                                  <!-- <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black">{{relate.videoName}}</strong></a> -->
 											 </h4>
 			                                <ul class="list-inline">
-			                                	<li><%= a.get(i).getViewcounts() %> Views</li>
-			                                    <li>by <%=a.get(i).getUsername() %></li>
+			                                	<li>{{relate.viewCounts}} Views</li>
+			                                    <li>by {{relate.username}}</li>
 			                                </ul>
 			                            </div>
 			                        </div>
 								</div>
 							</div> 
-					<%} %> --%>
 							
 						</div>
 						<!-- end right side -->
@@ -287,18 +295,15 @@
 	
 	    </div>
 	    <!-- /#wrapper -->
+	    
+	    
+	    <jsp:include page="../shared/_footer.jsp" />
+		
+	    
+	    </div><!-- controller angular -->
 		
 	
-		<jsp:include page="../shared/_footer.jsp" />
 		
-		<script>
-		$(document).ready(function() {
-			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
-		    $("#menu-toggle").click(function(e) {
-		        $("#wrapper").toggleClass("toggled");
-		    });
-		});
-	    </script>
 	    
 		<script>
 	      jQuery(document).ready(function ($) {
@@ -310,26 +315,96 @@
 	    <script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
 	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
-		 <script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
+		
+		 
+		
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
+		
+		<script type="text/javascript">(function(d, t, e, m){
+			//	if (RW && RW.initRating) return;
+		
+		    // Async Rating-Widget initialization.
+		    window.RW_Async_Init = function(){
+		                
+		        RW.init({
+		            huid: "221456",
+		            uid: "0c7735d3de292b0250869c1816826be2",
+		            source: "website",
+		            options: {
+		                "size": "medium",
+		                "style": "oxygen",
+		                "forceSync": false
+		            } 
+		        });
+		        RW.render();
+		    };
+		        // Append Rating-Widget JavaScript library.
+		    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
+		        l = d.location, ck = "Y" + t.getFullYear() + 
+		        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
+		        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
+		        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
+		    if (d.getElementById(id)) return;              
+		    rw = d.createElement(e);
+		    rw.id = id; rw.async = true; rw.type = "text/javascript";
+		    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
+		    s.parentNode.insertBefore(rw, s);
+		    }(document, new Date(), "script", "rating-widget.com/"));
+		</script>
+		
+		
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('myController', function($scope, $http) {
+			    $http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ getURLParameter("v")).then(function(response) {
+			        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
+			        $scope.COMMENT = response.data.COMMENT;
+			        $scope.VIDEO = response.data.VIDEO;
+			        $("title").text(response.data.VIDEO.videoName);
+			        
+			     	// save a reference to the video element
+					video = document.querySelector('video');
+					
+					// save a reference to the video.js player for that element
+					player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+response.data.VIDEO.youtubeUrl});
 
-			// save a reference to the video element
-			video = document.querySelector('video'),
+					// initialize the plugin with some custom options:
+					player.logobrand({
+						//height: "32px",
+						//width: "32px",
+						image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
+						destination: "http://www.khmeracademy.org/"
+					});
+			        
+			        
+			    });
+			});
+			
+			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
+		    $("#menu-toggle").click(function(e) {
+		        $("#wrapper").toggleClass("toggled");
+		    });
+		    
+		    
+		 	/* // save a reference to the video element
+			video = document.querySelector('video');
 			
 			// save a reference to the video.js player for that element
-			player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v=K7Eh__GxQeQ'});
+			player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+myUrl});
 
 			// initialize the plugin with some custom options:
 			player.logobrand({
 				//height: "32px",
 				//width: "32px",
-				image: "videoplayer/logoka.png",
+				image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
 				destination: "http://www.khmeracademy.org/"
-			});
-			//player.logobrand().loadImage("http://instasynch.com/images/youtube.png");
-			//player.logobrand().setDestination("http://instasynch.com/images/youtube.png");
-			// set a flag and then we calculate the ratio from the width and height
-			
+			}); */
+		    
+		    
 		</script>
+		
 	    
 	</body>
 </html>	

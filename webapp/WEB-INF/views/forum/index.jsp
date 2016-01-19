@@ -24,23 +24,300 @@
 		
 		<div class="container ka-container" >
 		
-	
-			<div>
-					
-					
-				
-				<a href="askquestion.act" class="btn btn-success btn-perspective pull-left" style="font-size: 12px;">Ask Question</a>
-				
-				<div class="pull-right">
-				<a class="btn btn-primary btn-perspective " style="font-size: 12px;" href="list.act">Questions</a>
-				<!-- <a class="btn btn-primary btn-perspective "style="font-size: 12px;" href="users.act">Users</a> -->
-				</div> 
-				<br>
-				<br>
-					
-			</div>		
 			
-			<div id="dashboard"><div class="row">	<div>		<div class="panel panel-forum panel-primary">			<div class="panel-heading info">				<i class="fa fa-group"></i> Categories			</div>			<div class="panel-body">				<div class="row">						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=6">ភាសា  <span class="badge badge-danger">12</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=14">ចំណេះដឹងទូទៅ  <span class="badge badge-danger">1</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=8">កុំព្យូទ័រ  <span class="badge badge-danger">5</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=12">ផ្សេងៗ  <span class="badge badge-danger">0</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=15">ការរចនា  <span class="badge badge-danger">1</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=3">Web Development  <span class="badge badge-danger">17</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=10">ការងារ  <span class="badge badge-danger">3</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=11">ទូរស័ព្ទ  <span class="badge badge-danger">5</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=4">Programming  <span class="badge badge-danger">10</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=5">Java Technology  <span class="badge badge-danger">11</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=9">អេឡិចត្រូនិច  <span class="badge badge-danger">0</span></a>						</div>						<div class=" col-sm-3">							<a class="list-group-item" href="list.act?cateid=7">វប្បធម៌  <span class="badge badge-danger">1</span></a>						</div>					</div>				</div><!-- /.panel-body -->			</div><!-- /.panel panel-default panel-block-color -->		</div><!-- /.col-sm-4 -->	</div>	<!-- start content -->	<div class="row">		<div id="content-forum">			<div id="page-body">				<main role="main">					<div class="panel panel-forum panel-info">						<div class="panel-heading success"><i class="fa fa-group"></i> Lastest Topics</div>						<div class="panel-inner">							<table class="footable table table-striped table-primary table-hover default footable-loaded">								<tbody>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>1</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=227" data-original-title="" title=""> programming</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=   computer"><span class="label label-info span-sidebar">   computer</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=10636" data-original-title="" title="">phengphanrangsey</a>												<br>												<small>Dec 15, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>1</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=225" data-original-title="" title=""> Data Structure and Algorithms</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=         other"><span class="label label-info span-sidebar">         other</span></a>												<a href="list.act?tag=  computer"><span class="label label-info span-sidebar">  computer</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=432" data-original-title="" title="">khunthavy</a>												<br>												<small>Dec 12, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>0</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=224" data-original-title="" title=""> datta</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=      other"><span class="label label-info span-sidebar">      other</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=440" data-original-title="" title="">khihort</a>												<br>												<small>Dec 4, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>0</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=221" data-original-title="" title=""> Java progreming </a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=        other"><span class="label label-info span-sidebar">        other</span></a>												<a href="list.act?tag=       java"><span class="label label-info span-sidebar">       java</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												2 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=8801" data-original-title="" title="">panha</a>												<br>												<small>Oct 30, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>0</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=220" data-original-title="" title=""> Computing </a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=     other"><span class="label label-info span-sidebar">     other</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=5188" data-original-title="" title="">Brathoun Jr</a>												<br>												<small>Oct 23, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>0</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=219" data-original-title="" title=""> Network</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag= other"><span class="label label-info span-sidebar"> other</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=5188" data-original-title="" title="">Brathoun Jr</a>												<br>												<small>Oct 23, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>1</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=216" data-original-title="" title=""> Pagination  use on angular</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=        web"><span class="label label-info span-sidebar">        web</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												1 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=7279" data-original-title="" title="">Rany</a>												<br>												<small>Oct 21, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>0</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=214" data-original-title="" title=""> Add to cart using session with PHP and Mysqli </a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=         web"><span class="label label-info span-sidebar">         web</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=8464" data-original-title="" title="">chhitsengtrybavet</a>												<br>												<small>Sep 25, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>2</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=212" data-original-title="" title=""> File Upload Servlet with Ajax</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=         web"><span class="label label-info span-sidebar">         web</span></a>												<a href="list.act?tag=      java"><span class="label label-info span-sidebar">      java</span></a>												<a href="list.act?tag=  jsp"><span class="label label-info span-sidebar">  jsp</span></a>												<a href="list.act?tag= server"><span class="label label-info span-sidebar"> server</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												0 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=379" data-original-title="" title="">Heng</a>												<br>												<small>Sep 20, 2015</small>											</span>										</td>									</tr>									<tr>										<td class="expand footable-first-column">											<span class="footable-toggle"></span>											<span class="pull-left" style="color: #434a54; background-color: #ededed; padding: 1%; margin-right: 1%;">												<span><strong>2</strong></span> <br>   <span style="font-size: 12px;">Votes</span>											</span>											<i title="No unread posts" class="row-icon-font-mini "></i>											<span class="desc-wrapper">												<a style="color: #428bca;" href="question.act?q=211" data-original-title="" title=""> JavaScript/Jquery import</a>												<br>												<i data-original-title="Attachment(s)" data-placement="top" rel="tooltip" class="fa fa-paperclip fa-flip-horizontal"></i>												<a href="list.act?tag=        other"><span class="label label-info span-sidebar">        other</span></a>												<a href="list.act?tag=  web"><span class="label label-info span-sidebar">  web</span></a>											</span>										</td>										<td class="vu-table-td ">											<span class="stats-wrapper">												2 Replies											</span>										</td>										<td class="vu-table-td footable-last-column">											<span class="last-wrapper"> by 												<a class="username-coloured" style="color: #AA0000;" href="list.act?uid=379" data-original-title="" title="">Heng</a>												<br>												<small>Sep 20, 2015</small>											</span>										</td>									</tr>								</tbody><tfoot>	<tr id="divbtload"><td colspan="3"><a name="btmore" class="btn btn-primary btn-perspective" href="list.act"> All Questions </a></td></tr></tfoot>							</table>						</div>					</div>				</main>			</div> <!-- page-body id in header -->		</div> <!-- content-forum in header -->	</div>		<!-- Static footer --></div>
+				<ol class="breadcrumb">
+				  <li><a href="#index">Questions</a></li>
+				  <li><a href="#fakelink">Users</a></li>
+				  <li><a href="#fakelink">Ask Question</a></li>
+				</ol>
+			<h2 class="page-title">Questions</h2>
+			
+			
+			<div class="border-bottom">
+				<div class="container">
+					<div class="border-bottom-color bg-info"></div>
+				</div><!-- /.container -->
+			</div>
+	
+			<div class="row">
+					<div class="col-sm-8 col-md-9">
+						
+						<div class="section">
+						
+						<div class="row">
+						<div id="content-forum" style="margin: 10px;">
+							<div id="page-body">
+								<div class="panel">
+									
+									<div class="panel-inner">
+										<table class="table table-hover">
+											<tbody>
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> 
+																Android theme will not update status bar color Android theme will ...
+															</a> 
+															<p>
+															   Android theme will not update status bar color Android theme will not update status bar color Android theme 
+															   will not update status bar color Android theme will not update status bar color...
+															</p>
+															<a href="list.act?tag=java">
+																<span class="label label-primary">java</span>
+															</a>
+														</span>
+													</td>
+													<td class="vu-table-td footable-last-column" style="width: 140px;">
+														<small>0 Votes</small>
+														<br> 
+														<small>0 Answers</small>
+													</td>
+													<td style="width: 300px;" class="vu-table-td footable-last-column">
+														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
+														<br> 
+														<small>Jan 18, 2016</small>
+														</span>
+													</td>
+												</tr>
+												
+												
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
+															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
+															<a href="list.act?tag=java">
+																<span class="label label-primary">java</span>
+															</a>
+														</span>
+													</td>
+													<td style="width: 80px;" class="vu-table-td footable-last-column">
+														<small> 0 Votes </small>
+														<br> 
+														<small> 0 Answers </small>
+													</td>
+													<td style="width: 120px;" class="vu-table-td footable-last-column">
+														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
+														<br> 
+														<small>Jan 18, 2016</small>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
+															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
+															<a href="list.act?tag=java">
+																<span class="label label-primary">java</span>
+															</a>
+														</span>
+													</td>
+													<td style="width: 80px;" class="vu-table-td footable-last-column">
+														<small> 0 Votes </small>
+														<br> 
+														<small> 0 Answers </small>
+													</td>
+													<td style="width: 120px;" class="vu-table-td footable-last-column">
+														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
+														<br> 
+														<small>Jan 18, 2016</small>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
+															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
+															<a href="list.act?tag=java">
+																<span class="label label-primary">java</span>
+															</a>
+														</span>
+													</td>
+													<td style="width: 80px;" class="vu-table-td footable-last-column">
+														<small> 0 Votes </small>
+														<br> 
+														<small> 0 Answers </small>
+													</td>
+													<td style="width: 120px;" class="vu-table-td footable-last-column">
+														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
+														<br> 
+														<small>Jan 18, 2016</small>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
+															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
+															<a href="list.act?tag=java">
+																<span class="label label-primary">java</span>
+															</a>
+														</span>
+													</td>
+													<td style="width: 80px;" class="vu-table-td footable-last-column">
+														<small> 0 Votes </small>
+														<br> 
+														<small> 0 Answers </small>
+													</td>
+													<td style="width: 120px;" class="vu-table-td footable-last-column">
+														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
+														<br> 
+														<small>Jan 18, 2016</small>
+														</span>
+													</td>
+												</tr>
+											</tbody>
+											<tfoot>
+											
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								</main>
+							</div>
+							<!-- page-body id in header -->
+						</div>
+						<!-- content-forum in header -->
+					</div>
+						
+							<!-- <div class="list-group success square no-side-border">
+										  
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list read">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										  <a href="mail-read.html" class="list-group-item mail-list">
+											<span class="favorite fa fa-star"></span>
+											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
+											<span class="right-content">11:00 AM</span>
+										  </a>
+										</div> -->
+							</div>
+					</div><!-- /.col-sm-8 col-md-9 -->
+					
+					
+					<div class="col-sm-4 col-md-3">
+						
+						<!-- BEGIN SIDEBAR -->
+						<div class="section sidebar">
+							<div class="panel panel-square panel-primary panel-no-border">
+							  <div class="panel-heading lg">
+								<h3 class="panel-title">Categories : </h3>
+							  </div>
+							   <!-- List group -->
+								<div class="list-group success">
+								  <a href="#fakelink" class="list-group-item">Lorem ipsum dolor</a>
+								  <a href="#fakelink" class="list-group-item">Consectetur adipisicing elit</a>
+								  <a href="#fakelink" class="list-group-item">Repudiandae iste deleniti</a>
+								  <a href="#fakelink" class="list-group-item">Illum mollitia culpa</a>
+								  <a href="#fakelink" class="list-group-item">Aliquid facilis possimus</a>
+								  <a href="#fakelink" class="list-group-item">Libero est necessitatibus</a>
+								  <a href="#fakelink" class="list-group-item">Voluptatem eaque dignissimos</a>
+								  <a href="#fakelink" class="list-group-item">Fuga magni consectetur</a>
+								</div>
+							</div><!-- /.panel panel-default -->
+							
+						
+							
+							<div class="the-box no-border tags-cloud">
+									<h4 class="small-heading more-margin-bottom">TAGS</h4>
+										<p>
+											<a href="#fakelink"><span class="label label-primary">Computer</span></a> 
+											<a href="#fakelink"><span class="label label-primary">HTML</span></a> 
+											<a href="#fakelink"><span class="label label-primary">CSS3</span></a> 
+											<a href="#fakelink"><span class="label label-primary">Jquery</span></a> 
+											<a href="#fakelink"><span class="label label-primary">Web</span></a> 
+											<a href="#fakelink"><span class="label label-primary">Design</span></a> 
+											<a href="#fakelink"><span class="label label-primary">HTML5</span></a> 
+											<a href="#fakelink"><span class="label label-primary">Photoshop</span></a> 
+											<a href="#fakelink"><span class="label label-primary">Javascript</span></a> 
+											<a href="#fakelink"><span class="label label-primary">CSS Transition</span></a> 
+										</p>
+							</div>
+							
+							<a href="#fakelink">
+							<img src="assets/img/work/14.jpg" alt="Banner" class="banner">
+							</a>
+							
+							<a href="#fakelink">
+							<img src="assets/img/work/16.jpg" alt="Banner" class="banner">
+							</a>
+							
+						</div><!-- /.section -->
+						<!-- END SIDEBAR -->
+						
+					</div><!-- /.col-sm-4 col-md-3 -->
+				</div>
+			
 			
 						
 		</div>
