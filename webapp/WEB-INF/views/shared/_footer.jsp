@@ -1,5 +1,5 @@
 <!-- BEGIN FOOTER -->
-<footer class="light-color">
+<footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
@@ -78,7 +78,7 @@
 	</div><!-- /.container -->
 </footer><!-- /.section -->
 
-<div class="footer light-color">
+<div class="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
@@ -212,6 +212,11 @@ Placed at the end of the document so the pages load faster
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.blockUI.js"></script>
 <!-- BPOP UP -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
+<!-- New JS Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bpopup.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
+
 <script type="text/javascript">
             /* ==============================================
             Counter Up
@@ -280,5 +285,4 @@ Placed at the end of the document so the pages load faster
                 
             });
             
-            
-        </script>
+</script>
