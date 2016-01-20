@@ -54,7 +54,7 @@ public class AdminController {
 	@RequestMapping(value="/forum/category",method=RequestMethod.GET)
 	public String forumcategory(){
 		
-		return "admin/reporttutorial";
+		return "admin/forumcategory";
 	}
 	
 	@RequestMapping(value="/forum/comment",method=RequestMethod.GET)
@@ -63,13 +63,19 @@ public class AdminController {
 		return "admin/forumcomment";
 	}
 	
+	@RequestMapping(value="/forum/tag",method=RequestMethod.GET)
+	public String forumTag(){
+		
+		return "admin/forumtag";
+	}
+	
 	@RequestMapping(value="/elearning/category",method=RequestMethod.GET)
 	public String videoCategory(){
 		
 		return "admin/videocategory";
 	}
 	
-	@RequestMapping(value="/elearning/videocomment",method=RequestMethod.GET)
+	@RequestMapping(value="/elearning/comment",method=RequestMethod.GET)
 	public String videoComment(){
 		
 		return "admin/videocomment";
@@ -85,7 +91,6 @@ public class AdminController {
 	public String videoplaylist(){
 		
 		return "admin/videoplaylist";
-	}
-	
+	}	
 	
 }
