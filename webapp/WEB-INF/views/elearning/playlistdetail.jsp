@@ -222,9 +222,122 @@
 
 
 	<jsp:include page="../shared/_footer.jsp" />
+
+	<script
+		src="${pageContext.request.contextPath}/resources/assets/js/script/playlistdetail.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		$.ajax({
+			url : "${pageContext.request.contextPath}/rest/elearning/listallvideo",
+			method: "GET",
+			success : function(data){
+				$("#getVideoSearch").html(videoSearch(data));
+				//alert(data.RES_DATA[1].videoId);
+			}
+			
+		});
+	});	
 	
-	<script src="${pageContext.request.contextPath}/resources/assets/js/script/playlistdetail.js"></script>
+	
+		/*$(document).ready(
+				function() {
 
+					$("#searchVideos").keyup(function() {
+						$.post("listvideotoaddtoplaylist.act", {
+							tfsearch : $("#searchVideos").val()
+						}, function(data) {
+							$("#getVideoSearch").html(videoSearch(data));
+						});
+					}); 
+				});*/
+					
+					/* $.post("listvideoinplaylist.act", {
+						playlistid : playlistid
+					}, function(data) {
+						$("#firtvideo").html(getPlaylist(data, uservisitid));
+						$("#getList").html(listvideofromplaylist(data));
+					});
 
+					$("#searchYourVideo").keyup(function() {
+						$.post("listuservideos.act", {
+							tfsearch : $("#searchYourVideo").val()
+						}, function(data) {
+							$("#getYourVideo").html(yourVideo(data));
+						});
+					}); */
+
+					
+
+					/* $('#frmadd').click(function() {
+						$.magnificPopup.close();
+					}); */
+
+					/* $("#frmupdateplaylist").submit(
+							function() {
+								event.preventDefault();
+								if ($("#updatename").val().trim() == "") {
+									$(".msg").css("display", "block");
+								} else {
+									$.post('updateplaylist.act', {
+										playlistid : $("#updateid").val(),
+										playlistname : $("#updatename").val(),
+										description : $("#updatedescription")
+												.val(),
+										publicview : $("#updatepublicview")
+												.val(),
+										thumbnail : $("#thumbnail").val()
+									}, function(data) {
+										$.post("listvideoinplaylist.act", {
+											playlistid : playlistid
+										}, function(data) {
+											$("#firtvideo").html(
+													getPlaylist(data,
+															uservisitid));
+											//$("#getList").html(listvideofromplaylist(data));
+										});
+									});
+
+									$("#frmup_date_playlist").modal('hide');
+								}
+
+							});
+
+				});
+ */
+	/* 	function closeFrmPopAdd() {
+			$
+					.post(
+							"listvideoinplaylist.act",
+							{
+								playlistid : playlistid
+							},
+							function(data) {
+								if (data.getplaylist == 0) {
+									$("#firtvideo").html(
+											getPlaylist(data, uservisitid));
+									$("#getList")
+											.html(
+													"<div class='alert alert-success fade in alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>x</button><strong>No</strong> video in playlist!</div>");
+								} else {
+									$("#getList").html(
+											listvideofromplaylist(data));
+								}
+							});
+		} */
+	</script>
+
+	<script type="text/javascript">
+		// 		$(document).ready(function(){ 
+		// 			$(window).scroll(function() {
+		// 			    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+		// 			        alert("scroll");   
+		// 			    	// ajax call get data from server and append to the div
+		// 			    }
+		// 			});	
+
+		// 		});
+	</script>
 </body>
 </html>

@@ -38,13 +38,21 @@ public class PlaylistController {
 	
 
 	@RequestMapping(value="/playlistdetail/{pid}" , method = RequestMethod.GET)
-	public String  index( ModelMap m,
+	public String  listPlaylistDetail( ModelMap m,
 			@PathVariable(value="pid") String pid){
 		final String uri = WebURL + "/rest/elearning/playlistdetail/" + pid;
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 		System.err.println(pid);
+		return "/elearning/playlistdetail";
+	}
+	@RequestMapping(value="/listallvideo" , method = RequestMethod.GET)
+	public String  listVideoAddtoPlaylist( ModelMap m){
+		final String uri = WebURL + "/rest/elearning/listallvideo" ;
+	    RestTemplate restTemplate = new RestTemplate();
+	    m.addAttribute("title","E-Learning");
+	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));		
 		return "/elearning/playlistdetail";
 	}
 }
