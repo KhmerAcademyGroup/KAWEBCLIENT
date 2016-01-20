@@ -11,7 +11,7 @@
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/video"><i class="fa fa-dashboard icon-sidebar"></i>Video</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/category"><i class="fa fa-dashboard icon-sidebar"></i>Category</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/playlist"><i class="fa fa-dashboard icon-sidebar"></i>PlayList</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/elearning/videocomment"><i class="fa fa-dashboard icon-sidebar"></i>Video Comment</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/elearning/comment"><i class="fa fa-dashboard icon-sidebar"></i>Video Comment</a></li>
 					
 					
 					<li>&nbsp Forum</li>
