@@ -160,7 +160,7 @@ NAVBAR
 	-webkit-transition:All 0.2s ease;
 	-moz-transition:All 0.2s ease;
 	-o-transition:All 0.2s ease;
-	 border-bottom: 4px solid #17aa1c;
+/* 	 border-bottom: 4px solid #17aa1c; */
 }
 .top-navbar.static{
 	position: relative;

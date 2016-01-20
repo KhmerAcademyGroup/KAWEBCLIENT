@@ -17,6 +17,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -105,6 +106,10 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
 		resolver.setCookieMaxAge(4800);
 		return resolver;
 	}
+	
+	public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:9000");
+    }
 	
 	
 }
