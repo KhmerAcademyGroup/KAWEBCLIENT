@@ -2,7 +2,9 @@ package org.khmeracademy.app.controllers.elearning;
 
 import java.util.Map;
 
+import org.khmeracademy.app.entities.Playlist;
 import org.khmeracademy.app.entities.User;
+import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +80,41 @@ public class ELearningRestTemplateController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/addvideotoplaylistDetail/"+ playlistid +"/" + vid, HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/rest/elearning/playlist/deletevideofromplaylistdetail" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> deleteVideoFromPlaylist(@RequestParam("pid") String playlistid, @RequestParam("vid") String vid){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/deletevideofromplaylistdetail/"+ playlistid +"/" + vid, HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/elearning/playlist/createplaylist" , method = RequestMethod.POST, headers = "Accept=application/json")
+	public ResponseEntity<Map<String , Object>> createPlaylist(
+			@RequestParam("playlistname") String playlistname,
+			@RequestParam("description") String description,
+			@RequestParam("publicview") boolean view){
+		
+		String userid="";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		FrmCreatePlaylist playlist = new FrmCreatePlaylist();
+		playlist.setPlaylistName(playlistname);
+		playlist.setDescription(description);
+		playlist.setPublicView(view);
+		playlist.setThumbnailUrl("default.png");
+		playlist.setUserId(userid);
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(playlist, header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	
 	
 }

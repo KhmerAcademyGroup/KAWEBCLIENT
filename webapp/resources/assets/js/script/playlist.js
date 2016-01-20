@@ -1,5 +1,3 @@
-
-
 function checkifexist(data, vid){
  	var listname = data.USERPLAYLIST;
 	var detail = data.PLAYLISTDETAIL; 
@@ -42,22 +40,18 @@ function getPlaylistname(data, vid){
 	
 	
 	li+= "<li class='divider'></li>";
-	li += "<li><a href='#'  onclick=popupfrmadd()>Create new playlist</a></li>";
+	li += "<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>";
 	return li;
 }
 
 
 function addToPlst(id,playlistid,vid){
-	
 	if ($("#"+id).is(":checked")){
-		alert(playlistid);
 		$.post(URL+"/rest/elearning/playlist/addvideotoplaylistdetail?pid="+playlistid+"&vid="+vid);
 	}
 	else{
-		$.post("deletevideofromplaylist.act?playlistid="+$playlistid+"&vid="+$vid);
+		$.post(URL+"/rest/elearning/playlist/deletevideofromplaylistdetail?pid="+playlistid+"&vid="+vid);
 	}
-	
-	
 }
 
 function popupfrmadd(){

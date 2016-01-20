@@ -340,7 +340,6 @@
 		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
-		
 		<script>var URL="${pageContext.request.contextPath}"</script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/playlist.js"></script>
 		
@@ -413,10 +412,12 @@
 		    
 		    
 		    function getUserPlayList(vid){
-				$.get("${pageContext.request.contextPath}/rest/elearning/getuserplaylist", function(data){
-					 $("#getmoreli").replaceWith(getPlaylistname(data,vid));
-					 checkifexist(data,vid);
-				});	
+		    	if(vid!=null){
+		    		$.get("${pageContext.request.contextPath}/rest/elearning/getuserplaylist", function(data){
+						 $("#getmoreli").replaceWith(getPlaylistname(data,vid));
+						 checkifexist(data,vid);
+					});
+		    	}	
 			}
 			
 			$('#btclosefrmupdate').click(function(){
@@ -425,14 +426,15 @@
 			
 			$("#frmcreateplaylist").submit(function(){
 				event.preventDefault();
-				if($("#playlistname").val().trim() == ""){
+				if($("#txtplaylistname").val().trim() == ""){
 					$(".msg").css("display","block");
 				}else{
-					$.post('createplaylist.act',{
+					$.post("${pageContext.request.contextPath}/rest/elearning/playlist/createplaylist",{
 						playlistname : $("#txtplaylistname").val() ,
 						description : $("#txtdescription").val() ,
 						publicview : $("#publicview").val()
 					},function(data){
+						alert(data.MESSAGE);
 						 location.reload();
 						 $.magnificPopup.close();
 					});
