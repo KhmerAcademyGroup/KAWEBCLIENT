@@ -21,7 +21,8 @@ public class AuthenticationController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/islogin" , method = RequestMethod.GET)
+	
+	@RequestMapping(value="/isLogin" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String ,Object>> isUserLogin(){
 		Map<String,Object> map = new HashMap<String,Object>();
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
@@ -38,6 +39,15 @@ public class AuthenticationController {
 			System.out.println(authentication.getPrincipal());
 			map.put("STATUS", false);
 		}
+		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/isLogout" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String ,Object>> isUserLgout(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		SecurityContextHolder.getContext().setAuthentication(null);
+		map.put("STATUS", true);
+		map.put("MESSAGE", "Logout successfully!");
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
 	}
 
