@@ -136,17 +136,17 @@
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
 														<strong id="plus">+</strong>
 												</a>
-												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
+												<%-- <a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
 													<strong id="minus">-</strong>
-												</a>
+												</a> --%>
 												<%}else{ %>
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">+</strong>
-													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus">-</strong>	
+														<strong id="plus">Like&nbsp;<b style="color:#007500;">{{VIDEO.countVotePlus}}</b></strong>
+													<!-- <i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
+													<strong id="minus">-</strong> -->	
 												<%} %>
-											</span> 
+											</span>&nbsp; 
 											
 											<div class="btn-group">
 												  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -296,6 +296,29 @@
 	    </div>
 	    <!-- /#wrapper -->
 	    
+	    
+	    <div id="form-add-playlist" class="white-popup mfp-with-anim mfp-hide" >
+			<form method="post" name="frmcreateplaylist" action="/" id="frmcreateplaylist"  class="form-horizontal">
+				  <div class="form-group">
+					<label for="txtplaylistname">Playlist name</label>
+					<input type="text" class="form-control" name="txtplaylistname" id="txtplaylistname" placeholder="EG. MyTop">
+					<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+				  </div>
+				  <div class="form-group">
+					<label for="txtdescription">Description</label>
+					<input type="text" name="txtdescription" class="form-control" id="txtdescription" placeholder="EG. My music">
+				 </div>
+				 <div class="form-group">
+					<label>Set View</label>
+					<select class="form-control" id="publicview" name="publicview" tabindex="2">
+						<option value="false">Private</option>
+						<option value="true">Public</option>
+					</select>
+				</div>
+				<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
+				  <button type="submit"   class="btn btn-success">Create</button>
+			</form>
+		</div>
 	    
 	    <jsp:include page="../shared/_footer.jsp" />
 		
