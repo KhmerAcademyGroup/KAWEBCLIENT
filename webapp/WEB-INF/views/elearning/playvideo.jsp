@@ -131,33 +131,19 @@
 										<li style="font-size:12px">
 										
 											<span id="vote">
-											
-												<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;" ng-show="{{CHECKVOTE}}"></i>
+												
+												
+												<!-- <i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #007500; cursor:pointer;" onclick="unVoteVideo()"></i>
 												<strong id="plus" ng-show="{{CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong>
 												
-												<i class="fa fa-thumbs-o-up fa-2x" style="padding:0px 10px; color: #3BAFDA;" ng-show="{{!CHECKVOTE}}"></i>
-												<strong id="plus" ng-show="{{!CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong> 
-												
-										
 											
-												<%-- <%if(request.getSession().getAttribute("ka_user") != null){ %> --%>
-												<!-- <a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote>0 ? 0 : 1%>')">
-													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">+</strong>
-												</a> -->
-												<%-- <a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
-													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus">-</strong>
-												</a> --%>
-												<%-- <%}else{ %> --%>
-													 <!-- <i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">Like&nbsp;<b style="color:#007500;">{{VIDEO.countVotePlus}}</b></strong>  -->
-													<!-- <i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-													<strong id="minus">-</strong> -->	
-												<%-- <%} %> --%>
+												<i class="fa fa-thumbs-o-up fa-2x" style="padding:0px 10px; color: #333333; cursor:pointer;" onclick="voteVideo()"></i>
+												<strong id="plus" ng-show="{{!CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong> --> 
+												
 											</span>&nbsp; 
 											
 											<div class="btn-group">
+											
 												  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<i class="fa  fa-plus"></i> Add To <span class="caret"></span>
 												  </button>
@@ -171,20 +157,13 @@
 												  </ul>
 											</div>
 											
-												<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
-												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-													<i class="fa fa-download"></i> Download 
-												  </a>
-												</div>
-												
+											<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+												<i class="fa fa-download"></i> Download 
+											  </a>
+											</div>
 											
-											<%-- <c:if test="{{VIDEO.fileUrl}}!='' && {{VIDEO.fileUrl}}!=null && {{VIDEO.fileUrl}}!='#'}">
-												<div class="btn-group">
-												  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-													<i class="fa fa-download"></i> Download 
-												  </a>
-												</div>
-											</c:if> --%>
+											
 										</li>
 									</ul>
 								</div>
@@ -392,6 +371,7 @@
 			app.controller('myController', function($scope, $http) {
 				
 				loadVideo(getURLParameter("v"));
+				getVoteVideo(getURLParameter("v"));
 				getUserPlayList(getURLParameter("v"));
 				
 				$scope.changeUrlVideo = function(vid){
@@ -399,6 +379,7 @@
 					changeUrlParam ("v", newParam);
 					loadVideo(vid);
 					getUserPlayList(vid);
+					getVoteVideo(vid);
 				}
 				
 				function loadVideo(vid){
@@ -406,13 +387,10 @@
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
-				        
 				        $("title").text(response.data.VIDEO.videoName);
 				        playVideo(response.data.VIDEO.youtubeUrl);
-				        $scope.CHECKVOTE = response.data.CHECKVOTE;
-				        $scope.COUNTVOTE = response.data.COUNTVOTE;
-				        alert(response.data.COUNTVOTE);
 				    });
+					
 				}
 			    
 			});
@@ -473,6 +451,40 @@
 					destination: "http://www.khmeracademy.org/"
 				});
 				
+			}
+			
+			function getVoteVideo(vid){
+				
+				$.get("${pageContext.request.contextPath}/rest/elearning/video/getvote?v="+ vid, function(data){
+					
+					var str = "";
+					if(data.CHECKVOTE && data.STATUS){
+						str += "<i class='fa fa-thumbs-up fa-2x' style='padding:0px 10px; color: #007500; cursor:pointer;' onclick=unVoteVideo('"+ vid +"')></i>" +
+						       "<strong>Like&nbsp;<b style='color:#007500;'>" + data.COUNTVOTE + "</b></strong>";
+					}else{
+						str += "<i class='fa fa-thumbs-o-up fa-2x' style='padding:0px 10px; color: #333333; cursor:pointer;' onclick=voteVideo('"+ vid +"')></i>" +
+							   "<strong>Like&nbsp;<b style='color:#007500;'>" + data.COUNTVOTE + "</b></strong>";
+					}
+					
+					$("#vote").html(str);
+				
+			    });
+			}
+			
+			function voteVideo(vid){
+				$.post("${pageContext.request.contextPath}/rest/elearning/video/vote?v="+ vid, function(data){
+					if(data.STATUS){
+						getVoteVideo(vid);
+					}
+			    });
+			}
+			
+			function unVoteVideo(vid){
+				 $.post("${pageContext.request.contextPath}/rest/elearning/video/unvote?v="+ vid, function(data){
+					 if(data.STATUS){
+						getVoteVideo(vid);
+					 }
+				 });
 			}
 
 		    
