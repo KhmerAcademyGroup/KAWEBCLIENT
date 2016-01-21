@@ -127,25 +127,34 @@
 								<div class="col-sm-8 col-xs-12">
 									<ul class="pull-right" style="list-style:none" id="btngr">
 										<li><br></li>
-										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}</strong></li>
+										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}} views</strong></li>
 										<li style="font-size:12px">
 										
 											<span id="vote">
-												<%if(request.getSession().getAttribute("ka_user") != null){ %>
-												<a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote>0 ? 0 : 1%>')">
+											
+												<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;" ng-show="{{CHECKVOTE}}"></i>
+												<strong id="plus" ng-show="{{CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong>
+												
+												<i class="fa fa-thumbs-o-up fa-2x" style="padding:0px 10px; color: #3BAFDA;" ng-show="{{!CHECKVOTE}}"></i>
+												<strong id="plus" ng-show="{{!CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong> 
+												
+										
+											
+												<%-- <%if(request.getSession().getAttribute("ka_user") != null){ %> --%>
+												<!-- <a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote>0 ? 0 : 1%>')">
 													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
 														<strong id="plus">+</strong>
-												</a>
+												</a> -->
 												<%-- <a href="javascript:votes('vote.act?v=getVideoid() %>&type=uservote<0 ? 0 : -1%>')">
 													<i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
 													<strong id="minus">-</strong>
 												</a> --%>
-												<%}else{ %>
-													<i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
-														<strong id="plus">Like&nbsp;<b style="color:#007500;">{{VIDEO.countVotePlus}}</b></strong>
+												<%-- <%}else{ %> --%>
+													 <!-- <i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
+														<strong id="plus">Like&nbsp;<b style="color:#007500;">{{VIDEO.countVotePlus}}</b></strong>  -->
 													<!-- <i class="fa fa-thumbs-down fa-2x" style="padding:0px 10px; color: #3BAFDA;"></i>
 													<strong id="minus">-</strong> -->	
-												<%} %>
+												<%-- <%} %> --%>
 											</span>&nbsp; 
 											
 											<div class="btn-group">
@@ -397,8 +406,12 @@
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
+				        
 				        $("title").text(response.data.VIDEO.videoName);
 				        playVideo(response.data.VIDEO.youtubeUrl);
+				        $scope.CHECKVOTE = response.data.CHECKVOTE;
+				        $scope.COUNTVOTE = response.data.COUNTVOTE;
+				        alert(response.data.COUNTVOTE);
 				    });
 				}
 			    

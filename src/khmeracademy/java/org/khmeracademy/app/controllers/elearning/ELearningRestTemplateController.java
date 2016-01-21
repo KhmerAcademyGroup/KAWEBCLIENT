@@ -51,8 +51,19 @@ public class ELearningRestTemplateController {
 	@RequestMapping(value="/rest/elearning/getplayvideo" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getPlayVideo( 
 			@RequestParam(value="v", required=false) String vid){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/getplayvideo?v=" + vid, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/getplayvideo?v=" + vid + "&user=" + userid, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
