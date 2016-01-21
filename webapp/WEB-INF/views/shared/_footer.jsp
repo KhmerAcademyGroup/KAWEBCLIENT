@@ -187,12 +187,12 @@ END PAGE
 					
 					<form class="form-horizontal m-t-20" id="frmSignUp" action="${pageContext.request.contextPath}/signup" method="POST">
 	                    
-	                    <div id="message"></div>
+	                    <div id="message-re"></div>
 	                    
 	                    <div class="form-group ">
 	                        <div class="col-xs-12">
 	                        	<label>Email <span style="color:red">*</span></label>
-	                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="email" id="email" placeholder="Email">
+	                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="email" id="email" placeholder="Email">
 	                        </div>
 	                    </div>
 	                    
@@ -352,14 +352,14 @@ Placed at the end of the document so the pages load faster
 										  				   '<strong class="alert-link">Invalid username or password! please try again!</strong>'+ 
 														   '</div>');
 		    	            	}else{
-// 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-info alert-bold-border square fade in alert-dismissable"> '+ 
-// 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
-// 							  				   '<strong class="alert-info">Logined successful!</strong>'+ 
-// 											   '</div>');
-// 		    	            		setTimeout(function(){
+									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+ 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+								  				   '<strong class="alert-link">Login successfully!</strong>'+ 
+												   '</div>');
+		    	            		setTimeout(function(){
 		    	            			location.href = data;
-// 		    	            		}, 100 );
-// 		    	            		$("#p-frmLogin").bPopup().close();
+		    	            		}, 500 );
+		    	            		
 		    	            	}
 		    	            	
 		    	            },
@@ -442,6 +442,74 @@ Placed at the end of the document so the pages load faster
     				    }
     				});
     			};
+    			
+    			$("#frmSignUp").submit(function(e){
+	         		  e.preventDefault(); // alert($(this).serialize());
+	         		  alert($("#password").val() +" "+ $("#repassword").val());
+	         		  if( $("#password").val() != $("#repassword").val()){
+	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+				  				   '<strong class="alert-link">Passwords do not match!</strong>'+ 
+								   '</div>');
+	         			  return;
+	         		  }
+	         		  frmData = { email : $("#email").val(),
+	         				 	  username : $("#username").val(),
+	         				  	  password : $("#password").val(),
+	         				  	  universityId : $("#getUniversity").val(),
+	         				  	  departmentId : $("#getDepartment").val()
+	         		  }; 
+	         		  console.log(frmData);
+	         		  KA.createProgressBarWithPopup();
+	         		  $.ajax({
+		    	            url: "${pageContext.request.contextPath}/rest/signup",
+		    	            type: "POST",
+		    	            datatype : "JSON",
+		    	            beforeSend: function(xhr) {
+			                    xhr.setRequestHeader("Accept", "application/json");
+			                    xhr.setRequestHeader("Content-Type", "application/json");
+			                },
+		    	            data: JSON.stringify(frmData), 
+		    	            success: function(data) {
+		    	            	if(data.STATUS == false){
+		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+				 				  				   '<strong class="alert-link">Email aleady exists</strong>'+ 
+				 							   '</div>');
+		    	            		KA.destroyProgressBarWithPopup();
+		    	            	}else{
+		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+					 				  				   '<strong class="alert-link">You have been registered succssfully</strong>'+ 
+					 					            '</div>');
+		    	            		
+		    	            		setTimeout(function(){
+		    	            			 frmData = { ka_username : $("#email").val(),
+		   	         				             ka_password : $("#password").val()
+		   	         				          }; 
+			    	            		$.ajax({
+			    		    	            url: "${pageContext.request.contextPath}/login",
+			    		    	            type: "POST",
+			    		    	            datatype : "JSON",
+			    		    	            data: frmData, 
+			    		    	            success: function(data) {
+			    		    	            	location.href = data;
+			    		    	            },
+			    		    	         	error: function(data){
+			    		    	         		console.log(data);
+			    		    				}
+			    		    	        });
+		    						}, 500 );
+		    	            	}
+		    	            	console.log(data);
+		    	            },
+		    	         	error: function(data){
+		    	         		KA.destroyProgressBarWithPopup();
+		    	         		console.log(data);
+		    				}
+		    	        });
+	         			
+					});
     			
     			
             });
