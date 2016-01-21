@@ -125,6 +125,38 @@ public class ELearningRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/elearning/video/vote" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> vote(@RequestParam("vid") String vid){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/vote/u/" + userid + "/v/" + vid, HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
+	@RequestMapping(value="/rest/elearning/video/unvote" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> unVote(@RequestParam("vid") String vid){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/vote/u/" + userid + "/v/" + vid, HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 }
