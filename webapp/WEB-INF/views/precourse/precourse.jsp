@@ -257,6 +257,8 @@
 			$.get("${pageContext.request.contextPath}/isLogin",function(data){
 				checkPrecouse(data.USERID);
 				$("#userId").val(data.USERID);
+				$("#username").val(data.USERNAME);				
+				$("#email").val(data.EMAIL);
 			});
 			
 			
@@ -308,6 +310,8 @@
 							}							
 							$("#paymentp").show();
 						});	
+					}else{
+						
 					}
 				});
 			}
