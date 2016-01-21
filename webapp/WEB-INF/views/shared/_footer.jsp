@@ -269,7 +269,7 @@ Placed at the end of the document so the pages load faster
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/mixitup/jquery.mixitup.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.jquery.min.js" ></script>
-
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/bootstrap-datepicker.js" ></script>
 
 
 		
@@ -316,7 +316,7 @@ Placed at the end of the document so the pages load faster
             =============================================== */
             $(document).ready(function(){
                
-                $("#btLogin").click(function(){ 
+                $(".btLogin").click(function(){ 
                 	$("#frmLogin").trigger("reset");
                 	$("#p-frmLogin").bPopup({modalClose: false});
 // 					KA.createProgressBar();	
@@ -375,7 +375,7 @@ Placed at the end of the document so the pages load faster
                 
                 
                 // SIgn up
-                $("#btSignUp").click(function(){
+                $(".btSignUp").click(function(){
                 	$("#frmSignUp").trigger("reset");
                 	$("#p-frmSignUp").bPopup({modalClose: false});
                 	if( $('#getDepartment').has('option').length == 0 ) {

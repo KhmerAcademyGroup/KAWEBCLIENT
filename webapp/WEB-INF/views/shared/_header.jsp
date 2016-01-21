@@ -14,7 +14,7 @@
 <link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/datepicker.min.css" rel="stylesheet">
 
 <!-- MAIN CSS (REQUIRED ALL PAGE)-->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
