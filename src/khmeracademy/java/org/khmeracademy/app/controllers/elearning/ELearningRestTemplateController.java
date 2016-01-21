@@ -114,21 +114,13 @@ public class ELearningRestTemplateController {
 		playlist.setUserId(userid);
 		playlist.setMaincategory(null);
 		playlist.setStatus(false);
-		System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz" + rolename);
 		if(rolename.equalsIgnoreCase("admin")){
 			playlist.setStatus(true);
 		}else{
 			playlist.setStatus(false);
 		}
 		
-		
-		//header.setContentType(new MediaType("application","json"));
 		HttpEntity<Object> request = new HttpEntity<Object>(playlist, header);
-		
-		// Add the Jackson and String message converters
-		//rest.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-		//rest.getMessageConverters().add(new StringHttpMessageConverter());
-		
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
