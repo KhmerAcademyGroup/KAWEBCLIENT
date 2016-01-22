@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%-- <%
+		 String playlistid = ${playlistid}}	;
+	%>  --%>
+	
 <jsp:include page="../shared/_header.jsp" />
 </head>
 
@@ -29,42 +33,8 @@
 
 		<div class="the-box no-border">
 			<div id="firtvideo">
-				<div class="media">
-					<a class="pull-left"> <img alt="image" class="store-image"
-						src="https://i.ytimg.com/vi/g1dNbTBvEHc/mqdefault.jpg"
-						style="height: 130px"></a>
-					<div class="clearfix visible-xs"></div>
-					<div class="media-body">
-						<a></a>
-						<h4 class="media-heading" style="padding: 0px; margin: 0px">
-							<a><strong class="text-black">ccx</strong></a>&nbsp;<span
-								class="label label-danger" style="font-size: 10px;"><i
-								class="fa fa-lock"></i> Private</span>
-						</h4>
-						<ul style="list-style: none; padding: 0px; margin: 0px;">
-							<li><a class="text-muted small">by Sarin | 10 Videos </a></li>
-							<li><span class="text-muted small">cxc </span></li>
-						</ul>
-					</div>
-					<!-- /.media-body -->
-					<span class="small text-muted" style="color: #37BC9B"> <a
-						href="#frmadd" data-backdrop="static"
-						class="btn btn-default btn-perspective" data-toggle="modal"
-						onclick="clkickBtAdd()"><i class="fa fa-play"></i> Play All </a>&nbsp;
-						&nbsp; <a href="#frmadd" data-backdrop="static"
-						class="btn btn-default btn-perspective" data-toggle="modal"
-						onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
-							Add video </a>&nbsp; &nbsp;<a href="#frmup_date_playlist"
-						class="btn btn-default btn-perspective"
-						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
-							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;<a
-						href="#"
-						onclick="deletePlayList('deleteplaylist.act?playlistid=344')"
-						class="btn btn-default btn-perspective"><i
-							class="fa fa-trash-o"></i> Delete </a></span>
-				</div>
+			
 			</div>
-
 		</div>
 
 
@@ -75,55 +45,22 @@
 
 
 		<div id="work-mixitup" class="work-content">
-			<div class="row">
+			<div class="row" >
+			
+			<div id="listVideoinPlaylist"></div>			
 
-				<!-- Begin work item -->
-				<c:forEach items="${data.RES_DATA}" var="playlist">
-					<div
-						class="col-sm-4 col-md-3 col-xs-6 mix ${playlist.maincategoryname}">
-						<div class="work-item">
-							<div class="hover-wrap">
-								<a
-									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
-									<i class="glyphicon glyphicon-play icon-plus"></i>
-								</a> <a
-									href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">
-									<i class="glyphicon glyphicon-remove-sign "
-									style="margin-left: 89%"></i>
-								</a>
-							</div>
-							<!-- /.hover-wrap -->
-							<i> <a href="playlistdetail.act?playlistid=1"><img
-									style="width: 100%; height: 100%;"
-									src="https://i.ytimg.com/vi/${playlist.fileUrl}/mqdefault.jpg"
-									alt="..."></a>
-							</i>
-							<div class="the-box no-border transparent no-margin">
-								<div class="media-body" class="color:blue;">
-
-									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
-										<strong class="text-black">${playlist.videoName}</strong>
-									</h4>
-									<ul style="list-style: none; padding: 0px; margin: 0px;">
-										<li class="text-muted small">by ${playlist.username}
-											|${playlist.postDate}</li>
-										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;${playlist.countVotePlus}&nbsp;&nbsp;
-											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;${playlist.countVoteMinus}&nbsp;&nbsp;
-											<i class="fa fa-eye"></i>&nbsp;&nbsp;${playlist.viewCounts}&nbsp;&nbsp;</li>
-									</ul>
-								</div>
-							</div>
-							<!-- /.the-box no-border transparent -->
-						</div>
-						<!-- /.work-item -->
-					</div>
-					<!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-				</c:forEach>
-				<!-- End work item -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#work-mixitup -->
 
 
 
-				<div class="modal fade" id="frmadd" tabindex="-1" role="dialog"
+	</div>
+	
+	
+	
+		<div class="modal fade" id="frmadd" tabindex="-1" role="dialog"
 					aria-labelledby="DefaultModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
@@ -157,7 +94,9 @@
 														</div>
 													</div>
 
-													<div id="getVideoSearch"></div>
+													<div id="getVideoSearch">
+													
+													</div>
 
 												</div>
 
@@ -202,18 +141,6 @@
 
 
 
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /#work-mixitup -->
-
-
-
-	</div>
-
-
-
-
 	<!-- End My Contend -->
 
 
@@ -223,121 +150,179 @@
 
 	<jsp:include page="../shared/_footer.jsp" />
 
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/script/playlistdetail.js"></script>
 
+
+
+
+	
+	<script id="jfirtvideo" type="text/x-jquery-tmpl">
+		<div class="media">
+					<a class="pull-left"> <img alt="image" class="store-image"
+						src="https://i.ytimg.com/vi/{{= thumbnailUrl}}/mqdefault.jpg"
+						style="height: 130px"></a>
+					<div class="clearfix visible-xs"></div>
+					<div class="media-body">
+						<a></a>
+						<h4 class="media-heading" style="padding: 0px; margin: 0px">
+							<a><strong class="text-black">{{= playlistName}}</strong></a>&nbsp;<span
+								class="label label-danger" style="font-size: 10px;"><i
+								class="fa fa-lock"></i> Private</span>
+						</h4>
+						<ul style="list-style: none; padding: 0px; margin: 0px;">
+							<li><a class="text-muted small">by {{= username}} | {{= countVideos}} Videos </a></li>
+							<li><span class="text-muted small">{{= description}} </span></li>
+						</ul>
+					</div>
+					<!-- /.media-body -->
+					<span class="small text-muted" style="color: #37BC9B"> <a
+						href="#frmadd" data-backdrop="static"
+						class="btn btn-default btn-perspective" data-toggle="modal"
+						onclick="clkickBtAdd()"><i class="fa fa-play"></i> Play All </a>&nbsp;
+						&nbsp; <a href="#frmadd" data-backdrop="static"
+						class="btn btn-default btn-perspective" data-toggle="modal"
+						onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
+							Add video </a>&nbsp; &nbsp;<a href="#frmup_date_playlist"
+						class="btn btn-default btn-perspective"
+						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
+							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;<a
+						href="#"
+						onclick="deletePlayList('deleteplaylist.act?playlistid=344')"
+						class="btn btn-default btn-perspective"><i
+							class="fa fa-trash-o"></i> Delete </a></span>
+				</div>
+
+</script>
+	
+		<script id="jlistVideoInplaylist" type="text/x-jquery-tmpl"> 
+			<div
+						class="col-sm-4 col-md-3 col-xs-6 mix " style="display: inline-block;  opacity: 1;">
+						<div class="work-item">
+							<div class="hover-wrap">
+								<a
+									href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}&playlist=${ playlistid }">
+									<i class="glyphicon glyphicon-play icon-plus"></i>
+								</a> <a
+									href="#">
+									<i class="glyphicon glyphicon-remove-sign "
+									style="margin-left: 89%"></i>
+								</a>
+							</div>
+							<!-- /.hover-wrap -->
+							<i> <a href="playlistdetail.act?playlistid=1"><img
+									style="width: 100%; height: 100%;"
+									src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
+									alt="..."></a>
+							</i>
+							<div class="the-box no-border transparent no-margin">
+								<div class="media-body" class="color:blue;">
+
+									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+										<strong class="text-black">{{= videoName}}</strong>
+									</h4>
+									<ul style="list-style: none; padding: 0px; margin: 0px;">
+										<li class="text-muted small">by {{= username}}
+											|{{= postDate}}</li>
+										<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;{{= countVotePlus}}&nbsp;&nbsp;
+											<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;{{= countVoteMinus}}&nbsp;&nbsp;
+											<i class="fa fa-eye"></i>&nbsp;&nbsp;{{= viewCounts}}&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /.the-box no-border transparent -->
+						</div>
+						<!-- /.work-item -->
+					</div>
+       </script>
+
+	<script id="jgetVideoSearch" type="text/x-jquery-tmpl">
+ 
+	
+
+
+	<div class="the-box no-border store-list">
+		<div class="media">
+			<a class="pull-left" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}"><img
+				alt="image" class="store-image img-responsive"
+				src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
+				style="width: 179px; height: 94px;"></a>
+			<div class="clearfix visible-xs"></div>
+			<div class="media-body" style="overflow: visible">				
+				<div class="btn-group pull-right">					
+					
+						<button class="btn btn-info btadd10" onclick="addVideoToPlaylist(344 ,11 , 1 , 0)">Add</button>
+						
+					
+				</div>
+				<ul class="list-inline">
+					<li><a href="../elearning/play.act?v=13"><strong
+							class="text-black">{{= videoName}}</strong></a></li>
+					<br/>
+						<li><a  >by {{= username}}</a> | <span>{{= postDate}}</span></li>
+					<br/>						
+						<li>
+						{{= countVotePlus}}
+						<i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;{{= countVoteMinus}}
+						<i class="fa fa-thumbs-down"></i>  &nbsp;&nbsp;&nbsp;{{= viewCounts}} 
+						<i class="fa fa-eye"></i>      &nbsp;&nbsp;&nbsp;</span>
+						</li>						
+				</ul>								
+			</div>
+		</div>
+	</div>
+
+
+	
+</script>
 	<script type="text/javascript">
-
-	$(document).ready(function(){
-		$.ajax({
-			url : "${pageContext.request.contextPath}/rest/elearning/listallvideo",
-			method: "GET",
-			success : function(data){
-				$("#getVideoSearch").html(videoSearch(data));
-				//alert(data.RES_DATA[1].videoId);
-			}
+		$(document).ready(function(){
+			var playlistId="${playlistid}"; 
+				
+			$.ajax({
+				url : "${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId,
+				method: "GET",
+				success: function(data){									
+					console.log(data);
+					
+					if(data.RES_DATA !=null){
+						$("#jlistVideoInplaylist").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist");
+						
+						
+					} 
+				  
+				}
+			});	
+			
+			 $.ajax({
+				url : "${pageContext.request.contextPath}//rest/elearning/listallvideo/",
+				method: "GET",
+				success: function(data){									
+					console.log(data);
+					
+					if(data.RES_DATA !=null){					
+						$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");
+						
+					} 
+				  
+				}
+			});	 
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
+				method: "GET",
+				success: function(data){									
+					console.log(data);
+					
+					if(data.USERPLAYLIST !=null){
+						$("#jfirtvideo").tmpl(data.USERPLAYLIST).appendTo("#firtvideo");	
+						
+					} 
+				  
+				}
+			});	
+			
 			
 		});
-	});	
-	
-	
-		/*$(document).ready(
-				function() {
-
-					$("#searchVideos").keyup(function() {
-						$.post("listvideotoaddtoplaylist.act", {
-							tfsearch : $("#searchVideos").val()
-						}, function(data) {
-							$("#getVideoSearch").html(videoSearch(data));
-						});
-					}); 
-				});*/
-					
-					/* $.post("listvideoinplaylist.act", {
-						playlistid : playlistid
-					}, function(data) {
-						$("#firtvideo").html(getPlaylist(data, uservisitid));
-						$("#getList").html(listvideofromplaylist(data));
-					});
-
-					$("#searchYourVideo").keyup(function() {
-						$.post("listuservideos.act", {
-							tfsearch : $("#searchYourVideo").val()
-						}, function(data) {
-							$("#getYourVideo").html(yourVideo(data));
-						});
-					}); */
-
-					
-
-					/* $('#frmadd').click(function() {
-						$.magnificPopup.close();
-					}); */
-
-					/* $("#frmupdateplaylist").submit(
-							function() {
-								event.preventDefault();
-								if ($("#updatename").val().trim() == "") {
-									$(".msg").css("display", "block");
-								} else {
-									$.post('updateplaylist.act', {
-										playlistid : $("#updateid").val(),
-										playlistname : $("#updatename").val(),
-										description : $("#updatedescription")
-												.val(),
-										publicview : $("#updatepublicview")
-												.val(),
-										thumbnail : $("#thumbnail").val()
-									}, function(data) {
-										$.post("listvideoinplaylist.act", {
-											playlistid : playlistid
-										}, function(data) {
-											$("#firtvideo").html(
-													getPlaylist(data,
-															uservisitid));
-											//$("#getList").html(listvideofromplaylist(data));
-										});
-									});
-
-									$("#frmup_date_playlist").modal('hide');
-								}
-
-							});
-
-				});
- */
-	/* 	function closeFrmPopAdd() {
-			$
-					.post(
-							"listvideoinplaylist.act",
-							{
-								playlistid : playlistid
-							},
-							function(data) {
-								if (data.getplaylist == 0) {
-									$("#firtvideo").html(
-											getPlaylist(data, uservisitid));
-									$("#getList")
-											.html(
-													"<div class='alert alert-success fade in alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>x</button><strong>No</strong> video in playlist!</div>");
-								} else {
-									$("#getList").html(
-											listvideofromplaylist(data));
-								}
-							});
-		} */
 	</script>
-
-	<script type="text/javascript">
-		// 		$(document).ready(function(){ 
-		// 			$(window).scroll(function() {
-		// 			    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-		// 			        alert("scroll");   
-		// 			    	// ajax call get data from server and append to the div
-		// 			    }
-		// 			});	
-
-		// 		});
-	</script>
+	
 </body>
 </html>

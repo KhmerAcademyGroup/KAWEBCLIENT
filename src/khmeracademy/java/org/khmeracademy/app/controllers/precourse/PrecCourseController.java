@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class PrecCourseController {
 	
-	@RequestMapping(value="/list",method= RequestMethod.GET)
+	@RequestMapping(value="/precourse",method= RequestMethod.GET)
 	public String indexPage(ModelMap m){
-		m.addAttribute("msg","message");
+		m.addAttribute("title","Precourse | Khmer Academy");
 		return "precourse/precourse";
 	}
 	

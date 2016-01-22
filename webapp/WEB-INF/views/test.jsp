@@ -27,5 +27,38 @@ Locale: ${pageContext.response.locale}
 //                                 		out.print("____________username " +user.getUsername());
                                    %>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+            /* ==============================================
+            Counter Up
+            =============================================== */
+            $(document).ready(function(){
+               
+	         		  frmData = { ka_username : "admin@gmail.com",
+	         				  	  ka_password : "123"	         				     
+	         				  	}; 
+	         		
+	         		  $.ajax({
+		    	            url: "${pageContext.request.contextPath}/api/login",
+		    	            type: "POST",
+		    	            datatype : "JSON",
+		    	            data: frmData, 
+		    	            success: function(data) {
+		    	            	console.log(data);
+		    	            	
+		    	            },
+		    	         	error: function(data){
+		    	         		console.log(data);
+		    				}
+		    	        });
+	         			
+              });
+				
+			</script>
 </body>
+
+
 </html>

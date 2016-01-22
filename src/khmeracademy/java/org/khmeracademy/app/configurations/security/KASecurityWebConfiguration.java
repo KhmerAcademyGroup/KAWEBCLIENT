@@ -65,6 +65,7 @@ public class KASecurityWebConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http
 			.authorizeRequests()
+//			.antMatchers("/login").permitAll()
 			.antMatchers("/").permitAll()
 			//.antMatchers("/user/**","/elearning/playvideo").hasAnyRole("Subscriber" ,"Editor", "Admin")
 			.antMatchers("/user/**" , "/elearning/playvideo").hasAnyRole("Subscriber" ,"Editor", "Admin")
