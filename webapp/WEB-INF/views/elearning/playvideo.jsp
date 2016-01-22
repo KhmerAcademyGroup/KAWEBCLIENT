@@ -187,21 +187,17 @@
 								<!-- Video Comment -->
 								<div class="col-sm-12 col-xs-12">
 									<hr class="hr-style-one">
-									<form role="form" id="commentform" method="post">
+									<!-- <form role="form" id="commentform" method="post">
 										<div class="form-group">
 										<textarea name="commenttext" id="commenttext" class="form-control" style="height: 70px;" placeholder="Your comments here"></textarea>
 										<span style="color: red;" id="commenterror"></span>
 										</div>
 										<div class="form-group">
-										<% if(session.getAttribute("ka_user")==null){ %>
-										<button type="button" class="btn btn-primary" onclick="isNotLogin()">Submit comment</button>
-										<% }else{ %>
-										<button type="submit" class="btn btn-primary"  >Submit comment</button>
-										<% } %>
 									
+										<button type="submit" class="btn btn-primary"  >Submit comment</button>
 										
 										</div>
-									</form>
+									</form> -->
 			
 									<div class="the-box no-border">
 										<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
@@ -330,6 +326,7 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
 		<script>var URL="${pageContext.request.contextPath}"</script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/playlist.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/script/comments.js"></script>
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
@@ -372,6 +369,7 @@
 				
 				loadVideo(getURLParameter("v"));
 				getVoteVideo(getURLParameter("v"));
+				getCommentVideo(getURLParameter("v"));
 				getUserPlayList(getURLParameter("v"));
 				
 				$scope.changeUrlVideo = function(vid){
@@ -380,10 +378,12 @@
 					loadVideo(vid);
 					getUserPlayList(vid);
 					getVoteVideo(vid);
+					getCommentVideo(vid);
 				}
 				
 				function loadVideo(vid){
 					$http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ vid).then(function(response) {
+						if(response.data.STATUS == false) window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
@@ -485,6 +485,35 @@
 						getVoteVideo(vid);
 					 }
 				 });
+			}
+			
+			function getCommentVideo(vid){
+				alert(vid);
+				$.get("${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=1", function(data){
+					$("#comments").html(getComments(data.RES_DATA));
+					alert(data.RES_DATA[0].commentId);
+			    });
+				
+				<%-- $("#commentform").submit(function(e){
+					e.preventDefault();
+					
+					if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
+					
+					$.post("add_comment.act" , 
+						{
+							'commenttext'  : $("#commenttext").val(),
+							'v'	:	<%=dto.getVideoid()%>
+						},function(data){ 
+							
+							$("#comments").html(getComments(data, <%= isLogin %>));	
+							$("#commenttext").val(null);
+							$("#commenterror").text("");
+						});
+						
+					}else{
+						$("#commenterror").text("Your Comment Can not Empty!");
+					}
+				}); --%>
 			}
 
 		    

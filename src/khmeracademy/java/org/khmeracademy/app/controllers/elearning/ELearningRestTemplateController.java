@@ -187,4 +187,17 @@ public class ELearningRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/elearning/video/comment" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getComment(
+			@RequestParam("v") String vid,
+			@RequestParam("page") String page){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/comment/video/v/" + vid + "?page=" + page, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	
+	
+	
 }
