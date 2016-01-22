@@ -122,7 +122,7 @@
 									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
 									<li class="pull-right">
 <!-- 										 <span class="btn btn-group inline-popups"> -->
-												<a class="btn btn-success btn-rounded-lg" href="video.act"  data-effect="mfp-zoom-in">
+												<a class="btn btn-success btn-rounded-lg"  id="form-upload-video" data-effect="mfp-zoom-in">
 													<i class="fa fa-cloud-upload"></i> Upload video
 												</a>
 <!-- 										</span> -->
@@ -632,17 +632,7 @@
 																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
 															</div>
 															
-															<div class="btn-group" id="btcheck">
-																<a href="#checkAll" id="checkk" class="btn btn-primary"><input type="checkbox" id="select-all" name="selectAll" value="">Check All</a> 
-																
-															</div>
-															
-															<div class="btn-group">
-																<a href="javascript:;" title="getPlayList" id="deleteall" class="btn btn-danger"><i class="fa fa-ban"></i> Delete selected</a>
-															</div>
-															<div class="btn-group" id="nextprevious"><button type="button" disabled="" class="btn btn-default"><i class="fa fa-chevron-left"></i></button><button type="button" disabled="" class="btn btn-default"><i class="fa fa-chevron-right"></i></button></div>
-															
-								
+									
 								
 															<div class="btn-group pull-right">
 																<form role="form">
@@ -662,8 +652,8 @@
 																<div class="the-box full store-item text-center checkchb">
 																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
 																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
-																		<a href="#delete" onclick="deletePlayList('deleteplaylist.act?playlistid=306&amp;page=1')" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
-																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="test" onclick="popuptmupdate(306)" class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
+																		<a href="#delete" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
+																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="editPlaylist"  class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
 																		<i class="fa fa-edit"></i></a></span>
 																	</div>
 																<a href="playlistdetail.act?playlistid=306">
@@ -693,8 +683,8 @@
 																<div class="the-box full store-item text-center checkchb">
 																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
 																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
-																		<a href="#delete" onclick="deletePlayList('deleteplaylist.act?playlistid=306&amp;page=1')" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
-																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="test" onclick="popuptmupdate(306)" class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
+																		<a href="#delete"  class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
+																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="editPlaylist"  class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
 																		<i class="fa fa-edit"></i></a></span>
 																	</div>
 																<a href="playlistdetail.act?playlistid=306">
@@ -734,63 +724,73 @@
 												</div>									
 												
 													<div id="form-create-playlist1" class="ka-popup" style="display: none;width: 30%;">
-
-<!-- 													<form method="post" name="frmcreateplaylist" action="/" id="frmcreateplaylist"  class="form-horizontal"> -->
-														  <div class="form-group">
-															<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
-														  </div>
-									  
-														  <div class="form-group">
-															<label for="exampleInputEmail1">Playlist name</label>
-															<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
-															<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-														  </div>
-														  <div class="form-group">
-															<label for="exampleInputPassword1">Description</label>
-															<input type="text" name="description" class="form-control" id="description" placeholder="EG. My music">
-														 </div>
-														 <div class="form-group">
-															<label>Set View</label>
-															<select class="form-control" id="publicview" name="publicview" tabindex="2">
-																<option value="false">Private</option>
-																<option value="true">Public</option>
-															</select>
-														</div>
-														  <input type="button" id="btncreate" value="Create" class="btn btn-success">
-<!-- 													</form> -->
+																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+															  <div class="form-group">
+																<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
+															  </div>
+															
+															  <div class="form-group">
+																<label for="exampleInputEmail1">Playlist name</label>
+																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+															  </div>
+															  <div class="form-group">
+																<label for="exampleInputPassword1">Description</label>
+																<input type="text" name="description" class="form-control" id="description" placeholder="EG. My music">
+															 </div>
+															 <div class="form-group">
+																<label>Set View</label>
+																<select class="form-control" id="publicview" name="publicview" tabindex="2">
+																	<option value="false">Private</option>
+																	<option value="true">Public</option>
+																</select>
+															</div>
+															 	<input type="button" id="btncreate" value="Create" class="btn btn-success">
+																<input type="button"  value="Close" class="btn btn-success">	
+															</div>
 													</div>
 													
-													<div id="form-update-playlist" class="white-popup mfp-with-anim mfp-hide" style="border-radius:5px">
-<!-- 													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist"  class="form-horizontal"> -->
-														  <div class="form-group">
-															<label for="exampleInputEmail1"><h3>Update playlist</h3></label>
-														  </div>
-														 <div class="form-group">
-															<label for="exampleInputEmail1">Playlist name</label>
-															<input type="text" class="form-control" name="playlistname" id="updatename" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="playlistid"  id="updateid" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="thumbnail"  id="thumbnail" placeholder="EG. MyTop">
-															<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-														  </div>
-														  <div class="form-group">
-															<label for="exampleInputPassword1">Description</label>
-															<input type="text" name="description" class="form-control" id="updatedescription" placeholder="EG. My music">
-														 </div>
-														 <div class="form-group">
-															<label>Set View</label>
-															<select class="form-control" id="updatepublicview" name="updatepublicview" tabindex="2">
-																<option value="false">Private</option>
-																<option value="true">Public</option>
-															</select>
-														</div>
-														 	<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
-														 	 <input type="button" id="btnupdateplaylist"   class="btn btn-success" value="Update">
-														 
-					 							</div>
+													<div id="form-update-playlist" class="ka-popup" style="display: none;width: 30%;">
+																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+															  <div class="form-group">
+																<label for="exampleInputEmail1"><h3>Update playlist</h3></label>
+															  </div>
+															
+															  <div class="form-group">
+																<label for="exampleInputEmail1">Playlist name</label>
+																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+															  </div>
+															  <div class="form-group">
+																<label for="exampleInputPassword1">Description</label>
+																<input type="text" name="description" class="form-control" id="description" placeholder="EG. My music">
+															 </div>
+															 <div class="form-group">
+																<label>Set View</label>
+																<select class="form-control" id="publicview" name="publicview" tabindex="2">
+																	<option value="false">Private</option>
+																	<option value="true">Public</option>
+																</select>
+															</div>
+															 	<input type="button" id="btncreate" value="Update" class="btn btn-success">
+																<input type="button"  value="Close" class="btn btn-success">	
+															</div>
+													</div>
+													
+													<!-- form upload video -->
+													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 30%;">
+														<div id="form-upload-video1" class="white-popup mfp-with-anim" style="border-radius:5px">
+															<div class="form-group">
+																<label for="exampleInputEmail1">Playlist name</label>
+																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+															  </div>
+													
+													
 					 							
 					 							
-					 							
-											</div>
+					 									</div>
+													</div>
 										</div><!-- /.tab-content -->
 									</div><!-- /.panel-body -->
 								</div><!-- /.collapse in -->
@@ -826,54 +826,25 @@
         <script type="text/javascript">
 	    
 	    $(document).ready(function(){
+	    	//create playlist
             $("#form-create-playlist").click(function(){ 
-            	//$("#frmLogin").trigger("reset");
             	$("#form-create-playlist1").bPopup({modalClose: false});
 				
+            });
+            
+	    	//update playlist
+            $("#editPlaylist").click(function(){ 
+            	$("#form-update-playlist").bPopup({modalClose: false});
+            });
+	    	
+	    	//upload video
+            $("#form-upload-video").click(function(){ 
+            	$("#form-upload-video1").bPopup({modalClose: false});
             });
           });
 	    
 	    </script>
                  
-	<!-- <script>
-		$(document).ready(function() {
-			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
-		    $("#menu-toggle").click(function(e) {
-		        $("#wrapper").toggleClass("toggled");
-		    });
-		});
-	</script> -->
-	 
-	<!--  <script>
-	      jQuery(document).ready(function ($) {
-	        "use strict";
-			$('#SuppressScrollX_1').perfectScrollbar({suppressScrollX: true});
-	      }); 
-	    </script>  -->
-	    
-	    <%-- <script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
-	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script> --%>
-		
-		 <!-- <script>
-
-			// save a reference to the video element
-			video = document.querySelector('video'),
-			
-			// save a reference to the video.js player for that element
-			player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v=K7Eh__GxQeQ'});
-
-			// initialize the plugin with some custom options:
-			player.logobrand({
-				//height: "32px",
-				//width: "32px",
-				image: "videoplayer/logoka.png",
-				destination: "http://www.khmeracademy.org/"
-			});
-			//player.logobrand().loadImage("http://instasynch.com/images/youtube.png");
-			//player.logobrand().setDestination("http://instasynch.com/images/youtube.png");
-			// set a flag and then we calculate the ratio from the width and height
-			
-		</script> -->
+	
 </body>
 </html>
