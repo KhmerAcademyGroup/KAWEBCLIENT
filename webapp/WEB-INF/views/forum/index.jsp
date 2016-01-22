@@ -192,6 +192,7 @@
 			  		var question = {};
 			  		var page = 1;
 			  		var totalPage = 0;
+			  		
 			  		question.listQuestion = function(page){
 // 			  			KA.createProgressBar();
 	    				$.ajax({ 
