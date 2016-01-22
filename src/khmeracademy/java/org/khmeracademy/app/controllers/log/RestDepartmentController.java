@@ -57,7 +57,5 @@ public class RestDepartmentController {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);		
 		ResponseEntity<Map> response = rest.exchange(WSURL + "department/"+id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}
-	
-	
+	}	
 }
