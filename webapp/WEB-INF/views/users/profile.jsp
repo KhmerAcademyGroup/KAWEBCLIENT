@@ -492,11 +492,12 @@
 														<div class="btn-toolbar top-table" role="toolbar">
 															<div class="btn-group">
 																<form role="form" id="frmSetNumrowHistory">
-																	<select class="form-control" id="setNumrowHistory">
-																		<option>10</option>
-																		<option>20</option>
-																		<option>30</option>
-																		<option>50</option>
+																	<select class="form-control" id="limithistory" onchange="chooseHistory()" >
+																		<option value="5">5</option>
+																	    <option value="10" selected="selected">10</option>
+																	    <option value="20">20</option>
+																	    <option value="50">50</option>
+																	    <option value="100">100</option>
 																	</select>
 																</form>
 															</div>
@@ -508,109 +509,19 @@
 									
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" class="form-control" id="tfsearchHistory" placeholder="Search category">
+																	<input type="text" class="form-control" id="searchHistory" onkeyup="mySearchHistory();" placeholder="Search category">
 																</form>
 									
 															</div>
 															<!-- /.btn-group .pull-right -->
 														</div>
 														
+													<div id="historyresult"></div>
 													
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end history -->
-													
-													<!-- start history -->
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end history -->
-													
-													<!-- start history -->
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end history -->
 													<!-- page gination -->
-													<div class='text-center'>
-													<nav>
-													  <ul class="pagination">
-													    <li>
-													      <a href="#" aria-label="Previous">
-													        <span aria-hidden="true">&laquo;</span>
-													      </a>
-													    </li>
-													    <li class="active"><a href="#" >1</a></li>
-													    <li><a href="#">2</a></li>
-													    <li><a href="#">3</a></li>
-													    <li><a href="#">4</a></li>
-													    <li><a href="#">5</a></li>
-													    <li>
-													      <a href="#" aria-label="Next">
-													        <span aria-hidden="true">&raquo;</span>
-													      </a>
-													    </li>
-													  </ul>
-													</nav>
-													</div>
+													<div class="text-center">
+				    									<div id="demo4_top" class="demo4_top"></div>
+				    								</div>
 													
 													
 											</div><!-- ***************#panel-Playlist****************** -->
@@ -725,9 +636,13 @@
 												
 													<div id="form-create-playlist1" class="ka-popup" style="display: none;width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+															  	<button type="button" class="close" aria-hidden="true">
+																	<span class="button b-close"><span>×</span></span>
+																</button>
 															  <div class="form-group">
 																<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
 															  </div>
+						
 															
 															  <div class="form-group">
 																<label for="exampleInputEmail1">Playlist name</label>
@@ -752,6 +667,9 @@
 													
 													<div id="form-update-playlist" class="ka-popup" style="display: none;width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+															  <button type="button" class="close" aria-hidden="true">
+																	<span class="button b-close"><span>×</span></span>
+																</button>
 															  <div class="form-group">
 																<label for="exampleInputEmail1"><h3>Update playlist</h3></label>
 															  </div>
@@ -778,13 +696,61 @@
 													</div>
 													
 													<!-- form upload video -->
-													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 30%;">
+													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 40%;">
 														<div id="form-upload-video1" class="white-popup mfp-with-anim" style="border-radius:5px">
-															<div class="form-group">
-																<label for="exampleInputEmail1">Playlist name</label>
-																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
-																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-															  </div>
+															<button type="button" class="close" aria-hidden="true">
+																	<span class="button b-close"><span>×</span></span>
+																</button>
+																<div class="form-group">
+																	<label for="exampleInputEmail1">Playlist nameVideo Name</label>
+																	<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																	<small class="msg" style="color:red;display:none">The video name  is required and can't be empty</small>
+															 	 </div>
+															 	 <div class="form-group">
+																	<label for="exampleInputEmail1">Youtube URL</label>
+																	<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																	<small class="msg" style="color:red;display:none">The youtube url  is required and can't be empty</small>
+															 	 </div>
+															 	 <div class="form-group">
+																	<label for="exampleInputEmail1">File URL</label>
+																	<input type="text" class="form-control" name="fileurl" id="fileurl" data-bv-field="fileurl">
+																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+															 	 </div>
+															 	 <div class="form-group">
+																	<label for="exampleInputEmail1">Description</label>
+																	<textarea class="form-control" name="description" id="description" data-bv-field="description"></textarea>
+																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+															 	 </div>
+															 	 <div class="form-group">
+																	<label for="exampleInputEmail1">View</label>
+																	<div class="radio">
+																		<label> <input type="radio" name="publicview" id="public" value="1" required="" data-bv-notempty-message="A view is required" data-bv-field="publicview"> Public
+																		</label>
+																	</div>
+																	<div class="radio">
+																		<label> <input type="radio" name="publicview" id="private" checked="checked" data-bv-field="publicview"> Private
+																		</label>
+																	</div>
+																	
+																	<small class="msg" style="color:red;display:none">A view is required</small>
+															 	 </div>
+															 	 
+															 	  <div class="form-group">
+																	<label for="exampleInputEmail1">Category</label>
+																	
+																	<select class="form-control">
+																		  <option>1</option>
+																		  <option>2</option>
+																		  <option>3</option>
+																		  <option>4</option>
+																		  <option>5</option>
+																		</select>
+																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+															 	 </div>
+															  <div class="form-group">
+																	<button type="submit" class="btn btn-success">Add</button>
+															 	 </div>
+															
 													
 													
 					 							
@@ -823,6 +789,7 @@
 	<!-- End My Contend -->
 	 <jsp:include page="../shared/_footer.jsp" />
 	    =============================================== */
+	 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
         <script type="text/javascript">
 	    
 	    $(document).ready(function(){
@@ -842,7 +809,170 @@
             	$("#form-upload-video1").bPopup({modalClose: false});
             });
           });
-	    
+	
+		var limit=0;
+		var offset=1;
+		var totalofrecord =0;
+		var numofpage=1;
+		var url="${pageContext.request.contextPath}";
+		var userid="NTk=";
+		
+		
+		//my choice what list or search
+		 function chooseHistory(){
+			var key =$("#searchHistory").val();
+			//alert(key);
+			if(key.length == 0){
+				mystart();
+			}else{
+				search();
+			}
+		} 
+		
+		mystart();
+		function mystart(){
+			limit=$("#limithistory").val();
+			//alert(limit);
+	    	 $.ajax({
+	            url: url+'/rest/user/profile/countuserhistory/'+userid,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            success: function(data){
+	            	totalofrecord=data.TOTAL;
+	            	//this two method will start after get the total record
+	            	getDbRow();
+	            	listAll(1);
+	        		
+	            },
+	            error: function(data){
+	            	alert("1start () unsuccess data");
+	            }
+	        });	 
+	    	 
+		}
+		
+		//listAll();//mypage
+		function listAll(offset){
+			//alert(mypage);
+	    	
+	    	
+	    	$.ajax({
+	    		url: url+'/rest/user/profile/listuserhistory/'+userid+'?page='+offset+'&item='+limit,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	$("#historyresult").html(listarticles(data));
+	            	//asing value to totalrecord
+	            	
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });	    	
+			   
+		}
+		function listarticles(data){
+			
+			// alert(data.RES_DATA.videoId);
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
+					str += "<div class='the-box no-border store-list'>" 
+							+"<div class='media'>"
+								+"<a class='pull-left' href="+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+">"
+									+"<img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+data.RES_DATA[i].videoUrl+"/mqdefault.jpg'>"
+								+"</a>"
+							+"<div class='clearfix visible-xs'></div>"   
+							+"<div class='media-body' style='overflow:visible'>"       
+								+"<a href='#fakelink'></a>" 
+								+"<div class='btn-group pull-right'>"	  
+									+"<button type='button' class='btn btn-default btn-sm dropdown-toggle' data-toggle='dropdown'><i class='fa fa-cog'></i> </button>" 
+										+"<ul class='dropdown-menu' role='menu'>" 
+											+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'>Play</a></li>" 
+											+"<li><a href='#' onclick=''>Remove from History</a></li>"
+										+"</ul>"
+									+"</div>" 
+								+"<ul class='list-inline'>" 
+									+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'><strong class='text-black'>"+data.RES_DATA[i].videoName+"</strong></a></li><br>"
+									+"<li><a><span class='small text-muted' style='color:#AAB2BD'>"+data.RES_DATA[i].username+"</span></a></li>"
+								+"</ul>"
+									+"<p class='hidden-xs'> </p><span class='small text-muted' style='color:#AAB2BD'>"
+									+"<i class='fa fa-eye'>&nbsp;&nbsp;"+data.RES_DATA[i].videoViewCount+"</i>      &nbsp;&nbsp;&nbsp; </span>"
+									+"</div>"
+								+"</div>"
+							+"</div>"
+						+"</div>";
+				}
+						
+			
+				return str;
+		}
+		function getDbRow(){
+			var nps=totalofrecord/limit;
+			
+			if(!(totalofrecord % limit==0)){
+				numofpage = Math.floor(nps);
+				numofpage+=1;		
+			}else{	
+				numofpage=nps;
+			}
+			//$("#recordresult").html("Records :"+totalofrecord);
+			//$("#pageresult").html("Pages :"+ numofpage);
+			loadPagination();
+		
+		}
+		
+		function loadPagination(){
+			$('.demo4_top').bootpag({
+		        total: numofpage,
+		        
+		        maxVisible: 5,
+		        leaps: true,
+		        firstLastUse: true,
+		        first: '&#8592;',
+		        last: '&#8594;',
+		        wrapClass: 'pagination',
+		        activeClass: 'active',
+		        disabledClass: 'disabled',
+		        nextClass: 'next',
+		        prevClass: 'prev',
+		        lastClass: 'last',
+		        firstClass: 'first'
+		    }).on("page", function(event, num){
+		    	listAll(num);
+		    	//alert("pagination ="+num);
+		    }); 
+		}
+		
+		function mySearchHistory(){
+			var key =$("#searchHistory").val();
+			//alert(key);
+			if(key.length > 3){
+				 $.ajax({  
+					 	url: url+'/rest/user/profile/searchuserhistory/'+userid+'/'+key+'?page='+offset+'&item='+limit, 
+				       type:'get',
+				       contentType: 'application/json;charset=utf-8', // type of data
+				       success: function(data) { 
+				    	   	if(data.STATUS == true){
+				    	   		//totalofrecord= data.TOTAL_REC;
+				    	   		//getDbRow();
+					    	   	$("#historyresult").html(listarticles(data));
+					    	   
+				    	   		//alert(data.TOTAL_REC);
+				    	   	}
+				    	   		//$("#showresult").html(listarticles(data));
+				                console.log("Success..." + data);
+				       }  ,  
+				   		error: function(data){
+				   		alert("Unsuccess" + data +"OR Empty");
+				   		console.log("ERROR..." + data);
+				   	}
+				   }); 
+			}
+			
+		
+		} 
 	    </script>
                  
 	
