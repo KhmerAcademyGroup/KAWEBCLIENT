@@ -44,8 +44,6 @@
 						
 						<div class="section">
 								
-								<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
-								
 								<table class="table">
 						
 											<tbody id="getQuestion">
@@ -84,6 +82,9 @@
 												
 											</tfoot>
 										</table>
+									
+									
+								<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
 										
 								 <div class="text-center">
 									<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
@@ -249,7 +250,10 @@
 	    					$(this).hide();
 	    					return ;
 	    				}
+	    				$(this).hide();
+						$("#loading").show();
 	    				question.listQuestion(page);
+// 	    				$(this).show();
 	    			});
 	    	  });
 			  

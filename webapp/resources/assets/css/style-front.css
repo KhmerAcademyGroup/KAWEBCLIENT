@@ -6260,3 +6260,6 @@ iframe {
     font-size:17px;
 }
 
+.ka-question:hover , .ka-username:hover{
+	text-decoration : none;
+}
