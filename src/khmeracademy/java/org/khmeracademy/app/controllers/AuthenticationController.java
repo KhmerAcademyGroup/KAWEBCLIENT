@@ -3,15 +3,24 @@ package org.khmeracademy.app.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
 import org.khmeracademy.app.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
+
 
 @Controller
 public class AuthenticationController {
@@ -21,8 +30,16 @@ public class AuthenticationController {
 		return "login";
 	}
 	
+	@Autowired
+	private HttpHeaders header;
 	
-	@RequestMapping(value="/isLogin" , method = RequestMethod.GET)
+	@Autowired
+	private RestTemplate rest;
+	
+	@Autowired
+	private String WebURL;
+	
+	@RequestMapping(value="/api/isLogin" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String ,Object>> isUserLogin(){
 		Map<String,Object> map = new HashMap<String,Object>();
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
@@ -42,12 +59,46 @@ public class AuthenticationController {
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/isLogout" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String ,Object>> isUserLgout(){
+	@RequestMapping(value="/api/logout" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String ,Object>> apiLogout(){
 		Map<String,Object> map = new HashMap<String,Object>();
 		SecurityContextHolder.getContext().setAuthentication(null);
 		map.put("STATUS", true);
 		map.put("MESSAGE", "Logout successfully!");
+		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/api/login" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String ,Object>> apiLogin(@RequestBody String login){
+		System.out.println(login);
+		// create request body
+		JSONObject request = new JSONObject();
+		request.put("ka_username", "admin@gmail.com");
+		request.put("ka_password", "123");
+		System.out.println(request.toString());
+		// set headers
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<String>(login, headers);
+		ResponseEntity<String> response = rest.exchange(WebURL + "/login", HttpMethod.POST , entity , String.class) ;
+
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
+			map.put("USERID", user.getUserId());
+			map.put("USERNAME" ,user.getUsername());
+			map.put("EMAIL", user.getEmail());
+			map.put("PROFILE_IMG_URL",user.getUserImageUrl());
+			map.put("COVER_IMG_URL", user.getCoverphoto());
+			map.put("STATUS", true);
+			map.put("MESSAGE", "Login successfully!");
+		}else{
+			System.out.println(authentication.getPrincipal());
+			map.put("STATUS", false);
+		}
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
 	}
 
