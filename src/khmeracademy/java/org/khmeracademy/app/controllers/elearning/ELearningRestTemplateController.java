@@ -2,6 +2,7 @@ package org.khmeracademy.app.controllers.elearning;
 
 import java.util.Map;
 
+import org.khmeracademy.app.entities.Comment;
 import org.khmeracademy.app.entities.User;
 import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,6 +197,29 @@ public class ELearningRestTemplateController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/comment/video/v/" + vid + "?page=" + page, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/rest/elearning/video/addcomment" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> userComment(
+			@RequestParam("commenttext") String text,
+			@RequestParam("v") String vid){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		Comment comment = new Comment();
+		comment.setCommentText(text);
+		comment.setVideoId(vid);
+		comment.setUserId(userid);
+		HttpEntity<Object> request = new HttpEntity<Object>(comment, header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/comment", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	
 	
 	

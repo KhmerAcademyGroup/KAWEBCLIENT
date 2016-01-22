@@ -205,13 +205,13 @@
 									
 										</ul>
 										<br />
-										<div class="loadMoreComment text-center">
 										<form name="frmloadmorecomment">
-											<input type="hidden" id="commentonvideoid" />
-											<input type="hidden" value="1" id="pagecommentvalue" />
+										<input type="hidden" id="commentonvideoid" />
+										<input type="hidden" value="1" id="pagecommentvalue" />
+										<div class="loadMoreComment text-center">
 											<button onclick="btnLoadMoreComment()">Load comment</button>
-										</form>
 										</div>
+										</form>
 									</div>
 									
 									
@@ -509,7 +509,9 @@
 					if(data.STATUS==true){
 						$("#comments").html(getComments(data.RES_DATA, page));
 						$("#commentonvideoid").val(vid);
-						if(page==parseInt(data.PAGINATION.totalPages)){
+						if(page < parseInt(data.PAGINATION.totalPages)){
+							$(".loadMoreComment").show();
+						}else{
 							$(".loadMoreComment").hide();
 						}
 					}else{
@@ -518,27 +520,30 @@
 					
 			    });
 				
-				<%-- $("#commentform").submit(function(e){
-					e.preventDefault();
+				<%--  --%>
+			}
+			
+			$("#commentform").submit(function(e){
+				e.preventDefault();
+				
+				if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
+					var comid = $("#commentonvideoid").val();
 					
-					if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
-					
-					$.post("add_comment.act" , 
+					$.post("${pageContext.request.contextPath}/rest/elearning/video/addcomment" , 
 						{
 							'commenttext'  : $("#commenttext").val(),
-							'v'	:	<%=dto.getVideoid()%>
+							'v'	: comid
 						},function(data){ 
 							
-							$("#comments").html(getComments(data, <%= isLogin %>));	
+							$("#comments").html(getCommentVideo(comid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
 						});
-						
-					}else{
-						$("#commenterror").text("Your Comment Can not Empty!");
-					}
-				}); --%>
-			}
+					
+				}else{
+					$("#commenterror").text("Your Comment Can not Empty!");
+				}
+			});
 
 		    
 		</script>
