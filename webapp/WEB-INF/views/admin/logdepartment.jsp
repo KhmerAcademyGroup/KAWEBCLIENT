@@ -53,7 +53,7 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button id="showFrmAddCategory" type="button" class="btn btn-success">
+							<button id="showFrmAddDepartment" type="button" class="btn btn-success">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
@@ -61,7 +61,7 @@
 						<!-- <div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
-									placeholder="Search category">
+									placeholder="Search department">
 							</form>
 
 						</div> -->
@@ -97,8 +97,8 @@
 			</div>
 			<!-- /.container-fluid -->
 
-		<div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/department" method="POST">
+		<div id="p-frmDepartment" class="ka-popup" style="display: none;width: 50%;">
+			<form  id="frmDepartment" action="${pageContext.request.contextPath}/rest/log/department" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
@@ -108,17 +108,44 @@
 					</div>
 					<div class="modal-body" >
 									
-									<input type="hidden"  id="categoryId" class="form-control"  name="categoryId">
+									<input type="hidden"  id="departmentId" class="form-control"  name="departmentId">
 										
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Department name</label>
 										<div class="col-lg-5">
-											<input type="text" id="categoryName" class="form-control" required="required" name="categoryName">
+											<input type="text" id="departmentName" class="form-control" required="required" name="departmentName">
 										</div>	
 									</div>
 					</div>
 					<div class="modal-footer">
 							<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+			</form>	
+		</div>
+		
+		<div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
+			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/log/department" method="POST">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" aria-hidden="true">
+							<span class="button b-close"><span>×</span></span>
+						</button>
+						<h4 class="modal-title">Confirmation</h4>
+					</div>
+					<div class="modal-body" >
+									
+									<input type="hidden"  id="ConfirmId" class="form-control"  name="departmentId">
+										
+									<div class="form-group">										
+										<div class="col-lg-8 right" style="border:none;">
+											<label class="form-control">Delete this department?</label> 
+										</div>	
+									</div>
+					</div>
+					<div class="modal-footer">
+							<button type="submit" id="btDelete" class="btn btn-primary">Yes</button>
+							<button type="button" id="btCancel" class="btn btn-primary">No</button>
 					</div>
 				</div>
 			</form>	
@@ -150,10 +177,10 @@
 		<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO }}</td>
-				<td>{{= categoryName}}</td>
+				<td>{{= departmentName}}</td>
 				<td> 
-   		 			<i data-cateid="{{= categoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
-            		<!-- <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i> -->
+   		 			<i data-cateid="{{= departmentId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateDepartment"></i>
+            		<i data-cateid="{{= departmentId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
          		</td>
 			</tr>
    		</script>
@@ -162,33 +189,37 @@
          
 		<script type="text/javascript">		
 		
-		var category = {};
+		var department = {};
 		var check = true;
 		
 		$(document).ready(function(){
 			
-			category.listCategory = function(currentPage){
+			department.listDepartment = function(currentPage){
 				KA.createProgressBar();
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category?page="+currentPage+"&item=20", 
+				    url: "${pageContext.request.contextPath}/rest/log/department?page="+currentPage+"&item=20", 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
+				    	
+				    	/* alert(JSON.stringify(data.RESP_DATA.length));
+				    	return; */ 
 						console.log(data);
-						if(data.RES_DATA.length>0){
+				    	
+						if(data.RESP_DATA.length>0){
 							$("tbody#content").empty();
-							for(var i=0;i<data.RES_DATA.length;i++){
-								data.RES_DATA[i]["NO"] = i+1;
+							for(var i=0;i<data.RESP_DATA.length;i++){
+								data.RESP_DATA[i]["NO"] = i+1;
 							}
-							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							$("#content_tmpl").tmpl(data.RESP_DATA).appendTo("tbody#content");
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
 						}
 				    	if(check){
-				    		category.setPagination(data.PAGINATION.totalPages,1);
+				    		department.setPagination(data.PAGINATION.totalPages,1);
 				    		check=false;
 				    	}
 				    	KA.destroyProgressBar();
@@ -200,7 +231,7 @@
 				});
 			};
 			
-			category.setPagination = function(totalPage, currentPage){
+			department.setPagination = function(totalPage, currentPage){
    		    	$('#pagination').bootpag({
    			        total: totalPage,
    			        page: currentPage,
@@ -218,19 +249,19 @@
    			        firstClass: 'first'
    			    }).on("page", function(event, currentPage){
    			    	check = false;
-   			    	category.listCategory(currentPage);
+   			    	department.listDepartment(currentPage);
    			    }); 
     		};
     		
-    		category.addOrUpdateCategory = function(){
+    		department.addOrUpdateDepartment = function(){
 				KA.createProgressBarWithPopup();
 				frmData = {
-						"categoryId"   : $("#categoryId").val(),
-						"categoryName" : $("#categoryName").val()
+						"departmentId"   : $("#departmentId").val(),
+						"departmentName" : $("#departmentName").val()
 				};
 				$.ajax({ 
-				    url:  $("#frmCategory").attr("action"), 
-				    type: $("#frmCategory").attr("method"),
+				    url:  $("#frmDepartment").attr("action"), 
+				    type: $("#frmDepartment").attr("method"),
 				    data: JSON.stringify(frmData),
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -239,8 +270,8 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	category.listCategory(1);
-				    	$("#p-frmCategory").bPopup().close();
+				    	department.listDepartment(1);
+				    	$("#p-frmDepartment").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
 				    	KA.destroyProgressBarWithPopup();
@@ -249,12 +280,61 @@
 				});
 			};
 			
-			// Get one forum category
-			category.getCategory = function(cateid){
+			department.deleteDepartment = function(){
+				KA.createProgressBarWithPopup();
+				
+				//alert($("#frmConfirm").attr("action")+"/"+$("#ConfirmId").val());				
+				var deptId = $("#ConfirmId").val();
+				
+				$.ajax({ 
+				    url:  $("#frmConfirm").attr("action")+"/"+deptId, 
+				    type: $("#frmConfirm").attr("method"),
+				    //data: JSON.stringify(frmData),
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+				    	KA.destroyProgressBarWithPopup();
+				    	department.listDepartment(1);
+				    	$("#p-frmConfirm").bPopup().close();
+				    },
+				    error:function(data,status,er) { 
+				    	KA.destroyProgressBarWithPopup();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			// Show Form Confirm Department delete Popup
+			$(document).on('click',"#showFrmConfirm", function(){		
+				
+				var deptId = $(this).data("cateid");
+				$("#p-frmConfirm").bPopup({modalClose: false});
+				$("#frmConfirm").attr("method", "DELETE");
+				$("#ConfirmId").val(deptId);
+				//department.deleteDepartment(deptId);
+				//$("#frmDepartment").trigger("reset");				
+			});
+			
+			//delete department equal yes
+			$("#frmConfirm").submit(function(e){				
+				 e.preventDefault();
+				 department.deleteDepartment();
+			});
+			
+			$("#btCancel").on('click', function(){			
+								
+				$("#p-frmConfirm").bPopup().close();
+			});
+			
+			// Get one forum department
+			/* department.getDepartment = function(cateid){
 				KA.createProgressBarWithPopup();
 				console.log(cateid);
-				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category/"+cateid, 
+				 $.ajax({ 
+				    url: "${pageContext.request.contextPath}/rest/log/department/"+cateid, 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -263,8 +343,8 @@
 				    success: function(data) { 
 						console.log(data);
 						if(data.RES_DATA != null){
-							$("#categoryId").val(data.RES_DATA.categoryId); 
-							$("#categoryName").val(data.RES_DATA.categoryName); 
+							$("#departmentId").val(data.RES_DATA.departmentId); 
+							$("#departmentName").val(data.RES_DATA.departmentName); 
 						}
 						KA.destroyProgressBarWithPopup();
 				    },
@@ -272,40 +352,48 @@
 						KA.destroyProgressBarWithPopup();
 				        console.log("error: "+data+" status: "+status+" er:"+er);
 				    }
-				});
-			};
+				}); 			
+			}; */
 			
 			
 			// load all forum cateoty
-			category.listCategory(1);
+			department.listDepartment(1);
+				
 			
-			
-			
-			
-			// Show Form Add Category Popup
-			$("#showFrmAddCategory").click(function(){
-				$("#p-frmCategory").bPopup({modalClose: false});
-				$("#frmCategory").attr("method", "POST");
-				$("#frmCategory").trigger("reset");
+			// Show Form Add Department Popup
+			$("#showFrmAddDepartment").click(function(){
+				$("#p-frmDepartment").bPopup({modalClose: false});
+				$("#frmDepartment").attr("method", "POST");
+				$("#frmDepartment").trigger("reset");
 				$("#btSubmit").text("Add");
 			});
-			
-			// Show Form Update Category Popup
-			$(document).on('click',"#showFrmUpdateCategory", function(){
+						
+			// Show Form Update Department Popup
+			$(document).on('click',"#showFrmUpdateDepartment", function(){
 				//alert($(this).data("cateid"));
-				$("#p-frmCategory").bPopup({modalClose: false});
-				category.getCategory($(this).data("cateid"));
-				$("#frmCategory").trigger("reset");
-				$("#frmCategory").attr("method", "PUT");
+				
+				var deptName = $(this).parent().prev().text();
+				var cateId = $(this).data("cateid");
+				KA.createProgressBarWithPopup();				
+				console.log(cateId);
+				$("#departmentId").val(cateId); 
+				$("#departmentName").val(deptName);
+				
+				$("#p-frmDepartment").bPopup({modalClose: false});
+				//department.getDepartment($(this).data("cateid"));
+				KA.destroyProgressBarWithPopup();
+				
+				//$("#frmDepartment").trigger("reset");
+				$("#frmDepartment").attr("method", "PUT");
 				$("#btSubmit").text("Update");
+				
 			});
 			
-			// Add or update Forum Category
-			$("#frmCategory").submit(function(e){
+			// Add or update Forum Department
+			$("#frmDepartment").submit(function(e){
 				 e.preventDefault();
-				 category.addOrUpdateCategory();
-			});
-			
+				 department.addOrUpdateDepartment();
+			});			
 			
 		});
 		</script>

@@ -40,5 +40,11 @@ public class ELearningController {
 		return "/elearning/playvideo";
 	}
 	
+	@RequestMapping(value="playvideo/error404" , method = RequestMethod.GET)
+	public String  error404(ModelMap m){
+	    m.addAttribute("msg","Video Not Found!");
+		return "/errors/404";
+	}
+	
 	
 }

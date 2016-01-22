@@ -92,7 +92,8 @@ h3 {font-size: 28px;}
 h4 {font-size: 20px;}
 p {
 	line-height: 24px;
-	color: #969eab;
+	/* color: #969eab; */
+	color: #515966;
 }
 .light-font{
 	font-weight: 300;
@@ -4143,7 +4144,7 @@ LIST GROUP
 }
 
 
-a.list-group-item {color: #969eab;}
+a.list-group-item {/* color: #969eab; */ color: #515966;}
 a.list-group-item .list-group-item-heading {color: #333;}
 a.list-group-item:hover,
 a.list-group-item:focus {
@@ -6259,3 +6260,6 @@ iframe {
     font-size:17px;
 }
 
+.ka-question:hover , .ka-username:hover{
+	text-decoration : none;
+}

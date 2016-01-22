@@ -15,116 +15,10 @@
 	  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.css">
 		<!-- Player Responsive -->
 		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
-		
+		<link href="${pageContext.request.contextPath}/resources/assets/css/profile.css" rel="stylesheet">
 		<!-- chhoin  style add -->
 		<style type="text/css">
-		.profile-heading img.avatar{
-		width: 100px;
-		height: 100px;
-		position: absolute;
-		left: 20px;
-		bottom: 30px;
-		z-index: 3;
-		-webkit-box-shadow: 0px 0px 0px 4px rgba(255,255,255,1);
-		-moz-box-shadow: 0px 0px 0px 4px rgba(255,255,255,1);
-		box-shadow: 0px 0px 0px 4px rgba(255,255,255,1);
-		}
-		.profile-heading img.bg-cover {
-		    width: 100%;
-		    position: relative;
-		    z-index: 1;
-		}
-		.the-box .right-action {
-		    position: absolute;
-		    top: -1px;
-		    right: 0;
-		    z-index: 9;
-		}
-		.profile-heading .user-name {
-		    position: absolute;
-		    bottom: 70px;
-		    left: 140px;
-		    padding: 10px 0;
-		    color: #fff;
-		    font-size: 24px;
-		    font-weight: 700;
-		    z-index: 3;
-		}
-		@media (max-width: 480px){
-		.profile-heading img.avatar {
-		    left: 50%;
-		    top: 35%;
-		    margin-left: -35px;
-		    bottom: 190px;
-		    z-index: 3;
-		    width: 70px;
-		    height: 70px;
-			}
-			.profile-heading img.bg-cover {
-		    width: 100%;
-		   	height: 150px;
-		    position: relative;
-		    z-index: 1;
-			}
-			
-			.profile-heading .user-name {
-		    position: absolute;
-		    bottom: 0px;
-		    left: 40%;
-		    color: #fff;
-		    font-size: 20px;
-		    font-weight: 700;
-		    z-index: 3;
-		}
-		}
-		
-		/* for video tap*/
-		.the-box.no-border {
-		    border: none;
-		}
-		.the-box {
-		    padding: 15px;
-		    margin-bottom: 30px;
-		    background: #fff;
-		    border: 1px solid #D5DAE0;
-		    position: relative;
-		}
-		.store-list .store-image {
-		    width: 200px;
-		}
-		.text-black {
-		     font-size: 15px;
-		}
-		.dropdown-menu > li > a {
-		    padding: 0px 14px;
-		}
-		.btn .fa, .btn .glyphicon {
-		    margin: 0 3px;
-		}
-		@media (max-width: 480px){
-		.store-list .store-image, .blog-list .blog-image, .property-list .property-image {
-		    width: 100%;
-		    margin-bottom: 30px;
-		    padding-right: 0;
-		}
-		
-		}
-		
-		/* for profile tap*/
-		.btn-file input[type=file] {
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    min-width: 100%;
-		    min-height: 100%;
-		    font-size: 999px;
-		    text-align: left;
-		    filter: alpha(opacity=0);
-		    opacity: 0;
-		    background: red;
-		    cursor: inherit;
-		    display: block;
-		}
+		 
 		</style>
 </head>
 <body >
@@ -719,7 +613,7 @@
 													</div>
 													
 													
-											</div><!-- ***************#panel-about****************** -->
+											</div><!-- ***************#panel-Playlist****************** -->
 											<div class="tab-pane fade in" id="panel-playlist">
 													<div class="the-box no-border">
 					
@@ -735,7 +629,7 @@
 																</form>
 															</div>
 															<div class="btn-group inline-popups">
-																<a class="btn btn-success dropdown-toggle" href="#form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
+																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
 															</div>
 															
 															<div class="btn-group" id="btcheck">
@@ -760,46 +654,87 @@
 													
 													<div class="row">
 													
-														
-														<div id="getPlayList" style="padding:15px;">`
+														<!-- /////////////this is playlist/////////// -->
+														<div id="getPlayList"  class="mpadding" >`
+															<!-- /////////////this is playlist1/////////// -->
+															<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" >
+																<!-- BEGIN ITEM STORE -->
+																<div class="the-box full store-item text-center checkchb">
+																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
+																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
+																		<a href="#delete" onclick="deletePlayList('deleteplaylist.act?playlistid=306&amp;page=1')" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
+																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="test" onclick="popuptmupdate(306)" class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
+																		<i class="fa fa-edit"></i></a></span>
+																	</div>
+																<a href="playlistdetail.act?playlistid=306">
+																	<div class="new-playlist">
+																		<ul>
+																			<li>3</li>
+																			<li>Videos</li>
+																			<li><i class="fa fa-bars"></i></li>
+																		</ul>
+																	</div>
+																</a>
+																<img src="https://i.ytimg.com/vi/g1dNbTBvEHc/mqdefault.jpg" class="item-image" alt="Image">
+																<div class="the-box no-margin no-border item-des">
+																	<div class="row">
+																	<div class="col-xs-12">
+																		<p class="text-danger"><strong class="text-black">Test playlist</strong></p>
+																		</div><!-- /.col-xs-7 -->
+																	</div><!-- /.row -->
+																</div>
+																</div><!-- /.the-box .no-border .full .store-item --><!-- END ITEM STORE -->
+																
+															</div>
 															
+															<!-- /////////////this is playlist2/////////// -->
+															<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" >
+																<!-- BEGIN ITEM STORE -->
+																<div class="the-box full store-item text-center checkchb">
+																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
+																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
+																		<a href="#delete" onclick="deletePlayList('deleteplaylist.act?playlistid=306&amp;page=1')" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
+																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="test" onclick="popuptmupdate(306)" class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
+																		<i class="fa fa-edit"></i></a></span>
+																	</div>
+																<a href="playlistdetail.act?playlistid=306">
+																	<div class="new-playlist">
+																		<ul>
+																			<li>2</li>
+																			<li>Videos</li>
+																			<li><i class="fa fa-bars"></i></li>
+																		</ul>
+																	</div>
+																</a>
+																<img src="https://i.ytimg.com/vi/g1dNbTBvEHc/mqdefault.jpg" class="item-image" alt="Image">
+																<div class="the-box no-margin no-border item-des">
+																	<div class="row">
+																	<div class="col-xs-12">
+																		<p class="text-danger"><strong class="text-black">programe</strong></p>
+																		</div><!-- /.col-xs-7 -->
+																	</div><!-- /.row -->
+																</div>
+																</div><!-- /.the-box .no-border .full .store-item --><!-- END ITEM STORE -->
+																
+																
+																
+																
+																
+															</div>
 															
 															
 														</div>
+														
+														
 							
-							<!-- <div class="row">
-								<div class="col-sm-4">
 							
-								BEGIN ITEM STORE
-								<div class="the-box full store-item text-center">
-										<div class="new-playlist">
-												<ul>
-													<li>50</li>
-													<li>Videos</li>
-													<li><i class="fa fa-bars"></i></li>
-												</ul>
-										</div>
-										<img src="https://i.ytimg.com/vi/EVhH9qbukkY/mqdefault.jpg" class="item-image" alt="Image">
-									
-										<div class="the-box no-margin no-border item-des">
-										<div class="row">
-											<div class="col-xs-12">
-												<p class="text-danger"><strong>Avengers 2 Age of Ultron</strong></p>
-											
-											</div>
-										</div>
-										</div>
-									</div>
-								
-								
-								</div>
-							</div> -->
 							
 													</div>
 														
 												</div>									
 												
-													<div id="form-create-playlist" class="white-popup mfp-with-anim mfp-hide" style="border-radius:5px" >
+													<div id="form-create-playlist1" class="ka-popup" style="display: none;width: 30%;">
+
 <!-- 													<form method="post" name="frmcreateplaylist" action="/" id="frmcreateplaylist"  class="form-horizontal"> -->
 														  <div class="form-group">
 															<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
@@ -886,26 +821,41 @@
 	
 	
 	<!-- End My Contend -->
-	<jsp:include page="../shared/_footer.jsp" />
-	<script>
+	 <jsp:include page="../shared/_footer.jsp" />
+	    =============================================== */
+        <script type="text/javascript">
+	    
+	    $(document).ready(function(){
+            $("#form-create-playlist").click(function(){ 
+            	//$("#frmLogin").trigger("reset");
+            	$("#form-create-playlist1").bPopup({modalClose: false});
+				
+            });
+          });
+	    
+	    </script>
+                 
+	<!-- <script>
 		$(document).ready(function() {
 			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
 		    $("#menu-toggle").click(function(e) {
 		        $("#wrapper").toggleClass("toggled");
 		    });
 		});
-	    </script>
-	    <script>
+	</script> -->
+	 
+	<!--  <script>
 	      jQuery(document).ready(function ($) {
 	        "use strict";
 			$('#SuppressScrollX_1').perfectScrollbar({suppressScrollX: true});
 	      }); 
-	    </script>
+	    </script>  -->
 	    
-	    <script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
+	    <%-- <script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
 	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
-		 <script>
+		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script> --%>
+		
+		 <!-- <script>
 
 			// save a reference to the video element
 			video = document.querySelector('video'),
@@ -924,6 +874,6 @@
 			//player.logobrand().setDestination("http://instasynch.com/images/youtube.png");
 			// set a flag and then we calculate the ratio from the width and height
 			
-		</script>
+		</script> -->
 </body>
 </html>
