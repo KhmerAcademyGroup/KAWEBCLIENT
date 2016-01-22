@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +30,8 @@
 				  <li><a href="#fakelink">Users</a></li>
 				  <li><a href="#fakelink">Ask Question</a></li>
 				</ol>
-			<h2 class="page-title">Questions</h2>
-			
+				
+			<h2 class="page-title" id="getTotalQuestion"> </h2>
 			
 			<div class="border-bottom">
 				<div class="container">
@@ -40,18 +40,17 @@
 			</div>
 	
 			<div class="row">
-					<div class="col-sm-8 col-md-9">
+					<div class="col-sm-8 col-md-9" >
 						
 						<div class="section">
+								
+								<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
+								
+								<table class="table">
 						
-						<div class="row">
-						<div id="content-forum" style="margin: 10px;">
-							<div id="page-body">
-								<div class="panel">
-									
-									<div class="panel-inner">
-										<table class="table table-hover">
-											<tbody>
+											<tbody id="getQuestion">
+											
+												<!-- 
 												<tr>
 													<td class="expand footable-first-column">
 														<span class="desc-wrapper"> 
@@ -68,200 +67,29 @@
 														</span>
 													</td>
 													<td class="vu-table-td footable-last-column" style="width: 140px;">
-														<small>0 Votes</small>
-														<br> 
-														<small>0 Answers</small>
+														<div style="width: 40px;"><small>0 Votes</small></div>
+														<div style="width: 60px;"><small>0 Answers</small></div>
 													</td>
-													<td style="width: 300px;" class="vu-table-td footable-last-column">
-														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
-														<br> 
-														<small>Jan 18, 2016</small>
-														</span>
+													<td class="vu-table-td footable-last-column">
+														<div style="width: 40px;"><a class="username-coloured" style="color:#37BC9B;" href="#" >Phearun</a></div>
+														<div style="width: 70px;"><small>Jan 18, 2016</small></div>
+														<div><img style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>
 													</td>
 												</tr>
+												 -->
 												
 												
-												<tr>
-													<td class="expand footable-first-column">
-														<span class="desc-wrapper"> 
-															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
-															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
-															<a href="list.act?tag=java">
-																<span class="label label-primary">java</span>
-															</a>
-														</span>
-													</td>
-													<td style="width: 80px;" class="vu-table-td footable-last-column">
-														<small> 0 Votes </small>
-														<br> 
-														<small> 0 Answers </small>
-													</td>
-													<td style="width: 120px;" class="vu-table-td footable-last-column">
-														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
-														<br> 
-														<small>Jan 18, 2016</small>
-														</span>
-													</td>
-												</tr>
-												<tr>
-													<td class="expand footable-first-column">
-														<span class="desc-wrapper"> 
-															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
-															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
-															<a href="list.act?tag=java">
-																<span class="label label-primary">java</span>
-															</a>
-														</span>
-													</td>
-													<td style="width: 80px;" class="vu-table-td footable-last-column">
-														<small> 0 Votes </small>
-														<br> 
-														<small> 0 Answers </small>
-													</td>
-													<td style="width: 120px;" class="vu-table-td footable-last-column">
-														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
-														<br> 
-														<small>Jan 18, 2016</small>
-														</span>
-													</td>
-												</tr>
-												<tr>
-													<td class="expand footable-first-column">
-														<span class="desc-wrapper"> 
-															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
-															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
-															<a href="list.act?tag=java">
-																<span class="label label-primary">java</span>
-															</a>
-														</span>
-													</td>
-													<td style="width: 80px;" class="vu-table-td footable-last-column">
-														<small> 0 Votes </small>
-														<br> 
-														<small> 0 Answers </small>
-													</td>
-													<td style="width: 120px;" class="vu-table-td footable-last-column">
-														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
-														<br> 
-														<small>Jan 18, 2016</small>
-														</span>
-													</td>
-												</tr>
-												<tr>
-													<td class="expand footable-first-column">
-														<span class="desc-wrapper"> 
-															<a  href="question.act?q=229" class="ka-question"> Android theme will not update status bar color Android theme will not update status bar color </a> 
-															<p>Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color Android theme will not update status bar color</p>
-															<a href="list.act?tag=java">
-																<span class="label label-primary">java</span>
-															</a>
-														</span>
-													</td>
-													<td style="width: 80px;" class="vu-table-td footable-last-column">
-														<small> 0 Votes </small>
-														<br> 
-														<small> 0 Answers </small>
-													</td>
-													<td style="width: 120px;" class="vu-table-td footable-last-column">
-														<span class="last-wrapper"> by <a class="username-coloured" style="color: #37BC9B;" href="list.act?uid=987" data-original-title="" title="">Phearun</a>
-														<br> 
-														<small>Jan 18, 2016</small>
-														</span>
-													</td>
-												</tr>
 											</tbody>
 											<tfoot>
-											
+												
 											</tfoot>
 										</table>
-									</div>
+										
+								 <div class="text-center">
+									<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
 								</div>
-								</main>
-							</div>
-							<!-- page-body id in header -->
-						</div>
-						<!-- content-forum in header -->
-					</div>
 						
-							<!-- <div class="list-group success square no-side-border">
-										  
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list read">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										  <a href="mail-read.html" class="list-group-item mail-list">
-											<span class="favorite fa fa-star"></span>
-											<span class="question">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</span>
-											<span class="right-content">11:00 AM</span>
-										  </a>
-										</div> -->
-							</div>
+				</div>
 					</div><!-- /.col-sm-8 col-md-9 -->
 					
 					
@@ -269,22 +97,17 @@
 						
 						<!-- BEGIN SIDEBAR -->
 						<div class="section sidebar">
+							
 							<div class="panel panel-square panel-primary panel-no-border">
 							  <div class="panel-heading lg">
-								<h3 class="panel-title">Categories : </h3>
+								<h3 class="panel-title">Categories</h3>
 							  </div>
 							   <!-- List group -->
-								<div class="list-group success">
-								  <a href="#fakelink" class="list-group-item">Lorem ipsum dolor</a>
-								  <a href="#fakelink" class="list-group-item">Consectetur adipisicing elit</a>
-								  <a href="#fakelink" class="list-group-item">Repudiandae iste deleniti</a>
-								  <a href="#fakelink" class="list-group-item">Illum mollitia culpa</a>
-								  <a href="#fakelink" class="list-group-item">Aliquid facilis possimus</a>
-								  <a href="#fakelink" class="list-group-item">Libero est necessitatibus</a>
-								  <a href="#fakelink" class="list-group-item">Voluptatem eaque dignissimos</a>
-								  <a href="#fakelink" class="list-group-item">Fuga magni consectetur</a>
+								<div class="list-group" id="getCategory">
+								  
+								 
 								</div>
-							</div><!-- /.panel panel-default -->
+							</div>
 							
 						
 							
@@ -330,6 +153,122 @@
 		
 		<jsp:include page="../shared/_footer.jsp" />
 		
+		 <script id="question_tmpl" type="text/x-jquery-tmpl">
+												<tr>
+													<td class="expand footable-first-column">
+														<span class="desc-wrapper"> 
+															<a  href="question.act?q=229" class="ka-question"> 
+																{{= title }}
+															</a> 
+															<p>
+															   <p> {{= detail }} </p>
+															</p>
+															<div class="text-right">
+																<a href="list.act?tag=java">
+																	<span class="label label-primary">java</span>
+																</a>
+															</di>
+														</span>
+													</td>
+													<td class="vu-table-td footable-last-column">
+														<div style="width: 40px;"><small>{{= vote }} Votes</small></div>
+														<div style="width: 60px;"><small>{{= commentCount }} Answers</small></div>
+													</td>
+													<td class="vu-table-td footable-last-column">
+														<div style="width: 100px;" ><a  class="ka-username" style="color:#37BC9B;" href="#" >{{= username }}</a></div>
+														<div style="width: 70px;"><small>{{= postDate }}</small></div>
+														<div><img style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>
+													</td>
+												</tr>
+		</script>
 		
+		 <script id="category_tmpl" type="text/x-jquery-tmpl">
+				<a href="#" data-cateid="{{= categoryId }}" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
+		</script>
+
+		<script type="text/javascript">
+			  $(document).ready(function(){
+			  		var question = {};
+			  		var page = 1;
+			  		var totalPage = 0;
+			  		question.listQuestion = function(page){
+// 			  			KA.createProgressBar();
+	    				$.ajax({ 
+	    				    url: "${pageContext.request.contextPath}/rest/forum/question?page="+page+"&item=10",  
+	    				    type: 'GET',
+	    				    beforeSend: function(xhr) {
+	    	                    xhr.setRequestHeader("Accept", "application/json");
+	    	                    xhr.setRequestHeader("Content-Type", "application/json");
+	    	                },
+	    				    success: function(data) { 
+	    						$("#getTotalQuestion").text(data.PAGINATION.totalCount + " Questions");
+	    						totalPage = data.PAGINATION.totalPages;
+	    						for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["title"]  = shorten(data.RES_DATA[i]["title"] , 80);
+									data.RES_DATA[i]["detail"] = shorten(data.RES_DATA[i]["detail"] , 230);
+									data.RES_DATA[i]["username"] = shorten(data.RES_DATA[i]["username"] , 15);
+								}
+	    						$("#loading").hide();
+	    						if(data.RES_DATA.length>0){
+	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
+	    						}
+	    						$("#btLoadMore").show();
+// 	    						KA.destroyProgressBar();
+	    				    },
+	    				    error:function(data,status,er) { 
+	    				        console.log("error: "+data+" status: "+status+" er:"+er);
+	    				    }
+	    				});
+	    			};
+	    			
+	    			question.listCategory = function(){
+	    				$.ajax({ 
+	    				    url: "${pageContext.request.contextPath}/rest/category?page=1&item=100",  
+	    				    type: 'GET',
+	    				    beforeSend: function(xhr) {
+	    	                    xhr.setRequestHeader("Accept", "application/json");
+	    	                    xhr.setRequestHeader("Content-Type", "application/json");
+	    	                },
+	    				    success: function(data) { 
+	    						if(data.RES_DATA.length>0){
+	    							$("#category_tmpl").tmpl(data.RES_DATA).appendTo("#getCategory");
+	    						}
+	    				    },
+	    				    error:function(data,status,er) { 
+	    				        console.log("error: "+data+" status: "+status+" er:"+er);
+	    				    }
+	    				});
+	    			};
+	    		
+	    			question.listCategory();
+	    			question.listQuestion(page);
+	    			
+	    			$("#btLoadMore").click(function(){
+	    				page++;
+	    				if(page > totalPage){
+	    					$(this).hide();
+	    					return ;
+	    				}
+	    				question.listQuestion(page);
+	    			});
+	    	  });
+			  
+			  function shorten(text, maxLength) {
+				  var ret = text;
+				  if (ret.length > maxLength) {
+				  ret = ret.substr(0,maxLength-3) + "...";
+				  }
+				  return ret;
+		 	 }
+			  
+			  function parseHtmlEnteties(str) {
+				    return str.replace(/&#([0-9]{1,3});/gi, function(match, numStr) {
+				        var num = parseInt(numStr, 10); // read num as normal number
+				        return String.fromCharCode(num);
+				    });
+				}
+		</script>	
+    			
 	</body>
 </html>
+							
