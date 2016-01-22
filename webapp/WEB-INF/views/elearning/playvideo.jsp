@@ -106,7 +106,7 @@
 								<!-- End Video End -->
 								<!-- Video Info -->
 								<div class="col-sm-12">
-									<h3><strong class="text-black"><a>{{VIDEO.videoName}} </a></strong></h3>
+									<h3><strong style="color:#5f5f5f;">{{VIDEO.videoName}}</strong></h3>
 								</div>
 								
 								<div class="col-sm-4 col-xs-12" style="height:75px">
@@ -204,16 +204,16 @@
 										<ul class="media-list media-sm media-dotted" id="comments">
 									
 										</ul>
-										<br />
-										<form name="frmloadmorecomment">
+										
+									</div>
+									
+									<form name="frmloadmorecomment">
 										<input type="hidden" id="commentonvideoid" />
 										<input type="hidden" value="1" id="pagecommentvalue" />
 										<div class="loadMoreComment text-center">
-											<button onclick="btnLoadMoreComment()">Load comment</button>
+											<button onclick="btnLoadMoreComment()" class="btn btn-primary">More comment</button>
 										</div>
-										</form>
-									</div>
-									
+									</form>
 									
 									
 								
@@ -415,8 +415,10 @@
 		    function getUserPlayList(vid){
 		    	if(vid!=null){
 		    		$.get("${pageContext.request.contextPath}/rest/elearning/getuserplaylist", function(data){
-						 $("#getmoreli").replaceWith(getPlaylistname(data,vid));
-						 checkifexist(data,vid);
+		    			if(data.STATUS==true){
+		    				$("#getmoreli").replaceWith(getPlaylistname(data,vid));
+							checkifexist(data,vid);
+		    			} 
 					});
 		    	}	
 			}
@@ -503,12 +505,19 @@
 			}
 			
 			function getCommentVideo(vid){
+				$("#commentonvideoid").val(vid);
 				var page = parseInt($("#pagecommentvalue").val());
-				$.get("${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=" + page, function(data){
+				var getCommentUrl = "";
+				if(page==1){
+					getCommentUrl = "${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=" + page;
+				}else{
+					getCommentUrl = "${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=1" + "&item=" + (page*10);
+				}
+				$.get(getCommentUrl, function(data){
 				
 					if(data.STATUS==true){
-						$("#comments").html(getComments(data.RES_DATA, page));
-						$("#commentonvideoid").val(vid);
+						$("#comments").html(getCommentHTML(data.COMMENT, data.REPLY, page));
+						
 						if(page < parseInt(data.PAGINATION.totalPages)){
 							$(".loadMoreComment").show();
 						}else{
@@ -520,22 +529,20 @@
 					
 			    });
 				
-				<%--  --%>
 			}
 			
 			$("#commentform").submit(function(e){
 				e.preventDefault();
 				
 				if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
-					var comid = $("#commentonvideoid").val();
+					var vdoid = $("#commentonvideoid").val();
 					
 					$.post("${pageContext.request.contextPath}/rest/elearning/video/addcomment" , 
 						{
 							'commenttext'  : $("#commenttext").val(),
-							'v'	: comid
+							'v'	: vdoid
 						},function(data){ 
-							
-							$("#comments").html(getCommentVideo(comid));	
+							$("#comments").html(getCommentVideo(vdoid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
 						});
