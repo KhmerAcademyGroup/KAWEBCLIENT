@@ -187,7 +187,7 @@
 								<!-- Video Comment -->
 								<div class="col-sm-12 col-xs-12">
 									<hr class="hr-style-one">
-									<!-- <form role="form" id="commentform" method="post">
+									<form role="form" id="commentform" method="post">
 										<div class="form-group">
 										<textarea name="commenttext" id="commenttext" class="form-control" style="height: 70px;" placeholder="Your comments here"></textarea>
 										<span style="color: red;" id="commenterror"></span>
@@ -197,14 +197,25 @@
 										<button type="submit" class="btn btn-primary"  >Submit comment</button>
 										
 										</div>
-									</form> -->
+									</form>
 			
 									<div class="the-box no-border">
 										<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
 										<ul class="media-list media-sm media-dotted" id="comments">
 									
 										</ul>
+										<br />
+										<div class="loadMoreComment text-center">
+										<form name="frmloadmorecomment">
+											<input type="hidden" id="commentonvideoid" />
+											<input type="hidden" value="1" id="pagecommentvalue" />
+											<button onclick="btnLoadMoreComment()">Load comment</button>
+										</form>
+										</div>
 									</div>
+									
+									
+									
 								
 							
 								</div>
@@ -401,7 +412,6 @@
 		    });
 		    
 		    
-		    
 		    function getUserPlayList(vid){
 		    	if(vid!=null){
 		    		$.get("${pageContext.request.contextPath}/rest/elearning/getuserplaylist", function(data){
@@ -487,11 +497,25 @@
 				 });
 			}
 			
+			function btnLoadMoreComment(){
+				$("#pagecommentvalue").val(parseInt($("#pagecommentvalue").val()) + 1);
+				getCommentVideo($("#commentonvideoid").val());
+			}
+			
 			function getCommentVideo(vid){
-				alert(vid);
-				$.get("${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=1", function(data){
-					$("#comments").html(getComments(data.RES_DATA));
-					alert(data.RES_DATA[0].commentId);
+				var page = parseInt($("#pagecommentvalue").val());
+				$.get("${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=" + page, function(data){
+				
+					if(data.STATUS==true){
+						$("#comments").html(getComments(data.RES_DATA, page));
+						$("#commentonvideoid").val(vid);
+						if(page==parseInt(data.PAGINATION.totalPages)){
+							$(".loadMoreComment").hide();
+						}
+					}else{
+						$(".loadMoreComment").hide();
+					}
+					
 			    });
 				
 				<%-- $("#commentform").submit(function(e){

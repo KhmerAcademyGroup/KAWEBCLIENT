@@ -99,7 +99,6 @@
 		</div><!-- /.section -->
 		<!-- END CLIENT LOGO SECTION -->
 		
-		<script src="http://192.168.178.186:8080/HRD_MEMO/resources/admin/js/memo.min.js"></script>
 		<jsp:include page="../shared/_footer.jsp" />
 	</body>
 </html>
