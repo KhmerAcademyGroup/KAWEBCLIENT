@@ -1,5 +1,15 @@
+function getComments(data, page){
+	if(page==1){
+		return getCommentHTML(data);
+	}else{
+		var commenthtml = $("#comments").html()
+		return commenthtml + getCommentHTML(data)
+	}
+}
 
-function getComments(data){
+
+
+function getCommentHTML(data){
 	var comment = "";
 	for(var i=0; i<data.length; i++){
 		if(data[i].replyId == "MA=="){
