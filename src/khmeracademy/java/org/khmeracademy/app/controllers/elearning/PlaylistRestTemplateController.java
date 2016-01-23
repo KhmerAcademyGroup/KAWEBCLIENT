@@ -59,7 +59,14 @@ public class PlaylistRestTemplateController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/getplaylistbyplaylistid/"+pid , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
-	
+	 
+	@RequestMapping(value="/rest/elearning/videotoplaylist/{pid}/{vid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> addVideoToPlaylist(@PathVariable(value="pid") String pid ,@PathVariable(value="vid") String vid){
+		System.err.println(pid + "   " +vid);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/addvideotoplaylistDetail/"+pid+"/"+vid , HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 	/*public ResponseEntity<Map<String , Object>> playVideo(
 			@RequestParam(value="pid") String pid

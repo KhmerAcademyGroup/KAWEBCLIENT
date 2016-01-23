@@ -58,7 +58,7 @@
 
 	</div>
 	
-	
+	<!-- ============================================================== -->
 	
 		<div class="modal fade" id="frmadd" tabindex="-1" role="dialog"
 					aria-labelledby="DefaultModalLabel" aria-hidden="true">
@@ -141,6 +141,50 @@
 
 
 
+	<div class="modal fade" id="frmup_date_playlist" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+											<div class="modal-content" style="border-radius: 5px;">
+											  <div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="DefaultModalLabel">Update playlist</h4>
+											  </div>
+											  <div class="modal-body">
+												
+													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
+														 <div class="form-group">
+															<label for="exampleInputEmail1">Playlist name</label>
+															<input type="text" class="form-control" name="playlistname" id="updatename" placeholder="EG. MyTop">
+															<input type="hidden" class="form-control" name="playlistid"  id="updateid" placeholder="EG. MyTop">
+															<input type="hidden" class="form-control" name="thumbnail"  id="thumbnail" placeholder="EG. MyTop">
+															<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+														  </div>
+														  <div class="form-group">
+															<label for="exampleInputPassword1">Description</label>
+															<input type="text" name="description" class="form-control" id="updatedescription" placeholder="EG. My music">
+														 </div>
+														 <div class="form-group">
+															<label>Set View</label>
+															<select class="form-control" id="updatepublicview" name="updatepublicview" tabindex="2">
+																<option value="false">Private</option>
+																<option value="true">Public</option>
+															</select>
+														</div>
+														 	<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
+														 	 <input type="submit" id="btnupdateplaylist"   class="btn btn-success" value="Update">
+													</form> 
+													
+											  </div>
+											  <div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+											  </div><!-- /.modal-footer -->
+											</div><!-- /.modal-content -->
+										  </div><!-- /.modal-doalog -->
+										</div><!-- /#DefaultModal -->	
+										
+										<!-- ================================================================ -->
+
+
+
 	<!-- End My Contend -->
 
 
@@ -213,7 +257,7 @@
 									src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
 									alt="..."></a>
 							</i>
-							<div class="the-box no-border transparent no-margin">
+							<div class="the-box no-border transparent no-margin" style="height: 111px;">
 								<div class="media-body" class="color:blue;">
 
 									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
@@ -235,9 +279,7 @@
        </script>
 
 	<script id="jgetVideoSearch" type="text/x-jquery-tmpl">
- 
-	
-
+ 	
 
 	<div class="the-box no-border store-list">
 		<div class="media">
@@ -249,7 +291,7 @@
 			<div class="media-body" style="overflow: visible">				
 				<div class="btn-group pull-right">					
 					
-						<button class="btn btn-info btadd10" onclick="addVideoToPlaylist(344 ,11 , 1 , 0)">Add</button>
+						<button class="btn btn-info btadd10" onclick="addVideoToPlaylist('{{= videoId}}')">Add</button>
 						
 					
 				</div>
@@ -293,7 +335,7 @@
 			});	
 			
 			 $.ajax({
-				url : "${pageContext.request.contextPath}//rest/elearning/listallvideo/",
+				url : "${pageContext.request.contextPath}/rest/elearning/listallvideo/",
 				method: "GET",
 				success: function(data){									
 					console.log(data);
@@ -321,7 +363,25 @@
 			});	
 			
 			
+			
 		});
+		function addVideoToPlaylist(vid){
+			var playlistId="${playlistid}"; 
+			$.ajax({
+				url : "${pageContext.request.contextPath}/rest/elearning/videotoplaylist/"+playlistId+"/"+vid,
+				method: "GET",
+				success: function(data){
+					alert(data);
+					/* console.log(data);
+					
+					if(data.RES_DATA !=null){					
+						$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");
+						
+					}  */
+				  
+				}
+			});	 
+			}
 	</script>
 	
 </body>
