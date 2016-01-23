@@ -106,7 +106,7 @@
 								<!-- End Video End -->
 								<!-- Video Info -->
 								<div class="col-sm-12">
-									<h3><strong class="text-black"><a>{{VIDEO.videoName}} </a></strong></h3>
+									<h3><strong style="color:#5f5f5f;">{{VIDEO.videoName}}</strong></h3>
 								</div>
 								
 								<div class="col-sm-4 col-xs-12" style="height:75px">
@@ -187,7 +187,7 @@
 								<!-- Video Comment -->
 								<div class="col-sm-12 col-xs-12">
 									<hr class="hr-style-one">
-									<!-- <form role="form" id="commentform" method="post">
+									<form role="form" id="commentform" method="post">
 										<div class="form-group">
 										<textarea name="commenttext" id="commenttext" class="form-control" style="height: 70px;" placeholder="Your comments here"></textarea>
 										<span style="color: red;" id="commenterror"></span>
@@ -197,14 +197,25 @@
 										<button type="submit" class="btn btn-primary"  >Submit comment</button>
 										
 										</div>
-									</form> -->
+									</form>
 			
 									<div class="the-box no-border">
 										<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
 										<ul class="media-list media-sm media-dotted" id="comments">
 									
 										</ul>
+										
 									</div>
+									
+									<form name="frmloadmorecomment">
+										<input type="hidden" id="commentonvideoid" />
+										<input type="hidden" value="1" id="pagecommentvalue" />
+										<div class="loadMoreComment text-center">
+											<button onclick="btnLoadMoreComment()" class="btn btn-primary">More comment</button>
+										</div>
+									</form>
+									
+									
 								
 							
 								</div>
@@ -401,12 +412,13 @@
 		    });
 		    
 		    
-		    
 		    function getUserPlayList(vid){
 		    	if(vid!=null){
 		    		$.get("${pageContext.request.contextPath}/rest/elearning/getuserplaylist", function(data){
-						 $("#getmoreli").replaceWith(getPlaylistname(data,vid));
-						 checkifexist(data,vid);
+		    			if(data.STATUS==true){
+		    				$("#getmoreli").replaceWith(getPlaylistname(data,vid));
+							checkifexist(data,vid);
+		    			} 
 					});
 		    	}	
 			}
@@ -487,34 +499,58 @@
 				 });
 			}
 			
+			function btnLoadMoreComment(){
+				$("#pagecommentvalue").val(parseInt($("#pagecommentvalue").val()) + 1);
+				getCommentVideo($("#commentonvideoid").val());
+			}
+			
 			function getCommentVideo(vid){
-				alert(vid);
-				$.get("${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=1", function(data){
-					$("#comments").html(getComments(data.RES_DATA));
-					alert(data.RES_DATA[0].commentId);
+				$("#commentonvideoid").val(vid);
+				var page = parseInt($("#pagecommentvalue").val());
+				var getCommentUrl = "";
+				if(page==1){
+					getCommentUrl = "${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=" + page;
+				}else{
+					getCommentUrl = "${pageContext.request.contextPath}/rest/elearning/video/comment?v="+ vid + "&page=1" + "&item=" + (page*10);
+				}
+				$.get(getCommentUrl, function(data){
+				
+					if(data.STATUS==true){
+						$("#comments").html(getCommentHTML(data.COMMENT, data.REPLY, page));
+						
+						if(page < parseInt(data.PAGINATION.totalPages)){
+							$(".loadMoreComment").show();
+						}else{
+							$(".loadMoreComment").hide();
+						}
+					}else{
+						$(".loadMoreComment").hide();
+					}
+					
 			    });
 				
-				<%-- $("#commentform").submit(function(e){
-					e.preventDefault();
+			}
+			
+			$("#commentform").submit(function(e){
+				e.preventDefault();
+				
+				if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
+					var vdoid = $("#commentonvideoid").val();
 					
-					if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
-					
-					$.post("add_comment.act" , 
+					$.post("${pageContext.request.contextPath}/rest/elearning/video/addcomment" , 
 						{
 							'commenttext'  : $("#commenttext").val(),
-							'v'	:	<%=dto.getVideoid()%>
+							'v'	: vdoid
 						},function(data){ 
-							
-							$("#comments").html(getComments(data, <%= isLogin %>));	
+							$("#comments").html(getCommentVideo(vdoid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
 						});
-						
-					}else{
-						$("#commenterror").text("Your Comment Can not Empty!");
-					}
-				}); --%>
-			}
+					
+				}else{
+					$("#commenterror").text("Your Comment Can not Empty!");
+				}
+			});
 
 		    
 		</script>

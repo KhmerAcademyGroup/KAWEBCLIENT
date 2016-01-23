@@ -115,7 +115,7 @@ END PAGE
 				<div class="modal-header">
 
 					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>×</span></span>
+						<span class="button b-close"><span>?</span></span>
 					</button>
 					
 					<h4 class="bolded">Login to your Khmer Academy Account</h4>
@@ -177,7 +177,7 @@ END PAGE
 				<div class="modal-header">
 
 					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>×</span></span>
+						<span class="button b-close"><span>?</span></span>
 					</button>
 					
 					<h4 class="bolded">Sign up Khmer Academy account and start Learning</h4>
@@ -348,12 +348,12 @@ Placed at the end of the document so the pages load faster
 		    	            	}else  */
 		    	            	if(data == "Bad credentials"){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
 										  				   '<strong class="alert-link">Invalid username or password! please try again!</strong>'+ 
 														   '</div>');
 		    	            	}else{
 									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
- 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+ 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
 								  				   '<strong class="alert-link">Login successfully!</strong>'+ 
 												   '</div>');
 		    	            		setTimeout(function(){
@@ -448,7 +448,7 @@ Placed at the end of the document so the pages load faster
 	         		  alert($("#password").val() +" "+ $("#repassword").val());
 	         		  if( $("#password").val() != $("#repassword").val()){
 	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
 				  				   '<strong class="alert-link">Passwords do not match!</strong>'+ 
 								   '</div>');
 	         			  return;
@@ -473,13 +473,13 @@ Placed at the end of the document so the pages load faster
 		    	            success: function(data) {
 		    	            	if(data.STATUS == false){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
 				 				  				   '<strong class="alert-link">Email aleady exists</strong>'+ 
 				 							   '</div>');
 		    	            		KA.destroyProgressBarWithPopup();
 		    	            	}else{
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
-					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+ 
+					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
 					 				  				   '<strong class="alert-link">You have been registered succssfully</strong>'+ 
 					 					            '</div>');
 		    	            		
