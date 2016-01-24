@@ -17,7 +17,7 @@ public class ForumController {
 	@RequestMapping(value="/forum/question/{qid}" , method =  RequestMethod.GET)
 	public String questionDetailPage(@PathVariable("qid") String qid , ModelMap m){
 		m.addAttribute("qid", qid);
-		return "forum/listanswer";
+		return "forum/questiondetail";
 	}
 	
 	@RequestMapping(value="/admin/forumcategory",method =  RequestMethod.GET)
