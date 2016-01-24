@@ -26,7 +26,7 @@
 		
 			
 				<ol class="breadcrumb">
-				  <li><a href="#index">Questions</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
 				  <li><a href="#fakelink">Users</a></li>
 				  <li><a href="#fakelink">Ask Question</a></li>
 				</ol>
@@ -112,7 +112,7 @@
 							
 						
 							
-							<div class="the-box no-border tags-cloud">
+							<!-- <div class="the-box no-border tags-cloud">
 									<h4 class="small-heading more-margin-bottom">TAGS</h4>
 										<p>
 											<a href="#fakelink"><span class="label label-primary">Computer</span></a> 
@@ -126,7 +126,7 @@
 											<a href="#fakelink"><span class="label label-primary">Javascript</span></a> 
 											<a href="#fakelink"><span class="label label-primary">CSS Transition</span></a> 
 										</p>
-							</div>
+							</div> 
 							
 							<a href="#fakelink">
 							<img src="assets/img/work/14.jpg" alt="Banner" class="banner">
@@ -135,7 +135,7 @@
 							<a href="#fakelink">
 							<img src="assets/img/work/16.jpg" alt="Banner" class="banner">
 							</a>
-							
+							-->
 						</div><!-- /.section -->
 						<!-- END SIDEBAR -->
 						
@@ -146,11 +146,13 @@
 						
 		</div>
 		
-		
+	
 		
 		
 		<!-- End My Contend -->
-		
+<!-- 		<a href="list.act?tag=java"> -->
+<!-- 																	<span class="label label-primary">java</span> -->
+<!-- 																</a> -->
 		
 		<jsp:include page="../shared/_footer.jsp" />
 		
@@ -158,16 +160,14 @@
 												<tr>
 													<td class="expand footable-first-column">
 														<span class="desc-wrapper"> 
-															<a  href="question.act?q=229" class="ka-question"> 
+															<a  href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" class="ka-question"> 
 																{{= title }}
 															</a> 
 															<p>
 															   <p> {{= detail }} </p>
 															</p>
-															<div class="text-right">
-																<a href="list.act?tag=java">
-																	<span class="label label-primary">java</span>
-																</a>
+															<div class="text-right" id="getTage">
+																<a href='list.act?tag='"{{= tag }}"'><span class='label label-primary'> {{=  tag }} </span> </a>
 															</di>
 														</span>
 													</td>
@@ -182,46 +182,79 @@
 													</td>
 												</tr>
 		</script>
+
+
+
+
+
 		
 		 <script id="category_tmpl" type="text/x-jquery-tmpl">
-				<a href="#" data-cateid="{{= categoryId }}" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
+				<a href="#" data-cateid="{{= categoryId }}" id="listQuestionByCate" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
 		</script>
 
 		<script type="text/javascript">
 			  $(document).ready(function(){
-			  		var question = {};
+			  	
+				  
+				    var question = {};
 			  		var page = 1;
 			  		var totalPage = 0;
+			  		var url ="";
+			  		var type ="All";
+			  		var empty = true;
 			  		
-			  		question.listQuestion = function(page){
-// 			  			KA.createProgressBar();
+			  		question.listQuestion = function(userid,cateid,page){
+			  			if(empty == true){
+			  				$("#getQuestion").empty();			  				
+			  			}
+			  			$("#loading").show();
+			  			$("#btLoadMore").hide();
+			  			if(type== "All"){
+			  				url = "${pageContext.request.contextPath}/rest/forum/question?page="+page+"&item=10";
+			  			}else if(type== "ByUser"){
+			  				url = "${pageContext.request.contextPath}/rest/forum/question/u/"+userid+"?page="+page+"&item=10";
+			  			}else if(type== "ByCate"){
+			  				url = "${pageContext.request.contextPath}/rest/forum/question/c/"+cateid+"?page="+page+"&item=10";
+			  			}
 	    				$.ajax({ 
-	    				    url: "${pageContext.request.contextPath}/rest/forum/question?page="+page+"&item=10",  
+	    				    url: url,  
 	    				    type: 'GET',
 	    				    beforeSend: function(xhr) {
 	    	                    xhr.setRequestHeader("Accept", "application/json");
 	    	                    xhr.setRequestHeader("Content-Type", "application/json");
 	    	                },
-	    				    success: function(data) { 
+	    				    success: function(data) {  console.log(data);
 	    						$("#getTotalQuestion").text(data.PAGINATION.totalCount + " Questions");
 	    						totalPage = data.PAGINATION.totalPages;
 	    						for(var i=0;i<data.RES_DATA.length;i++){
 									data.RES_DATA[i]["title"]  = shorten(data.RES_DATA[i]["title"] , 80);
 									data.RES_DATA[i]["detail"] = shorten(data.RES_DATA[i]["detail"] , 230);
 									data.RES_DATA[i]["username"] = shorten(data.RES_DATA[i]["username"] , 15);
+// 									var tags = data.RES_DATA[i]["tag"].split(",");
+// 									var t = "";
+// 									for(var j=0; j<tags.length; tags++){
+// 									     t += "<a href='list.act?tag='"+tags[j]+"'><span class='label label-primary'>"+tags[j]+"</span></a>" ;
+// 									}
+// 									data.RES_DATA[i]["tag"]  = t;
 								}
 	    						$("#loading").hide();
 	    						if(data.RES_DATA.length>0){
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						}
-	    						$("#btLoadMore").show();
-// 	    						KA.destroyProgressBar();
+	    						if(page >= data.PAGINATION.totalPages){ 
+	    							$("#btLoadMore").hide();
+	    						}else{
+	    							$("#btLoadMore").show();
+	    						}
 	    				    },
 	    				    error:function(data,status,er) { 
 	    				        console.log("error: "+data+" status: "+status+" er:"+er);
 	    				    }
 	    				});
+	    				
+	    				
 	    			};
+	    			
 	    			
 	    			question.listCategory = function(){
 	    				$.ajax({ 
@@ -243,20 +276,56 @@
 	    			};
 	    		
 	    			question.listCategory();
-	    			question.listQuestion(page);
+	    			question.listQuestion(null,null,page);
 	    			
-	    			$("#btLoadMore").click(function(){
+	    			
+	    			
+	    			$(document).on('click',"#listQuestionByCate" , function(){ 
+	    			    type="ByCate";
+	    			    empty = true;
+	    				page = 1;
+	    				$("#btLoadMore").attr("data-cateid" ,$(this).data("cateid") );
+	    				question.listQuestion(null,$(this).data("cateid"),page);	    				
+	    			});
+	    			
+	    			
+	    			
+	    			$("#btLoadMore").click(function(){  console.log(type);
 	    				page++;
-	    				if(page > totalPage){
-	    					$(this).hide();
-	    					return ;
-	    				}
-	    				$(this).hide();
+	    				empty = false;
+// 	    				if(page > totalPage){
+// 	    					$(this).hide();
+// 	    					return ;
+// 	    				}
+// 	    				$(this).hide();
 						$("#loading").show();
-	    				question.listQuestion(page);
-// 	    				$(this).show();
+						if(type=="All"){
+							question.listQuestion(null,null,page);
+						}else if(type=="ByCate"){
+							question.listQuestion(null,$(this).data("cateid"),page);	   
+						}
 	    			});
 	    	  });
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
 			  
 			  function shorten(text, maxLength) {
 				  var ret = text;
@@ -273,6 +342,7 @@
 				    });
 				}
 		</script>	
+    			
     			
 	</body>
 </html>
