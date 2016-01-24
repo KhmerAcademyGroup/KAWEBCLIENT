@@ -3,6 +3,9 @@ package org.khmeracademy.app.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONObject;
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -100,6 +105,23 @@ public class AuthenticationController {
 			map.put("STATUS", false);
 		}
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/logintest")
+	public void login(HttpServletRequest request){
+
+		String username ="admin@gmail.com";
+		String password ="123";
+	    UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
+
+	    // Authenticate the user
+	    //Authentication authentication = authenticationManager.authenticate(authRequest);
+	    SecurityContext securityContext = SecurityContextHolder.getContext();
+	    securityContext.setAuthentication(authRequest);
+
+	    // Create a new session and add the security context.
+	    HttpSession session = request.getSession(true);
+	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 	}
 
 }
