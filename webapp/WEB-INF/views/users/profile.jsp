@@ -135,122 +135,40 @@
 										
 											<!-- ****************Videos tap *********************-->
 											<div class="tab-pane fade in active" id="panel-videos">
+													<div id="getVideo" style=" display: none;">
+															<div class="alert alert-success fade in alert-dismissable">
+															<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><strong>No </strong> video </div>
+													</div>
+													<div id="videocover">
 													<div class="btn-toolbar top-table" role="toolbar">
 													<div class="btn-group">
 														<form role="form" id="frmSetNumrowHistory">
-															<select class="form-control" id="setNumrowHistory">
-																<option>10</option>
-																<option>20</option>
-																<option>30</option>
-																<option>50</option>
-															</select>
-														</form>
+																<select class="form-control" id="limitvideo" onchange="chooseVideo()" >
+																	<option value="5">5</option>
+																    <option value="10" selected="selected">10</option>
+																    <option value="20">20</option>
+																    <option value="50">50</option>
+																    <option value="100">100</option>
+																</select>
+															</form>
 													</div>
 													
 													<div class="btn-group pull-right">
 														<form role="form">
-															<input type="text" class="form-control" id="tfsearchHistory" placeholder="Search Video">
+															<input type="text" class="form-control" id="searchVideo" onkeyup="mySearchVideo();" placeholder="Search Video">
 														</form>
 										
 													</div>
 													
 												</div>
-													<!-- start stor-list -->
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end stor-list -->
+													<div id="videoresult"></div>
 													
-													<!-- start stor-list -->
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end stor-list -->
-													
-													<!-- start stor-list -->
-													<div class="the-box no-border store-list">
-														<div class="media">
-															<a class="pull-left" href="../elearning/play.act?v=827">
-																<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/Jrw7Ms66uB0/mqdefault.jpg">
-															</a><div class="clearfix visible-xs"></div>   
-															<div class="media-body" style="overflow:visible">       
-																<a href="#fakelink"></a>  
-																<div class="btn-group pull-right"> 	  
-																	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> </button> 
-																	<ul class="dropdown-menu" role="menu"> 
-																		<li><a href="../elearning/play.act?v=827">Play</a></li> 
-																		<li><a href="#" onclick="deletehistory('deletehistory.act?historyid=132188&amp;page=1')">Remove from History</a></li> 
-																	</ul> 
-																</div> 
-																<ul class="list-inline"> 
-																	<li><a href="../elearning/play.act?v=827"><strong class="text-black">1. Installation</strong></a></li><br>
-																	<li><a><span class="small text-muted" style="color:#AAB2BD"> by Admin</span></a></li>
-																</ul>
-																<p class="hidden-xs"> </p><span class="small text-muted" style="color:#AAB2BD">
-																<i class="fa fa-eye">&nbsp;&nbsp;548</i>      &nbsp;&nbsp;&nbsp; </span>
-															</div>
-														</div>
-													</div><!-- end stor-list -->
 													<!-- page gination -->
-													<div class='text-center'>
-													<nav>
-													  <ul class="pagination">
-													    <li>
-													      <a href="#" aria-label="Previous">
-													        <span aria-hidden="true">&laquo;</span>
-													      </a>
-													    </li>
-													    <li class="active"><a href="#" >1</a></li>
-													    <li><a href="#">2</a></li>
-													    <li><a href="#">3</a></li>
-													    <li><a href="#">4</a></li>
-													    <li><a href="#">5</a></li>
-													    <li>
-													      <a href="#" aria-label="Next">
-													        <span aria-hidden="true">&raquo;</span>
-													      </a>
-													    </li>
-													  </ul>
-													</nav>
-													</div>
+													<div class="text-center">
+				    									<div id="demo5_top" class="demo5_top"></div>
+				    								</div>
+				    							</div>
+													
 											</div>
 											
 											
@@ -488,12 +406,18 @@
 											
 											<!-- *******************start history****************** -->
 											<div class="tab-pane fade in" id="panel-history">
-												
+													
+														<div id="getHistory" style=" display: none;">
+															<div class="alert alert-success fade in alert-dismissable">
+															<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><strong>No </strong> historical video </div>
+														</div>
+														
+														<div id="hiscover">
 														<div class="btn-toolbar top-table" role="toolbar">
 															<div class="btn-group">
 																<form role="form" id="frmSetNumrowHistory">
 																	<select class="form-control" id="limithistory" onchange="chooseHistory()" >
-																		<option value="5">5</option>
+																		<option value="5">5</option>searchvideo
 																	    <option value="10" selected="selected">10</option>
 																	    <option value="20">20</option>
 																	    <option value="50">50</option>
@@ -502,14 +426,14 @@
 																</form>
 															</div>
 															<div class="btn-group">
-																<a href="#" onclick="deleteallhistory('deleteallhistory.act')" class="btn btn-danger">
+																<a href="#" onclick="removeAllHistory(userid)" class="btn btn-danger">
 																	<i class="fa fa-ban"></i> Clear All History
 																</a>
 															</div>
 									
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" class="form-control" id="searchHistory" onkeyup="mySearchHistory();" placeholder="Search category">
+																	<input type="text" class="form-control" id="searchHistory" onkeyup="mySearchHistory();" placeholder="Search History">
 																</form>
 									
 															</div>
@@ -522,7 +446,7 @@
 													<div class="text-center">
 				    									<div id="demo4_top" class="demo4_top"></div>
 				    								</div>
-													
+													</div>
 													
 											</div><!-- ***************#panel-Playlist****************** -->
 											<div class="tab-pane fade in" id="panel-playlist">
@@ -557,36 +481,7 @@
 													
 														<!-- /////////////this is playlist/////////// -->
 														<div id="getPlayList"  class="mpadding" >`
-															<!-- /////////////this is playlist1/////////// -->
-															<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" >
-																<!-- BEGIN ITEM STORE -->
-																<div class="the-box full store-item text-center checkchb">
-																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
-																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
-																		<a href="#delete" class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
-																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="editPlaylist"  class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
-																		<i class="fa fa-edit"></i></a></span>
-																	</div>
-																<a href="playlistdetail.act?playlistid=306">
-																	<div class="new-playlist">
-																		<ul>
-																			<li>3</li>
-																			<li>Videos</li>
-																			<li><i class="fa fa-bars"></i></li>
-																		</ul>
-																	</div>
-																</a>
-																<img src="https://i.ytimg.com/vi/g1dNbTBvEHc/mqdefault.jpg" class="item-image" alt="Image">
-																<div class="the-box no-margin no-border item-des">
-																	<div class="row">
-																	<div class="col-xs-12">
-																		<p class="text-danger"><strong class="text-black">Test playlist</strong></p>
-																		</div><!-- /.col-xs-7 -->
-																	</div><!-- /.row -->
-																</div>
-																</div><!-- /.the-box .no-border .full .store-item --><!-- END ITEM STORE -->
-																
-															</div>
+															
 															
 															<!-- /////////////this is playlist2/////////// -->
 															<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" >
@@ -616,10 +511,6 @@
 																	</div><!-- /.row -->
 																</div>
 																</div><!-- /.the-box .no-border .full .store-item --><!-- END ITEM STORE -->
-																
-																
-																
-																
 																
 															</div>
 															
@@ -815,17 +706,17 @@
 		var totalofrecord =0;
 		var numofpage=1;
 		var url="${pageContext.request.contextPath}";
-		var userid="NTk=";
+		var userid="MQ==";//
 		
 		
-		//my choice what list or search
+		 //my choice what list or search
 		 function chooseHistory(){
 			var key =$("#searchHistory").val();
 			//alert(key);
 			if(key.length == 0){
 				mystart();
 			}else{
-				search();
+				mySearchHistory();
 			}
 		} 
 		
@@ -863,7 +754,12 @@
 	            //data: JSON.stringify(JSONObject),
 	            success: function(data){
 	            	//alert(data.RES_DATA.length);
-	            	$("#historyresult").html(listarticles(data));
+	            	if(data.STATUS == true){
+	            		$("#historyresult").html(listarticles(data));
+	            	}else{
+	            		$("#getHistory").show();
+		    	   		$("#hiscover").hide();
+	            	}
 	            	//asing value to totalrecord
 	            	
 	            },
@@ -878,7 +774,9 @@
 			// alert(data.RES_DATA.videoId);
 			var str="";
 				for(var i=0; i<data.RES_DATA.length ; i++){
-					str += "<div class='the-box no-border store-list'>" 
+					
+					str +="<div id='"+i+"'>"
+							+ "<div class='the-box no-border store-list ' >" 
 							+"<div class='media'>"
 								+"<a class='pull-left' href="+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+">"
 									+"<img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+data.RES_DATA[i].videoUrl+"/mqdefault.jpg'>"
@@ -890,7 +788,7 @@
 									+"<button type='button' class='btn btn-default btn-sm dropdown-toggle' data-toggle='dropdown'><i class='fa fa-cog'></i> </button>" 
 										+"<ul class='dropdown-menu' role='menu'>" 
 											+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'>Play</a></li>" 
-											+"<li><a href='#' onclick=''>Remove from History</a></li>"
+											+"<li><a href='#' onclick=removeFromHistory('"+data.RES_DATA[i].historyId+"',"+i+")>Remove from History</a></li>"
 										+"</ul>"
 									+"</div>" 
 								+"<ul class='list-inline'>" 
@@ -901,6 +799,7 @@
 									+"<i class='fa fa-eye'>&nbsp;&nbsp;"+data.RES_DATA[i].videoViewCount+"</i>      &nbsp;&nbsp;&nbsp; </span>"
 									+"</div>"
 								+"</div>"
+							+"</div>"
 							+"</div>"
 						+"</div>";
 				}
@@ -948,18 +847,18 @@
 		function mySearchHistory(){
 			var key =$("#searchHistory").val();
 			//alert(key);
-			if(key.length > 3){
+			if(key.length > 2){
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/searchuserhistory/'+userid+'/'+key+'?page='+offset+'&item='+limit, 
 				       type:'get',
 				       contentType: 'application/json;charset=utf-8', // type of data
 				       success: function(data) { 
 				    	   	if(data.STATUS == true){
-				    	   		//totalofrecord= data.TOTAL_REC;
-				    	   		//getDbRow();
+				    	   		totalofrecord= data.TOTAL;
+				    	   		getDbRow();
 					    	   	$("#historyresult").html(listarticles(data));
 					    	   
-				    	   		//alert(data.TOTAL_REC);
+				    	   		//alert(data.TOTAL);
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
 				                console.log("Success..." + data);
@@ -973,8 +872,249 @@
 			
 		
 		} 
+		
+		function removeFromHistory(hid, id){ //console.log("#div"+hid); $("#div"+hid).remove(); return ;
+			
+				 $.ajax({  
+					 	url: url+'/rest/user/profile/removefromhistory/'+hid,
+				       type:'delete',
+				       contentType: 'application/json;charset=utf-8', // type of data
+				       success: function(data) { 
+				    	   	if(data.STATUS == true){
+				    	   		$('#'+id).hide();
+				    	   		//alert("was remove");
+				    	   	}
+				    	   		//$("#showresult").html(listarticles(data));
+				                console.log("Success..." + data);
+				       }  ,  
+				   		error: function(data){
+				   		alert("Unsuccess" + data +"OR Empty");
+				   		console.log("ERROR..." + data);
+				   	}
+				   }); 
+		} 
+		
+		function removeAllHistory(uid){
+			alert(uid);
+				 $.ajax({  
+					 	url: url+'/rest/user/profile/removeallhistory/'+uid,
+				       type:'delete',
+				       contentType: 'application/json;charset=utf-8', // type of data
+				       success: function(data) { 
+				    	   	if(data.STATUS == true){
+				    	   		$("#getHistory").show();
+				    	   		$("#hiscover").hide();
+				    	   		
+				    	   	}
+				    	   		//$("#showresult").html(listarticles(data));
+				                console.log("Success..." + data);
+				       }  ,  
+				   		error: function(data){
+				   		alert("Unsuccess" + data +"OR Empty");
+				   		console.log("ERROR..." + data);
+				   	}
+				   }); 
+		} 
+		 
+		
+		///////******************video**********//////////
+		var limitv=0;
+		var offsetv=1;
+		var totalofrecordv =0;
+		var numofpagev=1;
+		
+		//my choice what list or search
+		 function chooseVideo(){
+			var key =$("#searchVideo").val();
+			//alert(key);
+			if(key.length == 0){
+				mystartVideo();
+			}else{
+				searchVideo();
+			}
+		} 
+		
+		mystartVideo();
+		function mystartVideo(){
+			limitv=$("#limitvideo").val();
+			//alert(limitv);
+	    	 $.ajax({
+	            url: url+'/rest/user/profile/listuservideo/'+userid+'?page='+offsetv+'&item='+limitv,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            success: function(data){
+	            	totalofrecordv=data.PAGINATION.totalCount;
+	            	//this two method will start after get the total record
+	            	//alert(data.PAGINATION.totalPages);
+	            	getDbRowVideo();
+	            	listAllVideo(1);
+	        		
+	            },
+	            error: function(data){
+	            	alert("1start () unsuccess data");
+	            }
+	        });	 
+	    	 
+		}
+		
+		function getDbRowVideo(){
+			var npsv=totalofrecordv/limitv;
+			
+			if(!(totalofrecordv % limitv==0)){
+				numofpagev = Math.floor(npsv);
+				numofpagev+=1;		
+			}else{	
+				numofpagev=npsv;
+			}
+			//$("#recordresult").html("Records :"+totalofrecord);
+			//$("#pageresult").html("Pages :"+ numofpage);
+			loadPaginationVideo();
+		
+		}
+		
+		function loadPaginationVideo(){
+			//alert(numofpagev);
+			$('.demo5_top').bootpag({
+		        total: numofpagev,
+		        
+		        maxVisible: 5,
+		        leaps: true,
+		        firstLastUse: true,
+		        first: '&#8592;',
+		        last: '&#8594;',
+		        wrapClass: 'pagination',
+		        activeClass: 'active',
+		        disabledClass: 'disabled',
+		        nextClass: 'next',
+		        prevClass: 'prev',
+		        lastClass: 'last',
+		        firstClass: 'first'
+		    }).on("page", function(event, num){
+		    	listAllVideo(num);
+		    	//alert("pagination ="+num);
+		    }); 
+		}
+		
+		function listAllVideo(offsetv){
+			//alert(mypage);
+	    	
+	    	
+	    	$.ajax({
+	    		url: url+'/rest/user/profile/listuservideo/'+userid+'?page='+offsetv+'&item='+limitv,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		$("#videoresult").html(listVideoDetail(data));
+	            	}else{
+	            		$("#getVideo").show();
+		    	   		$("#videocover").hide();
+	            	}
+	            	//asing value to totalrecord
+	            	
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });	    	
+			   
+		}
+		
+	function listVideoDetail(data){
+			
+			// alert(data.RES_DATA.videoId);
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
+					str += "<div class='the-box no-border store-list ' id='div"+data.RES_DATA[i].historyId+"'>" 
+							+"<div class='media'>"
+								+"<a class='pull-left' href="+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+">"
+									+"<img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+data.RES_DATA[i].youtubeUrl+"/mqdefault.jpg'>"
+								+"</a>"
+							+"<div class='clearfix visible-xs'></div>"   
+							+"<div class='media-body' style='overflow:visible'>"       
+								+"<a href='#fakelink'></a>" 
+								+"<div class='btn-group pull-right'>"	  
+									+"<button type='button' class='btn btn-default btn-sm dropdown-toggle' data-toggle='dropdown'><i class='fa fa-cog'></i> </button>" 
+										+"<ul class='dropdown-menu' role='menu'>" 
+											+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'>Play</a></li>" 
+											+"<li><a href='#' onclick=disableVideo('"+data.RES_DATA[i].videoId+"')>Disable Video</a></li>"
+										+"</ul>"
+									+"</div>" 
+								+"<ul class='list-inline'>" 
+									+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'><strong class='text-black'>"+data.RES_DATA[i].videoName+"</strong></a></li><br>"
+									+"<li><a><span class='small text-muted' style='color:#AAB2BD'>"+data.RES_DATA[i].username+"</span></a></li>"
+								+"</ul>"
+									+"<p class='hidden-xs'> </p><span class='small text-muted' style='color:#AAB2BD'>"
+									+"<i class='fa fa-eye'>&nbsp;&nbsp;"+data.RES_DATA[i].viewCounts+"</i>      &nbsp;&nbsp;&nbsp; </span>"
+									+"</div>"
+								+"</div>"
+							+"</div>"
+						+"</div>";
+				}
+						
+			
+				return str;
+		}
+		
+	function mySearchVideo(){
+		var key =$("#searchVideo").val();
+		//alert(key);
+		if(key.length > 2){
+			 $.ajax({  
+				 	url: url+'/rest/user/profile/searchuserhvideo/'+userid+'/'+key+'?page='+offset+'&item='+limit+'&status=true', 
+			       type:'get',
+			       contentType: 'application/json;charset=utf-8', // type of data
+			       success: function(data) { 
+			    	   	if(data.STATUS == true){
+			    	   		totalofrecordv= data.PAGINATION.totalCount;
+			    	   		getDbRowVideo();
+				    	   	$("#videoresult").html(listVideoDetail(data));
+			    	   		//alert(data.PAGINATION.totalCount);
+			    	   	}
+			    	   		//$("#showresult").html(listarticles(data));
+			                console.log("Success..." + data);
+			       }  ,  
+			   		error: function(data){
+			   		alert("Unsuccess" + data +"OR Empty");
+			   		console.log("ERROR..." + data);
+			   	}
+			   }); 
+		}
+		
+	
+	}
+	
+	function disableVideo(vid){
+		
+			  $.ajax({  
+				 	url: url+'/rest/user/profile/disablevideo/'+vid,
+			       type:'GET',
+			       contentType: 'application/json;charset=utf-8', // type of data
+			       success: function(data) { 
+			    	   	if(data.STATUS == true){
+			    	   		alert("disable work");
+			    	   		
+			    	   	}
+			    	   		//$("#showresult").html(listarticles(data));
+			                console.log("Success..." + data);
+			       }  ,  
+			   		error: function(data){
+			   		alert("Unsuccess" + data +"OR Empty");
+			   		console.log("ERROR..." + data);
+			   	}
+			   });  
+	} 
+		
+	///********playlist*******/////////
+	
+	
+	
+		
 	    </script>
-                 
+         
+               
 	
 </body>
 </html>
