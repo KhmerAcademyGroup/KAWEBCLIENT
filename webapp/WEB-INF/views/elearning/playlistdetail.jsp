@@ -318,9 +318,12 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var playlistId="${playlistid}"; 
+			var page="${param['page']}";			
+			var item="${param['item']}";
+			alert(item + " "+ page+" "+playlistId);
 				
 			$.ajax({
-				url : "${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId,
+				url : "${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?page="+page+"&item="+item,
 				method: "GET",
 				success: function(data){									
 					console.log(data);
