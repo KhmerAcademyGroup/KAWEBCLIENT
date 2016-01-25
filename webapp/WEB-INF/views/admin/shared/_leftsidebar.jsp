@@ -28,7 +28,7 @@
 					<li><a href="${pageContext.request.contextPath}/admin/report/university"><i class="fa fa-dashboard icon-sidebar"></i>University Report</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/report/category"><i class="fa fa-dashboard icon-sidebar"></i>Category Report</a></li>
 				   	<li><a href="${pageContext.request.contextPath}/admin/report/precourse"><i class="fa fa-dashboard icon-sidebar"></i>PreCourse Student</a></li>
-				   	<li><a href="${pageContext.request.contextPath}/admin/report/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
+				   	<li><a href="${pageContext.request.contextPath}/admin/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
 				   					   	
 				</ul>
 				
