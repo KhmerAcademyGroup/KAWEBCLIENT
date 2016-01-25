@@ -403,8 +403,10 @@
 		
 		<script>
 			$("#full-img-slide").backstretch([
-			  "resources/assets/img/image-1.jpg",
-			  "resources/assets/img/image-2.jpg"
+			  "resources/assets/img/main_slides/1.jpg",
+			  "resources/assets/img/main_slides/2.jpg",
+			  "resources/assets/img/main_slides/3.jpg",
+			  "resources/assets/img/main_slides/4.jpg"
 			  ], {
 				fade: 750,
 				duration: 6000

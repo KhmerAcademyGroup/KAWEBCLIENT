@@ -47,9 +47,12 @@ public class PlaylistRestTemplateController {
 	}
 	
 	@RequestMapping(value="/rest/elearning/listallvideo" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> listVideoAddtoPlayList(){
+	public ResponseEntity<Map<String , Object>> listVideoAddtoPlayList(
+			@RequestParam(value="page", required=false, defaultValue="1") int page,
+			@RequestParam(value="item", required=false, defaultValue="10") int item
+			){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all" , HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
@@ -59,8 +62,25 @@ public class PlaylistRestTemplateController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/getplaylistbyplaylistid/"+pid , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	 
+	@RequestMapping(value="/rest/elearning/videotoplaylist/{pid}/{vid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> addVideoToPlaylist(@PathVariable(value="pid") String pid ,@PathVariable(value="vid") String vid){
+		System.err.println(pid + "   " +vid);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/addvideotoplaylistDetail/"+pid+"/"+vid , HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
-	
+	 
+		@RequestMapping(value="/rest/elearning/listvideouser/{uid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,@RequestParam(value="page", required=false, defaultValue="1") int page,
+				@RequestParam(value="item", required=false, defaultValue="10") int item,
+				@RequestParam(value="status", required=false, defaultValue="true") boolean status){			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);			
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/u/"+uid+"?page="+page+"&item="+item+"&status="+status , HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 	/*public ResponseEntity<Map<String , Object>> playVideo(
 			@RequestParam(value="pid") String pid
 			){

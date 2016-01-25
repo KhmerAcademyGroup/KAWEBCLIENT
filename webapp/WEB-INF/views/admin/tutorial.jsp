@@ -47,13 +47,19 @@
 		<!-- BEGIN PAGE CONTENT -->
 		<div class="page-content">
 			<div class="container-fluid">
-
-			   <h1 class="page-heading">Forum Tag</h1>
+				<br/>
+			   <div class="panel panel-info"><div class="panel-heading"><h1 class="panel-title">
+									<i class="fa fa-tasks"></i><a href="index.act">
+										List Tutorials
+										</a>
+									</h1>
+								  </div>
+				</div>
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button id="showFrmAddCategory" type="button" class="btn btn-success">
+							<button id="showFrmAddCategory" type="button" class="btn btn-success" data-toggle="modal" data-target="#myPopup">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
@@ -73,12 +79,15 @@
 							<thead>
 								<tr>
 									<th style="width: 30px;">No</th>
-									<th>Tag</th>
+									<th>Title</th>									
+									<th>Index</th>
+									<th>Category</th>
+									<th>User Name</th>									
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="content">
-							
+								
 							</tbody>
 							
 						</table>
@@ -97,33 +106,88 @@
 			</div>
 			<!-- /.container-fluid -->
 
-		<div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/category" method="POST">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" aria-hidden="true">
-							<span class="button b-close"><span>×</span></span>
-						</button>
-						<h4 class="modal-title">Forum Tag</h4>
-					</div>
-					<div class="modal-body" >
-									
-									<input type="hidden"  id="categoryId" class="form-control"  name="categoryId">
-										
-									<div class="form-group">
-										<label class="col-lg-3 control-label">Tag</label>
-										<div class="col-lg-5">
-											<input type="text" id="categoryName" class="form-control" required="required" name="categoryName">
-										</div>	
+			<!-- BootStrap Model Popup -->		
+				<!-- Modal -->
+			<div id="myPopup" class="modal fade" role="dialog">
+			  <div class="modal-dialog modal-lg">
+			
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Modal Header</h4>
+			      </div>
+			      <div class="modal-body">
+			       	<div>
+						<form id="tutorial" name="tutorial" method="post" action="addtutorial_pro.act" class="form-horizontal" role="form">
+							<fieldset>
+								
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label class="control-label">Tutorial Title<span class="required">*</span></label>
 									</div>
-					</div>
-					<div class="modal-footer">
-							<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
-					</div>
-				</div>
-			</form>	
-		</div>
+									<div class="col-lg-12">
+										<input type="text" class="form-control" name="txttitle" id="txttitle" />
+									</div>
+								</div> 
+								
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label class="control-label">Description<span class="required">*</span></label>
+									</div>
+									<div class="col-lg-12">
+										<textarea class="form-control summernote-lg" name="txtdescription" id="txtdescription"></textarea>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-lg-1 control-label">Index<span class="required">*</span></label>
+									<div class="col-lg-4">
+										<input type="text" class="form-control" name="txtindex" id="txtindex" />
+									</div>
+								</div> 
+								
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label class="col-lg-1 control-label">Category<span class="required">*</span></label>
+									</div>
+									<div class="col-lg-12">
+							          <select data-placeholder="Select categories" name="txtcategory" id="txtcategory" class="form-control chosen-select" tabindex="16">
+							      
+							            <option value="">category</option>
+							          	<option value="">category</option>
+							          	<option value="">category</option>
+							          	<option value="">category</option>
+							          	 <option value="">category</option>
+							          	<option value="">category</option>
+							          	<option value="">category</option>
+							          	<option value="">category</option>
+							        
+							          </select>
+									</div>
+								</div>
+							</fieldset>
 
+							<div class="form-group">
+							
+								<div class="col-lg-9 col-lg-offset-3">
+									
+									<input type="submit" id="bttutorialsave" class="btn btn-info" value="Save"/>
+								</div>
+							</div>
+							
+						</form>
+					</div><!-- /.the-box -->
+			       
+			       
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			
+			  </div>
+			</div>
 
 
 
@@ -150,9 +214,12 @@
 		<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO }}</td>
-				<td>{{= categoryName}}</td>
+				<td>{{= title}}</td>
+				<td>{{= index }}</td>
+				<td>{{= categoryName }}</td>
+				<td>{{= username }}</td>
 				<td> 
-   		 			<i data-cateid="{{= categoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
+   		 			<i data-tutorialid="{{= tutorialId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateTutorial"></i>
             		<!-- <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i> -->
          		</td>
 			</tr>
@@ -162,15 +229,15 @@
          
 		<script type="text/javascript">		
 		
-		var category = {};
+		var tutorial = {};
 		var check = true;
 		
 		$(document).ready(function(){
 			
-			category.listCategory = function(currentPage){
+			tutorial.listTutorial = function(currentPage){
 				KA.createProgressBar();
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category?page="+currentPage+"&item=20", 
+				    url: "${pageContext.request.contextPath}/admin/tutorial/rest/getList/${userId}?page="+currentPage+"&item=20", 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -178,17 +245,18 @@
 	                },
 				    success: function(data) { 
 						console.log(data);
-						if(data.RES_DATA.length>0){
+						if(data.STATUS != false){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RES_DATA.length;i++){
-								data.RES_DATA[i]["NO"] = i+1;								
+								data.RES_DATA[i]["NO"] = i+1;
 							}
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
-						}
-				    	if(check){
-				    		category.setPagination(data.PAGINATION.totalPages,1);
+						}	
+						if(check){
+				    		tutorial.setPagination(data.PAGINATION.totalPages,1);
 				    		check=false;
 				    	}
 				    	KA.destroyProgressBar();
@@ -200,7 +268,7 @@
 				});
 			};
 			
-			category.setPagination = function(totalPage, currentPage){
+			tutorial.setPagination = function(totalPage, currentPage){
    		    	$('#pagination').bootpag({
    			        total: totalPage,
    			        page: currentPage,
@@ -218,11 +286,11 @@
    			        firstClass: 'first'
    			    }).on("page", function(event, currentPage){
    			    	check = false;
-   			    	category.listCategory(currentPage);
+   			    	tutorial.listTutorial(currentPage);
    			    }); 
     		};
     		
-    		category.addOrUpdateCategory = function(){
+    		tutorial.addOrUpdateTutorial = function(){
 				KA.createProgressBarWithPopup();
 				frmData = {
 						"categoryId"   : $("#categoryId").val(),
@@ -239,7 +307,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	category.listCategory(1);
+				    	tutorial.listTutorial(1);
 				    	$("#p-frmCategory").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -249,8 +317,8 @@
 				});
 			};
 			
-			// Get one forum category
-			category.getCategory = function(cateid){
+			// Get one tutorial
+			tutorial.getTutorial = function(cateid){
 				KA.createProgressBarWithPopup();
 				console.log(cateid);
 				$.ajax({ 
@@ -276,13 +344,13 @@
 			};
 			
 			
-			// load all forum cateoty
-			category.listCategory(1);
+			// load all tutorial
+			tutorial.listTutorial(1);
 			
 			
 			
 			
-			// Show Form Add Category Popup
+			// Show Form Add tutorial Popup
 			$("#showFrmAddCategory").click(function(){
 				$("#p-frmCategory").bPopup({modalClose: false});
 				$("#frmCategory").attr("method", "POST");
@@ -290,20 +358,20 @@
 				$("#btSubmit").text("Add");
 			});
 			
-			// Show Form Update Category Popup
+			// Show Form Update tutorial Popup
 			$(document).on('click',"#showFrmUpdateCategory", function(){
 				//alert($(this).data("cateid"));
 				$("#p-frmCategory").bPopup({modalClose: false});
-				category.getCategory($(this).data("cateid"));
 				$("#frmCategory").trigger("reset");
+				category.getCategory($(this).data("cateid"));
 				$("#frmCategory").attr("method", "PUT");
 				$("#btSubmit").text("Update");
 			});
 			
-			// Add or update Forum Category
+			// Add or update tutorial
 			$("#frmCategory").submit(function(e){
 				 e.preventDefault();
-				 category.addOrUpdateCategory();
+				 tutorial.addOrUpdateTutorial();
 			});
 			
 			

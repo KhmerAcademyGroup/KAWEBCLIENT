@@ -1,5 +1,8 @@
 package org.khmeracademy.app.controllers.admin;
 
+import org.khmeracademy.app.entities.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,10 +48,17 @@ public class AdminController {
 		return "admin/reportprecourse";
 	}
 	
-	@RequestMapping(value="/report/tutorial",method=RequestMethod.GET)
-	public String reportTutorial(){
-		
-		return "admin/reporttutorial";
+	@RequestMapping(value="/tutorial",method=RequestMethod.GET)
+	public String TutorialPage(ModelMap model){
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			model.addAttribute("userId", user.getUserId());
+			//System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		return "admin/tutorial";
 	}
 	
 	@RequestMapping(value="/forum/category",method=RequestMethod.GET)

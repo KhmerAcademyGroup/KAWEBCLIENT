@@ -46,4 +46,30 @@ public class ForumRestComment {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	
+	@RequestMapping(value="/rest/forum/question/{qid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getQuestionByQuestionId(
+			  @PathVariable("qid") String qid){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/getquestionbyquestionid/"+qid, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/forum/question/{qid}/answers" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listAnswerByQuestionId(
+			  @PathVariable("qid") String qid
+			, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+			, @RequestParam(value="item" , required = false , defaultValue="20") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/listanswerbyquestionid/"+qid+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/forum/question/{qid}/selectedanswer" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getSelectedAnserByQuestionId(
+			  @PathVariable("qid") String qid){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/getselectedanswerbyquestionid/"+qid, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 }
