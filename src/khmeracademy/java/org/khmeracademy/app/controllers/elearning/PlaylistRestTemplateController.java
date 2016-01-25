@@ -73,7 +73,8 @@ public class PlaylistRestTemplateController {
 	
 	 
 		@RequestMapping(value="/rest/elearning/listvideouser/{uid}" , method = RequestMethod.GET)
-		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,@RequestParam(value="page", required=false, defaultValue="1") int page,
+		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,
+				@RequestParam(value="page", required=false, defaultValue="1") int page,
 				@RequestParam(value="item", required=false, defaultValue="10") int item,
 				@RequestParam(value="status", required=false, defaultValue="true") boolean status){			
 			HttpEntity<Object> request = new HttpEntity<Object>(header);			
