@@ -473,7 +473,7 @@
 															
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" id="searchPlaylist" onkeyup="mySearchVideo();" class="form-control" placeholder="Search playlistname">
+																	<input type="text" id="searchPlaylist" onkeyup="mySearchPlaylist();" class="form-control" placeholder="Search playlistname">
 																</form>
 																
 															</div>
@@ -1149,7 +1149,7 @@
             success: function(data){
             	//alert(data.RES_DATA.length);
             	if(data.STATUS == true){
-            		//$("#getPlayList").html(listPlaylistDetail(data));
+            		$("#getPlayList").html(listPlaylistDetail(data));
             	}else{
             		$("#getPlaylist").show();
 	    	   		$("#playlistcover").hide();
@@ -1167,41 +1167,70 @@ function listPlaylistDetail(data){
 		
 		var str="";
 			for(var i=0; i<data.RES_DATA.length ; i++){
-				str += "" 
-							+"<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
-								+"<div class='the-box full store-item text-center checkchb'>"
-									+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
-										+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
-										+"<a href='#delete'  class='btn btn-default btn-xs' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
-										+"<i class='fa fa-trash-o'></i></a>"
-										+"<span class='inline-popups'><a id='editPlaylist'  class='btn btn-default btn-xs dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
-										+"<i class='fa fa-edit'></i></a></span>"
-									+"</div>"
-								+"<a href='#####>"
-									+"<div class='new-playlist'>"
-										+"<ul>"
-											+"<li>"+data.RES_DATA[i].countVideos+"</li>"
-											+"<li>"+data.RES_DATA[i].playlistName+"</li>"
-											+"<li><i class='fa fa-bars'></i></li>"
-										+"</ul>"
-									+"</div>"
-								+"</a>"
-								+"<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
-								+"<div class='the-box no-margin no-border item-des'>"
-									+"<div class='row'>"
-									+"<div class='col-xs-12'>"
-										+"<p class='text-danger'><strong class='text-black'>programe</strong></p>"
-									+"</div>"
-									+"</div>"
-								+"</div>"
-								+"</div>"
-							
+				str += "<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
+							+"<div class='the-box full store-item text-center checkchb'>"
+							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
+								//+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
+								+"<a href='#delete'  class='btn btn-default btn-xs' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
+								+"<i class='fa fa-trash-o'></i></a>"
+								+"<span class='inline-popups'><a id='editPlaylist'  class='btn btn-default btn-xs dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+								+"<i class='fa fa-edit'></i></a></span>"
+							+"</div>"
+						+"<a href='"+url+'/elearning/playlistdetail/'+data.RES_DATA[i].playlistId+"'>"
+						+"<div class='new-playlist'>"
+							+"<ul>"
+								+"<li>"+data.RES_DATA[i].countVideos+"</li>"
+								+"<li>"+data.RES_DATA[i].playlistName+"</li>"
+								+"<li><i class='fa fa-bars'></i></li>"
+								+"</ul>"
+							+"</div>"
+						+"</a>"
+					+"<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
+					+"<div class='the-box no-margin no-border item-des'>"
+						+"<div class='row'>"
+						+"<div class='col-xs-12'>"
+						+"<p class='text-danger'><strong class='text-black'>programe</strong></p>"
+						+"</div>"
+						+"</div>"
+						+"</div>"
+						+"</div>"
+						
 						+"</div>";
 			}
 					
 		
 			return str;
 	}
+	
+function mySearchPlaylist(){
+	var key =$("#searchPlaylist").val();
+	alert(key.length );
+	if(key.length > 2){
+		 $.ajax({  
+			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
+		       type:'get',
+		       contentType: 'application/json;charset=utf-8', // type of data
+		       success: function(data) { 
+		    	   	if(data.STATUS == true){
+		    	   		totalofrecordplaylist=data.PAGINATION.totalCount;
+		    	   		numofpageplaylist=data.PAGINATION.totalPages;
+		            	loadPaginationPlaylist();
+			    	   	$("#getPlayList").html(listPlaylistDetail(data));
+			    	   	alert("search");
+		    	   		//alert(data.PAGINATION.totalCount);
+		    	   	}
+		    	   		//$("#showresult").html(listarticles(data));
+		                console.log("Success..." + data);
+		       }  ,  
+		   		error: function(data){
+		   		alert("Unsuccess" + data +"OR Empty");
+		   		console.log("ERROR..." + data);
+		   	}
+		   }); 
+	}
+	
+
+}
 	
 	
 		

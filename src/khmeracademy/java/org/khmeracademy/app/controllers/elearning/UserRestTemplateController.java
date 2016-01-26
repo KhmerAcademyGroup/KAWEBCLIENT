@@ -121,6 +121,17 @@ public class UserRestTemplateController {
 			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/userplaylist/"+uid+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
+		
+		@RequestMapping(value="/rest/user/profile/searchplaylist/{uid}/{playlistname}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> searchPlaylist(@PathVariable("uid") String uid
+											,@PathVariable("playlistname") String pname
+											, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+										    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/listplayList/"+uid+"/"+pname+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
 	
 	
 	

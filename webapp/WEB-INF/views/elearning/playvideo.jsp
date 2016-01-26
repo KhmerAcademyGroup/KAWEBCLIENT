@@ -93,6 +93,8 @@
 	            <div class="container-fluid">
 	            	<div class="row">
 	            		<div class="col-lg-12">
+	            		
+	            			<input type="hidden" value="{{LOGID}}" id="hiddenVideoId" />
 	            
 	            
 				            <!-- left side -->
@@ -384,6 +386,7 @@
 				getUserPlayList(getURLParameter("v"));
 				
 				$scope.changeUrlVideo = function(vid){
+					stopWatch();
 					var newParam = vid + "&playlist=" + getURLParameter("playlist");
 					changeUrlParam ("v", newParam);
 					loadVideo(vid);
@@ -398,6 +401,7 @@
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
+				        $scope.LOGID = response.data.LOGID;
 				        $("title").text(response.data.VIDEO.videoName);
 				        playVideo(response.data.VIDEO.youtubeUrl);
 				    });
@@ -463,6 +467,15 @@
 					destination: "http://www.khmeracademy.org/"
 				});
 				
+			}
+			
+			function stopWatch(){
+				var logid = $("#hiddenVideoId").val();
+				$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
+					if(data.STATUS){
+						console.log("Stop watch video log id = " + logid);
+					}
+			    });
 			}
 			
 			function getVoteVideo(vid){
