@@ -450,80 +450,48 @@
 													
 											</div><!-- ***************#panel-Playlist****************** -->
 											<div class="tab-pane fade in" id="panel-playlist">
-													<div class="the-box no-border">
-					
+													<div class="the-box no-border" id="playlistcover">
+														<div id="getPlaylist" style=" display: none;">
+															<div class="alert alert-success fade in alert-dismissable">
+															<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><strong>No </strong> video </div>
+														</div>
 														<div class="btn-toolbar top-table" role="toolbar">
 															<div class="btn-group">
-																<form role="form" id="frmSetRowPlaylist">
-																	<select id="setNumrowPlaylist" class="form-control">
-																		<option>8</option>
-																		<option>12</option>
-																		<option>16</option>
-																		<option>20</option>
-																	</select>
-																</form>
+																<form role="form" id="frmSetNumrowHistory">
+																<select class="form-control" id="limitPlaylist" onchange="choosePlaylist()" >
+																	<option value="6">6</option>
+																    <option value="9" selected="selected">9</option>
+																    <option value="15">15</option>
+																    <option value="30">30</option>
+																    <option value="90">90</option>
+																</select>
+															</form>
 															</div>
 															<div class="btn-group inline-popups">
 																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
 															</div>
 															
-									
-								
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" id="searchPlaylist" class="form-control" placeholder="Search playlistname">
+																	<input type="text" id="searchPlaylist" onkeyup="mySearchVideo();" class="form-control" placeholder="Search playlistname">
 																</form>
 																
-															</div><!-- /.btn-group .pull-right -->
+															</div>
 														</div>
 													
 													<div class="row">
 													
-														<!-- /////////////this is playlist/////////// -->
+														<!-- /////////////show playlist/////////// -->
 														<div id="getPlayList"  class="mpadding" >`
 															
-															
-															<!-- /////////////this is playlist2/////////// -->
-															<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" >
-																<!-- BEGIN ITEM STORE -->
-																<div class="the-box full store-item text-center checkchb">
-																	<div class="setting-list all  mydiv0" style="display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;">
-																		<input type="checkbox" value="306" class="mycheck" id="chBox0" style="margin-right: 170px;">
-																		<a href="#delete"  class="btn btn-default btn-xs" style="float: right;margin-right: 0px;margin-top: -2px;">	
-																		<i class="fa fa-trash-o"></i></a><span class="inline-popups"><a id="editPlaylist"  class="btn btn-default btn-xs dropdown-toggle" data-effect="mfp-zoom-in" style="float: right;margin-right: 0px;margin-top: -2px;">
-																		<i class="fa fa-edit"></i></a></span>
-																	</div>
-																<a href="playlistdetail.act?playlistid=306">
-																	<div class="new-playlist">
-																		<ul>
-																			<li>2</li>
-																			<li>Videos</li>
-																			<li><i class="fa fa-bars"></i></li>
-																		</ul>
-																	</div>
-																</a>
-																<img src="https://i.ytimg.com/vi/g1dNbTBvEHc/mqdefault.jpg" class="item-image" alt="Image">
-																<div class="the-box no-margin no-border item-des">
-																	<div class="row">
-																	<div class="col-xs-12">
-																		<p class="text-danger"><strong class="text-black">programe</strong></p>
-																		</div><!-- /.col-xs-7 -->
-																	</div><!-- /.row -->
-																</div>
-																</div><!-- /.the-box .no-border .full .store-item --><!-- END ITEM STORE -->
-																
-															</div>
-															
-															
 														</div>
-														
-														
-							
-							
-							
+														<!-- page gination -->
+														<div class="text-center">
+					    									<div id="demo6_top" class="demo6_top"></div>
+					    								</div>
 													</div>
 														
-												</div>									
+												</div>						
 												
 													<div id="form-create-playlist1" class="ka-popup" style="display: none;width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
@@ -1108,7 +1076,132 @@
 	} 
 		
 	///********playlist*******/////////
+	var limitplaylist=0;
+	var offsetplaylist=1;
+	var totalofrecordplaylist =0;
+	var numofpageplaylist=1;
 	
+	//my choice what list or search
+	 function choosePlaylist(){
+		var key =$("#searchPlaylist").val();
+		//alert(key);
+		if(key.length == 0){
+			mystartPlaylist();
+		}else{
+			searchPlaylist();
+		}
+	} 
+	
+	mystartPlaylist();
+	function mystartPlaylist(){
+		limitplaylist=$("#limitPlaylist").val();
+		//alert(limitv);
+    	 $.ajax({
+            url: url+'/rest/user/profile/listuserplaylist/'+userid+'?page='+offsetplaylist+'&item='+limitplaylist,
+            type: 'get',
+            contentType: 'application/json;charset=utf-8',
+            success: function(data){
+            	totalofrecordplaylist=data.PAGINATION.totalCount;
+            
+            	numofpageplaylist=data.PAGINATION.totalPages;
+            	listAllPlaylist(1);
+            	loadPaginationPlaylist();
+            	
+        		
+            },
+            error: function(data){
+            	alert("1start () unsuccess data");
+            }
+        });	 
+	    	 
+		}
+	function loadPaginationPlaylist(){
+		//alert(numofpagev);
+		$('.demo6_top').bootpag({
+	        total: numofpageplaylist,
+	        
+	        maxVisible: 5,
+	        leaps: true,
+	        firstLastUse: true,
+	        first: '&#8592;',
+	        last: '&#8594;',
+	        wrapClass: 'pagination',
+	        activeClass: 'active',
+	        disabledClass: 'disabled',
+	        nextClass: 'next',
+	        prevClass: 'prev',
+	        lastClass: 'last',
+	        firstClass: 'first'
+	    }).on("page", function(event, num){
+	    	listAllPlaylist(num);
+	    	//alert("pagination ="+num);
+	    }); 
+	}
+	function listAllPlaylist(offsetplaylist){
+		//alert(mypage);
+    	
+    	
+    	$.ajax({
+    		url: url+'/rest/user/profile/listuserplaylist/'+userid+'?page='+offsetplaylist+'&item='+limitplaylist,
+            type: 'get',
+            contentType: 'application/json;charset=utf-8',
+            //data: JSON.stringify(JSONObject),
+            success: function(data){
+            	//alert(data.RES_DATA.length);
+            	if(data.STATUS == true){
+            		//$("#getPlayList").html(listPlaylistDetail(data));
+            	}else{
+            		$("#getPlaylist").show();
+	    	   		$("#playlistcover").hide();
+            	}
+            	//asing value to totalrecord
+            	
+            },
+            error: function(data){
+            	//alert("listAll() unseccess data");
+            }
+        });	    	
+		   
+	}
+function listPlaylistDetail(data){
+		
+		var str="";
+			for(var i=0; i<data.RES_DATA.length ; i++){
+				str += "" 
+							+"<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
+								+"<div class='the-box full store-item text-center checkchb'>"
+									+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
+										+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
+										+"<a href='#delete'  class='btn btn-default btn-xs' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
+										+"<i class='fa fa-trash-o'></i></a>"
+										+"<span class='inline-popups'><a id='editPlaylist'  class='btn btn-default btn-xs dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+										+"<i class='fa fa-edit'></i></a></span>"
+									+"</div>"
+								+"<a href='#####>"
+									+"<div class='new-playlist'>"
+										+"<ul>"
+											+"<li>"+data.RES_DATA[i].countVideos+"</li>"
+											+"<li>"+data.RES_DATA[i].playlistName+"</li>"
+											+"<li><i class='fa fa-bars'></i></li>"
+										+"</ul>"
+									+"</div>"
+								+"</a>"
+								+"<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
+								+"<div class='the-box no-margin no-border item-des'>"
+									+"<div class='row'>"
+									+"<div class='col-xs-12'>"
+										+"<p class='text-danger'><strong class='text-black'>programe</strong></p>"
+									+"</div>"
+									+"</div>"
+								+"</div>"
+								+"</div>"
+							
+						+"</div>";
+			}
+					
+		
+			return str;
+	}
 	
 	
 		
