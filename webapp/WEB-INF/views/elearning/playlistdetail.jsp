@@ -10,9 +10,27 @@
 	%>  --%>
 	
 <jsp:include page="../shared/_header.jsp" />
+
+<style type="text/css">
+	.work-item{
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+	}
+	.store-list{
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+	margin-bottom: 10px;
+	}
+	    .videoname{
+	    		display: inline-block;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    -o-text-overflow: ellipsis;
+			    width: 219px;
+    }
+</style>
 </head>
 
-<body class="tooltips no-padding" style=" background: #F5F7FA;" >
+<body class="tooltips no-padding" style="background:#EEEFF1 !important" >
 
 	<!--
 		===========================================================
@@ -69,15 +87,10 @@
 	
 		<div class="modal fade" id="frmadd" tabindex="-1" role="dialog"
 					aria-labelledby="DefaultModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
+					<div class="modal-dialog ">
 						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true" onclick="closeFrmPopAdd()">&times;</button>
-								<h4 class="modal-title" id="DefaultModalLabel">Add video to
-									playlist</h4>
-							</div>
-							<div class="modal-body">
+							
+							<div class="modal-body" style="padding-bottom: 0px;">
 								<div
 									class="panel with-nav-tabs panel-default panel-square panel-no-border">
 									<div class="panel-heading">
@@ -101,12 +114,14 @@
 														</div>
 													</div>
 												<h6 class="page-title" id="getTotalVideoSearch"> </h6>
-													<div id="getVideoSearch">
+												
+													<div id="getVideoSearch" style="margin-top: 10px;">
+													
 													
 													</div>
 													<!-- page gination -->
 													<div class="text-center">
-				    									<div id="demo4_top" class="demo4_top"></div>
+				    									<div id="demo4_top" class="demo4_top" style="margin-bottom: -41px;"></div>
 				    								</div>
 
 												</div>
@@ -120,17 +135,13 @@
 														</div>
 													</div>
 													<h6 class="page-title" id="getTotalVideoUser"> </h6>
-													<div id="getYourVideo"></div>
+													<div id="getYourVideo" style="margin-top: 10px;"></div>
 														<div id="loadingVideoUser" class="text-center">
 															<img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif" />
 														</div>
 														<div class="text-center">
 															<button class="btn btn-primary" id="btLoadMoreUseVideo"	style="display: none">Load more</button>
 														</div>
-
-
-
-
 
 									</div>
 
@@ -143,7 +154,7 @@
 									<!-- /.collapse in -->
 								</div>
 							</div>
-							<div class="modal-footer">
+							<div class="modal-footer" style="padding: 1px 19px 6px;">
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal" onclick="closeFrmPopAdd()">Close</button>
 							</div>
@@ -165,7 +176,7 @@
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 												<h4 class="modal-title" id="DefaultModalLabel">Update playlist</h4>
 											  </div>
-											  <div class="modal-body">
+											  <div class="modal-body" >
 												
 													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
 														 <div class="form-group">
@@ -236,7 +247,7 @@
 					</div>
 					<!-- /.media-body -->
 					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="clkickBtAdd()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
 
 						{{if userId == "MQ=="}}  
 						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
@@ -318,8 +329,8 @@
 					
 				</div>
 				<ul class="list-inline">
-					<li><a href="../elearning/play.act?v=13"><strong
-							class="text-black">{{= videoName}}</strong></a></li>
+					<li><a href="../elearning/play.act?v=13" title="{{= videoName}}"><span class="videoname"
+							class="text-black">{{= videoName}}</span></a></li>
 					<br/>
 						<li><a  >by {{= username}}</a> | <span>{{= postDate}}</span></li>
 					<br/>						
@@ -356,8 +367,8 @@
 					
 				</div>
 				<ul class="list-inline">
-					<li><a href="../elearning/play.act?v=13"><strong
-							class="text-black">{{= videoName}}</strong></a></li>
+					<li><a href="../elearning/play.act?v=13" title="{{= videoName}}"><span class="videoname"
+							class="text-black">{{= videoName}}</span></a></li>
 					<br/>
 						<li><a  >by {{= username}}</a> | <span>{{= postDate}}</span></li>
 					<br/>						
@@ -453,7 +464,7 @@
 		  				$("#getYourVideo").empty();	
 		  			}
     				$.ajax({ 
-    					url : "${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page="+pageVideoUser+"&item=8",
+    					url : "${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page="+pageVideoUser+"&item=4",
     				    type: 'GET',
     				    beforeSend: function(xhr) {
     	                    xhr.setRequestHeader("Accept", "application/json");
@@ -485,7 +496,7 @@
 					listVideo.listAllVideo = function(page){		  			
     				
     				$.ajax({ 
-    					url : "${pageContext.request.contextPath}/rest/elearning/listallvideo?page="+page+"&item=8",
+    					url : "${pageContext.request.contextPath}/rest/elearning/listallvideo?page="+page+"&item=4",
     				    type: 'GET',
     				    beforeSend: function(xhr) {
     	                    xhr.setRequestHeader("Accept", "application/json");
@@ -494,7 +505,7 @@
     				    success: function(data) {  console.log(data);        				    
     				    $("#getVideoSearch").empty();	
     				    
-    				    $("#getTotalVideoSearch").text(data.PAGINATION.totalPages);
+    				    $("#getTotalVideoSearch").text(page+=" / "+data.PAGINATION.totalPages);    				        				   
     					if(data.RES_DATA.length>0){
     							$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");    	    							
     							
@@ -513,10 +524,9 @@
     			listVideo.loadPagination= function(){
     				
     				var total=$("#getTotalVideoSearch").text();
-    				alert(total);
+    				
     				$('.demo4_top').bootpag({
-    			        total: 90,
-    			        
+    			        total: 90,    			        
     			        maxVisible: 5,
     			        leaps: true,
     			        firstLastUse: true,
