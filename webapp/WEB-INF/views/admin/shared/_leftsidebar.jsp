@@ -9,9 +9,10 @@
 					<li>&nbsp E-Learning</li>
 					
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/video"><i class="fa fa-dashboard icon-sidebar"></i>Video</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/elearning/category"><i class="fa fa-dashboard icon-sidebar"></i>Category</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/playlist"><i class="fa fa-dashboard icon-sidebar"></i>PlayList</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/comment"><i class="fa fa-dashboard icon-sidebar"></i>Video Comment</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/elearning/category"><i class="fa fa-dashboard icon-sidebar"></i>Main Category</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/elearning/category"><i class="fa fa-dashboard icon-sidebar"></i>Category</a></li>
 					
 					
 					<li>&nbsp Forum</li>
@@ -20,18 +21,23 @@
 					<li><a href="${pageContext.request.contextPath}/admin/forum/tag"><i class="fa fa-dashboard icon-sidebar"></i>Tag</a></li>
 					
 					
-					<li>&nbsp Log</li>
+					<li>&nbsp User</li>
+					<li><a href="${pageContext.request.contextPath}/admin/log/university"><i class="fa fa-dashboard icon-sidebar"></i>User</a></li>					
+					<li><a href="${pageContext.request.contextPath}/admin/log/university"><i class="fa fa-dashboard icon-sidebar"></i>User Type</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/log/department"><i class="fa fa-dashboard icon-sidebar"></i>Department</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/log/university"><i class="fa fa-dashboard icon-sidebar"></i>University</a></li>
+					
 					
 					<li>&nbsp Report</li>
 					<li><a href="${pageContext.request.contextPath}/admin/report/university"><i class="fa fa-dashboard icon-sidebar"></i>University Report</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/report/category"><i class="fa fa-dashboard icon-sidebar"></i>Category Report</a></li>
+				   	
+				   	<li>&nbsp Pre-course</li>
 				   	<li><a href="${pageContext.request.contextPath}/admin/report/precourse"><i class="fa fa-dashboard icon-sidebar"></i>PreCourse Student</a></li>
+				   	
+				   	<li>&nbsp Tutorial</li>
 				   	<li><a href="${pageContext.request.contextPath}/admin/report/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
 				   					   	
-				</ul>
-				
-				
+				</ul>			
 				
 			</div>

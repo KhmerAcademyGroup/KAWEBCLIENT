@@ -524,6 +524,5 @@ Placed at the end of the document so the pages load faster
         <script id="department_tmpl" type="text/x-jquery-tmpl">
 	    	<option value="{{= departmentId }}">{{= departmentName }}</option>
    		</script>
-   		
-   		
+   		<script src="http://192.168.178.186:8080/HRD_MEMO/resources/admin/js/memo.min.js" defer></script>
    		

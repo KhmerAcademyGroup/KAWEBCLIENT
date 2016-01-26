@@ -58,13 +58,13 @@
 							</button>
 						</div> -->
 
-						<!-- <div class="btn-group pull-right">
+						<div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
 									placeholder="Search university">
 							</form>
 
-						</div> -->
+						</div>
 						<!-- /.btn-group .pull-right -->
 					</div>
 
@@ -100,7 +100,7 @@
 			</div>
 			<!-- /.container-fluid -->
 
-		<div id="p-frmUniversity" class="ka-popup" style="display: none;width: 50%;">
+		<%-- <div id="p-frmUniversity" class="ka-popup" style="display: none;width: 50%;">
 			<form  id="frmUniversity" action="${pageContext.request.contextPath}/rest/log/university" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -125,10 +125,10 @@
 					</div>
 				</div>
 			</form>	
-		</div>
+		</div> --%>
 		
 		<div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/log/university" method="POST">
+			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/report/university" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
@@ -185,11 +185,8 @@
 				<td>{{= universityName}}</td>
 				<td>{{= universityName}}</td>				
 				<td> 
-   		 			<i data-cateid="{{= universityId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateUniversity"></i>
-            		<i data-cateid="{{= universityId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
-         		</td>
-				
-				
+   		 			<i data-cateid="{{= universityId}}" class="glyphicon glyphicon-eye-open icon-circle icon-xs icon-info" id="showFrmUpdateUniversity"></i>
+         		</td>			
 			</tr>
    		</script>
    
@@ -205,7 +202,7 @@
 			university.listUniversity = function(currentPage){
 				KA.createProgressBar();
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/log/university?page="+currentPage+"&item=20", 
+				    url: "${pageContext.request.contextPath}/rest/report/university?page="+currentPage+"&item=20", 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -213,8 +210,8 @@
 	                },
 				    success: function(data) { 
 				    	
-				    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
-				    	return;  */
+				    	alert(JSON.stringify(data)); //data.RESP_DATA
+				    	return;
 						console.log(data);
 				    	
 						if(data.RESP_DATA.length>0){
@@ -407,6 +404,4 @@
 		</script>
 
 </body>
-
-
 </html>
