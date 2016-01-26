@@ -37,7 +37,7 @@ public class PlaylistController {
 	
 	
 
-	@RequestMapping(value="/playlistdetail/{pid}" , method = RequestMethod.GET)
+	/*@RequestMapping(value="/playlistdetail/{pid}" , method = RequestMethod.GET)
 	public String  listPlaylistDetail(@PathVariable(value="pid") String pid,ModelMap m){		 		
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("playlistid", pid);
@@ -50,5 +50,5 @@ public class PlaylistController {
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));		
 		return "/elearning/playlistdetail";
-	}
+	}*/
 }
