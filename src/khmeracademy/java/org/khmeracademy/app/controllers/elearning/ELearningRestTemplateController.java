@@ -250,4 +250,23 @@ public class ELearningRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/elearning/stopwatch" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> stopWatch( 
+			@RequestParam("logid") String logid){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+			System.out.println("ELearningController " + user.getUsername() + " Userid " + user.getUserId());
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "log/stopwatch?logid=" + logid + "&userid=" + userid, HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 }
