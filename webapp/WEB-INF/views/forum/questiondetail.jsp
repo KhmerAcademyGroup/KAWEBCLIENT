@@ -473,6 +473,7 @@
 														tagHTML += "<a href='list.act?tag="+tags[j]+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[j] +" </span></a>";
 													}
 												}
+												
 								    			answers +=  '<table class="table">'+
 																'<tbody >'+
 																	'<tr>'+
