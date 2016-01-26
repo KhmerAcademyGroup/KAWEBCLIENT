@@ -38,8 +38,6 @@
 				   	<li>&nbsp Tutorial</li>
 				   	<li><a href="${pageContext.request.contextPath}/admin/report/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
 				   					   	
-				</ul>
-				
-				
+				</ul>			
 				
 			</div>

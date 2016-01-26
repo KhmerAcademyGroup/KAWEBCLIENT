@@ -205,7 +205,7 @@
 	                },
 				    success: function(data) { 
 				    	
-				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
+				    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return;  */
 						console.log(data);
 				    	
@@ -399,6 +399,4 @@
 		</script>
 
 </body>
-
-
 </html>
