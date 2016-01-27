@@ -4,7 +4,7 @@
 <meta name="description" content="Sentir, Responsive admin and dashboard UI kits template">
 <meta name="keywords" content="admin,bootstrap,template,responsive admin,dashboard template,web apps template">
 <meta name="author" content="Ari Rusmanto, Isoh Design Studio, Warung Themes">
-<title>${title}</title>
+<title ng-bind-html="title">${title}</title>
 
 <!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
 <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet">

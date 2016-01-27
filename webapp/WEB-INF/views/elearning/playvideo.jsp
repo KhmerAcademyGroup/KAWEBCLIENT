@@ -2,11 +2,12 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="en" ng-app="myApp" ng-controller="myController">
 	<head>
 		<jsp:include page="../shared/_header.jsp" />
 		<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-sanitize.js"></script>
 		<!-- Side Bar -->
   		<link href="${pageContext.request.contextPath}/resources/assets/css/simple-sidebar.css" rel="stylesheet" />
   		<!-- Player -->
@@ -39,7 +40,7 @@
 		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
 		
 		
-		<div ng-app="myApp" ng-controller="myController"> 
+		<div> 
 		
 		<div id="wrapper">
 		
@@ -270,7 +271,7 @@
 			                            <img alt="image" class="store-image img-responsive" ng-src="https://i.ytimg.com/vi/{{relate.youtubeUrl}}/mqdefault.jpg" style="width:100%;"></a>
 			                            <div class="media-body">                                
 			                                <h4 class="media-heading">
-			                                   <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black">{{relate.videoName}}</strong></a>
+			                                   <a ng-href="playvideo?v={{relate.videoId}}"><strong class="text-black"><span ng-bind-html="relate.videoName"></span></strong></a>
 											 </h4>
 			                                <ul class="list-inline">
 			                                	<li>{{relate.viewCounts}} Views</li>
@@ -377,8 +378,8 @@
 		
 		
 		<script>
-			var app = angular.module('myApp', []);
-			app.controller('myController', function($scope, $http) {
+			var app = angular.module('myApp', ['ngSanitize']);
+			app.controller('myController', function($scope, $http, $sce) {
 				
 				loadVideo(getURLParameter("v"));
 				getVoteVideo(getURLParameter("v"));
@@ -402,7 +403,9 @@
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
 				        $scope.LOGID = response.data.LOGID;
-				        $("title").text(response.data.VIDEO.videoName);
+				        
+				        //$("title").text($scope.VIDEO);
+				        $scope.title=response.data.VIDEO.videoName;
 				        playVideo(response.data.VIDEO.youtubeUrl);
 				    });
 					
