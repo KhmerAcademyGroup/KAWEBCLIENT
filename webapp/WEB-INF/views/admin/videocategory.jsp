@@ -100,7 +100,7 @@
 								<label class=" control-label">MainCategory name</label>
 								<div>
 									<select id="mainCategory" data-placeholder="Choose a MainCategory..." class="form-control" tabindex="2">
-										<option value="888" selected="selected">1111</option>										
+
 									</select>
 								</div>
 							</div>
@@ -278,7 +278,7 @@
 								
 								frmData = {
 									"categoryName" : $("#categoryName").val(),
-									"mainCategoryId" : "MjY="
+									"mainCategoryId" : $('#mainCategory').val()
 									
 								};
 								
