@@ -285,16 +285,16 @@
 							</div>
 							<!-- /.hover-wrap -->
 							<i> <a href="playlistdetail.act?playlistid=1"><img
-									style="width: 100%; height: 100%;"
+									
 									src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
 									alt="..."></a>
 							</i>
-							<div class="the-box no-border transparent no-margin" style="height: 111px;">
+							<div class="the-box no-border transparent no-margin" style="height: 100px;">
 								<div class="media-body" class="color:blue;">
 
-									<h4 class="media-heading" style="padding: 0px; margin: 0px;">
+									<h5 class="media-heading" style="padding: 0px; margin: 0px;">
 										<strong class="text-black">{{= videoName}}</strong>
-									</h4>
+									</h5>
 									<ul style="list-style: none; padding: 0px; margin: 0px;">
 										<li class="text-muted small">by {{= username}}
 											|{{= postDate}}</li>
@@ -324,7 +324,7 @@
 			<div class="media-body" style="overflow: visible">				
 				<div class="btn-group pull-right">					
 					
-						<button class="btn btn-info btadd10" onclick="addVideoToPlaylist('{{= videoId}}')">Add</button>
+						<button class="btn btn-info btadd" vid={{= videoId}}>Add</button>
 						
 					
 				</div>
@@ -362,7 +362,7 @@
 			<div class="media-body" style="overflow: visible">				
 				<div class="btn-group pull-right">					
 					
-						<button class="btn btn-info btadd10" onclick="addVideoToPlaylist('{{= videoId}}')">Add</button>
+						<button class="btn btn-info btadd" vid={{= videoId}}>Add</button>
 						
 					
 				</div>
@@ -552,7 +552,7 @@
         			listVideo.listAllVideo(1);
         			listVideo.loadPagination();
     			
-    			
+        			$(".btadd").click(function(){$(this).attr('vid');});		
     			$("#btLoadMore").click(function(){  
     				page++;    				
     				empty = false;
@@ -567,11 +567,11 @@
     				listVideo.listUserVideo("MQ==",pageVideoUser);    				
     			});
     			    								
-			 
-			
+    			
+    				    			
 		
 		});
-		function addVideoToPlaylist(vid){
+		/* function addVideoToPlaylist(vid){
 			var playlistId="${playlistid}"; 
 			$.ajax({
 				url : "${pageContext.request.contextPath}/rest/elearning/videotoplaylist/"+playlistId+"/"+vid,
@@ -581,7 +581,7 @@
 				}
 			});	 
 			}
-		
+		 */
 		
 		
 		
