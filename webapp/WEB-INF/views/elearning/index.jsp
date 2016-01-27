@@ -40,7 +40,7 @@
 							<div class="work-item">
 								<div class="hover-wrap">
 									<a href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">	
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
+									<i class="glyphicon glyphicon-eye-open icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
 								<img src="${pageContext.request.contextPath}/${playlist.bgImage}" alt="Img work">
