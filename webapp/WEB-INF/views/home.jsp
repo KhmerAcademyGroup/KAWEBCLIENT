@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -49,11 +49,14 @@
 		<!-- BEGIN TEXT SECTION -->
 		<div class="section">
 			<div class="container">
+			<h2 class="text-center text-slogan">
+			<spring:message code="welcometutorialtext"/>
+			</h2>
 			<p class="text-center text-slogan">
-			Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br />
-			Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br />
-			Investigationes demonstraverunt lectores legere me lius quod
+			<spring:message code="slogen"/>
 			</p>
+			<%-- <br />
+			<h3 class="text-center"><spring:message code="services"/></h3> --%>
 			</div><!-- /.container -->
 		</div><!-- /.section -->
 		<!-- END TEXT SECTION -->

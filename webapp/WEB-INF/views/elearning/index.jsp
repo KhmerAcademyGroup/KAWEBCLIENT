@@ -60,7 +60,7 @@
 		</div><!-- /.section -->
 		<!-- END LATEST WORK SECTION -->
 		
-		<!-- BEGIN CLIENT LOGO SECTION -->
+		<%-- <!-- BEGIN CLIENT LOGO SECTION -->
 		<div class="section">
 			<div class="container">
 				<div id="owl-client-logo" class="owl-carousel client-logo">
@@ -85,7 +85,7 @@
 				</div><!-- /#owl-client-logo -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<!-- END CLIENT LOGO SECTION -->
+		<!-- END CLIENT LOGO SECTION --> --%>
 		
 		<jsp:include page="../shared/_footer.jsp" />
 	</body>

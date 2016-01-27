@@ -1,27 +1,30 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!-- BEGIN FOOTER -->
 <footer class="light-color">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<h4>ABOUT SENTIR AGENCY</h4>
+			<div class="col-sm-6 col-md-5">
+				<h4><spring:message code="aboutus"/></h4>
 				<p>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed 
-				diam nonummy nibh euismod tincidunt ut laoreet dolore 
-				magna aliquam erat volutpat. Ut wisi enim ad minim veniam, 
-				quis nostrud exerci tation ullamcorper suscipit lobortis 
+				<spring:message code="aboutustext"/>
 				</p>
 				<p>
 					<a href="#fakelink"><i data-toggle="tooltip" title="Facebook" class="fa fa-facebook icon-sm icon-rounded icon-social-footer icon-facebook"></i></a>
 					<a href="#fakelink"><i data-toggle="tooltip" title="Twitter" class="fa fa-twitter icon-sm icon-rounded icon-social-footer icon-twitter"></i></a>
 					<a href="#fakelink"><i data-toggle="tooltip" title="Google plus" class="fa fa-google-plus icon-sm icon-rounded icon-social-footer icon-google-plus"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Dribbble" class="fa fa-dribbble icon-sm icon-rounded icon-social-footer icon-dribbble"></i></a>
+					<!-- <a href="#fakelink"><i data-toggle="tooltip" title="Dribbble" class="fa fa-dribbble icon-sm icon-rounded icon-social-footer icon-dribbble"></i></a>
 					<a href="#fakelink"><i data-toggle="tooltip" title="Pinterest" class="fa fa-pinterest icon-sm icon-rounded icon-social-footer icon-pinterest"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Github" class="fa fa-github icon-sm icon-rounded icon-social-footer icon-github"></i></a>
+					<a href="#fakelink"><i data-toggle="tooltip" title="Github" class="fa fa-github icon-sm icon-rounded icon-social-footer icon-github"></i></a> -->
 				</p>
-			</div><!-- /.col-sm-4 -->
-			<div class="col-sm-6 col-md-3">
-				<h4>CONTACT</h4>
-				<div class="media media-contact">
+			</div><!-- /.col-sm-5 -->
+			<div class="col-sm-6 col-md-4">
+				<h4><spring:message code="contactus"/></h4>
+				
+				<p>
+				<spring:message code="contactustext"/>
+				
+				</p>
+				<!-- <div class="media media-contact">
 				  <span class="pull-left">
 					<i class="fa fa-map-marker media-object"></i>
 				  </span>
@@ -32,8 +35,8 @@
 					  San Francisco, CA 94107<br>
 					  <abbr title="Phone">P:</abbr> (123) 456-7890
 					</address>
-				  </div><!-- /.media-body -->
-				</div><!-- /.media -->
+				  </div>/.media-body
+				</div>/.media
 				<div class="media media-contact">
 				  <span class="pull-left">
 					<i class="fa fa-envelope media-object"></i>
@@ -43,11 +46,12 @@
 					  Full Name<br>
 					  <a href="mailto:#">first.last@example.com</a>
 					</address>
-				  </div><!-- /.media-body -->
-				</div><!-- /.media -->
-			</div><!-- /.col-sm-3 -->
+				  </div>/.media-body
+				</div>/.media -->
+				
+			</div><!-- /.col-sm-4 -->
 			<div class="clearfix visible-sm"></div>
-			<div class="col-sm-6 col-md-2">
+			<!-- <div class="col-sm-6 col-md-2">
 				<h4>NAVIGATION</h4>
 				<ul class="list">
 					<li><a href="index.html">Home</a></li>
@@ -57,10 +61,11 @@
 					<li><a href="index.html">Pricing</a></li>
 					<li><a href="index.html">Blog</a></li>
 				</ul>
-			</div><!-- /.col-sm-2 -->
+			</div>/.col-sm-2 -->
 			<div class="col-sm-6 col-md-3">
-				<h4>SIGN UP NEWSLETTER</h4>
-				<p>
+				<h4><spring:message code="followus"/></h4>
+				<div class="fb-like-box" data-href="https://www.facebook.com/KhmerAcademy.Org" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+				<!-- <p>
 				Laritas est etiam processus dynamicus, qui
 				sequitur mutationem consuetudium
 				lectorum. Mirum est notare quam littera.
@@ -71,8 +76,8 @@
 					  <span class="input-group-btn">
 						<button class="btn btn-info" type="button"><i class="fa fa-chevron-right"></i></button>
 					  </span>
-					</div><!-- /input-group -->
-				</form>
+					</div>/input-group
+				</form> -->
 			</div><!-- /.col-sm-3 -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
@@ -82,13 +87,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
-				Copyright &copy; 2014 <a href="#fakelink">Your company</a>
+				<spring:message code="copyright"/>
 			</div><!-- /.col-sm-5 -->
 			<div class="col-sm-7 text-right">
 				<ul class="list-inline">
-				  <li><a href="#fakelink">Terms and condition</a></li>
-				  <li><a href="#fakelink">Privacy policy</a></li>
-				  <li><a href="#fakelink">FAQ</a></li>
+				  <li><a href="#fakelink">All Khmer News</a></li>
+				  <li><a href="#fakelink">Employees Record</a></li>
+				  <li><a href="#fakelink">Memo</a></li>
 				</ul>
 			</div><!-- /.col-sm-7 -->
 		</div><!-- /.row -->
@@ -524,3 +529,22 @@ Placed at the end of the document so the pages load faster
         <script id="department_tmpl" type="text/x-jquery-tmpl">
 	    	<option value="{{= departmentId }}">{{= departmentName }}</option>
    		</script>
+   		
+   		<!-- Facebook Plugin script -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		<!-- End facebook plugin -->
+   		
+   		<!-- <script>
+   			$.get("http://ipinfo.io", function (response) {
+   	    		if(response.country=="KH"){
+   	    			alert(document.cookie);
+   	    		}
+   	    	}, "jsonp");
+   		</script> -->

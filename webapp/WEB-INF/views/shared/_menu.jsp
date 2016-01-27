@@ -1,4 +1,5 @@
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- BEGIN TOP NAVBAR -->
 <div class="top-navbar">
@@ -13,14 +14,14 @@
 		<!-- Begin button toggle nav -->
 		<div class="btn-toggle-nav" id="btn-toggle-nav"><i class="fa fa-bars"></i></div>
 		<div class="btn-toggle-search" id="btn-icon-search"><i class="fa fa-search"></i></div>
-		<div class="btn-toggle-phone" id="btn-icon-phone"><i class="fa fa-phone"></i></div>
+		<!-- <div class="btn-toggle-phone" id="btn-icon-phone"><i class="fa fa-phone"></i></div> -->
 		<!-- End button toggle nav -->
 		
 		<!-- Begin visible phone and search nav -->
-		<div id="phone-sub" class="nav-right-info">
+		<!-- <div id="phone-sub" class="nav-right-info">
 			<i class="fa fa-times times-icon" id="close-phone-nav"></i>
-			<p class="phone">Call us : <strong>+1 123 4567 7899</strong></p>
-		</div>
+			<p class="phone">Call us : <strong>+855 23 99 13 14</strong></p>
+		</div> -->
 		<div id="search-sub" class="nav-right-info">
 			<i class="fa fa-times times-icon" id="close-search-nav"></i>
 			<form role="form">
@@ -32,19 +33,26 @@
 		<!-- Begin nav menu -->
 		<ul class="menus">
 			<li class="parent">
-				<a href="${pageContext.request.contextPath}/">Home</a>
+				<a href="${pageContext.request.contextPath}/"><spring:message code="menu_home"/></a>
 			</li>
 			<li class="parent">
 				<a href="${pageContext.request.contextPath}/elearning">E-Learning</a>
 			</li>
 			<li class="parent">
-				<a href="${pageContext.request.contextPath}/forum">Forum</a>
+				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
 			</li>
 			<li class="parent">
-				<a href="${pageContext.request.contextPath}/tutorial">Tutorial</a>
+				<a href="${pageContext.request.contextPath}/tutorial"><spring:message code="tutorial"/></a>
 			</li>
-			<li class="parent">
+			<!-- <li class="parent">
 				<a href="#">News</a>
+			</li> -->
+			<li class="parent" >
+				 <a href=""  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><spring:message code="language"/></a>
+				 <ul class="sub-menus">
+					<li class="sub-list"><a href="?language=kh"><spring:message code="lang_khmer"/></a></li>
+					<li class="sub-list"><a href="?language=en"><spring:message code="lang_english"/></a></li>
+				</ul>
 			</li>
 			<sec:authorize access="isAuthenticated()">
 <!-- 				<li class="parent"> -->
@@ -56,19 +64,19 @@
 						   <sec:authentication property="principal.username" />
 					 </a>
 					 <ul class="sub-menus">
-						<li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>
+						<!-- <li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>
 						<li class="sub-list"><a href="portfolio-3-column.html">3 columns</a></li>
-						<li class="sub-list"><a href="portfolio-single.html">Portfolio single</a></li>
+						<li class="sub-list"><a href="portfolio-single.html">Portfolio single</a></li> -->
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 					</ul>
 				</li>
 			</sec:authorize>
 			<sec:authorize access="isAnonymous()">
 				<li class="parent">
-					<a href="#" class="btLogin">Login</a>
+					<a href="#" class="btLogin"><spring:message code="login"/></a>
 				</li>
 				<li class="parent">
-					<a href="#" class="btSignUp">Register</a>
+					<a href="#" class="btSignUp"><spring:message code="signup"/></a>
 				</li>
 			</sec:authorize>
 			<li class="parent right-icon">
