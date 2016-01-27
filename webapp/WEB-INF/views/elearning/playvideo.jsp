@@ -565,8 +565,11 @@
 				}
 			});
 
+			$(window).unload(function(){
+				stopWatch();
+		    });
 		    
 		</script>
 		
 	</body>
-</html>	
+</html>

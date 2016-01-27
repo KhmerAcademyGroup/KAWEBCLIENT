@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -493,7 +494,7 @@
 														
 												</div>						
 												
-													<div id="form-create-playlist1" class="ka-popup" style="display: none;width: 30%;">
+													<div id="form-create-playlist1" class="ka-popup" style="display: none; width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 															  	<button type="button" class="close" aria-hidden="true">
 																	<span class="button b-close"><span>×</span></span>
@@ -505,20 +506,26 @@
 															
 															  <div class="form-group">
 																<label for="exampleInputEmail1">Playlist name</label>
-																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
+																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="Playlist Name">
 																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
 															  </div>
 															  <div class="form-group">
-																<label for="exampleInputPassword1">Description</label>
-																<input type="text" name="description" class="form-control" id="description" placeholder="EG. My music">
+																	<label for="exampleInputEmail1">Description</label>
+																	<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
 															 </div>
-															 <div class="form-group">
-																<label>Set View</label>
-																<select class="form-control" id="publicview" name="publicview" tabindex="2">
-																	<option value="false">Private</option>
-																	<option value="true">Public</option>
-																</select>
-															</div>
+															  <div class="form-group">
+																	<label for="exampleInputEmail1">Category</label>
+																	<select class="form-control"  id="playlistcategory">
+																		  <option>1</option>
+																		  <option>2</option>
+																		  <option>3</option>
+																		  <option>4</option>
+																		  <option>5</option>
+																		</select>
+																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+															 </div>
+															
 															 	<input type="button" id="btncreate" value="Create" class="btn btn-success">
 																<input type="button"  value="Close" class="btn btn-success">	
 															</div>
@@ -1204,7 +1211,7 @@ function listPlaylistDetail(data){
 	
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
-	alert(key.length );
+	//alert(key.length );
 	if(key.length > 2){
 		 $.ajax({  
 			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
@@ -1216,7 +1223,7 @@ function mySearchPlaylist(){
 		    	   		numofpageplaylist=data.PAGINATION.totalPages;
 		            	loadPaginationPlaylist();
 			    	   	$("#getPlayList").html(listPlaylistDetail(data));
-			    	   	alert("search");
+			    	   	alert(key.length );
 		    	   		//alert(data.PAGINATION.totalCount);
 		    	   	}
 		    	   		//$("#showresult").html(listarticles(data));
@@ -1231,6 +1238,29 @@ function mySearchPlaylist(){
 	
 
 }
+
+
+//create playlist
+function createPlaylist(n,d,u,th,p,m,bg,c){
+		var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"true"}');
+   	
+		$.ajax({
+           url: "/api/article/hrd_c001",
+           type: 'post',
+           contentType: 'application/json;charset=utf-8',
+           data: JSON.stringify(JSONObject),
+           success: function(data){
+           	if(data.STATUS =='1'){
+	            	myClear();
+				}
+           	listAll();
+           },
+           error: function(data){
+           	alert("2 unsuccess data");
+           }
+       });	    	
+	} 
+
 	
 	
 		

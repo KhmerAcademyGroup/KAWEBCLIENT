@@ -5,6 +5,14 @@
 <html lang="en">
 <head>
 	<jsp:include page="shared/_adminheader.jsp" />
+	<style>
+		@media (min-width: 768px)
+			.vu-modal-lg
+			{
+			    width: 1800px;
+			    height: auto; /* control height here */
+			}
+	</style>
 </head>
 
 <body class="tooltips">
@@ -109,17 +117,17 @@
 			<!-- BootStrap Model Popup -->		
 				<!-- Modal -->
 			<div id="myPopup" class="modal fade" role="dialog">
-			  <div class="modal-dialog modal-lg">
+			  <div class="modal-dialog vu-modal-lg">
 			
 			    <!-- Modal content-->
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
-			        <h4 class="modal-title">Modal Header</h4>
+			        <h4 class="modal-title">Tutorial Content</h4>
 			      </div>
+			    <form id="tutorial" name="tutorial" method="post" action="addtutorial_pro.act" class="form-horizontal" role="form">
 			      <div class="modal-body">
 			       	<div>
-						<form id="tutorial" name="tutorial" method="post" action="addtutorial_pro.act" class="form-horizontal" role="form">
 							<fieldset>
 								
 								<div class="form-group">
@@ -142,16 +150,16 @@
 								
 								<div class="form-group">
 									<label class="col-lg-1 control-label">Index<span class="required">*</span></label>
-									<div class="col-lg-4">
+									<div class="col-lg-11">
 										<input type="text" class="form-control" name="txtindex" id="txtindex" />
 									</div>
 								</div> 
 								
 								<div class="form-group">
-									<div class="col-lg-12">
-										<label class="col-lg-1 control-label">Category<span class="required">*</span></label>
+									<div class="col-lg-1">
+										<label class="control-label">Category<span class="required">*</span></label>
 									</div>
-									<div class="col-lg-12">
+									<div class="col-lg-11">
 							          <select data-placeholder="Select categories" name="txtcategory" id="txtcategory" class="form-control chosen-select" tabindex="16">
 							      
 							            <option value="">category</option>
@@ -167,23 +175,15 @@
 									</div>
 								</div>
 							</fieldset>
-
-							<div class="form-group">
-							
-								<div class="col-lg-9 col-lg-offset-3">
-									
-									<input type="submit" id="bttutorialsave" class="btn btn-info" value="Save"/>
-								</div>
-							</div>
-							
-						</form>
 					</div><!-- /.the-box -->
 			       
 			       
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
 			      </div>
+			      </form>
+			      
 			    </div>
 			
 			  </div>
@@ -209,8 +209,10 @@
 		<jsp:include page="shared/_scriptfooter.jsp"/>
 		<!-- ./Footer Script -->
 
-
-
+		<script src="${pageContext.request.contextPath}/resources/assets/plugins/ckeditor/ckeditor.js"></script>
+		<script>
+		 CKEDITOR.replace( 'txtdescription' );
+		</script>
 		<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO }}</td>
@@ -379,6 +381,4 @@
 		</script>
 
 </body>
-
-
 </html>
