@@ -254,7 +254,7 @@
 		
 		<sec:authorize access="isAuthenticated()">
 			<script>
-			$.get("${pageContext.request.contextPath}/isLogin",function(data){
+			$.get("${pageContext.request.contextPath}/api/isLogin",function(data){
 				checkPrecouse(data.USERID);
 				$("#userId").val(data.USERID);
 				$("#username").val(data.USERNAME);				
