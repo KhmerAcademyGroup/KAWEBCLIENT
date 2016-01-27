@@ -104,7 +104,7 @@
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">List universitys</h4>
+						<h4 class="modal-title">List universities</h4>
 					</div>
 					<div class="modal-body" >
 									
