@@ -39,8 +39,8 @@ function getPlaylistname(data, vid){
 	}
 	
 	
-	li+= "<li class='divider'></li>";
-	li += "<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>";
+//	li+= "<li class='divider'></li>";
+//	li += "<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>";
 	return li;
 }
 

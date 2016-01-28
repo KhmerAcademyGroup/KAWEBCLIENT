@@ -201,6 +201,8 @@
 													<div id="getmoreli">
 													
 													</div>
+													<li class='divider'></li>
+													<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>
 												  </ul>
 											</div>
 											
@@ -497,7 +499,6 @@
 						description : $("#txtdescription").val() ,
 						publicview : $("#publicview").val()
 					},function(data){
-						alert(data.MESSAGE);
 						 location.reload();
 						 $.magnificPopup.close();
 					});
