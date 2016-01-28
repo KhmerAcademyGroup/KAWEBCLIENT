@@ -540,11 +540,4 @@ Placed at the end of the document so the pages load faster
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<!-- End facebook plugin -->
-   		
-   		<!-- <script>
-   			$.get("http://ipinfo.io", function (response) {
-   	    		if(response.country=="KH"){
-   	    			alert(document.cookie);
-   	    		}
-   	    	}, "jsonp");
-   		</script> -->
+   		    

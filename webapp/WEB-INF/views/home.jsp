@@ -288,9 +288,21 @@
 			});
 		</script>
 		
+		<!-- <script>
+		$(window).load(function() {
+			 // executes when complete page is fully loaded, including all frames, objects and images
+			 $.get("http://ipinfo.io", function (response) {
+   	    		if(response.country=="KH"){
+   	    			alert("window is loaded");
+   	    			location.reload();
+   	    		}
+   	    	 }, "jsonp");
+			 
+		});
+   			
+   		</script> -->
 		
-		
-		
+		    
 		
 	</body>
 </html>

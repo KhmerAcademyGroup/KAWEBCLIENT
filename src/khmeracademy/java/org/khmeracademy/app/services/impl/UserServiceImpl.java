@@ -38,11 +38,7 @@ public class UserServiceImpl implements UserService{
 //			HttpEntity<String> request = new HttpEntity<String>(email, header);
 //			ResponseEntity<Map> responseEntity = restTemplate.exchange(WSURL+"/authentication/weblogin", HttpMethod.POST, request, Map.class);
 //			Map<String, Object> map = (HashMap<String, Object>)responseEntity.getBody();
-			
-			
-//			HttpHeaders headers = new HttpHeaders();
-//			headers.setContentType(MediaType.APPLICATION_JSON);
-//			headers.set("Authorization", "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ==");
+
 			RestTemplate restTemplate = new RestTemplate();
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 			restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
