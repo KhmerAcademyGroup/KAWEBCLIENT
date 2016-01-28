@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,12 +16,15 @@
 		<!-- Player Responsive -->
 		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/css/profile.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
 		<!-- chhoin  style add -->
 		<style type="text/css">
 		 
 		</style>
 </head>
 <body >
+	
+			
 	<jsp:include page="../shared/_menu.jsp" />
 		
 	<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
@@ -162,7 +164,9 @@
 													</div>
 													
 												</div>
-													<div id="videoresult"></div>
+													<div id="videoresult">
+													
+													</div>
 													
 													<!-- page gination -->
 													<div class="text-center">
@@ -179,47 +183,25 @@
 												
 													<form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1" action="updateusrinfo.act" method="post" novalidate="novalidate">	
 														<div class="col-sm-8">
+														
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Username<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" class="form-control" name="username" value="hello" data-bv-field="username">
+																<input type="text" class="form-control" id="username" name="username" value="hello" data-bv-field="username">
 															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The username is required and can't be empty</small><small data-bv-validator="stringLength" class="help-block" style="display: none;">The username must be more than 4 and less than 30 characters long</small></div>
 														</div>
 						
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Email<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" class="form-control" name="email" value="test@gmail.com" disabled="" data-bv-field="email">
+																<input type="email" class="form-control" id="myemail" name="myemail" value="" disabled="" data-bv-field="email">
 															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The email address is required and can't be empty</small><small data-bv-validator="emailAddress" class="help-block" style="display: none;">The input is not a valid email address</small></div>
 														</div>
-														
-														
-					
-														
+																					
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Department<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<select name="department" class="form-control" data-bv-field="department">
-																	
-																	<option value="1">Computer Science Department</option>
-																	
-																	<option value="2">Business and Economic Department</option>
-																	
-																	<option value="5">Law and Public Affairs Department</option>
-																	
-																	<option value="4">Art, Letter and Humanities Department</option>
-																	
-																	<option value="6">Communication and Media Art Department</option>
-																	
-																	<option value="7">Architecture and Design Department</option>
-																	
-																	<option value="8">Management and Economic Department</option>
-																	
-																	<option value="9">Social Sciences and International Relations Department</option>
-																	
-																	<option value="11">Department of Science</option>
-																	
-																	<option value="12">Other</option>
+																<select name="department" id="department" class="form-control" data-bv-field="department">
 																	
 																</select>
 															</div>
@@ -227,77 +209,7 @@
 														<div class="form-group">
 															<label class=" col-lg-3 control-label">University<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<select name="university" class="form-control" data-bv-field="university">
-																	
-																	<option value="1">BBU</option>
-																	
-																	<option value="2">RUPP</option>
-																	
-																	<option value="3">SETEC</option>
-																	
-																	<option value="4">PUC</option>
-																	
-																	<option value="5">PPIU</option>
-																	
-																	<option value="6">NU</option>
-																	
-																	<option value="7">UBB</option>
-																	
-																	<option value="8">AEU</option>
-																	
-																	<option value="9">UME</option>
-																	
-																	<option value="10">RAC</option>
-																	
-																	<option value="11">CARDI</option>
-																	
-																	<option value="12">ITC</option>
-																	
-																	<option value="13">CSUK</option>
-																	
-																	<option value="14">NIE</option>
-																	
-																	<option value="15">NTTI</option>
-																	
-																	<option value="16">PNCA</option>
-																	
-																	<option value="17">RUA</option>
-																	
-																	<option value="18">RUFA</option>
-																	
-																	<option value="19">RULE</option>
-																	
-																	<option value="20">SRU</option>
-																	
-																	<option value="21">UHS</option>
-																	
-																	<option value="22">IIC</option>
-																	
-																	<option value="23">UC</option>
-																	
-																	<option value="24">UP</option>
-																	
-																	<option value="25">PPIT</option>
-																	
-																	<option value="26">CamEd</option>
-																	
-																	<option value="27">SPI</option>
-																	
-																	<option value="28">BELTEI</option>
-																	
-																	<option value="29">CMU</option>
-																	
-																	<option value="30">AUPP</option>
-																	
-																	<option value="31">ZAMAN</option>
-																	
-																	<option value="32">CUS</option>
-																	
-																	<option value="33">NUM</option>
-																	
-																	<option value="35">PCU</option>
-																	
-																	<option value="36">Other</option>
+																<select name="university" id="university" class="form-control" data-bv-field="university">
 																	
 																</select>
 															</div>
@@ -309,12 +221,12 @@
 																<div class="col-lg-5">
 																	<div class="radio">
 																		<label>
-																			<input type="radio" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender" checked=""> Male
+																			<input type="radio" id="gender1" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender" checked=""> Male
 																		</label>
 																	</div>
 																	<div class="radio">
 																		<label>
-																			<input type="radio" name="gender" value="female" checked="" data-bv-field="gender"> Female
+																			<input type="radio" id="gender2" name="gender" value="female" checked="" data-bv-field="gender"> Female
 																		</label>
 																	</div>
 															
@@ -324,8 +236,8 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Date of birth<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" value="" name="dateofbirth" data-date-format="dd-mm-yyyy" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The date of birth  is required and can't be empty</small></div>
+																<input type="text" value="" id="dateofbirth" name="dateofbirth" data-date-format="dd-mm-yyyy" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
+																<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The date of birth  is required and can't be empty</small></div>
 														</div>
 														
 														
@@ -333,7 +245,7 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Phone number<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" class="form-control" name="phonenumber" value="" data-bv-field="phonenumber">
+																<input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" data-bv-field="phonenumber">
 															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Phonenumber is required and can't be empty</small><small data-bv-validator="digits" class="help-block" style="display: none;">The value can contain only digits</small></div>
 														</div>
 										
@@ -341,9 +253,9 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">User Type<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" class="form-control" name="usertype" disabled="" value="Subscriber" data-bv-field="usertype">
+																<input type="text" class="form-control" id="usertype" name="usertype" disabled="" value="Subscriber" data-bv-field="usertype">
 																
-														<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The register date is required and can't be empty</small></div>
+																<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The register date is required and can't be empty</small></div>
 														</div>	
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Current Password<span class="required">*</span></label>
@@ -355,7 +267,7 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">New Password<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="password" class="form-control" name="oldpassword" id="oldpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
+																<input type="password" class="form-control" name="newpassword" id="newpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
 															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Password is required and can't be empty</small></div>
 															<small id="pwdvalid" style="display: block; color: red;" class="help-block"></small>
 														</div>
@@ -363,22 +275,23 @@
 														<div class="col-sm-4">
 																							
 															<div class="col-xs-6 col-md-7">
-																<div class="imgstyle">
-																<a title="Image title here" href="" class="zooming">
-																		<img id="photoimg" class="mfp-fade item-gallery img-responsive" alt="Image" src="${pageContext.request.contextPath}/resources/uploads/user/avatar.jpg">
-																</a>
+															
+																<div class="form-group" >
+																	<div class="">
+																		<div class="fileinput fileinput-new" data-provides="fileinput">
+																		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200PX; height:150px;"></div>
+																		  <div>
+																			<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+																			<input type="file" id="file1"   name="file1">
+																			<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+																			<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+																		  </div>
+																		</div>
+																		
+																	</div>
 																</div>
-																<div style="height:10px"></div>
-																	<div class="form-group">
-																		<div class="input-group">
-																			<input type="text" readonly="" class="form-control">
-																		<span class="input-group-btn">
-																		<span class="btn btn-default btn-file">
-																				Browse ... <input type="file" name="photo" id="photoimage" value="" onchange="return ValidateFileUpload()" data-bv-field="photo">																							
-																		</span>
-																		</span>
-																	</div><!-- /.input-group -->
-																</div>
+																
+																
 															</div>
 																							
 																							
@@ -471,6 +384,9 @@
 															<div class="btn-group inline-popups">
 																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
 															</div>
+															<div class="btn-group inline-popups">
+																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
+															</div>
 															
 															<div class="btn-group pull-right">
 																<form role="form">
@@ -492,10 +408,12 @@
 					    								</div>
 													</div>
 														
-												</div>						
+												</div>	
+															
 												
-													<div id="form-create-playlist1" class="ka-popup" style="display: none; width: 30%;">
+													<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+															  <form action="" id="formcreateplaylist"  enctype="multipart/form-data">
 															  	<button type="button" class="close" aria-hidden="true">
 																	<span class="button b-close"><span>×</span></span>
 																</button>
@@ -506,7 +424,7 @@
 															
 															  <div class="form-group">
 																<label for="exampleInputEmail1">Playlist name</label>
-																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="Playlist Name">
+																	<input type="text" class="form-control" name="listname" id="listname" placeholder="">
 																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
 															  </div>
 															  <div class="form-group">
@@ -517,17 +435,39 @@
 															  <div class="form-group">
 																	<label for="exampleInputEmail1">Category</label>
 																	<select class="form-control"  id="playlistcategory">
-																		  <option>1</option>
-																		  <option>2</option>
-																		  <option>3</option>
-																		  <option>4</option>
-																		  <option>5</option>
-																		</select>
+																	</select>
 																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
 															 </div>
+															  <c:set var="usertype"  value="${usertype }"/>
+															  <c:if test="${usertype == 'Admin' }">
+															  <div class="form-group">
+																	<label for="exampleInputEmail1">Color</label>
+																	<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+																	<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+																</div>
+															  	<div class="form-group" >
+																	<label for="exampleInputEmail1">Image</label>
+																	<div class="col-sm-12">
+																		<div class="fileinput fileinput-new" data-provides="fileinput">
+																		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+																		  <div>
+																			<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+																			<input type="file" id="file"   name="file">
+																			<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+																			<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+																		  </div>
+																		</div>
+																		
+																	</div>
+																</div>
+																
+																
+															  </c:if>
+															 
 															
-															 	<input type="button" id="btncreate" value="Create" class="btn btn-success">
-																<input type="button"  value="Close" class="btn btn-success">	
+															 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
+																<input type="button"  value="Close" class="btn btn-success b-close">	
+																</form>
 															</div>
 													</div>
 													
@@ -556,7 +496,7 @@
 																	<option value="true">Public</option>
 																</select>
 															</div>
-															 	<input type="button" id="btncreate" value="Update" class="btn btn-success">
+															 	<input type="button" id="btncreate"  value="Update" class="btn btn-success">
 																<input type="button"  value="Close" class="btn btn-success">	
 															</div>
 													</div>
@@ -656,6 +596,8 @@
 	 <jsp:include page="../shared/_footer.jsp" />
 	    =============================================== */
 	 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
+	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
+	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
         <script type="text/javascript">
 	    
 	    $(document).ready(function(){
@@ -675,15 +617,17 @@
             	$("#form-upload-video1").bPopup({modalClose: false});
             });
           });
-	
+	   
 		var limit=0;
 		var offset=1;
 		var totalofrecord =0;
 		var numofpage=1;
 		var url="${pageContext.request.contextPath}";
-		var userid="MQ==";//
-		
-		
+		//var userid="<%= request.getAttribute("userid") %>";
+		//var usertype="<%= request.getAttribute("usertype") %>";
+		var userid="MQ==";
+		var usertype="Admin";
+		//alert(usertype);
 		 //my choice what list or search
 		 function chooseHistory(){
 			var key =$("#searchHistory").val();
@@ -1178,9 +1122,10 @@ function listPlaylistDetail(data){
 							+"<div class='the-box full store-item text-center checkchb'>"
 							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
 								//+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
-								+"<a href='#delete'  class='btn btn-default btn-xs' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
+								+"<a  onclick=deletePlaylist('"+data.RES_DATA[i].playlistId+"'); class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
-								+"<span class='inline-popups'><a id='editPlaylist'  class='btn btn-default btn-xs dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+								+"<span class='inline-popups'>"
+									+"<a id='editPlaylist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
 								+"<i class='fa fa-edit'></i></a></span>"
 							+"</div>"
 						+"<a href='"+url+'/elearning/playlistdetail/'+data.RES_DATA[i].playlistId+"'>"
@@ -1239,32 +1184,242 @@ function mySearchPlaylist(){
 
 }
 
-
-//create playlist
-function createPlaylist(n,d,u,th,p,m,bg,c){
-		var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"true"}');
-   	
-		$.ajax({
-           url: "/api/article/hrd_c001",
-           type: 'post',
-           contentType: 'application/json;charset=utf-8',
-           data: JSON.stringify(JSONObject),
-           success: function(data){
-           	if(data.STATUS =='1'){
-	            	myClear();
-				}
-           	listAll();
-           },
-           error: function(data){
-           	alert("2 unsuccess data");
-           }
-       });	    	
-	} 
-
-	
-	
+		//user for jColor
+		function setTextColor(picker) {
+			document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+		}
 		
-	    </script>
+		//list maincategory
+		listMainCategory();
+		function listMainCategory(){
+    	$.ajax({
+    		url: url+'/rest/user/profile/listcategory',
+            type: 'get',
+            contentType: 'application/json;charset=utf-8',
+            //data: JSON.stringify(JSONObject),
+            success: function(data){
+            	//alert(data.RES_DATA.length);
+            	if(data.STATUS == true){
+            		//alert(data);
+            		$("#playlistcategory").html(listMainCategoryDetail(data));
+            	}
+            },
+            error: function(data){
+            	//alert("listAll() unseccess data");
+            }
+        });	    	
+		   
+	}
+		
+		function listMainCategoryDetail(data){
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
+					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
+				}
+				//alert(str);
+				return str;
+		}
+		
+		function deletePlaylist(pid){
+			//alert(pid);
+				 $.ajax({  
+					 	url: url+'/rest/user/profile/deleteplaylist/'+pid,
+				       type:'delete',
+				       contentType: 'application/json;charset=utf-8', // type of data
+				       success: function(data) { 
+				    	   	if(data.STATUS == true){
+				    	   		mystartPlaylist();
+				    	   	}
+				    	   		//$("#showresult").html(listarticles(data));
+				                console.log("Success..." + data);
+				       }  ,  
+				   		error: function(data){
+				   		alert("Unsuccess" + data +"OR Empty");
+				   		console.log("ERROR..." + data);
+				   	}
+				   }); 
+		} 
+		
+		userPlaylist();
+		function userPlaylist(){
+			//alert(limitv);
+	    	 $.ajax({
+	            url: url+'/rest/user/profile/userprofile/'+userid,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            success: function(data){
+	            	if(data.STATUS == true){
+	            		$("#username").val(data.RES_DATA.username);
+	            		$("#myemail").val(data.RES_DATA.email);
+	            		alert(data.RES_DATA.email);
+	            	/* 	department
+	            		university
+	            		id="gender1" */
+	            		
+	            		$("#dateofbirth").val(data.RES_DATA.dateOfBirth);
+	            		$("#phonenumber").val(data.RES_DATA.phoneNumber);
+	            		$("#usertype").val(data.RES_DATA.userTypeName);
+	            		$("#oldpassword").val("");
+	            		$("#newpassword").val("");
+	            	}
+	        		
+	            },
+	            error: function(data){
+	            	alert("1start () unsuccess data");
+	            }
+	        });	 
+		    	 
+			}
+		function listDepartment(did){
+	    	$.ajax({
+	    		url: url+'/rest/user/profile/listcategory',
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		//alert(data);
+	            		//$("#playlistcategory").html(listMainCategoryDetail(data));
+	            	}
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });	    	
+			   
+		}
+	/* 	function listDepartment(did, data){
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
+					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
+				}
+				//alert(str);
+				return str;
+		} */
+		
+		
+		//whend click submit to create new playlist
+		$('#formcreateplaylist').submit(function(e){
+				e.preventDefault();
+		var publicview ="";
+		var playname=$("#listname").val();
+		//alert(playname);
+		var playdescription=$("#playlistdescription").val();
+		var category=$("#playlistcategory").val();
+		var color=$("#color").val();
+		var img=$("#file").val();
+		var oimg=$("#oimg").val();
+		var thumnial=null;
+		if(usertype == 'Admin'){
+			 publicview=true;
+		}else{
+			 publicview=false;
+			 thumnial ="mcgBfVSTKqo";
+			 color ="000000";
+		}
+			
+		//alert(publicview);
+		
+		//create playlist no image ->well
+		if(img =="" && oimg ==""){
+			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+		}
+		//idrect update
+		else if(img =="" && oimg.length !== 0 ){
+			//updateProcess(id,t,d,e,u,o_img);
+		}
+		//insert image and update
+		else if(img.length !== 0 && oimg.length !== 0 ){
+			 $.ajax({
+					type : "POST",
+					url : url+'/rest/user/profile/imageupload/playlist',
+					enctype : 'multipart/form-data',
+					data : new FormData(document.getElementById("formcreateplaylist")),
+					processData : false, 
+					contentType : false, 
+					success : function(data) {
+						if(data.STATUS ==true){
+							alert(data.IMG);
+							//updateProcess(id,t,d,e,u,data.ART_IMG);
+						}
+					},
+					error : function(data) {
+						alert("0 unsuccess data");
+					}
+				});
+		}
+		//insert with image
+		else {
+			$.ajax({
+				type : "POST",
+				url : url+'/rest/user/profile/imageupload/playlist',
+				enctype : 'multipart/form-data',
+				data : new FormData(document.getElementById("formcreateplaylist")),
+				processData : false, // tell jQuery not to process the data
+				contentType : false, // tell jQuery not to set contentType
+				success : function(data) {
+					if(data.STATUS == true){
+						alert(data.IMG);
+						//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+					}
+				},
+				error : function(data) {
+					alert("1 unsuccess data");
+				}
+			})
+		}
+
+		
+		});
+		
+		
+		
+		
+		//create playlist
+		function createPlayList(n,d,u,th,p,m,bg,c){
+			var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"true"}');
+		   	//alert("good");
+				$.ajax({
+		           url: url+'/rest/user/profile/createplaylist',
+		           type: 'post',
+		           contentType: 'application/json;charset=utf-8',
+		           data: JSON.stringify(JSONObject),
+		           success: function(data){
+		           	if(data.STATUS =='1'){
+			            	myClear();
+						}
+		           	mystartPlaylist();
+		           },
+		           error: function(data){
+		           	alert("2 unsuccess data");
+		           }
+		       });	    	
+			}
+		
+		function myClear() {
+		
+			$("#listname").val("");
+			$("#playlistdescription").val("");
+			$("#playlistcategory").val("");
+			$("#color").val("");
+			$("#file").click();
+			$("#oimg").val("");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
+	    $("#menu-toggle").click(function(e) {
+	        $("#wrapper").toggleClass("toggled");
+	    });
+	</script>
          
                
 	
