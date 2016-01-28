@@ -80,6 +80,13 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	 
+	@RequestMapping(value="/rest/elearning/deleteplaylistdetail/{pid}" , method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deletePlaylist(@PathVariable(value="pid") String pid ){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/deleteplaylist/"+pid , HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 		@RequestMapping(value="/rest/elearning/listvideouser/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,
 				@RequestParam(value="page", required=false, defaultValue="1") int page,

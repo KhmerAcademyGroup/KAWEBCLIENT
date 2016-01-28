@@ -82,7 +82,7 @@
 						class="btn btn-default btn-perspective"
 						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
 							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;
-						<a href="#" onclick="deletePlayList('deleteplaylist.act?playlistid=344')" class="btn btn-default btn-perspective">
+						<a href="#" id="btndeleteplaylist"  class="btn btn-default btn-perspective">
 							<i class="fa fa-trash-o"></i> Delete 
 						</a>
 						
@@ -91,30 +91,23 @@
 				</div>
 		</div>
 
-
-
-
-
-
-
-
 		<div id="work-mixitup" class="work-content">
 			<div class="row" >
 			<h6 class="page-title" id="getTotalVideo"> </h6>
 			<div id="listVideoinPlaylist">
 				
 			</div>						
-			<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>						
-			<div class="text-center">
-				<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
-			</div>		
+				
 
 			</div>
 			<!-- /.row -->
 		</div>
 		<!-- /#work-mixitup -->
 
-
+<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>						
+			<div class="text-center">
+				<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
+			</div>	
 
 	</div>
 	
@@ -267,7 +260,7 @@
 									href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}&playlist=${ playlistid }">
 									<i class="glyphicon glyphicon-play icon-plus"></i>
 								</a>
-								{{if userId == "MQ=="}}  
+								{{if userId == "MQ=="}}   
 								 <a style="cursor:pointer"
 									 class="btnremovevideofromplaylist" vid="{{= videoId}}">
 									<i class="glyphicon glyphicon-remove-sign "
@@ -323,7 +316,7 @@
 						$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
 						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
 						$("#usernameinfo").text("by" + data.USERPLAYLIST.username + " | "+data.USERPLAYLIST.countVideos +"Videos");
-						$("#descriptioninfo").text(data.USERPLAYLIST.description); 
+						$("#descriptioninfo").text(data.USERPLAYLIST.description);						 					
 	        			listVideo.listVideoInPlaylist(playlistId,page);
 
 					}
@@ -368,10 +361,7 @@
     				
     				
     			};
-    			
-    			
-    		
-    			
+    			    			    		    		
 
     			/* ========listVideoUser=========     			
     			url:rest/elearning/listvideouser/
@@ -468,10 +458,7 @@
 		    					$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?item=1000",
 		    					function(data){
 		    						
-		    						var allVideosHTML ="";
-		    						
-	//	    							$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");    	
-									//alert(allVideoJson[1].videoId +" "+allVideoJson[1].videoName+" "+allVideoJson[1].youtubeUrl+" "+allVideoJson[1].videoName+" "+allVideoJson[1].viewCounts);
+		    						var allVideosHTML ="";		    						
 									for(var i=0;i<allVideoJson.length;i++){
 										btn = "<input type='button' class='btn btn-info btnadd' vid="+allVideoJson[i].videoId+" value='Add'>";
 										
@@ -511,12 +498,18 @@
     				    error:function(data,status,er) { 
     				        console.log("error: "+data+" status: "+status+" er:"+er);
     				    }
-    				});
-    				
-    				
+    				});    			    				
     			};
     			
-    			
+    			listVideo.loadData=function(){    				
+    				$.ajax({
+    					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
+    					method: "GET",
+    					success: function(data){			console.log("llll " + playlistId);																		    						
+    						$("#usernameinfo").text("by" + data.USERPLAYLIST.username + " | "+data.USERPLAYLIST.countVideos +"Videos");    						
+    					}
+    				});	
+    			};
     			
     			listVideo.loadPagination_All_Video= function(){
     				num=1;
@@ -605,8 +598,9 @@
     					success: function(data){
     						 change.val("Remove");
     						 change.attr("class","btn btn-danger btnremove");
-    						 listVideo.listVideoInPlaylist(playlistId,1); 
-    						 console.log(data);
+    						 listVideo.listVideoInPlaylist(playlistId,1);
+    						 listVideo.loadData();
+    						 console.log(data);    						 
     					}
     				});	     			       			    
     			    
@@ -623,7 +617,7 @@
     					success: function(data){
     						
     					change.closest('.mix').remove();
-    					
+    					listVideo.loadData();
     						 console.log(data);
     					}
     				});	 
@@ -638,11 +632,32 @@
     					success: function(data){
     						 change.val("Add");
     						 change.attr("class","btn btn-info btnadd");
-    						 listVideo.listVideoInPlaylist(playlistId,1); 
+    						 listVideo.listVideoInPlaylist(playlistId,1);
+    						 listVideo.loadData();
     						 console.log(data);
     					}
     				});	 
     			});
+    			
+    			$(document).on('click', "#btndeleteplaylist", function() {    				
+    			    
+    			    var playlistId="${playlistid}";     			    
+    			    if (!confirm("Do you want to delete this playlist?")){
+    			        return false;
+    			      }
+    			    else{
+    				$.ajax({
+    					url : "${pageContext.request.contextPath}/rest/elearning/deleteplaylistdetail/"+playlistId,
+    					method: "DELETE",
+    					success: function(data){  
+    						alert("Your playlist has beed deleted")
+    						window.location = '${pageContext.request.contextPath}/user/profile';
+    						 console.log(data);
+    					}
+    				});	 
+    			    }
+    			});
+    			/* $("#btndeleteplaylist").text(playlistId); */
     			
 		});
 
