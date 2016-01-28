@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" ng-app="myApp" ng-controller="myController">
 	<head>
@@ -48,7 +49,56 @@
 
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
-	            
+	        	<br />
+	        	<div style="padding:0px 5px;">
+	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
+	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:100px;height:100px; margin:0 auto; border:5px solid #e0e0e0;" />
+	        		<br />
+	        		<h4>${data_user_username }</h4>
+	        	</div>
+	        	</div>
+	        	<!-- History -->
+	        		<div style="padding:5px 5px;">
+	        		<div class="panel panel-primary">
+					  <div class="panel-heading" style="background:#fff;">
+						<h3 class="panel-title">
+							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-history">
+							<strong style="color:#880000;">RECENT VIEW</strong>
+							<span class="right-content">
+								<span class="right-icon">
+									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
+								</span>
+							</span>
+							</a>
+						</h3>
+					  </div>
+						<div id="panel-collapse-history" class="collapse in">
+						  <div class="panel-body">
+							
+							<c:forEach items="${data_user_history.RES_DATA}" var="history">
+									<c:choose>
+								      <c:when test="${fn:length(history.videoName) < 28 }">
+								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${history.videoName}</a><br />
+								      </c:when>
+								
+								      <c:otherwise>
+								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${fn:substring(history.videoName, 0, 28)}&nbsp;...</a><br />
+								      </c:otherwise>
+								    </c:choose>
+									
+									
+									
+							</c:forEach>
+							
+							
+						  </div><!-- /.panel-body -->
+						</div><!-- /.collapse in -->
+					</div><!-- /.panel panel-primary -->
+				</div>
+	        	
+	            <hr class="hr-style-one">
+	            <br />
+	            <strong style="padding:10px;color:#880000;">TUTORIAL</strong>
 	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
 	            
 	            
