@@ -3,6 +3,7 @@ package org.khmeracademy.app.controllers.admin.user;
 import java.util.Map;
 
 import org.khmeracademy.app.entities.input.FrmAddUser;
+import org.khmeracademy.app.entities.input.FrmUpdateUserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@RestController
 public class UsertypeController {
 
 	@Autowired
@@ -35,10 +38,10 @@ public class UsertypeController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	/*@RequestMapping(value="/rest/log/university" , method = RequestMethod.PUT)
-	public ResponseEntity<Map<String , Object>> updateDepartment(@RequestBody FrmUpdateUniversity university){
+	/*@RequestMapping(value="/rest/usertype" , method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateDepartment(@RequestBody FrmUpdateUserType university){
 		HttpEntity<Object> request = new HttpEntity<Object>(university,header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "university/update", HttpMethod.PUT , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "usertype/", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}*/
 	

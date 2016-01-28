@@ -260,7 +260,7 @@
 				<td>{{= email}}</td>
 				<td>{{= userTypeName}}</td>
 				<td> 
-   		 			<select id="{{= NO}}" onchange="sentDTO(11477,1)" class="form-control usertype" tabindex="2">
+   		 			<select data-uid="{{= userId}}" data-tid="{{= userTypeId}}" id="utypeid{{= NO}}" class="form-control usertype" tabindex="2">
 					</select>
             		<i data-cateid="{{= userId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
          		</td>
@@ -279,7 +279,7 @@
         
         <!-- build content for usertype -->
    		<script id="usertype_tmpl" type="text/x-jquery-tmpl">
-	    	<option value="{{= departmentId}}">{{= departmentName}} </option>
+	    	<option value="{{= userTypeId}}">{{= userTypeName}} </option>
    		</script>
    		 
 		<script type="text/javascript">		
@@ -301,8 +301,8 @@
 	                },
 				    success: function(data) { 
 				    	
-				    	  /* alert(JSON.stringify(data)); //data.RESP_DATA
-				    	return;   */
+				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
+				    	return; */  
 						console.log(data);
 				    	
 				    	perPage = 20;
@@ -314,6 +314,13 @@
 								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
 							}
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							
+							//to add to user type to select
+							user.usertype();
+							
+							//set onchange event to class usertype after the element of class usertype
+							$(".usertype").change(changeusertype); 
+							
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
 						}
@@ -330,6 +337,34 @@
 				});
 			};
 			
+			
+			//do onChange() event to change user type
+			function changeusertype(){
+				
+				var utype = $("#"+$(this).attr("id")+" option:selected").val();
+				var uid = $(this).data("uid");							
+				/* alert("${pageContext.request.contextPath}/rest/user?userid="+uid+"&usertype="+utype);
+				return; */
+				$.ajax({ 
+				    url:  "${pageContext.request.contextPath}/rest/user?userid="+uid+"&usertype="+utype, 
+				    type: 'PUT',			
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+						//alert(JSON.stringify(frmData));
+						alert("success");
+				    				    	
+				    },
+				    error:function(data,status,er) { 
+				    	KA.destroyProgressBarWithPopup();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});				
+			}
+			
 			//To list usertype
 			user.usertype = function(){ 
 				
@@ -343,15 +378,15 @@
                 },
 			    success: function(data) { 
 			    	
-			    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
-				    return; */  
+			    	  /* alert(JSON.stringify(data)); //data.RESP_DATA
+				    return;  */
 						  
-			    	if(data.RESP_DATA.length>0){
+			    	if(data.RES_DATA.length>0){
 			    	  	
-			    		$(".usertype").empty();
-						$("#university_tmpl").tmpl(data.RESP_DATA).appendTo("#listuniversity");
+			    		$(".usertype").empty();			    		
+						$("#usertype_tmpl").tmpl(data.RES_DATA).appendTo(".usertype");
 					}else{
-						$("#listuniversity").html('<option>No content</option>');
+						$(".usertype").html('<option>No content</option>');
 					}				    	
 			    	KA.destroyProgressBar();
 			    },
@@ -362,6 +397,13 @@
 			});
 		};
 		
+		//match user type with select
+		function matchutype(){
+			
+			var utype = $(this).data("tid");
+			$('.id_100 option[value=val2]').attr('selected','selected');
+			
+		}
 				
 				//To list university
 				user.listuniversity = function(){ 
@@ -410,7 +452,7 @@
 			    success: function(data) { 
 			    	
 			    	  /* alert(JSON.stringify(data)); //data.RESP_DATA
-				    return;  */
+				    return;   */
 						  
 			    	if(data.RESP_DATA.length>0){
 			    	  	
@@ -600,7 +642,7 @@
 			user.listUser(1);
 			user.listuniversity();
 			user.listdepartment();
-			
+						
 			// Show Form Add User Popup
 			$("#showFrmAddUser").click(function(){
 				$("#p-frmUser").bPopup({modalClose: false});

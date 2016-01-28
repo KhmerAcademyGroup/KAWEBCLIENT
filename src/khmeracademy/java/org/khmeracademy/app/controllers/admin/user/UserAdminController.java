@@ -5,6 +5,7 @@ import java.util.Map;
 import org.khmeracademy.app.entities.input.FrmAddUniversity;
 import org.khmeracademy.app.entities.input.FrmAddUser;
 import org.khmeracademy.app.entities.input.FrmUpdateUniversity;
+import org.khmeracademy.app.entities.input.FrmUpdateUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -40,12 +41,14 @@ public class UserAdminController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	/*@RequestMapping(value="/rest/log/university" , method = RequestMethod.PUT)
-	public ResponseEntity<Map<String , Object>> updateDepartment(@RequestBody FrmUpdateUniversity university){
-		HttpEntity<Object> request = new HttpEntity<Object>(university,header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "university/update", HttpMethod.PUT , request , Map.class) ;
+	@RequestMapping(value="/rest/user" , method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateDepartment(
+			@RequestParam(value = "userid", required = true) String uid,
+			@RequestParam(value = "usertype", required = true) String utype){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/updatetype?userid="+uid+"&usertype="+utype, HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}*/
+	}
 	
 	@RequestMapping(value="/rest/user" , method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> insertDepartment(@RequestBody FrmAddUser user){
