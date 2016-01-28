@@ -40,7 +40,7 @@
 							<div class="work-item">
 								<div class="hover-wrap">
 									<a href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">	
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
+									<i class="glyphicon glyphicon-eye-open icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
 								<img src="${pageContext.request.contextPath}/${playlist.bgImage}" alt="Img work">
@@ -60,7 +60,7 @@
 		</div><!-- /.section -->
 		<!-- END LATEST WORK SECTION -->
 		
-		<!-- BEGIN CLIENT LOGO SECTION -->
+		<%-- <!-- BEGIN CLIENT LOGO SECTION -->
 		<div class="section">
 			<div class="container">
 				<div id="owl-client-logo" class="owl-carousel client-logo">
@@ -85,7 +85,7 @@
 				</div><!-- /#owl-client-logo -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<!-- END CLIENT LOGO SECTION -->
+		<!-- END CLIENT LOGO SECTION --> --%>
 		
 		<jsp:include page="../shared/_footer.jsp" />
 	</body>
