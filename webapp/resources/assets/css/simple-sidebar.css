@@ -12,7 +12,7 @@
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background: #007500; 
+    /* background: #007500;  */
 }
 
 #wrapper.toggled {
@@ -43,14 +43,14 @@
     position: absolute;
     padding: 15px;
     z-index: 20;
-    border-left:1px solid #4c954d;
-    
 }
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
     border-left:0px solid #4c954d;
+    padding-right:125px;
+    padding-left:125px;
 }
 
 /* Sidebar Styles */
@@ -110,7 +110,7 @@
     position: fixed;
     left: 0px;
     top:95%;
-    background: #4c954d;
+    background: #006a00;
     color:#fff;
     border:0px;
 }

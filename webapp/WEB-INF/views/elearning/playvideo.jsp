@@ -57,7 +57,7 @@
 						<div class="panel panel-primary">
 						  <div class="panel-heading" style="background:#fff;">
 							<h3 class="panel-title">
-								<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
+								<a class="block-collapse collapsed" style="color:#006a00;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
 								<b>${category.maincategoryname}</b>
 								<span class="right-content">
 									<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
@@ -68,10 +68,10 @@
 							
 							
 							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
-							  <div class="panel-body" style="background:#cccccc;">
+							  <div class="panel-body" style="background:#006a00;">
 							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
 									<c:if test="${playlist.maincategory==category.maincategory}">
-										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;">${playlist.playlistName}</a><br /> 
+										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;color:#fff;"><span><i class="fa fa-play-circle"></i></span>&nbsp;${playlist.playlistName}</a><br /> 
 									</c:if>
 								</c:forEach>
 							  </div><!-- /.panel-body -->
@@ -90,12 +90,13 @@
 	        <!-- /#sidebar-wrapper -->
 	
 	        <!-- Page Content -->
-	        <div id="page-content-wrapper" style="background:#fff;">
+	        <div id="page-content-wrapper" style="background:#dcdcdc;">
 	            <div class="container-fluid">
-	            	<div class="row">
+	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
 	            			<input type="hidden" value="{{LOGID}}" id="hiddenVideoId" />
+	            			<br />
 	            
 	            
 				            <!-- left side -->
