@@ -191,6 +191,7 @@
 		
 		var department = {};
 		var check = true;
+		var gPage = 1; //global current page for pagination
 		
 		$(document).ready(function(){
 			
@@ -209,10 +210,13 @@
 				    	return; */ 
 						console.log(data);
 				    	
+				    	perPage = 20;
+				    	nextPage = (currentPage-1)*perPage;
+				    	
 						if(data.RESP_DATA.length>0){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RESP_DATA.length;i++){
-								data.RESP_DATA[i]["NO"] = i+1;
+								data.RESP_DATA[i]["NO"] = (i+1)+nextPage;
 							}
 							$("#content_tmpl").tmpl(data.RESP_DATA).appendTo("tbody#content");
 						}else{
@@ -249,6 +253,7 @@
    			        firstClass: 'first'
    			    }).on("page", function(event, currentPage){
    			    	check = false;
+   			    	gPage = currentPage;
    			    	department.listDepartment(currentPage);
    			    }); 
     		};
@@ -270,7 +275,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	department.listDepartment(1);
+				    	department.listDepartment(gPage);
 				    	$("#p-frmDepartment").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -297,7 +302,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	department.listDepartment(1);
+				    	department.listDepartment(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
 				    },
 				    error:function(data,status,er) { 

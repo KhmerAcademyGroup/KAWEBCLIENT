@@ -109,19 +109,19 @@
 								<!-- End Video End -->
 								<!-- Video Info -->
 								<div class="col-sm-12">
-									<h3><strong style="color:#5f5f5f;">{{VIDEO.videoName}}</strong></h3>
+									<h3><strong style="color:#5f5f5f;"><span ng-bind-html="VIDEO.videoName"></span></strong></h3>
 								</div>
 								
 								<div class="col-sm-4 col-xs-12" style="height:75px">
 									<div class="the-box no-border store-list">
 									 <div class="media">
 			                            <a class="pull-left" >
-			                            <img class="media-object img-circle" ng-src="${pageContext.request.contextPath}/resources/uploads/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
+			                            <img class="media-object img-circle" ng-src="${pageContext.request.contextPath}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
 			                            <div class="clearfix visible-xs"></div>
 			                            <div class="media-body">
 			                                <a href="#"></a>
 			                                <h4 class="media-heading" style="font-size:14px">
-			                                 <strong class="text-black">{{VIDEO.username}}</strong>
+			                                 <strong class="text-black"><span ng-bind-html="VIDEO.username"></span></strong>
 											 </h4>
 			                            </div><!-- /.media-body -->
 			                        </div><!-- /.media -->
@@ -130,18 +130,11 @@
 								<div class="col-sm-8 col-xs-12">
 									<ul class="pull-right" style="list-style:none" id="btngr">
 										<li><br></li>
-										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}} views</strong></li>
+										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;views</strong></li>
 										<li style="font-size:12px">
 										
 											<span id="vote">
-												
-												
-												<!-- <i class="fa fa-thumbs-up fa-2x" style="padding:0px 10px; color: #007500; cursor:pointer;" onclick="unVoteVideo()"></i>
-												<strong id="plus" ng-show="{{CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong>
-												
-											
-												<i class="fa fa-thumbs-o-up fa-2x" style="padding:0px 10px; color: #333333; cursor:pointer;" onclick="voteVideo()"></i>
-												<strong id="plus" ng-show="{{!CHECKVOTE}}">Like&nbsp;<b style="color:#007500;">{{COUNTVOTE}}</b></strong> --> 
+												 
 												
 											</span>&nbsp; 
 											
@@ -160,11 +153,11 @@
 												  </ul>
 											</div>
 											
-											<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+											<!-- <div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
 											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
 												<i class="fa fa-download"></i> Download 
 											  </a>
-											</div>
+											</div> -->
 											
 											
 										</li>
@@ -174,9 +167,18 @@
 								<!-- Video Description -->
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<hr class="hr-style-one">
-									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; {{VIDEO.categoryName}}</span>
-									<div class="pull-right"><div class="rw-ui-container"></div></div><br>
-									<p>{{VIDEO.description}}</p>
+									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
+									
+									<!-- <div class="pull-right"><div class="rw-ui-container"></div></div><br> -->
+									<div class="pull-right">
+										<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+										  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+											<i class="fa fa-download"></i> Download 
+										  </a>
+										</div>
+									</div>
+									<br /><br />
+									<p ng-bind-html="VIDEO.description"></p>
 								</div>
 								<!-- End Video Description -->
 								<div class="col-sm-12 col-sm-12 col-xs-12">
@@ -247,8 +249,9 @@
 									        <h4 class="media-heading">
 									        	<a style="color:white">${plist.videoName}</a>
 											</h4>
-									        <ul class="list-inline">
-									            <li class="text-muted">by ${plist.username }</li>
+									        <ul class="list-inline" style="color:#fff;">
+									            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+									            <li style="color:#a6a6a6;">by ${plist.username }</li>
 									        </ul>
 									        </div><!-- /.media-body -->
 									    </div><!-- /.media -->
@@ -266,7 +269,6 @@
 						 	<div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
 								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
-			                            <!-- <a class="pull-left" ng-href="play.act?v={{relate.videoId}}" style="width:40%"> -->
 			                            <a class="pull-left" ng-href="playvideo?v={{relate.videoId}}" style="width:40%">
 			                            <img alt="image" class="store-image img-responsive" ng-src="https://i.ytimg.com/vi/{{relate.youtubeUrl}}/mqdefault.jpg" style="width:100%;"></a>
 			                            <div class="media-body">                                
@@ -275,7 +277,7 @@
 											 </h4>
 			                                <ul class="list-inline">
 			                                	<li>{{relate.viewCounts}} Views</li>
-			                                    <li>by {{relate.username}}</li>
+			                                    <li>by <span ng-bind-html="relate.username"></span></li>
 			                                </ul>
 			                            </div>
 			                        </div>
@@ -344,7 +346,7 @@
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
-		<script type="text/javascript">(function(d, t, e, m){
+		<!-- <script type="text/javascript">(function(d, t, e, m){
 			//	if (RW && RW.initRating) return;
 		
 		    // Async Rating-Widget initialization.
@@ -374,7 +376,7 @@
 		    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
 		    s.parentNode.insertBefore(rw, s);
 		    }(document, new Date(), "script", "rating-widget.com/"));
-		</script>
+		</script> -->
 		
 		
 		<script>
@@ -540,6 +542,7 @@
 							$(".loadMoreComment").hide();
 						}
 					}else{
+						$("#comments").html("");
 						$(".loadMoreComment").hide();
 					}
 					

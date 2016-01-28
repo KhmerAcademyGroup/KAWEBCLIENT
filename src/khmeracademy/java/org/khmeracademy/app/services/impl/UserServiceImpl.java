@@ -23,14 +23,14 @@ import org.springframework.web.client.RestTemplate;
 @Repository
 public class UserServiceImpl implements UserService{
 
-//	@Autowired
-//	private HttpHeaders header;
+	@Autowired
+	private HttpHeaders header;
 //	
 //	@Autowired
 //	private RestTemplate restTemplate;
 //	
-//	@Autowired
-//	private String WSURL;
+	@Autowired
+	private String WSURL;
 	
 	@Override
 	public User findUserByEmail(String email) {
@@ -38,20 +38,16 @@ public class UserServiceImpl implements UserService{
 //			HttpEntity<String> request = new HttpEntity<String>(email, header);
 //			ResponseEntity<Map> responseEntity = restTemplate.exchange(WSURL+"/authentication/weblogin", HttpMethod.POST, request, Map.class);
 //			Map<String, Object> map = (HashMap<String, Object>)responseEntity.getBody();
-			
-			
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ==");
+
 			RestTemplate restTemplate = new RestTemplate();
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 			restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 			User user = new User(); user.setEmail(email);
-	        HttpEntity<Object> request = new HttpEntity<Object>(user,headers);
-			ResponseEntity<Map> response = restTemplate.exchange("http://api.khmeracademy.org/api/authentication/weblogin", HttpMethod.POST , request , Map.class) ;
-			Map<String, Object> map = (HashMap<String, Object>)response.getBody();
-			
-			
+	        HttpEntity<Object> request = new HttpEntity<Object>(user,header);
+			//ResponseEntity<Map> response = restTemplate.exchange("http://api.khmeracademy.org/api/authentication/weblogin", HttpMethod.POST , request , Map.class) ;
+	        ResponseEntity<Map> response = restTemplate.exchange(WSURL+"/authentication/weblogin", HttpMethod.POST , request , Map.class);
+	        Map<String, Object> map = (HashMap<String, Object>)response.getBody();
+		
 			System.out.println(map.get("USER"));
 			if(map.get("USER") != null){
 				Map<String , Object> userMap = (HashMap<String , Object>) map.get("USER");
