@@ -277,8 +277,8 @@
 									<i class="glyphicon glyphicon-play icon-plus"></i>
 								</a>
 								{{if userId == "MQ=="}}  
-								 <a
-									href="#" class="btnremovevideofromplaylist" vid="{{= videoId}}">
+								 <a style="cursor:pointer"
+									 class="btnremovevideofromplaylist" vid="{{= videoId}}">
 									<i class="glyphicon glyphicon-remove-sign "
 									style="margin-left: 89%"></i>
 								</a>
@@ -587,16 +587,14 @@
     			    var playlistId="${playlistid}"; 
     				$.ajax({
     					url : "${pageContext.request.contextPath}/rest/elearning/videotoplaylist/"+playlistId+"/"+vid,
-    					method: "GET",
+    					method: "POST",
     					success: function(data){
     						 change.val("Remove");
     						 change.attr("class","btn btn-danger btnremove");
     						 listVideo.listVideoInPlaylist(playlistId,1); 
     						 console.log(data);
     					}
-    				});	 
-    			   
-    			    
+    				});	     			       			    
     			    
     			});
 
@@ -607,10 +605,11 @@
     			    var playlistId="${playlistid}"; 
     				$.ajax({
     					url : "${pageContext.request.contextPath}/rest/elearning/deletevideofromplaylistdetail/"+playlistId+"/"+vid,
-    					method: "GET",
+    					method: "DELETE",
     					success: function(data){
-    						// listVideo.listVideoInPlaylist(playlistId,1);
+    						
     					change.closest('.mix').remove();
+    					
     						 console.log(data);
     					}
     				});	 
@@ -621,7 +620,7 @@
     			    var playlistId="${playlistid}"; 
     				$.ajax({
     					url : "${pageContext.request.contextPath}/rest/elearning/deletevideofromplaylistdetail/"+playlistId+"/"+vid,
-    					method: "GET",
+    					method: "DELETE",
     					success: function(data){
     						 change.val("Add");
     						 change.attr("class","btn btn-info btnadd");
