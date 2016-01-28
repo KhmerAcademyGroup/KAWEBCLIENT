@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -31,13 +31,13 @@
 <!-- 							<h4 class="small-title">You are not authorized to access this page!</h4> -->
 							<c:if test="${param.logout == null}">
 								<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
-		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button> -->
 									<strong class="alert-link">Please login to your Khmer Academy account!</strong>
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">
 								<div class="alert alert-info alert-bold-border square fade in alert-dismissable">
-	<!-- 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+	<!-- 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button> -->
 									<strong class="alert-link">You've been logout successfully!</strong>
 								</div>
 							</c:if>
