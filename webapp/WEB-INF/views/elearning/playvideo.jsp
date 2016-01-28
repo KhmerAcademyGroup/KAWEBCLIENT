@@ -216,7 +216,7 @@
 										<input type="hidden" id="commentonvideoid" />
 										<input type="hidden" value="1" id="pagecommentvalue" />
 										<div class="loadMoreComment text-center">
-											<button onclick="btnLoadMoreComment()" class="btn btn-primary">More comment</button>
+											<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary">More comment</button>
 										</div>
 									</form>
 									
