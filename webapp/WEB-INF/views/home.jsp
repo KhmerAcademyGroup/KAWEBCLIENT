@@ -70,7 +70,7 @@
 					<div class="col-sm-3">
 						<div class="the-box bg-danger no-border box-feature text-center">
 							<h4 class="heading">E-Learning</h4>
-							<i class="fa fa-eye icon-lg"></i>
+							<i class="fa fa-file-video-o icon-lg"></i>
 							<div class="p-wrap">
 								<p>
 									Khmer Academy is the first website that provides you the e-learning in Khmer language.
@@ -96,7 +96,7 @@
 					<div class="col-sm-3">
 						<div class="the-box bg-success no-border box-feature text-center">
 							<h4 class="heading">Forum</h4>
-							<i class="fa fa-female icon-lg"></i>
+							<i class="fa fa-comments-o icon-lg"></i>
 							<p>
 								Khmer Academy forum allows visitors to communicate with each other by posting and answering questions.
 							</p>
