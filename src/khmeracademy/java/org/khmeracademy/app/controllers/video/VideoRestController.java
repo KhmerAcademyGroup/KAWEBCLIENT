@@ -5,7 +5,6 @@ import java.util.Map;
 import org.khmeracademy.app.entities.input.FrmAddCategory;
 import org.khmeracademy.app.entities.input.FrmAddForumCategory;
 import org.khmeracademy.app.entities.input.FrmUpdateCategory;
-import org.khmeracademy.app.entities.input.FrmUpdateForumCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -42,10 +41,10 @@ public class VideoRestController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/rest/video/category/{cid}" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getCategory(@PathVariable("cid") String cid){
-		HttpEntity<Object> request = new HttpEntity<Object>(cid,header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/category/"+cid, HttpMethod.GET , request , Map.class) ;
+	@RequestMapping(value="rest/video/category/{id}" , method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteDepartment(@PathVariable("id") String id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);		
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/category/"+id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 		
@@ -59,7 +58,10 @@ public class VideoRestController {
 	@RequestMapping(value="rest/video/category" , method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> updateCategory(@RequestBody FrmUpdateCategory category){
 		HttpEntity<Object> request = new HttpEntity<Object>(category,header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/category", HttpMethod.PUT , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/category", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	
+	
 }

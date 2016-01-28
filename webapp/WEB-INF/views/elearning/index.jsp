@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
 							<div class="work-item">
 								<div class="hover-wrap">
 									<a href="${pageContext.request.contextPath}/elearning/playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}">	
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
+									<i class="glyphicon glyphicon-eye-open icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
 								<img src="${pageContext.request.contextPath}/${playlist.bgImage}" alt="Img work">
@@ -60,44 +60,32 @@
 		</div><!-- /.section -->
 		<!-- END LATEST WORK SECTION -->
 		
-		<!-- BEGIN CLIENT LOGO SECTION -->
+		<%-- <!-- BEGIN CLIENT LOGO SECTION -->
 		<div class="section">
 			<div class="container">
 				<div id="owl-client-logo" class="owl-carousel client-logo">
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/graphicriver.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/MoEYS.png" alt="MoEYS logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/photodune.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/aeu.png" alt="AEU logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/themeforest.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/num.png" alt="NUM logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/codecanyon.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/koica-logo.jpg" alt="KOICA logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/3docean.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/webcash.jpg" alt="WebCash logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/graphicriver.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/photodune.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/themeforest.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/codecanyon.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/3docean.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/kosign.png" alt="KOSIGN logo">
 					</div><!-- /.item -->
 				</div><!-- /#owl-client-logo -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<!-- END CLIENT LOGO SECTION -->
+		<!-- END CLIENT LOGO SECTION --> --%>
 		
 		<jsp:include page="../shared/_footer.jsp" />
 	</body>

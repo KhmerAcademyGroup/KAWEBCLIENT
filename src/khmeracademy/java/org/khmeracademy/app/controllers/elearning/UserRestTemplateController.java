@@ -3,14 +3,17 @@ package org.khmeracademy.app.controllers.elearning;
 
 import java.util.Map;
 
-import org.khmeracademy.app.entities.input.FrmAddForumCategory;
+import org.eclipse.jdt.internal.compiler.batch.FileSystem;
 import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class UserRestTemplateController {
@@ -137,11 +141,73 @@ public class UserRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		@RequestMapping(value="/rest/user/profile/listcategory" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listCategory(){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/maincategory/listmaincategory", HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 		@RequestMapping(value="/rest/user/profile/createplaylist" , method = RequestMethod.POST)
 		public ResponseEntity<Map<String , Object>> listCategory(@RequestBody FrmCreatePlaylist playlist){
 			HttpEntity<Object> request = new HttpEntity<Object>(playlist,header);
 			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/deleteplaylist/{pid}" , method = RequestMethod.DELETE)
+		public ResponseEntity<Map<String , Object>> deletePlaylist(@PathVariable("pid") String pid){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/deleteplaylist/"+pid, HttpMethod.DELETE , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		
+		@RequestMapping(value="/rest/user/profile/userprofile/{uid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> userProfile(@PathVariable("uid") String uid){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/user/"+uid, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/listdepartment/{did}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listDepartment(@PathVariable("did") String did){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/department/list/"+did, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/listdepartment/" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listallDepartment(
+										 @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/department/?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		
+		@RequestMapping(value="/rest/user/profile/imageupload/{parth}" , method = RequestMethod.POST)
+		public ResponseEntity<Map<String , Object>> imageUpload(
+													//@RequestBody FrmCreatePlaylist playlist,
+													@RequestParam(value = "file", required = false) MultipartFile file,
+													@PathVariable("parth") String path){
+			//System.out.println("===================="+path);
+			//header.add("Content-Type", "multipart/form-data");			
+			header.setContentType(MediaType.MULTIPART_FORM_DATA);
+			System.err.println("FFFFFFFFFFFFFFFFFFFFFFFFFFFF "+file.getOriginalFilename());
+			MultiValueMap<String, Object> mvm = new LinkedMultiValueMap<String, Object>();
+//		    mvmc.add("file", file); // MultipartFile
+			HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<MultiValueMap<String, Object>>(mvm,header);
+			
+//			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/uploadfile/upload?url="+path, HttpMethod.POST , request , Map.class) ;
+			
+			return new ResponseEntity<Map<String , Object>>(HttpStatus.OK);
 		}
 		
 	

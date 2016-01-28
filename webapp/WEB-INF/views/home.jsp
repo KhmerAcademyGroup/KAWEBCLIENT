@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -49,11 +49,14 @@
 		<!-- BEGIN TEXT SECTION -->
 		<div class="section">
 			<div class="container">
+			<h2 class="text-center text-slogan">
+			<spring:message code="welcometutorialtext"/>
+			</h2>
 			<p class="text-center text-slogan">
-			Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br />
-			Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br />
-			Investigationes demonstraverunt lectores legere me lius quod
+			<spring:message code="slogen"/>
 			</p>
+			<%-- <br />
+			<h3 class="text-center"><spring:message code="services"/></h3> --%>
 			</div><!-- /.container -->
 		</div><!-- /.section -->
 		<!-- END TEXT SECTION -->
@@ -66,13 +69,11 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="the-box bg-danger no-border box-feature text-center">
-							<h4 class="heading">RESPONSIVE</h4>
-							<i class="fa fa-css3 icon-lg"></i>
+							<h4 class="heading">E-Learning</h4>
+							<i class="fa fa-eye icon-lg"></i>
 							<div class="p-wrap">
 								<p>
-									Duis autem vel eum iriure dolor in
-									hendrerit in vulputate velit esse
-									molestie consequat
+									Khmer Academy is the first website that provides you the e-learning in Khmer language.
 								</p>
 							</div><!-- /.p-wrap -->
 							<div class="btn-wrap">
@@ -82,12 +83,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-warning no-border box-feature text-center">
-							<h4 class="heading">RETINA READY</h4>
-							<i class="fa fa-female icon-lg"></i>
+							<h4 class="heading">Tutorial</h4>
+							<i class="fa fa-book icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								 Khmer Academy provides you all tutorials learning with all programming languages.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-warning btn-learn-more">LEARN MORE</button>
@@ -96,12 +95,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-success no-border box-feature text-center">
-							<h4 class="heading">FLAT DESIGN</h4>
-							<i class="fa fa-circle-o-notch icon-lg"></i>
+							<h4 class="heading">Forum</h4>
+							<i class="fa fa-female icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								Khmer Academy forum allows visitors to communicate with each other by posting and answering questions.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-success btn-learn-more">LEARN MORE</button>
@@ -110,12 +107,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-info no-border box-feature text-center">
-							<h4 class="heading">CLEAN CODE</h4>
-							<i class="fa fa-code icon-lg"></i>
+							<h4 class="heading">All Khmer News</h4>
+							<i class="fa fa-newspaper-o icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								All Khmer News provides thousand sources of reliable news. All khmer news in our website.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-info btn-learn-more">LEARN MORE</button>
@@ -134,22 +129,18 @@
 			<div class="container">
 				<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3>TOP FEATURES</h3>
+					<h3><spring:message code="services"/></h3>
 				</div><!-- /.section-heading -->
 				<div class="row">
 					<div class="col-sm-6">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/devices.png" class="img-responsive" alt="Section image">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading">Compatible on all devices, it means responsive design</h5>
+						<h5 class="text-heading"><spring:message code="elearning"/></h5>
 						<p class="lh-24">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-						consequat, vel illum dolore eu feugiat nulla facilisis at vero eros.
+						<spring:message code="elearningtext"/>
 						</p>
-						<p><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></p>
+						<p><a href="${pageContext.request.contextPath}/elearning"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
@@ -158,15 +149,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h5 class="text-heading">Bootstrap based, clean code and easy to custom to suit your need</h5>
+						<h5 class="text-heading"><spring:message code="tutorial"/></h5>
 						<p class="lh-24">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-						consequat, vel illum dolore eu feugiat nulla facilisis at vero eros.
+						<spring:message code="tutorialtext"/>
 						</p>
-						<p><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></p>
+						<p><a href="${pageContext.request.contextPath}/tutorial"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/circle-code.png" class="img-responsive" alt="Section image">
@@ -174,123 +161,23 @@
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<!-- END TOP FEATURE SECTION -->
-		
-		
-		
-		<!-- BEGIN LATEST WORK SECTION -->
-		<div class="section work-section">
+		<div class="section bg-info section-top-features">
 			<div class="container">
-				<div class="section-heading">
-					<div class="inner-border"></div>
-					<h3>LATEST WORK</h3>
-				</div><!-- /.section-heading -->
-				<ul class="work-category-wrap">
-					<li class="filter" data-filter="all">ALL</li>
-					<li class="filter" data-filter="template">TEMPLATE</li>
-					<li class="filter" data-filter="web_design">WEB DESIGN</li>
-					<li class="filter" data-filter="mobile_apps">MOBILE APPS</li>
-					<li class="filter" data-filter="printing">PRINTING</li>
-					<li class="filter" data-filter="other">OTHER</li>
-				</ul>
-				
-				<div id="work-mixitup" class="work-content">
-					<div class="row">
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix printing">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/1.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">PRINTING</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix template">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/2.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">TEMPLATE</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix web_design">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/3.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">WEB DESIGN</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix mobile_apps">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/4.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">MOBILE APPS</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						<!-- Begin work item -->
-						<div class="col-sm-4 col-md-3 col-xs-6 mix template">
-							<div class="work-item">
-								<div class="hover-wrap">
-									<a href="portfolio-single.html">
-									<i class="glyphicon glyphicon-plus icon-plus"></i>
-									</a>
-								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/resources/assets/img/work/5.jpg" alt="Img work">
-								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">Awesome project name</p>
-									<p class="project-category">TEMPLATE</p>
-								</div><!-- /.the-box no-border transparent -->
-							</div><!-- /.work-item -->
-						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->
-						<!-- End work item -->
-						
-						
-						
-					</div><!-- /.row -->
-				</div><!-- /#work-mixitup -->
-				
+				<div class="row">
+					<div class="col-sm-6">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/forum.png" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
+						<h5 class="text-heading"><spring:message code="forum"/></h5>
+						<p class="lh-24">
+						<spring:message code="forumtext"/>
+						</p>
+						<p><a href="${pageContext.request.contextPath}/forum"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
+					</div><!-- /.col-sm-6 -->
+				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<!-- END LATEST WORK SECTION -->
-		
+		<!-- END TOP FEATURE SECTION -->
 		
 		<div class="section bg-success text-center">
 			<div class="container">
@@ -362,34 +249,22 @@
 			<div class="container">
 				<div id="owl-client-logo" class="owl-carousel client-logo">
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/graphicriver.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/MoEYS.png" alt="MoEYS logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/photodune.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/aeu.png" alt="AEU logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/themeforest.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/num.png" alt="NUM logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/codecanyon.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/koica-logo.jpg" alt="KOICA logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/3docean.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/webcash.jpg" alt="WebCash logo">
 					</div><!-- /.item -->
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/graphicriver.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/photodune.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/themeforest.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/codecanyon.png" alt="Client logo">
-					</div><!-- /.item -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/3docean.png" alt="Client logo">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/kosign.png" alt="KOSIGN logo">
 					</div><!-- /.item -->
 				</div><!-- /#owl-client-logo -->
 			</div><!-- /.container -->
@@ -413,9 +288,21 @@
 			});
 		</script>
 		
+		<!-- <script>
+		$(window).load(function() {
+			 // executes when complete page is fully loaded, including all frames, objects and images
+			 $.get("http://ipinfo.io", function (response) {
+   	    		if(response.country=="KH"){
+   	    			alert("window is loaded");
+   	    			location.reload();
+   	    		}
+   	    	 }, "jsonp");
+			 
+		});
+   			
+   		</script> -->
 		
-		
-		
+		    
 		
 	</body>
 </html>

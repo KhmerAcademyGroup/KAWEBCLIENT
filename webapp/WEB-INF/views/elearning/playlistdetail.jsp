@@ -15,7 +15,7 @@
 	.work-item{
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
 	}
-	.store-list{
+	.store-list ,.playlistinfo{
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
 	margin-bottom: 10px;
 	}
@@ -50,10 +50,45 @@
 
 
 
-		<div class="the-box no-border">
-			<div id="firtvideo">
+		<div class="the-box no-border playlistinfo" >
+			<!-- <div id="firtvideo">
 			
-			</div>
+			</div> -->
+			<div class="media">
+					<a class="pull-left"> <img alt="image" class="store-image" id="thumbnailurlinfo"
+						src=""
+						style="height: 130px"></a>
+					<div class="clearfix visible-xs"></div>
+					<div class="media-body">
+						<a></a>
+						<h4 class="media-heading" style="padding: 0px; margin: 0px">
+							<a><strong class="text-black" id="playlistnameinfo"><!-- {{= playlistName}} --></strong></a>&nbsp;<span
+								class="label label-danger" style="font-size: 10px;"><i
+								class="fa fa-lock"></i> Private</span>
+						</h4>
+						<ul style="list-style: none; padding: 0px; margin: 0px;">
+							<li><a class="text-muted small" id="usernameinfo"><!--by  {{= username}}  |  {{= countVideos}} Videos --> </a></li>
+							<li><span class="text-muted small" id="descriptioninfo"><!-- {{= description}}  --></span></li>
+						</ul>
+					</div>
+					<!-- /.media-body -->
+					<span class="small text-muted" style="color: #37BC9B"> 
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
+
+						
+						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
+							Add video </a>&nbsp; &nbsp;
+						<a href="#frmup_date_playlist"
+						class="btn btn-default btn-perspective"
+						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
+							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;
+						<a href="#" onclick="deletePlayList('deleteplaylist.act?playlistid=344')" class="btn btn-default btn-perspective">
+							<i class="fa fa-trash-o"></i> Delete 
+						</a>
+						
+							
+					</span>
+				</div>
 		</div>
 
 
@@ -115,7 +150,7 @@
 													</div>
 												<h6 class="page-title" id="getTotalVideoSearch"> </h6>
 												
-													<div id="getVideoSearch" style="margin-top: 10px;">
+													<div id="getVideoSearch" style="margin-top: 10px;height: 530px;">
 													
 													
 													</div>
@@ -227,44 +262,7 @@
 
 
 	
-	<script id="jfirtvideo" type="text/x-jquery-tmpl">
-		<div class="media">
-					<a class="pull-left"> <img alt="image" class="store-image"
-						src="https://i.ytimg.com/vi/{{= thumbnailUrl}}/mqdefault.jpg"
-						style="height: 130px"></a>
-					<div class="clearfix visible-xs"></div>
-					<div class="media-body">
-						<a></a>
-						<h4 class="media-heading" style="padding: 0px; margin: 0px">
-							<a><strong class="text-black">{{= playlistName}}</strong></a>&nbsp;<span
-								class="label label-danger" style="font-size: 10px;"><i
-								class="fa fa-lock"></i> Private</span>
-						</h4>
-						<ul style="list-style: none; padding: 0px; margin: 0px;">
-							<li><a class="text-muted small">by {{= username}} | {{= countVideos}} Videos </a></li>
-							<li><span class="text-muted small">{{= description}} </span></li>
-						</ul>
-					</div>
-					<!-- /.media-body -->
-					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
-
-						{{if userId == "MQ=="}}  
-						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
-							Add video </a>&nbsp; &nbsp;
-						<a href="#frmup_date_playlist"
-						class="btn btn-default btn-perspective"
-						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
-							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;
-						<a href="#" onclick="deletePlayList('deleteplaylist.act?playlistid=344')" class="btn btn-default btn-perspective">
-							<i class="fa fa-trash-o"></i> Delete 
-						</a>
-						{{/if}}
-							
-					</span>
-				</div>
-
-</script>
+	
 	
 		<script id="jlistVideoInplaylist" type="text/x-jquery-tmpl"> 
 			<div
@@ -324,7 +322,12 @@
 			<div class="media-body" style="overflow: visible">				
 				<div class="btn-group pull-right">					
 					
-						<button class="btn btn-info btadd" vid={{= videoId}}>Add</button>
+						<input type="button" class="btn btn-info btadd" vid={{= videoId}} 
+									 {{if (1 == 1)}}
+									  value="Remove"
+									{{/if}}
+									  value="Add"
+										/>
 						
 					
 				</div>
@@ -362,7 +365,10 @@
 			<div class="media-body" style="overflow: visible">				
 				<div class="btn-group pull-right">					
 					
-						<button class="btn btn-info btadd" vid={{= videoId}}>Add</button>
+						<input type="button" class="btn btn-info btadd" vid={{= videoId}} 
+									
+									  value="Add"
+										/>
 						
 					
 				</div>
@@ -382,36 +388,38 @@
 			</div>
 		</div>
 	</div>
-
-
-	
 </script>
+
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
 
 	<script type="text/javascript">
+	
+		var playlistId="${playlistid}";
+	
 		$(document).ready(function(){
-			var playlistId="${playlistid}"; 			
-			
+				
+			 			
 			
 			    var listVideo = {};
 		  		var page = 1;
 		  		var totalPage = 0;	
 		  		var empty = true;
 		  		var pageVideoUser=1;
-		  				  			
+		  				  
 		  		
 		  		
-		  		listVideo.getPlaylist=function(){
+		  		listVideo.getPlaylist=function(){	
 		  			
 		  			$.ajax({
 					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
 					method: "GET",
-					success: function(data){									
-						console.log(data);
-						
-						if(data.USERPLAYLIST !=null){
-							$("#jfirtvideo").tmpl(data.USERPLAYLIST).appendTo("#firtvideo");							
-						} 				  
+					success: function(data){			console.log("llll " + playlistId);																		
+						$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
+						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
+						$("#usernameinfo").text("by" + data.USERPLAYLIST.username + " | "+data.USERPLAYLIST.countVideos +"Videos");
+						$("#descriptioninfo").text(data.USERPLAYLIST.description); 
+	        			listVideo.listVideoInPlaylist(playlistId,page);
+
 					}
 				});	
 		  		};
@@ -419,8 +427,7 @@
 		  		/* ========listVideoInPlaylistDetail=========     			
     			url:rest/elearning/playlistdetail/
     			*/
-		  		listVideo.listVideoInPlaylist = function(playlistId,page){
-		  			
+		  		listVideo.listVideoInPlaylist = function(playlistId,page){		  			
 		  			$("#loading").show();
 		  			$("#btLoadMore").hide();	
 		  			if(empty == true){
@@ -433,11 +440,14 @@
     	                    xhr.setRequestHeader("Accept", "application/json");
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
-    				    success: function(data) {  console.log(data);    				    
+    				    success: function(data) { 
+    				    $("#loading").hide();
     				    $("#getTotalVideo").text(data.PAGINATION.totalCount + " Videos");
-    						$("#loading").hide();
+    						
     						if(data.RES_DATA.length>0){
     							$("#jlistVideoInplaylist").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist");
+    							/* $("#jplaylistvid").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist"); */
+    							listVideo.listAllVideo(1);
     						}
     						if(page >= data.PAGINATION.totalPages){ 
     							$("#btLoadMore").hide();
@@ -470,7 +480,7 @@
     	                    xhr.setRequestHeader("Accept", "application/json");
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
-    				    success: function(data) {  console.log(data);    				    
+    				    success: function(data) {   				    
     				     $("#getTotalVideoUser").text(data.PAGINATION.totalCount + " Videos"); 
     						$("#loadingVideoUser").hide();
     						if(data.RES_DATA.length>0){
@@ -493,8 +503,7 @@
     			/* ========listAllVideo=========     			
     			url:rest/elearning/listallvideo/
     			*/
-					listVideo.listAllVideo = function(page){		  			
-    				
+					listVideo.listAllVideo = function(page){		  			    				
     				$.ajax({ 
     					url : "${pageContext.request.contextPath}/rest/elearning/listallvideo?page="+page+"&item=4",
     				    type: 'GET',
@@ -502,14 +511,52 @@
     	                    xhr.setRequestHeader("Accept", "application/json");
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
-    				    success: function(data) {  console.log(data);        				    
+    				    success: function(data) {  
     				    $("#getVideoSearch").empty();	
     				    
     				    $("#getTotalVideoSearch").text(page+=" / "+data.PAGINATION.totalPages);    				        				   
-    					if(data.RES_DATA.length>0){
-    							$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");    	    							
-    							
-    						}    		    							
+	    					
+    				    	if(data.RES_DATA.length>0){
+    				    	
+    				    		allVideoJson = data.RES_DATA;
+
+		    					$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?item=1000",
+		    					function(data){
+		    						
+		    						var allVideosHTML ="";
+		    						var btn = '<input type="button" class="btn btn-info">';
+	//	    							$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");    	
+									//alert(allVideoJson[1].videoId +" "+allVideoJson[1].videoName+" "+allVideoJson[1].youtubeUrl+" "+allVideoJson[1].videoName+" "+allVideoJson[1].viewCounts);
+									for(var i=0;i<allVideoJson.length;i++){
+										
+										if(data.RES_DATA.length != 0){
+											console.log(data.RES_DATA.length);
+											for (var j = 0; j < data.RES_DATA.length; j++) {
+												if(data.RES_DATA[j].playlistid == playlistId  && data.RES_DATA[j].videoId == allVideoJson[i].videoId){
+													btn = '<input type="button" class="btn btn-danger">';
+												}
+	 										}
+										}										
+											allVideosHTML +="<div class='the-box no-border store-list'>"
+												   +"<div class='media'>"
+												   +"<a class='pull-left' href='/KAWEBCLIENT/elearning/playvideo?v="+allVideoJson[i].videoId+"'><img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+allVideoJson[i].youtubeUrl+"/mqdefault.jpg' style='width: 179px; height: 94px;'></a>"    
+												   +" <div class='clearfix visible-xs'></div>"
+												   +"   <div class='media-body' style='overflow: visible'>"
+												   +"      <div class='btn-group pull-right'><input type='button' class='btn btn-info btadd' vid='NzU3' value='Add'></div>"
+												   +"      <ul class='list-inline'>"
+												   +"         <li><a href='../elearning/play.act?v=13' title='"+allVideoJson[i].videoName+"'><span class='videoname'>"+allVideoJson[i].videoName+"</span></a></li>"
+												   +"         <br>"
+												   +"         <li><a>by "+allVideoJson[i].username+"</a> | <span>"+allVideoJson[i].postDate+"</span></li>"
+												   +"         <br>"          
+												   +"         <li>       "+allVideoJson[i].countVotePlus+"      <i class='fa fa-thumbs-up'></i>&nbsp;&nbsp;&nbsp;"+allVideoJson[i].countVoteMinus+"       <i class='fa fa-thumbs-down'></i>  &nbsp;&nbsp;&nbsp;"+allVideoJson[i].viewCounts+"       <i class='fa fa-eye'></i>      &nbsp;&nbsp;&nbsp;       </li>"
+												   +"     </ul>"
+												   +"   </div>"
+												   +" </div>"
+												   +"</div>"
+									}																		
+									$("#getVideoSearch").html(allVideosHTML); 																			
+		    				 });	    						
+	    					}    		    							
     				    },
     				    error:function(data,status,er) { 
     				        console.log("error: "+data+" status: "+status+" er:"+er);
@@ -545,14 +592,15 @@
     		  		
     				};
     			
-    			
-    				listVideo.getPlaylist();
-        			listVideo.listVideoInPlaylist(playlistId,page);
-        			listVideo.listUserVideo("MQ==",pageVideoUser);    			
-        			listVideo.listAllVideo(1);
+//     				setTimeout(function(){
+    					listVideo.getPlaylist();
+// 					}, 200 );
+
+//         			listVideo.listUserVideo("MQ==",pageVideoUser);    			
+        			
         			listVideo.loadPagination();
     			
-        			$(".btadd").click(function(){$(this).attr('vid');});		
+        				
     			$("#btLoadMore").click(function(){  
     				page++;    				
     				empty = false;
@@ -568,9 +616,19 @@
     			});
     			    								
     			
-    				    			
-		
+    			
+    			
+    			$(document).on('click', ".btadd", function() {
+    			    var vid = $(this).attr("vid");
+    			    var vid = $(this).attr("class");   
+    			    
+    			    $(this).val("Remove");
+    			    
+    			    
+    			});
+    			
 		});
+		 
 		/* function addVideoToPlaylist(vid){
 			var playlistId="${playlistid}"; 
 			$.ajax({

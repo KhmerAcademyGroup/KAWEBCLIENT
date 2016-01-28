@@ -74,8 +74,7 @@
 			<div id="p-frmCategory" class="ka-popup"
 				style="display: none; width: 50%;">
 				<form id="frmCategory"
-					action="${pageContext.request.contextPath}/rest/video/category"
-					method="POST">
+					action="${pageContext.request.contextPath}/rest/video/category" method="POST">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" aria-hidden="true">
@@ -86,25 +85,44 @@
 						<div class="modal-body">
 							<input type="hidden" id="categoryId" class="form-control"
 								name="categoryId">
+
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Category name</label>
-								<div class="col-lg-5">
+								<label class="control-label">Category name</label>
+								<div>
 									<input type="text" id="categoryName" class="form-control"
 										required="required" name="categoryName">
 								</div>
 							</div>
-							<div class="modal-footer">
-								<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
+							<input type="hidden" id="mainCategoryId" class="form-control"
+								name="mainCategoryId">
+
+							<div class="form-group">
+								<label class=" control-label">MainCategory name</label>
+								<div>
+									<select id="mainCategory" data-placeholder="Choose a MainCategory..." class="form-control" tabindex="2">
+
+									</select>
+								</div>
 							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<div class="col-lg-8 col-lg-offset-4">
+									<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</form>
 			</div>
-
+			
+			
+			<!-- Form Confirm Delete Category -->
 			<div id="p-frmConfirm" class="ka-popup"
 				style="display: none; width: 50%;">
 				<form id="frmConfirm"
-					action="${pageContext.request.contextPath}/rest/video/category"
+					action="${pageContext.request.contextPath}/rest/video/category/"
 					method="POST">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -116,8 +134,8 @@
 						<div class="modal-body">
 
 							<input type="hidden" id="ConfirmId" class="form-control"
-								name="categoryId">
-
+								name="categoryId"> <input type="hidden" id="ConfirmId"
+								class="form-control" name="mainCategoryId">
 							<div class="form-group">
 								<label class="form-control">Delete this Category?</label>
 							</div>
@@ -150,10 +168,14 @@
 				<td>{{= categoryName}}</td>
 				<td>{{= mainCategoryName}}</td>
 				<td> 
-   		 			<i data-cateid="{{= categoryId}}" data-mainCategoryId="{{=mainCategoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
-            		<i data-cateid="{{= categoryId}}" data-mainCategoryId="{{=mainCategoryId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
+   		 			<i data-cateid="{{= categoryId}}" data-mcateid="{{= mainCategoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
+            		<i data-cateid="{{= categoryId}}" data-mcateid="{{= mainCategoryId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
          		</td>
 			</tr>
+   		</script>
+   		
+   		<script id="listmcategory_tmpl" type="text/x-jquery-tmpl">
+			<option value="{{= mainCategoryId}}">{{= mainCategoryName}}</option>
    		</script>
 
 	<script type="text/javascript">
@@ -180,17 +202,27 @@
 											},
 											success : function(data) {
 												console.log(data);
-												/* alert(JSON.stringify(data));
-												return; */
+												
+												/*  alert(JSON.stringify(data));
+												return;  */
+												
+												perPage = 20;
+												nextPage = (currentPage - 1) * perPage;
+												
+												
 												if (data.RES_DATA.length > 0) {
 													$("tbody#content").empty();
 													for (var i = 0; i < data.RES_DATA.length; i++) {
-														data.RES_DATA[i]["NO"] = i + 1;
+														data.RES_DATA[i]["NO"] = (i + 1) + nextPage;
 													}
 													$("#content_tmpl")
 															.tmpl(data.RES_DATA)
 															.appendTo(
 																	"tbody#content");
+													
+													$("#listmcategory_tmpl").tmpl(data.RES_DATA)
+													.appendTo(
+													"#mainCategory");
 												} else {
 													$("tbody#content")
 															.html(
@@ -238,13 +270,22 @@
 							};
 
 							category.addOrUpdateCategory = function() {
-								KA.createProgressBarWithPopup();
+								
+								alert($('#mainCategory').val() + " "+ $("#frmCategory").attr("action") + " "+ $("#frmCategory").attr("method"));
+/* 								var e = document.getElementById("#mainCategory");
+								alert(e.options[e.selectedIndex].value); */
+								
+								
 								frmData = {
-									"categoryId" : $("#categoryId").val(),
 									"categoryName" : $("#categoryName").val(),
-									"mainCategoryId" : $("#mainCategoryId").val(),
-									"mainCategoryName" : $("#mainCategoryName").val()
+									"mainCategoryId" : $('#mainCategory').val()
+									
 								};
+								
+								KA.createProgressBarWithPopup();
+								
+// 								alert($("#frmCategory").attr("action"));
+								
 								$.ajax({
 									url : $("#frmCategory").attr("action"),
 									type : $("#frmCategory").attr("method"),
@@ -262,7 +303,7 @@
 										$("#p-frmCategory").bPopup().close();
 									},
 									error : function(data, status, er) {
-										KA.destroyProgressBarWithPopup();
+// 										KA.destroyProgressBarWithPopup();
 										console.log("error: " + data
 												+ " status: " + status + " er:"
 												+ er);
@@ -324,40 +365,9 @@
 							$("#btCancel").on('click', function() {
 
 								$("#p-frmConfirm").bPopup().close();
-							});
+							})
 
-							//Get MainCategory from Database
-							/* category.listCategory = function() {
-								KA.createProgressBarWithPopup();
-
-								var mcategoryId = $("#maincategoryid").val();
-
-								$.ajax({
-									url : $("#frmCategory").attr("action") + "/"
-											+ catId,
-									type : $("#frmCategory").attr("method"),
-									beforeSend : function(xhr) {
-										xhr.setRequestHeader("Accept",
-												"application/json");
-										xhr.setRequestHeader("Content-Type",
-												"application/json");
-									},
-									success : function(data) {
-										console.log(data);
-										KA.destroyProgressBarWithPopup();
-										category.listCategory(1);
-										$("#p-frmCategory").bPopup().close();
-									},
-									error : function(data, status, er) {
-										KA.destroyProgressBarWithPopup();
-										console.log("error: " + data
-												+ " status: " + status + " er:"
-												+ er);
-									}
-								});
-							};
-							 */
-							// load all Video cateoty
+							// load all Video category
 							category.listCategory(1);
 
 							// Show Form Add Category Popup
@@ -379,13 +389,20 @@
 
 												var cateName = $(this).parent()
 														.prev().text();
+												var mCateName = $(this)
+														.parent().prev().text();
 												var cateId = $(this).data(
 														"cateid");
+												var mcateId = $(this).data(
+														"mcateid")
 												KA.createProgressBarWithPopup();
 												console.log(cateId);
 												$("#categoryId").val(cateId);
 												$("#categoryName")
 														.val(cateName);
+												$("#mainCateId").val(mcateId);
+												$("#mainCateName").val(
+														mCateName);
 
 												$("#p-frmCategory").bPopup({
 													modalClose : false
@@ -407,5 +424,5 @@
 
 						});
 	</script>
-
-</body>
+	</body>
+	</html>
