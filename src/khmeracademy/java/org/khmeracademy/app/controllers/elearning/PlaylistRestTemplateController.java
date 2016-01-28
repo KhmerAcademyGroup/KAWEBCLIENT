@@ -64,7 +64,7 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	 
-	@RequestMapping(value="/rest/elearning/videotoplaylist/{pid}/{vid}" , method = RequestMethod.GET)
+	@RequestMapping(value="/rest/elearning/videotoplaylist/{pid}/{vid}" , method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addVideoToPlaylist(@PathVariable(value="pid") String pid ,@PathVariable(value="vid") String vid){
 		System.err.println(pid + "   " +vid);
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -72,7 +72,7 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/rest/elearning/deletevideofromplaylistdetail/{pid}/{vid}" , method = RequestMethod.GET)
+	@RequestMapping(value="/rest/elearning/deletevideofromplaylistdetail/{pid}/{vid}" , method = RequestMethod.DELETE)
 	public ResponseEntity<Map<String , Object>> deleteVideoFromPlaylist(@PathVariable(value="pid") String pid ,@PathVariable(value="vid") String vid){
 		System.err.println(pid + "   " +vid);
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
