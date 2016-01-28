@@ -201,7 +201,7 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Department<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<select name="department" id="department" class="form-control" data-bv-field="department">
+																<select name="department" id="mydepartment" class="form-control" data-bv-field="department">
 																	
 																</select>
 															</div>
@@ -221,12 +221,12 @@
 																<div class="col-lg-5">
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="gender1" name="gender" value="male" required="" data-bv-notempty-message="The gender is required" data-bv-field="gender" checked=""> Male
+																			<input type="radio" id="male" name="male" value="male"  required=""  data-bv-field="gender" > Male
 																		</label>
 																	</div>
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="gender2" name="gender" value="female" checked="" data-bv-field="gender"> Female
+																			<input type="radio" id="female" name="female" value="female"  data-bv-field="gender"> Female
 																		</label>
 																	</div>
 															
@@ -434,6 +434,7 @@
 																	<label for="exampleInputEmail1">Category</label>
 																	<select class="form-control"  id="playlistcategory">
 																	</select>
+																	
 																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
 															 </div>
 															  <c:set var="usertype"  value="${usertype }"/>
@@ -1241,7 +1242,7 @@ function mySearchPlaylist(){
 		
 		//userPlaylist();
 		function userPlaylist(){
-			//alert(limitv);
+			//alert(userid);
 	    	 $.ajax({
 	            url: url+'/rest/user/profile/userprofile/'+userid,
 	            type: 'get',
@@ -1250,11 +1251,12 @@ function mySearchPlaylist(){
 	            	if(data.STATUS == true){
 	            		$("#username").val(data.RES_DATA.username);
 	            		$("#myemail").val(data.RES_DATA.email);
-	            		//alert(data.RES_DATA.departmentId);
 	            		
-	            	/* 	department
-	            		university
-	            		id="gender1" */
+	            		if(data.RES_DATA.gender == 'male'){
+	            			$("#male").attr('checked', 'checked');
+	            		}else{
+	            			$("#female").attr('checked', 'checked');
+	            		}
 	            		
 	            		$("#dateofbirth").val(data.RES_DATA.dateOfBirth);
 	            		$("#phonenumber").val(data.RES_DATA.phoneNumber);
@@ -1264,6 +1266,9 @@ function mySearchPlaylist(){
 	            		
 	            		
 	            		listDepartments(data.RES_DATA.departmentId);
+	            		listMyUniversity(data.RES_DATA.universityId);
+	            		
+	            		
 	            	}
 	        		
 	            },
@@ -1273,8 +1278,12 @@ function mySearchPlaylist(){
 	        });	 
 		    	 
 			}
+		
+
+		
+		
 		function listDepartments(did){
-			//alert(did);
+			
 	    	$.ajax({
 	    		url: url+'/rest/user/profile/listdepartment/',
 	            type: 'get',
@@ -1285,61 +1294,102 @@ function mySearchPlaylist(){
 	            	if(data.STATUS == true){
 	            		//alert(data);
 	            		var str="";
-	            		for(var i=0; i<data.RES_DATA.length ; i++){
-	    					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
+	            		for(var i=0; i<data.RESP_DATA.length ; i++){
+	            			if( data.RESP_DATA[i].departmentId == did & did !=null){
+	            				str += " <option value='"+data.RESP_DATA[i].departmentId+"' selected>"+data.RESP_DATA[i].departmentName+"</option>";
+	            			}
+	    					str += " <option value='"+data.RESP_DATA[i].departmentId+"'>"+data.RESP_DATA[i].departmentName+"</option>";
 	    				}
 	            		
+	            		$("#mydepartment").html(str);
+	            		
 	            	}
+	            	
 	            },
 	            error: function(data){
 	            	//alert("listAll() unseccess data");
 	            }
 	        });	    	
-			   
+	     
 		}
-	/* 	function listDepartmentdetail(did, data){
-			var str="";
-				for(var i=0; i<data.RES_DATA.length ; i++){
-					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
-				}
-				//alert(str);
-				return str;
-		} */
 		
+		function listMyUniversity(uid){
+			//alert(uid);
+	     $.ajax({
+	    		url: url+'/rest/user/profile/listuniversity',
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		//alert(data);
+	            		var str="";
+	            		for(var i=0; i<data.RESP_DATA.length ; i++){
+	            			if( data.RESP_DATA[i].departmentId == uid  & uid !=null){
+	            				str += " <option value='"+data.RESP_DATA[i].universityId+"' selected>"+data.RESP_DATA[i].universityName+"</option>";
+	            			}
+	    					str += " <option value='"+data.RESP_DATA[i].universityId+"'>"+data.RESP_DATA[i].universityName+"</option>";
+	    				}
+	            		
+	            		$("#university").html(str);
+	            		
+	            	}
+	            	
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });	    	 
+	     
+		}
+		
+
+	 	
+	 	
+	 	
 		
 		//whend click submit to create new playlist
 		$('#formcreateplaylist').submit(function(e){
 				e.preventDefault();
-		var publicview ="";
+				
+		var publicview =false;
 		var playname=$("#listname").val();
 		//alert(playname);
 		var playdescription=$("#playlistdescription").val();
 		var category=$("#playlistcategory").val();
-		var color=$("#color").val();
-		var img=$("#file").val();
-		var oimg=$("#oimg").val();
+		var color="";
+		var img="";
+		var oimg="";
 		var thumnial=null;
 		if(usertype == 'Admin'){
 			 publicview=true;
 			 thumnial ="mcgBfVSTKqo";
+			 color=$("#color").val();
+			img=$("#file").val();
+			oimg=$("#oimg").val();
 		}else{
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
 			 color ="000000";
 		}
+		//alert("user0");
 			
 		//alert(publicview);
 		
 		//create playlist no image ->well
 		if(img =="" && oimg ==""){
+			alert("user1");
 			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
 		}
 		//idrect update
 		else if(img =="" && oimg.length !== 0 ){
+			alert("user2");
 			//updateProcess(id,t,d,e,u,o_img);
 		}
 		//insert image and update
 		else if(img.length !== 0 && oimg.length !== 0 ){
+			alert("user3");
 			 $.ajax({
 					type : "POST",
 					url : url+'/rest/user/profile/imageupload/playlist',
@@ -1360,6 +1410,7 @@ function mySearchPlaylist(){
 		}
 		//insert with image
 		else {
+			alert("user4");
 			$.ajax({
 				type : "POST",
 				url : url+'/rest/user/profile/imageupload/playlist',
@@ -1370,7 +1421,7 @@ function mySearchPlaylist(){
 				success : function(data) {
 					if(data.STATUS == true){
 						//alert(data.IMG);
-						
+						alert('1');
 						createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
 					}
 				},
@@ -1397,6 +1448,7 @@ function mySearchPlaylist(){
 		           data: JSON.stringify(JSONObject),
 		           success: function(data){
 		           	if(data.STATUS =='1'){
+		           		alert("2");
 			            	myClear();
 						}
 		           	mystartPlaylist();
