@@ -190,6 +190,7 @@
 		
 		var university = {};
 		var check = true;
+		var gPage = 1; //global current page for pagination
 		
 		$(document).ready(function(){
 			
@@ -208,10 +209,13 @@
 				    	return;  */
 						console.log(data);
 				    	
+				    	perPage = 20;
+				    	nextPage = (currentPage-1)*perPage;
+				    	
 						if(data.RESP_DATA.length>0){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RESP_DATA.length;i++){
-								data.RESP_DATA[i]["NO"] = i+1;
+								data.RESP_DATA[i]["NO"] = (i+1)+nextPage;
 							}
 							$("#content_tmpl").tmpl(data.RESP_DATA).appendTo("tbody#content");
 						}else{
@@ -248,6 +252,7 @@
    			        firstClass: 'first'
    			    }).on("page", function(event, currentPage){
    			    	check = false;
+   			    	gPage = currentPage;
    			    	university.listUniversity(currentPage);
    			    }); 
     		};
@@ -269,7 +274,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	university.listUniversity(1);
+				    	university.listUniversity(gPage);
 				    	$("#p-frmUniversity").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -296,7 +301,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	university.listUniversity(1);
+				    	university.listUniversity(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -371,12 +376,12 @@
 			$(document).on('click',"#showFrmUpdateUniversity", function(){
 				//alert($(this).data("cateid"));
 				
-				var deptName = $(this).parent().prev().text();
+				var uniName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
 				console.log(cateId);
 				$("#universityId").val(cateId); 
-				$("#universityName").val(deptName);
+				$("#universityName").val(uniName);
 				
 				$("#p-frmUniversity").bPopup({modalClose: false});
 				//university.getUniversity($(this).data("cateid"));

@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService{
 //	@Autowired
 //	private RestTemplate restTemplate;
 //	
-//	@Autowired
-//	private String WSURL;
+	@Autowired
+	private String WSURL;
 	
 	@Override
 	public User findUserByEmail(String email) {
@@ -48,7 +48,8 @@ public class UserServiceImpl implements UserService{
 			restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 			User user = new User(); user.setEmail(email);
 	        HttpEntity<Object> request = new HttpEntity<Object>(user,headers);
-			ResponseEntity<Map> response = restTemplate.exchange("http://api.khmeracademy.org/api/authentication/weblogin", HttpMethod.POST , request , Map.class) ;
+			//ResponseEntity<Map> response = restTemplate.exchange("http://api.khmeracademy.org/api/authentication/weblogin", HttpMethod.POST , request , Map.class) ;
+	        ResponseEntity<Map> response = restTemplate.exchange(WSURL+"authentication/weblogin", HttpMethod.POST , request , Map.class) ;
 			Map<String, Object> map = (HashMap<String, Object>)response.getBody();
 			
 			
