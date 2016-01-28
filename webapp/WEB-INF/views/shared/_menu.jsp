@@ -59,7 +59,7 @@
 <%-- 					<img style="padding-top: 12px;" width="50px" src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"> --%>
 <!-- 				</li> -->
 				<li class="parent" >
-					 <a href="#fakelink"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					 <a href="${pageContext.request.contextPath}/user/profile"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						    <img   style="height:140%"  src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar">
 						   <sec:authentication property="principal.username" />
 					 </a>
@@ -67,6 +67,7 @@
 						<!-- <li class="sub-list"><a href="portfolio-4-column.html">4 columns</a></li>
 						<li class="sub-list"><a href="portfolio-3-column.html">3 columns</a></li>
 						<li class="sub-list"><a href="portfolio-single.html">Portfolio single</a></li> -->
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/user/profile">Profile</a></li>
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 					</ul>
 				</li>

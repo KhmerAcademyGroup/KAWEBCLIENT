@@ -172,6 +172,24 @@ public class UserRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		@RequestMapping(value="/rest/user/profile/listdepartment/{did}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listDepartment(@PathVariable("did") String did){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/department/list/"+did, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/listdepartment/" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listallDepartment(
+										 @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/department/?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 		
 		@RequestMapping(value="/rest/user/profile/imageupload/{parth}" , method = RequestMethod.POST)
 		public ResponseEntity<Map<String , Object>> imageUpload(
