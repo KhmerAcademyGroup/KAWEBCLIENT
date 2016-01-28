@@ -270,4 +270,11 @@ public class ELearningRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/mainpage/countdata" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getMainPageCountData(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/mainpage/countdata", HttpMethod.GET, request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 }

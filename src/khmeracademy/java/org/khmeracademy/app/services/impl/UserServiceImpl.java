@@ -47,8 +47,7 @@ public class UserServiceImpl implements UserService{
 			//ResponseEntity<Map> response = restTemplate.exchange("http://api.khmeracademy.org/api/authentication/weblogin", HttpMethod.POST , request , Map.class) ;
 	        ResponseEntity<Map> response = restTemplate.exchange(WSURL+"/authentication/weblogin", HttpMethod.POST , request , Map.class);
 	        Map<String, Object> map = (HashMap<String, Object>)response.getBody();
-			
-			
+		
 			System.out.println(map.get("USER"));
 			if(map.get("USER") != null){
 				Map<String , Object> userMap = (HashMap<String , Object>) map.get("USER");

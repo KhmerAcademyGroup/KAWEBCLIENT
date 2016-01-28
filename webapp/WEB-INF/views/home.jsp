@@ -70,7 +70,7 @@
 					<div class="col-sm-3">
 						<div class="the-box bg-danger no-border box-feature text-center">
 							<h4 class="heading">E-Learning</h4>
-							<i class="fa fa-eye icon-lg"></i>
+							<i class="fa fa-file-video-o icon-lg"></i>
 							<div class="p-wrap">
 								<p>
 									Khmer Academy is the first website that provides you the e-learning in Khmer language.
@@ -96,7 +96,7 @@
 					<div class="col-sm-3">
 						<div class="the-box bg-success no-border box-feature text-center">
 							<h4 class="heading">Forum</h4>
-							<i class="fa fa-female icon-lg"></i>
+							<i class="fa fa-comments-o icon-lg"></i>
 							<p>
 								Khmer Academy forum allows visitors to communicate with each other by posting and answering questions.
 							</p>
@@ -184,19 +184,19 @@
 				<h4 class="margin-bottom-30">START E-ELEARNING WITH KHMER ACADEMY</h4>
 				<div class="row">
 					<div class="col-sm-3">
-						<h1 class="number-fact">8000</h1>
+						<h1 class="number-fact">${data.COUNTUSER }</h1>
 						<p class="content-fact">Users</p>
 					</div><!-- /.col-sm-4 -->
 					<div class="col-sm-3">
-						<h1 class="number-fact">800 </h1>
+						<h1 class="number-fact">${data.COUNTVIDEO }</h1>
 						<p class="content-fact">Videos</p>
 					</div><!-- /.col-sm-4 -->
 					<div class="col-sm-3">
-						<h1 class="number-fact">325</h1>
+						<h1 class="number-fact">${data.COUNTCOURSE }</h1>
 						<p class="content-fact">Courses</p>
 					</div><!-- /.col-sm-4 -->
 					<div class="col-sm-3">
-						<h1 class="number-fact">200</h1>
+						<h1 class="number-fact">${data.COUNTCATEGORY }</h1>
 						<p class="content-fact">Categories</p>
 					</div><!-- /.col-sm-4 -->
 				</div><!-- /.row -->

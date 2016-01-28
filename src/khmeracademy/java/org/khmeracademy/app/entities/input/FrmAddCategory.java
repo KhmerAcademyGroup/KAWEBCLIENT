@@ -4,6 +4,9 @@ public class FrmAddCategory {
 
 	
 	private String categoryName;
+	private String categoryLogoUrl;
+	private String mainCategoryId;
+	
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -16,14 +19,13 @@ public class FrmAddCategory {
 	public void setCategoryLogoUrl(String categoryLogoUrl) {
 		this.categoryLogoUrl = categoryLogoUrl;
 	}
-	public int getMainCategoryId() {
+	public String getMainCategoryId() {
 		return mainCategoryId;
 	}
-	public void setMainCategoryId(int mainCategoryId) {
+	public void setMainCategoryId(String mainCategoryId) {
 		this.mainCategoryId = mainCategoryId;
 	}
-	private String categoryLogoUrl;
-	private int mainCategoryId;
+	
 	
 	
 }

@@ -54,6 +54,7 @@
 									<th>Category name</th>
 									<th>MainCategory name</th>
 									<th>Action</th>
+
 								</tr>
 							</thead>
 							<tbody id="content">
@@ -63,8 +64,6 @@
 						</table>
 
 						<div id="pagination" class="pull-right"></div>
-
-
 					</div>
 					<!-- /.table-responsive -->
 				</div>
@@ -74,7 +73,8 @@
 			<div id="p-frmCategory" class="ka-popup"
 				style="display: none; width: 50%;">
 				<form id="frmCategory"
-					action="${pageContext.request.contextPath}/rest/video/category" method="POST">
+					action="${pageContext.request.contextPath}/rest/video/category"
+					method="POST">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" aria-hidden="true">
@@ -93,13 +93,13 @@
 										required="required" name="categoryName">
 								</div>
 							</div>
-							<input type="hidden" id="mainCategoryId" class="form-control"
-								name="mainCategoryId">
 
 							<div class="form-group">
 								<label class=" control-label">MainCategory name</label>
 								<div>
-									<select id="mainCategory" data-placeholder="Choose a MainCategory..." class="form-control" tabindex="2">
+									<select id="mainCategory"
+										data-placeholder="Choose a MainCategory..."
+										class="form-control" tabindex="2" required="required">
 
 									</select>
 								</div>
@@ -116,8 +116,8 @@
 					</div>
 				</form>
 			</div>
-			
-			
+
+
 			<!-- Form Confirm Delete Category -->
 			<div id="p-frmConfirm" class="ka-popup"
 				style="display: none; width: 50%;">
@@ -169,12 +169,12 @@
 				<td>{{= mainCategoryName}}</td>
 				<td> 
    		 			<i data-cateid="{{= categoryId}}" data-mcateid="{{= mainCategoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
-            		<i data-cateid="{{= categoryId}}" data-mcateid="{{= mainCategoryId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
+            		<i data-cateid="{{= categoryId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
          		</td>
 			</tr>
    		</script>
-   		
-   		<script id="listmcategory_tmpl" type="text/x-jquery-tmpl">
+
+	<script id="listmcategory_tmpl" type="text/x-jquery-tmpl">
 			<option value="{{= mainCategoryId}}">{{= mainCategoryName}}</option>
    		</script>
 
@@ -202,27 +202,29 @@
 											},
 											success : function(data) {
 												console.log(data);
-												
+
 												/*  alert(JSON.stringify(data));
 												return;  */
-												
+
 												perPage = 20;
-												nextPage = (currentPage - 1) * perPage;
-												
-												
+												nextPage = (currentPage - 1)
+														* perPage;
+
 												if (data.RES_DATA.length > 0) {
 													$("tbody#content").empty();
 													for (var i = 0; i < data.RES_DATA.length; i++) {
-														data.RES_DATA[i]["NO"] = (i + 1) + nextPage;
+														data.RES_DATA[i]["NO"] = (i + 1)
+																+ nextPage;
 													}
 													$("#content_tmpl")
 															.tmpl(data.RES_DATA)
 															.appendTo(
 																	"tbody#content");
-													
-													$("#listmcategory_tmpl").tmpl(data.RES_DATA)
-													.appendTo(
-													"#mainCategory");
+
+													$("#listmcategory_tmpl")
+															.tmpl(data.RES_DATA)
+															.appendTo(
+																	"#mainCategory");
 												} else {
 													$("tbody#content")
 															.html(
@@ -270,22 +272,17 @@
 							};
 
 							category.addOrUpdateCategory = function() {
-								
-								alert($('#mainCategory').val() + " "+ $("#frmCategory").attr("action") + " "+ $("#frmCategory").attr("method"));
-/* 								var e = document.getElementById("#mainCategory");
-								alert(e.options[e.selectedIndex].value); */
-								
-								
+
 								frmData = {
+									"categoryId" : $("#categoryId").val(),
 									"categoryName" : $("#categoryName").val(),
-									"mainCategoryId" : $('#mainCategory').val()
-									
+									"mainCategoryId" : $('#mainCategory option:selected').val()
 								};
-								
+
 								KA.createProgressBarWithPopup();
-								
-// 								alert($("#frmCategory").attr("action"));
-								
+
+								//alert($("#frmCategory").attr("action"));
+
 								$.ajax({
 									url : $("#frmCategory").attr("action"),
 									type : $("#frmCategory").attr("method"),
@@ -303,7 +300,7 @@
 										$("#p-frmCategory").bPopup().close();
 									},
 									error : function(data, status, er) {
-// 										KA.destroyProgressBarWithPopup();
+										//KA.destroyProgressBarWithPopup();
 										console.log("error: " + data
 												+ " status: " + status + " er:"
 												+ er);
@@ -388,22 +385,27 @@
 											function() {
 
 												var cateName = $(this).parent()
-														.prev().text();
-												var mCateName = $(this)
-														.parent().prev().text();
+														.prev().prev().text();
 												var cateId = $(this).data(
 														"cateid");
-												var mcateId = $(this).data(
-														"mcateid")
+												var mainId = $(this).data(
+														"mcateid");
+
+												//$("#mainCategoryId").val(mainId);
 												KA.createProgressBarWithPopup();
 												console.log(cateId);
-												$("#categoryId").val(cateId);
+												console.log(mainId);
 												$("#categoryName")
 														.val(cateName);
-												$("#mainCateId").val(mcateId);
-												$("#mainCateName").val(
-														mCateName);
-
+												$(
+														"#mainCategory option[value='"
+																+ mainId + "']")
+														.attr('selected',
+																'selected');
+												//$("#mainCategory option:selected").val(mainId);
+												$("#mainCategory select").val(
+														mainId);
+												$("#categoryId").val(cateId);
 												$("#p-frmCategory").bPopup({
 													modalClose : false
 												});
@@ -420,9 +422,9 @@
 							$("#frmCategory").submit(function(e) {
 								e.preventDefault();
 								category.addOrUpdateCategory();
-							});
+				});
 
-						});
+			});
 	</script>
-	</body>
-	</html>
+</body>
+</html>

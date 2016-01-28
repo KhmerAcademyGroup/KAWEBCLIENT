@@ -1255,8 +1255,14 @@ function mySearchPlaylist(){
 	            		if(data.RES_DATA.gender == 'male'){
 	            			$("#male").attr('checked', 'checked');
 	            		}else{
-	            			$("#female").attr('checked', 'checked');
+	            			$("#gender").attr('checked', 'checked');
+	            			alert('M');
 	            		}
+	            		//$("#gender").attr('checked', 'checked');
+	            		
+	            	/* 	department
+	            		$("#radio_1").attr('checked', 'checked');
+	            		id="gender1" */
 	            		
 	            		$("#dateofbirth").val(data.RES_DATA.dateOfBirth);
 	            		$("#phonenumber").val(data.RES_DATA.phoneNumber);
