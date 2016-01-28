@@ -69,13 +69,11 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="the-box bg-danger no-border box-feature text-center">
-							<h4 class="heading">RESPONSIVE</h4>
-							<i class="fa fa-css3 icon-lg"></i>
+							<h4 class="heading">E-Learning</h4>
+							<i class="fa fa-eye icon-lg"></i>
 							<div class="p-wrap">
 								<p>
-									Duis autem vel eum iriure dolor in
-									hendrerit in vulputate velit esse
-									molestie consequat
+									Khmer Academy is the first website that provides you the e-learning in Khmer language.
 								</p>
 							</div><!-- /.p-wrap -->
 							<div class="btn-wrap">
@@ -85,12 +83,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-warning no-border box-feature text-center">
-							<h4 class="heading">RETINA READY</h4>
-							<i class="fa fa-female icon-lg"></i>
+							<h4 class="heading">Tutorial</h4>
+							<i class="fa fa-book icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								 Khmer Academy provides you all tutorials learning with all programming languages.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-warning btn-learn-more">LEARN MORE</button>
@@ -99,12 +95,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-success no-border box-feature text-center">
-							<h4 class="heading">FLAT DESIGN</h4>
-							<i class="fa fa-circle-o-notch icon-lg"></i>
+							<h4 class="heading">Forum</h4>
+							<i class="fa fa-female icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								Khmer Academy forum allows visitors to communicate with each other by posting and answering questions.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-success btn-learn-more">LEARN MORE</button>
@@ -113,12 +107,10 @@
 					</div><!-- /.col-sm-3 -->
 					<div class="col-sm-3">
 						<div class="the-box bg-info no-border box-feature text-center">
-							<h4 class="heading">CLEAN CODE</h4>
-							<i class="fa fa-code icon-lg"></i>
+							<h4 class="heading">All Khmer News</h4>
+							<i class="fa fa-newspaper-o icon-lg"></i>
 							<p>
-								Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse
-								molestie consequat
+								All Khmer News provides thousand sources of reliable news. All khmer news in our website.
 							</p>
 							<div class="btn-wrap">
 								<button class="btn btn-info btn-learn-more">LEARN MORE</button>
@@ -137,22 +129,18 @@
 			<div class="container">
 				<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3>TOP FEATURES</h3>
+					<h3><spring:message code="services"/></h3>
 				</div><!-- /.section-heading -->
 				<div class="row">
 					<div class="col-sm-6">
-						<img src="${pageContext.request.contextPath}/resources/assets/img/devices.png" class="img-responsive" alt="Section image">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading">Compatible on all devices, it means responsive design</h5>
+						<h5 class="text-heading"><spring:message code="elearning"/></h5>
 						<p class="lh-24">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-						consequat, vel illum dolore eu feugiat nulla facilisis at vero eros.
+						<spring:message code="elearningtext"/>
 						</p>
-						<p><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></p>
+						<p><a href="${pageContext.request.contextPath}/elearning"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
@@ -161,18 +149,30 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h5 class="text-heading">Bootstrap based, clean code and easy to custom to suit your need</h5>
+						<h5 class="text-heading"><spring:message code="tutorial"/></h5>
 						<p class="lh-24">
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-						consequat, vel illum dolore eu feugiat nulla facilisis at vero eros.
+						<spring:message code="tutorialtext"/>
 						</p>
-						<p><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></p>
+						<p><a href="${pageContext.request.contextPath}/tutorial"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/circle-code.png" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div><!-- /.section -->
+		<div class="section bg-info section-top-features">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/forum.png" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
+						<h5 class="text-heading"><spring:message code="forum"/></h5>
+						<p class="lh-24">
+						<spring:message code="forumtext"/>
+						</p>
+						<p><a href="${pageContext.request.contextPath}/forum"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
