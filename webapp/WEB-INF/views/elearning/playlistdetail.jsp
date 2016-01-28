@@ -1,6 +1,6 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +76,7 @@
 						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
 
 						
-						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="clkickBtAdd()"><i class="fa fa-plus-square-o"></i>
+						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" id="btn-popup-add" data-toggle="modal" ><i class="fa fa-plus-square-o"></i>
 							Add video </a>&nbsp; &nbsp;
 						<a href="#frmup_date_playlist"
 						class="btn btn-default btn-perspective"
@@ -124,7 +124,10 @@
 					aria-labelledby="DefaultModalLabel" aria-hidden="true">
 					<div class="modal-dialog ">
 						<div class="modal-content">
-							
+							<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="DefaultModalLabel">Add video to playlist</h4>
+											  </div>
 							<div class="modal-body" style="padding-bottom: 0px;">
 								<div
 									class="panel with-nav-tabs panel-default panel-square panel-no-border">
@@ -150,13 +153,13 @@
 													</div>
 												<h6 class="page-title" id="getTotalVideoSearch"> </h6>
 												
-													<div id="getVideoSearch" style="margin-top: 10px;height: 530px;">
+													<div id="getVideoSearch" style="margin-top: 10px;">
 													
 													
 													</div>
 													<!-- page gination -->
 													<div class="text-center">
-				    									<div id="demo4_top" class="demo4_top" style="margin-bottom: -41px;"></div>
+				    									<div id="pagin_all_video" class="pagin_all_video" style="margin-bottom: -41px;"></div>
 				    								</div>
 
 												</div>
@@ -171,12 +174,10 @@
 													</div>
 													<h6 class="page-title" id="getTotalVideoUser"> </h6>
 													<div id="getYourVideo" style="margin-top: 10px;"></div>
-														<div id="loadingVideoUser" class="text-center">
-															<img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif" />
-														</div>
-														<div class="text-center">
-															<button class="btn btn-primary" id="btLoadMoreUseVideo"	style="display: none">Load more</button>
-														</div>
+														<!-- page gination -->
+													<div class="text-center">
+				    									<div id="pagin_video_user" class="pagin_video_user" style="margin-bottom: -41px;"></div>
+				    								</div>
 
 									</div>
 
@@ -191,7 +192,7 @@
 							</div>
 							<div class="modal-footer" style="padding: 1px 19px 6px;">
 								<button type="button" class="btn btn-default"
-									data-dismiss="modal" onclick="closeFrmPopAdd()">Close</button>
+									data-dismiss="modal">Close</button>
 							</div>
 							<!-- /.modal-footer -->
 						</div>
@@ -257,13 +258,6 @@
 
 	<jsp:include page="../shared/_footer.jsp" />
 
-
-
-
-
-	
-	
-	
 		<script id="jlistVideoInplaylist" type="text/x-jquery-tmpl"> 
 			<div
 						class="col-sm-4 col-md-3 col-xs-6 mix " style="display: inline-block;  opacity: 1;">
@@ -274,8 +268,8 @@
 									<i class="glyphicon glyphicon-play icon-plus"></i>
 								</a>
 								{{if userId == "MQ=="}}  
-								 <a
-									href="#">
+								 <a style="cursor:pointer"
+									 class="btnremovevideofromplaylist" vid="{{= videoId}}">
 									<i class="glyphicon glyphicon-remove-sign "
 									style="margin-left: 89%"></i>
 								</a>
@@ -309,87 +303,6 @@
 
        </script>
 
-	<script id="jgetVideoSearch" type="text/x-jquery-tmpl">
- 	
-
-	<div class="the-box no-border store-list">
-		<div class="media">
-			<a class="pull-left" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}"><img
-				alt="image" class="store-image img-responsive"
-				src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
-				style="width: 179px; height: 94px;"></a>
-			<div class="clearfix visible-xs"></div>
-			<div class="media-body" style="overflow: visible">				
-				<div class="btn-group pull-right">					
-					
-						<input type="button" class="btn btn-info btadd" vid={{= videoId}} 
-									 {{if (1 == 1)}}
-									  value="Remove"
-									{{/if}}
-									  value="Add"
-										/>
-						
-					
-				</div>
-				<ul class="list-inline">
-					<li><a href="../elearning/play.act?v=13" title="{{= videoName}}"><span class="videoname"
-							class="text-black">{{= videoName}}</span></a></li>
-					<br/>
-						<li><a  >by {{= username}}</a> | <span>{{= postDate}}</span></li>
-					<br/>						
-						<li>
-						{{= countVotePlus}}
-						<i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;{{= countVoteMinus}}
-						<i class="fa fa-thumbs-down"></i>  &nbsp;&nbsp;&nbsp;{{= viewCounts}} 
-						<i class="fa fa-eye"></i>      &nbsp;&nbsp;&nbsp;</span>
-						</li>						
-				</ul>								
-			</div>
-		</div>
-	</div>
-
-
-	
-</script>
-
-	<script id="jgetYourVideo" type="text/x-jquery-tmpl">
- 	
-
-	<div class="the-box no-border store-list">
-		<div class="media">
-			<a class="pull-left" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}"><img
-				alt="image" class="store-image img-responsive"
-				src="https://i.ytimg.com/vi/{{= youtubeUrl}}/mqdefault.jpg"
-				style="width: 179px; height: 94px;"></a>
-			<div class="clearfix visible-xs"></div>
-			<div class="media-body" style="overflow: visible">				
-				<div class="btn-group pull-right">					
-					
-						<input type="button" class="btn btn-info btadd" vid={{= videoId}} 
-									
-									  value="Add"
-										/>
-						
-					
-				</div>
-				<ul class="list-inline">
-					<li><a href="../elearning/play.act?v=13" title="{{= videoName}}"><span class="videoname"
-							class="text-black">{{= videoName}}</span></a></li>
-					<br/>
-						<li><a  >by {{= username}}</a> | <span>{{= postDate}}</span></li>
-					<br/>						
-						<li>
-						{{= countVotePlus}}
-						<i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;{{= countVoteMinus}}
-						<i class="fa fa-thumbs-down"></i>  &nbsp;&nbsp;&nbsp;{{= viewCounts}} 
-						<i class="fa fa-eye"></i>      &nbsp;&nbsp;&nbsp;</span>
-						</li>						
-				</ul>								
-			</div>
-		</div>
-	</div>
-</script>
-
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
 
 	<script type="text/javascript">
@@ -397,19 +310,12 @@
 		var playlistId="${playlistid}";
 	
 		$(document).ready(function(){
-				
-			 			
-			
 			    var listVideo = {};
 		  		var page = 1;
 		  		var totalPage = 0;	
 		  		var empty = true;
-		  		var pageVideoUser=1;
-		  				  
-		  		
-		  		
-		  		listVideo.getPlaylist=function(){	
-		  			
+		  		var pageVideoUser=1;		  				  		  				  		
+		  		listVideo.getPlaylist=function(){			  			
 		  			$.ajax({
 					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
 					method: "GET",
@@ -423,6 +329,8 @@
 					}
 				});	
 		  		};
+		  		
+		  		listVideo.getPlaylist();
 		  		
 		  		/* ========listVideoInPlaylistDetail=========     			
     			url:rest/elearning/playlistdetail/
@@ -442,12 +350,10 @@
     	                },
     				    success: function(data) { 
     				    $("#loading").hide();
-    				    $("#getTotalVideo").text(data.PAGINATION.totalCount + " Videos");
+    				   
     						
     						if(data.RES_DATA.length>0){
-    							$("#jlistVideoInplaylist").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist");
-    							/* $("#jplaylistvid").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist"); */
-    							listVideo.listAllVideo(1);
+    							$("#jlistVideoInplaylist").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist");    							    							
     						}
     						if(page >= data.PAGINATION.totalPages){ 
     							$("#btLoadMore").hide();
@@ -464,15 +370,13 @@
     			};
     			
     			
+    		
+    			
+
     			/* ========listVideoUser=========     			
     			url:rest/elearning/listvideouser/
     			*/
-					listVideo.listUserVideo = function(userid,pageVideoUser){		  			
-		  			$("#loadingVideoUser").show();
-		  			$("#btLoadMoreUseVideo").hide();	
-		  			if(empty == true){
-		  				$("#getYourVideo").empty();	
-		  			}
+    			listVideo.listUserVideo  = function(userid,pageVideoUser){		  			    				
     				$.ajax({ 
     					url : "${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page="+pageVideoUser+"&item=4",
     				    type: 'GET',
@@ -480,17 +384,57 @@
     	                    xhr.setRequestHeader("Accept", "application/json");
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
-    				    success: function(data) {   				    
-    				     $("#getTotalVideoUser").text(data.PAGINATION.totalCount + " Videos"); 
-    						$("#loadingVideoUser").hide();
-    						if(data.RES_DATA.length>0){
-    							$("#jgetYourVideo").tmpl(data.RES_DATA).appendTo("#getYourVideo");
-    						}
-    						if(page >= data.PAGINATION.totalPages){ 
-    							$("#btLoadMoreUseVideo").hide();
-    						}else{
-    							$("#btLoadMoreUseVideo").show();
-    						}
+    				    success: function(data) {  
+    				    
+    				    
+    				    $("#getTotalVideoUser").text("page " +page +" | of page  "+data.PAGINATION.totalPages);    				        				   
+	    					
+    				    
+    				    	if(data.RES_DATA.length>0){
+    				    		
+    				    		allVideoJson = data.RES_DATA;
+
+		    					$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?item=1000",
+		    					function(data){
+		    						
+		    						var allVideosHTML ="";
+		    						
+	
+									for(var i=0;i<allVideoJson.length;i++){
+										btn = "<input type='button' class='btn btn-info btnadd' vid="+allVideoJson[i].videoId+" value='Add'>";
+										
+										if(data.RES_DATA != null){
+											if(data.RES_DATA.length != 0){
+												console.log(data.RES_DATA.length);
+												for (var j = 0; j < data.RES_DATA.length; j++) { 	
+													if(data.RES_DATA[j].videoId == allVideoJson[i].videoId){
+														btn = "<input type='button' class='btn btn-danger btnremove' vid="+allVideoJson[i].videoId+" value='Remove'>";
+														console.log("NNN " +data.RES_DATA[j].videoId +" | "+allVideoJson[i].videoId);
+													}
+		 										}
+											}	
+										}
+											allVideosHTML +="<div class='the-box no-border store-list'>"
+												   +"<div class='media'>"
+												   +"<a class='pull-left' href='/KAWEBCLIENT/elearning/playvideo?v="+allVideoJson[i].videoId+"'><img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+allVideoJson[i].youtubeUrl+"/mqdefault.jpg' style='width: 179px; height: 94px;'></a>"    
+												   +" <div class='clearfix visible-xs'></div>"
+												   +"   <div class='media-body' style='overflow: visible'>"
+												   +"      <div class='btn-group pull-right'>"+btn+"</div>"
+												   +"      <ul class='list-inline'>"
+												   +"         <li><a href='../elearning/play.act?v=13' title='"+allVideoJson[i].videoName+"'><span class='videoname'>"+allVideoJson[i].videoName+"</span></a></li>"
+												   +"         <br>"
+												   +"         <li><a>by "+allVideoJson[i].username+"</a> | <span>"+allVideoJson[i].postDate+"</span></li>"
+												   +"         <br>"          
+												   +"         <li>       "+allVideoJson[i].countVotePlus+"      <i class='fa fa-thumbs-up'></i>&nbsp;&nbsp;&nbsp;"+allVideoJson[i].countVoteMinus+"       <i class='fa fa-thumbs-down'></i>  &nbsp;&nbsp;&nbsp;"+allVideoJson[i].viewCounts+"       <i class='fa fa-eye'></i>      &nbsp;&nbsp;&nbsp;       </li>"
+												   +"     </ul>"
+												   +"   </div>"
+												   +" </div>"
+												   +"</div>"
+									}																		
+									$("#getYourVideo").html(allVideosHTML); 	
+									
+		    				 });	    						
+	    					}    		    							
     				    },
     				    error:function(data,status,er) { 
     				        console.log("error: "+data+" status: "+status+" er:"+er);
@@ -512,37 +456,42 @@
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
     				    success: function(data) {  
-    				    $("#getVideoSearch").empty();	
     				    
-    				    $("#getTotalVideoSearch").text(page+=" / "+data.PAGINATION.totalPages);    				        				   
+    				    
+    				    $("#getTotalVideoSearch").text("page " +page +" | of page  "+data.PAGINATION.totalPages);    				        				   
 	    					
+    				    
     				    	if(data.RES_DATA.length>0){
-    				    	
+    				    		
     				    		allVideoJson = data.RES_DATA;
 
 		    					$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?item=1000",
 		    					function(data){
 		    						
 		    						var allVideosHTML ="";
-		    						var btn = '<input type="button" class="btn btn-info">';
+		    						
 	//	    							$("#jgetVideoSearch").tmpl(data.RES_DATA).appendTo("#getVideoSearch");    	
 									//alert(allVideoJson[1].videoId +" "+allVideoJson[1].videoName+" "+allVideoJson[1].youtubeUrl+" "+allVideoJson[1].videoName+" "+allVideoJson[1].viewCounts);
 									for(var i=0;i<allVideoJson.length;i++){
+										btn = "<input type='button' class='btn btn-info btnadd' vid="+allVideoJson[i].videoId+" value='Add'>";
 										
-										if(data.RES_DATA.length != 0){
-											console.log(data.RES_DATA.length);
-											for (var j = 0; j < data.RES_DATA.length; j++) {
-												if(data.RES_DATA[j].playlistid == playlistId  && data.RES_DATA[j].videoId == allVideoJson[i].videoId){
-													btn = '<input type="button" class="btn btn-danger">';
-												}
-	 										}
-										}										
+										if(data.RES_DATA != null){
+											if(data.RES_DATA.length != 0){
+												console.log(data.RES_DATA.length);
+												for (var j = 0; j < data.RES_DATA.length; j++) { 	
+													if(data.RES_DATA[j].videoId == allVideoJson[i].videoId){
+														btn = "<input type='button' class='btn btn-danger btnremove' vid="+allVideoJson[i].videoId+" value='Remove'>";
+														console.log("NNN " +data.RES_DATA[j].videoId +" | "+allVideoJson[i].videoId);
+													}
+		 										}
+											}	
+										}
 											allVideosHTML +="<div class='the-box no-border store-list'>"
 												   +"<div class='media'>"
 												   +"<a class='pull-left' href='/KAWEBCLIENT/elearning/playvideo?v="+allVideoJson[i].videoId+"'><img alt='image' class='store-image img-responsive' src='https://i.ytimg.com/vi/"+allVideoJson[i].youtubeUrl+"/mqdefault.jpg' style='width: 179px; height: 94px;'></a>"    
 												   +" <div class='clearfix visible-xs'></div>"
 												   +"   <div class='media-body' style='overflow: visible'>"
-												   +"      <div class='btn-group pull-right'><input type='button' class='btn btn-info btadd' vid='NzU3' value='Add'></div>"
+												   +"      <div class='btn-group pull-right'>"+btn+"</div>"
 												   +"      <ul class='list-inline'>"
 												   +"         <li><a href='../elearning/play.act?v=13' title='"+allVideoJson[i].videoName+"'><span class='videoname'>"+allVideoJson[i].videoName+"</span></a></li>"
 												   +"         <br>"
@@ -554,7 +503,8 @@
 												   +" </div>"
 												   +"</div>"
 									}																		
-									$("#getVideoSearch").html(allVideosHTML); 																			
+									$("#getVideoSearch").html(allVideosHTML); 	
+									
 		    				 });	    						
 	    					}    		    							
     				    },
@@ -568,12 +518,14 @@
     			
     			
     			
-    			listVideo.loadPagination= function(){
-    				
+    			listVideo.loadPagination_All_Video= function(){
+    				num=1;
     				var total=$("#getTotalVideoSearch").text();
+    				$.get("${pageContext.request.contextPath}/rest/elearning/listallvideo?page=1&item=4",
+	    					function(data){
     				
-    				$('.demo4_top').bootpag({
-    			        total: 90,    			        
+    				$('.pagin_all_video').bootpag({
+    			        total: data.PAGINATION.totalPages,    			        
     			        maxVisible: 5,
     			        leaps: true,
     			        firstLastUse: true,
@@ -589,16 +541,41 @@
     			    }).on("page", function(event, num){
     			    	listVideo.listAllVideo(num);
     			    }); 
-    		  		
+    				});
     				};
+    				
+    				listVideo.loadPagination_User_Video= function(){
+        				num=1;
+        				var userid="MQ==";
+        				var total=$("#getTotalVideoSearch").text();
+        				$.get("${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page=1&item=4",        						
+    	    					function(data){
+        				
+        				$('.pagin_video_user').bootpag({
+        			        total: data.PAGINATION.totalPages,    			        
+        			        maxVisible: 5,
+        			        leaps: true,
+        			        firstLastUse: true,
+        			        first: '&#8592;',
+        			        last: '&#8594;',
+        			        wrapClass: 'pagination',
+        			        activeClass: 'active',
+        			        disabledClass: 'disabled',
+        			        nextClass: 'next',
+        			        prevClass: 'prev',
+        			        lastClass: 'last',
+        			        firstClass: 'first'
+        			    }).on("page", function(event, num){
+        			    	listVideo.listUserVideo(userid,num);
+        			    }); 
+        				});
+        				};
     			
-//     				setTimeout(function(){
-    					listVideo.getPlaylist();
-// 					}, 200 );
+    					
 
-//         			listVideo.listUserVideo("MQ==",pageVideoUser);    			
+
+    			
         			
-        			listVideo.loadPagination();
     			
         				
     			$("#btLoadMore").click(function(){  
@@ -608,42 +585,67 @@
     					listVideo.listVideoInPlaylist(playlistId,page);    				
     			});
 				
-    			$("#btLoadMoreUseVideo").click(function(){  
-    				pageVideoUser++;    				
-    				empty = false;
-    				$("#loadingVideoUser").show();								
-    				listVideo.listUserVideo("MQ==",pageVideoUser);    				
+    			    			
+    			$("#btn-popup-add").click(function(){  
+    				listVideo.listAllVideo(1);        	
+    				listVideo.listUserVideo("MQ==",1);      
+    				listVideo.loadPagination_All_Video();
+    				listVideo.loadPagination_User_Video();
     			});
-    			    								
+    			   
     			
+    			$(document).on('click', ".btnadd", function() {
+    			    var vid = $(this).attr("vid");    			    
+    			    var vid = $(this).attr("vid"); 
+    			    var change =$(this);
+    			    var playlistId="${playlistid}"; 
+    				$.ajax({
+    					url : "${pageContext.request.contextPath}/rest/elearning/videotoplaylist/"+playlistId+"/"+vid,
+    					method: "POST",
+    					success: function(data){
+    						 change.val("Remove");
+    						 change.attr("class","btn btn-danger btnremove");
+    						 listVideo.listVideoInPlaylist(playlistId,1); 
+    						 console.log(data);
+    					}
+    				});	     			       			    
+    			    
+    			});
+
     			
-    			
-    			$(document).on('click', ".btadd", function() {
-    			    var vid = $(this).attr("vid");
-    			    var vid = $(this).attr("class");   
-    			    
-    			    $(this).val("Remove");
-    			    
-    			    
+    			$(document).on('click', ".btnremovevideofromplaylist", function() {
+    			    var vid = $(this).attr("vid");    			        			    
+    			    var change =$(this);
+    			    var playlistId="${playlistid}"; 
+    				$.ajax({
+    					url : "${pageContext.request.contextPath}/rest/elearning/deletevideofromplaylistdetail/"+playlistId+"/"+vid,
+    					method: "DELETE",
+    					success: function(data){
+    						
+    					change.closest('.mix').remove();
+    					
+    						 console.log(data);
+    					}
+    				});	 
+    			});
+    			$(document).on('click', ".btnremove", function() {
+    			    var vid = $(this).attr("vid");    			        			    
+    			    var change =$(this);
+    			    var playlistId="${playlistid}"; 
+    				$.ajax({
+    					url : "${pageContext.request.contextPath}/rest/elearning/deletevideofromplaylistdetail/"+playlistId+"/"+vid,
+    					method: "DELETE",
+    					success: function(data){
+    						 change.val("Add");
+    						 change.attr("class","btn btn-info btnadd");
+    						 listVideo.listVideoInPlaylist(playlistId,1); 
+    						 console.log(data);
+    					}
+    				});	 
     			});
     			
 		});
-		 
-		/* function addVideoToPlaylist(vid){
-			var playlistId="${playlistid}"; 
-			$.ajax({
-				url : "${pageContext.request.contextPath}/rest/elearning/videotoplaylist/"+playlistId+"/"+vid,
-				method: "GET",
-				success: function(data){
-					alert(data);								  
-				}
-			});	 
-			}
-		 */
-		
-		
-		
-		
+
 	</script>
 	<!-- <script src="http://192.168.178.186:8080/HRD_MEMO/resources/admin/js/memo.min.js"></script> -->
 	
