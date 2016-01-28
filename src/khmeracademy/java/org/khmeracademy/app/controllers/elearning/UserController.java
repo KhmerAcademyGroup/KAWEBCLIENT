@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -24,12 +24,12 @@ public class UserController {
 	public String playlistDetail(ModelMap m){
 		
 		String userid = "";
-		String usertype = "Admin";
+		String usertype = "";
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){
 			User user = (User) authentication.getPrincipal();
 			userid = user.getUserId();
-			//usertype = user.getUserTypeName();
+			usertype = user.getUserTypeName();
 			//System.out.println("ELearningController " + user.getUsername() + " Userid " + user.getUserId());
 		}else{
 			//System.out.println(authentication.getPrincipal());

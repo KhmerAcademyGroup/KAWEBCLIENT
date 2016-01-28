@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -384,9 +384,7 @@
 															<div class="btn-group inline-popups">
 																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
 															</div>
-															<div class="btn-group inline-popups">
-																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
-															</div>
+															
 															
 															<div class="btn-group pull-right">
 																<form role="form">
@@ -415,7 +413,7 @@
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 															  <form action="" id="formcreateplaylist"  enctype="multipart/form-data">
 															  	<button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
+																	<span class="button b-close"><span>Ã—</span></span>
 																</button>
 															  <div class="form-group">
 																<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
@@ -474,7 +472,7 @@
 													<div id="form-update-playlist" class="ka-popup" style="display: none;width: 30%;">
 																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 															  <button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
+																	<span class="button b-close"><span>Ã—</span></span>
 																</button>
 															  <div class="form-group">
 																<label for="exampleInputEmail1"><h3>Update playlist</h3></label>
@@ -505,7 +503,7 @@
 													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 40%;">
 														<div id="form-upload-video1" class="white-popup mfp-with-anim" style="border-radius:5px">
 															<button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
+																	<span class="button b-close"><span>Ã—</span></span>
 																</button>
 																<div class="form-group">
 																	<label for="exampleInputEmail1">Playlist nameVideo Name</label>
@@ -623,11 +621,11 @@
 		var totalofrecord =0;
 		var numofpage=1;
 		var url="${pageContext.request.contextPath}";
-		//var userid="<%= request.getAttribute("userid") %>";
-		//var usertype="<%= request.getAttribute("usertype") %>";
-		var userid="MQ==";
-		var usertype="Admin";
-		//alert(usertype);
+		var userid="<%= request.getAttribute("userid") %>";
+		var usertype="<%= request.getAttribute("usertype") %>";
+		//var userid="MQ==";
+		//var usertype="Admin";
+		//alert(userid);
 		 //my choice what list or search
 		 function chooseHistory(){
 			var key =$("#searchHistory").val();
@@ -638,7 +636,7 @@
 				mySearchHistory();
 			}
 		} 
-		
+		 userPlaylist();
 		mystart();
 		function mystart(){
 			limit=$("#limithistory").val();
@@ -1156,7 +1154,7 @@ function listPlaylistDetail(data){
 	
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
-	//alert(key.length );
+	//alert(key);
 	if(key.length > 2){
 		 $.ajax({  
 			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
@@ -1164,11 +1162,12 @@ function mySearchPlaylist(){
 		       contentType: 'application/json;charset=utf-8', // type of data
 		       success: function(data) { 
 		    	   	if(data.STATUS == true){
+		    	   		//alert(data);
 		    	   		totalofrecordplaylist=data.PAGINATION.totalCount;
 		    	   		numofpageplaylist=data.PAGINATION.totalPages;
 		            	loadPaginationPlaylist();
 			    	   	$("#getPlayList").html(listPlaylistDetail(data));
-			    	   	alert(key.length );
+			    	   	
 		    	   		//alert(data.PAGINATION.totalCount);
 		    	   	}
 		    	   		//$("#showresult").html(listarticles(data));
@@ -1240,7 +1239,7 @@ function mySearchPlaylist(){
 				   }); 
 		} 
 		
-		userPlaylist();
+		//userPlaylist();
 		function userPlaylist(){
 			//alert(limitv);
 	    	 $.ajax({
@@ -1251,7 +1250,8 @@ function mySearchPlaylist(){
 	            	if(data.STATUS == true){
 	            		$("#username").val(data.RES_DATA.username);
 	            		$("#myemail").val(data.RES_DATA.email);
-	            		alert(data.RES_DATA.email);
+	            		//alert(data.RES_DATA.departmentId);
+	            		
 	            	/* 	department
 	            		university
 	            		id="gender1" */
@@ -1261,6 +1261,9 @@ function mySearchPlaylist(){
 	            		$("#usertype").val(data.RES_DATA.userTypeName);
 	            		$("#oldpassword").val("");
 	            		$("#newpassword").val("");
+	            		
+	            		
+	            		listDepartments(data.RES_DATA.departmentId);
 	            	}
 	        		
 	            },
@@ -1270,9 +1273,10 @@ function mySearchPlaylist(){
 	        });	 
 		    	 
 			}
-		function listDepartment(did){
+		function listDepartments(did){
+			//alert(did);
 	    	$.ajax({
-	    		url: url+'/rest/user/profile/listcategory',
+	    		url: url+'/rest/user/profile/listdepartment/',
 	            type: 'get',
 	            contentType: 'application/json;charset=utf-8',
 	            //data: JSON.stringify(JSONObject),
@@ -1280,7 +1284,11 @@ function mySearchPlaylist(){
 	            	//alert(data.RES_DATA.length);
 	            	if(data.STATUS == true){
 	            		//alert(data);
-	            		//$("#playlistcategory").html(listMainCategoryDetail(data));
+	            		var str="";
+	            		for(var i=0; i<data.RES_DATA.length ; i++){
+	    					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
+	    				}
+	            		
 	            	}
 	            },
 	            error: function(data){
@@ -1289,7 +1297,7 @@ function mySearchPlaylist(){
 	        });	    	
 			   
 		}
-	/* 	function listDepartment(did, data){
+	/* 	function listDepartmentdetail(did, data){
 			var str="";
 				for(var i=0; i<data.RES_DATA.length ; i++){
 					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
@@ -1313,6 +1321,7 @@ function mySearchPlaylist(){
 		var thumnial=null;
 		if(usertype == 'Admin'){
 			 publicview=true;
+			 thumnial ="mcgBfVSTKqo";
 		}else{
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
@@ -1360,8 +1369,9 @@ function mySearchPlaylist(){
 				contentType : false, // tell jQuery not to set contentType
 				success : function(data) {
 					if(data.STATUS == true){
-						alert(data.IMG);
-						//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+						//alert(data.IMG);
+						
+						createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
 					}
 				},
 				error : function(data) {
