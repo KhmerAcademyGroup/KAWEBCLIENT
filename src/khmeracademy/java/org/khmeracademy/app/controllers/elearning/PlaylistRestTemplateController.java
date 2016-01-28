@@ -72,6 +72,13 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/elearning/deletevideofromplaylistdetail/{pid}/{vid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> deleteVideoFromPlaylist(@PathVariable(value="pid") String pid ,@PathVariable(value="vid") String vid){
+		System.err.println(pid + "   " +vid);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/deletevideofromplaylistdetail/"+pid+"/"+vid , HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	 
 		@RequestMapping(value="/rest/elearning/listvideouser/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,
@@ -83,6 +90,8 @@ public class PlaylistRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		
+		
 	/*public ResponseEntity<Map<String , Object>> playVideo(
 			@RequestParam(value="pid") String pid
 			){
@@ -92,6 +101,7 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}*/
 	
+		
 	
 	
 }
