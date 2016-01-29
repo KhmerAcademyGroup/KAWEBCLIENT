@@ -46,6 +46,16 @@ public class ForumRestComment {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/forum/question/t/{tag}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listQuestionByTag(
+			  @PathVariable("tag") String tag
+			, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+			, @RequestParam(value="item" , required = false , defaultValue="20") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/listquestion/t/"+tag+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value="/rest/forum/question/{qid}" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getQuestionByQuestionId(

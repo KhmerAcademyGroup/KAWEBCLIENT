@@ -26,12 +26,12 @@
 		
 			
 				<ol class="breadcrumb">
-				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum">All Questions</a></li>
 				  <li><a href="#fakelink">Users</a></li>
 				  <li><a href="#fakelink">Ask Question</a></li>
 				</ol>
 				
-			<h2 class="page-title" id="getTotalQuestion"> </h2>
+			<h3 class="page-title"> <span id="getType">  </span> <span id="getTotalQuestion"> </span> </h3>
 			
 			<div class="border-bottom">
 				<div class="container">
@@ -189,12 +189,13 @@
 
 		
 		 <script id="category_tmpl" type="text/x-jquery-tmpl">
-				<a href="#" data-cateid="{{= categoryId }}" id="listQuestionByCate" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
+				<a href="javascript:" data-cateid="{{= categoryId }}" data-cate="{{= categoryName }}" id="listQuestionByCate" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
 		</script>
 
 		<script type="text/javascript">
 			  $(document).ready(function(){
 			  	
+				 	
 				  
 				    var question = {};
 			  		var page = 1;
@@ -203,7 +204,7 @@
 			  		var type ="All";
 			  		var empty = true;
 			  		
-			  		question.listQuestion = function(userid,cateid,page){
+			  		question.listQuestion = function(cateid, tag ,page){
 			  			if(empty == true){
 			  				$("#getQuestion").empty();			  				
 			  			}
@@ -211,10 +212,10 @@
 			  			$("#btLoadMore").hide();
 			  			if(type== "All"){
 			  				url = "${pageContext.request.contextPath}/rest/forum/question?page="+page+"&item=10";
-			  			}else if(type== "ByUser"){
-			  				url = "${pageContext.request.contextPath}/rest/forum/question/u/"+userid+"?page="+page+"&item=10";
 			  			}else if(type== "ByCate"){
 			  				url = "${pageContext.request.contextPath}/rest/forum/question/c/"+cateid+"?page="+page+"&item=10";
+			  			}else if(type== "ByTag"){
+			  				url = "${pageContext.request.contextPath}/rest/forum/question/t/"+tag+"?page="+page+"&item=10";
 			  			}
 	    				$.ajax({ 
 	    				    url: url,  
@@ -226,21 +227,49 @@
 	    				    success: function(data) {  console.log(data);
 	    						$("#getTotalQuestion").text(data.PAGINATION.totalCount + " Questions");
 	    						totalPage = data.PAGINATION.totalPages;
+	    						
+	    						questionDiv = "";
+	    						
+	    						
 	    						for(var i=0;i<data.RES_DATA.length;i++){
-									data.RES_DATA[i]["title"]  = shorten(data.RES_DATA[i]["title"] , 80);
-									data.RES_DATA[i]["detail"] = shorten(data.RES_DATA[i]["detail"] , 230);
-									data.RES_DATA[i]["username"] = shorten(data.RES_DATA[i]["username"] , 15);
-// 									var tags = data.RES_DATA[i]["tag"].split(",");
-// 									var t = "";
-// 									for(var j=0; j<tags.length; tags++){
-// 									     t += "<a href='list.act?tag='"+tags[j]+"'><span class='label label-primary'>"+tags[j]+"</span></a>" ;
-// 									}
-// 									data.RES_DATA[i]["tag"]  = t;
+	    							tagHTML = "";
+	    							if(data.RES_DATA[i].tag != null){
+										tags = data.RES_DATA[i]["tag"].split(", ");
+										for(var j=0; j<tags.length; j++){
+											tagHTML += "<a id='listQuestionByTag' data-tag='"+tags[j].trim()+"' href='javascript:' style='padding-right: 2px;'><span class='label label-primary'>"+tags[j] +" </span></a>";
+										}
+									}
+
+									questionDiv += '<tr>'+
+														'<td class="expand footable-first-column">'+
+															'<span class="desc-wrapper"> '+
+																'<a  href="${pageContext.request.contextPath}/forum/question/'+data.RES_DATA[i]["commentId"]+'" class="ka-question">'+
+																	shorten(data.RES_DATA[i]["title"] , 80)+
+																'</a> '+
+																'<p>'+
+																   '<p> '+shorten(data.RES_DATA[i]["detail"] , 230)+'</p>'+
+																'</p>'+
+																'<div class="text-left" id="getTage">'+
+																	tagHTML+
+																'</di>'+
+															'</span>'+
+														'</td>'+
+														'<td class="vu-table-td footable-last-column">'+
+															'<div style="width: 40px;"><small>'+data.RES_DATA[i]["vote"]+' Votes</small></div>'+
+															'<div style="width: 60px;"><small>'+data.RES_DATA[i]["commentCount"]+' Answers</small></div>'+
+														'</td>'+
+														'<td class="vu-table-td footable-last-column">'+
+															'<div style="width: 100px;" ><a  class="ka-username" style="color:#37BC9B;" href="javascript:" >'+data.RES_DATA[i]["username"]+'</a></div>'+
+															'<div style="width: 70px;"><small>'+data.RES_DATA[i]["postDate"]+'</small></div>'+
+															'<div><img style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>'+
+														'</td>'+
+													'</tr>';
+									
+									
 								}
+	    						
 	    						$("#loading").hide();
-	    						if(data.RES_DATA.length>0){
-	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
-	    						}
+	    						$("#getQuestion").append(questionDiv);
 	    						if(page >= data.PAGINATION.totalPages){ 
 	    							$("#btLoadMore").hide();
 	    						}else{
@@ -276,7 +305,18 @@
 	    			};
 	    		
 	    			question.listCategory();
-	    			question.listQuestion(null,null,page);
+	    			
+	    		    if("${tag}" != ''){
+	    		    	 type="ByTag";
+		    			 empty = true;
+		    			 page = 1;
+		    			 $("#getType").text("${tag}" +" : ");
+		    			 $("#btLoadMore").attr("data-tag" ,"${tag}" );
+						 question.listQuestion( null , "${tag}",page);	
+		    		}else{
+		    			question.listQuestion(null,null,page);
+		    		}
+	    			
 	    			
 	    			
 	    			
@@ -284,8 +324,18 @@
 	    			    type="ByCate";
 	    			    empty = true;
 	    				page = 1;
+	    				$("#getType").text($(this).data("cate") +" : ");
 	    				$("#btLoadMore").attr("data-cateid" ,$(this).data("cateid") );
-	    				question.listQuestion(null,$(this).data("cateid"),page);	    				
+						question.listQuestion($(this).data("cateid"), null , page);	   
+	    			});
+	    			
+	    			$(document).on('click',"#listQuestionByTag" , function(){ 
+	    			    type="ByTag";
+	    			    empty = true;
+	    				page = 1;
+	    				$("#getType").text($(this).data("tag") +" : ");
+	    				$("#btLoadMore").attr("data-tag" ,$(this).data("tag") );
+						question.listQuestion( null , $(this).data("tag"),page);	   
 	    			});
 	    			
 	    			
@@ -302,7 +352,9 @@
 						if(type=="All"){
 							question.listQuestion(null,null,page);
 						}else if(type=="ByCate"){
-							question.listQuestion(null,$(this).data("cateid"),page);	   
+							question.listQuestion($(this).data("cateid"), null , page);	   
+						}else if(type=="ByTag"){
+							question.listQuestion( null , $(this).data("tag"),page);	   
 						}
 	    			});
 	    	  });
@@ -330,7 +382,7 @@
 			  function shorten(text, maxLength) {
 				  var ret = text;
 				  if (ret.length > maxLength) {
-				  ret = ret.substr(0,maxLength-3) + "...";
+				  ret = ret.substr(0,maxLength-3) + " ...";
 				  }
 				  return ret;
 		 	 }

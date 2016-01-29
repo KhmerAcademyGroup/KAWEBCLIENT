@@ -5,12 +5,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ForumController {
 	
-	@RequestMapping(value="/forum" , method =  RequestMethod.GET)
-	public String indexPage(){
+	@RequestMapping(value={"/forum","/forum/questions"} , method =  RequestMethod.GET)
+	public String indexPage( ModelMap m, @RequestParam(value="tag", required = false) String tag){
+		m.addAttribute("tag" , tag);
 		return "forum/index";
 	}
 	

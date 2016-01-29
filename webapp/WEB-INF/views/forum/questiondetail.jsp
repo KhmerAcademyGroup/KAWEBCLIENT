@@ -63,7 +63,7 @@
 													</td>
 													
 													<td class="expand footable-first-column" style="padding-right: 0px;">
-															<div style="padding:20px;background-color:#f2f7fd" id="qDetail">
+															<div style="padding:20px;background-color:#f2f7fd;min-height: 150px;" id="qDetail">
 															   <!-- Android theme will not update status bar color Android theme will not update status bar color Android theme 
 															   will not update status bar color Android theme will not update status bar color... Android theme will not update status bar color Android theme will not update status bar color Android theme 
 															   will not update status bar color Android theme will not update status bar color... Android theme will not update status bar color Android theme will not update status bar color Android theme 
@@ -93,7 +93,7 @@
 															<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="qUsername"><!-- Phearun --></a></span>
 														</div>
 														<div class="text-right"><small id="qDate"><!-- Jan 18, 2016 --></small></div>
-														<div class="text-right"><img id="qUserImage" style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>
+														<div class="text-right"><img id="qUserImage" style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>
 													</td>
 												</tr>
 											</tbody>
@@ -122,7 +122,7 @@
 													</td>
 													
 													<td class="expand footable-first-column" style="padding-right: 0px;">
-															<div style="padding:20px;background-color:#f2f7fd" id="selectedAnswerDetail">
+															<div style="padding:20px;background-color:#f2f7fd;min-height: 150px;" id="selectedAnswerDetail">
 															   <!-- Android theme will not update status bar color Android theme will not update status bar color Android theme 
 															   will not update status bar color Android theme will not update status bar color... Android theme will not update status bar color Android theme will not update status bar color Android theme 
 															   will not update status bar color Android theme will not update status bar color... Android theme will not update status bar color Android theme will not update status bar color Android theme 
@@ -147,7 +147,7 @@
 															<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="selectedAnswerUsername"><!-- Phearun --></a></span>
 														</div>
 														<div class="text-right"><small id="selectedAnswerDate"><!-- Jan 18, 2016 --></small></div>
-														<div class="text-right"><img style="width: 40px;" id="selectedAnswerUserImage" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>
+														<div class="text-right"><img style="width: 40px;" id="selectedAnswerUserImage" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>
 													</td>
 												</tr>
 											</tbody>
@@ -163,7 +163,7 @@
 										
 										</div>
 																				
-										<!-- <table class="table"  style="display:none">
+										<!-- <table class="table"  >
 											<tbody >
 												<tr>
 													<td class="vu-table-td footable-last-column text-left" style="width: 10%;">
@@ -206,7 +206,7 @@
 													</td>
 												</tr>
 											</tbody>
-										</table> -->
+										</table>  -->
 										
 										<!-- End Answers -->
 										
@@ -304,13 +304,22 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.js"></script>
 		<script type="text/javascript">
 		$(function() {
-			$('.summernote').summernote({
-				  height: 150,   //set editable area's height
-				  placeholder: 'write here...',
-				  codemirror: { // codemirror options
-				    theme: 'monokai'
-				  }
-				});
+			$('.summernote').summernote(
+					{
+						height : 200,
+						toolbar : [
+								
+								[
+										'style',
+										[ 'bold', 'italic', 'underline',
+												'clear' ] ],
+								[ 'fontsize', [ 'fontsize' ] ],
+								[ 'color', [ 'color' ] ],
+								[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+								[ 'height', [ 'height' ] ],
+								[ 'codeview', [ 'codeview' ] ],						
+						]
+					});
 			
 
 		});
@@ -394,14 +403,14 @@
 								if(data.RESP_DATA != null ){
 									$("#qTitle").text(data.RESP_DATA.title);
 									$("#qTotalVotes").text(data.RESP_DATA.vote);
-									$("#qDetail").text(data.RESP_DATA.detail);
+									$("#qDetail").html(data.RESP_DATA.detail);
 									$("#qUsername").text(data.RESP_DATA.username);
 									$("#qDate").text(data.RESP_DATA.postDate);
 // 									$("#qUserImage").text(data.RESP_DATA.title);
 									tags = data.RESP_DATA.tag.split(", ");
 									tagHTML = "";
 									for(var i=0; i<tags.length; i++){
-										tagHTML += "<a href='list.act?tag="+tags[i]+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[i] +" </span></a>";
+										tagHTML += "<a href='${pageContext.request.contextPath}/forum/questions?tag="+tags[i].trim()+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[i] +" </span></a>";
 									}
 									$("#qTags").append(tagHTML);
 	    							$("#q-loading").hide();
@@ -434,7 +443,7 @@
 											tags = data.RESP_DATA.tag.split(", ");
 											tagHTML = "";
 											for(var i=0; i<tags.length; i++){
-												tagHTML += "<a href='list.act?tag="+tags[i]+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[i] +" </span></a>";
+												tagHTML += "<a href='${pageContext.request.contextPath}/forum/questions?tag="+tags[i].trim()+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[i] +" </span></a>";
 											}
 											$("#selectedAnswerTags").append(tagHTML);
 										}
@@ -466,16 +475,17 @@
 								    	for(var i=0;i<data.RESP_DATA.length;i++){ 
 								    		tagHTML = "";
 								    		console.log(data.RESP_DATA[i].selected);
-								    		if(data.RESP_DATA[i].selected == false){ 
-												if(data.RESP_DATA[i].tag != null){
-													tags = data.RESP_DATA[i].tag.split(", ");
+								    		if(data.RESP_DATA[i].selected == false){  console.log(data.RESP_DATA[i].tag);
+								    			tagHTML = "";
+				    							if(data.RESP_DATA[i].tag != null){
+													tags = data.RESP_DATA[i]["tag"].split(", ");
 													for(var j=0; j<tags.length; j++){
-														tagHTML += "<a href='list.act?tag="+tags[j]+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[j] +" </span></a>";
+														tagHTML += "<a id='listQuestionByTag' data-tag='"+tags[j].trim()+"' href='${pageContext.request.contextPath}/forum/questions?tag="+tags[j].trim()+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[j] +" </span></a>";
 													}
 												}
 												
-								    			answers +=  '<table class="table">'+
-																'<tbody >'+
+												answers += '<table class="table">'+
+																'<tbody>'+
 																	'<tr>'+
 																		'<td class="vu-table-td footable-last-column text-left" style="width: 10%;">'+
 																			'<div style="font-size:20px">'+
@@ -483,39 +493,37 @@
 																				'<br/><span id="answerTotalVotes">'+data.RESP_DATA[i].vote+'</span><br/>'+
 																				'<span data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>'+
 																				'<br/>'+
-																				'<span data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star"></span>'+
+																				'<span data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>'+
 																			'</div>'+
 																		'</td>'+
 																		
 																		'<td class="expand footable-first-column" style="padding-right: 0px;">'+
-																				'<div style="padding:20px;background-color:#f2f7fd" id="answerDetail">'+
-																				data.RESP_DATA[i].detail+
+																				'<div style="padding:20px;background-color:#f2f7fd;min-height: 150px;" id="answerDetail">'+
+																					data.RESP_DATA[i].detail+ 
 																				'</div>'+
 																				
-																				'<span id="answerTags">'+
-																				tagHTML
-																				'</span>'+
+																				'<span>'+tagHTML+'</span>'+
 																		'</td>'+
 																	'</tr>'+
-													
+																	
 																	'<tr>'+
 																		'<td style="border-top: none;"></td>'+
 																		'<td style="border-top: none;">'+
 																			'<div>'+
-																				'<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs">Share</a> <a class="btn btn-default active btn-xs" href="#">Edit</a> </span>'+
-																				'<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="answerUsername">Phearun</a></span>'+
+																				'<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs">Share</a>  </span>'+
+																				'<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="answerUsername">'+data.RESP_DATA[i].username+'</a></span>'+
 																			'</div>'+
-																			'<div class="text-right"><small id="answerDate">Jan 18, 2016</small></div>'+
-																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>'+
+																			'<div class="text-right"><small id="answerDate">'+data.RESP_DATA[i].postDate+'</small></div>'+
+																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>'+
 																		'</td>'+
 																	'</tr>'+
 																'</tbody>'+
-															'</table>';
-								    		}
+															'</table> ';
+												
+ 								    		}
 								    		
 								    		
 								 	   }
-								    	
 								    	
 								    	$("#getAnswers").html(answers);
 								    	
