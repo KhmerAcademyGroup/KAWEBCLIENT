@@ -221,11 +221,11 @@
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
-					<div class="item">
+					<%-- <div class="item">
 						<p class="text-testi">
 							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar">
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
@@ -233,10 +233,10 @@
 						<p class="text-testi">
 							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar">
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
-					</div><!-- /.item -->
+					</div><!-- /.item --> --%>
 				</div><!-- /#owl-testimonial -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
