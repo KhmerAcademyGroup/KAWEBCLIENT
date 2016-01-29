@@ -179,7 +179,7 @@
 		</div><!-- /.section -->
 		<!-- END TOP FEATURE SECTION -->
 		
-		<div class="section bg-success text-center" style="background:#72d572;">
+		<div class="section bg-primary text-center">
 			<div class="container">
 				<h4 class="margin-bottom-30">START E-ELEARNING WITH KHMER ACADEMY</h4>
 				<div class="row">
