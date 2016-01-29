@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- BEGIN TOP NAVBAR -->
-<div class="top-navbar">
+<div class="top-navbar" style="background:#006a00;">
 	<div class="container">
 	
 		<!-- Begin logo -->
