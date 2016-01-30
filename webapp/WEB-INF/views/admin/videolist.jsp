@@ -58,6 +58,19 @@
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
+						
+						<div class="btn-group">
+							<form role="form">
+								<select id="number-of-item" class="form-control">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+									<option value="30">30</option>
+									<option value="50">50</option>
+								</select>
+							</form>
+								
+						</div>
 
 						<div class="btn-group pull-right">
 							<form role="form">
@@ -74,20 +87,38 @@
 							<thead>
 								<tr>									
 									<th>No</th>
-									<th>Video Name</th>									
+									<th>Video Name</th>
+									<th>YouTube URL</th>
+									<th>Post Date</th>									
+									<th>Username</th>
+									<th>Category</th>
+									<th>View</th>
+									<th>Status</th>
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>									
+							<tbody id="content">
+								<!-- <tr>									
 									<td>1</td>
-									<td>Java</td>									
+									<td>Java</td>
+									<td>Youtube</td>
+									<td>Date</td>
+									<td>Username</td>
+									<td>Category</td>
+									<td>View</td>
+									<td>Status</td>									
 									<td> <i class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" data-target="#frmFroumCategory" data-backdrop="static"></i>
 										 <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i>
 									</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
+						
+						<div id="pagination" class="pull-right">
+												
+						 </div>
+						
+						
 					</div>
 					<!-- /.table-responsive -->
 				</div>
@@ -143,177 +174,97 @@
 	<!-- /.wrapper -->
 	<!-- END PAGE CONTENT -->
 
-
-
-
-
-
-	<!--
-		===========================================================
-		END PAGE
-		===========================================================
-		-->
-
-	<!--
-		===========================================================
-		Placed at the end of the document so the pages load faster
-		===========================================================
-		-->
-	<!-- MAIN JAVASRCIPT (REQUIRED ALL PAGE)-->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/retina/retina.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/nicescroll/jquery.nicescroll.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/backstretch/jquery.backstretch.min.js"></script>
-
-	<!-- PLUGINS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/skycons/skycons.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/prettify/prettify.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/icheck/icheck.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/timepicker/bootstrap-timepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/mask/jquery.mask.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/validator/bootstrapValidator.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datatable/js/bootstrap.datatable.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/to-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/bootstrap-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
-
-	<!-- EASY PIE CHART JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/easypie-chart/easypiechart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/easypie-chart/jquery.easypiechart.min.js"></script>
-
-	<!-- KNOB JS -->
-	<!--[if IE]>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/excanvas.js"></script>
-		<![endif]-->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/jquery.knob.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/knob.js"></script>
-
-	<!-- FLOT CHART JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.tooltip.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.resize.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.selection.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.stack.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.time.js"></script>
-
-	<!-- MORRIS JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/raphael.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/morris.min.js"></script>
-
-	<!-- C3 JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/d3.v3.min.js"
-		charset="utf-8"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/c3.min.js"></script>
-
-	<!-- MAIN APPS JS -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
-
-
-
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
+	<!-- Footer Script -->
+	<jsp:include page="shared/_scriptfooter.jsp" />
+	<!-- ./Footer Script -->
 	
-	
-	<script id="CONTENT_TEMPLATE" type="text/x-jquery-tmpl">
+	<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
-				<td>{{= id}}</td>
-				<td>{{= username}}</td>
-				<td>{{= email}}</td>
-				<td>{{= position}}</td>
-				<td>{{= roles}}</td>
-				<td>{{= createdDate}}</td>
-				<td>{{= approvedDate}}</td>
-				<!--<td>{{if accountNonLocked == true}} <i class="ion-android-close" style="color: red;"></i> {{else}} <i class="ion-android-close" style="color: green;"></i> {{/if}}</td>
-				<td>{{if enabled == true}} <i class="ion-android-close" style="color: green;"></i> {{else}} <i class="ion-android-close" style="color: red;"></i> {{/if}}</td>
-				-->
-				<td>Action</td>
+				<td>{{= NO}}</td>
+				<td>{{= videoName}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
+				<td>{{= youtubeUrl}}</td>
 			</tr>
    </script>
    
 		<script type="text/javascript">		
 		
-		var category = {};
+		var video = {};
+		var check = true;
+		var gPage = 1; //global current page for pagination
 		
 		$(document).ready(function(){
 			
-			category.listCategory = function(currentPage){
+			video.listVideo = function(currentPage, item){
+				KA.createProgressBar();
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/admin/rest/category", 
-				    type: 'GET', 
-				    data: {
-				    		"currentPage" : currentPage,
-				    		"perPage"     : 20
-				    },
+				    url: "${pageContext.request.contextPath}/admin/rest/list/video?item="+ item + "&page=" + currentPage, 
+				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
+				    	
+				    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
+				    	return;  */
 						console.log(data);
-						if(data.RESP_DATA.length>0){
-							$("tbody#CONTENTS").html('');
-							$("#CONTENT_TEMPLATE").tmpl(data.RESP_DATA).appendTo("tbody#CONTENTS");
+				    	
+				    	perPage = item;
+				    	nextPage = (currentPage-1)*perPage;
+				    	
+						if(data.RES_DATA.length>0){
+							$("tbody#content").empty();
+							for(var i=0;i<data.RES_DATA.length;i++){
+								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+							}
+							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
 						}else{
-							$("tbody#CONTENTS").html('<tr>NO CONTENTS</tr>');
+							$("tbody#content").html('<tr>No content</tr>');
 						}
 				    	if(check){
-				    		users.setPagination(data.PAGINATION.totalPages,1);
+				    		video.setPagination(data.PAGINATION.totalPages,1,item);
 				    		check=false;
 				    	}
+				    	KA.destroyProgressBar();
 				    },
 				    error:function(data,status,er) { 
+				    	KA.destroyProgressBar();
 				        console.log("error: "+data+" status: "+status+" er:"+er);
 				    }
 				});
 			};
 			
-			
-			
+			video.setPagination = function(totalPage, currentPage, item){
+   		    	$('#pagination').bootpag({
+   			        total: totalPage,
+   			        page: currentPage,
+   			        maxVisible: 10,
+   			        leaps: true,
+   			        firstLastUse: true,
+   			        first: 'First',
+   			        last: 'Last',
+   			        wrapClass: 'pagination',
+   			        activeClass: 'active',
+   			        disabledClass: 'disabled',
+   			        nextClass: 'next',
+   			        prevClass: 'prev',
+   			        lastClass: 'last',
+   			        firstClass: 'first'
+   			    }).on("page", function(event, currentPage){
+   			    	check = false;
+   			    	gPage = currentPage;
+   			    	video.listVideo(currentPage, item);
+   			    }); 
+    		};
+    		
+    		video.listVideo(1,$("#number-of-item").val());
+    		
 		});
 		</script>
 
