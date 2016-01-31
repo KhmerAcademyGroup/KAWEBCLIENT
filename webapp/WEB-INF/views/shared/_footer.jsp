@@ -120,7 +120,7 @@ END PAGE
 				<div class="modal-header">
 
 					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>?</span></span>
+						<span class="button b-close"><span>x</span></span>
 					</button>
 					
 					<h4 class="bolded">Login to your Khmer Academy Account</h4>
@@ -167,7 +167,7 @@ END PAGE
 	                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 	                        </div>
 	                        <div class="col-sm-5 text-right">
-	                            <a href="/register">Create an account</a>
+	                            <a href="javascript:" class="btSignUp">Create an account</a>
 	                        </div>
 	                    </div>
 	                </form>
@@ -182,7 +182,7 @@ END PAGE
 				<div class="modal-header">
 
 					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>?</span></span>
+						<span class="button b-close"><span>x</span></span>
 					</button>
 					
 					<h4 class="bolded">Sign up Khmer Academy account and start Learning</h4>
@@ -326,7 +326,7 @@ Placed at the end of the document so the pages load faster
                
                 $(".btLogin").click(function(){ 
                 	$("#frmLogin").trigger("reset");
-                	$("#p-frmLogin").bPopup({modalClose: false});
+                	$("#p-frmLogin").bPopup(/* {modalClose: false} */);
 // 					KA.createProgressBar();	
 // 					setTimeout(function(){
 // 						KA.destroyProgressBar();
@@ -356,12 +356,12 @@ Placed at the end of the document so the pages load faster
 		    	            	}else  */
 		    	            	if(data == "Bad credentials"){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
+		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 										  				   '<strong class="alert-link">Invalid username or password! please try again!</strong>'+ 
 														   '</div>');
 		    	            	}else{
 									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
- 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
+ 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 								  				   '<strong class="alert-link">Login successfully!</strong>'+ 
 												   '</div>');
 		    	            		setTimeout(function(){
@@ -384,8 +384,9 @@ Placed at the end of the document so the pages load faster
                 
                 // SIgn up
                 $(".btSignUp").click(function(){
+                	$("#p-frmLogin").bPopup().close();
                 	$("#frmSignUp").trigger("reset");
-                	$("#p-frmSignUp").bPopup({modalClose: false});
+                	$("#p-frmSignUp").bPopup(/* {modalClose: false} */);
                 	if( $('#getDepartment').has('option').length == 0 ) {
                 		listDepartment();                		
                 	}
@@ -401,7 +402,7 @@ Placed at the end of the document so the pages load faster
                 
                 $(document).on('click',"#btSLogin", function(){ 
                 	$("#frmLogin").trigger("reset");
-                	$("#p-frmLogin").bPopup({modalClose: false});
+                	$("#p-frmLogin").bPopup(/* {modalClose: false} */);
                 	$("#p-frmSignUp").bPopup().close();
                 });
                 
@@ -456,7 +457,7 @@ Placed at the end of the document so the pages load faster
 	         		  alert($("#password").val() +" "+ $("#repassword").val());
 	         		  if( $("#password").val() != $("#repassword").val()){
 	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
+  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 				  				   '<strong class="alert-link">Passwords do not match!</strong>'+ 
 								   '</div>');
 	         			  return;
@@ -481,13 +482,13 @@ Placed at the end of the document so the pages load faster
 		    	            success: function(data) {
 		    	            	if(data.STATUS == false){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
-				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 				 				  				   '<strong class="alert-link">Email aleady exists</strong>'+ 
 				 							   '</div>');
 		    	            		KA.destroyProgressBarWithPopup();
 		    	            	}else{
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
-					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>'+ 
+					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 					 				  				   '<strong class="alert-link">You have been registered succssfully</strong>'+ 
 					 					            '</div>');
 		    	            		

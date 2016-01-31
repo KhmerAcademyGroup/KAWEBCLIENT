@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- BEGIN TOP NAVBAR -->
-<div class="top-navbar" style="background:#006a00;">
+<div class="top-navbar" style="    background: #32A93B;">
 	<div class="container">
 	
 		<!-- Begin logo -->
@@ -39,20 +39,16 @@
 				<a href="${pageContext.request.contextPath}/elearning">E-Learning</a>
 			</li>
 			<li class="parent">
-				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
-			</li>
-			<li class="parent">
 				<a href="${pageContext.request.contextPath}/tutorial"><spring:message code="tutorial"/></a>
 			</li>
 			<!-- <li class="parent">
 				<a href="#">News</a>
 			</li> -->
-			<li class="parent" >
-				 <a href=""  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><spring:message code="language"/></a>
-				 <ul class="sub-menus">
-					<li class="sub-list"><a href="?language=kh"><spring:message code="lang_khmer"/></a></li>
-					<li class="sub-list"><a href="?language=en"><spring:message code="lang_english"/></a></li>
-				</ul>
+			<li class="parent">
+				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
+			</li>
+			<li class="parent">
+				<a href="script:"><%-- <spring:message code="forum"/> --%> About</a>
 			</li>
 			<sec:authorize access="isAuthenticated()">
 <!-- 				<li class="parent"> -->
@@ -80,6 +76,20 @@
 					<a href="#" class="btSignUp"><spring:message code="signup"/></a>
 				</li>
 			</sec:authorize>
+			<li class="parent" style="width: 53px;" >
+				 <a href="?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">
+				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/kh-flag.png"  alt="Khmer">
+				 </a>
+				 <a href="?language=en" style="padding: 0 0 0 0;height: auto;width: 25px;float: right;margin-top: -24px;">
+				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/en-flag.png"  alt="English">
+				 </a>
+				 <%-- <a href=""  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><spring:message code="language"/></a>
+				 <ul class="sub-menus">
+					<li class="sub-list"><a href="?language=kh"><spring:message code="lang_khmer"/></a></li>
+					<li class="sub-list"><a href="?language=en"><spring:message code="lang_english"/></a></li>
+				</ul> --%>
+			</li> 
+			
 			<li class="parent right-icon">
 				<i class="fa fa-search" id="nav-icon-search"></i>
 			</li>
