@@ -54,7 +54,7 @@
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
 							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#frmFroumCategory" data-backdrop="static">
+								data-target="#frmVideo" data-backdrop="static">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
@@ -62,10 +62,10 @@
 						<div class="btn-group">
 							<form role="form">
 								<select id="number-of-item" class="form-control">
-									<option value="5">5</option>
 									<option value="10">10</option>
-									<option value="15">15</option>
+									<option value="20">20</option>
 									<option value="30">30</option>
+									<option value="40">40</option>
 									<option value="50">50</option>
 								</select>
 							</form>
@@ -89,8 +89,7 @@
 									<th>No</th>
 									<th>Video Name</th>
 									<th>YouTube URL</th>
-									<th>Post Date</th>									
-									<th>Username</th>
+									<th>Post Date</th>
 									<th>Category</th>
 									<th>View</th>
 									<th>Status</th>
@@ -183,12 +182,14 @@
 				<td>{{= NO}}</td>
 				<td>{{= videoName}}</td>
 				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
-				<td>{{= youtubeUrl}}</td>
+				<td>{{= postDate}}</td>
+				<td>{{= categoryName}}</td>
+				<td>{{= viewCounts}}</td>
+				<td>{{= status}}</td>
+				<td> 
+   		 			<i data-cateid="{{= videoId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateVideo"></i>
+            		<i data-cateid="{{= videoId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
+         		</td>
 			</tr>
    </script>
    
@@ -244,7 +245,7 @@
    		    	$('#pagination').bootpag({
    			        total: totalPage,
    			        page: currentPage,
-   			        maxVisible: 10,
+   			        maxVisible: 5,
    			        leaps: true,
    			        firstLastUse: true,
    			        first: 'First',
