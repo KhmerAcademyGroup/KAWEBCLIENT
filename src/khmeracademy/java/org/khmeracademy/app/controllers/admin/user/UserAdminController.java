@@ -33,7 +33,7 @@ public class UserAdminController {
 	private String WSURL;
 	
 	@RequestMapping(value="/rest/user" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> listDepartment(
+	public ResponseEntity<Map<String , Object>> listUser(
 			  @RequestParam(value = "page", required = false , defaultValue="1") int page 
 			, @RequestParam(value="item" , required = false , defaultValue="20") int item){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -41,8 +41,18 @@ public class UserAdminController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/user/search" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> searchUser(
+			@RequestParam(value = "username", required = false , defaultValue="") String username,
+			  @RequestParam(value = "page", required = false , defaultValue="1") int page 
+			, @RequestParam(value="item" , required = false , defaultValue="20") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/search?page="+page+"&item="+item+"&username="+username, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/rest/user" , method = RequestMethod.PUT)
-	public ResponseEntity<Map<String , Object>> updateDepartment(
+	public ResponseEntity<Map<String , Object>> updateUser(
 			@RequestParam(value = "userid", required = true) String uid,
 			@RequestParam(value = "usertype", required = true) String utype){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -57,11 +67,11 @@ public class UserAdminController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	/*
-	@RequestMapping(value="/rest/log/university/{id}" , method = RequestMethod.DELETE)
-	public ResponseEntity<Map<String , Object>> deleteDepartment(@PathVariable("id") String id){
+	
+	@RequestMapping(value="/rest/user/{id}" , method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteUser(@PathVariable("id") String id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);		
-		ResponseEntity<Map> response = rest.exchange(WSURL + "university/delete/"+id, HttpMethod.DELETE , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/"+id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}*/
+	}
 }
