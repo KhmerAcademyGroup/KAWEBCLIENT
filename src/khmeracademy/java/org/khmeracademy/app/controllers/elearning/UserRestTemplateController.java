@@ -4,7 +4,9 @@ package org.khmeracademy.app.controllers.elearning;
 import java.util.Map;
 
 import org.eclipse.jdt.internal.compiler.batch.FileSystem;
+import org.khmeracademy.app.entities.input.FrmChangePassword;
 import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
+import org.khmeracademy.app.entities.input.FrmUpdateUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -148,12 +150,7 @@ public class UserRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
-		@RequestMapping(value="/rest/user/profile/createplaylist" , method = RequestMethod.POST)
-		public ResponseEntity<Map<String , Object>> listCategory(@RequestBody FrmCreatePlaylist playlist){
-			HttpEntity<Object> request = new HttpEntity<Object>(playlist,header);
-			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
-			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-		}
+		
 		
 		@RequestMapping(value="/rest/user/profile/deleteplaylist/{pid}" , method = RequestMethod.DELETE)
 		public ResponseEntity<Map<String , Object>> deletePlaylist(@PathVariable("pid") String pid){
@@ -164,6 +161,14 @@ public class UserRestTemplateController {
 		}
 		
 		
+		@RequestMapping(value="/rest/user/profile/createplaylist" , method = RequestMethod.POST)
+		public ResponseEntity<Map<String , Object>> createplaylist(@RequestBody FrmCreatePlaylist playlist){
+			HttpEntity<Object> request = new HttpEntity<Object>(playlist,header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		///////////////profile
 		@RequestMapping(value="/rest/user/profile/userprofile/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> userProfile(@PathVariable("uid") String uid){
 			
@@ -197,6 +202,21 @@ public class UserRestTemplateController {
 			
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
 			ResponseEntity<Map> response = rest.exchange(WSURL + "/university/list?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		
+		@RequestMapping(value="/rest/user/profile/changepassword" , method = RequestMethod.POST)
+		public ResponseEntity<Map<String , Object>> changePassword(@RequestBody FrmChangePassword changepass){
+			HttpEntity<Object> request = new HttpEntity<Object>(changepass,header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/user/changepassword", HttpMethod.POST , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/updateprofile" , method = RequestMethod.PUT)
+		public ResponseEntity<Map<String , Object>> updateProfile(@RequestBody FrmUpdateUser user){
+			HttpEntity<Object> request = new HttpEntity<Object>(user,header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/user", HttpMethod.PUT , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
