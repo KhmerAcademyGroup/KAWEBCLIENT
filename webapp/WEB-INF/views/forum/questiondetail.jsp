@@ -210,19 +210,25 @@
 										
 										<!-- End Answers -->
 										
+										
+										<div id="a-loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/inline_loading.gif"/></div>
+										
+										
 										 <div class="text-center">
-											<button class="btn btn-warning" id="btLoadMore" style="display:none" > Load more answer</button>
+											<button class="btn btn-warning" id="btLoadMore" style="display:none" > see more answers</button>
 										</div>
 								
 								
 								<hr/>
 								<h4 class="page-title">Answer</h4> 
 								
+								<span id="msg"> </span>
+								
 								<div>
 									<div class="summernote"> </div>
 								</div>
 								
-								<button class="btn btn-primary">Post your answer</button>
+								<button class="btn btn-primary" id="btPostAnswer">Post answer</button>
 						
 				</div>
 					</div><!-- /.col-sm-8 col-md-9 -->
@@ -345,6 +351,9 @@
 			  var answer = "";
 			  var selectedAnswer = "";
 		
+			  var page = 1;
+		  	  var totalPage = 0;
+		  		
 			  $(document).ready(function(){
 				
 				  
@@ -471,7 +480,9 @@
 									answers = "";
 									
 		    				    	if(data.RESP_DATA != null){ 
-								    	$("#totalAnswer").text(data.RESP_DATA.length);  
+								    	$("#totalAnswer").text(data.PAGINATION.totalCount);  
+								    	totalPage = data.PAGINATION.totalPages;
+								    	
 								    	for(var i=0;i<data.RESP_DATA.length;i++){ 
 								    		tagHTML = "";
 								    		console.log(data.RESP_DATA[i].selected);
@@ -525,7 +536,15 @@
 								    		
 								 	   }
 								    	
-								    	$("#getAnswers").html(answers);
+								    	$("#a-loading").hide();
+								    	$("#getAnswers").append(answers);
+			    						if(page >= data.PAGINATION.totalPages){ 
+			    							$("#btLoadMore").hide();
+			    						}else{
+			    							$("#btLoadMore").show();
+			    						}
+			    						
+								    	
 								    	
 									}
 		    				    },
@@ -533,12 +552,78 @@
 		    				        console.log("error: "+data+" status: "+status+" er:"+er);
 		    				    }
 		    				});
+		    			
+		    			
+		    				/* Post Answer */
+		    				questionDetail.postAnswer = function(data){
+		    					 KA.createProgressBar();
+		    					$.ajax({ 
+			    				    url: "${pageContext.request.contextPath}/rest/forum/answer",  
+			    				    type: 'POST',
+			    				    data: JSON.stringify(data), 
+			    				    beforeSend: function(xhr) {
+			    	                    xhr.setRequestHeader("Accept", "application/json");
+			    	                    xhr.setRequestHeader("Content-Type", "application/json");
+			    	                },
+			    				    success: function(data) {  
+			    				    	$("#getAnswers").empty();
+			    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
+			    				    	console.log(data);
+			    				    	KA.destroyProgressBar();
+			    				    },
+			    				    error:function(data) { 
+			    				        console.log(data);
+			    				    }
+			    				});
+		    				};
+		    			
 	    			};
 	    			
 	    			
 	    			questionDetail.getQuestionByQuestionId("${qid}");
 	    			questionDetail.getSelectedAnswer("${qid}");
 	    			questionDetail.getAnswerByQuestionId("${qid}",1);
+	    			
+	    			$("#btPostAnswer").click(function(){
+	    				if('${userId}' == ''){
+	    					$(".btLogin").trigger('click');
+	    					console.log(0);
+	    				}else{
+	    					console.log(1);
+	    				}
+	    				if(		$(".summernote").code().replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").replace(' ', '').length == '' ||
+	    						$(".summernote").code().replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").replace(' ', '').length	< 40	
+	    				){
+	    					console.log("Answer must be at least 40 characters. You entered " + $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length);
+	    					$("#msg").replaceWith('<div id="msg" class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
+							  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+							  '<span class="alert-link">Answer must be at least 40 characters. You entered '+ $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length+'!</span>'+
+							  '</div>');
+	    				}else{
+	    					$("#msg").replaceWith('<div id="msg" class="alert alert-success alert-bold-border square fade in alert-dismissable">'+
+	  							  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+	  							  '<span class="alert-link">Your answer has been submitted. Thanks for contirbuting an answer!</span>'+
+	  							  '</div>');
+	    					jsonData =  {
+	    						"title" : $("#qTitle").text(),
+	    						"detail" : $(".summernote").code(),
+	    						"parentId" : "${qid}" ,
+	    						"userId"   : '${userId}'
+	    					};
+	    					
+	    					questionDetail.postAnswer(jsonData);
+	    					console.log(jsonData);
+	    					$(".summernote").code('');
+	    				}
+	    				
+	    			});
+	    			
+	    			$("#btLoadMore").click(function(){ 
+    					page++;
+				    	$("#a-loading").show();
+				    	$("#btLoadMore").hide();
+						questionDetail.getAnswerByQuestionId("${qid}",page);
+    				});
 	    			
 			  });	
 	    		

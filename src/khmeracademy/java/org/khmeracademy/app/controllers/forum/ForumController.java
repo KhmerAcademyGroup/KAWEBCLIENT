@@ -1,5 +1,8 @@
 package org.khmeracademy.app.controllers.forum;
 
+import org.khmeracademy.app.entities.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +22,12 @@ public class ForumController {
 	@RequestMapping(value="/forum/question/{qid}" , method =  RequestMethod.GET)
 	public String questionDetailPage(@PathVariable("qid") String qid , ModelMap m){
 		m.addAttribute("qid", qid);
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			m.addAttribute("userId", user.getUserId());
+			m.addAttribute("username", user.getUsername());
+		}
 		return "forum/questiondetail";
 	}
 	
@@ -27,7 +36,16 @@ public class ForumController {
 		return "admin/forumcategory";
 	}
 	
-	
+	@RequestMapping(value="/forum/question/ask" , method =  RequestMethod.GET)
+	public String askQuestionPage(ModelMap m){
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			m.addAttribute("userId", user.getUserId());
+			m.addAttribute("username", user.getUsername());
+		}
+		return "forum/askquestion";
+	}
 	
 	
 	

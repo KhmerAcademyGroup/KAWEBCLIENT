@@ -276,6 +276,9 @@ Placed at the end of the document so the pages load faster
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.jquery.min.js" ></script>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/bootstrap-datepicker.js" ></script>
 
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/validator/bootstrapValidator.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/validator/myValidator.js"></script>
+
 
 		
 
