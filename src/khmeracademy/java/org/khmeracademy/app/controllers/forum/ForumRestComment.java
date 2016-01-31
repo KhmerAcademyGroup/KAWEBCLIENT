@@ -3,6 +3,7 @@ package org.khmeracademy.app.controllers.forum;
 import java.util.Map;
 
 import org.khmeracademy.app.entities.input.FrmAddAnswer;
+import org.khmeracademy.app.entities.input.FrmAddQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -90,6 +91,21 @@ public class ForumRestComment {
 	public ResponseEntity<Map<String , Object>> postAnswer(@RequestBody FrmAddAnswer answer ){
 		HttpEntity<Object> request = new HttpEntity<Object>(answer,header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/addanswer" , HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/forum/question/listtagandcategory" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listTagAndCategory(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/listtagandcategory" , HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	/* Post Question */
+	@RequestMapping(value="/rest/forum/question/ask" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> postQuestion(@RequestBody FrmAddQuestion question ){
+		HttpEntity<Object> request = new HttpEntity<Object>(question,header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/addquestion" , HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

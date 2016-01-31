@@ -224,7 +224,7 @@ $(document).ready(function() {
 	
 	
 	
-	$('#frmPostQuestion').bootstrapValidator({
+	$('#frmPostQuestion1').bootstrapValidator({
 		message: 'This value is not valid',
 		feedbackIcons: {
 			valid: 'glyphicon glyphicon-ok',
@@ -259,6 +259,13 @@ $(document).ready(function() {
 				}
 			},
 			detail: {
+				validators: {
+					notEmpty: {
+						message: 'The category is required and can\'t be empty'
+					}
+				}
+			},
+			tags: {
 				validators: {
 					notEmpty: {
 						message: 'The category is required and can\'t be empty'
