@@ -157,6 +157,7 @@
 													</div>
 													
 													<div class="btn-group pull-right">
+													 
 														<form role="form">
 															<input type="text" class="form-control" id="searchVideo" onkeyup="mySearchVideo();" placeholder="Search Video">
 														</form>
@@ -180,22 +181,27 @@
 											<!--***********************user Prfile Tap ****************-->
 											<div class="tab-pane fade" id="panel-myinfo">
 												<div class="tab-pane fade in" id="panel-about">
-												
-													<form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1" action="updateusrinfo.act" method="post" novalidate="novalidate">	
+														
+														<div class="panel panel-success">
+												      <div class="panel-heading">Profile Setting</div>
+												      <div class="panel-body">
+												      		<form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1" action="updateusrinfo.act" method="post" novalidate="novalidate">	
 														<div class="col-sm-8">
 														
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Username<span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" class="form-control" id="username" name="username" value="hello" data-bv-field="username">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The username is required and can't be empty</small><small data-bv-validator="stringLength" class="help-block" style="display: none;">The username must be more than 4 and less than 30 characters long</small></div>
+																<small id="checkname" class="help-block" style="color: red;"></small>
+															</div>
 														</div>
 						
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Email<span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="email" class="form-control" id="myemail" name="myemail" value="" disabled="" data-bv-field="email">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The email address is required and can't be empty</small><small data-bv-validator="emailAddress" class="help-block" style="display: none;">The input is not a valid email address</small></div>
+																<small id="checkemail" class="help-block" style="color: red;"></small>
+															</div>
 														</div>
 																					
 														<div class="form-group">
@@ -204,6 +210,7 @@
 																<select name="department" id="mydepartment" class="form-control" data-bv-field="department">
 																	
 																</select>
+																<small id="checkdepartment" class="help-block" style="color: red;"></small>
 															</div>
 														</div>
 														<div class="form-group">
@@ -212,6 +219,7 @@
 																<select name="university" id="university" class="form-control" data-bv-field="university">
 																	
 																</select>
+																<small id="checkuniversity" class="help-block" style="color: red;"></small>
 															</div>
 					
 														</div>
@@ -221,23 +229,25 @@
 																<div class="col-lg-5">
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="male" name="male" value="male"  required=""  data-bv-field="gender" > Male
+																			<input type="radio" id="male" name="gender" value="male"  required=""  data-bv-field="gender" > Male
 																		</label>
 																	</div>
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="female" name="female" value="female"  data-bv-field="gender"> Female
+																			<input type="radio" id="female" name="gender" value="female"  data-bv-field="gender"> Female
 																		</label>
 																	</div>
 															
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The gender is required</small></div>
+																	<small id="checkgender" class="help-block" style="color: red;"></small>
+															</div>
 														</div>
 														
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Date of birth<span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" value="" id="dateofbirth" name="dateofbirth" data-date-format="dd-mm-yyyy" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
-																<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The date of birth  is required and can't be empty</small></div>
+																<small id="checkdate" class="help-block" style="color: red;"></small>
+															</div>
 														</div>
 														
 														
@@ -246,7 +256,8 @@
 															<label class="col-lg-3 control-label">Phone number<span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" data-bv-field="phonenumber">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Phonenumber is required and can't be empty</small><small data-bv-validator="digits" class="help-block" style="display: none;">The value can contain only digits</small></div>
+																<small id="checkphone" class="help-block" style="color: red;"></small>
+															</div>
 														</div>
 										
 														
@@ -255,67 +266,81 @@
 															<div class="col-lg-5">
 																<input type="text" class="form-control" id="usertype" name="usertype" disabled="" value="Subscriber" data-bv-field="usertype">
 																
-																<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The register date is required and can't be empty</small></div>
-														</div>	
-														<div class="form-group">
-															<label class="col-lg-3 control-label">Current Password<span class="required">*</span></label>
-															<div class="col-lg-5">
-																<input type="password" class="form-control" name="oldpassword" id="oldpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Password is required and can't be empty</small></div>
-															<small id="pwdvalid" style="display: block; color: red;" class="help-block"></small>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-3 control-label">New Password<span class="required">*</span></label>
-															<div class="col-lg-5">
-																<input type="password" class="form-control" name="newpassword" id="newpassword" onchange="checkoldpassword()" data-bv-field="oldpassword">
-															<small data-bv-validator="notEmpty" class="help-block" style="display: none;">The Password is required and can't be empty</small></div>
-															<small id="pwdvalid" style="display: block; color: red;" class="help-block"></small>
-														</div>
-														</div>
-														<div class="col-sm-4">
-																							
-															<div class="col-xs-6 col-md-7">
-															
-																<div class="form-group" >
-																	<div class="">
-																		<div class="fileinput fileinput-new" data-provides="fileinput">
-																		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200PX; height:150px;"></div>
-																		  <div>
-																			<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-																			<input type="file" id="file1"   name="file1">
-																			<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-																			<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-																		  </div>
-																		</div>
-																		
-																	</div>
-																</div>
-																
-																
+																<small id="checkusertype" class="help-block" style="color: red;"></small>
 															</div>
-																							
-																							
 														</div>	
-																							
-																						
-																						
-															
-																						
-														<!-- Button Post -->
-														<div class="form-group">
-															<div class="col-lg-9 col-lg-offset-3">
-																<button type="reset" class="btn btn-default btn-perspective">Cancel</button>
-																<button id="msubmit" class="btn btn-info btn-perspective">Update</button>
-															</div>
-														</div>
-														<!-- Button Post -->
 														
-																	
-																				
+														</div>
+														<div class="col-sm-4">			
+															<div class="col-xs-12">
+																<img id="imageprofile"  class="img-responsive img-thumbnail" style="width: 200PX; height:150px;"  alt="Image">
+																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  >
+																<div class="fileinput fileinput-new" data-provides="fileinput">
+																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
+																  <span class="fileinput-exists">Change</span><input type="file" id="newprofile" name="newprofile"></span>
+																  <span class="fileinput-filename"></span>
+																  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+																</div>
+															</div>							
+														</div>	
+																						
+														<!-- Button Post -->
+														<div class="form-group">
+															<div class="col-xs-12 ">
+																<input type="button" onclick="updateProfile();" class="btn btn-info btn-perspective" value="Update"/>
+															</div>
+														</div>
+														<!-- Button Post -->
+																		
 														<!-- /From -->
 														</form>
+												      </div>
+												    </div>
+												    
+												     <!-- change password -->
+												    <div class="panel panel-success">
+												      <div class="panel-heading">Change Password</div>
+												      <div class="panel-body">
+												      	<div class="col-xs-12">
+												      		<form class="form-horizontal bootstrap-validator-form">
+												      		<div class="form-group">
+																<label class="col-lg-3 control-label">Current Password<span class="required">*</span></label>
+																<div class="col-lg-5">
+																	<input type="password" onkeyup="validatOldPass();" class="form-control" name="oldpassword" id="oldpassword"  data-bv-field="oldpassword">
+																	<small id="checkoldpassword"  class="help-block" style="color: red;"></small></div>
+																
+															</div>
+															<div class="form-group">
+																<label class="col-lg-3 control-label">New Password<span class="required">*</span></label>
+																<div class="col-lg-5">
+																	<input type="password" onkeyup="validatNewPass();" class="form-control" name="newpassword" id="newpassword"  data-bv-field="oldpassword">
+																<small id="checknewpassword" class="help-block" style="color: red;"></small></div>
+																
+															</div>
+															<div class="form-group">
+																<label class="col-lg-3 control-label">Confirm Password<span class="required">*</span></label>
+																<div class="col-lg-5">
+																	<input type="password" onkeyup="validatConPass(); validatebothpass()" class="form-control" name="conpassword" id="conpassword"  data-bv-field="oldpassword">
+																	<small id="checkconpassword" class="help-block" style="color: red;"></small>
+																	<small id="checkbothpassword" class="help-block" style="color: red;"></small></div>
+															</div>
+															
+															<!-- Button Post -->
+															<div class="form-group">
+																<div class="col-lg-9 col-lg-offset-3">
+																	<input type="button" onclick="changeMyPassword();" class="btn btn-info btn-perspective" value="Update"/>
+																</div>
+															</div>
+															</form>
+															</div>
+															<br/>
+															<br/>
+												      </div>
+												    
+												</div>
+													
 												
-											</div>
+												</div>
 											</div>
 											
 											<!-- *******************start history****************** -->
@@ -340,7 +365,7 @@
 																</form>
 															</div>
 															<div class="btn-group">
-																<a href="#" onclick="removeAllHistory(userid)" class="btn btn-danger">
+																<a href="#" onclick="go('removeAllHistory',userid,'0');" data-toggle="modal" data-target="#myModal" class="btn btn-danger">
 																	<i class="fa fa-ban"></i> Clear All History
 																</a>
 															</div>
@@ -401,104 +426,73 @@
 															
 														</div>
 														<!-- page gination -->
+														<div style="clear: both;"></div>
 														<div class="text-center">
 					    									<div id="demo6_top" class="demo6_top"></div>
 					    								</div>
 													</div>
 														
 												</div>	
-															
-												
-													<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
-																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
-															  <form action="" id="formcreateplaylist"  enctype="multipart/form-data">
-															  	<button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
-																</button>
-															  <div class="form-group">
-																<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
-															  </div>
-						
-															
-															  <div class="form-group">
-																<label for="exampleInputEmail1">Playlist name</label>
-																	<input type="text" class="form-control" name="listname" id="listname" placeholder="">
-																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-															  </div>
-															  <div class="form-group">
-																	<label for="exampleInputEmail1">Description</label>
-																	<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
-																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
-															 </div>
-															  <div class="form-group">
-																	<label for="exampleInputEmail1">Category</label>
-																	<select class="form-control"  id="playlistcategory">
-																	</select>
-																	
-																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
-															 </div>
-															  <c:set var="usertype"  value="${usertype }"/>
-															  <c:if test="${usertype == 'Admin' }">
-															  <div class="form-group">
-																	<label for="exampleInputEmail1">Color</label>
-																	<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
-																	<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-																</div>
-															  	<div class="form-group" >
-																	<label for="exampleInputEmail1">Image</label>
-																	<div class="col-sm-12">
-																		<div class="fileinput fileinput-new" data-provides="fileinput">
-																		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
-																		  <div>
-																			<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-																			<input type="file" id="file"   name="file">
-																			<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-																			<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-																		  </div>
-																		</div>
-																		
-																	</div>
-																</div>
-																
-																
-															  </c:if>
-															 
-															
-															 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
-																<input type="button"  value="Close" class="btn btn-success b-close">	
-																</form>
-															</div>
-													</div>
-													
-													<div id="form-update-playlist" class="ka-popup" style="display: none;width: 30%;">
-																<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
-															  <button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
-																</button>
-															  <div class="form-group">
-																<label for="exampleInputEmail1"><h3>Update playlist</h3></label>
-															  </div>
-															
-															  <div class="form-group">
-																<label for="exampleInputEmail1">Playlist name</label>
-																<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
-																<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-															  </div>
-															  <div class="form-group">
-																<label for="exampleInputPassword1">Description</label>
-																<input type="text" name="description" class="form-control" id="description" placeholder="EG. My music">
-															 </div>
-															 <div class="form-group">
-																<label>Set View</label>
-																<select class="form-control" id="publicview" name="publicview" tabindex="2">
-																	<option value="false">Private</option>
-																	<option value="true">Public</option>
-																</select>
-															</div>
-															 	<input type="button" id="btncreate"  value="Update" class="btn btn-success">
-																<input type="button"  value="Close" class="btn btn-success">	
-															</div>
-													</div>
+														<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
+	<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
+  	<button type="button" class="close" aria-hidden="true">
+		<span class="button b-close"><span>×</span></span>
+	</button>
+  <div class="form-group">
+	<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
+  </div>
+
+
+  <div class="form-group">
+	<label for="exampleInputEmail1">Playlist name</label>
+		<input type="text" class="form-control" name="listname" id="listname" placeholder="">
+	<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+  </div>
+  <div class="form-group">
+		<label for="exampleInputEmail1">Description</label>
+		<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+		<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+ </div>
+  <div class="form-group">
+		<label for="exampleInputEmail1">Category</label>
+		<select class="form-control"  id="playlistcategory">
+		</select>
+		
+		<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+ </div>
+  <c:set var="usertype"  value="${usertype }"/>
+  <c:if test="${usertype == 'Admin' }">
+  <div class="form-group">
+		<label for="exampleInputEmail1">Color</label>
+		<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+		<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+	</div>
+  	<div class="form-group" >
+		<label for="exampleInputEmail1">Image</label>
+		<div class="col-sm-12">
+			<div class="fileinput fileinput-new" data-provides="fileinput">
+			  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+			  <div>
+				<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+				<input type="file" id="file"   name="file">
+				<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+				<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+			  </div>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+  </c:if>
+		 
+		
+		 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
+			<input type="button"  value="Close" class="btn btn-success b-close">	
+			</form>
+		</div>
+</div>	
 													
 													<!-- form upload video -->
 													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 40%;">
@@ -588,12 +582,41 @@
 	
 
 
-
+<!-- Modal for alert when click delete-->
+		  <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">Delete</h4>
+				</div>
+				<div class="modal-body">
+					<h2 style="text-align:center; color:red;">Are You Sure!!!</h2>
+				</div>
+				<div class="modal-footer">
+					<script type="text/javascript">
+						function go(name, hid, id){
+							//alert(hid);
+							if(id == 0){
+								var x ="<a href='#' data-dismiss='modal' onclick="+name+"('"+hid+"') class='btn btn-danger' >Delete</a>";
+							}else{
+								var x ="<a href='#' data-dismiss='modal' onclick="+name+"('"+hid+"',"+id+") class='btn btn-danger' >Delete</a>";
+							}
+							
+							document.getElementById("demo1").innerHTML=x;
+						}
+					</script>
+					<span id="demo1"></span>
+					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
 	
 	
 	<!-- End My Contend -->
 	 <jsp:include page="../shared/_footer.jsp" />
-	    =============================================== */
+	
 	 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
 	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
@@ -605,7 +628,6 @@
             	$("#form-create-playlist1").bPopup({modalClose: false});
 				
             });
-            
 	    	//update playlist
             $("#editPlaylist").click(function(){ 
             	$("#form-update-playlist").bPopup({modalClose: false});
@@ -691,7 +713,7 @@
 			
 			// alert(data.RES_DATA.videoId);
 			var str="";
-				for(var i=0; i<data.RES_DATA.length ; i++){
+				for(var i=1; i<data.RES_DATA.length ; i++){
 					
 					str +="<div id='"+i+"'>"
 							+ "<div class='the-box no-border store-list ' >" 
@@ -706,7 +728,7 @@
 									+"<button type='button' class='btn btn-default btn-sm dropdown-toggle' data-toggle='dropdown'><i class='fa fa-cog'></i> </button>" 
 										+"<ul class='dropdown-menu' role='menu'>" 
 											+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'>Play</a></li>" 
-											+"<li><a href='#' onclick=removeFromHistory('"+data.RES_DATA[i].historyId+"',"+i+")>Remove from History</a></li>"
+											+"<li><a href='#' onclick=go('removeFromHistory','"+data.RES_DATA[i].historyId+"',"+i+") data-toggle='modal' data-target='#myModal'>Remove from History</a></li>"
 										+"</ul>"
 									+"</div>" 
 								+"<ul class='list-inline'>" 
@@ -764,8 +786,11 @@
 		
 		function mySearchHistory(){
 			var key =$("#searchHistory").val();
+			var characterReg = /^[a-zA-Z0-9-_.]+$/;
+			
 			//alert(key);
-			if(key.length > 2){
+			if(key.length > 2   && characterReg.test(key)){
+				alert(key);
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/searchuserhistory/'+userid+'/'+key+'?page='+offset+'&item='+limit, 
 				       type:'get',
@@ -978,8 +1003,10 @@
 		
 	function mySearchVideo(){
 		var key =$("#searchVideo").val();
+		var characterReg = /^[a-zA-Z0-9-_.]+$/;
 		//alert(key);
-		if(key.length > 2){
+		if(key.length > 2 && characterReg.test(key)){
+			//alert(key);
 			 $.ajax({  
 				 	url: url+'/rest/user/profile/searchuserhvideo/'+userid+'/'+key+'?page='+offset+'&item='+limit+'&status=true', 
 			       type:'get',
@@ -1005,7 +1032,7 @@
 	}
 	
 	function disableVideo(vid){
-		
+		alert(vid);
 			  $.ajax({  
 				 	url: url+'/rest/user/profile/disablevideo/'+vid,
 			       type:'GET',
@@ -1121,7 +1148,7 @@ function listPlaylistDetail(data){
 							+"<div class='the-box full store-item text-center checkchb'>"
 							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
 								//+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
-								+"<a  onclick=deletePlaylist('"+data.RES_DATA[i].playlistId+"'); class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
+								+"<a  onclick=go('deletePlaylist','"+data.RES_DATA[i].playlistId+"'); data-toggle='modal' data-target='#myModal' class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
 								+"<span class='inline-popups'>"
 									+"<a id='editPlaylist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
@@ -1155,8 +1182,9 @@ function listPlaylistDetail(data){
 	
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
+	var characterReg = /^[a-zA-Z0-9-_.]+$/;
 	//alert(key);
-	if(key.length > 2){
+	if(key.length > 2 && characterReg.test(key)){
 		 $.ajax({  
 			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
 		       type:'get',
@@ -1255,8 +1283,8 @@ function mySearchPlaylist(){
 	            		if(data.RES_DATA.gender == 'male'){
 	            			$("#male").attr('checked', 'checked');
 	            		}else{
-	            			$("#gender").attr('checked', 'checked');
-	            			alert('M');
+	            			$("#female").attr('checked', 'checked');
+	            			//alert('M');
 	            		}
 	            		//$("#gender").attr('checked', 'checked');
 	            		
@@ -1269,8 +1297,8 @@ function mySearchPlaylist(){
 	            		$("#usertype").val(data.RES_DATA.userTypeName);
 	            		$("#oldpassword").val("");
 	            		$("#newpassword").val("");
-	            		
-	            		
+	            		 $('#imageprofile').attr('src', url+'/'+data.RES_DATA.userImageUrl);
+	            		 $("#oldprofile").val(data.RES_DATA.userImageUrl);
 	            		listDepartments(data.RES_DATA.departmentId);
 	            		listMyUniversity(data.RES_DATA.universityId);
 	            		
@@ -1332,7 +1360,9 @@ function mySearchPlaylist(){
 	            		//alert(data);
 	            		var str="";
 	            		for(var i=0; i<data.RESP_DATA.length ; i++){
-	            			if( data.RESP_DATA[i].departmentId == uid  & uid !=null){
+	            			//alert(data.RESP_DATA[i].universityId);
+	            			if( data.RESP_DATA[i].universityId == uid  & uid !=null){
+	            				
 	            				str += " <option value='"+data.RESP_DATA[i].universityId+"' selected>"+data.RESP_DATA[i].universityName+"</option>";
 	            			}
 	    					str += " <option value='"+data.RESP_DATA[i].universityId+"'>"+data.RESP_DATA[i].universityName+"</option>";
@@ -1350,6 +1380,280 @@ function mySearchPlaylist(){
 	     
 		}
 		
+	
+		
+		function changeMyPassword() {
+			if(oldpass && newpass && conpass && checkpass){
+				var JSONObject = $.parseJSON('{"newPassword":"'+$("#newpassword").val()+'","oldPassword":"'+$("#oldpassword").val()+'", "userId":"'+userid+'"}');
+			  
+					$.ajax({
+			           url: url+'/rest/user/profile/changepassword',
+			           type: 'post',
+			           contentType: 'application/json;charset=utf-8',
+			           data: JSON.stringify(JSONObject),
+			           success: function(data){
+			           	if(data.STATUS == true){
+			           		alert("password has been change");
+						}else{
+							alert("Wrong Password");
+							//if wrong password so validation will check again
+							validatOldPass();
+							validatNewPass();
+							validatConPass();
+							validatebothpass();
+						}
+			           	
+			           },
+			           error: function(data){
+			           	alert("not change");
+			           }
+			       });	
+			}
+			
+		}
+		
+		function updateProfile() {
+			if(validateUser() && validatDepartment() && validatUniversity() && validateGender() && validatePhone() && validateDOB() ){
+				//validateUser() &&
+				var username= $("#username").val();
+				var email =  $("#myemail").val();
+				var department =  $("#mydepartment").val();
+				var university =  $("#university").val();
+				var gender =$('input[name=gender]:checked', '#myformvalidator1').val();
+				var dob = $("#dateofbirth").val();
+				var phone = $("#phonenumber").val();
+				var usertype =$("#usertype").val();
+				var oldprofile = $("#oldprofile").val();
+				var newprofile = $("#newprofile").val();
+				var profile ="";
+				
+				if(newprofile.length !== 0){
+					///upload new profile than update
+					//alert('new profile');
+					profile ='/resources/uploads/user/avatar.jpg';
+				}else{
+					profile =oldprofile;
+				}
+				
+				//alert(university);
+				
+				var JSONObject = $.parseJSON('{"username":"'+username+'","gender":"'+gender+'","dateOfBirth":"'+dob+'","phoneNumber":"'+phone+'","userImageUrl":"'+profile+'","universityId":"'+university+'","departmentId":"'+department+'","userId":"'+userid+'"}');
+				$.ajax({
+		            url: url+"/rest/user/profile/updateprofile",
+		            type: 'put',
+		            contentType: 'application/json;charset=utf-8',
+		            data: JSON.stringify(JSONObject),
+		            success: function(data){
+		            	 if(data.STATUS == true){
+			            	alert('update good');
+						} 
+		            	
+		            },
+		            error: function(data){
+		            	alert("3 unsuccess data");
+		            }
+		        });	
+				
+			}
+			
+		}
+		
+	 	
+	 	/*****************validation**************/
+	 	function validateUser(){
+			var name= $("#username").val();
+			var characterReg = /^[a-zA-Z0-9_-]{3,16}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#username").css("border", "solid 1px red");
+			    	$("#checkname").text("Require and at least 3 charactors less than 16 charactors");
+			    	return false;
+			    
+			    }else{
+			    	$("#username").css("border", "solid 1px green");
+			    	$("#checkname").text("");
+			    	return true;
+			    }
+		}
+	 	
+	 	//this function not use
+	 	function validateEmail(){
+			var name= $("#myemail").val();
+			var characterReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			    if(!characterReg.test(name)) {
+			    	$("#myemail").css("border", "solid 1px red");
+			    	$("#checkemail").text("Invalid Email");
+			    	return false;
+			    
+			    }else{
+			    	$("#myemail").css("border", "solid 1px green");
+			    	$("#checkemail").text("");
+			    	return true;
+			    }
+		}
+	 	
+	 	function validatDepartment(){
+			var name= $("#mydepartment").val();
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_+=]+$/;
+			    if(!characterReg.test(name)) {
+			    	$("#mydepartment").css("border", "solid 1px red");
+			    	$("#checkdepartment").text("Invalid Department");
+			    	 return false;
+			    
+			    }else{
+			    	$("#mydepartment").css("border", "solid 1px green");
+			    	$("#checkdepartment").text("");
+			    	return true;
+			    }
+		}
+	 	
+	 	function validatUniversity(){
+			var name= $("#university").val();
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_+=]+$/;
+			    if(!characterReg.test(name)) {
+			    	$("#university").css("border", "solid 1px red");
+			    	$("#checkuniversity").text("Invalid Department");
+			    	 return false;
+			    
+			    }else{
+			    	$("#university").css("border", "solid 1px green");
+			    	$("#checkuniversity").text("");
+			    	return true;
+			    }
+		}
+	 	
+	 	function validateGender(){
+	 		var gender =$('input[name=gender]:checked', '#myformvalidator1').val();
+	 		if(gender == 'male' || gender == 'female'){
+		    	$("#checkgender").text("");
+	 			return true;
+	 		}else{
+	 			$("#checkgender").text("Invalid gender");
+	 			return false;
+	 		}
+	 	}
+	 	
+		function validateDOB(){
+			var name= $("#dateofbirth").val();
+			var characterReg = /^[0-9-:.\\/]+$/;
+			    if(!characterReg.test(name)) {
+			    	$("#dateofbirth").css("border", "solid 1px red");
+			    	$("#checkdate").text("Invalid Date");
+			    	 return false;
+			    
+			    }else{
+			    	$("#dateofbirth").css("border", "solid 1px green");
+			    	$("#checkdate").text("");
+			    	return true;
+			    }
+		}
+		
+		function validatePhone(){
+			var name= $("#phonenumber").val();
+			var characterReg = /^[0-9-:.\\/]+$/;
+			    if(!characterReg.test(name)) {
+			    	$("#phonenumber").css("border", "solid 1px red");
+			    	$("#checkphone").text("Invalid Phone Number");
+			    	 return false;
+			    
+			    }else{
+			    	$("#phonenumber").css("border", "solid 1px green");
+			    	$("#checkphone").text("");
+			    	return true;
+			    }
+		}
+		//this function not use
+		function validateUserType(){
+			var name= $("#usertype").val();
+			var characterReg = /^[a-zA-Z]+$/;
+			    if(!characterReg.test(name)) {
+			    	$("#usertype").css("border", "solid 1px red");
+			    	$("#checkusertype").text("Invalid User Type");
+			    	 return false;
+			    
+			    }else{
+			    	$("#usertype").css("border", "solid 1px green");
+			    	$("#checkusertype").text("");
+			    	return true;
+			    }
+		}
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	var oldpass = false;
+		var newpass = false;
+		var conpass = false;
+		var checkpass=false;
+		
+		function validatOldPass(){
+			var name= $("#oldpassword").val();
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{6,16}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#oldpassword").css("border", "solid 1px red");
+			    	$("#checkoldpassword").text("Require and at least 6 charactors less than 16 charactors");
+			    	oldpass=false;
+			    
+			    }else{
+			    	$("#oldpassword").css("border", "solid 1px green");
+			    	$("#checkoldpassword").text("");
+			    	oldpass=true;
+			    }
+		}
+		
+		function validatNewPass(){
+			var name= $("#newpassword").val();
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#newpassword").css("border", "solid 1px red");
+			    	$("#checknewpassword").text("Require and at least 6 charactors less than 16 charactors");
+			    	newpass=false;
+			    
+			    }else{
+			    	$("#newpassword").css("border", "solid 1px green");
+			    	$("#checknewpassword").text("");
+			    	newpass=true;
+			    }
+		}
+		
+		
+		function validatConPass(){
+			var name= $("#conpassword").val();
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*\+\=]{6,16}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#conpassword").css("border", "solid 1px red");
+			    	$("#checkconpassword").text("Require and at least 6 charactors less than 16 charactors");
+			    	conpass=false;
+			    
+			    }else{
+			    	$("#conpassword").css("border", "solid 1px green");
+			    	$("#checkconpassword").text("");
+			    	conpass=true;
+			    }
+		}
+		
+		function validatebothpass(){
+			var pass1= $("#newpassword").val();
+			var pass2= $("#conpassword").val();
+			if(pass1 != pass2){
+				$("#newpassword").css("border", "solid 1px red");
+				$("#conpassword").css("border", "solid 1px red");
+				$("#checkbothpassword").text("Check New Password and Confirm Password");
+				checkpass= false;
+			}else{
+				$("#checkbothpassword").text("");
+				$("#newpassword").css("border", "solid 1px green");
+				$("#conpassword").css("border", "solid 1px green");
+				checkpass= true;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 
 	 	
 	 	
@@ -1357,45 +1661,48 @@ function mySearchPlaylist(){
 		
 		//whend click submit to create new playlist
 		$('#formcreateplaylist').submit(function(e){
-				e.preventDefault();
-				
+			e.preventDefault();
+		
+			
 		var publicview =false;
 		var playname=$("#listname").val();
-		//alert(playname);
 		var playdescription=$("#playlistdescription").val();
 		var category=$("#playlistcategory").val();
 		var color="";
-		var img="";
+		var img="/resources/uploads/user/avatar.jpg";
 		var oimg="";
-		var thumnial=null;
-		if(usertype == 'Admin'){
+		var thumnial="mcgBfVSTKqo"; 
+		
+		
+		 if(usertype == 'Admin'){
 			 publicview=true;
 			 thumnial ="mcgBfVSTKqo";
 			 color=$("#color").val();
-			img=$("#file").val();
-			oimg=$("#oimg").val();
+			//img=$("#file").val();
+			//oimg=$("#oimg").val();
 		}else{
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
 			 color ="000000";
-		}
+		} 
 		//alert("user0");
 			
 		//alert(publicview);
 		
-		//create playlist no image ->well
-		if(img =="" && oimg ==""){
+		 //create playlist no image ->well
+		/* if(img =="" && oimg ==""){
 			alert("user1");
 			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
-		}
+		}  */
+		
 		//idrect update
-		else if(img =="" && oimg.length !== 0 ){
-			alert("user2");
+		if(img =="" && oimg.length !== 0 ){
+			alert("direct update with new image");
 			//updateProcess(id,t,d,e,u,o_img);
 		}
 		//insert image and update
 		else if(img.length !== 0 && oimg.length !== 0 ){
-			alert("user3");
+			alert("update with new image");
 			 $.ajax({
 					type : "POST",
 					url : url+'/rest/user/profile/imageupload/playlist',
@@ -1406,18 +1713,19 @@ function mySearchPlaylist(){
 					success : function(data) {
 						if(data.STATUS ==true){
 							alert(data.IMG);
-							//updateProcess(id,t,d,e,u,data.ART_IMG);
+							updateProcess(id,t,d,e,u,data.ART_IMG);
 						}
 					},
 					error : function(data) {
 						alert("0 unsuccess data");
 					}
 				});
-		}
+		} 
 		//insert with image
-		else {
-			alert("user4");
-			$.ajax({
+		 else {
+			alert("insert with image");
+			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+			/* $.ajax({
 				type : "POST",
 				url : url+'/rest/user/profile/imageupload/playlist',
 				enctype : 'multipart/form-data',
@@ -1428,14 +1736,18 @@ function mySearchPlaylist(){
 					if(data.STATUS == true){
 						//alert(data.IMG);
 						alert('1');
+						//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+					}else{
+					
 						createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
 					}
+			
 				},
 				error : function(data) {
 					alert("1 unsuccess data");
 				}
-			})
-		}
+			}) */
+		} 
 
 		
 		});
@@ -1445,15 +1757,17 @@ function mySearchPlaylist(){
 		
 		//create playlist
 		function createPlayList(n,d,u,th,p,m,bg,c){
+			
 			var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"true"}');
 		   	//alert("good");
 				$.ajax({
 		           url: url+'/rest/user/profile/createplaylist',
 		           type: 'post',
+		          //contentType:false,
 		           contentType: 'application/json;charset=utf-8',
 		           data: JSON.stringify(JSONObject),
 		           success: function(data){
-		           	if(data.STATUS =='1'){
+		           	if(data.STATUS == true){
 		           		alert("2");
 			            	myClear();
 						}
@@ -1488,7 +1802,7 @@ function mySearchPlaylist(){
 	        $("#wrapper").toggleClass("toggled");
 	    });
 	</script>
-         
+  
                
 	
 </body>
