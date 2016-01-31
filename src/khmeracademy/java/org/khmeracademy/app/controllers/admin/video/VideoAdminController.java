@@ -31,7 +31,7 @@ public class VideoAdminController {
 	private String WSURL;
 	
 	@RequestMapping(value="/list/video", method= RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> getDashboard(
+    public ResponseEntity<Map<String, Object>> getVideoList(
     		@RequestParam(value="page", required=false, defaultValue="1") int page,
 			@RequestParam(value="item", required=false, defaultValue="10") int item){
 		
@@ -46,6 +46,22 @@ public class VideoAdminController {
 		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/all/u/" + userid + "?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/list/category", method= RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getCategory(){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/category/listall", HttpMethod.GET , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/toggle/video", method= RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> toggle(@RequestParam("vid") String vid){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/enable/v/" + vid, HttpMethod.PUT , request , Map.class) ;
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
 

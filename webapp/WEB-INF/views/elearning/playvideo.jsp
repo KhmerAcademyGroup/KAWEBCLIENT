@@ -145,7 +145,7 @@
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
-	            			<input type="hidden" value="{{LOGID}}" id="hiddenVideoId" />
+	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
 	            			<br />
 	            
 	            
@@ -399,39 +399,6 @@
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
-		<!-- <script type="text/javascript">(function(d, t, e, m){
-			//	if (RW && RW.initRating) return;
-		
-		    // Async Rating-Widget initialization.
-		    window.RW_Async_Init = function(){
-		                
-		        RW.init({
-		            huid: "221456",
-		            uid: "0c7735d3de292b0250869c1816826be2",
-		            source: "website",
-		            options: {
-		                "size": "medium",
-		                "style": "oxygen",
-		                "forceSync": false
-		            } 
-		        });
-		        RW.render();
-		    };
-		        // Append Rating-Widget JavaScript library.
-		    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
-		        l = d.location, ck = "Y" + t.getFullYear() + 
-		        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
-		        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-		        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-		    if (d.getElementById(id)) return;              
-		    rw = d.createElement(e);
-		    rw.id = id; rw.async = true; rw.type = "text/javascript";
-		    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-		    s.parentNode.insertBefore(rw, s);
-		    }(document, new Date(), "script", "rating-widget.com/"));
-		</script> -->
-		
-		
 		<script>
 			var app = angular.module('myApp', ['ngSanitize']);
 			app.controller('myController', function($scope, $http, $sce) {
@@ -453,7 +420,12 @@
 				
 				function loadVideo(vid){
 					$http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ vid).then(function(response) {
-						if(response.data.STATUS == false) window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						if(response.data.STATUS == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
+						if(response.data.VIDEO.status == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
@@ -527,12 +499,15 @@
 			}
 			
 			function stopWatch(){
-				var logid = $("#hiddenVideoId").val();
-				$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
-					if(data.STATUS){
-						console.log("Stop watch video log id = " + logid);
-					}
-			    });
+				var logid = $("#hiddenLogId").val();
+				if(logid !="" && logid!=null){
+					$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
+						if(data.STATUS){
+							console.log("Stop watch video log id = " + logid);
+						}
+				    });
+				}
+				
 			}
 			
 			function getVoteVideo(vid){
@@ -624,7 +599,7 @@
 			});
 
 			$(window).unload(function(){
-				stopWatch();
+				stopWatch();	
 		    });
 		    
 		</script>
