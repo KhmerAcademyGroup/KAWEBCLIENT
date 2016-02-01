@@ -125,35 +125,35 @@
 		
 		
 		<!-- BEGIN TOP FEATURE SECTION -->
-		<div class="section bg-info section-top-features">
+		<div class="section bg-info section-top-features" style="background:#666666;">
 			<div class="container">
 				<div class="section-heading">
-					<div class="inner-border"></div>
-					<h3><spring:message code="services"/></h3>
+					<div class="inner-border" style="background:#ffffff;"></div>
+					<h3 style="background:#666666;"><spring:message code="services"/></h3>
 				</div><!-- /.section-heading -->
 				<div class="row">
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading"><spring:message code="elearning"/></h5>
+						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="elearning"/></h5>
 						<p class="lh-24">
 						<spring:message code="elearningtext"/>
 						</p>
-						<p><a href="${pageContext.request.contextPath}/elearning"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
+						<p><a href="${pageContext.request.contextPath}/elearning"><button class="btn btn-primary">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<div class="section bg-info section-top-features">
+		<div class="section bg-info section-top-features" style="background:#666666;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h5 class="text-heading"><spring:message code="tutorial"/></h5>
+						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="tutorial"/></h5>
 						<p class="lh-24">
 						<spring:message code="tutorialtext"/>
 						</p>
-						<p><a href="${pageContext.request.contextPath}/tutorial"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
+						<p><a href="${pageContext.request.contextPath}/tutorial"><button class="btn btn-primary">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/circle-code.png" class="img-responsive" alt="Section image">
@@ -161,25 +161,25 @@
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<div class="section bg-info section-top-features">
+		<div class="section bg-info section-top-features" style="background:#666666;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/forum.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading"><spring:message code="forum"/></h5>
+						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="forum"/></h5>
 						<p class="lh-24">
 						<spring:message code="forumtext"/>
 						</p>
-						<p><a href="${pageContext.request.contextPath}/forum"><button class="btn btn-warning btn-lg-text-xs">LEARN MORE</button></a></p>
+						<p><a href="${pageContext.request.contextPath}/forum"><button class="btn btn-primary">LEARN MORE</button></a></p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
 		<!-- END TOP FEATURE SECTION -->
 		
-		<div class="section bg-success text-center">
+		<div class="section bg-primary text-center">
 			<div class="container">
 				<h4 class="margin-bottom-30">START E-ELEARNING WITH KHMER ACADEMY</h4>
 				<div class="row">
@@ -221,11 +221,11 @@
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
-					<div class="item">
+					<%-- <div class="item">
 						<p class="text-testi">
 							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-24.jpg" class="avatar img-circle" alt="Avatar">
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
 					</div><!-- /.item -->
@@ -233,10 +233,10 @@
 						<p class="text-testi">
 							I am very impressed by Khmer Academy which is a first website in Cambodia provide e-learning videos in Khmer. I hope Khmer Academy would be a part of Cambodia education development.
 						</p>
-<%-- 						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar"> --%>
+						<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/small/avatar-23.jpg" class="avatar img-circle" alt="Avatar">
 						<p class="client-name">HE.Hang Chuon Naron, Minister of Ministry of Education </p>
 <!-- 						<p class="client-home text-danger">CEO - Yogyakarta, Indonesia</p> -->
-					</div><!-- /.item -->
+					</div><!-- /.item --> --%>
 				</div><!-- /#owl-testimonial -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->

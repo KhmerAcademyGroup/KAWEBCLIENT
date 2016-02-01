@@ -58,13 +58,13 @@
 							</button>
 						</div>
 
-						<!-- <div class="btn-group pull-right">
-							<form role="form">
+						<div class="btn-group pull-right">
+							<form role="form" id="frmsearch">
 								<input type="text" id="search" class="form-control"
-									placeholder="Search user">
+									placeholder="Search user"/>
 							</form>
 
-						</div> -->
+						</div>
 						<!-- /.btn-group .pull-right -->
 					</div>
 
@@ -305,8 +305,8 @@
 				    	return; */  
 						console.log(data);
 				    	
-				    	perPage = 20;
-				    	nextPage = (currentPage-1)*perPage;
+				    	var perPage = 20;
+				    	var nextPage = (currentPage-1)*perPage;
 				    	
 						if(data.RES_DATA.length>0){
 							$("tbody#content").empty();
@@ -340,6 +340,78 @@
 			};
 			
 			
+			//to search user and list them
+			user.searchuser = function(currentPage){
+				KA.createProgressBar();
+				var username = $.trim($("#search").val());
+				
+				 /* alert(username);
+				return; */ 
+				
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/rest/user/search?page="+currentPage+"&item=20"+"&username="+username, 
+				    type: 'GET',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+				    	
+				    	/*  alert(JSON.stringify(data)); //data.RESP_DATA
+				    	return; */
+						console.log(data);
+				    	
+				    	var perPage = 20;
+				    	var nextPage = (currentPage-1)*perPage;
+				    	
+						if(data.RES_DATA.length>0){
+							$("tbody#content").empty();
+							for(var i=0;i<data.RES_DATA.length;i++){
+								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+							}
+							
+							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							
+							//to add to user type to select
+							user.usertype();
+							
+							//set onchange event to class usertype after the element of class usertype
+							$(".usertype").change(changeusertype); 
+							
+						}else{
+							$("tbody#content").html('<tr>No content</tr>');
+						}
+				    	if(check){
+				    		user.setPagination(data.PAGINATION.totalPages,1);
+				    		check=false;
+				    	}
+				    	KA.destroyProgressBar();
+				    },
+				    error:function(data,status,er) { 
+				    	KA.destroyProgressBar();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				})};
+			
+			
+			//do search enter event
+			/* $('#search').keyup(function(e){
+			    if(e.keyCode == 13)
+			    {
+			        user.searchuser(1);
+			    }
+			}); */
+			
+			$("#frmsearch").submit(function(e){				
+				 e.preventDefault();
+				 
+				 //to restart pagination again
+				 check = true;
+				 user.searchuser(1);
+			}); 
+			
+			
+			
 			//do onChange() event to change user type
 			function changeusertype(){
 				
@@ -370,6 +442,7 @@
 			//To list usertype
 			user.usertype = function(){ 
 				
+				
 				$.ajax({
 			
 			    url: "${pageContext.request.contextPath}/rest/usertype?page="+1+"&item=100", 
@@ -380,13 +453,15 @@
                 },
 			    success: function(data) { 
 			    	
-			    	  /* alert(JSON.stringify(data)); //data.RESP_DATA
-				    return;  */
+			    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
+				    return; */
 						  
 			    	if(data.RES_DATA.length>0){
 			    	  	
 			    		$(".usertype").empty();			    		
 						$("#usertype_tmpl").tmpl(data.RES_DATA).appendTo(".usertype");
+												
+						matchutype($(".usertype"));
 					}else{
 						$(".usertype").html('<option>No content</option>');
 					}				    	
@@ -399,24 +474,36 @@
 			});
 		};
 		
+		//match user type with select option
+		function matchutype(allselect){
 		
-		//match user type with select
-		function matchutype(alltype){
+			var numselect = allselect.length;
+			//var utype = $(this).data("tid");
+			var utype;
+			var totalop = allselect[0].length;
+			//alert(totalop);
 			
+			/* alert($(allselect[0][0]).val());
+			return; */
 			
-			var utype = $("#"+$(this).attr("id")+" option:selected").val();
-			for(var i in alltype){
-				
-				var tid = $(alltype[i]).data("tid");
-				//$("#"+$(alltype[i]).attr("id")+" option:selected").val();
-				//$("#"+$(alltype[i]).attr("id")+" option[value="+ tid+ "]").attr('selected','selected');
-				$("#"+$(alltype[i]).attr("id")+" select").val(tid);
-			}
+			/* utype = $(allselect[0]).data("tid");
+			alert(utype);
+			return; */
+			
 			//$('.id_100 option[value=val2]').attr('selected','selected');
+			//$("select#elem")[0].selectedIndex = 0;
 			
+			for(var i=0; i<numselect; i++){
+				utype = $(allselect[i]).data("tid");
+				for(var j=0; j<totalop;j++)					
+					if($(allselect[i][j]).val()=== utype){
+						$(allselect[i][j]).attr('selected','selected');
+					}
+			}			
 		}
 				
-				//To list university
+		
+		//To list university
 				user.listuniversity = function(){ 
 					
 					$.ajax({
@@ -500,7 +587,11 @@
    			    }).on("page", function(event, currentPage){
    			    	check = false;
    			    	gPage = currentPage;
-   			    	user.listUser(currentPage);
+   			    	
+   			    	if($.trim($("#search").val())==="")
+   			    		user.listUser(currentPage);
+   			    	else
+   			    		user.searchuser(currentPage);
    			    }); 
     		};
     		
@@ -558,12 +649,19 @@
 	                },
 				    success: function(data) { 
 						console.log(data);
-						 alert(JSON.stringify(frmData));
+						 /* alert(JSON.stringify(frmData));
 						 KA.destroyProgressBarWithPopup();
-						return; 
+						return; */ 
 						
 				    	KA.destroyProgressBarWithPopup();
-				    	user.listUser(gPage);
+						
+						//restart pagination again
+						check = true;
+						if($.trim($("#search").val())==="")
+				    		user.listUser(gPage);
+						else
+							user.searchuser(gPage);
+						
 				    	$("#p-frmUser").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -577,7 +675,7 @@
 				KA.createProgressBarWithPopup();
 				
 				//alert($("#frmConfirm").attr("action")+"/"+$("#ConfirmId").val());				
-				var deptId = $("#ConfirmId").val();
+				var deptId = $("#ConfirmId").val();				
 				
 				$.ajax({ 
 				    url:  $("#frmConfirm").attr("action")+"/"+deptId, 
@@ -590,7 +688,15 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	user.listUser(gPage);
+				    					    	
+				    	//restart pagination again
+				    	check = true;
+				    	
+				    	if($.trim($("#search").val())==="")
+				    		user.listUser(gPage);
+				    	else
+				    		user.searchuser(gPage);
+				    	
 				    	$("#p-frmConfirm").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -603,10 +709,14 @@
 			// Show Form Confirm User delete Popup
 			$(document).on('click',"#showFrmConfirm", function(){		
 				
+				
 				var deptId = $(this).data("cateid");
+								
 				$("#p-frmConfirm").bPopup({modalClose: false});
 				$("#frmConfirm").attr("method", "DELETE");
 				$("#ConfirmId").val(deptId);
+				
+				
 				//user.deleteUser(deptId);
 				//$("#frmUser").trigger("reset");				
 			});

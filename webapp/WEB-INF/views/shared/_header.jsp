@@ -30,6 +30,7 @@
 <link href="${pageContext.request.contextPath}/resources/assets/css/mystyle.css" rel="stylesheet">
 
 
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/validator/bootstrapValidator.min.css"></script>
 
 <link href="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
 		

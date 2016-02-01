@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" ng-app="myApp" ng-controller="myController">
 	<head>
@@ -48,7 +49,56 @@
 
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
-	            
+	        	<br />
+	        	<div style="padding:0px 5px;">
+	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
+	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:100px;height:100px; margin:0 auto; border:5px solid #e0e0e0;" />
+	        		<br />
+	        		<h4>${data_user_username }</h4>
+	        	</div>
+	        	</div>
+	        	<!-- History -->
+	        		<div style="padding:5px 5px;">
+	        		<div class="panel panel-primary">
+					  <div class="panel-heading" style="background:#fff;">
+						<h3 class="panel-title">
+							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-history">
+							<strong style="color:#880000;">RECENT VIEW</strong>
+							<span class="right-content">
+								<span class="right-icon">
+									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
+								</span>
+							</span>
+							</a>
+						</h3>
+					  </div>
+						<div id="panel-collapse-history" class="collapse in">
+						  <div class="panel-body">
+							
+							<c:forEach items="${data_user_history.RES_DATA}" var="history">
+									<c:choose>
+								      <c:when test="${fn:length(history.videoName) < 28 }">
+								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${history.videoName}</a><br />
+								      </c:when>
+								
+								      <c:otherwise>
+								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${fn:substring(history.videoName, 0, 28)}&nbsp;...</a><br />
+								      </c:otherwise>
+								    </c:choose>
+									
+									
+									
+							</c:forEach>
+							
+							
+						  </div><!-- /.panel-body -->
+						</div><!-- /.collapse in -->
+					</div><!-- /.panel panel-primary -->
+				</div>
+	        	
+	            <hr class="hr-style-one">
+	            <br />
+	            <strong style="padding:10px;color:#880000;">TUTORIAL</strong>
 	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
 	            
 	            
@@ -57,7 +107,7 @@
 						<div class="panel panel-primary">
 						  <div class="panel-heading" style="background:#fff;">
 							<h3 class="panel-title">
-								<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
+								<a class="block-collapse collapsed" style="color:#006a00;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
 								<b>${category.maincategoryname}</b>
 								<span class="right-content">
 									<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
@@ -68,10 +118,10 @@
 							
 							
 							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
-							  <div class="panel-body" style="background:#cccccc;">
+							  <div class="panel-body" style="background:#006a00;">
 							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
 									<c:if test="${playlist.maincategory==category.maincategory}">
-										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;">${playlist.playlistName}</a><br /> 
+										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;color:#fff;"><span><i class="fa fa-play-circle"></i></span>&nbsp;${playlist.playlistName}</a><br /> 
 									</c:if>
 								</c:forEach>
 							  </div><!-- /.panel-body -->
@@ -90,12 +140,13 @@
 	        <!-- /#sidebar-wrapper -->
 	
 	        <!-- Page Content -->
-	        <div id="page-content-wrapper" style="background:#fff;">
+	        <div id="page-content-wrapper" style="background:#dcdcdc;">
 	            <div class="container-fluid">
-	            	<div class="row">
+	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
-	            			<input type="hidden" value="{{LOGID}}" id="hiddenVideoId" />
+	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
+	            			<br />
 	            
 	            
 				            <!-- left side -->
@@ -150,6 +201,8 @@
 													<div id="getmoreli">
 													
 													</div>
+													<li class='divider'></li>
+													<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>
 												  </ul>
 											</div>
 											
@@ -216,7 +269,7 @@
 										<input type="hidden" id="commentonvideoid" />
 										<input type="hidden" value="1" id="pagecommentvalue" />
 										<div class="loadMoreComment text-center">
-											<button onclick="btnLoadMoreComment()" class="btn btn-primary">More comment</button>
+											<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary">More comment</button>
 										</div>
 									</form>
 									
@@ -346,39 +399,6 @@
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
-		<!-- <script type="text/javascript">(function(d, t, e, m){
-			//	if (RW && RW.initRating) return;
-		
-		    // Async Rating-Widget initialization.
-		    window.RW_Async_Init = function(){
-		                
-		        RW.init({
-		            huid: "221456",
-		            uid: "0c7735d3de292b0250869c1816826be2",
-		            source: "website",
-		            options: {
-		                "size": "medium",
-		                "style": "oxygen",
-		                "forceSync": false
-		            } 
-		        });
-		        RW.render();
-		    };
-		        // Append Rating-Widget JavaScript library.
-		    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
-		        l = d.location, ck = "Y" + t.getFullYear() + 
-		        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
-		        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-		        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-		    if (d.getElementById(id)) return;              
-		    rw = d.createElement(e);
-		    rw.id = id; rw.async = true; rw.type = "text/javascript";
-		    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-		    s.parentNode.insertBefore(rw, s);
-		    }(document, new Date(), "script", "rating-widget.com/"));
-		</script> -->
-		
-		
 		<script>
 			var app = angular.module('myApp', ['ngSanitize']);
 			app.controller('myController', function($scope, $http, $sce) {
@@ -400,7 +420,12 @@
 				
 				function loadVideo(vid){
 					$http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ vid).then(function(response) {
-						if(response.data.STATUS == false) window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						if(response.data.STATUS == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
+						if(response.data.VIDEO.status == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
@@ -446,7 +471,6 @@
 						description : $("#txtdescription").val() ,
 						publicview : $("#publicview").val()
 					},function(data){
-						alert(data.MESSAGE);
 						 location.reload();
 						 $.magnificPopup.close();
 					});
@@ -475,12 +499,15 @@
 			}
 			
 			function stopWatch(){
-				var logid = $("#hiddenVideoId").val();
-				$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
-					if(data.STATUS){
-						console.log("Stop watch video log id = " + logid);
-					}
-			    });
+				var logid = $("#hiddenLogId").val();
+				if(logid !="" && logid!=null){
+					$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
+						if(data.STATUS){
+							console.log("Stop watch video log id = " + logid);
+						}
+				    });
+				}
+				
 			}
 			
 			function getVoteVideo(vid){
@@ -572,7 +599,7 @@
 			});
 
 			$(window).unload(function(){
-				stopWatch();
+				stopWatch();	
 		    });
 		    
 		</script>

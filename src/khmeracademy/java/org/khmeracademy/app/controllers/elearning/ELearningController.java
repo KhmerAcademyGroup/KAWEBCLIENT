@@ -1,7 +1,11 @@
 package org.khmeracademy.app.controllers.elearning;
 
 import java.util.HashMap;
+
+import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,14 +33,31 @@ public class ELearningController {
 	public String  playVideo(ModelMap m,
 			@RequestParam(value="v") String vid, 
 			@RequestParam(value="playlist", required=false) String pid){
+		String userid = "";
+		String username = "";
+		String userimage = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+			username = user.getUsername();
+			userimage = user.getUserImageUrl();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		username = (username.length()<18)?username:username.substring(0, 17) + "...";
 		String playlistParam = "";
 		if(pid!=null){
 			playlistParam = "&playlist=" + pid;
 		}
+		final String uri1 = WebURL + "/rest/user/profile/listuserhistory/" + userid;
 		final String uri = WebURL + "/rest/elearning/playvideo?v=" + vid + playlistParam;
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+	    m.addAttribute("data_user_history", restTemplate.getForObject(uri1, HashMap.class));
+	    m.addAttribute("data_user_username", username.toUpperCase());
+	    m.addAttribute("data_user_image", userimage);
 		return "/elearning/playvideo";
 	}
 	

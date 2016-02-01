@@ -80,6 +80,13 @@ public class PlaylistRestTemplateController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	 
+	@RequestMapping(value="/rest/elearning/deleteplaylistdetail/{pid}" , method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deletePlaylist(@PathVariable(value="pid") String pid ){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/deleteplaylist/"+pid , HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 		@RequestMapping(value="/rest/elearning/listvideouser/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> listVideoUser(@PathVariable(value="uid") String uid ,
 				@RequestParam(value="page", required=false, defaultValue="1") int page,
@@ -87,6 +94,16 @@ public class PlaylistRestTemplateController {
 				@RequestParam(value="status", required=false, defaultValue="true") boolean status){			
 			HttpEntity<Object> request = new HttpEntity<Object>(header);			
 			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/u/"+uid+"?page="+page+"&item="+item+"&status="+status , HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/elearning/search_allvideo/{vname}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> searchAllVideo(@PathVariable(value="vname") String vname ,
+				@RequestParam(value="page", required=false, defaultValue="1") int page,
+				@RequestParam(value="item", required=false, defaultValue="10") int item,
+				@RequestParam(value="status", required=false, defaultValue="true") boolean status){			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);			
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all/"+vname+"?page="+page+"&item="+item+"&status="+status , HttpMethod.GET , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
