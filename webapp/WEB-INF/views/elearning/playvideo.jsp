@@ -52,9 +52,8 @@
 	        	<br />
 	        	<div style="padding:0px 5px;">
 	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
-	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:100px;height:100px; margin:0 auto; border:5px solid #e0e0e0;" />
-	        		<br />
-	        		<h4>${data_user_username }</h4>
+	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:50px;height:50px; margin: 0 auto; border:3px solid #e0e0e0;" />
+	        		<span>${data_user_username }</span>
 	        	</div>
 	        	</div>
 	        	<!-- History -->
