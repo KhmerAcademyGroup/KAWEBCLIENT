@@ -274,7 +274,7 @@
 														<div class="col-sm-4">			
 															<div class="col-xs-12">
 																<img id="imageprofile"  class="img-responsive img-thumbnail" style="width: 200PX; height:150px;"  alt="Image">
-																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  >
+																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  ><br/>
 																<div class="fileinput fileinput-new" data-provides="fileinput">
 																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
 																  <span class="fileinput-exists">Change</span><input type="file" id="newprofile" name="newprofile"></span>
@@ -433,66 +433,135 @@
 													</div>
 														
 												</div>	
-														<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
-	<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
-  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
-  	<button type="button" class="close" aria-hidden="true">
-		<span class="button b-close"><span>×</span></span>
-	</button>
-  <div class="form-group">
-	<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
-  </div>
-
-
-  <div class="form-group">
-	<label for="exampleInputEmail1">Playlist name</label>
-		<input type="text" class="form-control" name="listname" id="listname" placeholder="">
-	<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-  </div>
-  <div class="form-group">
-		<label for="exampleInputEmail1">Description</label>
-		<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
-		<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
- </div>
-  <div class="form-group">
-		<label for="exampleInputEmail1">Category</label>
-		<select class="form-control"  id="playlistcategory">
-		</select>
-		
-		<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
- </div>
-  <c:set var="usertype"  value="${usertype }"/>
-  <c:if test="${usertype == 'Admin' }">
-  <div class="form-group">
-		<label for="exampleInputEmail1">Color</label>
-		<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
-		<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-	</div>
-  	<div class="form-group" >
-		<label for="exampleInputEmail1">Image</label>
-		<div class="col-sm-12">
-			<div class="fileinput fileinput-new" data-provides="fileinput">
-			  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
-			  <div>
-				<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-				<input type="file" id="file"   name="file">
-				<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-				<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-			  </div>
-			</div>
-			
-		</div>
-	</div>
-	
-	
-  </c:if>
-		 
-		
-		 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
-			<input type="button"  value="Close" class="btn btn-success b-close">	
-			</form>
-		</div>
-</div>	
+												
+												
+												
+												
+												
+												
+												
+												
+												<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
+													<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
+												  	<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>×</span></span>
+													</button>
+												  <div class="form-group">
+													<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
+												  </div>
+												
+												
+												  <div class="form-group">
+													<label for="exampleInputEmail1">Playlist name</label>
+														<input type="text" class="form-control" name="listname" id="listname" placeholder="">
+													<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+												  </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Description</label>
+														<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+														<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+												 </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Category</label>
+														<select class="form-control"  id="playlistcategory">
+														</select>
+														
+														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+												 </div>
+												  <c:set var="usertype"  value="${usertype }"/>
+												  <c:if test="${usertype == 'Admin' }">
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Color</label>
+														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+														<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+													</div>
+												  	<div class="form-group" >
+														<label for="exampleInputEmail1">Image</label>
+														<div class="col-sm-12">
+															<div class="fileinput fileinput-new" data-provides="fileinput">
+															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+															  <div>
+																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+																<input type="file" id="file"   name="file">
+																<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+																<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+															  </div>
+															</div>
+															
+														</div>
+													</div>
+													
+													
+												  </c:if>
+														 
+														
+														 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
+															<input type="button"  value="Close" class="btn btn-success b-close">	
+															</form>
+														</div>
+												</div>
+												
+												<%-- <div id="form-update-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
+													<div id="form-update-playlist1" class="white-popup mfp-with-anim" style="border-radius:5px">
+												  <form action="" id="formupdatelaylist" enctype="multipart/form-data"  method="post">
+												  	<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>×</span></span>
+													</button>
+												  <div class="form-group">
+													<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
+												  </div>
+												
+												
+												  <div class="form-group">
+													<label for="exampleInputEmail1">Playlist name</label>
+														<input type="text" class="form-control" name="listname" id="listname" placeholder="">
+													<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+												  </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Description</label>
+														<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+														<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+												 </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Category</label>
+														<select class="form-control"  id="playlistcategory">
+														</select>
+														
+														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+												 </div>
+												  <c:set var="usertype"  value="${usertype }"/>
+												  <c:if test="${usertype == 'Admin' }">
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Color</label>
+														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+														<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+													</div>
+												  	<div class="form-group" >
+														<label for="exampleInputEmail1">Image</label>
+														<div class="col-sm-12">
+															<div class="fileinput fileinput-new" data-provides="fileinput">
+															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+															  <div>
+																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+																<input type="file" id="file"   name="file">
+																<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+																<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+															  </div>
+															</div>
+															
+														</div>
+													</div>
+													
+													
+												  </c:if>
+														 
+														
+														 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
+															<input type="button"  value="Close" class="btn btn-success b-close">	
+															</form>
+														</div>
+												</div> --%>						
 													
 													<!-- form upload video -->
 													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 40%;">
@@ -629,8 +698,8 @@
 				
             });
 	    	//update playlist
-            $("#editPlaylist").click(function(){ 
-            	$("#form-update-playlist").bPopup({modalClose: false});
+            $("#form-update-playlist").click(function(){ 
+            	$("#form-create-playlist1").bPopup({modalClose: false});
             });
 	    	
 	    	//upload video
@@ -646,6 +715,8 @@
 		var url="${pageContext.request.contextPath}";
 		var userid="<%= request.getAttribute("userid") %>";
 		var usertype="<%= request.getAttribute("usertype") %>";
+		var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
+		var api = "http://localhost:8080/KAAPI/api";
 		//var userid="MQ==";
 		//var usertype="Admin";
 		//alert(userid);
@@ -1127,6 +1198,7 @@
             	//alert(data.RES_DATA.length);
             	if(data.STATUS == true){
             		$("#getPlayList").html(listPlaylistDetail(data));
+            		//alert(data.RES_DATA[1].bgImage);
             	}else{
             		$("#getPlaylist").show();
 	    	   		$("#playlistcover").hide();
@@ -1144,6 +1216,14 @@ function listPlaylistDetail(data){
 		
 		var str="";
 			for(var i=0; i<data.RES_DATA.length ; i++){
+				
+				var img = "";
+				if(usertype =='Admin'){
+					img =  "<img src='"+url+'/'+data.RES_DATA[i].bgImage+"'  alt='Image'>"
+				}else{
+					img = "<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
+				}
+				
 				str += "<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
 							+"<div class='the-box full store-item text-center checkchb'>"
 							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
@@ -1151,19 +1231,20 @@ function listPlaylistDetail(data){
 								+"<a  onclick=go('deletePlaylist','"+data.RES_DATA[i].playlistId+"'); data-toggle='modal' data-target='#myModal' class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
 								+"<span class='inline-popups'>"
-									+"<a id='editPlaylist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+									+"<a id='form-update-playlist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
 								+"<i class='fa fa-edit'></i></a></span>"
 							+"</div>"
 						+"<a href='"+url+'/elearning/playlistdetail/'+data.RES_DATA[i].playlistId+"'>"
 						+"<div class='new-playlist'>"
 							+"<ul>"
 								+"<li>"+data.RES_DATA[i].countVideos+"</li>"
+								+"<li><a class='btn btn-success dropdown-toggle' id='form-update-playlist' data-effect='mfp-zoom-in' >click</a></li>"
 								+"<li>"+data.RES_DATA[i].playlistName+"</li>"
 								+"<li><i class='fa fa-bars'></i></li>"
 								+"</ul>"
 							+"</div>"
-						+"</a>"
-					+"<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
+						+"</a>" + img
+
 					+"<div class='the-box no-margin no-border item-des'>"
 						+"<div class='row'>"
 						+"<div class='col-xs-12'>"
@@ -1663,13 +1744,13 @@ function mySearchPlaylist(){
 		$('#formcreateplaylist').submit(function(e){
 			e.preventDefault();
 		
-			
+		
 		var publicview =false;
 		var playname=$("#listname").val();
 		var playdescription=$("#playlistdescription").val();
 		var category=$("#playlistcategory").val();
 		var color="";
-		var img="/resources/uploads/user/avatar.jpg";
+		var img="";
 		var oimg="";
 		var thumnial="mcgBfVSTKqo"; 
 		
@@ -1678,6 +1759,7 @@ function mySearchPlaylist(){
 			 publicview=true;
 			 thumnial ="mcgBfVSTKqo";
 			 color=$("#color").val();
+			 var img="/resources/uploads/user/avatar.jpg";
 			//img=$("#file").val();
 			//oimg=$("#oimg").val();
 		}else{
@@ -1690,10 +1772,11 @@ function mySearchPlaylist(){
 		//alert(publicview);
 		
 		 //create playlist no image ->well
-		/* if(img =="" && oimg ==""){
+		 if(img =="" && oimg ==""){
 			alert("user1");
+			var img="/resources/uploads/user/avatar.jpg";
 			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
-		}  */
+		}  
 		
 		//idrect update
 		if(img =="" && oimg.length !== 0 ){
@@ -1724,29 +1807,28 @@ function mySearchPlaylist(){
 		//insert with image
 		 else {
 			alert("insert with image");
-			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
-			/* $.ajax({
+			$.ajax({
 				type : "POST",
-				url : url+'/rest/user/profile/imageupload/playlist',
+				url : 'http://localhost:8080/KAAPI/api/uploadfile/upload?url=playlist',
 				enctype : 'multipart/form-data',
 				data : new FormData(document.getElementById("formcreateplaylist")),
 				processData : false, // tell jQuery not to process the data
 				contentType : false, // tell jQuery not to set contentType
+				 headers : {
+						"Authorization" : "Basic "+key
+					},
 				success : function(data) {
 					if(data.STATUS == true){
 						//alert(data.IMG);
-						alert('1');
-						//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
-					}else{
-					
+						//alert(data.IMG);
 						createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
 					}
 			
 				},
 				error : function(data) {
-					alert("1 unsuccess data");
+					alert("upload unsuccess data");
 				}
-			}) */
+			})
 		} 
 
 		

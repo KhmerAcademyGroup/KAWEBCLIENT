@@ -439,7 +439,7 @@
         if (E[a].apply) E[a].apply(E, d);
         else E[a](d.join(" "))
     }
-    u.log = function () {
+    data.RES_DATA.length = function () {
         F(j, arguments)
     };
     u.log.history = [];
