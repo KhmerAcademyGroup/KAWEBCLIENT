@@ -97,6 +97,16 @@ public class PlaylistRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		@RequestMapping(value="/rest/elearning/search_allvideo/{vname}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> searchAllVideo(@PathVariable(value="vname") String vname ,
+				@RequestParam(value="page", required=false, defaultValue="1") int page,
+				@RequestParam(value="item", required=false, defaultValue="10") int item,
+				@RequestParam(value="status", required=false, defaultValue="true") boolean status){			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);			
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all/"+vname+"?page="+page+"&item="+item+"&status="+status , HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 		
 		
 	/*public ResponseEntity<Map<String , Object>> playVideo(
