@@ -321,6 +321,8 @@
 							//set onchange event to class usertype after the element of class usertype
 							$(".usertype").change(changeusertype); 
 							
+							matchutype($(".usertype"));
+							
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
 						}
@@ -397,11 +399,20 @@
 			});
 		};
 		
+		
 		//match user type with select
-		function matchutype(){
+		function matchutype(alltype){
 			
-			var utype = $(this).data("tid");
-			$('.id_100 option[value=val2]').attr('selected','selected');
+			
+			var utype = $("#"+$(this).attr("id")+" option:selected").val();
+			for(var i in alltype){
+				
+				var tid = $(alltype[i]).data("tid");
+				//$("#"+$(alltype[i]).attr("id")+" option:selected").val();
+				//$("#"+$(alltype[i]).attr("id")+" option[value="+ tid+ "]").attr('selected','selected');
+				$("#"+$(alltype[i]).attr("id")+" select").val(tid);
+			}
+			//$('.id_100 option[value=val2]').attr('selected','selected');
 			
 		}
 				
