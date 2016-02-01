@@ -119,10 +119,10 @@
 							</tbody>
 						</table>
 						
-						<div id="pagination" class="pull-right">
-												
-						 </div>
+						<br />
 						
+						<p id="totalrecord" style="color:blue;"></p>
+						<div id="pagination" class="pull-right"></div>
 						
 					</div>
 					<!-- /.table-responsive -->
@@ -205,27 +205,8 @@
 								<label class="col-lg-3 control-label">Category<span class="required">*</span></label>
 								<div class="col-lg-9">
 						          <select data-placeholder="Select categories" name="category" id="category" multiple class="chosen-select">
-						          	<!-- <option value="1">1</option>
-						          	<option value="2">2</option>
-						          	<option value="3">3</option>
-						          	<option value="4">4</option>
-						          	<option value="5">5</option> -->
-						          	
-						          	
-						          <%-- <%
-						          if(request.getAttribute("category_json")!=null){
-										String category_json = request.getAttribute("category_json").toString();
-										JsonArray entries = (JsonArray) new JsonParser().parse(category_json);
-										for(int i=0; i<entries.size(); i++){
-											int categoryid = ((JsonObject)entries.get(i)).get("categoryid").getAsInt();
-											String categoryname = ((JsonObject)entries.get(i)).get("categoryname").getAsString();
-						          %>
-						            <option value="<%=categoryid%>"><%=categoryname %></option>
-						           <%	} 
-									} 
-								   %> --%>
+						          
 						          </select>
-         
          
 								</div>
 							
@@ -267,7 +248,7 @@
 			
 			
 
-			<div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
+			<!-- <div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
 				<form  id="frmConfirm" action="" method="">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -292,7 +273,7 @@
 						</div>
 					</div>
 				</form>	
-			</div>
+			</div> -->
 
 
 
@@ -324,7 +305,7 @@
 				<td>{{if status == true}} <i id="{{= videoId}}" class="fa fa-check icon-circle icon-xs icon-success statusConfirm"></i> {{else}} <i id="{{= videoId}}" class="fa fa-remove icon-circle icon-xs icon-danger statusConfirm" ></i> {{/if}}</td>
 				<td> 
    		 			<i data-vid="{{= videoId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateVideo"></i>
-            		<i data-vid="{{= videoId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
+            		<i id="{{= videoId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
          		</td>
 			</tr>
    </script>
@@ -334,9 +315,23 @@
 		var video = {};
 		var check = true;
 		var gPage = 1; //global current page for pagination
+		var isSearch = false;
 		
 		$(document).ready(function(){
 			getCategory();
+			
+			$("#search").keyup(function(){
+				if($(this).val()==""){
+					check = false;
+					isSearch = false;
+					video.listVideo(1,$("#number-of-item").val());
+				}else{
+					check = true;
+					isSearch = true;
+					video.searchVideo(1,$("#number-of-item").val(), $(this).val());
+				}
+				
+		    });
 			
 			video.listVideo = function(currentPage, item){
 				KA.createProgressBar();
@@ -353,7 +348,7 @@
 				    	
 				    	perPage = item;
 				    	nextPage = (currentPage-1)*perPage;
-				    	
+				    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);
 						if(data.RES_DATA.length>0){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RES_DATA.length;i++){
@@ -376,6 +371,60 @@
 				});
 			};
 			
+			
+			video.searchVideo = function(currentPage, item, videoname){
+				KA.createProgressBar();
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/admin/rest/search/video/"+ videoname +"?item="+ item + "&page=" + currentPage, 
+				    type: 'GET',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+				    	if(data.STATUS==true){
+				    		
+				    	
+						
+					    	perPage = item;
+					    	nextPage = (currentPage-1)*perPage;
+					    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);
+							if(data.RES_DATA.length>0){
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+								}
+								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+					    	
+							if(check){
+								video.setPagination(data.PAGINATION.totalPages,1,item);
+								check=false;
+					    	}
+					    		
+					    	
+					    	KA.destroyProgressBar();
+					    	
+				    	}else{
+
+				    		KA.destroyProgressBar();
+				    		$("tbody#content").html('<tr>No content</tr>');
+				    		$("#pagination").html("");
+				    		$("#totalrecord").text("Total records = 0");
+				    	}
+				    	
+				    },
+				    error:function(data,status,er) { 
+				    	KA.destroyProgressBar();
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			
+			
 			video.setPagination = function(totalPage, currentPage, item){
    		    	$('#pagination').bootpag({
    			        total: totalPage,
@@ -395,22 +444,26 @@
    			    }).on("page", function(event, currentPage){
    			    	check = false;
    			    	gPage = currentPage;
-   			    	video.listVideo(currentPage, item);
+   			    	if(isSearch==false) video.listVideo(currentPage, item);
+   			    	else video.searchVideo(currentPage,item,$("#search").val());
    			    }); 
     		};
     		
+    		//load list video
     		video.listVideo(1,$("#number-of-item").val());
     		
+    		//change row of items
     		$("#number-of-item").change(function(){
     			check = true;
     			video.listVideo(1,$("#number-of-item").val());
     		});
     		
+    		//toggle video
     		$(document).on('click',	".statusConfirm", function() {
     			var vid = $(this).attr("id");
     			smoke.confirm("Are you sure?", function(e){
     				if (e){
-    					$.post("${pageContext.request.contextPath}/admin/rest//toggle/video?vid=" + vid, function(data){
+    					$.post("${pageContext.request.contextPath}/admin/rest/toggle/video?vid=" + vid, function(data){
     						video.listVideo(gPage,$("#number-of-item").val());
     						smoke.alert("Success!", function(e){
     							
@@ -431,6 +484,38 @@
     			});
 			});
     		
+    		//delete video
+    		$(document).on('click',	".deleteConfirm", function() {
+    			var vid = $(this).attr("id");
+    			smoke.confirm("Are you sure?", function(e){
+    				if (e){
+    					$.post("${pageContext.request.contextPath}/admin/rest/delete/video?vid=" + vid, function(data){
+    						if(data.STATUS==true){
+    							video.listVideo(gPage,$("#number-of-item").val());
+        						smoke.alert("Success!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}else{
+								smoke.alert("Error Occured!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}
+    						
+    	    			});
+    				}else{
+						
+    				}
+    			}, {
+    				ok: "Yes",
+    				cancel: "Cancel"
+    				/* ,classname: "statusConfirm",
+    				reverseButtons: true */ 
+    			});
+			});
     		
     		function getCategory(){
     			$.get("${pageContext.request.contextPath}/admin/rest/list/category",function(data){
