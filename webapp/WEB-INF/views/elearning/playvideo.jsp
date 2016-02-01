@@ -206,12 +206,6 @@
 												  </ul>
 											</div>
 											
-											<!-- <div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
-											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-												<i class="fa fa-download"></i> Download 
-											  </a>
-											</div> -->
-											
 											
 										</li>
 									</ul>
@@ -222,7 +216,6 @@
 								<hr class="hr-style-one">
 									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
 									
-									<!-- <div class="pull-right"><div class="rw-ui-container"></div></div><br> -->
 									<div class="pull-right">
 										<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
 										  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
@@ -252,7 +245,7 @@
 										</div>
 										<div class="form-group">
 									
-										<button type="submit" class="btn btn-primary"  >Submit comment</button>
+										<button type="submit" class="btn btn-primary">Submit comment</button>
 										
 										</div>
 									</form>
