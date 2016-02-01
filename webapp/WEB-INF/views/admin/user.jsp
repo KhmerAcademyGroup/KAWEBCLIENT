@@ -321,6 +321,8 @@
 							//set onchange event to class usertype after the element of class usertype
 							$(".usertype").change(changeusertype); 
 							
+							matchutype($(".usertype"));
+							
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
 						}
@@ -474,8 +476,7 @@
 		
 		//match user type with select option
 		function matchutype(allselect){
-			
-			
+		
 			var numselect = allselect.length;
 			//var utype = $(this).data("tid");
 			var utype;
@@ -498,8 +499,7 @@
 					if($(allselect[i][j]).val()=== utype){
 						$(allselect[i][j]).attr('selected','selected');
 					}
-			}
-			
+			}			
 		}
 				
 		

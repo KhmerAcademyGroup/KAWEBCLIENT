@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +50,26 @@ public class VideoAdminController {
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
 	
+	@RequestMapping(value="/search/video/{name}", method= RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getVideoSearch(
+    		@PathVariable("name") String name,
+    		@RequestParam(value="page", required=false, defaultValue="1") int page,
+			@RequestParam(value="item", required=false, defaultValue="10") int item){
+		
+		String userid = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+		}else{
+			System.out.println(authentication.getPrincipal());
+		}
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/all/u/" + userid + "/name/"+ name + "?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
 	@RequestMapping(value="/list/category", method= RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getCategory(){
 		
@@ -64,5 +85,15 @@ public class VideoAdminController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/enable/v/" + vid, HttpMethod.PUT , request , Map.class) ;
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
+	
+	@RequestMapping(value="/delete/video", method= RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> delete(@RequestParam("vid") String vid){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/" + vid, HttpMethod.DELETE , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
+	
 
 }
