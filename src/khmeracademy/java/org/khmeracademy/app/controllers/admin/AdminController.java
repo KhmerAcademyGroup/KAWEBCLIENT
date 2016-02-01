@@ -85,6 +85,12 @@ public class AdminController {
 		return "admin/videocategory";
 	}
 	
+	@RequestMapping(value="/elearning/maincategory",method=RequestMethod.GET)
+	public String mainCategory(){
+		
+		return "admin/maincategory";
+	}
+	
 	@RequestMapping(value="/elearning/comment",method=RequestMethod.GET)
 	public String videoComment(){
 		
