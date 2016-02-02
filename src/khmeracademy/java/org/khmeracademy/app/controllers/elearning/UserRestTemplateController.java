@@ -4,6 +4,7 @@ package org.khmeracademy.app.controllers.elearning;
 import java.util.Map;
 
 import org.eclipse.jdt.internal.compiler.batch.FileSystem;
+import org.khmeracademy.app.entities.Video;
 import org.khmeracademy.app.entities.input.FrmChangePassword;
 import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
 import org.khmeracademy.app.entities.input.FrmUpdateUser;
@@ -217,6 +218,23 @@ public class UserRestTemplateController {
 		public ResponseEntity<Map<String , Object>> updateProfile(@RequestBody FrmUpdateUser user){
 			HttpEntity<Object> request = new HttpEntity<Object>(user,header);
 			ResponseEntity<Map> response = rest.exchange(WSURL + "/user", HttpMethod.PUT , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/uploadvideo" , method = RequestMethod.POST)
+		public ResponseEntity<Map<String , Object>> uploadvideo(@RequestBody Video video){
+			HttpEntity<Object> request = new HttpEntity<Object>(video,header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/video", HttpMethod.POST , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		@RequestMapping(value="/rest/user/profile/listallmainplaylist/{uid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listallmainplaylist(
+											@PathVariable("uid") String uid
+										 ){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/userplaylistall/"+uid, HttpMethod.GET , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		

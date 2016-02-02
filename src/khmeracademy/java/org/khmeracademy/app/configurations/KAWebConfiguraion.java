@@ -81,6 +81,11 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
 	}
 	
 	@Bean
+	public String IMGURL(){
+		return environment.getProperty("KHMERACADEMY.API.URL.IMG");
+	}
+	
+	@Bean
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasenames("lang");
