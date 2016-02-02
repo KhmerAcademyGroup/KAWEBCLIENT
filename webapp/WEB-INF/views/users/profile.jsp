@@ -731,7 +731,7 @@
 		var usertype="<%= request.getAttribute("usertype") %>";
 		var key ="<%= request.getAttribute("key") %>";
 		var api = "<%= request.getAttribute("api") %>";
-		//alert(api);
+		alert(key);
 		//var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
 		//var api = "http://localhost:8181/KAAPI";
 		//var userid="MQ==";
@@ -1249,7 +1249,7 @@ function listPlaylistDetail(data){
 								+"<a  onclick=go('deletePlaylist','"+data.RES_DATA[i].playlistId+"'); data-toggle='modal' data-target='#myModal' class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
 								+"<span class='inline-popups'>"
-									+"<a id='form-update-playlist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+									+"<a id='myformupdateplaylist2' onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"')  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
 								+"<i class='fa fa-edit'></i></a></span>"
 							+"</div>"
 						+"<a href='"+url+'/elearning/playlistdetail/'+data.RES_DATA[i].playlistId+"'>"
@@ -1278,7 +1278,25 @@ function listPlaylistDetail(data){
 		
 			return str;
 	}
-	
+function viewPlayList(pid){
+	alert(pid);
+	$.ajax({
+		url: url+'/rest/user/profile/viewplaylist/'+pid,
+        type: 'get',
+        contentType: 'application/json;charset=utf-8',
+        //data: JSON.stringify(JSONObject),
+        success: function(data){
+        	//alert(data.RES_DATA.length);
+        	if(data.STATUS == true){
+        		
+        	}
+        	
+        },
+        error: function(data){
+        	alert("view playlist unseccess data");
+        }
+    });	
+}
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
 	var characterReg = /^[a-zA-Z0-9-_.]+$/;
@@ -1898,7 +1916,7 @@ function mySearchPlaylist(){
 			//img=$("#file").val();
 			//oimg=$("#oimg").val();
 		}else{
-			status =true;
+			status =false;
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
 			 color ="000000";
@@ -1958,6 +1976,8 @@ function mySearchPlaylist(){
 					alert("image was upload");
 						alert(data.IMG);
 						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
+					}else{
+						alert("upload unsuccess data");
 					}
 			
 				},

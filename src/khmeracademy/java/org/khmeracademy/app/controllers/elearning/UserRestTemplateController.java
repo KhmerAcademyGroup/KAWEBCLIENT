@@ -133,6 +133,14 @@ public class UserRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		@RequestMapping(value="/rest/user/profile/viewplaylist/{pid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> viewPlaylist(@PathVariable("pid") String pid){
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/getplaylistbyplaylistid/"+pid, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 		@RequestMapping(value="/rest/user/profile/searchplaylist/{uid}/{playlistname}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> searchPlaylist(@PathVariable("uid") String uid
 											,@PathVariable("playlistname") String pname
