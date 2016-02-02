@@ -59,10 +59,13 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#frmVideo" data-backdrop="static">
+							<button type="button" class="btn btn-success" id="btnAdd">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
+							<!-- <button type="button" class="btn btn-success" data-toggle="modal"
+								data-target="#frmVideo" data-backdrop="static">
+								<i class="fa fa-plus-square"></i> Add new
+							</button> -->
 						</div>
 						
 						<div class="btn-group">
@@ -145,13 +148,12 @@
 						</div>
 						<div class="modal-body">
 						
+							<input type="hidden" name="videoid" id="videoid" />
 						
-						
-							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Video Title<span class="required">*</span></label>
 								<div class="col-lg-9">
-									<input type="text" class="form-control" name="videoname" id="videoname" />
+									<input type="text" class="form-control" name="videoname" id="videoname" placeholder="Video Title" />
 								</div>
 							</div>
 							<br />
@@ -159,7 +161,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Youtube URL<span class="required">*</span></label>
 								<div class="col-lg-9">
-									<input type="text" class="form-control" name="youtubeurl" id="youtubeurl" onblur="changeurl()" />
+									<input type="text" class="form-control" name="youtubeurl" id="youtubeurl" placeholder="Youtube URL" />
 								</div>
 							</div>
 							<br />
@@ -167,7 +169,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">File URL<span class="required">*</span></label>
 								<div class="col-lg-9">
-									<input type="text" class="form-control" name="fileurl" id="fileurl" />
+									<input type="text" class="form-control" name="fileurl" id="fileurl" placeholder="File URL" />
 								</div>
 							</div>
 							<br />
@@ -175,7 +177,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Description</label>
 								<div class="col-lg-9">
-									<textarea class="form-control" name="description" id="description"></textarea>
+									<textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
 								</div>
 							</div>
 							<br /><br />
@@ -219,12 +221,12 @@
 									<div class="col-lg-9">
 										<div class="radio">
 											<label>
-												<input type="radio" name="status" id="statusTrue" value="true"> True
+												<input type="radio" name="status" id="statusTrue" value="true" checked="checked"> True
 											</label>
 										</div>
 										<div class="radio">
 											<label>
-												<input type="radio" name="status" id="statusFalse" value="false" checked="checked"> False
+												<input type="radio" name="status" id="statusFalse" value="false"> False
 											</label>
 										</div>
 								
@@ -235,7 +237,7 @@
 							
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Add</button>
+							<button type="button" class="btn btn-primary" id="btnAddUpdate">Add</button>
 						</div><!-- .modal-footer -->
 					</div><!-- .modal-content -->
 				</div><!-- .modal-doalog -->
@@ -246,34 +248,6 @@
 			
 			
 			
-			
-
-			<!-- <div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
-				<form  id="frmConfirm" action="" method="">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" aria-hidden="true">
-								<span class="button b-close"><span>×</span></span>
-							</button>
-							<h4 class="modal-title">Confirmation</h4>
-						</div>
-						<div class="modal-body" >
-										
-										<input type="hidden"  id="ConfirmId" class="form-control"  name="universityId">
-											
-										<div class="form-group">										
-											<div class="col-lg-8 right" style="border:none;">
-												<label class="form-control">Delete this university?</label> 
-											</div>	
-										</div>
-						</div>
-						<div class="modal-footer">
-								<button type="submit" id="btDelete" class="btn btn-primary">Yes</button>
-								<button type="button" id="btCancel" class="btn btn-primary">No</button>
-						</div>
-					</div>
-				</form>	
-			</div> -->
 
 
 
@@ -304,7 +278,7 @@
 				<td>{{= viewCounts}}</td>
 				<td>{{if status == true}} <i id="{{= videoId}}" class="fa fa-check icon-circle icon-xs icon-success statusConfirm"></i> {{else}} <i id="{{= videoId}}" class="fa fa-remove icon-circle icon-xs icon-danger statusConfirm" ></i> {{/if}}</td>
 				<td> 
-   		 			<i data-vid="{{= videoId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateVideo"></i>
+   		 			<i id="{{= videoId}}" class="fa fa-pencil icon-circle icon-xs icon-info btnUpdate"></i>
             		<i id="{{= videoId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
          		</td>
 			</tr>
@@ -318,20 +292,18 @@
 		var isSearch = false;
 		
 		$(document).ready(function(){
+			
 			getCategory();
 			
-			$("#search").keyup(function(){
-				if($(this).val()==""){
-					check = false;
-					isSearch = false;
-					video.listVideo(1,$("#number-of-item").val());
-				}else{
-					check = true;
-					isSearch = true;
-					video.searchVideo(1,$("#number-of-item").val(), $(this).val());
-				}
-				
-		    });
+			function clearmodal(){
+				$("#videoid").val('');
+				$("#videoname").val('');
+				$("#youtubeurl").val('');
+				$("#fileurl").val('');
+				$("#description").val('');
+				$("#category").val('').trigger("chosen:updated");
+			}
+			
 			
 			video.listVideo = function(currentPage, item){
 				KA.createProgressBar();
@@ -449,6 +421,21 @@
    			    }); 
     		};
     		
+    		
+    		$("#search").keyup(function(){
+				if($(this).val()==""){
+					check = false;
+					isSearch = false;
+					video.listVideo(1,$("#number-of-item").val());
+				}else{
+					check = true;
+					isSearch = true;
+					video.searchVideo(1,$("#number-of-item").val(), $(this).val());
+				}
+				
+		    });
+    		
+    		
     		//load list video
     		video.listVideo(1,$("#number-of-item").val());
     		
@@ -456,6 +443,107 @@
     		$("#number-of-item").change(function(){
     			check = true;
     			video.listVideo(1,$("#number-of-item").val());
+    		});
+    		
+    		
+    		$("#btnAdd").click(function(){
+    			clearmodal();
+    			$("#btnAddUpdate").text("Add");
+    			$("#frmVideo").modal('show');
+    		});
+    		
+    		$(document).on('click',	".btnUpdate", function() {
+    			$("#videoid").val($(this).attr('id'));
+    			getVideo($(this).attr('id'));
+    			$("#btnAddUpdate").text("Update");
+    			$("#frmVideo").modal('show');
+    		});
+    		
+    		$(document).on('click', "#btnAddUpdate", function(){
+    			
+				frmData = {
+						
+						"videoName"  : $("#videoname").val(),
+    					"youtubeUrl" : $("#youtubeurl").val(),
+    					"fileUrl"	 : $("#fileurl").val(),
+    					"publicView" : $("input[name=publicview]:checked").val(),
+    					"status"	 : $("input[name=status]:checked").val(),
+    					"description": $("#description").val(),
+    					"categoryId" : $("#category").val(),
+    					"videoId"	 : $("#videoid").val()
+				};
+				
+    			if($("#btnAddUpdate").text()=="Add" && $("#videoid").val()==''){
+    				
+    				$.ajax({ 
+    				    url : "${pageContext.request.contextPath}/admin/rest/insert/video", 
+    				    type: "POST",
+    				    data: JSON.stringify(frmData),
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    				    	$("#frmVideo").modal('hide');
+    				    	if(data.STATUS==true){
+    							video.listVideo(1,$("#number-of-item").val());
+        						smoke.alert("Success!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}else{
+    							smoke.alert("Error Occured!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}
+    				    	
+    				    },
+    				    error:function(data,status,er) {
+    				    	$("#frmVideo").modal('hide');
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    				
+    			}else{
+    				
+    				$.ajax({ 
+    				    url : "${pageContext.request.contextPath}/admin/rest/update/video", 
+    				    type: "POST",
+    				    data: JSON.stringify(frmData),
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    				    	$("#frmVideo").modal('hide');
+    				    	if(data.STATUS==true){
+    							video.listVideo(1,$("#number-of-item").val());
+        						smoke.alert("Success!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}else{
+    							smoke.alert("Error Occured!", function(e){
+        							
+        						}, {
+        							ok: "OK"
+        						});
+    						}
+    				    	
+    				    },
+    				    error:function(data,status,er) {
+    				    	$("#frmVideo").modal('hide');
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    				
+    			} 
+    			
+    			
     		});
     		
     		//toggle video
@@ -484,6 +572,33 @@
     			});
 			});
     		
+    		function getVideo(vid){
+    			$.get("${pageContext.request.contextPath}/admin/rest/getvideo?vid=" + vid,function(data){
+    				if(data.STATUS==true){
+    					$("#videoname").val(data.RES_DATA.videoName);
+    					$("#youtubeurl").val(data.RES_DATA.youtubeUrl);
+    					$("#fileurl").val(data.RES_DATA.fileUrl);
+    					$("#description").val(data.RES_DATA.description);
+    					//$("#videoid").val(data.RES_DATA.videoId);
+    					if(data.RES_DATA.publicView==true){
+    						$("#public").prop('checked', true);
+    					}else{
+    						$("#private").prop('checked', true);
+    					}
+    					if(data.RES_DATA.status==true){
+    						$("#statusTrue").prop('checked', true);
+    					}else{
+    						$("#statusFalse").prop('checked', true);
+    					}
+    					for(var i=0;i<data.RES_DATA.categoryId.length;i++){
+    						$("#category").val(data.RES_DATA.categoryId[i]).trigger("chosen:updated");
+    					}
+    				}
+    				
+    			});
+    		}
+    		
+    		
     		//delete video
     		$(document).on('click',	".deleteConfirm", function() {
     			var vid = $(this).attr("id");
@@ -511,9 +626,7 @@
     				}
     			}, {
     				ok: "Yes",
-    				cancel: "Cancel"
-    				/* ,classname: "statusConfirm",
-    				reverseButtons: true */ 
+    				cancel: "Cancel" 
     			});
 			});
     		

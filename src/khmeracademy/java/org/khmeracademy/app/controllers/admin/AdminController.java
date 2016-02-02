@@ -113,6 +113,12 @@ public class AdminController {
 	public String user(){
 		
 		return "admin/user";
+	}
+	
+	@RequestMapping(value="/usertype",method=RequestMethod.GET)
+	public String userType(){
+		
+		return "admin/usertype";
 	}	
 	
 }

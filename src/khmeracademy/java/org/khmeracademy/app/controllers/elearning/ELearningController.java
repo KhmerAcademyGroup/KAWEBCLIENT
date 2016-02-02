@@ -19,12 +19,16 @@ public class ELearningController {
 	
 	@Autowired
 	private String WebURL;
+	
+	@Autowired
+	private String IMGURL;
 
 	@RequestMapping(value="" , method = RequestMethod.GET)
 	public String  index(ModelMap m){
 		final String uri = WebURL + "/rest/elearning/index";
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("title","E-Learning");
+	    m.addAttribute("IMGURL", IMGURL);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 		return "/elearning/index";
 	}
@@ -34,18 +38,13 @@ public class ELearningController {
 			@RequestParam(value="v") String vid, 
 			@RequestParam(value="playlist", required=false) String pid){
 		String userid = "";
-		String username = "";
-		String userimage = "";
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){
 			User user = (User) authentication.getPrincipal();
 			userid = user.getUserId();
-			username = user.getUsername();
-			userimage = user.getUserImageUrl();
 		}else{
 			System.out.println(authentication.getPrincipal());
 		}
-		username = (username.length()<18)?username:username.substring(0, 17) + "...";
 		String playlistParam = "";
 		if(pid!=null){
 			playlistParam = "&playlist=" + pid;
@@ -54,10 +53,9 @@ public class ELearningController {
 		final String uri = WebURL + "/rest/elearning/playvideo?v=" + vid + playlistParam;
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("title","E-Learning");
+	    m.addAttribute("IMGURL", IMGURL);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 	    m.addAttribute("data_user_history", restTemplate.getForObject(uri1, HashMap.class));
-	    m.addAttribute("data_user_username", username.toUpperCase());
-	    m.addAttribute("data_user_image", userimage);
 		return "/elearning/playvideo";
 	}
 	

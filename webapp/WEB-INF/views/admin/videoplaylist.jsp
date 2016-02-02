@@ -73,7 +73,7 @@
 						<table class="table table-th-block table-hover">
 							<thead>
 								<tr>									
-									<th>No</th>
+									<th>No1</th>
 									<th>Playlist Name</th>
 									<th>Playlist Description</th>
 									<th>User Id</th>									

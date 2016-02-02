@@ -50,13 +50,7 @@
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
 	        	<br />
-	        	<div style="padding:0px 5px;">
-	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
-	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:100px;height:100px; margin:0 auto; border:5px solid #e0e0e0;" />
-	        		<br />
-	        		<h4>${data_user_username }</h4>
-	        	</div>
-	        	</div>
+	        	
 	        	<!-- History -->
 	        		<div style="padding:5px 5px;">
 	        		<div class="panel panel-primary">
@@ -167,7 +161,7 @@
 									<div class="the-box no-border store-list">
 									 <div class="media">
 			                            <a class="pull-left" >
-			                            <img class="media-object img-circle" ng-src="${pageContext.request.contextPath}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
+			                            <img class="media-object img-circle" ng-src="${IMGURL}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
 			                            <div class="clearfix visible-xs"></div>
 			                            <div class="media-body">
 			                                <a href="#"></a>
@@ -206,12 +200,6 @@
 												  </ul>
 											</div>
 											
-											<!-- <div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
-											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-												<i class="fa fa-download"></i> Download 
-											  </a>
-											</div> -->
-											
 											
 										</li>
 									</ul>
@@ -222,7 +210,6 @@
 								<hr class="hr-style-one">
 									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
 									
-									<!-- <div class="pull-right"><div class="rw-ui-container"></div></div><br> -->
 									<div class="pull-right">
 										<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
 										  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
@@ -252,7 +239,7 @@
 										</div>
 										<div class="form-group">
 									
-										<button type="submit" class="btn btn-primary"  >Submit comment</button>
+										<button type="submit" class="btn btn-primary">Submit comment</button>
 										
 										</div>
 									</form>
@@ -393,7 +380,8 @@
 		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
-		<script>var URL="${pageContext.request.contextPath}"</script>
+		<script>var URL="${pageContext.request.contextPath}";</script>
+		<script>var IMGURL="${IMGURL}";</script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/playlist.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/comments.js"></script>
 		

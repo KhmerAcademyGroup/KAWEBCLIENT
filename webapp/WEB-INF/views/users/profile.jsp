@@ -24,7 +24,7 @@
 </head>
 <body >
 	
-			
+	<c:set var="usertype"  value="${usertype }"/>		
 	<jsp:include page="../shared/_menu.jsp" />
 		
 	<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
@@ -123,13 +123,15 @@
 									<li><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
 									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> History</a></li>
 									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
+									<c:if test="${usertype == 'Admin' }">
 									<li class="pull-right">
 <!-- 										 <span class="btn btn-group inline-popups"> -->
-												<a class="btn btn-success btn-rounded-lg"  id="form-upload-video" data-effect="mfp-zoom-in">
+												<a class="btn btn-success btn-rounded-lg"  data-toggle="modal" data-target="#uploadvideo">
 													<i class="fa fa-cloud-upload"></i> Upload video
 												</a>
 <!-- 										</span> -->
-									</li>			
+									</li>	
+									</c:if>		
 								</ul>
 							  </div>
 								<div id="panel-collapse-1" class="collapse in">
@@ -469,7 +471,7 @@
 														
 														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
 												 </div>
-												  <c:set var="usertype"  value="${usertype }"/>
+												  
 												  <c:if test="${usertype == 'Admin' }">
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Color</label>
@@ -563,68 +565,17 @@
 														</div>
 												</div> --%>						
 													
-													<!-- form upload video -->
-													<div id="form-upload-video1" class="ka-popup" style="display: none;width: 40%;">
-														<div id="form-upload-video1" class="white-popup mfp-with-anim" style="border-radius:5px">
-															<button type="button" class="close" aria-hidden="true">
-																	<span class="button b-close"><span>×</span></span>
-																</button>
-																<div class="form-group">
-																	<label for="exampleInputEmail1">Playlist nameVideo Name</label>
-																	<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
-																	<small class="msg" style="color:red;display:none">The video name  is required and can't be empty</small>
-															 	 </div>
-															 	 <div class="form-group">
-																	<label for="exampleInputEmail1">Youtube URL</label>
-																	<input type="text" class="form-control" name="playlistname" id="playlistname" placeholder="EG. MyTop">
-																	<small class="msg" style="color:red;display:none">The youtube url  is required and can't be empty</small>
-															 	 </div>
-															 	 <div class="form-group">
-																	<label for="exampleInputEmail1">File URL</label>
-																	<input type="text" class="form-control" name="fileurl" id="fileurl" data-bv-field="fileurl">
-																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
-															 	 </div>
-															 	 <div class="form-group">
-																	<label for="exampleInputEmail1">Description</label>
-																	<textarea class="form-control" name="description" id="description" data-bv-field="description"></textarea>
-																	<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
-															 	 </div>
-															 	 <div class="form-group">
-																	<label for="exampleInputEmail1">View</label>
-																	<div class="radio">
-																		<label> <input type="radio" name="publicview" id="public" value="1" required="" data-bv-notempty-message="A view is required" data-bv-field="publicview"> Public
-																		</label>
-																	</div>
-																	<div class="radio">
-																		<label> <input type="radio" name="publicview" id="private" checked="checked" data-bv-field="publicview"> Private
-																		</label>
-																	</div>
-																	
-																	<small class="msg" style="color:red;display:none">A view is required</small>
-															 	 </div>
-															 	 
-															 	  <div class="form-group">
-																	<label for="exampleInputEmail1">Category</label>
-																	
-																	<select class="form-control">
-																		  <option>1</option>
-																		  <option>2</option>
-																		  <option>3</option>
-																		  <option>4</option>
-																		  <option>5</option>
-																		</select>
-																	<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
-															 	 </div>
-															  <div class="form-group">
-																	<button type="submit" class="btn btn-success">Add</button>
-															 	 </div>
-															
+													
+											
+
+										
 													
 													
-					 							
-					 							
-					 									</div>
-													</div>
+													
+													
+													
+													
+													
 										</div><!-- /.tab-content -->
 									</div><!-- /.panel-body -->
 								</div><!-- /.collapse in -->
@@ -681,6 +632,69 @@
 			  </div>
 			</div>
 		  </div>
+  <!-- form upload -->
+  <div class="modal fade" id="uploadvideo" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Upload Video</h4>
+        </div>
+        <div class="modal-body">
+       		<form action="" id="myformuploadvideo">
+       			<div class="form-group">
+					<label for="exampleInputEmail1">Playlist nameVideo Name</label>
+					<input type="text" class="form-control" name="videoplaylistname" id="videoplaylistname" placeholder="EG. MyTop">
+					<small class="msg" id="checkvideoplaylistname" style="color:red;"></small>
+			 	 </div>
+			 	 <div class="form-group">
+					<label for="exampleInputEmail1">Youtube URL</label>
+					<input type="text" class="form-control" name="videourl" id="videourl" placeholder="EG. MyTop">
+					<small class="msg" id="checkvideourl" style="color:red;"></small>
+			 	 </div>
+			 	 <div class="form-group">
+					<label for="exampleInputEmail1">File URL</label>
+					<input type="text" class="form-control" name="fileurl" id="fileurl" data-bv-field="fileurl">
+					
+			 	 </div>
+			 	 <div class="form-group">
+					<label for="exampleInputEmail1">Description</label>
+					<textarea class="form-control" name="videodescription" id="videodescription" data-bv-field="description"></textarea>
+					<small class="msg" id="checkvideodescription" style="color:red;"></small>
+			 	 </div>
+			 	 <div class="form-group">
+					<label for="exampleInputEmail1">View</label>
+					<div class="radio">
+						<label> <input type="radio" name="publicview" id="public" value="true" required="" data-bv-notempty-message="A view is required" data-bv-field="publicview"> Public
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="publicview" id="private" value="false" checked="checked" data-bv-field="publicview"> Private
+						</label>
+					</div>
+					
+			 	 </div>
+			 	 
+			 	  <div class="form-group">
+					<label for="exampleInputEmail1">Category</label>
+					<select class="form-control" id="uploadvideo_category">
+						 
+					</select>
+					<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+			 	 </div>
+		
+       		</form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" onclick="myuploadvideo();" class="btn btn-success pull-left">Add Video</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 	
 	
 	<!-- End My Contend -->
@@ -698,14 +712,14 @@
 				
             });
 	    	//update playlist
-            $("#form-update-playlist").click(function(){ 
+            $(document).on('click',"#myformupdateplaylist2", function(){ 
             	$("#form-create-playlist1").bPopup({modalClose: false});
             });
 	    	
 	    	//upload video
-            $("#form-upload-video").click(function(){ 
-            	$("#form-upload-video1").bPopup({modalClose: false});
-            });
+            /* $("#form-upload-video-link").click(function(){ 
+            	$("#form-upload-video").bPopup({modalClose: false});
+            }); */
           });
 	   
 		var limit=0;
@@ -715,8 +729,11 @@
 		var url="${pageContext.request.contextPath}";
 		var userid="<%= request.getAttribute("userid") %>";
 		var usertype="<%= request.getAttribute("usertype") %>";
-		var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
-		var api = "http://localhost:8080/KAAPI/api";
+		var key ="<%= request.getAttribute("key") %>";
+		var api = "<%= request.getAttribute("api") %>";
+		//alert(key);
+		//var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
+		//var api = "http://localhost:8181/KAAPI";
 		//var userid="MQ==";
 		//var usertype="Admin";
 		//alert(userid);
@@ -1219,7 +1236,8 @@ function listPlaylistDetail(data){
 				
 				var img = "";
 				if(usertype =='Admin'){
-					img =  "<img src='"+url+'/'+data.RES_DATA[i].bgImage+"'  alt='Image'>"
+					img =  "<img src='"+api+data.RES_DATA[i].bgImage+"'  alt='Image'>"
+					//alert(api+data.RES_DATA[i].bgImage);
 				}else{
 					img = "<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
 				}
@@ -1231,14 +1249,14 @@ function listPlaylistDetail(data){
 								+"<a  onclick=go('deletePlaylist','"+data.RES_DATA[i].playlistId+"'); data-toggle='modal' data-target='#myModal' class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
 								+"<span class='inline-popups'>"
-									+"<a id='form-update-playlist'  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
+									+"<a id='myformupdateplaylist2' onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"')  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
 								+"<i class='fa fa-edit'></i></a></span>"
 							+"</div>"
 						+"<a href='"+url+'/elearning/playlistdetail/'+data.RES_DATA[i].playlistId+"'>"
 						+"<div class='new-playlist'>"
 							+"<ul>"
 								+"<li>"+data.RES_DATA[i].countVideos+"</li>"
-								+"<li><a class='btn btn-success dropdown-toggle' id='form-update-playlist' data-effect='mfp-zoom-in' >click</a></li>"
+								//+"<li><a class='btn btn-success dropdown-toggle' id='myformupdateplaylist2'  >click</a></li>"
 								+"<li>"+data.RES_DATA[i].playlistName+"</li>"
 								+"<li><i class='fa fa-bars'></i></li>"
 								+"</ul>"
@@ -1260,7 +1278,25 @@ function listPlaylistDetail(data){
 		
 			return str;
 	}
-	
+function viewPlayList(pid){
+	alert(pid);
+	$.ajax({
+		url: url+'/rest/user/profile/viewplaylist/'+pid,
+        type: 'get',
+        contentType: 'application/json;charset=utf-8',
+        //data: JSON.stringify(JSONObject),
+        success: function(data){
+        	//alert(data.RES_DATA.length);
+        	if(data.STATUS == true){
+        		
+        	}
+        	
+        },
+        error: function(data){
+        	alert("view playlist unseccess data");
+        }
+    });	
+}
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
 	var characterReg = /^[a-zA-Z0-9-_.]+$/;
@@ -1311,6 +1347,7 @@ function mySearchPlaylist(){
             	if(data.STATUS == true){
             		//alert(data);
             		$("#playlistcategory").html(listMainCategoryDetail(data));
+            		
             	}
             },
             error: function(data){
@@ -1337,6 +1374,7 @@ function mySearchPlaylist(){
 				       contentType: 'application/json;charset=utf-8', // type of data
 				       success: function(data) { 
 				    	   	if(data.STATUS == true){
+				    	   		//alert('playlist was deletee');
 				    	   		mystartPlaylist();
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
@@ -1540,10 +1578,10 @@ function mySearchPlaylist(){
 		}
 		
 	 	
-	 	/*****************validation**************/
+	 	/*****************validation updat profile**************/
 	 	function validateUser(){
 			var name= $("#username").val();
-			var characterReg = /^[a-zA-Z0-9_-]{3,16}$/;
+			var characterReg = /^[\sa-zA-Z0-9_-]{3,16}$/;
 			    if(!characterReg.test(name)) {
 			    	$("#username").css("border", "solid 1px red");
 			    	$("#checkname").text("Require and at least 3 charactors less than 16 charactors");
@@ -1574,7 +1612,7 @@ function mySearchPlaylist(){
 	 	
 	 	function validatDepartment(){
 			var name= $("#mydepartment").val();
-			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_+=]+$/;
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_+=]+$/;
 			    if(!characterReg.test(name)) {
 			    	$("#mydepartment").css("border", "solid 1px red");
 			    	$("#checkdepartment").text("Invalid Department");
@@ -1589,7 +1627,7 @@ function mySearchPlaylist(){
 	 	
 	 	function validatUniversity(){
 			var name= $("#university").val();
-			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_+=]+$/;
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_+=]+$/;
 			    if(!characterReg.test(name)) {
 			    	$("#university").css("border", "solid 1px red");
 			    	$("#checkuniversity").text("Invalid Department");
@@ -1615,7 +1653,7 @@ function mySearchPlaylist(){
 	 	
 		function validateDOB(){
 			var name= $("#dateofbirth").val();
-			var characterReg = /^[0-9-:.\\/]+$/;
+			var characterReg = /^[\s0-9-:.\\/]+$/;
 			    if(!characterReg.test(name)) {
 			    	$("#dateofbirth").css("border", "solid 1px red");
 			    	$("#checkdate").text("Invalid Date");
@@ -1630,7 +1668,7 @@ function mySearchPlaylist(){
 		
 		function validatePhone(){
 			var name= $("#phonenumber").val();
-			var characterReg = /^[0-9-:.\\/]+$/;
+			var characterReg = /^[\s0-9-:.\\/]+$/;
 			    if(!characterReg.test(name)) {
 			    	$("#phonenumber").css("border", "solid 1px red");
 			    	$("#checkphone").text("Invalid Phone Number");
@@ -1661,7 +1699,7 @@ function mySearchPlaylist(){
 	 	
 	 	
 	 	
-	 	
+	 	/////////validat passowrd////////
 	 	var oldpass = false;
 		var newpass = false;
 		var conpass = false;
@@ -1728,13 +1766,126 @@ function mySearchPlaylist(){
 				checkpass= true;
 			}
 		}
+		listMainPlaylist();
+		function listMainPlaylist(){
+    	$.ajax({
+    		url: url+'/rest/user/profile/listallmainplaylist/'+userid,
+            type: 'get',
+            contentType: 'application/json;charset=utf-8',
+            //data: JSON.stringify(JSONObject),
+            success: function(data){
+            	//alert(data.RES_DATA.length);
+            	if(data.STATUS == true){
+            		//alert(data);
+            		$("#uploadvideo_category").html(listMainPlaylistDetail(data));
+            		
+            	}
+            },
+            error: function(data){
+            	//alert("listAll() unseccess data");
+            }
+        });	    	
+		   
+	}
+		
+		function listMainPlaylistDetail(data){
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
+					str += " <option value='"+data.RES_DATA[i].playlistId+"'>"+data.RES_DATA[i].playlistName+"</option>";
+				}
+				//alert(str);
+				return str;
+		}
+		
+		function myuploadvideo(){
+			
+			if(validatNameVideo() && validatUrlVideo() && validatDescriptionVideo()){
+				var videoName= $("#videoplaylistname").val();
+				var videourl= $("#videourl").val();
+				var fileurl= $("#fileurl").val();
+				var videdescription= $("#videodescription").val();
+				var publicview =$('input[name=publicview]:checked', '#myformuploadvideo').val();
+				var uploadvideo_category= $("#uploadvideo_category").val();
+				/* alert(fileurl);
+				alert(publicview);
+				alert(uploadvideo_category); */
+				alert(publicview);
+				var JSONObject = $.parseJSON('{"videoName":"'+videoName+'","description":"'+videdescription+'", "youtubeUrl":"'+videourl+'" , "fileUrl":"'+fileurl+'","publicView":"false","userId":"'+userid+'", "status":"'+publicview+'" ,"categoryId":["'+uploadvideo_category+'"]}');
+			   	//alert("good");
+					$.ajax({
+			           url: url+'/rest/user/profile/uploadvideo',
+			           type: 'post',
+			          //contentType:false,
+			           contentType: 'application/json;charset=utf-8',
+			           data: JSON.stringify(JSONObject),
+			           success: function(data){
+			           	if(data.STATUS == true){
+			           		alert("video has been upload");
+				            	clearUpload();
+							}
+			           	mystartPlaylist();
+			           },
+			           error: function(data){
+			           	alert("2 unsuccess data");
+			           }
+			       });	
+				
+			}
+		}
+		function clearUpload(){
+			$("#videoplaylistname").val("");
+			$("#videourl").val("");
+			$("#fileurl").val("");
+			$("#videodescription").val("");
+		}
+		
+		//*******************validation upload vidoe************************
+		
+		function validatNameVideo(){
+			var name= $("#videoplaylistname").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#videoplaylistname").css("border", "solid 1px red");
+			    	$("#checkvideoplaylistname").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#videoplaylistname").css("border", "solid 1px green");
+			    	$("#checkvideoplaylistname").text("");
+			    		return true;
+			    }
+		}
 		
 		
+		function validatUrlVideo(){
+			var name= $("#videourl").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#videourl").css("border", "solid 1px red");
+			    	$("#checkvideourl").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#videourl").css("border", "solid 1px green");
+			    	$("#checkvideourl").text("");
+			    		return true;
+			    }
+		}
 		
-		
-		
-		
-		
+		function validatDescriptionVideo(){
+			var name= $("#videodescription").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,255}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#videodescription").css("border", "solid 1px red");
+			    	$("#checkvideodescription").text("Require and at least 3 charactors less than 255 charactors");
+			    	return false;
+			    
+			    }else{
+			    	$("#videodescription").css("border", "solid 1px green");
+			    	$("#checkvideodescription").text("");
+			    	return true;
+			    }
+		}
 
 	 	
 	 	
@@ -1753,9 +1904,11 @@ function mySearchPlaylist(){
 		var img="";
 		var oimg="";
 		var thumnial="mcgBfVSTKqo"; 
+		var status="";
 		
 		
 		 if(usertype == 'Admin'){
+			 status =true;
 			 publicview=true;
 			 thumnial ="mcgBfVSTKqo";
 			 color=$("#color").val();
@@ -1763,6 +1916,7 @@ function mySearchPlaylist(){
 			//img=$("#file").val();
 			//oimg=$("#oimg").val();
 		}else{
+			status =false;
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
 			 color ="000000";
@@ -1775,11 +1929,11 @@ function mySearchPlaylist(){
 		 if(img =="" && oimg ==""){
 			alert("user1");
 			var img="/resources/uploads/user/avatar.jpg";
-			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
 		}  
 		
 		//idrect update
-		if(img =="" && oimg.length !== 0 ){
+		else if(img =="" && oimg.length !== 0 ){
 			alert("direct update with new image");
 			//updateProcess(id,t,d,e,u,o_img);
 		}
@@ -1809,7 +1963,7 @@ function mySearchPlaylist(){
 			alert("insert with image");
 			$.ajax({
 				type : "POST",
-				url : 'http://localhost:8080/KAAPI/api/uploadfile/upload?url=playlist',
+				url : 'http://localhost:8181/KAAPI/api/uploadfile/upload?url=playlist',
 				enctype : 'multipart/form-data',
 				data : new FormData(document.getElementById("formcreateplaylist")),
 				processData : false, // tell jQuery not to process the data
@@ -1819,14 +1973,16 @@ function mySearchPlaylist(){
 					},
 				success : function(data) {
 					if(data.STATUS == true){
-						//alert(data.IMG);
-						//alert(data.IMG);
-						createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color);
+					alert("image was upload");
+						alert(data.IMG);
+						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
+					}else{
+						alert("upload unsuccess data");
 					}
 			
 				},
 				error : function(data) {
-					alert("upload unsuccess data");
+					alert("1upload unsuccess data");
 				}
 			})
 		} 
@@ -1838,9 +1994,9 @@ function mySearchPlaylist(){
 		
 		
 		//create playlist
-		function createPlayList(n,d,u,th,p,m,bg,c){
+		function createPlayList(n,d,u,th,p,m,bg,c,s){
 			
-			var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"true"}');
+			var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
 		   	//alert("good");
 				$.ajax({
 		           url: url+'/rest/user/profile/createplaylist',
@@ -1850,10 +2006,11 @@ function mySearchPlaylist(){
 		           data: JSON.stringify(JSONObject),
 		           success: function(data){
 		           	if(data.STATUS == true){
-		           		alert("2");
+		           		alert("created");
 			            	myClear();
+			            	mystartPlaylist();
 						}
-		           	mystartPlaylist();
+		           
 		           },
 		           error: function(data){
 		           	alert("2 unsuccess data");

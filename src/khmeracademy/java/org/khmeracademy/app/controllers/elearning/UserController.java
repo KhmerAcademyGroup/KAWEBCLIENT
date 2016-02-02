@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,16 @@ public class UserController {
 	
 	@Autowired
 	private String WebURL;
+	
+
+	@Autowired
+	private String KEY;
+	
+	@Autowired
+	private String WSURL;
+	
+	@Autowired
+	private String IMGURL;
 	
 	@RequestMapping(value="/profile" , method =  RequestMethod.GET)
 	public String playlistDetail(ModelMap m){
@@ -39,6 +50,8 @@ public class UserController {
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("userid",userid);
 	    m.addAttribute("usertype", usertype);
+	    m.addAttribute("api",IMGURL);
+	    m.addAttribute("key",KEY);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 	   
 	    
