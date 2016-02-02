@@ -4,7 +4,10 @@ import java.util.HashMap;
 
 import javax.websocket.server.PathParam;
 
+import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +41,23 @@ public class PlaylistController {
 	
 
 	@RequestMapping(value="/playlistdetail/{pid}" , method = RequestMethod.GET)
-	public String  listPlaylistDetail(@PathVariable(value="pid") String pid,ModelMap m){		 		
+	public String  listPlaylistDetail(@PathVariable(value="pid") String pid,ModelMap m){		 
+		
+		String userid = "";
+		String usertype = "";
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			userid = user.getUserId();
+			usertype = user.getUserTypeName();
+			//System.out.println("ELearningController " + user.getUsername() + " Userid " + user.getUserId());
+		}else{
+			//System.out.println(authentication.getPrincipal());
+		}
+			
+	    m.addAttribute("userid",userid);
+	    m.addAttribute("usertype", usertype);	    		
+		
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("playlistid", pid);
 		return "/elearning/playlistdetail";
@@ -51,4 +70,13 @@ public class PlaylistController {
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));		
 		return "/elearning/playlistdetail";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
