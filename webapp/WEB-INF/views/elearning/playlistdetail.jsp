@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%-- <%
-		 String playlistid = ${playlistid}}	;
-	%>  --%>
+ <%-- <%
+		 String userid = ${userid}	;
+	%>  --%> 
 	
 <jsp:include page="../shared/_header.jsp" />
 
@@ -253,7 +253,7 @@
 									href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId}}&playlist=${ playlistid }">
 									<i class="glyphicon glyphicon-play icon-plus"></i>
 								</a>
-								{{if userId == "MQ=="}}   
+								{{if userId == "${userid}"}}   
 								 <a style="cursor:pointer"
 									 class="btnremovevideofromplaylist" vid="{{= videoId}}">
 									<i class="glyphicon glyphicon-remove-sign "
@@ -295,9 +295,10 @@
 
 	<script type="text/javascript">	
 		var playlistId="${playlistid}";
-		var page = 1;		  		
+		var userid ="${userid}"; 
+		var page = 1;		 		
   		var pageVideoUser=1;	
-  		var userid= "MQ==";
+  		//var userid= "MQ==";
   		var empty_video_inplaylist="<div class='alert alert-success fade in alert-dismissable'>"
 				+"<button type='button' class='close' data-dismiss='alert'"
 			+"aria-hidden='true'>x</button>"
@@ -345,7 +346,7 @@
 				/* ========listVideoUser=========     			
     			url:rest/elearning/listvideouser/
     			*/
-				listVideo.listUserVideo  = function(userid,pageVideoUser){		  					  				  		
+				listVideo.listUserVideo  = function(userid,pageVideoUser){		  	    				    			
 		  			 $.ajax({ 
 		  				url : "${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page="+pageVideoUser+"&item=4",
     				    type: 'GET',
@@ -353,14 +354,14 @@
     	                    xhr.setRequestHeader("Accept", "application/json");
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
-    				    success: function(data) {     				    	
-    				    	allVideoJson = data.RES_DATA;
-    				    	$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?page=1&item=1000",function(data){
-    				    		
-    				    		$("#getYourVideo").html(listVideo.createVideoContent(allVideoJson,data.RES_DATA)); 	
-    				    	});
+    				    success: function(data) {
+    				    	if(data.RES_DATA != null){
+    				    	allVideoJson = data.RES_DATA;    				    	
+    				    	$.get("${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?page=1&item=1000",function(data){    				    		
+    				    		$("#getYourVideo").html(listVideo.createVideoContent(allVideoJson,data.RES_DATA));    				    		    				    	
+    				    	});    				    	
     				    	
-    				    },
+    				    }},
     	                error:function(data,status,er) { 
     				        console.log("error: "+data+" status: "+status+" er:"+er);
     				    }
@@ -509,7 +510,7 @@
     				
     				listVideo.loadPagination_User_Video= function(){
         				num=1;
-        				var userid="MQ==";
+        				/* var userid="MQ=="; */
         				var total=$("#getTotalVideoSearch").text();
         				$.get("${pageContext.request.contextPath}/rest/elearning/listvideouser/"+userid+"?page=1&item=4",        						
     	    					function(data){
@@ -545,7 +546,7 @@
     			$("#btn-popup-add").click(function(){  
     				/* listVideo.listAllVideo(1); */
     				listVideo.Listall(1);
-    				listVideo.listUserVideo("MQ==",1);      
+    				listVideo.listUserVideo(userid,1);      
     				listVideo.loadPagination_All_Video();
     				listVideo.loadPagination_User_Video();
     				
