@@ -21,7 +21,6 @@ public class UserController {
 	@Autowired
 	private String WebURL;
 	
-
 	@Autowired
 	private String KEY;
 	
@@ -51,6 +50,7 @@ public class UserController {
 	    m.addAttribute("userid",userid);
 	    m.addAttribute("usertype", usertype);
 	    m.addAttribute("api",IMGURL);
+	    m.addAttribute("api_url",WSURL);
 	    m.addAttribute("key",KEY);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 	   

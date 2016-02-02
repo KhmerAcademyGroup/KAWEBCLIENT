@@ -450,19 +450,20 @@
 														<span class="button b-close"><span>×</span></span>
 													</button>
 												  <div class="form-group">
-													<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
+													<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
 												  </div>
 												
 												
 												  <div class="form-group">
 													<label for="exampleInputEmail1">Playlist name</label>
-														<input type="text" class="form-control" name="listname" id="listname" placeholder="">
-													<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
+														<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
+														<small id="checklistname" class="msg" style="color:red"></small>
 												  </div>
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Description</label>
-														<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
-														<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
+														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
 												 </div>
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Category</label>
@@ -487,7 +488,7 @@
 																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
 																<input type="file" id="file"   name="file">
 																<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-																<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+																<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 															  </div>
 															</div>
 															
@@ -498,7 +499,7 @@
 												  </c:if>
 														 
 														
-														 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
+														 	<input type="submit" id="btncreate"  value="Save" class="btn btn-success">
 															<input type="button"  value="Close" class="btn btn-success b-close">	
 															</form>
 														</div>
@@ -731,12 +732,8 @@
 		var usertype="<%= request.getAttribute("usertype") %>";
 		var key ="<%= request.getAttribute("key") %>";
 		var api = "<%= request.getAttribute("api") %>";
-		//alert(key);
-		//var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
-		//var api = "http://localhost:8181/KAAPI";
-		//var userid="MQ==";
-		//var usertype="Admin";
-		//alert(userid);
+		var api_url = "<%= request.getAttribute("api_url") %>";
+		
 		 //my choice what list or search
 		 function chooseHistory(){
 			var key =$("#searchHistory").val();
@@ -747,6 +744,7 @@
 				mySearchHistory();
 			}
 		} 
+		 //mystartPlaylist();
 		 userPlaylist();
 		mystart();
 		function mystart(){
@@ -926,7 +924,7 @@
 		} 
 		
 		function removeAllHistory(uid){
-			alert(uid);
+			//alert(uid);
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/removeallhistory/'+uid,
 				       type:'delete',
@@ -1157,7 +1155,7 @@
 		}
 	} 
 	
-	mystartPlaylist();
+	 mystartPlaylist();
 	function mystartPlaylist(){
 		limitplaylist=$("#limitPlaylist").val();
 		//alert(limitv);
@@ -1266,7 +1264,7 @@ function listPlaylistDetail(data){
 					+"<div class='the-box no-margin no-border item-des'>"
 						+"<div class='row'>"
 						+"<div class='col-xs-12'>"
-						+"<p class='text-danger'><strong class='text-black'>programe</strong></p>"
+						+"<p class='text-danger'><strong class='text-black'>"+data.RES_DATA[i].playlistName+"</strong></p>"
 						+"</div>"
 						+"</div>"
 						+"</div>"
@@ -1278,25 +1276,7 @@ function listPlaylistDetail(data){
 		
 			return str;
 	}
-function viewPlayList(pid){
-	alert(pid);
-	$.ajax({
-		url: url+'/rest/user/profile/viewplaylist/'+pid,
-        type: 'get',
-        contentType: 'application/json;charset=utf-8',
-        //data: JSON.stringify(JSONObject),
-        success: function(data){
-        	//alert(data.RES_DATA.length);
-        	if(data.STATUS == true){
-        		
-        	}
-        	
-        },
-        error: function(data){
-        	alert("view playlist unseccess data");
-        }
-    });	
-}
+
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
 	var characterReg = /^[a-zA-Z0-9-_.]+$/;
@@ -1485,7 +1465,8 @@ function mySearchPlaylist(){
 	            				str += " <option value='"+data.RESP_DATA[i].universityId+"' selected>"+data.RESP_DATA[i].universityName+"</option>";
 	            			}
 	    					str += " <option value='"+data.RESP_DATA[i].universityId+"'>"+data.RESP_DATA[i].universityName+"</option>";
-	    				}
+	    				
+	            		}
 	            		
 	            		$("#university").html(str);
 	            		
@@ -1837,6 +1818,7 @@ function mySearchPlaylist(){
 			$("#videourl").val("");
 			$("#fileurl").val("");
 			$("#videodescription").val("");
+			$("#removeimage").click();
 		}
 		
 		//*******************validation upload vidoe************************
@@ -1912,9 +1894,9 @@ function mySearchPlaylist(){
 			 publicview=true;
 			 thumnial ="mcgBfVSTKqo";
 			 color=$("#color").val();
-			 var img="/resources/uploads/user/avatar.jpg";
-			//img=$("#file").val();
-			//oimg=$("#oimg").val();
+			 //var img="/resources/uploads/user/avatar.jpg";
+			img=$("#file").val();
+			oimg=$("#oimg").val();
 		}else{
 			status =false;
 			 publicview=false;
@@ -1927,43 +1909,29 @@ function mySearchPlaylist(){
 		
 		 //create playlist no image ->well
 		 if(img =="" && oimg ==""){
-			alert("user1");
+			//alert("insert no image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+				
 			var img="/resources/uploads/user/avatar.jpg";
 			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
+			}
 		}  
 		
 		//idrect update
 		else if(img =="" && oimg.length !== 0 ){
-			alert("direct update with new image");
-			//updateProcess(id,t,d,e,u,o_img);
+			//alert("direct update");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+			updateProcess(playname,playdescription,userid,thumnial,publicview,category,oimg,color,status);
+			//updateProcess(n,d,u,th,p,m,bg,c,s);
+			}
 		}
 		//insert image and update
 		else if(img.length !== 0 && oimg.length !== 0 ){
-			alert("update with new image");
-			 $.ajax({
-					type : "POST",
-					url : url+'/rest/user/profile/imageupload/playlist',
-					enctype : 'multipart/form-data',
-					data : new FormData(document.getElementById("formcreateplaylist")),
-					processData : false, 
-					contentType : false, 
-					success : function(data) {
-						if(data.STATUS ==true){
-							alert(data.IMG);
-							updateProcess(id,t,d,e,u,data.ART_IMG);
-						}
-					},
-					error : function(data) {
-						alert("0 unsuccess data");
-					}
-				});
-		} 
-		//insert with image
-		 else {
-			alert("insert with image");
+			//alert("update with new image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
 			$.ajax({
 				type : "POST",
-				url : 'http://localhost:8181/KAAPI/api/uploadfile/upload?url=playlist',
+				url : api_url+'/uploadfile/upload?url=playlist',
 				enctype : 'multipart/form-data',
 				data : new FormData(document.getElementById("formcreateplaylist")),
 				processData : false, // tell jQuery not to process the data
@@ -1973,18 +1941,45 @@ function mySearchPlaylist(){
 					},
 				success : function(data) {
 					if(data.STATUS == true){
-					alert("image was upload");
-						alert(data.IMG);
-						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
-					}else{
-						alert("upload unsuccess data");
+						//alert("image was upload");
+						//alert(data.IMG);
+						updateProcess(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
 					}
 			
 				},
 				error : function(data) {
 					alert("1upload unsuccess data");
 				}
-			})
+			});
+			}
+		} 
+		//insert with image
+		 else {
+			//alert("insert with image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+			$.ajax({
+				type : "POST",
+				url : api_url+'/uploadfile/upload?url=playlist',
+				enctype : 'multipart/form-data',
+				data : new FormData(document.getElementById("formcreateplaylist")),
+				processData : false, // tell jQuery not to process the data
+				contentType : false, // tell jQuery not to set contentType
+				 headers : {
+						"Authorization" : "Basic "+key
+					},
+				success : function(data) {
+					if(data.STATUS == true){
+						//alert("image was upload");
+						//alert(data.IMG);
+						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
+					}
+			
+				},
+				error : function(data) {
+					alert("1upload unsuccess data");
+				}
+			});
+			}
 		} 
 
 		
@@ -1994,45 +1989,154 @@ function mySearchPlaylist(){
 		
 		
 		//create playlist
-		function createPlayList(n,d,u,th,p,m,bg,c,s){
-			
-			var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
-		   	//alert("good");
-				$.ajax({
-		           url: url+'/rest/user/profile/createplaylist',
-		           type: 'post',
-		          //contentType:false,
-		           contentType: 'application/json;charset=utf-8',
-		           data: JSON.stringify(JSONObject),
-		           success: function(data){
-		           	if(data.STATUS == true){
-		           		alert("created");
-			            	myClear();
-			            	mystartPlaylist();
-						}
-		           
-		           },
-		           error: function(data){
-		           	alert("2 unsuccess data");
-		           }
-		       });	    	
-			}
+			function createPlayList(n,d,u,th,p,m,bg,c,s){
+				//alert(n +"  "+ d+"  "+u+"  "+th+"  "+p+"  "+m+"  "+bg+"  "+c+"  "+s);
+				var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
+			   	//alert("good");
+					$.ajax({
+			           url: url+'/rest/user/profile/createplaylist',
+			           type: 'post',
+			          //contentType:false,
+			           contentType: 'application/json;charset=utf-8',
+			           data: JSON.stringify(JSONObject),
+			           success: function(data){
+			           	if(data.STATUS == true){
+			           		//alert("created");
+				            	myClear();
+				            	mystartPlaylist();
+							}
+			           
+			           },
+			           error: function(data){
+			           	alert("creation unsuccess data");
+			           }
+			       });	    	
+				}
 		
+		
+		
+		function viewPlayList(pid){
+			//alert(pid);
+			$.ajax({
+				url: url+'/rest/user/profile/viewplaylist/'+pid,
+		        type: 'get',
+		        contentType: 'application/json;charset=utf-8',
+		        //data: JSON.stringify(JSONObject),
+		        success: function(data){
+		        	//alert(data.RES_DATA.length);
+		        	if(data.STATUS == true){
+		        		listCategoryUpdate(data.USERPLAYLIST.maincategory)
+		        		//alert(data.USERPLAYLIST.playlistName);
+		        		$("#listid").val(data.USERPLAYLIST.playlistId);
+		        		$("#listname").val(data.USERPLAYLIST.playlistName);
+		        		$("#playlistdescription").val(data.USERPLAYLIST.description);
+		        		
+		        		$("#color").val(data.USERPLAYLIST.color);
+		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
+		        		
+		        	}
+		        	
+		        },
+		        error: function(data){
+		        	alert("view playlist unseccess data");
+		        }
+		    });	
+		}
+		
+function listCategoryUpdate(cid){
+		//alert(cid);	
+	    	 $.ajax({
+	    		url: url+'/rest/user/profile/listcategory',
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		var str="";
+	            		for(var i=0; i<data.RES_DATA.length ; i++){
+	            			
+							 if( data.RES_DATA[i].mainCategoryId == cid  & cid !=null){
+								str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' selected>"+data.RES_DATA[i].mainCategoryName+"</option>";
+	            			} 
+							 str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' >"+data.RES_DATA[i].mainCategoryName+"</option>";
+	    				
+	            		}
+	            		
+	            		$("#playlistcategory").html(str);
+	            		
+	            	}
+	            	
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });     	
+	     
+		}
+//update process
+function updateProcess(n,d,u,th,p,m,bg,c,s){
+	 var pid = $("#listid").val();
+	 var JSONObject = $.parseJSON('{"playlistId":"'+pid+'","playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
+   	
+		$.ajax({
+           url: url+"/rest/user/profile/updateplaylist",
+           type: 'put',
+           contentType: 'application/json;charset=utf-8',
+           data: JSON.stringify(JSONObject),
+           success: function(data){
+        	   if(data.STATUS == true){
+        		   myClear();
+        		   $("#listid").val("");
+        		   mystartPlaylist();
+        	   }
+           	
+           },
+           error: function(data){
+           	alert("update unsuccess data");
+           }
+       });	     	
+	} 
 		function myClear() {
-		
+			$("#listid").val("");
 			$("#listname").val("");
 			$("#playlistdescription").val("");
 			$("#playlistcategory").val("");
-			$("#color").val("");
+			$("#color").val("FFFFFF");
 			$("#file").click();
 			$("#oimg").val("");
 		}
 		
+		///////validation create and update playlist///////////
+		function validatPlaylistname(){
+			var name= $("#listname").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#listname").css("border", "solid 1px red");
+			    	$("#checklistname").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#listname").css("border", "solid 1px green");
+			    	$("#checklistname").text("");
+			    		return true;
+			    }
+		}
 		
-		
-		
-		
-		
+		function validatPlaylistnameDes(){
+			var name= $("#playlistdescription").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#playlistdescription").css("border", "solid 1px red");
+			    	$("#checkplaylistdescription").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#playlistdescription").css("border", "solid 1px green");
+			    	$("#checkplaylistdescription").text("");
+			    		return true;
+			    }
+		}
 		
 		
 		

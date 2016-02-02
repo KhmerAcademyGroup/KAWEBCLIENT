@@ -50,12 +50,7 @@
 	        <!-- Sidebar -->
 	        <div id="sidebar-wrapper">
 	        	<br />
-	        	<div style="padding:0px 5px;">
-	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
-	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:50px;height:50px; margin: 0 auto; border:3px solid #e0e0e0;" />
-	        		<span>${data_user_username }</span>
-	        	</div>
-	        	</div>
+	        	
 	        	<!-- History -->
 	        		<div style="padding:5px 5px;">
 	        		<div class="panel panel-primary">
@@ -166,7 +161,7 @@
 									<div class="the-box no-border store-list">
 									 <div class="media">
 			                            <a class="pull-left" >
-			                            <img class="media-object img-circle" ng-src="${pageContext.request.contextPath}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
+			                            <img class="media-object img-circle" ng-src="${IMGURL}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
 			                            <div class="clearfix visible-xs"></div>
 			                            <div class="media-body">
 			                                <a href="#"></a>
@@ -385,7 +380,8 @@
 		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
-		<script>var URL="${pageContext.request.contextPath}"</script>
+		<script>var URL="${pageContext.request.contextPath}";</script>
+		<script>var IMGURL="${IMGURL}";</script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/playlist.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/script/comments.js"></script>
 		

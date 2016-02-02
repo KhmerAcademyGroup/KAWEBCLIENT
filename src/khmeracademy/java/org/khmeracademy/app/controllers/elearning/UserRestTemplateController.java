@@ -7,6 +7,7 @@ import org.eclipse.jdt.internal.compiler.batch.FileSystem;
 import org.khmeracademy.app.entities.Video;
 import org.khmeracademy.app.entities.input.FrmChangePassword;
 import org.khmeracademy.app.entities.input.FrmCreatePlaylist;
+import org.khmeracademy.app.entities.input.FrmUpdatePlaylist;
 import org.khmeracademy.app.entities.input.FrmUpdateUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -123,6 +124,8 @@ public class UserRestTemplateController {
 	
 	
 	//playlist
+	
+	
 		@RequestMapping(value="/rest/user/profile/listuserplaylist/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> listUserPlaylist(@PathVariable("uid") String uid
 											, @RequestParam(value = "page", required = false , defaultValue="1") int page 
@@ -176,6 +179,17 @@ public class UserRestTemplateController {
 			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/createplaylist", HttpMethod.POST , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
+		
+		
+
+		@RequestMapping(value="/rest/user/profile/updateplaylist" , method = RequestMethod.PUT)
+		public ResponseEntity<Map<String , Object>> updatePlayList(@RequestBody FrmUpdatePlaylist user){
+			HttpEntity<Object> request = new HttpEntity<Object>(user,header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/updatePlayList", HttpMethod.PUT , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		
 		
 		///////////////profile                                                                           
 		@RequestMapping(value="/rest/user/profile/userprofile/{uid}" , method = RequestMethod.GET)
