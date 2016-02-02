@@ -76,6 +76,7 @@
 									<th>Name</th>
 									<th>Gender</th>
 									<th>Email</th>
+									<th>University</th>
 									<th>Role</th>
 									<th>Action</th>
 								</tr>
@@ -258,10 +259,11 @@
 				<td>{{= username}}</td>
 				<td>{{= gender}}</td>
 				<td>{{= email}}</td>
-				<td>{{= userTypeName}}</td>
-				<td> 
-   		 			<select data-uid="{{= userId}}" data-tid="{{= userTypeId}}" id="utypeid{{= NO}}" class="form-control usertype" tabindex="2">
+				<td>{{= universityName}}</td>
+				<td><select data-uid="{{= userId}}" data-tid="{{= userTypeId}}" id="utypeid{{= NO}}" class="form-control usertype" tabindex="2">
 					</select>
+				</td>
+				<td>    		 			
             		<i data-cateid="{{= userId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
          		</td>
 			</tr>
@@ -302,7 +304,7 @@
 				    success: function(data) { 
 				    	
 				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
-				    	return; */  
+				    	return;    */
 						console.log(data);
 				    	
 				    	var perPage = 20;
@@ -320,6 +322,8 @@
 							
 							//set onchange event to class usertype after the element of class usertype
 							$(".usertype").change(changeusertype); 
+							
+							matchutype($(".usertype"));
 							
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
@@ -405,6 +409,7 @@
 				 
 				 //to restart pagination again
 				 check = true;
+				 gPage = 1;
 				 user.searchuser(1);
 			}); 
 			
@@ -474,8 +479,7 @@
 		
 		//match user type with select option
 		function matchutype(allselect){
-			
-			
+		
 			var numselect = allselect.length;
 			//var utype = $(this).data("tid");
 			var utype;
@@ -498,8 +502,7 @@
 					if($(allselect[i][j]).val()=== utype){
 						$(allselect[i][j]).attr('selected','selected');
 					}
-			}
-			
+			}			
 		}
 				
 		

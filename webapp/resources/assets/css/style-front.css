@@ -122,7 +122,7 @@ NAVBAR
 }
 .top-navbar.shrink-nav ul.menus li.parent a{
 	height: 60px;
-	padding: 21px 25px;
+	padding: 21px 13px;
 }
 .top-navbar.shrink-nav ul.menus li.parent.right-icon .fa{
 	height: 60px;
@@ -307,7 +307,7 @@ NAVBAR
 .top-navbar ul.menus li.parent a{
 	display: block;
 	height: 80px;
-	padding: 31px 25px;
+	padding: 31px 13px;
 	font-size: 13px;
 	color: #fff;
 	color: rgba(255,255,255,0.85);

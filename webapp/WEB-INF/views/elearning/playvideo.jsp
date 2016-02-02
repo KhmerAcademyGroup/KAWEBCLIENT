@@ -52,9 +52,8 @@
 	        	<br />
 	        	<div style="padding:0px 5px;">
 	        	<div class="text-center" style="padding:20px 5px; color:#fff; background:#909090;">
-	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:100px;height:100px; margin:0 auto; border:5px solid #e0e0e0;" />
-	        		<br />
-	        		<h4>${data_user_username }</h4>
+	        		<img alt="user image" src="${pageContext.request.contextPath}/${data_user_image}" class="img img-responsive img-circle" style="width:50px;height:50px; margin: 0 auto; border:3px solid #e0e0e0;" />
+	        		<span>${data_user_username }</span>
 	        	</div>
 	        	</div>
 	        	<!-- History -->
@@ -145,7 +144,7 @@
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
-	            			<input type="hidden" value="{{LOGID}}" id="hiddenVideoId" />
+	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
 	            			<br />
 	            
 	            
@@ -206,12 +205,6 @@
 												  </ul>
 											</div>
 											
-											<!-- <div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
-											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-												<i class="fa fa-download"></i> Download 
-											  </a>
-											</div> -->
-											
 											
 										</li>
 									</ul>
@@ -222,7 +215,6 @@
 								<hr class="hr-style-one">
 									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
 									
-									<!-- <div class="pull-right"><div class="rw-ui-container"></div></div><br> -->
 									<div class="pull-right">
 										<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
 										  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
@@ -252,7 +244,7 @@
 										</div>
 										<div class="form-group">
 									
-										<button type="submit" class="btn btn-primary"  >Submit comment</button>
+										<button type="submit" class="btn btn-primary">Submit comment</button>
 										
 										</div>
 									</form>
@@ -399,39 +391,6 @@
 		
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5291b47f21c49656" async="async"></script>
 		
-		<!-- <script type="text/javascript">(function(d, t, e, m){
-			//	if (RW && RW.initRating) return;
-		
-		    // Async Rating-Widget initialization.
-		    window.RW_Async_Init = function(){
-		                
-		        RW.init({
-		            huid: "221456",
-		            uid: "0c7735d3de292b0250869c1816826be2",
-		            source: "website",
-		            options: {
-		                "size": "medium",
-		                "style": "oxygen",
-		                "forceSync": false
-		            } 
-		        });
-		        RW.render();
-		    };
-		        // Append Rating-Widget JavaScript library.
-		    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
-		        l = d.location, ck = "Y" + t.getFullYear() + 
-		        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
-		        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-		        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-		    if (d.getElementById(id)) return;              
-		    rw = d.createElement(e);
-		    rw.id = id; rw.async = true; rw.type = "text/javascript";
-		    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-		    s.parentNode.insertBefore(rw, s);
-		    }(document, new Date(), "script", "rating-widget.com/"));
-		</script> -->
-		
-		
 		<script>
 			var app = angular.module('myApp', ['ngSanitize']);
 			app.controller('myController', function($scope, $http, $sce) {
@@ -453,7 +412,12 @@
 				
 				function loadVideo(vid){
 					$http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ vid).then(function(response) {
-						if(response.data.STATUS == false) window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						if(response.data.STATUS == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
+						if(response.data.VIDEO.status == false){
+							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						}
 				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
@@ -527,12 +491,15 @@
 			}
 			
 			function stopWatch(){
-				var logid = $("#hiddenVideoId").val();
-				$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
-					if(data.STATUS){
-						console.log("Stop watch video log id = " + logid);
-					}
-			    });
+				var logid = $("#hiddenLogId").val();
+				if(logid !="" && logid!=null){
+					$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
+						if(data.STATUS){
+							console.log("Stop watch video log id = " + logid);
+						}
+				    });
+				}
+				
 			}
 			
 			function getVoteVideo(vid){
@@ -624,7 +591,7 @@
 			});
 
 			$(window).unload(function(){
-				stopWatch();
+				stopWatch();	
 		    });
 		    
 		</script>

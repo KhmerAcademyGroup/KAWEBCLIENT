@@ -1,6 +1,8 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,6 +11,8 @@
 	</head>
  
 	<body class="tooltips no-padding">
+		
+		
 		
 		<!--
 		===========================================================
@@ -25,11 +29,11 @@
 		
 		<div class="container ka-container" >
 		
-			
+		
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
 				  <li><a href="#fakelink">Users</a></li>
-				  <li><a href="#fakelink">Ask Question</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
 				</ol>
 				
 			<h2 class="page-title">Ask Question </h2>
@@ -54,13 +58,14 @@
 												<div class="row">
 													<div class="col-sm-12">
 														
-														<form class="form-horizontal" id="frmPostQuestion">
+														<form action="#" class="form-horizontal" id="frmPostQuestion">
 					
 															<div class="form-group ">
 																<label class="col-lg-1 control-label">Title</label>
 																<div>
 																	<div class="col-lg-11">
 																		<input type="text" name="title" id="title" class="form-control"   >
+																		<small id="msgTitle" class="help-block" style="color:red;display:none">The title must be more than 20 characters long!</small>
 																	</div>
 																</div>
 															</div>
@@ -68,20 +73,13 @@
 															<div class="form-group">
 																<label class="col-lg-1 control-label">Category</label>
 																<div class="col-lg-11 ">
-																	<select name="category" data-placeholder="Choose a Country..." class="form-control chosen-select" tabindex="2">
+																	<select name="category" id="category" data-placeholder="Choose a Country..." class="form-control chosen-select" tabindex="2">
 																		<option value="Empty">&nbsp;</option>
-																		<option value="United States">United States</option>
-																		<option value="United Kingdom">United Kingdom</option>
-																		<option value="Afghanistan">Afghanistan</option>
-																		<option value="Aland Islands">Aland Islands</option>
-																		<option value="Albania">Albania</option>
-																		<option value="Algeria">Algeria</option>
-																		<option value="American Samoa">American Samoa</option>
-																		<option value="Andorra">Andorra</option>
-																		<option value="Angola">Angola</option>
-																		<option value="Anguilla">Anguilla</option>
-																		<option value="Antarctica">Antarctica</option>
+																		<c:forEach var="category" items="${categoryAndTags.CATEGORY}">
+																		    <option value="${category.categoryId}">${category.categoryName}</option>
+																		</c:forEach>
 																	</select>
+																	<small id="msgCategory" class="help-block" style="color:red;display:none">Please select a category!</small>
 
 																</div>
 															</div>
@@ -92,7 +90,9 @@
 																	<textarea class="summernote" name="detail" id="detail" >
 																	
 																	</textarea>
+																	<small id="msgDetail" class="help-block" style="color:red;display:none">The detail is required and can't be empty, and the detail must be more than 30 characters long</small>
 																</div>
+																
 															</div>
 															
 															
@@ -100,19 +100,19 @@
 															<div class="form-group ">
 																<label class="col-lg-1 control-label">Tags</label>
 																<div class="col-lg-11">
-																	<select id="tag" data-placeholder="Choose a Country..." class="form-control chosen-select" multiple tabindex="4">
+																	<select id="tags" name="tags" data-placeholder="Choose a Country..." class="form-control chosen-select" multiple tabindex="4">
 																		<option value="Empty">&nbsp;</option>
-																		<option value="United States">United States</option>
-																		<option value="United Kingdom">United Kingdom</option>
-																		<option value="Afghanistan">Afghanistan</option>
-																		<option value="Aland Islands">Aland Islands</option>
-																		<option value="Albania">Albania</option>
-																		<option value="Algeria">Algeria</option>
-																		<option value="American Samoa">American Samoa</option>
-																		<option value="Andorra">Andorra</option>
-																		<option value="Angola">Angola</option>
-																		<option value="Anguilla">Anguilla</option>
+																		
+																		<c:set var="tags" value="${categoryAndTags.TAGS}"/>
+																		<c:set var="tagReplce1" value="${fn:replace(tags, '[', '')} " />
+																		<c:set var="tagReplce2" value="${fn:replace(tagReplce1, ']', '')} " />
+																		<c:set var="getTag" value="${fn:split(tagReplce2, ',')}" />
+																		<c:forEach var="tag" items="${getTag}">
+																		    <option value="${tag}">${tag}</option>
+																		</c:forEach>
+																		
 																	</select>
+																	<small id="msgTags" class="help-block" style="color:red;display:none">Please choose at least one tag!</small>
 																</div>
 															</div>
 					
@@ -120,14 +120,15 @@
 																<div class="col-lg-5 col-lg-offset-1">
 																	<div class="checkbox">
 																	  <label>
-																		<input name="acceptTerms" type="checkbox" value=""> Accept the terms and policies </label>
+																		<input id="acceptTerms" name="acceptTerms" type="checkbox" value=""> Accept the terms and policies </label>
+																     	<small id="msgAcceptTerms" class="help-block" style="color:red;display:none">Please accept the terms and policies!</small>
 																	</div>
 																</div>
 															</div>
 					
 															<div class="form-group">
 																<div class="col-lg-9 col-lg-offset-1">
-																	<button class="btn btn-primary" type="submit" id="btnask">Post Question</button>
+																	<button class="btn btn-primary" type="submit" id="btPostQuestion">Post Question</button>
 																</div>
 															</div>
 														</form>
@@ -216,31 +217,79 @@
 		});
 	</script>
 		
-		 <script id="related_question_tmpl" type="text/x-jquery-tmpl">
-				<li class="media" style="margin: 0px 0;">
-									<div class="media-body">
-										<p class="text-info">
-											<a href="#fakelink" style="color: #3BAFDA;">
-											{{= title }}
-											</a>
-										</p>
-										<p class="small">{{= vote }} Votes | Asked June 05, 2014</p>
-									</div>
-				</li>
-		</script>
-		 
-
+		
 		<script type="text/javascript">
 		
-			  var question = "";
-			  var answer = "";
-			  var selectedAnswer = "";
-		
-			  var page = 1;
-		  	  var totalPage = 0;
 		  		
 			  $(document).ready(function(){
-				
+				  
+				  question = {};
+				    
+				  	/* Post Question */
+	  				question.postQuestion = function(data){
+	  					KA.createProgressBar();
+	  					$.ajax({ 
+		    				    url: "${pageContext.request.contextPath}/rest/forum/question/ask",  
+		    				    type: 'POST',
+		    				    data: JSON.stringify(data), 
+		    				    beforeSend: function(xhr) {
+		    	                    xhr.setRequestHeader("Accept", "application/json");
+		    	                    xhr.setRequestHeader("Content-Type", "application/json");
+		    	                },
+		    				    success: function(data) {  
+		    				    	console.log(data);
+		    				    	KA.destroyProgressBar();
+		    				    },
+		    				    error:function(data) { 
+		    				        console.log(data);
+		    				    }
+		    				});
+				  	};
+				  
+					$("#frmPostQuestion").submit(function(e){
+						e.preventDefault();	
+						var items = [];
+						$('#tags option:selected').each(function(){ items.push($(this).val()); });
+						var result = items.join(', ');	
+						if($("#title").val().length < 20){
+							$("#msgTitle").show().fadeOut(10000);
+							return;
+						}
+						else if($("#category").val() == "Empty"){
+							$("#msgCategory").show().fadeOut(10000);
+							return;
+						}
+						else if(    $(".summernote").code().trim() == ''  
+								   || $(".summernote").code().replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").replace(' ', '').length	< 30){
+	    					//console.log("Answer must be at least 30 characters. You entered " + $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length);
+							$("#msgDetail").show().fadeOut(10000);
+	    					return;
+						}
+						else if(items.length < 1){
+							$("#msgTags").show().fadeOut(10000);
+							return;
+						}
+						
+						if(!$('#acceptTerms').is(":checked")){
+							$("#msgAcceptTerms").show().fadeOut(10000);
+							return;
+						}
+						
+						console.log("tags " + result );
+						
+						jsonData = {
+							"title": $("#title").val(),
+						  	"detail": $(".summernote").code(),
+						  	"tags": result,
+						  	"categoryId": $("#category").val(),
+						  	"userId": "${userId}"
+						};
+						question.postQuestion(jsonData); 
+						$("#p-success").bPopup({modalClose: false});
+						setTimeout(function(){
+							location.href = "${pageContext.request.contextPath}/forum";
+						}, 2000 );
+					});
 			  });
 	    		
 			  
@@ -266,8 +315,17 @@
 				    });
 				}
 		</script>	
+    	
     			
-    			
+    	<div id="p-success" class="ka-popup" style="display: none;width: 50%;">
+			<div class="alert alert-success alert-block fade in alert-dismissable">
+								  <button type="button" class="close" aria-hidden="true">
+									<span class="button b-close"><span>x</span></span>
+								</button>
+								  Your question has been posted in KhmerAcademy Forum.
+			</div>		
+		</div>
+				
 	</body>
 </html>
 							

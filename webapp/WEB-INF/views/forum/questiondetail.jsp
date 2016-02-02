@@ -553,33 +553,32 @@
 		    				    }
 		    				});
 		    			
-		    			
-		    				/* Post Answer */
-		    				questionDetail.postAnswer = function(data){
-		    					 KA.createProgressBar();
-		    					$.ajax({ 
-			    				    url: "${pageContext.request.contextPath}/rest/forum/answer",  
-			    				    type: 'POST',
-			    				    data: JSON.stringify(data), 
-			    				    beforeSend: function(xhr) {
-			    	                    xhr.setRequestHeader("Accept", "application/json");
-			    	                    xhr.setRequestHeader("Content-Type", "application/json");
-			    	                },
-			    				    success: function(data) {  
-			    				    	$("#getAnswers").empty();
-			    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
-			    				    	console.log(data);
-			    				    	KA.destroyProgressBar();
-			    				    },
-			    				    error:function(data) { 
-			    				        console.log(data);
-			    				    }
-			    				});
-		    				};
-		    			
 	    			};
 	    			
 	    			
+	    			/* Post Answer */
+    				questionDetail.postAnswer = function(data){
+    					 KA.createProgressBar();
+    					$.ajax({ 
+	    				    url: "${pageContext.request.contextPath}/rest/forum/answer",  
+	    				    type: 'POST',
+	    				    data: JSON.stringify(data), 
+	    				    beforeSend: function(xhr) {
+	    	                    xhr.setRequestHeader("Accept", "application/json");
+	    	                    xhr.setRequestHeader("Content-Type", "application/json");
+	    	                },
+	    				    success: function(data) {  
+	    				    	$("#getAnswers").empty();
+	    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
+	    				    	console.log(data);
+	    				    	KA.destroyProgressBar();
+	    				    },
+	    				    error:function(data) { 
+	    				        console.log(data);
+	    				    }
+	    				});
+    				};
+    				
 	    			questionDetail.getQuestionByQuestionId("${qid}");
 	    			questionDetail.getSelectedAnswer("${qid}");
 	    			questionDetail.getAnswerByQuestionId("${qid}",1);

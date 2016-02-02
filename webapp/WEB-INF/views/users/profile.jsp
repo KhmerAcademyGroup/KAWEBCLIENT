@@ -731,7 +731,7 @@
 		var usertype="<%= request.getAttribute("usertype") %>";
 		var key ="<%= request.getAttribute("key") %>";
 		var api = "<%= request.getAttribute("api") %>";
-		alert(api);
+		//alert(api);
 		//var key ="S0FBUEkhQCMkOiFAIyRLQUFQSQ==";
 		//var api = "http://localhost:8181/KAAPI";
 		//var userid="MQ==";

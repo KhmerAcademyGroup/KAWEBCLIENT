@@ -169,7 +169,7 @@ public class UserRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
-		///////////////profile
+		///////////////profile                                                                           
 		@RequestMapping(value="/rest/user/profile/userprofile/{uid}" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> userProfile(@PathVariable("uid") String uid){
 			
