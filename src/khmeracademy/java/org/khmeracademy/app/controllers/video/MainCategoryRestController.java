@@ -42,7 +42,7 @@ import org.springframework.web.client.RestTemplate;
 		@RequestMapping(value="rest/video/maincategory/{id}" , method = RequestMethod.DELETE)
 		public ResponseEntity<Map<String , Object>> deleteMainCategory(@PathVariable("id") String id){
 			HttpEntity<Object> request = new HttpEntity<Object>(header);		
-			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/maincategory/getmaincategory/"+id, HttpMethod.DELETE , request , Map.class) ;
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/maincategory/"+id, HttpMethod.DELETE , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
