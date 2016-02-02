@@ -43,7 +43,7 @@
 									<i class="glyphicon glyphicon-play-circle icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
-								<img src="${pageContext.request.contextPath}/${playlist.bgImage}" alt="Img work">
+								<img src="${IMGURL}${playlist.bgImage}" alt="Img work">
 								<div class="the-box no-border transparent no-margin">
 									<p class="project-name">${playlist.playlistName}</p>
 									<p class="project-category">${playlist.maincategoryname}</p>
