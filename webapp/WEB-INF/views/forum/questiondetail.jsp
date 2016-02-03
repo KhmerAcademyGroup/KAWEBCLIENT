@@ -56,9 +56,9 @@
 												<tr>
 													<td class="vu-table-td footable-last-column text-left" style="width: 10%;">
 														<div style="font-size:20px">
-															<span data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
+															<span data-toggle="tooltip" id="likeQ" style="cursor:pointer" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
 															<br/><span id="qTotalVotes"><!-- 110 --></span><br/>
-															<span data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
+															<span data-toggle="tooltip" style="cursor: pointer;" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
 														</div>
 													</td>
 													
@@ -113,11 +113,11 @@
 												<tr>
 													<td class="vu-table-td footable-last-column text-left" style="width: 10%;">
 														<div style="font-size:20px">
-															<span data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
+															<span data-toggle="tooltip" style="cursor: pointer;"  data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
 															<br/><span id="selectedAnswerTotalVotes"><!-- 110 --></span><br/>
 															<span data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
 															<br/>
-															<span data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>
+															<span data-toggle="tooltip" style="cursor: pointer;"  data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>
 														</div>
 													</td>
 													
@@ -335,12 +335,12 @@
 				<li class="media" style="margin: 0px 0;">
 									<div class="media-body">
 										<p class="text-info">
-											<a href="#fakelink" style="color: #3BAFDA;">
+											<a href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" style="color: #3BAFDA;">
 											{{= title }}
 											</a>
 										</p>
 										<p class="small">{{= vote }} Votes | Asked June 05, 2014</p>
-									</div>
+					</div>
 				</li>
 		</script>
 		 
@@ -504,11 +504,11 @@
 																	'<tr>'+
 																		'<td class="vu-table-td footable-last-column text-left" style="width: 10%;">'+
 																			'<div style="font-size:20px">'+
-																				'<span data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>'+
+																				'<span style="cursor: pointer;" data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>'+
 																				'<br/><span id="answerTotalVotes">'+data.RESP_DATA[i].vote+'</span><br/>'+
-																				'<span data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>'+
+																				'<span style="cursor: pointer;"  data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>'+
 																				'<br/>'+
-																				'<span data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>'+
+																				'<span   data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>'+
 																			'</div>'+
 																		'</td>'+
 																		
@@ -627,6 +627,34 @@
 				    	$("#btLoadMore").hide();
 						questionDetail.getAnswerByQuestionId("${qid}",page);
     				});
+	    			
+	    			
+	    			
+	    			
+	    			/* Like Question */
+    				questionDetail.vote = function(data,type){
+    					 KA.createProgressBar();
+    					$.ajax({ 
+	    				    url: "${pageContext.request.contextPath}/rest/forum/question/vote?type="+type,  
+	    				    type: 'POST',
+	    				    data: JSON.stringify(data), 
+	    				    beforeSend: function(xhr) {
+	    	                    xhr.setRequestHeader("Accept", "application/json");
+	    	                    xhr.setRequestHeader("Content-Type", "application/json");
+	    	                },
+	    				    success: function(data) {  
+	    				    	$("#getAnswers").empty();
+	    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
+	    				    	console.log(data);
+	    				    	KA.destroyProgressBar();
+	    				    },
+	    				    error:function(data) { 
+	    				        console.log(data);
+	    				    }
+	    				});
+    				};
+    				
+    				
 	    			
 			  });	
 	    		

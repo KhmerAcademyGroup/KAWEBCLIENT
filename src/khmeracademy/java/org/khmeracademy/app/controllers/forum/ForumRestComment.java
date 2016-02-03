@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.khmeracademy.app.entities.input.FrmAddAnswer;
 import org.khmeracademy.app.entities.input.FrmAddQuestion;
+import org.khmeracademy.app.entities.input.FrmVote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -106,6 +107,25 @@ public class ForumRestComment {
 	public ResponseEntity<Map<String , Object>> postQuestion(@RequestBody FrmAddQuestion question ){
 		HttpEntity<Object> request = new HttpEntity<Object>(question,header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/addquestion" , HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	/* Vote */
+	@RequestMapping(value="/rest/forum/vote/${type}" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> vote(@RequestBody FrmVote vote , @PathVariable String type ){
+		HttpEntity<Object> request = new HttpEntity<Object>(vote,header);
+		String url = "";
+		if(type.equalsIgnoreCase("LikeQ")){
+			url = "forum/vote/likequestion";
+		}else if(type.equalsIgnoreCase("UnlikeQ")){
+			url = "forum/vote/unlikequestion";
+		}else if(type.equalsIgnoreCase("LikeA")){
+			url = "forum/vote/likeanswer";
+		}else if(type.equalsIgnoreCase("UnlikeA")){
+			url = "forum/vote/unlikeanswer";
+		}
+		System.out.println(url);
+		ResponseEntity<Map> response = rest.exchange(WSURL + url , HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
