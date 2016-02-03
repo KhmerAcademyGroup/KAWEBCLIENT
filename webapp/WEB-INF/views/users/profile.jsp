@@ -7,7 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>User Profile</title>
 	<jsp:include page="../shared/_header.jsp" />
-	
+		<!-- sweet alert -->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
 		<!-- Side Bar -->
   		<link href="${pageContext.request.contextPath}/resources/assets/css/simple-sidebar.css" rel="stylesheet" />
   		<!-- Player -->
@@ -443,7 +444,7 @@
 												
 												
 												
-												<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
+												<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;  z-index: 100;">
 													<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
 												  	<button type="button" class="close" aria-hidden="true">
@@ -456,6 +457,7 @@
 												
 												  <div class="form-group">
 													<label for="exampleInputEmail1">Playlist name</label>
+														<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
 														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
 														<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
 														<small id="checklistname" class="msg" style="color:red"></small>
@@ -487,7 +489,7 @@
 															  <div>
 																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
 																<input type="file" id="file"   name="file">
-																<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+																
 																<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 															  </div>
 															</div>
@@ -505,67 +507,7 @@
 														</div>
 												</div>
 												
-												<%-- <div id="form-update-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;">
-													<div id="form-update-playlist1" class="white-popup mfp-with-anim" style="border-radius:5px">
-												  <form action="" id="formupdatelaylist" enctype="multipart/form-data"  method="post">
-												  	<button type="button" class="close" aria-hidden="true">
-														<span class="button b-close"><span>×</span></span>
-													</button>
-												  <div class="form-group">
-													<label for="exampleInputEmail1"><h3>Create playlist</h3></label>
-												  </div>
 												
-												
-												  <div class="form-group">
-													<label for="exampleInputEmail1">Playlist name</label>
-														<input type="text" class="form-control" name="listname" id="listname" placeholder="">
-													<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-												  </div>
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Description</label>
-														<textarea class="form-control" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
-														<small class="msg" style="color:red;display:none">The file url  is required and can't be empty</small>
-												 </div>
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Category</label>
-														<select class="form-control"  id="playlistcategory">
-														</select>
-														
-														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
-												 </div>
-												  <c:set var="usertype"  value="${usertype }"/>
-												  <c:if test="${usertype == 'Admin' }">
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Color</label>
-														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
-														<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-													</div>
-												  	<div class="form-group" >
-														<label for="exampleInputEmail1">Image</label>
-														<div class="col-sm-12">
-															<div class="fileinput fileinput-new" data-provides="fileinput">
-															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
-															  <div>
-																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-																<input type="file" id="file"   name="file">
-																<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-																<a href="#" id="re_image" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-															  </div>
-															</div>
-															
-														</div>
-													</div>
-													
-													
-												  </c:if>
-														 
-														
-														 	<input type="submit" id="btncreate"  value="Create" class="btn btn-success">
-															<input type="button"  value="Close" class="btn btn-success b-close">	
-															</form>
-														</div>
-												</div> --%>						
-													
 													
 											
 
@@ -700,7 +642,7 @@
 	
 	<!-- End My Contend -->
 	 <jsp:include page="../shared/_footer.jsp" />
-	
+	<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 	 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
 	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
@@ -911,6 +853,7 @@
 				       success: function(data) { 
 				    	   	if(data.STATUS == true){
 				    	   		$('#'+id).hide();
+				    	   		
 				    	   		//alert("was remove");
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
@@ -1118,14 +1061,14 @@
 	}
 	
 	function disableVideo(vid){
-		alert(vid);
+		//alert(vid);
 			  $.ajax({  
 				 	url: url+'/rest/user/profile/disablevideo/'+vid,
 			       type:'GET',
 			       contentType: 'application/json;charset=utf-8', // type of data
 			       success: function(data) { 
 			    	   	if(data.STATUS == true){
-			    	   		alert("disable work");
+			    	   		//alert("disable work");
 			    	   		
 			    	   	}
 			    	   		//$("#showresult").html(listarticles(data));
@@ -1493,9 +1436,14 @@ function mySearchPlaylist(){
 			           data: JSON.stringify(JSONObject),
 			           success: function(data){
 			           	if(data.STATUS == true){
-			           		alert("password has been change");
+			           		//alert("");
+			           		
+			           		//swal("Password Was Changed", "It's pretty, isn't it?")
+			           		swal("Password Was Changed", "You clicked the button!", "success")
 						}else{
-							alert("Wrong Password");
+							swal("Wrong Password");
+							//alert("Wrong Password");
+							
 							//if wrong password so validation will check again
 							validatOldPass();
 							validatNewPass();
@@ -1545,7 +1493,7 @@ function mySearchPlaylist(){
 		            data: JSON.stringify(JSONObject),
 		            success: function(data){
 		            	 if(data.STATUS == true){
-			            	alert('update good');
+		            		 swal("Profile Was Update", "You clicked the button!", "success")
 						} 
 		            	
 		            },
@@ -1790,7 +1738,7 @@ function mySearchPlaylist(){
 				/* alert(fileurl);
 				alert(publicview);
 				alert(uploadvideo_category); */
-				alert(publicview);
+				//alert(publicview);
 				var JSONObject = $.parseJSON('{"videoName":"'+videoName+'","description":"'+videdescription+'", "youtubeUrl":"'+videourl+'" , "fileUrl":"'+fileurl+'","publicView":"false","userId":"'+userid+'", "status":"'+publicview+'" ,"categoryId":["'+uploadvideo_category+'"]}');
 			   	//alert("good");
 					$.ajax({
@@ -1801,7 +1749,8 @@ function mySearchPlaylist(){
 			           data: JSON.stringify(JSONObject),
 			           success: function(data){
 			           	if(data.STATUS == true){
-			           		alert("video has been upload");
+			           		//alert("video has been upload");
+			           		swal("video has been upload", "You clicked the button!", "success")
 				            	clearUpload();
 							}
 			           	mystartPlaylist();
@@ -1887,7 +1836,7 @@ function mySearchPlaylist(){
 		var oimg="";
 		var thumnial="mcgBfVSTKqo"; 
 		var status="";
-		
+		var playid = $("#listid").val();
 		
 		 if(usertype == 'Admin'){
 			 status =true;
@@ -1898,6 +1847,7 @@ function mySearchPlaylist(){
 			img=$("#file").val();
 			oimg=$("#oimg").val();
 		}else{
+			oimg=$("#oimg").val();
 			status =false;
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
@@ -2002,6 +1952,7 @@ function mySearchPlaylist(){
 			           success: function(data){
 			           	if(data.STATUS == true){
 			           		//alert("created");
+			           		//swal("Playlist Was created", "You clicked the button!", "success")
 				            	myClear();
 				            	mystartPlaylist();
 							}
@@ -2030,7 +1981,6 @@ function mySearchPlaylist(){
 		        		$("#listid").val(data.USERPLAYLIST.playlistId);
 		        		$("#listname").val(data.USERPLAYLIST.playlistName);
 		        		$("#playlistdescription").val(data.USERPLAYLIST.description);
-		        		
 		        		$("#color").val(data.USERPLAYLIST.color);
 		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
 		        		
@@ -2086,8 +2036,8 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
            data: JSON.stringify(JSONObject),
            success: function(data){
         	   if(data.STATUS == true){
+        		   //swal("Playlist Was Changed", "You clicked the button!", "success")
         		   myClear();
-        		   $("#listid").val("");
         		   mystartPlaylist();
         	   }
            	
