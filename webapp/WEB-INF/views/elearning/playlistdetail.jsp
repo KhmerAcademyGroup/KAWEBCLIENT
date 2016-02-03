@@ -65,9 +65,9 @@
 					<div class="media-body">
 						<a></a>
 						<h4 class="media-heading" style="padding: 0px; margin: 0px">
-							<a><strong class="text-black" id="playlistnameinfo"><!-- {{= playlistName}} --></strong></a>&nbsp;<span
+							<a><strong class="text-black" id="playlistnameinfo"></strong></a><!-- &nbsp;<span
 								class="label label-danger" style="font-size: 10px;"><i
-								class="fa fa-lock"></i> Private</span>
+								class="fa fa-lock"></i> Private</span> -->
 						</h4>
 						<ul style="list-style: none; padding: 0px; margin: 0px;">
 							<li><a class="text-muted small" id="usernameinfo"> </a><a class="text-muted small" id="totalvideo"> </a></li>
@@ -76,20 +76,8 @@
 					</div>
 					<!-- /.media-body -->
 					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 					
-
-						
-						<a href="#frmadd" data-backdrop="static" class="btn btn-default btn-perspective" id="btn-popup-add" data-toggle="modal" ><i class="fa fa-plus-square-o"></i>
-							Add video </a>&nbsp; &nbsp;
-						<a href="#frmup_date_playlist"
-						class="btn btn-default btn-perspective"
-						onclick="getPlaylistForUpdate(344)" data-toggle="modal"><i
-							class="fa fa-cogs"></i> Playlist settings </a> &nbsp; &nbsp;
-						<a href="#" id="btndeleteplaylist"  class="btn btn-default btn-perspective">
-							<i class="fa fa-trash-o"></i> Delete 
-						</a>
-						
-							
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
+						<span id="buttonpopup"></span>	
 					</span>
 				</div>
 		</div>
@@ -303,14 +291,25 @@
 		var userid ="${userid}"; 
 		var page = 1;		 		
   		var pageVideoUser=1;	
+  		var listVideo = {};
+  		var popupButton ="<a href='#frmadd' data-backdrop='static' class='btn btn-default btn-perspective' id='btn-popup-add' data-toggle='modal' ><i class='fa fa-plus-square-o'></i>"
+					+"	Add video </a>&nbsp; &nbsp;"
+			/* +"<a href='#frmup_date_playlist'"
+			+"	class='btn btn-default btn-perspective'"
+			+"	onclick='getPlaylistForUpdate(344)' data-toggle='modal'><i"
+			+"	class='fa fa-cogs'></i> Playlist settings </a> &nbsp; &nbsp;" */
+			+"<a href='#' id='btndeleteplaylist'  class='btn btn-default btn-perspective'>"
+			+"<i class='fa fa-trash-o'></i> Delete"
+			+"</a>";
   		//var userid= "MQ==";
   		var empty_video_inplaylist="<div class='alert alert-success fade in alert-dismissable'>"
 				+"<button type='button' class='close' data-dismiss='alert'"
 			+"aria-hidden='true'>x</button>"
 			+"<strong>No</strong>  videos in this playlist yet !"
 			+"</div>";
+			
 		$(document).ready(function(){
-			    var listVideo = {};
+			    
 			    var totalPage = 0;	
 		  		var empty = true;
 		  	    		  				 
@@ -422,7 +421,10 @@
 						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
 						$("#usernameinfo").text("by" + data.USERPLAYLIST.username +" | " );
 						$("#totalvideo").text(data.USERPLAYLIST.countVideos +"Videos")
-						$("#descriptioninfo").text(data.USERPLAYLIST.description);						 					
+						$("#descriptioninfo").text(data.USERPLAYLIST.description);	
+						if(userid == data.USERPLAYLIST.userId){
+						$("#buttonpopup").html(popupButton);
+						}
 	        			listVideo.listVideoInPlaylist(playlistId,page);
 
 					}
@@ -548,8 +550,9 @@
     			});
 				
     			    			
-    			$("#btn-popup-add").click(function(){  
-    				/* listVideo.listAllVideo(1); */
+    			
+    			$(document).on('click', "#btn-popup-add", function() {
+    				console.log("Hello fdassadfsadfsdafads");    				
     				listVideo.Listall(1);
     				listVideo.listUserVideo(userid,1);      
     				listVideo.loadPagination_All_Video();
