@@ -310,8 +310,9 @@
 						}else{
 							$("tbody#content").html('<tr>No content</tr>');
 						}
-				    	
+				    					    	
 				    	if(check){
+				    		console.log(data.PAGINATION.totalPages + " HLLOFDFD");
 							playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
 							check=false;
 				    	}
@@ -322,6 +323,56 @@
 				    }
 				});
 			};			
+			
+			
+
+			playlist.searchPlaylist = function(currentPage, item, playname){
+				
+				/* /rest/searchadminplaylist/MQ==/IOS */
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/rest/searchadminplaylist/MQ==/"+ playname +"?item="+ item + "&page=" + currentPage, 
+				    type: 'GET',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+				    	if(data.STATUS==true){
+				    						    						
+					    	perPage = item;
+					    	nextPage = (currentPage-1)*perPage;
+					    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);
+							if(data.RES_DATA.length>0){
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+								}
+								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+					    	
+							if(check){
+								playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
+								check=false;
+					    	}
+
+				    	}else{				    
+				    		$("tbody#content").html('<tr>No content</tr>');
+				    		$("#pagination").html("");
+				    		$("#totalrecord").text("Total records = 0");
+				    	}
+				    	
+				    },
+				    error:function(data,status,er) { 
+				    	
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
+			
+			
+			
 			playlist.listPlaylist(1,10);
 			
 			
@@ -344,14 +395,26 @@
    			    }).on("page", function(event, currentPage){   			    	
    			    	check = false;   			    	   			    	
    			    	gPage = currentPage;
-   			    	console.log(gPage + "=========="+currentPage);
-   			    	playlist.listPlaylist(currentPage,item);
-   			    	//if(isSearch==false) video.listVideo(currentPage, item);
-   			    	///else video.searchVideo(currentPage,item,$("#search").val());
+   			    	console.log(gPage + "=========="+currentPage);   			    	
+   			    	if($("#search").val() == "") playlist.listPlaylist(currentPage,item);
+   			    	else playlist.searchPlaylist(currentPage,item,$("#search").val());
    			    }); 
     		};
 			
-			
+    		$(document).on('keyup', "#search", function() {
+    			$("h1").html($(this).val());
+				/* if($(this).val() == ""){
+					check = false;
+					isSearch = false;
+					playlist.listPlaylist(1,10);
+				}else{					
+					
+					isSearch = true; */
+					check = true;
+					playlist.searchPlaylist(1,10, $(this).val());
+				//} 
+				
+		    });
 			
 		});
 		</script>
