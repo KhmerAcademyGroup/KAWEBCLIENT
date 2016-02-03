@@ -49,8 +49,8 @@
     position: absolute;
     margin-right: -250px;
     border-left:0px solid #4c954d;
-    padding-right:125px;
-    padding-left:125px;
+    /* padding-right:125px;
+    padding-left:125px; */
 }
 
 /* Sidebar Styles */

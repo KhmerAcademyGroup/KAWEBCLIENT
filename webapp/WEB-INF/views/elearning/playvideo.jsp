@@ -144,14 +144,57 @@
 	            
 	            
 				            <!-- left side -->
-				            <div class="col-sm-7 col-xs-12 the-box no-border clear-padding" id="left_side">
+				            <div class="col-sm-12 col-xs-12 the-box no-border clear-padding" id="left_side">
 								<!-- Video Demo -->
-								<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-9 col-md-7 col-sm-12">
 									<div id="myplayerwrapper">
 										<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>
 									</div>
 								</div>
 								<!-- End Video End -->
+								
+								
+								
+								<!-- PLAY LIST -->
+								<div class="col-lg-3 col-md-5 col-sm-12">
+								
+									<div class="contentHolder bg-gray" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
+										<div class="content" id="playlist">
+										
+										
+										<c:forEach items="${data.PLAYLIST}" var="plist">
+											<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" ng-click="changeUrlVideo('${plist.videoId }')">
+												<div class="media">
+													<a class="pull-left">
+											    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
+											    	</a>
+											    	<div class="clearfix visible-xs"></div>
+											    	<div class="media-body">
+											        <h4 class="media-heading">
+											        	<a style="color:white">${plist.videoName}</a>
+													</h4>
+											        <ul class="list-inline" style="color:#fff;">
+											            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+											            <li style="color:#a6a6a6;">by ${plist.username }</li>
+											        </ul>
+											        </div><!-- /.media-body -->
+											    </div><!-- /.media -->
+											</div>
+			
+										</c:forEach>
+										
+										
+										
+										</div><!-- /.content -->
+									</div>
+						
+								</div>
+								<!-- END PLAYLIST -->
+								
+								<!-- div-column -->
+								<div class="col-lg-9 col-md-7 col-sm-12">
+								
+								
 								<!-- Video Info -->
 								<div class="col-sm-12">
 									<h3><strong style="color:#5f5f5f;"><span ng-bind-html="VIDEO.videoName"></span></strong></h3>
@@ -265,12 +308,21 @@
 							
 								</div>
 								<!-- End Video Comment -->
+								
+								
+								
+								
+								
+								</div><!-- div-column -->
+								
+								
+								
 						</div>
 						<!-- end left side -->
 						
 						
 						
-						<!-- right side -->
+						<%-- <!-- right side -->
 						<div class="col-sm-3 col-xs-12 the-box no-border clear-padding" id="right_side">
 						
 							<!-- PLAY LIST -->
@@ -290,7 +342,7 @@
 									        	<a style="color:white">${plist.videoName}</a>
 											</h4>
 									        <ul class="list-inline" style="color:#fff;">
-									            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+									            <li class="text-muted">by ${plist.username }</li>
 									            <li style="color:#a6a6a6;">by ${plist.username }</li>
 									        </ul>
 									        </div><!-- /.media-body -->
@@ -306,7 +358,7 @@
 							<!-- END PLAYLIST -->
 							
 						
-						 	<div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
+						 	<!-- <div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
 								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
 			                            <a class="pull-left" ng-href="playvideo?v={{relate.videoId}}" style="width:40%">
@@ -322,10 +374,10 @@
 			                            </div>
 			                        </div>
 								</div>
-							</div> 
+							</div> --> 
 							
 						</div>
-						<!-- end right side -->
+						<!-- end right side --> --%>
 	                        
 	                    </div><!-- end col-lg-12 -->
 	                </div> <!-- row -->

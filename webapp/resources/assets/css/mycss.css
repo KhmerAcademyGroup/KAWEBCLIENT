@@ -8,7 +8,11 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.contentHolder { position:relative; height:750px; overflow: hidden;}
+.contentHolder { 
+	position:relative; 
+	height:750px; 
+	overflow: hidden;
+}
 .content .store-list:hover ,.bg-gray{
 	background:#4b4a4a;
 	cursor:pointer;
