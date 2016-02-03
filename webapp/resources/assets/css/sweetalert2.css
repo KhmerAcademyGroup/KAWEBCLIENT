@@ -22,7 +22,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
-  z-index: 2000; }
+  z-index: 10000; }
   .sweet-alert h2 {
     color: #575757;
     font-size: 30px;
