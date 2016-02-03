@@ -106,7 +106,7 @@
 								
 								<img id="avatar" class="avatar" alt="Avatar">
 								<div class="profile-info ">
-									<p class="user-name">hello</p>
+									<p id="chhoin" class="user-name"></p>
 									<div class="right-button">
 									<p id="appendbtn" ></p>
 									<!-- <a href="#" id="changecover" class="btn btn-primary btn-sm" onclick="changecover()">Change Cover</a> -->
@@ -280,7 +280,7 @@
 																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  ><br/>
 																<div class="fileinput fileinput-new" data-provides="fileinput">
 																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
-																  <span class="fileinput-exists">Change</span><input type="file" id="file" name="file"></span>
+																  <span class="fileinput-exists">Change</span><input type="file" id="image" name="image"></span>
 																  <span class="fileinput-filename"></span>
 																  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
 																</div>
@@ -1320,6 +1320,7 @@ function mySearchPlaylist(){
 	            success: function(data){
 	            	if(data.STATUS == true){
 	            		$("#username").val(data.RES_DATA.username);
+	            		$("#chhoin").text(data.RES_DATA.username);
 	            		$("#myemail").val(data.RES_DATA.email);
 	            		
 	            		if(data.RES_DATA.gender == 'male'){
@@ -1483,7 +1484,7 @@ function mySearchPlaylist(){
 				var phone = $("#phonenumber").val();
 				var usertype =$("#usertype").val();
 				var oldprofile = $("#oldprofile").val();
-				var newprofile = $("#file").val();
+				var newprofile = $("#image").val();
 				var profile ="";
 				//alert(newprofile.length);
 				
@@ -1493,7 +1494,7 @@ function mySearchPlaylist(){
 					//profile ='/resources/uploads/user/avatar.jpg';
 					 $.ajax({
 						type : "POST",
-						url : api_url+'/uploadfile/upload?url=profile',
+						url : api_url+'/uploadfile/image?url=profile',
 						enctype : 'multipart/form-data',
 						data : new FormData(document.getElementById("myformvalidator1")),
 						processData : false, // tell jQuery not to process the data
@@ -1798,8 +1799,9 @@ function mySearchPlaylist(){
 			           success: function(data){
 			           	if(data.STATUS == true){
 			           		//alert("video has been upload");
-			           		//swal("video has been upload", "You clicked the button!", "success")
-				            	clearUpload();
+			           		//swal("video uploaded")
+			           		swal("video has been upload", "You clicked the button!", "success");
+				            clearUpload();
 							}
 			           	else{
 			           		//alert("video not upload");
@@ -2004,7 +2006,7 @@ function mySearchPlaylist(){
 			           success: function(data){
 			           	if(data.STATUS == true){
 			           		//alert("created");
-			           		//swal("Playlist Was created", "You clicked the button!", "success")
+			           		swal("Playlist Was created", "You clicked the button!", "success");
 				            	myClear();
 				            	mystartPlaylist();
 							}
@@ -2088,7 +2090,7 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
            data: JSON.stringify(JSONObject),
            success: function(data){
         	   if(data.STATUS == true){
-        		   //swal("Playlist Was Changed", "You clicked the button!", "success")
+        		   swal("Playlist Was Changed", "You clicked the button!", "success");
         		   myClear();
         		   mystartPlaylist();
         	   }
