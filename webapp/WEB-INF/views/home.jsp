@@ -125,19 +125,19 @@
 		
 		
 		<!-- BEGIN TOP FEATURE SECTION -->
-		<div class="section bg-info section-top-features" style="background:#666666;">
+		<div class="section bg-info section-top-features" style="background:#f2f7fd;">
 			<div class="container">
 				<div class="section-heading">
-					<div class="inner-border" style="background:#ffffff;"></div>
-					<h3 style="background:#666666;"><spring:message code="services"/></h3>
+					<div class="inner-border"></div>
+					<h3><spring:message code="services"/></h3>
 				</div><!-- /.section-heading -->
 				<div class="row">
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="elearning"/></h5>
-						<p class="lh-24">
+						<h5 class="text-heading" style="color:#676b74;"><spring:message code="elearning"/></h5>
+						<p class="lh-24" style="color:#676b74;">
 						<spring:message code="elearningtext"/>
 						</p>
 						<p><a href="${pageContext.request.contextPath}/elearning"><button class="btn btn-primary">LEARN MORE</button></a></p>
@@ -145,12 +145,12 @@
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<div class="section bg-info section-top-features" style="background:#666666;">
+		<div class="section bg-info section-top-features" style="background:#f2f7fd;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="tutorial"/></h5>
-						<p class="lh-24">
+						<h5 class="text-heading" style="color:#676b74;"><spring:message code="tutorial"/></h5>
+						<p class="lh-24" style="color:#676b74;">
 						<spring:message code="tutorialtext"/>
 						</p>
 						<p><a href="${pageContext.request.contextPath}/tutorial"><button class="btn btn-primary">LEARN MORE</button></a></p>
@@ -161,15 +161,15 @@
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
-		<div class="section bg-info section-top-features" style="background:#666666;">
+		<div class="section bg-info section-top-features" style="background:#f2f7fd;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/forum.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<h5 class="text-heading" style="color:#c0c0c0;"><spring:message code="forum"/></h5>
-						<p class="lh-24">
+						<h5 class="text-heading" style="color:#676b74;"><spring:message code="forum"/></h5>
+						<p class="lh-24" style="color:#676b74;">
 						<spring:message code="forumtext"/>
 						</p>
 						<p><a href="${pageContext.request.contextPath}/forum"><button class="btn btn-primary">LEARN MORE</button></a></p>

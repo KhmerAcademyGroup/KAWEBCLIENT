@@ -350,7 +350,8 @@
 			  var question = "";
 			  var answer = "";
 			  var selectedAnswer = "";
-		
+			  var cid = "";
+			  	
 			  var page = 1;
 		  	  var totalPage = 0;
 		  		
@@ -359,10 +360,10 @@
 				  
 				 	questionDetail = {};
 				    
-			  		questionDetail.relatedQuestion = function(questionId){   
+			  		questionDetail.relatedQuestion = function(cid){   
 					 
 	    				$.ajax({ 
-	    				    url: "${pageContext.request.contextPath}/rest/forum/question?item=10",  
+	    				    url: "${pageContext.request.contextPath}/rest/forum/question/c/"+cid+"?page="+page+"&item=10",
 	    				    type: 'GET',
 	    				    beforeSend: function(xhr) {
 	    	                    xhr.setRequestHeader("Accept", "application/json");
@@ -382,7 +383,7 @@
 	    				});
 	    			};
 	    			
-	    			questionDetail.relatedQuestion();
+	    			
 	    			
 	    			
 	    			
@@ -410,6 +411,9 @@
 	    				    success: function(data) {  
 	    				    	console.log("Question : "+data.RESP_DATA.title);  
 								if(data.RESP_DATA != null ){
+									cid = data.RESP_DATA.categoryId;
+									console.log("CID " + cid);
+									questionDetail.relatedQuestion(cid);
 									$("#qTitle").text(data.RESP_DATA.title);
 									$("#qTotalVotes").text(data.RESP_DATA.vote);
 									$("#qDetail").html(data.RESP_DATA.detail);
