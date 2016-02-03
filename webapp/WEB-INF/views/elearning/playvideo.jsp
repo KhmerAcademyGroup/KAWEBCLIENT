@@ -466,12 +466,10 @@
 						if(response.data.VIDEO.status == false){
 							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
 						}
-				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
 				        $scope.LOGID = response.data.LOGID;
 				        
-				        //$("title").text($scope.VIDEO);
 				        $scope.title=response.data.VIDEO.videoName;
 				        playVideo(response.data.VIDEO.youtubeUrl);
 				    });
