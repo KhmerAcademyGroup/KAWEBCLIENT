@@ -91,7 +91,7 @@
 			</li> 
 			
 			<li class="parent right-icon">
-				<i class="fa fa-search" id="nav-icon-search"></i>
+				<i class="fa fa-search" id="btSearch"></i>
 			</li>
 		</ul>
 		<!-- End nav menu -->
