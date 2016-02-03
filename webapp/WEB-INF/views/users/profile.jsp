@@ -104,7 +104,7 @@
 								</div>
 								<img id="photoimg" src="${pageContext.request.contextPath}/resources/uploads/cover/profile.jpg" height="300px" class="bg-cover" alt="Image">
 								
-								<img src="${pageContext.request.contextPath}/resources/uploads/user/avatar.jpg" class="avatar" alt="Avatar">
+								<img id="avatar" class="avatar" alt="Avatar">
 								<div class="profile-info ">
 									<p class="user-name">hello</p>
 									<div class="right-button">
@@ -188,7 +188,7 @@
 														<div class="panel panel-success">
 												      <div class="panel-heading">Profile Setting</div>
 												      <div class="panel-body">
-												      		<form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1" action="updateusrinfo.act" method="post" novalidate="novalidate">	
+												      <form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1"  method="post" >	
 														<div class="col-sm-8">
 														
 														<div class="form-group">
@@ -280,7 +280,7 @@
 																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  ><br/>
 																<div class="fileinput fileinput-new" data-provides="fileinput">
 																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
-																  <span class="fileinput-exists">Change</span><input type="file" id="newprofile" name="newprofile"></span>
+																  <span class="fileinput-exists">Change</span><input type="file" id="file" name="file"></span>
 																  <span class="fileinput-filename"></span>
 																  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
 																</div>
@@ -290,7 +290,7 @@
 														<!-- Button Post -->
 														<div class="form-group">
 															<div class="col-xs-12 ">
-																<input type="button" onclick="updateProfile();" class="btn btn-info btn-perspective" value="Update"/>
+																<input type="submit"  class="btn btn-info btn-perspective" value="Update"/>
 															</div>
 														</div>
 														<!-- Button Post -->
@@ -610,11 +610,11 @@
 			 	 <div class="form-group">
 					<label for="exampleInputEmail1">View</label>
 					<div class="radio">
-						<label> <input type="radio" name="publicview" id="public" value="true" required="" data-bv-notempty-message="A view is required" data-bv-field="publicview"> Public
+						<label> <input type="radio" name="publicview" checked="checked" id="public" value="true" required="" data-bv-notempty-message="A view is required" data-bv-field="publicview"> Public
 						</label>
 					</div>
 					<div class="radio">
-						<label> <input type="radio" name="publicview" id="private" value="false" checked="checked" data-bv-field="publicview"> Private
+						<label> <input type="radio" name="publicview" id="private" value="false"  data-bv-field="publicview"> Private
 						</label>
 					</div>
 					
@@ -1339,8 +1339,12 @@ function mySearchPlaylist(){
 	            		$("#usertype").val(data.RES_DATA.userTypeName);
 	            		$("#oldpassword").val("");
 	            		$("#newpassword").val("");
-	            		 $('#imageprofile').attr('src', url+'/'+data.RES_DATA.userImageUrl);
+	            		 //$('#imageprofile').attr('src', url+'/'+data.RES_DATA.userImageUrl);
 	            		 $("#oldprofile").val(data.RES_DATA.userImageUrl);
+	            		 
+	            		 $('#imageprofile').attr('src',api+data.RES_DATA.userImageUrl);
+	            		 $('#avatar').attr('src',api+data.RES_DATA.userImageUrl);
+	            		 
 	            		listDepartments(data.RES_DATA.departmentId);
 	            		listMyUniversity(data.RES_DATA.universityId);
 	            		
@@ -1463,7 +1467,11 @@ function mySearchPlaylist(){
 			
 		}
 		
-		function updateProfile() {
+		$('#myformvalidator1').submit(function(e){
+			e.preventDefault();
+			//alert('submit');
+			
+			
 			if(validateUser() && validatDepartment() && validatUniversity() && validateGender() && validatePhone() && validateDOB() ){
 				//validateUser() &&
 				var username= $("#username").val();
@@ -1475,39 +1483,78 @@ function mySearchPlaylist(){
 				var phone = $("#phonenumber").val();
 				var usertype =$("#usertype").val();
 				var oldprofile = $("#oldprofile").val();
-				var newprofile = $("#newprofile").val();
+				var newprofile = $("#file").val();
 				var profile ="";
+				//alert(newprofile.length);
 				
 				if(newprofile.length !== 0){
 					///upload new profile than update
-					//alert('new profile');
-					profile ='/resources/uploads/user/avatar.jpg';
+					//alert('new image profile');
+					//profile ='/resources/uploads/user/avatar.jpg';
+					 $.ajax({
+						type : "POST",
+						url : api_url+'/uploadfile/upload?url=profile',
+						enctype : 'multipart/form-data',
+						data : new FormData(document.getElementById("myformvalidator1")),
+						processData : false, // tell jQuery not to process the data
+						contentType : false, // tell jQuery not to set contentType
+						 headers : {
+								"Authorization" : "Basic "+key
+							},
+						success : function(data) {
+							if(data.STATUS == true){
+								//alert("image was upload");
+								//alert(data.IMG);
+								profile =data.IMG;
+								 $('#imageprofile').attr('src',api+profile);
+								 $('#avatar').attr('src',api+profile);
+								processUpdatePr(username,gender,dob,phone,profile,university,department);
+							}else{
+								//alert('image not upload');
+								swal("Image not upload");
+							}
+					
+						},
+						error : function(data) {
+							alert("1upload unsuccess data");
+						}
+					}); 
 				}else{
+					//alert('use old image');
 					profile =oldprofile;
+					processUpdatePr(username,gender,dob,phone,profile,university,department);
+					//alert(profile);
 				}
 				
-				//alert(university);
 				
-				var JSONObject = $.parseJSON('{"username":"'+username+'","gender":"'+gender+'","dateOfBirth":"'+dob+'","phoneNumber":"'+phone+'","userImageUrl":"'+profile+'","universityId":"'+university+'","departmentId":"'+department+'","userId":"'+userid+'"}');
-				$.ajax({
-		            url: url+"/rest/user/profile/updateprofile",
-		            type: 'put',
-		            contentType: 'application/json;charset=utf-8',
-		            data: JSON.stringify(JSONObject),
-		            success: function(data){
-		            	 if(data.STATUS == true){
-		            		 swal("Profile Was Update", "You clicked the button!", "success")
-						} 
-		            	
-		            },
-		            error: function(data){
-		            	alert("3 unsuccess data");
-		            }
-		        });	
+				
+				
 				
 			}
 			
+		});
+		
+		
+		function processUpdatePr(n,g,dob,phone,img,uni,dep){
+			var JSONObject = $.parseJSON('{"username":"'+n+'","gender":"'+g+'","dateOfBirth":"'+dob+'","phoneNumber":"'+phone+'","userImageUrl":"'+img+'","universityId":"'+uni+'","departmentId":"'+dep+'","userId":"'+userid+'"}');
+			$.ajax({
+	            url: url+"/rest/user/profile/updateprofile",
+	            type: 'put',
+	            contentType: 'application/json;charset=utf-8',
+	            data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	 if(data.STATUS == true){
+	            		 swal("Profile Was Update", "You clicked the button!", "success")
+					} 
+	            	
+	            },
+	            error: function(data){
+	            	alert("3 unsuccess data");
+	            }
+	        });	
 		}
+		
+		
 		
 	 	
 	 	/*****************validation updat profile**************/
@@ -1701,7 +1748,7 @@ function mySearchPlaylist(){
 		listMainPlaylist();
 		function listMainPlaylist(){
     	$.ajax({
-    		url: url+'/rest/user/profile/listallmainplaylist/'+userid,
+    		url: url+'/rest/user/profile/listallmaincategory',
             type: 'get',
             contentType: 'application/json;charset=utf-8',
             //data: JSON.stringify(JSONObject),
@@ -1723,7 +1770,7 @@ function mySearchPlaylist(){
 		function listMainPlaylistDetail(data){
 			var str="";
 				for(var i=0; i<data.RES_DATA.length ; i++){
-					str += " <option value='"+data.RES_DATA[i].playlistId+"'>"+data.RES_DATA[i].playlistName+"</option>";
+					str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
 				}
 				//alert(str);
 				return str;
@@ -1736,13 +1783,11 @@ function mySearchPlaylist(){
 				var videourl= $("#videourl").val();
 				var fileurl= $("#fileurl").val();
 				var videdescription= $("#videodescription").val();
-				var publicview =$('input[name=publicview]:checked', '#myformuploadvideo').val();
+				var status =$('input[name=publicview]:checked', '#myformuploadvideo').val();
 				var uploadvideo_category= $("#uploadvideo_category").val();
-				/* alert(fileurl);
-				alert(publicview);
-				alert(uploadvideo_category); */
-				//alert(publicview);
-				var JSONObject = $.parseJSON('{"videoName":"'+videoName+'","description":"'+videdescription+'", "youtubeUrl":"'+videourl+'" , "fileUrl":"'+fileurl+'","publicView":"false","userId":"'+userid+'", "status":"'+publicview+'" ,"categoryId":["'+uploadvideo_category+'"]}');
+				
+				
+				var JSONObject = $.parseJSON('{"videoName":"'+videoName+'","description":"'+videdescription+'", "youtubeUrl":"'+videourl+'" , "fileUrl":"'+fileurl+'","publicView":"true","userId":"'+userid+'", "status":"'+status+'" ,"categoryId":["'+uploadvideo_category+'"]}');
 			   	//alert("good");
 					$.ajax({
 			           url: url+'/rest/user/profile/uploadvideo',
@@ -1756,6 +1801,10 @@ function mySearchPlaylist(){
 			           		//swal("video has been upload", "You clicked the button!", "success")
 				            	clearUpload();
 							}
+			           	else{
+			           		//alert("video not upload");
+			           		swal("video not upload");
+			           	}
 			           	mystartPlaylist();
 			           },
 			           error: function(data){

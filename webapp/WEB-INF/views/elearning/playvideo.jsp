@@ -92,7 +92,7 @@
 	        	
 	            <hr class="hr-style-one">
 	            <br />
-	            <strong style="padding:10px;color:#880000;">TUTORIAL</strong>
+	            <strong style="padding:10px;color:#880000;">COURSE</strong>
 	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
 	            
 	            
@@ -144,133 +144,203 @@
 	            
 	            
 				            <!-- left side -->
-				            <div class="col-sm-7 col-xs-12 the-box no-border clear-padding" id="left_side">
+				            <div class="col-sm-12 col-xs-12 the-box no-border clear-padding" id="left_side">
 								<!-- Video Demo -->
-								<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-9 col-md-7 col-sm-12">
 									<div id="myplayerwrapper">
 										<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>
 									</div>
 								</div>
 								<!-- End Video End -->
-								<!-- Video Info -->
-								<div class="col-sm-12">
-									<h3><strong style="color:#5f5f5f;"><span ng-bind-html="VIDEO.videoName"></span></strong></h3>
-								</div>
 								
-								<div class="col-sm-4 col-xs-12" style="height:75px">
-									<div class="the-box no-border store-list">
-									 <div class="media">
-			                            <a class="pull-left" >
-			                            <img class="media-object img-circle" ng-src="${IMGURL}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
-			                            <div class="clearfix visible-xs"></div>
-			                            <div class="media-body">
-			                                <a href="#"></a>
-			                                <h4 class="media-heading" style="font-size:14px">
-			                                 <strong class="text-black"><span ng-bind-html="VIDEO.username"></span></strong>
-											 </h4>
-			                            </div><!-- /.media-body -->
-			                        </div><!-- /.media -->
-								</div>
-								</div>
-								<div class="col-sm-8 col-xs-12">
-									<ul class="pull-right" style="list-style:none" id="btngr">
-										<li><br></li>
-										<li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;views</strong></li>
-										<li style="font-size:12px">
+								
+								
+								<!-- PLAY LIST -->
+								<div class="col-lg-3 col-md-5 col-sm-12">
+								
+									<div class="contentHolder bg-gray" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
+										<div class="content" id="playlist">
 										
-											<span id="vote">
-												 
-												
-											</span>&nbsp; 
-											
-											<div class="btn-group">
-											
-												  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-													<i class="fa  fa-plus"></i> Add To <span class="caret"></span>
-												  </button>
-												  
-												  <ul class="dropdown-menu" role="menu" style="max-height: 400px;overflow: auto;padding:15px">
-													<li><a>Playlist:</a></li>
-													<li class="divider"></li>
-													<div id="getmoreli">
-													
-													</div>
-													<li class='divider'></li>
-													<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>
-												  </ul>
+										
+										<c:forEach items="${data.PLAYLIST}" var="plist">
+											<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" ng-click="changeUrlVideo('${plist.videoId }')">
+												<div class="media">
+													<a class="pull-left">
+											    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
+											    	</a>
+											    	<div class="clearfix visible-xs"></div>
+											    	<div class="media-body">
+											        <h4 class="media-heading">
+											        	<a style="color:white">${plist.videoName}</a>
+													</h4>
+											        <ul class="list-inline" style="color:#fff;">
+											            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+											            <li style="color:#a6a6a6;">by ${plist.username }</li>
+											        </ul>
+											        </div><!-- /.media-body -->
+											    </div><!-- /.media -->
 											</div>
-											
-											
-										</li>
-									</ul>
-								</div>
-								<!-- End Video Info -->
-								<!-- Video Description -->
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<hr class="hr-style-one">
-									<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
-									
-									<div class="pull-right">
-										<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
-										  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-											<i class="fa fa-download"></i> Download 
-										  </a>
-										</div>
-									</div>
-									<br /><br />
-									<p ng-bind-html="VIDEO.description"></p>
-								</div>
-								<!-- End Video Description -->
-								<div class="col-sm-12 col-sm-12 col-xs-12">
-									
-									<!-- Go to www.addthis.com/dashboard to customize your tools -->
-									<div class="addthis_sharing_toolbox"></div>
-									
-								</div>
-								
-								
-								<!-- Video Comment -->
-								<div class="col-sm-12 col-xs-12">
-									<hr class="hr-style-one">
-									<form role="form" id="commentform" method="post">
-										<div class="form-group">
-										<textarea name="commenttext" id="commenttext" class="form-control" style="height: 70px;" placeholder="Your comments here"></textarea>
-										<span style="color: red;" id="commenterror"></span>
-										</div>
-										<div class="form-group">
-									
-										<button type="submit" class="btn btn-primary">Submit comment</button>
-										
-										</div>
-									</form>
 			
-									<div class="the-box no-border">
-										<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
-										<ul class="media-list media-sm media-dotted" id="comments">
+										</c:forEach>
+										
+										
+										
+										</div><!-- /.content -->
+									</div>
+						
+								</div>
+								<!-- END PLAYLIST -->
+								
+								<!-- div-column -->
+								<div class="col-lg-9 col-md-7 col-sm-12">
+								
+								
+									<!-- Video Info -->
+									<div class="col-sm-12">
+										<h3><strong style="color:#5f5f5f;"><span ng-bind-html="VIDEO.videoName"></span></strong></h3>
+									</div>
 									
+									<div class="row">
+									<div class="col-sm-5 col-xs-12" style="height:75px">
+										<div class="the-box no-border store-list">
+											 <div class="media">
+					                            <a class="pull-left" >
+					                            <img class="media-object img-circle" ng-src="${IMGURL}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
+					                            <div class="clearfix visible-xs"></div>
+					                            <div class="media-body">
+					                                <a href="#"></a>
+					                                <h4 class="media-heading" style="font-size:14px">
+					                                 <strong class="text-black"><span ng-bind-html="VIDEO.username"></span></strong>
+													 </h4>
+					                            </div><!-- /.media-body -->
+					                        </div><!-- /.media -->
+										</div>
+									</div>
+									
+									
+									
+									<div class="col-sm-7 col-xs-12">
+										<ul class="pull-right" style="list-style:none" id="btngr">
+											<li><br></li>
+											
+											<!-- <li style="text-align:right"><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;views</strong></li> -->
+											
+											
+											<li style="font-size:12px">
+											
+												<span><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;views</strong></span>
+												
+												<span id="vote">
+													 
+													
+												</span>&nbsp; 
+												
+												<div class="btn-group">
+												
+													  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+														<i class="fa  fa-plus"></i> Add To <span class="caret"></span>
+													  </button>
+													  
+													  <ul class="dropdown-menu" role="menu" style="max-height: 400px;overflow: auto;padding:15px">
+														<li><a>Playlist:</a></li>
+														<li class="divider"></li>
+														<div id="getmoreli">
+														
+														</div>
+														<li class='divider'></li>
+														<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>
+													  </ul>
+												</div>
+												</span>&nbsp;
+												<div class="pull-right">
+													<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+													  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+														<i class="fa fa-download"></i> Download 
+													  </a>
+													</div>
+												</div>
+											
+											</li>
 										</ul>
+									</div>
+									</div>
+									<!-- End Video Info -->
+									
+									
+									<!-- Video Description -->
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									
+									<hr class="hr-style-one">
+										<span class="pull-left"><i class="fa fa-calendar-o"></i>&nbsp; {{VIDEO.postDate }} <i class="fa fa-folder-open"></i>&nbsp; <span ng-bind-html="VIDEO.categoryName"></span></span>
+										
+										<!-- <div class="pull-right">
+											<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
+											  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
+												<i class="fa fa-download"></i> Download 
+											  </a>
+											</div>
+										</div> -->
+										<br /><br />
+										<p ng-bind-html="VIDEO.description"></p>
+									</div>
+									
+									<!-- End Video Description -->
+									<div class="col-sm-12 col-sm-12 col-xs-12">
+										
+										<!-- Go to www.addthis.com/dashboard to customize your tools -->
+										<div class="addthis_sharing_toolbox"></div>
 										
 									</div>
 									
-									<form name="frmloadmorecomment">
-										<input type="hidden" id="commentonvideoid" />
-										<input type="hidden" value="1" id="pagecommentvalue" />
-										<div class="loadMoreComment text-center">
-											<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary">More comment</button>
+									
+									<!-- Video Comment -->
+									<div class="col-sm-12 col-xs-12">
+										<hr class="hr-style-one">
+										<form role="form" id="commentform" method="post">
+											<div class="form-group">
+											<textarea name="commenttext" id="commenttext" class="form-control" style="height: 70px;" placeholder="Your comments here"></textarea>
+											<span style="color: red;" id="commenterror"></span>
+											</div>
+											<div class="form-group">
+										
+											<button type="submit" class="btn btn-primary">Submit comment</button>
+											
+											</div>
+										</form>
+				
+										<div class="the-box no-border">
+											<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
+											<ul class="media-list media-sm media-dotted" id="comments">
+										
+											</ul>
+											
 										</div>
-									</form>
-									
-									
+										
+										<form name="frmloadmorecomment">
+											<input type="hidden" id="commentonvideoid" />
+											<input type="hidden" value="1" id="pagecommentvalue" />
+											<div class="loadMoreComment text-center">
+												<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary">More comment</button>
+											</div>
+										</form>
+										
+									</div>
+									<!-- End Video Comment -->
 								
-							
-								</div>
-								<!-- End Video Comment -->
+								
+								
+								
+								
+								</div><!-- div-column -->
+								
+								
+								
 						</div>
 						<!-- end left side -->
 						
 						
 						
-						<!-- right side -->
+						<%-- <!-- right side -->
 						<div class="col-sm-3 col-xs-12 the-box no-border clear-padding" id="right_side">
 						
 							<!-- PLAY LIST -->
@@ -290,7 +360,7 @@
 									        	<a style="color:white">${plist.videoName}</a>
 											</h4>
 									        <ul class="list-inline" style="color:#fff;">
-									            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+									            <li class="text-muted">by ${plist.username }</li>
 									            <li style="color:#a6a6a6;">by ${plist.username }</li>
 									        </ul>
 									        </div><!-- /.media-body -->
@@ -306,7 +376,7 @@
 							<!-- END PLAYLIST -->
 							
 						
-						 	<div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
+						 	<!-- <div class="related_videos" ng-repeat="relate in RELATEDVIDEO">
 								<div class="the-box no-border store-list" style="margin-bottom:5px;padding-bottom:5px;">
 									 <div class="media">
 			                            <a class="pull-left" ng-href="playvideo?v={{relate.videoId}}" style="width:40%">
@@ -322,10 +392,10 @@
 			                            </div>
 			                        </div>
 								</div>
-							</div> 
+							</div> --> 
 							
 						</div>
-						<!-- end right side -->
+						<!-- end right side --> --%>
 	                        
 	                    </div><!-- end col-lg-12 -->
 	                </div> <!-- row -->
@@ -414,12 +484,10 @@
 						if(response.data.VIDEO.status == false){
 							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
 						}
-				        $scope.RELATEDVIDEO = response.data.RELATEVIDEO;
 				        $scope.COMMENT = response.data.COMMENT;
 				        $scope.VIDEO = response.data.VIDEO;
 				        $scope.LOGID = response.data.LOGID;
 				        
-				        //$("title").text($scope.VIDEO);
 				        $scope.title=response.data.VIDEO.videoName;
 				        playVideo(response.data.VIDEO.youtubeUrl);
 				    });

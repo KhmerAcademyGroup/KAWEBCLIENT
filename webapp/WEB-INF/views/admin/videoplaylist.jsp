@@ -75,24 +75,19 @@
 								<tr>									
 									<th>No1</th>
 									<th>Playlist Name</th>
-									<th>Playlist Description</th>
-									<th>User Id</th>									
+									<th>Playlist Description</th>														
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>									
-									<td>1</td>
-									<td>Programming</td>	
-									<td>Test</td>
-									<td>2</td>								
-									<td> <i class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" data-target="#frmFroumCategory" data-backdrop="static"></i>
-										 <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i>
-									</td>
-								</tr>
+							<tbody id="content">
+								
 
 							</tbody>
 						</table>
+						<br />
+						
+						<p id="totalrecord" style="color:blue;"></p>
+						<div id="pagination" class="pull-right"></div>
 					</div>
 					<!-- /.table-responsive -->
 				</div>
@@ -262,61 +257,164 @@
 
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
 	
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
 	
-	<script id="CONTENT_TEMPLATE" type="text/x-jquery-tmpl">
+	
+	<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
-				<td>{{= id}}</td>
-				<td>{{= username}}</td>
-				<td>{{= email}}</td>
-				<td>{{= position}}</td>
-				<td>{{= roles}}</td>
-				<td>{{= createdDate}}</td>
-				<td>{{= approvedDate}}</td>
-				<!--<td>{{if accountNonLocked == true}} <i class="ion-android-close" style="color: red;"></i> {{else}} <i class="ion-android-close" style="color: green;"></i> {{/if}}</td>
-				<td>{{if enabled == true}} <i class="ion-android-close" style="color: green;"></i> {{else}} <i class="ion-android-close" style="color: red;"></i> {{/if}}</td>
-				-->
-				<td>Action</td>
+				<td>{{= NO}}</td>
+				<td>{{= playlistName}}</td>
+				<td>{{= description}}</td>				
+				<td> 
+   		 			<i id="{{= playlistId}}" class="fa fa-pencil icon-circle icon-xs icon-info btnUpdate"></i>
+            		<i id="{{= playlistId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
+         		</td>
+				
 			</tr>
    </script>
+  
+   
+  
+   
    
 		<script type="text/javascript">		
 		
-		var category = {};
+		var playlist = {};		
+		var check = true;
+		var gPage = 1; //global current page for pagination
+		var isSearch = false
 		
 		$(document).ready(function(){
 			
-			category.listCategory = function(currentPage){
+			
+			playlist.listPlaylist = function(currentPage,item){
+				
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/admin/rest/category", 
-				    type: 'GET', 
-				    data: {
-				    		"currentPage" : currentPage,
-				    		"perPage"     : 20
-				    },
+					url: "${pageContext.request.contextPath}/rest/listadminplaylist/MQ==?page="+currentPage+"&item="+item,				   
+				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
-						if(data.RESP_DATA.length>0){
-							$("tbody#CONTENTS").html('');
-							$("#CONTENT_TEMPLATE").tmpl(data.RESP_DATA).appendTo("tbody#CONTENTS");
+				    	
+				    	perPage = item;
+				    	nextPage = (currentPage-1)*perPage;
+				    					    	
+				    	if(data.RES_DATA.length>0){
+							$("tbody#content").empty();
+							for(var i=0;i<data.RES_DATA.length;i++){
+								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+							}
+							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
 						}else{
-							$("tbody#CONTENTS").html('<tr>NO CONTENTS</tr>');
+							$("tbody#content").html('<tr>No content</tr>');
 						}
+				    					    	
 				    	if(check){
-				    		users.setPagination(data.PAGINATION.totalPages,1);
-				    		check=false;
+				    		console.log(data.PAGINATION.totalPages + " HLLOFDFD");
+							playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
+							check=false;
 				    	}
+				    	
+				    },				    					    		
+				    error:function(data,status,er) { 				    
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};			
+			
+			
+
+			playlist.searchPlaylist = function(currentPage, item, playname){
+				
+				/* /rest/searchadminplaylist/MQ==/IOS */
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/rest/searchadminplaylist/MQ==/"+ playname +"?item="+ item + "&page=" + currentPage, 
+				    type: 'GET',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+				    	if(data.STATUS==true){
+				    						    						
+					    	perPage = item;
+					    	nextPage = (currentPage-1)*perPage;
+					    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);
+							if(data.RES_DATA.length>0){
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = (i+1)+nextPage;
+								}
+								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+					    	
+							if(check){
+								playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
+								check=false;
+					    	}
+
+				    	}else{				    
+				    		$("tbody#content").html('<tr>No content</tr>');
+				    		$("#pagination").html("");
+				    		$("#totalrecord").text("Total records = 0");
+				    	}
+				    	
 				    },
 				    error:function(data,status,er) { 
+				    	
 				        console.log("error: "+data+" status: "+status+" er:"+er);
 				    }
 				});
 			};
 			
 			
+			
+			playlist.listPlaylist(1,10);
+			
+			
+			playlist.setPagination = function(totalPage, currentPage, item){
+   		    	$('#pagination').bootpag({
+   			        total: totalPage,
+   			        page: currentPage,
+   			        maxVisible: 5,
+   			        leaps: true,
+   			        firstLastUse: true,
+   			        first: 'First',
+   			        last: 'Last',
+   			        wrapClass: 'pagination',
+   			        activeClass: 'active',
+   			        disabledClass: 'disabled',
+   			        nextClass: 'next',
+   			        prevClass: 'prev',
+   			        lastClass: 'last',
+   			        firstClass: 'first'
+   			    }).on("page", function(event, currentPage){   			    	
+   			    	check = false;   			    	   			    	
+   			    	gPage = currentPage;
+   			    	console.log(gPage + "=========="+currentPage);   			    	
+   			    	if($("#search").val() == "") playlist.listPlaylist(currentPage,item);
+   			    	else playlist.searchPlaylist(currentPage,item,$("#search").val());
+   			    }); 
+    		};
+			
+    		$(document).on('keyup', "#search", function() {
+    			$("h1").html($(this).val());
+				/* if($(this).val() == ""){
+					check = false;
+					isSearch = false;
+					playlist.listPlaylist(1,10);
+				}else{					
+					
+					isSearch = true; */
+					check = true;
+					playlist.searchPlaylist(1,10, $(this).val());
+				//} 
+				
+		    });
 			
 		});
 		</script>

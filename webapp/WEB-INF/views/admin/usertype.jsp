@@ -10,6 +10,18 @@
 		.chosen-container{
 		    width: auto !important;
 		}
+		.mycus{
+			width:200px; background-color:#89BC4B; opacity:0.8;
+			font-weight:bold;
+			height:120px;
+		}
+	
+		.top-buffer { margin-top:20px; }
+		.modal-body{ height:380px;}
+		.radio {margin:0px 0px 0px !important;
+				width:20px; height:20px;
+				}
+	
 	</style>
 </head>
 
@@ -108,24 +120,143 @@
 			<!-- /.container-fluid -->
 
 		<div id="p-frmUsertype" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmUsertype" action="${pageContext.request.contextPath}/rest/log/usertype" method="POST">
+			<form  id="frmUsertype" action="${pageContext.request.contextPath}/rest/usertype" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">List universities</h4>
+						<h4 class="modal-title">List Usertype</h4>
 					</div>
 					<div class="modal-body" >
-									
+														
 									<input type="hidden"  id="usertypeId" class="form-control"  name="usertypeId">
 										
 									<div class="form-group">
-										<label class="col-lg-3 control-label">University name</label>
-										<div class="col-lg-5">
-											<input type="text" id="usertypeName" class="form-control" required="required" name="usertypeName">
-										</div>	
+									
+										<div class="col-lg-12">
+											<div class="col-lg-3">
+												<label class="control-label">User Type</label>
+											</div>					
+											<div class="col-lg-9">
+												<input type="text" id="addutypeid" class="form-control" required="required">											
+											</div>
+										</div>
+										
+										<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
+												<label class="control-label">Viewable</label>
+											</div>										
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="vtrue">True</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="vtrue" type="radio" name="viewable" value="true" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="vfalse">False</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="vfalse" type="radio" checked="checked" name="viewable" value="false" class="form-control radio" >
+											</div>											
+																							
+										</div>
+										
+										
+										<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
+												<label class="control-label">Commentable</label>
+											</div>										
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="ctrue">True</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="ctrue" type="radio" name="commentable" value="true" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="cfalse">False</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="cfalse" type="radio" checked="checked" name="commentable" value="false" class="form-control radio" >
+											</div>								
+										</div>								
+									
+									<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
+												<label class="control-label">Postable</label>
+											</div>										
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="ptrue">True</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="ptrue" type="radio" name="postable" value="true" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="pfalse">False</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="pfalse" type="radio" checked="checked" name="postable" value="false" class="form-control radio" >
+											</div>								
+										</div>								
+									
+									<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
+												<label class="control-label">Deleteable</label>
+											</div>										
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="dtrue">True</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="dtrue" type="radio" name="deleteable" value="true" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="dfalse">False</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="dfalse" type="radio" checked="checked" name="deleteable" value="false" class="form-control radio" >
+											</div>								
 									</div>
+									
+									
+									<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
+												<label class="control-label">Userable</label>
+											</div>										
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="utrue">True</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="utrue" type="radio" name="userable" value="true" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="ufalse">False</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="ufalse" type="radio" checked="checked" name="userable" value="false" class="form-control radio" >
+											</div>								
+									</div>
+								</div>																				
+									
 					</div>
 					<div class="modal-footer">
 							<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
@@ -135,7 +266,7 @@
 		</div>
 		
 		<div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/log/usertype" method="POST">
+			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/usertype" method="DELETE">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
@@ -233,9 +364,8 @@
          		</td>
 			</tr>
    		</script>
-   
    		
-         
+      
 		<script type="text/javascript">		
 		
 		var usertype = {};
@@ -308,10 +438,17 @@
     		};
     		
     		usertype.addOrUpdateUniversity = function(){
+    			
+    			//var gender = $('input[name=gender]:checked').val();
+    			
 				KA.createProgressBarWithPopup();
-				frmData = {
-						"usertypeId"   : $("#usertypeId").val(),
-						"usertypeName" : $("#usertypeName").val()
+				frmData = {						
+						"userTypeName"   : $("#addutypeid").val(),
+						"viewable" : $('input[name=viewable]:checked').val(),
+						"commentable": $('input[name=commentable]:checked').val(),
+						"postable": $('input[name=postable]:checked').val(),
+						"deleteable": $('input[name=deleteable]:checked').val(),
+						"userable": $('input[name=userable]:checked').val()
 				};
 				$.ajax({ 
 				    url:  $("#frmUsertype").attr("action"), 
@@ -338,10 +475,10 @@
 				KA.createProgressBarWithPopup();
 				
 				//alert($("#frmConfirm").attr("action")+"/"+$("#ConfirmId").val());				
-				var deptId = $("#ConfirmId").val();
+				var utypeid = $("#ConfirmId").val();
 				
 				$.ajax({ 
-				    url:  $("#frmConfirm").attr("action")+"/"+deptId, 
+				    url:  $("#frmConfirm").attr("action")+"/"+utypeid, 
 				    type: $("#frmConfirm").attr("method"),
 				    //data: JSON.stringify(frmData),
 				    beforeSend: function(xhr) {
@@ -364,6 +501,8 @@
 			// Show Form Confirm University delete Popup
 			$(document).on('click',"#showFrmConfirm", function(){		
 				
+				$(".modal-body").css("height","55px");
+				
 				var deptId = $(this).data("cateid");
 				$("#p-frmConfirm").bPopup({modalClose: false});
 				$("#frmConfirm").attr("method", "DELETE");
@@ -379,19 +518,24 @@
     			/* alert($("#mainrow1").data("utypeid"));
     			return; */
     			
-    			//to check if current element contain class name fa-check
-    			if($(this).hasClass("fa-check")){
-        			
-    				$(this).removeClass("fa-check icon-success");
-    				$(this).addClass("fa-remove icon-danger");
-    				$(this).data("status","false");
-    			}else{
-    				
-    				$(this).addClass("fa-check icon-success");
-    				$(this).removeClass("fa-remove icon-danger");
-    				$(this).data("status","true");
-    			}
     			
+    			//to check if current element contain class name fa-check
+    			
+    			/* alert($(this).data("status")===true);
+    			alert($(this).data("status")===false); */
+    			
+    			
+    			
+    			var obj = this;
+    			    			    			
+    			if($(obj).data("status")===true){
+        			   
+    				$(obj).data("status",false);
+    			}else{   				
+    				
+    				$(obj).data("status",true);
+    			}
+    			   			
     			var order = $(this).data("order");
     			var utid = $("#mainrow"+order).data("utypeid");    			
     			var utypename = $("#mainrow"+order).data("utypename"); //to select user type name from main row    			
@@ -406,8 +550,9 @@
     			return; */
     			   			
     			smoke.confirm("Are you sure?", function(e){
+    				
     				if (e){
-    					
+    					    					
     					frmData = {
     							"userTypeId"   : utid,
     							"userTypeName" : utypename,
@@ -427,15 +572,16 @@
     		                    xhr.setRequestHeader("Content-Type", "application/json");
     		                },
     					    success: function(data) { 
-    							console.log(data);    					    	
-    					    	//usertype.listUsertype(gPage);
-    							if($(this).data("status")==true){
-    			    				$(this).removeClass("fa-check icon-success");
-    			    				$(this).addClass("fa-remove icon-danger");
-    			    			}else{
-    			    				$(this).addClass("fa-check icon-success");
-    			    				$(this).removeClass("fa-remove icon-danger");
-    			    			}
+	    							console.log(data);    					    	
+	    					    	//usertype.listUsertype(gPage);
+	    					    	    								
+	    							if($(obj).data("status")===false){	    								
+	    			    				$(obj).removeClass("fa-check icon-success");
+	    			    				$(obj).addClass("fa-remove icon-danger");
+	    			    			}else{	    			    				
+	    			    				$(obj).removeClass("fa-remove icon-danger");
+	    			    				$(obj).addClass("fa-check icon-success");
+	    			    			}    						
     					    	
     					    },
     					    error:function(data,status,er) {    					    	
@@ -444,11 +590,20 @@
     					});
     					
     				}else{
-    								
+    					    					
+    					//do something when user click cancel    					
+    					if($(obj).data("status")===true){
+    	        			    	    				
+    	    				$(obj).data("status",false);
+    	    			}else{   	    				
+    	    				
+    	    				$(obj).data("status",true);
+    	    			}    						
     				}
     			}, {
     				ok: "Yes",
-    				cancel: "Cancel"
+    				cancel: "Cancel",
+    				classname: "mycus"
     				/* ,classname: "statusConfirm",
     				reverseButtons: true */ 
     			});
@@ -499,8 +654,11 @@
 			
 			// Show Form Add Usertype Popup
 			$("#showFrmAddUsertype").click(function(){
+								
+				$(".modal-body").css("height","285px");
+				
 				$("#p-frmUsertype").bPopup({modalClose: false});
-				$("#frmUsertype").attr("method", "POST");
+				$("#frmUsertype").attr("method", "POST");				
 				$("#frmUsertype").trigger("reset");
 				$("#btSubmit").text("Add");
 			});

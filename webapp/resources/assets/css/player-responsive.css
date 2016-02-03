@@ -20,7 +20,8 @@ LARGE DESKTOP > 1200px
 	}
 	#SuppressScrollX_1{
 		height:500px;
-		width:350px;
+		/* width:350px; */
+		right:30px;
 	}
 	.media-heading{
 		font-size:14px;
@@ -53,7 +54,8 @@ STANDARD DESKTOP 992px <> 1200px
 	}
 	#SuppressScrollX_1{
 		height:350px;
-		width:340px;
+		/* width:340px; */
+		right:30px;
 	}
 	.media-heading{
 		font-size:14px;
@@ -87,7 +89,7 @@ TABLET < 1025px
 	}
 	#SuppressScrollX_1{
 		height:320px;
-		width:305px;
+		/* width:305px; */
 	}
 	.media-heading{
 		font-size:13px;
@@ -121,7 +123,7 @@ SMALL DESKTOP 768px <> 991px
 	}
 	#SuppressScrollX_1{
 		height:300px;
-		width:290px;
+		/* width:290px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -155,7 +157,7 @@ TABLET < 800px
 	}
 	#SuppressScrollX_1{
 		height:300px;
-		width:270px;
+		/* width:270px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -194,7 +196,7 @@ TABLET < 767px
 	}
 	#SuppressScrollX_1{
 		height:280px;
-		width:196px;
+		/* width:196px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -238,7 +240,7 @@ PHONE < 640px
 	}
 	#SuppressScrollX_1{
 		height:270px;
-		width:189px;
+		/* width:189px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -270,7 +272,7 @@ PHONE < 600px
 	}
 	#SuppressScrollX_1{
 		height:260px;
-		width:182px;
+		/* width:182px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -302,7 +304,7 @@ PHONE < 360px
 	}
 	#SuppressScrollX_1{
 		height:150px;
-		width:105px;
+		/* width:105px; */
 	}
 	.media-heading{
 		font-size:12px;
@@ -334,7 +336,7 @@ PHONE < 320px
 	}
 	#SuppressScrollX_1{
 		height:140px;
-		width:98px;
+		/* width:98px; */
 	}
 	.media-heading{
 		font-size:12px;

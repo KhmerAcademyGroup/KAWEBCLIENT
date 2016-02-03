@@ -245,18 +245,18 @@ public class UserRestTemplateController {
 		
 		@RequestMapping(value="/rest/user/profile/uploadvideo" , method = RequestMethod.POST)
 		public ResponseEntity<Map<String , Object>> uploadvideo(@RequestBody Video video){
+			
 			HttpEntity<Object> request = new HttpEntity<Object>(video,header);
-			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/video", HttpMethod.POST , request , Map.class) ;
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video", HttpMethod.POST , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
-		@RequestMapping(value="/rest/user/profile/listallmainplaylist/{uid}" , method = RequestMethod.GET)
+		@RequestMapping(value="/rest/user/profile/listallmaincategory" , method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>> listallmainplaylist(
-											@PathVariable("uid") String uid
 										 ){
 			
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
-			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/userplaylistall/"+uid, HttpMethod.GET , request , Map.class) ;
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/maincategory/listmaincategory", HttpMethod.GET , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
