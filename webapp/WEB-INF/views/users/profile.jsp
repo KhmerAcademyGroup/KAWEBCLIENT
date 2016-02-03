@@ -1442,9 +1442,7 @@ function mySearchPlaylist(){
 			           		swal("Password Was Changed", "You clicked the button!", "success")
 						}else{
 							swal("Wrong Password");
-							//alert("Wrong Password");
 							
-							//if wrong password so validation will check again
 							validatOldPass();
 							validatNewPass();
 							validatConPass();
@@ -1456,6 +1454,11 @@ function mySearchPlaylist(){
 			           	alert("not change");
 			           }
 			       });	
+			}else{
+				validatOldPass();
+				validatNewPass();
+				validatConPass();
+				validatebothpass();
 			}
 			
 		}
@@ -1750,7 +1753,7 @@ function mySearchPlaylist(){
 			           success: function(data){
 			           	if(data.STATUS == true){
 			           		//alert("video has been upload");
-			           		swal("video has been upload", "You clicked the button!", "success")
+			           		//swal("video has been upload", "You clicked the button!", "success")
 				            	clearUpload();
 							}
 			           	mystartPlaylist();
