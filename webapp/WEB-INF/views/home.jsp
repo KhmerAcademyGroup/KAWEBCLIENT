@@ -23,7 +23,6 @@
 		<!-- END TOP NAVBAR -->
 		
 		
-		
 		<!-- BEGIN HEADER FULL IMAGE SLIDE -->
 		<div class="full-slide-image" id="full-img-slide">
 			<div class="slide-inner more-padding">
