@@ -5,6 +5,14 @@
 <html lang="en">
 <head>
 	<jsp:include page="shared/_adminheader.jsp" />
+	
+	<style>
+		.top-buffer { margin-top:20px; }
+		.modal-body{ height:380px;}
+		.radio {margin:0px 0px 0px !important;
+				width:20px; height:20px;
+				}
+	</style>
 </head>
 
 <body class="tooltips">
@@ -108,7 +116,7 @@
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">List Users</h4>
+						<h4 class="modal-title">Add User</h4>
 					</div>
 					<div class="modal-body" >
 									
@@ -125,17 +133,30 @@
 											</div>
 										</div>
 										
-										<div class="col-lg-12">
-											<div class="col-lg-3">
+										<div class="col-lg-12 top-buffer" >
+											<div class="col-sm-3">
 												<label class="control-label">Gender</label>
 											</div>										
-											<div class="col-lg-9 btn-group">											
-												<input type="radio" checked="checked" class="btn btn-primary" name="gender" value="Female" class="form-control" > Female
-												<input type="radio" class="btn-primary" name="gender" value="Male" class="form-control" > Male<br>											
-											</div>												
+																	
+											<div class="col-sm-1">
+												<label class="control-label" for="female">Female</label>
+											</div>					
+																
+											<div class="col-sm-1">
+												<input id="female" type="radio" checked="checked" name="gender" value="Female" class="form-control radio" >
+											</div>
+											
+											<div class="col-sm-1">
+												<label class="control-label" for="male">Male</label>
+											</div>					
+											
+											<div class="col-sm-1">
+												<input id="male" type="radio" name="gender" value="Male" class="form-control radio" >
+											</div>											
+																							
 										</div>
 										
-										<div class="col-lg-12">
+										<div class="col-lg-12 top-buffer">
 											<div class="col-lg-3">
 												<label class="control-label">Email</label>
 											</div>													
@@ -145,10 +166,9 @@
 										</div>			
 															
 										<br><br><br><br>				
-										<div class="col-lg-12">							
-																														
-											<div>
-												<label for="sel1" class="col-lg-3">University</label>
+										<div class="col-lg-12 top-buffer">																																
+											<div class="col-lg-3">
+												<label for="sel1">University</label>
 											</div>					
 											<div class="col-lg-9">
 												<select class="form-control" id="listuniversity">
@@ -161,10 +181,9 @@
 										  
 										</div>
 										
-										<div class="col-lg-12">							
-																														
-											<div>
-												<label for="sel1" class="col-lg-3">Department</label>
+										<div class="col-lg-12 top-buffer">																														
+											<div class="col-lg-3">
+												<label for="sel1">Department</label>
 											</div>					
 											<div class="col-lg-9">
 												<select class="form-control" id="listdepartment">
@@ -176,7 +195,7 @@
 											</div>								  
 										</div>
 										
-										<div class="col-lg-12">
+										<div class="col-lg-12 top-buffer">
 											<div class="col-lg-3">
 												<label class="control-label">Password</label>
 											</div>													
@@ -185,7 +204,7 @@
 											</div>											
 										</div>
 										
-										<div class="col-lg-12">
+										<div class="col-lg-12 top-buffer">
 											<div class="col-lg-3">
 												<label class="control-label">Confirm Password</label>
 											</div>													
@@ -713,8 +732,10 @@
 			$(document).on('click',"#showFrmConfirm", function(){		
 				
 				
-				var deptId = $(this).data("cateid");
-								
+				$(".modal-body").css("height","55px");
+				
+				var deptId = $(this).data("cateid");			
+				
 				$("#p-frmConfirm").bPopup({modalClose: false});
 				$("#frmConfirm").attr("method", "DELETE");
 				$("#ConfirmId").val(deptId);
@@ -769,6 +790,9 @@
 						
 			// Show Form Add User Popup
 			$("#showFrmAddUser").click(function(){
+				
+				$(".modal-body").css("height","380px");
+				
 				$("#p-frmUser").bPopup({modalClose: false});
 				$("#frmUser").attr("method", "POST");
 				$("#frmUser").trigger("reset");
