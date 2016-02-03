@@ -126,7 +126,7 @@
 									<div id="panel-collapse-1" class="collapse in">
 										<div class="panel-body" >
 											<div class="tab-content">
-<h1 id="test">hello</h1>
+
 												<div class="tab-pane fade in active" id="videosearch-panel">
 
 													<div class='btn-toolbar top-table' role='toolbar'>
@@ -665,8 +665,7 @@
     			});
     			
 				$(document).on('keyup', "#searchVideos", function() {    				
-    			    
-					$("#test").text($(this).val());
+    			    					
 					var name =$(this).val();
 					if($(this).val()== ""){listVideo.Listall(1); }
 					$.ajax({ 
