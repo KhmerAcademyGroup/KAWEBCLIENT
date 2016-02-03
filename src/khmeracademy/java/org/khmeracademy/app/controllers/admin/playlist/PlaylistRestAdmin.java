@@ -40,7 +40,14 @@ public class PlaylistRestAdmin {
 	}
 		
 		
-	
+	@RequestMapping(value="/rest/searchadminplaylist/{uid}/{pname}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> searchPlaylist(@PathVariable("pname") String pname,@PathVariable("uid") String uid
+										, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/listplayList/"+uid+"/"+pname+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 		
 	
