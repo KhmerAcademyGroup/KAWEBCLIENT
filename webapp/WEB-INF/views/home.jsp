@@ -16,7 +16,6 @@
 		BEGIN PAGE
 		===========================================================
 		-->
-	
 		
 		<!-- BEGIN TOP NAVBAR -->
 		<jsp:include page="shared/_menu.jsp" />	
