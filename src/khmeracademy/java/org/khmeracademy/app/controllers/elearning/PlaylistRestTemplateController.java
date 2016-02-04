@@ -1,6 +1,7 @@
 
 package org.khmeracademy.app.controllers.elearning;
 
+import java.security.SecureRandom;
 import java.util.Map;
 
 import javax.websocket.server.PathParam;
@@ -118,7 +119,19 @@ public class PlaylistRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
-		
+		@RequestMapping(value="/rest/elearning/send/{add}/{msg}/{pid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> sendMail(@PathVariable(value="add") String addr,@PathVariable(value="msg") String msg,
+				@PathVariable(value="pid") String pid){			
+			SecureRandom random = new SecureRandom();
+		    byte bytes[] = new byte[20];
+		    random.nextBytes(bytes);
+		    String token = bytes.toString();
+		    
+			new SendMailTLS().sendMaile(addr, token);
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/getplaylistbyplaylistid/"+pid , HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
 		
 		
 	/*public ResponseEntity<Map<String , Object>> playVideo(

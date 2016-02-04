@@ -714,7 +714,6 @@
 		function listAll(offset){
 			//alert(mypage);
 	    	
-	    	
 	    	$.ajax({
 	    		url: url+'/rest/user/profile/listuserhistory/'+userid+'?page='+offset+'&item='+limit,
 	            type: 'get',
@@ -814,11 +813,12 @@
 		
 		function mySearchHistory(){
 			var key =$("#searchHistory").val();
-			var characterReg = /^[a-zA-Z0-9-_.]+$/;
+			var characterReg = /^[\ba-zA-Z0-9-_.]+$/;
 			
 			//alert(key);
 			if(key.length > 2   && characterReg.test(key)){
-				alert(key);
+				$("#searchHistory").css("border", "solid 1px green");
+				//alert(key);
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/searchuserhistory/'+userid+'/'+key+'?page='+offset+'&item='+limit, 
 				       type:'get',
@@ -830,6 +830,9 @@
 					    	   	$("#historyresult").html(listarticles(data));
 					    	   
 				    	   		//alert(data.TOTAL);
+				    	   	}else{
+				    	   		mystart();
+				    	   		swal("Search Not Found");
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
 				                console.log("Success..." + data);
@@ -839,6 +842,8 @@
 				   		console.log("ERROR..." + data);
 				   	}
 				   }); 
+			}else{
+				$("#searchHistory").css("border", "solid 1px red");
 			}
 			
 		
@@ -1032,9 +1037,10 @@
 		
 	function mySearchVideo(){
 		var key =$("#searchVideo").val();
-		var characterReg = /^[a-zA-Z0-9-_.]+$/;
+		var characterReg = /^[\ba-zA-Z0-9-_.]+$/;
 		//alert(key);
 		if(key.length > 2 && characterReg.test(key)){
+			$("#searchVideo").css("border", "solid 1px green");
 			//alert(key);
 			 $.ajax({  
 				 	url: url+'/rest/user/profile/searchuserhvideo/'+userid+'/'+key+'?page='+offset+'&item='+limit+'&status=true', 
@@ -1046,6 +1052,9 @@
 			    	   		getDbRowVideo();
 				    	   	$("#videoresult").html(listVideoDetail(data));
 			    	   		//alert(data.PAGINATION.totalCount);
+			    	   	}else{
+			    	   		mystartVideo();
+			    	   		swal("Search Not Found");
 			    	   	}
 			    	   		//$("#showresult").html(listarticles(data));
 			                console.log("Success..." + data);
@@ -1055,6 +1064,8 @@
 			   		console.log("ERROR..." + data);
 			   	}
 			   }); 
+		}else{
+			$("#searchVideo").css("border", "solid 1px red");
 		}
 		
 	
@@ -1222,9 +1233,10 @@ function listPlaylistDetail(data){
 
 function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
-	var characterReg = /^[a-zA-Z0-9-_.]+$/;
+	var characterReg = /^[\ba-zA-Z0-9-_.]+$/;
 	//alert(key);
 	if(key.length > 2 && characterReg.test(key)){
+		$("#searchPlaylist").css("border", "solid 1px green");
 		 $.ajax({  
 			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
 		       type:'get',
@@ -1238,6 +1250,10 @@ function mySearchPlaylist(){
 			    	   	$("#getPlayList").html(listPlaylistDetail(data));
 			    	   	
 		    	   		//alert(data.PAGINATION.totalCount);
+		    	   	}else{
+		    	   		
+		    	   		swal("Search Not Found");
+		    	   		mystartPlaylist();
 		    	   	}
 		    	   		//$("#showresult").html(listarticles(data));
 		                console.log("Success..." + data);
@@ -1247,6 +1263,8 @@ function mySearchPlaylist(){
 		   		console.log("ERROR..." + data);
 		   	}
 		   }); 
+	}else{
+		$("#searchPlaylist").css("border", "solid 1px red");
 	}
 	
 
