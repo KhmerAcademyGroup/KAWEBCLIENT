@@ -5,6 +5,9 @@
 <html lang="en">
 <head>
 	<jsp:include page="shared/_adminheader.jsp" />
+	<link href="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+	<!-- sweet alert -->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
 </head>
 
 <body class="tooltips">
@@ -53,8 +56,7 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#frmFroumCategory" data-backdrop="static">
+							<button type="button" class="btn btn-success" id="form-create-playlist" >
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
@@ -99,32 +101,68 @@
 
 
 			<!-- Modal -->
-			<div class="modal fade " id="frmFroumCategory" tabindex="-1"
-				role="dialog" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Add Playlist</h4>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Playlist Name<span class="required">*</span></label>
-								<div class="col-lg-9 col-sm-12 pull-right col-xs-12">
-									<input type="text" class="form-control" name="txtVideoCategory" id="txtVideoCategory" value="">
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Add</button>
-						</div>
-						<!-- /.modal-footer -->
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-doalog -->
-			</div>
+			<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;  z-index: 100;">
+													<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
+												  	<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>×</span></span>
+													</button>
+												  <div class="form-group">
+													<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
+												  </div>
+												
+												
+												  <div class="form-group">
+													<label for="exampleInputEmail1">Playlist name</label>
+														<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
+														<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
+														<small id="checklistname" class="msg" style="color:red"></small>
+												  </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Description</label>
+														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
+												 </div>
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Category</label>
+														<select class="form-control"  id="playlistcategory">
+														</select>
+														
+														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+												 </div>
+												  
+												  <c:if test="${usertype == 'Admin' }">
+												  <div class="form-group">
+														<label for="exampleInputEmail1">Color</label>
+														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+														<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+													</div>
+												  	<div class="form-group" >
+														<label for="exampleInputEmail1">Image</label>
+														<div class="col-sm-12">
+															<div class="fileinput fileinput-new" data-provides="fileinput">
+															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+															  <div>
+																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+																<input type="file" id="file"   name="file">
+																
+																<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+															  </div>
+															</div>
+															
+														</div>
+													</div>
+													
+													
+												  </c:if>
+														 
+														
+														 	<input type="submit" id="btncreate"  value="Save" class="btn btn-success">
+															<input type="button"  value="Close" class="btn btn-success b-close">	
+															</form>
+														</div>
+												</div>
 			<!-- /#DefaultModal -->
 
 
@@ -158,107 +196,17 @@
 		Placed at the end of the document so the pages load faster
 		===========================================================
 		-->
-	<!-- MAIN JAVASRCIPT (REQUIRED ALL PAGE)-->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/retina/retina.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/nicescroll/jquery.nicescroll.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/backstretch/jquery.backstretch.min.js"></script>
-
-	<!-- PLUGINS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/skycons/skycons.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/prettify/prettify.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/icheck/icheck.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/timepicker/bootstrap-timepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/mask/jquery.mask.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/validator/bootstrapValidator.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/datatable/js/bootstrap.datatable.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/to-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/markdown/bootstrap-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
-
-	<!-- EASY PIE CHART JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/easypie-chart/easypiechart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/easypie-chart/jquery.easypiechart.min.js"></script>
-
-	<!-- KNOB JS -->
-	<!--[if IE]>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/excanvas.js"></script>
-		<![endif]-->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/jquery.knob.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/jquery-knob/knob.js"></script>
-
-	<!-- FLOT CHART JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.tooltip.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.resize.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.selection.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.stack.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/flot-chart/jquery.flot.time.js"></script>
-
-	<!-- MORRIS JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/raphael.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/morris.min.js"></script>
-
-	<!-- C3 JS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/d3.v3.min.js"
-		charset="utf-8"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/c3.min.js"></script>
-
-	<!-- MAIN APPS JS -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/apps.js"></script>
-
-
+	<!-- Footer Script -->
+		<jsp:include page="shared/_scriptfooter.jsp"/>
+		<!-- ./Footer Script -->
 
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tmpl.min.js"></script>
 	
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
-	
+	<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
+
+	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
+	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
 	
 	<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
@@ -266,8 +214,8 @@
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>				
 				<td> 
-   		 			<i id="{{= playlistId}}" class="fa fa-pencil icon-circle icon-xs icon-info btnUpdate"></i>
-            		<i id="{{= playlistId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
+   		 			<i  data-pid="{{= playlistId}}" onclick="viewPlayList('{{= playlistId}}')" class="fa fa-pencil icon-circle icon-xs icon-info btnUpdate" id="showFrmUpdatePlaylist"></i>
+            		<i id="{{= playlistId}}" onclick="deletePlayList('{{= playlistId}}')" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
          		</td>
 				
 			</tr>
@@ -417,6 +365,356 @@
 		    });
 			
 		});
+		
+		
+		
+		
+//////////////////////////chhoin
+		
+	
+			
+			 $("#form-create-playlist").click(function(){ 
+				 //alert();
+	            $("#form-create-playlist1").bPopup({modalClose: false});
+					
+	           });
+		// Show Form Update Category Popup
+		$(document).on('click',"#showFrmUpdatePlaylist", function(){
+			//alert($(this).data("pid"));
+			//viewPlayList("pid");
+			$("#form-create-playlist1").bPopup({modalClose: false});
+			
+		});
+		var url="${pageContext.request.contextPath}";
+		var userid="MQ==";
+		var usertype="Admin";
+		var key ="<%= request.getAttribute("key") %>";
+		//api for image
+		var api = "<%= request.getAttribute("api") %>";
+		//api_url for web serive
+		var api_url = "<%= request.getAttribute("api_url") %>";
+		
+		//whend click submit to create new playlist
+		$('#formcreateplaylist').submit(function(e){
+			e.preventDefault();
+		
+		
+		var publicview =true;
+		var playname=$("#listname").val();
+		var playdescription=$("#playlistdescription").val();
+		var category=$("#playlistcategory").val();
+		var color=$("#color").val();
+		var img=$("#file").val();
+		var oimg=$("#oimg").val();
+		var thumnial="mcgBfVSTKqo"; 
+		var status=true;
+		var playid = $("#listid").val();
+		//alert('action');
+		
+		//alert("user0");
+			
+		//alert(publicview);
+		
+		 //create playlist no image ->well
+		 if(img =="" && oimg ==""){
+			//alert("insert no image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+				
+			var img="/resources/upload/file/playlist/ee40b289-cb7f-4e90-ab0d-fad28b18a794.jpg";
+			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
+			}
+		}  
+		
+		//idrect update
+		else if(img =="" && oimg.length !== 0 ){
+			//alert("direct update");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+			updateProcess(playname,playdescription,userid,thumnial,publicview,category,oimg,color,status);
+			//updateProcess(n,d,u,th,p,m,bg,c,s);
+			}
+		}
+		//insert image and update
+		else if(img.length !== 0 && oimg.length !== 0 ){
+			//alert("update with new image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+			$.ajax({
+				type : "POST",
+				url : api_url+'/uploadfile/upload?url=playlist',
+				enctype : 'multipart/form-data',
+				data : new FormData(document.getElementById("formcreateplaylist")),
+				processData : false, // tell jQuery not to process the data
+				contentType : false, // tell jQuery not to set contentType
+				 headers : {
+						"Authorization" : "Basic "+key
+					},
+				success : function(data) {
+					if(data.STATUS == true){
+						//alert("image was upload");
+						//alert(data.IMG);
+						updateProcess(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
+					}
+			
+				},
+				error : function(data) {
+					alert("1upload unsuccess data");
+				}
+			});
+			}
+		} 
+		//insert with image
+		 else {
+			//alert("insert with image");
+			if(validatPlaylistname() && validatPlaylistnameDes() ){
+			$.ajax({
+				type : "POST",
+				url : api_url+'/uploadfile/upload?url=playlist',
+				enctype : 'multipart/form-data',
+				data : new FormData(document.getElementById("formcreateplaylist")),
+				processData : false, // tell jQuery not to process the data
+				contentType : false, // tell jQuery not to set contentType
+				 headers : {
+						"Authorization" : "Basic "+key
+					},
+				success : function(data) {
+					if(data.STATUS == true){
+						//alert("image was upload");
+						//alert(data.IMG);
+						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
+					}
+			
+				},
+				error : function(data) {
+					alert("1upload unsuccess data");
+				}
+			});
+			}
+		} 
+
+		
+		});
+		
+		
+		
+		
+		//create playlist
+			function createPlayList(n,d,u,th,p,m,bg,c,s){
+				//alert(n +"  "+ d+"  "+u+"  "+th+"  "+p+"  "+m+"  "+bg+"  "+c+"  "+s);
+				var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
+			   	//alert("creat playlist");
+					$.ajax({
+			           url: url+'/rest/user/profile/createplaylist',
+			           type: 'post',
+			          //contentType:false,
+			           contentType: 'application/json;charset=utf-8',
+			           data: JSON.stringify(JSONObject),
+			           success: function(data){
+			           	if(data.STATUS == true){
+			           		//alert("created");
+			           		swal("Playlist Was created", "You clicked the button!", "success");
+				            	myClear();
+				            	playlist.listPlaylist(1,10);
+				            	
+							}
+			           
+			           },
+			           error: function(data){
+			           	alert("creation unsuccess data");
+			           }
+			       });	    	
+				}
+		
+		
+		
+		function viewPlayList(pid){
+			//alert("view playlist");
+			$.ajax({
+				url: url+'/rest/user/profile/viewplaylist/'+pid,
+		        type: 'get',
+		        contentType: 'application/json;charset=utf-8',
+		        //data: JSON.stringify(JSONObject),
+		        success: function(data){
+		        	//alert(data.RES_DATA.length);
+		        	if(data.STATUS == true){
+		        		listCategoryUpdate(data.USERPLAYLIST.maincategory)
+		        		//alert(data.USERPLAYLIST.playlistName);
+		        		$("#listid").val(data.USERPLAYLIST.playlistId);
+		        		$("#listname").val(data.USERPLAYLIST.playlistName);
+		        		$("#playlistdescription").val(data.USERPLAYLIST.description);
+		        		$("#color").val(data.USERPLAYLIST.color);
+		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
+		        		
+		        	}
+		        	
+		        },
+		        error: function(data){
+		        	alert("view playlist unseccess data");
+		        }
+		    });	
+		}
+		
+function listCategoryUpdate(cid){
+		//alert("list category update");	
+	    	 $.ajax({
+	    		url: url+'/rest/user/profile/listcategory',
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		var str="";
+	            		for(var i=0; i<data.RES_DATA.length ; i++){
+	            			
+							 if( data.RES_DATA[i].mainCategoryId == cid  & cid !=null){
+								str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' selected>"+data.RES_DATA[i].mainCategoryName+"</option>";
+	            			} 
+							 str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' >"+data.RES_DATA[i].mainCategoryName+"</option>";
+	    				
+	            		}
+	            		
+	            		$("#playlistcategory").html(str);
+	            		
+	            	}
+	            	
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });     	
+	     
+		}
+//update process
+function updateProcess(n,d,u,th,p,m,bg,c,s){
+	//alert("upadte process");
+	 var pid = $("#listid").val();
+	 var JSONObject = $.parseJSON('{"playlistId":"'+pid+'","playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
+   	
+		$.ajax({
+           url: url+"/rest/user/profile/updateplaylist",
+           type: 'put',
+           contentType: 'application/json;charset=utf-8',
+           data: JSON.stringify(JSONObject),
+           success: function(data){
+        	   if(data.STATUS == true){
+        		   swal("Playlist Was Changed", "You clicked the button!", "success");
+        		   myClear();
+        		   mystartPlaylist();
+        		   playlist.listPlaylist(1,10);
+        		   alert('good');
+        	   }
+           	
+           },
+           error: function(data){
+           	alert("update unsuccess data");
+           }
+       });	     	
+	} 
+//list maincategory
+listMainCategory();
+function listMainCategory(){
+$.ajax({
+	url: url+'/rest/user/profile/listcategory',
+    type: 'get',
+    contentType: 'application/json;charset=utf-8',
+    //data: JSON.stringify(JSONObject),
+    success: function(data){
+    	//alert(data.RES_DATA.length);
+    	if(data.STATUS == true){
+    		//alert(data);
+    		$("#playlistcategory").html(listMainCategoryDetail(data));
+    		
+    	}
+    },
+    error: function(data){
+    	//alert("listAll() unseccess data");
+    }
+});	    	
+   
+}
+
+function listMainCategoryDetail(data){
+	var str="";
+		for(var i=0; i<data.RES_DATA.length ; i++){
+			str += " <option value='"+data.RES_DATA[i].mainCategoryId+"'>"+data.RES_DATA[i].mainCategoryName+"</option>";
+		}
+		//alert(str);
+		return str;
+}
+		function myClear() {
+			$("#listid").val("");
+			$("#listname").val("");
+			$("#playlistdescription").val("");
+			$("#playlistcategory").val("");
+			$("#color").val("FFFFFF");
+			$("#file").click();
+			$("#oimg").val("");
+		}
+		
+		///////validation create and update playlist///////////
+		function validatPlaylistname(){
+			var name= $("#listname").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#listname").css("border", "solid 1px red");
+			    	$("#checklistname").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#listname").css("border", "solid 1px green");
+			    	$("#checklistname").text("");
+			    		return true;
+			    }
+		}
+		
+		function validatPlaylistnameDes(){
+			var name= $("#playlistdescription").val();
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(!characterReg.test(name)) {
+			    	$("#playlistdescription").css("border", "solid 1px red");
+			    	$("#checkplaylistdescription").text("Require and at least 3 charactors less than 100 charactors");
+			    	   return false;
+			    
+			    }else{
+			    	$("#playlistdescription").css("border", "solid 1px green");
+			    	$("#checkplaylistdescription").text("");
+			    		return true;
+			    }
+		}
+		
+		function deletePlayList(pid){
+			//alert(pid);
+			swal({   
+				title: "Are you sure?",   
+				text: "You will not be able to recover this imaginary file!",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false }, function(){   
+					
+					 $.ajax({  
+						 	url: url+'/rest/user/profile/deleteplaylist/'+pid,
+					       type:'delete',
+					       contentType: 'application/json;charset=utf-8', // type of data
+					       success: function(data) { 
+					    	   	if(data.STATUS == true){
+									swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
+					    	   	}
+					    	   		//$("#showresult").html(listarticles(data));
+					                console.log("Success..." + data);
+					       }  ,  
+					   		error: function(data){
+					   		alert("Unsuccess" + data +"OR Empty");
+					   		console.log("ERROR..." + data);
+					   	}
+					   });
+					
+					
+					
+					
+				});
+		}
+		
 		</script>
 
 </body>
