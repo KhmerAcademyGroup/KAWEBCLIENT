@@ -56,6 +56,7 @@ public class AuthenticationController {
 			map.put("EMAIL", user.getEmail());
 			map.put("PROFILE_IMG_URL",user.getUserImageUrl());
 			map.put("COVER_IMG_URL", user.getCoverphoto());
+			map.put("PASSWORD", user.getPassword());
 			map.put("STATUS", true);
 		}else{
 			System.out.println(authentication.getPrincipal());
