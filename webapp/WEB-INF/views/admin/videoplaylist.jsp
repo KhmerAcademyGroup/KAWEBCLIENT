@@ -60,10 +60,21 @@
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
-
+						<div class="btn-group" >
+							<form role="form">
+								<select id="limitplaylist" onclick="choosePlaylist();" class="form-control">
+									<option value="10">10</option>
+									<option value="20" selected="selected">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+								</select>
+							</form>
+						</div>
 						<div class="btn-group pull-right">
 							<form role="form">
-								<input type="text" id="search" class="form-control"
+								<input type="text" onkeyup="mySearchPlaylist()" id="search" class="form-control"
 									placeholder="Search University">
 							</form>
 
@@ -77,13 +88,13 @@
 								<tr>									
 									<th>No1</th>
 									<th>Playlist Name</th>
-									<th>Playlist Description</th>														
+									<th>Playlist Description</th>	
+									<!-- <th>Category Name</th>	 -->												
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="content">
 								
-
 							</tbody>
 						</table>
 						<br />
@@ -101,68 +112,68 @@
 
 
 			<!-- Modal -->
-			<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;  z-index: 100;">
-													<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
-												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
-												  	<button type="button" class="close" aria-hidden="true">
-														<span class="button b-close"><span>×</span></span>
-													</button>
-												  <div class="form-group">
-													<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
-												  </div>
-												
-												
-												  <div class="form-group">
-													<label for="exampleInputEmail1">Playlist name</label>
-														<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
-														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
-														<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
-														<small id="checklistname" class="msg" style="color:red"></small>
-												  </div>
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Description</label>
-														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
-														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
-												 </div>
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Category</label>
-														<select class="form-control"  id="playlistcategory">
-														</select>
-														
-														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
-												 </div>
-												  
-												  <c:if test="${usertype == 'Admin' }">
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Color</label>
-														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
-														<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-													</div>
-												  	<div class="form-group" >
-														<label for="exampleInputEmail1">Image</label>
-														<div class="col-sm-12">
-															<div class="fileinput fileinput-new" data-provides="fileinput">
-															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
-															  <div>
-																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-																<input type="file" id="file"   name="file">
-																
-																<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-															  </div>
-															</div>
-															
-														</div>
-													</div>
-													
-													
-												  </c:if>
-														 
-														
-														 	<input type="submit" id="btncreate"  value="Save" class="btn btn-success">
-															<input type="button"  value="Close" class="btn btn-success b-close">	
-															</form>
-														</div>
-												</div>
+			<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 40%;  z-index: 100;">
+					<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
+				  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
+				  	<button type="button" class="close" aria-hidden="true">
+						<span class="button b-close"><span>×</span></span>
+					</button>
+				  <div class="form-group">
+					<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
+				  </div>
+				
+				
+				  <div class="form-group">
+					<label for="exampleInputEmail1">Playlist name</label>
+						<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+						<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
+						<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
+						<small id="checklistname" class="msg" style="color:red"></small>
+				  </div>
+				  <div class="form-group">
+						<label for="exampleInputEmail1">Description</label>
+						<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
+						<small id="checkplaylistdescription" class="msg" style="color:red"></small>
+				 </div>
+				  <div class="form-group">
+						<label for="exampleInputEmail1">Category</label>
+						<select class="form-control"  id="playlistcategory">
+						</select>
+						
+						<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
+				 </div>
+				  
+				  <c:if test="${usertype == 'Admin' }">
+				  <div class="form-group">
+						<label for="exampleInputEmail1">Color</label>
+						<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
+						<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+					</div>
+				  	<div class="form-group" >
+						<label for="exampleInputEmail1">Image</label>
+						<div class="col-sm-12">
+							<div class="fileinput fileinput-new" data-provides="fileinput">
+							  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+							  <div>
+								<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+								<input type="file" id="file"   name="file">
+								
+								<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+							  </div>
+							</div>
+							
+						</div>
+					</div>
+					
+					
+				  </c:if>
+						 
+						
+						 	<input type="submit" id="btncreate"  value="Save" class="btn btn-primary">
+							<input type="button"  value="Close" class="btn btn-success b-close">	
+							</form>
+						</div>
+				</div>
 			<!-- /#DefaultModal -->
 
 
@@ -208,163 +219,146 @@
 	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
 	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
 	
-	<script id="content_tmpl" type="text/x-jquery-tmpl">
-	    	<tr>
-				<td>{{= NO}}</td>
-				<td>{{= playlistName}}</td>
-				<td>{{= description}}</td>				
-				<td> 
-   		 			<i  data-pid="{{= playlistId}}" onclick="viewPlayList('{{= playlistId}}')" class="fa fa-pencil icon-circle icon-xs icon-info btnUpdate" id="showFrmUpdatePlaylist"></i>
-            		<i id="{{= playlistId}}" onclick="deletePlayList('{{= playlistId}}')" class="fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm" ></i>
-         		</td>
-				
-			</tr>
-   </script>
-  
-   
-  
-   
+
    
 		<script type="text/javascript">		
+		var limit=0;
+		var offset=1;
+		var totalofrecord =0;
+		var numofpage=1;
+		var url="${pageContext.request.contextPath}";
 		
-		var playlist = {};		
-		var check = true;
-		var gPage = 1; //global current page for pagination
-		var isSearch = false
+		//my choice what list or search
+		 function choosePlaylist(){
+			var key =$("#search").val();
+			//alert(key);
+			if(key.length == 0){
+				mystart();
+			}else{
+				mySearchPlaylist();
+			}
+		} 
 		
-		$(document).ready(function(){
-			
-			
-			playlist.listPlaylist = function(currentPage,item){
-				
-				$.ajax({ 
-					url: "${pageContext.request.contextPath}/rest/listadminplaylist/MQ==?page="+currentPage+"&item="+item,				   
-				    type: 'GET',
-				    beforeSend: function(xhr) {
-	                    xhr.setRequestHeader("Accept", "application/json");
-	                    xhr.setRequestHeader("Content-Type", "application/json");
-	                },
-				    success: function(data) { 
-				    	
-				    	perPage = item;
-				    	nextPage = (currentPage-1)*perPage;
-				    					    	
-				    	if(data.RES_DATA.length>0){
-							$("tbody#content").empty();
-							for(var i=0;i<data.RES_DATA.length;i++){
-								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
-							}
-							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
-						}else{
-							$("tbody#content").html('<tr>No content</tr>');
-						}
-				    					    	
-				    	if(check){
-				    		console.log(data.PAGINATION.totalPages + " HLLOFDFD");
-							playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
-							check=false;
-				    	}
-				    	
-				    },				    					    		
-				    error:function(data,status,er) { 				    
-				        console.log("error: "+data+" status: "+status+" er:"+er);
-				    }
-				});
-			};			
-			
-			
-
-			playlist.searchPlaylist = function(currentPage, item, playname){
-				
-				/* /rest/searchadminplaylist/MQ==/IOS */
-				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/searchadminplaylist/MQ==/"+ playname +"?item="+ item + "&page=" + currentPage, 
-				    type: 'GET',
-				    beforeSend: function(xhr) {
-	                    xhr.setRequestHeader("Accept", "application/json");
-	                    xhr.setRequestHeader("Content-Type", "application/json");
-	                },
-				    success: function(data) { 
-				    	if(data.STATUS==true){
-				    						    						
-					    	perPage = item;
-					    	nextPage = (currentPage-1)*perPage;
-					    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);
-							if(data.RES_DATA.length>0){
-								$("tbody#content").empty();
-								for(var i=0;i<data.RES_DATA.length;i++){
-									data.RES_DATA[i]["NO"] = (i+1)+nextPage;
-								}
-								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
-							}else{
-								$("tbody#content").html('<tr>No content</tr>');
-							}
-					    	
-							if(check){
-								playlist.setPagination(data.PAGINATION.totalPages,gPage,item);
-								check=false;
-					    	}
-
-				    	}else{				    
-				    		$("tbody#content").html('<tr>No content</tr>');
-				    		$("#pagination").html("");
-				    		$("#totalrecord").text("Total records = 0");
-				    	}
-				    	
-				    },
-				    error:function(data,status,er) { 
-				    	
-				        console.log("error: "+data+" status: "+status+" er:"+er);
-				    }
-				});
-			};
-			
-			
-			
-			playlist.listPlaylist(1,10);
-			
-			
-			playlist.setPagination = function(totalPage, currentPage, item){
-   		    	$('#pagination').bootpag({
-   			        total: totalPage,
-   			        page: currentPage,
-   			        maxVisible: 5,
-   			        leaps: true,
-   			        firstLastUse: true,
-   			        first: 'First',
-   			        last: 'Last',
-   			        wrapClass: 'pagination',
-   			        activeClass: 'active',
-   			        disabledClass: 'disabled',
-   			        nextClass: 'next',
-   			        prevClass: 'prev',
-   			        lastClass: 'last',
-   			        firstClass: 'first'
-   			    }).on("page", function(event, currentPage){   			    	
-   			    	check = false;   			    	   			    	
-   			    	gPage = currentPage;
-   			    	console.log(gPage + "=========="+currentPage);   			    	
-   			    	if($("#search").val() == "") playlist.listPlaylist(currentPage,item);
-   			    	else playlist.searchPlaylist(currentPage,item,$("#search").val());
-   			    }); 
-    		};
-			
-    		$(document).on('keyup', "#search", function() {
-    			$("h1").html($(this).val());
-				/* if($(this).val() == ""){
-					check = false;
-					isSearch = false;
-					playlist.listPlaylist(1,10);
-				}else{					
+		mystart();
+		function mystart(){
+			//get limit from selec
+			limit=$("#limitplaylist").val();
+			///alert(limit);
+			 $.ajax({   
+		            url: url+'/rest/user/profile/listuserplaylist/MQ==?page='+offset+'&item='+limit,
+		            type: 'get',
+		            contentType: 'application/json;charset=utf-8',
+		            success: function(data){
+		            	totalofrecord=data.PAGINATION.totalCount;
+		            	numofpage=data.PAGINATION.totalPages;
+		            	listAllPlaylist(1);
+		            	loadPaginationPlaylist();
+		            	
+		            },
+		            error: function(data){
+		            	alert("1start () unsuccess data");
+		            }
+		        });	  
+	    	 
+		}
+		function loadPaginationPlaylist(){
+			//alert(numofpage);
+			$('#pagination').bootpag({
+		        total: numofpage,
+		        maxVisible: 5,
+		        leaps: true,
+		        firstLastUse: true,
+		        first: '&#8592;',
+		        last: '&#8594;',
+		        wrapClass: 'pagination',
+		        activeClass: 'active',
+		        disabledClass: 'disabled',
+		        nextClass: 'next',
+		        prevClass: 'prev',
+		        lastClass: 'last',
+		        firstClass: 'first'
+		    }).on("page", function(event, num){
+		    	listAllPlaylist(num);
+		    	//alert("pagination ="+num);
+		    }); 
+		}
+		
+		function listAllPlaylist(offset){
+	    	$.ajax({
+	    		url: url+'/rest/user/profile/listuserplaylist/MQ==?page='+offset+'&item='+limit,
+	            type: 'get',
+	            contentType: 'application/json;charset=utf-8',
+	            //data: JSON.stringify(JSONObject),
+	            success: function(data){
+	            	//alert(data.RES_DATA.length);
+	            	if(data.STATUS == true){
+	            		$("#content").html(listPlaylistDetail(data));
+	            		//alert(data.RES_DATA[1].bgImage);
+	            	}
+	            },
+	            error: function(data){
+	            	//alert("listAll() unseccess data");
+	            }
+	        });	    	
+			   
+		}
+		
+		function listPlaylistDetail(data){
+			var str="";
+				for(var i=0; i<data.RES_DATA.length ; i++){
 					
-					isSearch = true; */
-					check = true;
-					playlist.searchPlaylist(1,10, $(this).val());
-				//} 
-				
-		    });
+					str +="<tr>"
+							+"<td>"+i+"</td>"
+							+"<td>"+data.RES_DATA[i].playlistName+"</td>"
+							+"<td>"+data.RES_DATA[i].description+"</td>"
+							//+"<td>"+data.RES_DATA[i].maincategoryname+"</td>"
+							+"<td>"
+								+"<a  onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"') id='showFrmUpdatePlaylist' ><i  class='fa fa-pencil icon-circle icon-xs icon-info btnUpdate'></i></a>"              
+								+"<a  onclick=deletePlayList('"+data.RES_DATA[i].playlistId+"') ><i class='fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm'></i></a>"    
+							+"<td>"
+						+"</tr>" ;
+				}
+					
+				return str;
+		}
 			
-		});
+		function mySearchPlaylist(){
+			var key =$("#search").val();
+			var characterReg = /^[\ba-zA-Z0-9-_.]+$/;
+			//alert(key);
+			if(key.length > 2 && characterReg.test(key)){
+				$("#search").css("border", "solid 1px green");
+				 $.ajax({  
+					 	url: url+'/rest/user/profile/searchplaylist/MQ==/'+key+'?page='+offset+'&item='+limit, 
+				       type:'get',
+				       contentType: 'application/json;charset=utf-8', // type of data
+				       success: function(data) { 
+				    	   	if(data.STATUS == true){
+				    	   		//alert(data);
+				    	   		totalofrecord=data.PAGINATION.totalCount;
+				    	   		numofpage=data.PAGINATION.totalPages;
+				    	   		loadPaginationPlaylist();
+					    	   	$("#content").html(listPlaylistDetail(data));
+					    	   	
+				    	   		//alert(data.PAGINATION.totalCount);
+				    	   	}else{
+				    	   		swal("Search Not Found");
+				    	   		mystart();
+				    	   	}
+				    	   		//$("#showresult").html(listarticles(data));
+				                console.log("Success..." + data);
+				       }  ,  
+				   		error: function(data){
+				   		alert("Unsuccess" + data +"OR Empty");
+				   		console.log("ERROR..." + data);
+				   	}
+				   }); 
+			}else{
+				$("#search").css("border", "solid 1px red");
+			}
+			
+
+		}
 		
 		
 		
@@ -373,11 +367,11 @@
 		
 	
 			
-			 $("#form-create-playlist").click(function(){ 
-				 //alert();
-	            $("#form-create-playlist1").bPopup({modalClose: false});
-					
-	           });
+		 $("#form-create-playlist").click(function(){ 
+			 //alert();
+            $("#form-create-playlist1").bPopup({modalClose: false});
+				
+           });
 		// Show Form Update Category Popup
 		$(document).on('click',"#showFrmUpdatePlaylist", function(){
 			//alert($(this).data("pid"));
@@ -510,9 +504,10 @@
 			           success: function(data){
 			           	if(data.STATUS == true){
 			           		//alert("created");
+			           		mystart();
 			           		swal("Playlist Was created", "You clicked the button!", "success");
 				            	myClear();
-				            	playlist.listPlaylist(1,10);
+				            	
 				            	
 							}
 			           
@@ -596,11 +591,10 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
            data: JSON.stringify(JSONObject),
            success: function(data){
         	   if(data.STATUS == true){
+        		   mystart();
         		   swal("Playlist Was Changed", "You clicked the button!", "success");
         		   myClear();
-        		   mystartPlaylist();
-        		   playlist.listPlaylist(1,10);
-        		   alert('good');
+        		 
         	   }
            	
            },
@@ -698,6 +692,7 @@ function listMainCategoryDetail(data){
 					       contentType: 'application/json;charset=utf-8', // type of data
 					       success: function(data) { 
 					    	   	if(data.STATUS == true){
+					    	   		mystart();
 									swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
 					    	   	}
 					    	   		//$("#showresult").html(listarticles(data));

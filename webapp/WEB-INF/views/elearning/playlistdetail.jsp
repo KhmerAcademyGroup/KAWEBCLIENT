@@ -50,6 +50,9 @@
 
 	<div class="container ka-container">
 
+		<input type="text" id="address" />
+		<textarea rows="10" cols="20" id="message"></textarea>
+		<input type="button" id="send" value="SEND"/>
 
 
 
@@ -228,6 +231,10 @@
 										</div><!-- /#DefaultModal -->	
 										
 										<!-- ================================================================ -->
+
+
+
+
 
 
 
@@ -720,6 +727,23 @@
     			});
     			
 	
+			$(document).on('click', "#send", function() {
+				var address=$("#address").val();
+				var message=$("#message").val();
+				
+				alert(address + " / "+ message);
+				 $.ajax({
+					url : "${pageContext.request.contextPath}/rest/elearning/send/"+address+"/"+message+"/"+playlistId,
+					method: "GET",
+					success: function(data){  	    							    					
+						// window.location = '${pageContext.request.contextPath}/user/profile';
+						alert("SEnd compleate")
+						 console.log(data);
+					}
+				}); 
+			});
+			
+			
 		});
 		
 		
