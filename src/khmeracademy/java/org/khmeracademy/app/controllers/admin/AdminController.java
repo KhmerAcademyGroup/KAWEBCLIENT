@@ -1,6 +1,7 @@
 package org.khmeracademy.app.controllers.admin;
 
 import org.khmeracademy.app.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
+	
+	@Autowired
+	private String WebURL;
+	
+	@Autowired
+	private String KEY;
+	
+	@Autowired
+	private String WSURL;
+	
+	@Autowired
+	private String IMGURL;
+	
 	@RequestMapping(value={"/",""} , method = RequestMethod.GET)
 	public String  mainPage(ModelMap m){
 		m.addAttribute("msg","Main Page");
@@ -104,7 +117,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/elearning/playlist",method=RequestMethod.GET)
-	public String videoplaylist(){
+	public String videoplaylist(ModelMap m){
+		
+	    m.addAttribute("api",IMGURL);
+	    m.addAttribute("api_url",WSURL);
+	    m.addAttribute("key",KEY);
 		
 		return "admin/videoplaylist";
 	}	
