@@ -1,3 +1,6 @@
+<%@page import="org.khmeracademy.app.entities.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -54,9 +57,17 @@
 <!-- 				<li class="parent"> -->
 <%-- 					<img style="padding-top: 12px;" width="50px" src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"> --%>
 <!-- 				</li> -->
+				<%
+				Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+				User user= null;
+				if(!authentication.getPrincipal().equals("anonymousUser")){
+					 user = (User) authentication.getPrincipal();
+				}
+				%>
+				
 				<li class="parent" >
 					 <a href="${pageContext.request.contextPath}/user/profile"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						    <img   style="height:140%"  src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar">
+						    <img   style="height:140%"  src="<spring:message code="WSURL_IMG_URL"/><%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
 						   <sec:authentication property="principal.username" />
 					 </a>
 					 <ul class="sub-menus">

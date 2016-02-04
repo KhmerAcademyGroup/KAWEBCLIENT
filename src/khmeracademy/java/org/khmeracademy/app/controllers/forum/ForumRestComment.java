@@ -115,13 +115,13 @@ public class ForumRestComment {
 	public ResponseEntity<Map<String , Object>> vote(@RequestBody FrmVote vote , @PathVariable String type ){
 		HttpEntity<Object> request = new HttpEntity<Object>(vote,header);
 		String url = "";
-		if(type.equalsIgnoreCase("LikeQ")){
+		if(type.equalsIgnoreCase("LIKEQ")){
 			url = "forum/vote/likequestion";
-		}else if(type.equalsIgnoreCase("UnlikeQ")){
+		}else if(type.equalsIgnoreCase("UNLIKEQ")){
 			url = "forum/vote/unlikequestion";
-		}else if(type.equalsIgnoreCase("LikeA")){
+		}else if(type.equalsIgnoreCase("LIKEA")){
 			url = "forum/vote/likeanswer";
-		}else if(type.equalsIgnoreCase("UnlikeA")){
+		}else if(type.equalsIgnoreCase("UNLIKEA")){
 			url = "forum/vote/unlikeanswer";
 		}
 		System.out.println(url);
