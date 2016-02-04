@@ -66,10 +66,10 @@
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
-						<div class="btn-group" id="btcheck">
-							<button id="showFrmAddCategory" type="button" class="btn btn-success" data-toggle="modal" data-target="#myPopup">
+						<div class="btn-group">
+							<a id="showFrmAddTutorial" type="button" class="btn btn-success">
 								<i class="fa fa-plus-square"></i> Add new
-							</button>
+							</a>
 						</div>
 
 						<!-- <div class="btn-group pull-right">
@@ -117,7 +117,7 @@
 			<!-- BootStrap Model Popup -->		
 				<!-- Modal -->
 			<div id="myPopup" class="modal fade" role="dialog">
-			  <div class="modal-dialog vu-modal-lg">
+			  <div class="modal-dialog modal-lg">
 			
 			    <!-- Modal content-->
 			    <div class="modal-content">
@@ -125,17 +125,19 @@
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Tutorial Content</h4>
 			      </div>
-			    <form id="tutorial" name="tutorial" method="post" action="addtutorial_pro.act" class="form-horizontal" role="form">
+			    <form id="frmtutorial" name="frmtutorial" method="post" action="${pageContext.request.contextPath}/admin/tutorial/rest/tutorial" class="form-horizontal" role="form">
 			      <div class="modal-body">
 			       	<div>
 							<fieldset>
 								
 								<div class="form-group">
+									<input type="hidden" name="tutorialId" id="tutorialId"/>
+									<input type="hidden" name="userId" id="userId"/>
 									<div class="col-lg-12">
 										<label class="control-label">Tutorial Title<span class="required">*</span></label>
 									</div>
 									<div class="col-lg-12">
-										<input type="text" class="form-control" name="txttitle" id="txttitle" />
+										<input type="text" class="form-control" name="title" id="title" required="required"/>
 									</div>
 								</div> 
 								
@@ -144,14 +146,14 @@
 										<label class="control-label">Description<span class="required">*</span></label>
 									</div>
 									<div class="col-lg-12">
-										<textarea class="form-control summernote-lg" name="txtdescription" id="txtdescription"></textarea>
+										<textarea class="form-control summernote-lg" id="txtdescription"></textarea>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-lg-1 control-label">Index<span class="required">*</span></label>
 									<div class="col-lg-11">
-										<input type="text" class="form-control" name="txtindex" id="txtindex" />
+										<input type="number" class="form-control" name="index" id="index" required="required" />
 									</div>
 								</div> 
 								
@@ -160,27 +162,20 @@
 										<label class="control-label">Category<span class="required">*</span></label>
 									</div>
 									<div class="col-lg-11">
-							          <select data-placeholder="Select categories" name="txtcategory" id="txtcategory" class="form-control chosen-select" tabindex="16">
-							      
-							            <option value="">category</option>
-							          	<option value="">category</option>
-							          	<option value="">category</option>
-							          	<option value="">category</option>
-							          	 <option value="">category</option>
-							          	<option value="">category</option>
-							          	<option value="">category</option>
-							          	<option value="">category</option>
-							        
-							          </select>
+							          	<select data-placeholder="Select categories" name="categoryId" id="categoryId" class="form-control chosen-select" tabindex="16" required="required">							      
+																	          	
+										</select>
+							          
 									</div>
 								</div>
+								
 							</fieldset>
 					</div><!-- /.the-box -->
 			       
 			       
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+			        <button type="submit" class="btn btn-danger" id="btSubmit" >Save</button>
 			      </div>
 			      </form>
 			      
@@ -221,12 +216,16 @@
 				<td>{{= categoryName }}</td>
 				<td>{{= username }}</td>
 				<td> 
-   		 			<i data-tutorialid="{{= tutorialId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateTutorial"></i>
-            		<!-- <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i> -->
+   		 			<a href="#"><i data-tutorialid="{{= tutorialId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateTutorial"></i></a>
+            		<a href="#"><i data-tutorialid="{{= tutorialId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" id="showDeleteTutorial" ></i> </a>
          		</td>
 			</tr>
    		</script>
-   
+   		<script type="text/x-jquery-tmpl" id="listCategory">
+									      
+				<option value="{{= categoryId }}">{{= categoryName }}</option>							          	
+			
+		</script>
    		
          
 		<script type="text/javascript">		
@@ -236,6 +235,37 @@
 		
 		$(document).ready(function(){
 			
+			$.get("${pageContext.request.contextPath}/api/isLogin",function(data){
+				$("#userId").val(data.USERID);				
+			});
+			
+			//List Category into combo box in form add
+			tutorial.listCategory = function(){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/admin/tutorial/rest/getCategory",
+					method: "GET",
+					success : function(data){
+						if(data.STATUS != false){
+							$("#listCategory").tmpl(data.RES_DATA).appendTo("#categoryId");
+						}
+					}
+				});
+			};
+			
+
+			//Get form data as JSON
+			tutorial.getFormData = function($form){
+			    var unindexed_array = $form.serializeArray();
+			    var indexed_array = {};
+
+			    $.map(unindexed_array, function(n, i){
+			        indexed_array[n['name']] = n['value'];
+			    });
+
+			    return indexed_array;
+			};
+			
+			//List All Tutorial
 			tutorial.listTutorial = function(currentPage){
 				KA.createProgressBar();
 				$.ajax({ 
@@ -294,13 +324,14 @@
     		
     		tutorial.addOrUpdateTutorial = function(){
 				KA.createProgressBarWithPopup();
-				frmData = {
-						"categoryId"   : $("#categoryId").val(),
-						"categoryName" : $("#categoryName").val()
-				};
-				$.ajax({ 
-				    url:  $("#frmCategory").attr("action"), 
-				    type: $("#frmCategory").attr("method"),
+				
+				var $form = $("#frmtutorial");
+				
+				var frmData = tutorial.getFormData($form);
+				frmData["description"] = CKEDITOR.instances["txtdescription"].getData();
+				 $.ajax({ 
+				    url:  $form.attr("action"), 
+				    type: $form.attr("method"),
 				    data: JSON.stringify(frmData),
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -310,21 +341,21 @@
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	tutorial.listTutorial(1);
-				    	$("#p-frmCategory").bPopup().close();
+				    	$("#myPopup").modal("hide");
 				    },
 				    error:function(data,status,er) { 
 				    	KA.destroyProgressBarWithPopup();
 				        console.log("error: "+data+" status: "+status+" er:"+er);
 				    }
-				});
+				});  
 			};
 			
 			// Get one tutorial
-			tutorial.getTutorial = function(cateid){
+			tutorial.getTutorial = function(tutorialid){
 				KA.createProgressBarWithPopup();
-				console.log(cateid);
+				
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category/"+cateid, 
+				    url: "${pageContext.request.contextPath}/tutorial/rest/getdetail/"+tutorialid, 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -333,8 +364,12 @@
 				    success: function(data) { 
 						console.log(data);
 						if(data.RES_DATA != null){
-							$("#categoryId").val(data.RES_DATA.categoryId); 
-							$("#categoryName").val(data.RES_DATA.categoryName); 
+							$("#tutorialId").val(data.RES_DATA.tutorialId);
+							$("#title").val(data.RES_DATA.title); 
+							CKEDITOR.instances['txtdescription'].setData(data.RES_DATA.description);
+							$("#index").val(data.RES_DATA.index); 
+							$("#categoryId option:selected").prop("selected",false);
+							$('#categoryId option[value="'+ data.RES_DATA.categoryId +'"]').attr('selected', true);
 						}
 						KA.destroyProgressBarWithPopup();
 				    },
@@ -345,33 +380,71 @@
 				});
 			};
 			
+			//Delete on Tutorial
+			tutorial.deleteTutorial= function(tutorialId){
+				$.ajax({ 
+				    url: "${pageContext.request.contextPath}/admin/tutorial/rest/deleteTutorial/"+tutorialId, 
+				    type: 'DELETE',
+				    beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	                },
+				    success: function(data) { 
+						console.log(data);
+						if(data.STATUS == true){
+							check = true;
+							tutorial.listTutorial(1);
+						}						
+				    },
+				    error:function(data,status,er) { 						
+				        console.log("error: "+data+" status: "+status+" er:"+er);
+				    }
+				});
+			};
 			
 			// load all tutorial
 			tutorial.listTutorial(1);
 			
-			
+			//list Category to Add form
+			tutorial.listCategory();
 			
 			
 			// Show Form Add tutorial Popup
-			$("#showFrmAddCategory").click(function(){
-				$("#p-frmCategory").bPopup({modalClose: false});
-				$("#frmCategory").attr("method", "POST");
-				$("#frmCategory").trigger("reset");
+			$("#showFrmAddTutorial").click(function(){							 
+				$("#myPopup").modal({
+					backdrop: 'static',
+				    keyboard: false
+				});
+				$("#frmtutorial").trigger("reset");	 
+				CKEDITOR.instances['txtdescription'].setData("");
+				$("#frmtutorial").attr("method", "POST");				
 				$("#btSubmit").text("Add");
 			});
 			
 			// Show Form Update tutorial Popup
-			$(document).on('click',"#showFrmUpdateCategory", function(){
+			$(document).on('click',"#showFrmUpdateTutorial", function(){
 				//alert($(this).data("cateid"));
-				$("#p-frmCategory").bPopup({modalClose: false});
-				$("#frmCategory").trigger("reset");
-				category.getCategory($(this).data("cateid"));
-				$("#frmCategory").attr("method", "PUT");
+										 
+				$("#myPopup").modal({
+					backdrop: 'static',
+				    keyboard: false
+				});
+				$("#frmtutorial").trigger("reset");	 
+				CKEDITOR.instances['txtdescription'].setData("");
+				tutorial.getTutorial($(this).data("tutorialid"));				
+				$("#frmtutorial").attr("method", "PUT");
 				$("#btSubmit").text("Update");
 			});
 			
+			$(document).on('click', "#showDeleteTutorial", function(){
+				var conf = confirm("Do you really want to delete?");
+				if(conf){
+					tutorial.deleteTutorial($(this).data("tutorialid"));
+				}
+			});
+			
 			// Add or update tutorial
-			$("#frmCategory").submit(function(e){
+			$("#frmtutorial").submit(function(e){
 				 e.preventDefault();
 				 tutorial.addOrUpdateTutorial();
 			});

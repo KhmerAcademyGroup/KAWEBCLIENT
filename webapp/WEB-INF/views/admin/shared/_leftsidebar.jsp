@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-			<div class="sidebar-left sidebar-nicescroller light-color">
+			<div class="sidebar-left sidebar-nicescroller light-color" style="overflow-y:auto;">
 
 
 				<ul class="sidebar-menu">
@@ -36,7 +36,7 @@
 				   	<li><a href="${pageContext.request.contextPath}/admin/report/precourse"><i class="fa fa-dashboard icon-sidebar"></i>PreCourse Student</a></li>
 				   	
 				   	<li>&nbsp Tutorial</li>
-				   	<li><a href="${pageContext.request.contextPath}/admin/report/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
+				   	<li><a href="${pageContext.request.contextPath}/admin/tutorial"><i class="fa fa-dashboard icon-sidebar"></i>Tutorial</a></li>
 				   					   	
 				</ul>			
 				
