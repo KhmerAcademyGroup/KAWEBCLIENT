@@ -29,30 +29,30 @@ public class AdminController {
 	public String  mainPage(ModelMap m){
 		m.addAttribute("msg","Main Page");
 		return "/admin/dashboard";
-	}
+	}	
 	
-	@RequestMapping(value="/log/department",method=RequestMethod.GET)
+	@RequestMapping(value="/department",method=RequestMethod.GET)
 	public String logDepartment(){
 		
-		return "admin/logdepartment";
+		return "admin/department";
 	}
 	
-	@RequestMapping(value="/log/university",method=RequestMethod.GET)
+	@RequestMapping(value="/university",method=RequestMethod.GET)
 	public String logUniversity(){
 		
-		return "admin/loguniversity";
+		return "admin/university";
 	}
 	
 	@RequestMapping(value="/report/university",method=RequestMethod.GET)
 	public String reportUniversity(){
 		
-		return "admin/reportuniversity";
+		return "admin/report/university";
 	}
 	
 	@RequestMapping(value="/report/category",method=RequestMethod.GET)
 	public String reportCategory(){
 		
-		return "admin/reportcategory";
+		return "admin/report/category";
 	}
 	
 	@RequestMapping(value="/report/precourse",method=RequestMethod.GET)
