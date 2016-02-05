@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 	<jsp:include page="shared/_adminheader.jsp" />
+	<link href="${pageContext.request.contextPath}/resources/assets/css/smoke.css" rel="stylesheet">
 </head>
 
 <body class="tooltips">
@@ -91,8 +92,8 @@
 									<th>No</th>
 									<th>Comment Text</th>									
 									<th>Comment Date</th>
-									<th>VideoId</th>
-									<th>UserId</th>
+									<th>Video Name</th>
+									<th>User Name</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -130,8 +131,11 @@
 						</div>
 						<div class="modal-body">
 						
-							<input type="hidden" name="commentid" id="commentid" />
-						
+							<input type="hidden" name="commentId" id="commentId" />
+							<input type="hidden" name="videoId" id="videoId" />
+							<input type="hidden" name="userId" id="userId" />
+							<input type="hidden" name="replyId" id="replyId" />
+							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Comment Text</label>
 								<div class="col-lg-9">
@@ -173,15 +177,12 @@
 	<!-- Footer Script -->
 	<jsp:include page="shared/_scriptfooter.jsp" />
 	<!-- ./Footer Script -->
-	
 	<script src="${pageContext.request.contextPath}/resources/assets/js/smoke.min.js"></script>
-
-
 	
 	<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO}}</td>
-				<td>{{if commentText.length < 50}} {{= commentText}} {{else}} {{= commentText.substring(0, 50) + "..." }} {{/if}}</td>
+				<td>{{if commentText.length < 30}} {{= commentText}} {{else}} {{= commentText.substring(0, 30) + "..." }} {{/if}}</td>
 				<td>{{= commentDate}}</td>
 				<td>{{= videoName}}</td>
 				<td>{{= username}}</td>
@@ -200,18 +201,6 @@
 		var isSearch = false;
 		
 		$(document).ready(function(){
-			
-			/* getCategory();
-			
-			function clearmodal(){
-				$("#videoid").val('');
-				$("#videoname").val('');
-				$("#youtubeurl").val('');
-				$("#fileurl").val('');
-				$("#description").val('');
-				$("#category").val('').trigger("chosen:updated");
-			} */
-			
 			
 			comment.listComment = function(currentPage, item){
 				KA.createProgressBar();
@@ -354,118 +343,68 @@
     		
     		
     		 $(document).on('click',	".btnUpdate", function() {
-    			$("#commentid").val($(this).attr('id'));
-    			getComment($(this).attr('id'));
+    			$("#commentId").val($(this).attr('id'));
+    			getComment($(this).attr("id"));
     			$("#frmComment").modal('show');
     		});
     		 
-    		 /*
-    		$(document).on('click', "#btnAddUpdate", function(){
+    		
+    		$(document).on('click', "#btnFormUpdate", function(){
     			
 				frmData = {
-						
-						"videoName"  : $("#videoname").val(),
-    					"youtubeUrl" : $("#youtubeurl").val(),
-    					"fileUrl"	 : $("#fileurl").val(),
-    					"publicView" : $("input[name=publicview]:checked").val(),
-    					"status"	 : $("input[name=status]:checked").val(),
-    					"description": $("#description").val(),
-    					"categoryId" : $("#category").val(),
-    					"videoId"	 : $("#videoid").val()
+						"commentText": $("#commentText").val(),
+						"commentId"  : $("#commentId").val(),
+    					"videoId"	 : $("#videoId").val(),
+    					"userId"	 : $("#userId").val(),
+						"replyId"    : $("#replyId").val()
+    					
 				};
 				
-    			if($("#btnAddUpdate").text()=="Add" && $("#videoid").val()==''){
+   				$.ajax({ 
+   				    url : "${pageContext.request.contextPath}/admin/rest/update/comment", 
+   				    type: "POST",
+   				    data: JSON.stringify(frmData),
+   				    beforeSend: function(xhr) {
+   	                    xhr.setRequestHeader("Accept", "application/json");
+   	                    xhr.setRequestHeader("Content-Type", "application/json");
+   	                },
+   				    success: function(data) { 
+   				    	$("#frmComment").modal('hide');
+   				    	if(data.STATUS==true){
+   							comment.listComment(1,$("#number-of-item").val());
+       						smoke.alert("Success!", function(e){
+       							
+       						}, {
+       							ok: "OK"
+       						});
+   						}else{
+   							smoke.alert("Error Occured!", function(e){
+       							
+       						}, {
+       							ok: "OK"
+       						});
+   						}
+   				    	
+   				    },
+   				    error:function(data,status,er) {
+   				    	$("#frmComment").modal('hide');
+   				        console.log("error: "+data+" status: "+status+" er:"+er);
+   				    }
+   				});
     				
-    				$.ajax({ 
-    				    url : "${pageContext.request.contextPath}/admin/rest/insert/video", 
-    				    type: "POST",
-    				    data: JSON.stringify(frmData),
-    				    beforeSend: function(xhr) {
-    	                    xhr.setRequestHeader("Accept", "application/json");
-    	                    xhr.setRequestHeader("Content-Type", "application/json");
-    	                },
-    				    success: function(data) { 
-    				    	$("#frmVideo").modal('hide');
-    				    	if(data.STATUS==true){
-    							video.listVideo(1,$("#number-of-item").val());
-        						smoke.alert("Success!", function(e){
-        							
-        						}, {
-        							ok: "OK"
-        						});
-    						}else{
-    							smoke.alert("Error Occured!", function(e){
-        							
-        						}, {
-        							ok: "OK"
-        						});
-    						}
-    				    	
-    				    },
-    				    error:function(data,status,er) {
-    				    	$("#frmVideo").modal('hide');
-    				        console.log("error: "+data+" status: "+status+" er:"+er);
-    				    }
-    				});
-    				
-    			}else{
-    				
-    				$.ajax({ 
-    				    url : "${pageContext.request.contextPath}/admin/rest/update/video", 
-    				    type: "POST",
-    				    data: JSON.stringify(frmData),
-    				    beforeSend: function(xhr) {
-    	                    xhr.setRequestHeader("Accept", "application/json");
-    	                    xhr.setRequestHeader("Content-Type", "application/json");
-    	                },
-    				    success: function(data) { 
-    				    	$("#frmVideo").modal('hide');
-    				    	if(data.STATUS==true){
-    							video.listVideo(1,$("#number-of-item").val());
-        						smoke.alert("Success!", function(e){
-        							
-        						}, {
-        							ok: "OK"
-        						});
-    						}else{
-    							smoke.alert("Error Occured!", function(e){
-        							
-        						}, {
-        							ok: "OK"
-        						});
-    						}
-    				    	
-    				    },
-    				    error:function(data,status,er) {
-    				    	$("#frmVideo").modal('hide');
-    				        console.log("error: "+data+" status: "+status+" er:"+er);
-    				    }
-    				});
-    				
-    			} 
     			
     			
-    		}); */
-    		
-    		
-    		function getComment(cid){
-    			$.get("${pageContext.request.contextPath}/admin/rest/get/comment/" + cid,function(data){
-    				if(data.STATUS==true){
-    					$("#commentText").val(data.RES_DATA.commentText);
-    				}
-    				
-    			});
-    		} 
-    		
+    		});
     		
     		//delete video
-    		/* $(document).on('click',	".deleteConfirm", function() {
-    			var vid = $(this).attr("id");
+    		$(document).on('click',	".deleteConfirm", function() {
+    			var cid = $(this).attr("id");
     			smoke.confirm("Are you sure?", function(e){
     				if (e){
-    					$.post("${pageContext.request.contextPath}/admin/rest/delete/video?vid=" + vid, function(data){
+    					$.post("${pageContext.request.contextPath}/admin/rest/delete/comment/" + cid, function(data){
     						if(data.STATUS==true){
-    							video.listVideo(gPage,$("#number-of-item").val());
+    							comment.listComment(gPage,$("#number-of-item").val());
+    						    
         						smoke.alert("Success!", function(e){
         							
         						}, {
@@ -487,7 +426,22 @@
     				ok: "Yes",
     				cancel: "Cancel" 
     			});
-			}); */
+			});
+    		
+    		
+    		
+    		function getComment(cid){
+    			$.get("${pageContext.request.contextPath}/admin/rest/get/comment/" + cid,function(data){
+    				if(data.STATUS==true){
+    					$("#commentText").val(data.RES_DATA.commentText);
+    					$("#userId").val(data.RES_DATA.userId);
+    					$("#videoId").val(data.RES_DATA.videoId);
+    					$("#replyId").val(data.RES_DATA.replyId);
+    					
+    				}
+    				
+    			});
+    		} 
     		
     		
     		

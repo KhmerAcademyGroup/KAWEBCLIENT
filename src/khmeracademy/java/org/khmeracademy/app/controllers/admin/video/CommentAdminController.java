@@ -2,6 +2,7 @@ package org.khmeracademy.app.controllers.admin.video;
 
 import java.util.Map;
 
+import org.khmeracademy.app.entities.Comment;
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,6 +59,22 @@ public class CommentAdminController {
 		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/comment/c/"+ cid, HttpMethod.GET , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/delete/comment/{cid}", method= RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> deleteComment(@PathVariable("cid") String cid){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/comment/"+ cid, HttpMethod.DELETE , request , Map.class) ;
+        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/update/comment", method= RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> updateComment(@RequestBody Comment comment){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(comment, header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/comment", HttpMethod.PUT , request , Map.class) ;
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
 	
