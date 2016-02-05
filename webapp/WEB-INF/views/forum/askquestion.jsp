@@ -32,7 +32,7 @@
 		
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
-				  <li><a href="#fakelink">Users</a></li>
+<!-- 				  <li><a href="#fakelink">Users</a></li> -->
 				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
 				</ol>
 				

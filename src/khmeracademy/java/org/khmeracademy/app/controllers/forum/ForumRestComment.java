@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.khmeracademy.app.entities.input.FrmAddAnswer;
 import org.khmeracademy.app.entities.input.FrmAddQuestion;
+import org.khmeracademy.app.entities.input.FrmSelectAnswer;
 import org.khmeracademy.app.entities.input.FrmVote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -111,8 +112,8 @@ public class ForumRestComment {
 	}
 	
 	/* Vote */
-	@RequestMapping(value="/rest/forum/vote/${type}" , method = RequestMethod.POST)
-	public ResponseEntity<Map<String , Object>> vote(@RequestBody FrmVote vote , @PathVariable String type ){
+	@RequestMapping(value="/rest/forum/vote/{type}" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> vote(@RequestBody FrmVote vote , @PathVariable("type") String type ){
 		HttpEntity<Object> request = new HttpEntity<Object>(vote,header);
 		String url = "";
 		if(type.equalsIgnoreCase("LIKEQ")){
@@ -126,6 +127,14 @@ public class ForumRestComment {
 		}
 		System.out.println(url);
 		ResponseEntity<Map> response = rest.exchange(WSURL + url , HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	/* Select */
+	@RequestMapping(value="/rest/forum/selectanswer" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> selectAnswer(@RequestBody FrmSelectAnswer answer ){
+		HttpEntity<Object> request = new HttpEntity<Object>(answer,header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/vote/selectanswer" , HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

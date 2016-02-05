@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,8 @@
 			
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
-				  <li><a href="#fakelink">Users</a></li>
-				  <li><a href="#fakelink">Ask Question</a></li>
+<!-- 				  <li><a href="#fakelink">Users</a></li> -->
+				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
 				</ol>
 				
 			<h2 class="page-title" id="getTotalQuestion"> </h2>
@@ -58,7 +59,7 @@
 														<div style="font-size:20px">
 															<span data-toggle="tooltip" id="likeQ" style="cursor:pointer" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
 															<br/><span id="qTotalVotes"><!-- 110 --></span><br/>
-															<span data-toggle="tooltip" style="cursor: pointer;" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
+															<span data-toggle="tooltip" id="unlikeQ" style="cursor: pointer;" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
 														</div>
 													</td>
 													
@@ -113,11 +114,11 @@
 												<tr>
 													<td class="vu-table-td footable-last-column text-left" style="width: 10%;">
 														<div style="font-size:20px">
-															<span data-toggle="tooltip" style="cursor: pointer;"  data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
+															<span data-toggle="tooltip" id="likeSA" data-sa="sa" style="cursor: pointer;"  data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>
 															<br/><span id="selectedAnswerTotalVotes"><!-- 110 --></span><br/>
-															<span data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
+															<span data-toggle="tooltip" style="cursor: pointer;" id="unlikeSA" data-sa="sa" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>
 															<br/>
-															<span data-toggle="tooltip" style="cursor: pointer;"  data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>
+															<span data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>
 														</div>
 													</td>
 													
@@ -344,6 +345,7 @@
 				</li>
 		</script>
 		 
+		 <spring:message code="WSURL_IMG_URL" var="img_path"/> 
 
 		<script type="text/javascript">
 		
@@ -355,6 +357,10 @@
 			  var page = 1;
 		  	  var totalPage = 0;
 		  		
+		  	  var img_path = '${img_path}';
+		  	  
+		  	  console.log("path "+ img_path);
+		  	  
 			  $(document).ready(function(){
 				
 				  
@@ -419,7 +425,10 @@
 									$("#qDetail").html(data.RESP_DATA.detail);
 									$("#qUsername").text(data.RESP_DATA.username);
 									$("#qDate").text(data.RESP_DATA.postDate);
-// 									$("#qUserImage").text(data.RESP_DATA.title);
+									$("#qUserImage").attr("src" , img_path + data.RESP_DATA.userImageUrl);
+									$("#likeQ,#unlikeQ").attr("data-commentid",data.RESP_DATA.commentId);
+									$("#likeQ").attr("data-type","LIKEQ");
+									$("#unlikeQ").attr("data-type","UNLIKEQ");
 									tags = data.RESP_DATA.tag.split(", ");
 									tagHTML = "";
 									for(var i=0; i<tags.length; i++){
@@ -448,10 +457,13 @@
 		    				    success: function(data) {  
 									if(data.RESP_DATA != null ){
 										$("#selectedAnswerTotalVotes").text(data.RESP_DATA.vote);
-										$("#selectedAnswerDetail").text(data.RESP_DATA.detail);
+										$("#selectedAnswerDetail").append(data.RESP_DATA.detail);
 										$("#selectedAnswerUsername").text(data.RESP_DATA.username);
 										$("#selectedAnswerDate").text(data.RESP_DATA.postDate);
-//	 									$("#selectedAnswerUserImage").text(data.RESP_DATA.title);
+										$("#likeSA,#unlikeSA").attr("data-commentid",data.RESP_DATA.commentId);
+										$("#likeSA").attr("data-type","LIKEA");
+										$("#unlikeSA").attr("data-type","UNLIKEA");
+										$("#selectedAnswerUserImage").attr("src" , img_path + data.RESP_DATA.userImageUrl);
 										if(data.RESP_DATA.tag != null){
 											tags = data.RESP_DATA.tag.split(", ");
 											tagHTML = "";
@@ -498,17 +510,19 @@
 														tagHTML += "<a id='listQuestionByTag' data-tag='"+tags[j].trim()+"' href='${pageContext.request.contextPath}/forum/questions?tag="+tags[j].trim()+"' style='padding-right: 2px;'><span class='label label-primary'>"+tags[j] +" </span></a>";
 													}
 												}
-												
+												selectHTML = "";
+												if(data.RESP_DATA[i].userId == "${userId}"){
+													selectHTML = '<br/><span  id="selectQuestion" data-answerid="'+data.RESP_DATA[i].commentId+'" data-toggle="tooltip" data-original-title="Click to accept this answer because it solved your problem, and it is the best answer." class="favorite fa fa-star"></span>';
+												}
 												answers += '<table class="table">'+
 																'<tbody>'+
 																	'<tr>'+
 																		'<td class="vu-table-td footable-last-column text-left" style="width: 10%;">'+
 																			'<div style="font-size:20px">'+
-																				'<span style="cursor: pointer;" data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>'+
-																				'<br/><span id="answerTotalVotes">'+data.RESP_DATA[i].vote+'</span><br/>'+
-																				'<span style="cursor: pointer;"  data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>'+
-																				'<br/>'+
-																				'<span   data-toggle="tooltip" data-original-title="This question owner accepted as the best answer." class="favorite fa fa-star text-warning"></span>'+
+																				'<span style="cursor: pointer;" id="likeA" data-commentid="'+data.RESP_DATA[i].commentId+'" data-type="LIKEA" data-toggle="tooltip" data-original-title="This question is useful and clear." class="glyphicon glyphicon-chevron-up"></span>'+
+																				'<br/><span id="answerTotalVotes'+data.RESP_DATA[i].commentId+'">'+data.RESP_DATA[i].vote+'</span><br/>'+
+																				'<span style="cursor: pointer;" id="unlikeA" data-commentid="'+data.RESP_DATA[i].commentId+'" data-type="UNLIKEA" data-toggle="tooltip" data-original-title="This question is not useful and unclear." class="glyphicon glyphicon-chevron-down"></span>'+
+																				selectHTML +
 																			'</div>'+
 																		'</td>'+
 																		
@@ -516,7 +530,6 @@
 																				'<div style="padding:20px;background-color:#f2f7fd;min-height: 150px;" id="answerDetail">'+
 																					data.RESP_DATA[i].detail+ 
 																				'</div>'+
-																				
 																				'<span>'+tagHTML+'</span>'+
 																		'</td>'+
 																	'</tr>'+
@@ -529,7 +542,7 @@
 																				'<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="answerUsername">'+data.RESP_DATA[i].username+'</a></span>'+
 																			'</div>'+
 																			'<div class="text-right"><small id="answerDate">'+data.RESP_DATA[i].postDate+'</small></div>'+
-																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>'+
+																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="'+img_path + data.RESP_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
 																		'</td>'+
 																	'</tr>'+
 																'</tbody>'+
@@ -629,24 +642,30 @@
     				});
 	    			
 	    			
+	    			var afterVoted=0;
 	    			
-	    			
-	    			/* Like Question */
-    				questionDetail.vote = function(data,type){
-    					 KA.createProgressBar();
+	    			/* VOTE */
+    				questionDetail.vote = function(data,type,voteType){
     					$.ajax({ 
-	    				    url: "${pageContext.request.contextPath}/rest/forum/question/vote?type="+type,  
+	    				    url: "${pageContext.request.contextPath}/rest/forum/vote/"+type,  
 	    				    type: 'POST',
+	    				    datatype: "json",
 	    				    data: JSON.stringify(data), 
 	    				    beforeSend: function(xhr) {
 	    	                    xhr.setRequestHeader("Accept", "application/json");
 	    	                    xhr.setRequestHeader("Content-Type", "application/json");
 	    	                },
 	    				    success: function(data) {  
-	    				    	$("#getAnswers").empty();
-	    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
-	    				    	console.log(data);
-	    				    	KA.destroyProgressBar();
+	    				    	
+    	    					if(voteType == "LIKEQ" || voteType == "UNLIKEQ" ){
+    				    			$("#qTotalVotes").text( data.TOTAL_VOTE);
+    	    					}else if(voteType == "LIKEA" || voteType == "UNLIKEA" ){
+    	    						$("#answerTotalVotes"+data.COMMENTID).text( data.TOTAL_VOTE);
+    	    					}else if( voteType == "SA"){
+    	    						$("#selectedAnswerTotalVotes").text( data.TOTAL_VOTE);
+    	    					} 
+    	    					console.log(data);
+    	    					console.log(voteType);
 	    				    },
 	    				    error:function(data) { 
 	    				        console.log(data);
@@ -654,12 +673,63 @@
 	    				});
     				};
     				
+    				$(document).on('click',"#likeQ,#unlikeQ,#likeSA,#unlikeSA,#likeA,#unlikeA", function(){
+    					console.log($(this).data("type"));
+    	    			if('${userId}' == ''){
+    	    				$(".btLogin").trigger('click');
+    	    			}else{
+    	    				json = {
+    	    						"commentId": $(this).data("commentid"),
+    	    						"userId": "${userId}"
+    	    					};
+    	    				type = "";
+    	    				if($(this).data("sa") == "sa"){
+    	    					type = "SA";
+    	    				}else{
+    	    					type = $(this).data("type");
+    	    				}
+    	    				$(this).data("type");
+    	    			 	questionDetail.vote(json , $(this).data("type"),type);
+    	    			 	
+    	    			 	
+    	    			 	
+    					
+    	    			}
+    				});
     				
-	    			
+    				$(document).on('click',"#selectQuestion", function(){
+    					console.log($(this).data("answerid"));
+    					data = {
+    							 "answerId": $(this).data("answerid"),
+    							 "questionId": "${qid}"
+    					};
+    					$.ajax({ 
+	    				    url: "${pageContext.request.contextPath}/rest/forum/selectanswer",  
+	    				    type: 'POST',
+	    				    datatype: "json",
+	    				    data: JSON.stringify(data), 
+	    				    beforeSend: function(xhr) {
+	    	                    xhr.setRequestHeader("Accept", "application/json");
+	    	                    xhr.setRequestHeader("Content-Type", "application/json");
+	    	                },
+	    				    success: function(data) {  
+	    				    	$("#p-success").bPopup({modalClose: false});
+	    						setTimeout(function(){
+	    							location.reload();
+	    						}, 1000 );
+	    				    	
+	    				    },
+	    				    error:function(data) { 
+	    				        console.log(data);
+	    				    }
+	    				});	
+    				});
+    				
+				
 			  });	
 	    		
 			  
-			  
+			 
 			  
 			  
 			 
@@ -682,6 +752,14 @@
 				}
 		</script>	
     			
+    	<div id="p-success" class="ka-popup" style="display: none;width: 50%;">
+			<div class="alert alert-success alert-block fade in alert-dismissable">
+								  <button type="button" class="close" aria-hidden="true">
+									<span class="button b-close"><span>x</span></span>
+								</button>
+								 You have been selected this answer to be the best answer.
+			</div>		
+		</div>		
     			
 	</body>
 </html>
