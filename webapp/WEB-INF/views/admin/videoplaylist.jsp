@@ -115,9 +115,7 @@
 			<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 40%;  z-index: 100;">
 					<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 				  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
-				  	<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>×</span></span>
-					</button>
+				  
 				  <div class="form-group">
 					<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
 				  </div>
