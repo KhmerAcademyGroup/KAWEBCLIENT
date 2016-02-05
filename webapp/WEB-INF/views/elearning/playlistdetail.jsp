@@ -50,9 +50,9 @@
 
 	<div class="container ka-container">
 
-		<input type="text" id="address" />
+		<!-- <input type="text" id="address" />
 		<textarea rows="10" cols="20" id="message"></textarea>
-		<input type="button" id="send" value="SEND"/>
+		<input type="button" id="send" value="SEND"/> -->
 
 
 
@@ -79,7 +79,7 @@
 					</div>
 					<!-- /.media-body -->
 					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective btnplayall" data-toggle="modal" ><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
 						<span id="buttonpopup"></span>	
 					</span>
 				</div>
@@ -694,6 +694,31 @@
 		  				}); 
 										
     			});
+				
+				
+				
+
+				$(document).on('click', ".btnplayall", function() {									
+					$.ajax({ 
+						url : "${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?page=1&item=1",
+					    type: 'GET',
+					    beforeSend: function(xhr) {
+		                    xhr.setRequestHeader("Accept", "application/json");
+		                    xhr.setRequestHeader("Content-Type", "application/json");
+		                },
+					    success: function(data) { 					    								    			
+					    			window.location.href="/KAWEBCLIENT/elearning/playvideo?v="+data.RES_DATA[0].videoId;
+					    },
+					    error:function(data,status,er) { 
+					        console.log("error: "+data+" status: "+status+" er:"+er);
+					    }
+					});
+				});
+				
+				
+				
+				
+				
 				
 			$(document).on('keyup', "#searchYourVideo", function() {    				
     			    					
