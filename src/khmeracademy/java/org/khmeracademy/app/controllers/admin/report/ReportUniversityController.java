@@ -1,4 +1,4 @@
-package org.khmeracademy.app.controllers.report;
+package org.khmeracademy.app.controllers.admin.report;
 
 import java.util.Map;
 
