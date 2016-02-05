@@ -46,13 +46,13 @@ public class AdminController {
 	@RequestMapping(value="/report/university",method=RequestMethod.GET)
 	public String reportUniversity(){
 		
-		return "admin/report/university";
+		return "admin/reportuniversity";
 	}
 	
 	@RequestMapping(value="/report/category",method=RequestMethod.GET)
 	public String reportCategory(){
 		
-		return "admin/report/category";
+		return "admin/reportcategory";
 	}
 	
 	@RequestMapping(value="/report/precourse",method=RequestMethod.GET)
