@@ -424,7 +424,7 @@
     		
     		$("#search").keyup(function(){
 				if($(this).val()==""){
-					check = false;
+					check = true;
 					isSearch = false;
 					video.listVideo(1,$("#number-of-item").val());
 				}else{
@@ -442,7 +442,8 @@
     		//change row of items
     		$("#number-of-item").change(function(){
     			check = true;
-    			video.listVideo(1,$("#number-of-item").val());
+    			if(isSearch==false) video.listVideo(1,$("#number-of-item").val());
+			    else video.searchVideo(1,$("#number-of-item").val(),$("#search").val());
     		});
     		
     		
