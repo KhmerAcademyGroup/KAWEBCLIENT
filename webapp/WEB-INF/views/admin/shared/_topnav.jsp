@@ -1,5 +1,10 @@
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="org.khmeracademy.app.entities.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="top-navbar">
 				<div class="top-navbar-inner">
 					
@@ -31,23 +36,37 @@
 						
 						
 						<!-- Begin user session nav -->
-						<ul class="nav-user navbar-right">
-							<li class="dropdown">
-							  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar">
-								Hi, <strong>Paris Hawker</strong>
-							  </a>
-							  <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
-								<li><a href="#fakelink">Account setting</a></li>
-								<li><a href="#fakelink">Payment setting</a></li>
-								<li><a href="#fakelink">Change password</a></li>
-								<li><a href="#fakelink">My public profile</a></li>
-								<li class="divider"></li>
-								<li><a href="lock-screen.html">Lock screen</a></li>
-								<li><a href="login.html">Log out</a></li>
-							  </ul>
-							</li>
-						</ul>
+						<sec:authorize access="isAuthenticated()">
+						
+							<%
+								Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+								User user= null;
+								if(!authentication.getPrincipal().equals("anonymousUser")){
+									 user = (User) authentication.getPrincipal();
+								}
+							%>
+							<ul class="nav-user navbar-right">
+								<li class="dropdown">
+								  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="<spring:message code="WSURL_IMG_URL"/><%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
+									<strong><%= user.getUsername() %></strong>
+								  </a>
+								  <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
+									<!-- <li><a href="#fakelink">Account setting</a></li>
+									<li><a href="#fakelink">Payment setting</a></li>
+									<li><a href="#fakelink">Change password</a></li>
+									<li><a href="#fakelink">My public profile</a></li>
+									<li class="divider"></li>
+									<li><a href="lock-screen.html">Lock screen</a></li> -->
+									<li><a href="login.html">Log out</a></li>
+								  </ul>
+								</li>
+							</ul>
+						
+						</sec:authorize>
+						
+						
+						
 						<!-- End user session nav -->
 						
 						<!-- Begin Collapse menu nav -->
