@@ -323,8 +323,8 @@
 								[ 'fontsize', [ 'fontsize' ] ],
 								[ 'color', [ 'color' ] ],
 								[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-								[ 'height', [ 'height' ] ],
-								[ 'codeview', [ 'codeview' ] ],						
+								[ 'height', [ 'height' ] ]
+// 								[ 'codeview', [ 'codeview' ] ],						
 						]
 					});
 			

@@ -31,7 +31,14 @@ public class UserRestController {
 	@RequestMapping(value="/rest/signup" , method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addUser(@RequestBody FrmAddUser user){
 		HttpEntity<Object> request = new HttpEntity<Object>(user,header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "/user", HttpMethod.POST , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/listuniversity_department" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listUniversityDepartment(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/listuniversity_department", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 
