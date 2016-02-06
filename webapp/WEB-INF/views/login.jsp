@@ -77,7 +77,7 @@
 					                    
 					                    <div class="form-group m-t-30">
 					                        <div class="col-sm-7">
-					                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+					                            <a  href="#frmreset" data-toggle='modal'>><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 					                        </div>
 					                        <div class="col-sm-5 text-right">
 					                            <a href="/register">Create an account</a>
@@ -92,6 +92,32 @@
 						</div>
 			
 			
+			<div class="modal fade" id="frmreset" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+											<div class="modal-content" style="border-radius: 5px;">
+											  <div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="DefaultModalLabel">Reset Password</h4>
+											  </div>
+											  <div class="modal-body" >
+												
+													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
+														 <div class="form-group">
+															<label for="exampleInputEmail1">Enter your email</label>
+															<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
+														
+															
+															<small  class="msg" style="color:red;display:none">The email is required and can't be empty</small>
+														  </div>														 																												 
+														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
+													</form> 													
+											  </div>
+											  
+											</div><!-- /.modal-content -->
+										  </div><!-- /.modal-doalog -->
+										</div><!-- /#DefaultModal -->	
+										
+			
 						
 		</div>
 		
@@ -103,6 +129,29 @@
 		
 		<jsp:include page="shared/_footer.jsp" />
 		
-		  
+		  <script type="text/javascript">
+		  $(document).ready(function(){
+			  
+			  $(document).on('click', "#btn_submit", function() {									  
+					var address =$("#emailaddress").val()
+				 	 $.ajax({
+						url : "${pageContext.request.contextPath}/rest/getuseremail?email="+address,
+						method: "GET",
+						success: function(data){  	    							    					
+							if(address==""){alert("Data empty"); return 0;}
+							
+							if(data.STATUS==true){
+								alert("Please check your email ! ")
+							}
+							else{
+								alert("Invalib Email !")
+							}														
+							 console.log(data);
+						}
+					});  
+				});
+			  
+		  });
+		  </script>
 	</body>
 </html>

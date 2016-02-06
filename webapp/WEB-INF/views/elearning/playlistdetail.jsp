@@ -190,47 +190,6 @@
 
 
 
-	<div class="modal fade" id="frmup_date_playlist" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
-										  <div class="modal-dialog">
-											<div class="modal-content" style="border-radius: 5px;">
-											  <div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="DefaultModalLabel">Update playlist</h4>
-											  </div>
-											  <div class="modal-body" >
-												
-													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
-														 <div class="form-group">
-															<label for="exampleInputEmail1">Playlist name</label>
-															<input type="text" class="form-control" name="playlistname" id="updatename" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="playlistid"  id="updateid" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="thumbnail"  id="thumbnail" placeholder="EG. MyTop">
-															<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-														  </div>
-														  <div class="form-group">
-															<label for="exampleInputPassword1">Description</label>
-															<input type="text" name="description" class="form-control" id="updatedescription" placeholder="EG. My music">
-														 </div>
-														 <div class="form-group">
-															<label>Set View</label>
-															<select class="form-control" id="updatepublicview" name="updatepublicview" tabindex="2">
-																<option value="false">Private</option>
-																<option value="true">Public</option>
-															</select>
-														</div>
-														 	<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
-														 	 <input type="submit" id="btnupdateplaylist"   class="btn btn-success" value="Update">
-													</form> 
-													
-											  </div>
-											  <div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-											  </div><!-- /.modal-footer -->
-											</div><!-- /.modal-content -->
-										  </div><!-- /.modal-doalog -->
-										</div><!-- /#DefaultModal -->	
-										
-										<!-- ================================================================ -->
 
 
 
