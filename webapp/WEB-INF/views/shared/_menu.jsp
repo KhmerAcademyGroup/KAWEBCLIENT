@@ -5,7 +5,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- BEGIN TOP NAVBAR -->
-<div class="top-navbar" style="    background: green;">
+<div class="top-navbar" style="background: #17951B;">
 	<div class="container">
 	
 		<!-- Begin logo -->
@@ -51,6 +51,12 @@
 				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
 			</li>
 			<li class="parent">
+				<a href="http://oer.moeys.gov.kh" target="_blank">OER</a>
+			</li>
+			<li class="parent">
+				<a href="http://krou.moeys.gov.kh" target="_blank">KROU</a>
+			</li>
+			<li class="parent">
 				<a href="script:"><%-- <spring:message code="forum"/> --%> About</a>
 			</li>
 			<sec:authorize access="isAuthenticated()">
@@ -83,9 +89,9 @@
 				<li class="parent">
 					<a href="#" class="btLogin"><spring:message code="login"/></a>
 				</li>
-				<li class="parent">
+				<%-- <li class="parent">
 					<a href="#" class="btSignUp"><spring:message code="signup"/></a>
-				</li>
+				</li> --%>
 			</sec:authorize>
 			<li class="parent" style="width: 53px;" >
 				 <a href="?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">

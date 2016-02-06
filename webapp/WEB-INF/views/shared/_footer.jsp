@@ -1,6 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!-- BEGIN FOOTER -->
-<footer class="light-color">
+<footer class="">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-5">
@@ -83,7 +83,7 @@
 	</div><!-- /.container -->
 </footer><!-- /.section -->
 
-<div class="footer light-color">
+<div class="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
@@ -413,15 +413,12 @@ Placed at the end of the document so the pages load faster
                 
                 
                 // SIgn up
-                $(".btSignUp").click(function(){
+                $(document).on('click',".btSignUp", function(){   
                 	$("#p-frmLogin").bPopup().close();
                 	$("#frmSignUp").trigger("reset");
                 	$("#p-frmSignUp").bPopup(/* {modalClose: false} */);
-                	if( $('#getDepartment').has('option').length == 0 ) {
-                		listDepartment();                		
-                	}
-					if( $('#getUniversity').has('option').length == 0 ) {
-                		listUniversity();
+                	if( $('#getDepartment').has('option').length == 0 || $('#getUniversity').has('option').length == 0) {
+                		listDepartment_University();               		
                 	}
 // 					KA.createProgressBar();	
 // 					setTimeout(function(){
@@ -470,9 +467,30 @@ Placed at the end of the document so the pages load faster
     	                },
     				    success: function(data) { 
     						console.log(data);
-    						if(data.RESP_DATA.length>0){
-    							$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
-    						}
+    						$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
+    						
+    						KA.destroyProgressBarWithPopup();
+    				    },
+    				    error:function(data,status,er) { 
+    				    	KA.destroyProgressBarWithPopup();
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    			};
+    			
+    			listDepartment_University = function(){
+    				KA.createProgressBarWithPopup();
+    				$.ajax({ 
+    				    url: "${pageContext.request.contextPath}/rest/listuniversity_department", 
+    				    type: 'GET',
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    						console.log(data);
+    						$("#department_tmpl").tmpl(data.DEPARTMENT).appendTo("#getDepartment");
+    						$("#university_tmpl").tmpl(data.UNIVERSITY).appendTo("#getUniversity");
     						KA.destroyProgressBarWithPopup();
     				    },
     				    error:function(data,status,er) { 

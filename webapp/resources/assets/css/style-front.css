@@ -457,7 +457,7 @@ NAVBAR
 .top-navbar.dark-color ul.menus li.parent:focus a{
 	color: #fff;
 	color: rgba(255,255,255,1);
-	background: #1A212B;
+/* 	background: #1A212B; */ backgroud : green;
 }
 .top-navbar.dark-color ul.menus li.parent ul.sub-menus{
 	background: #2C343E;

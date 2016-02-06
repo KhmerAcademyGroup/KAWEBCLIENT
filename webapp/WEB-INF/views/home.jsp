@@ -264,6 +264,9 @@
 					<div class="item">
 						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/kosign.png" alt="KOSIGN logo">
 					</div><!-- /.item -->
+					<div class="item">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/client-logo/coreIT.gif" alt="CoreIT logo">
+					</div><!-- /.item -->
 				</div><!-- /#owl-client-logo -->
 			</div><!-- /.container -->
 		</div><!-- /.section -->
