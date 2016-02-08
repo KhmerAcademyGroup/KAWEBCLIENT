@@ -44,11 +44,18 @@ public class UserRestController {
 	}
 	
 
-	@RequestMapping(value="/rest/getuseremail" , method = RequestMethod.GET)
+	@RequestMapping(value="/rest/sendmail" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> sendMail(@RequestParam(value="email") String email){			
 				
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "user/email?email="+ email, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/sendmail?email="+ email, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/reset" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> resetPassword(@RequestParam(value="code") String code,@RequestParam(value="password") String password){							
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/resetpassword?code="+code+"&password="+password, HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 

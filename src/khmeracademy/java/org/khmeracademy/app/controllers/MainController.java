@@ -45,6 +45,10 @@ public class MainController {
 		return "test";
 	}
 	
-
+	@RequestMapping(value="/reset" , method =  RequestMethod.GET)
+	public String resetPassword(ModelMap m){
+		
+		return "reset";
+	}
 
 }

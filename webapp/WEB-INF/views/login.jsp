@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<jsp:include page="shared/_header.jsp" />
+		<jsp:include page="shared/_header.jsp" />		
 	</head>
  
 	<body class="tooltips no-padding">
@@ -102,14 +102,16 @@
 											  <div class="modal-body" >
 												
 													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
-														 <div class="form-group">
-															<label for="exampleInputEmail1">Enter your email</label>
-															<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
-														
-															
-															<small  class="msg" style="color:red;display:none">The email is required and can't be empty</small>
-														  </div>														 																												 
+													<label> Enter your email here</label>
+													<div class="input-group">
+													
+                                      						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>                                      
+                                     						<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
+                                   						 </div>
+														 <br/>													 																												 
 														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
+														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
+														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:red;">Please go to your email !</label>
 													</form> 													
 											  </div>
 											  
@@ -131,24 +133,37 @@
 		
 		  <script type="text/javascript">
 		  $(document).ready(function(){
-			  
+			  $(".sending").hide();
+			  $(".check_your_email").hide();
 			  $(document).on('click', "#btn_submit", function() {									  
 					var address =$("#emailaddress").val()
+					$(".sending").show();
+					if(address==""){						
+						$(".sending").hide(); 
+						return 0;}
+					else{
 				 	 $.ajax({
-						url : "${pageContext.request.contextPath}/rest/getuseremail?email="+address,
+						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address,
 						method: "GET",
-						success: function(data){  	    							    					
-							if(address==""){alert("Data empty"); return 0;}
-							
+						success: function(data){  	    							    																			
 							if(data.STATUS==true){
-								alert("Please check your email ! ")
+								$(".sending").hide();
+								$(".check_your_email").show();															
+								setTimeout(function(){
+									$('#frmreset').modal('hide');
+									$("#emailaddress").val("");
+									$(".check_your_email").hide();	
+									}, 1000);
+								
 							}
 							else{
+								$(".sending").hide();
 								alert("Invalib Email !")
 							}														
 							 console.log(data);
 						}
 					});  
+					}
 				});
 			  
 		  });
