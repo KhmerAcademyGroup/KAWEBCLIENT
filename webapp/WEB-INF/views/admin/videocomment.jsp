@@ -71,7 +71,7 @@
 						<div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
-									placeholder="Search Video">
+									placeholder="Search Comment">
 							</form>
 
 						</div>
