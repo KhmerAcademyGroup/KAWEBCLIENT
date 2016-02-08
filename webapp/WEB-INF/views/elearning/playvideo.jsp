@@ -92,8 +92,8 @@
 	        	
 	            <hr class="hr-style-one">
 	            <br />
-	            <strong style="padding:10px;color:#880000;">COURSE</strong>
-	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
+	            <strong style="padding:10px;color:#880000;" ng-show="VIDEOSTATUS==true">COURSE</strong>
+	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;" ng-show="VIDEOSTATUS==true">
 	            
 	            
 	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
@@ -139,14 +139,24 @@
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
+	            			
+	            		
 	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
 	            			<br />
-	            
+	            			
 	            
 				            <!-- left side -->
 				            <div class="col-sm-12 col-xs-12 the-box no-border clear-padding" id="left_side">
+				            	
 								<!-- Video Demo -->
 								<div class="col-lg-9 col-md-7 col-sm-12">
+									
+									<div class="alert alert-danger square fade in alert-dismissable" ng-show="VIDEOSTATUS==false">
+									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+									  <strong>Video Not Found!</strong>
+									</div>
+								
+								
 									<div id="myplayerwrapper">
 										<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>
 									</div>
@@ -156,7 +166,7 @@
 								
 								
 								<!-- PLAY LIST -->
-								<div class="col-lg-3 col-md-5 col-sm-12">
+								<div class="col-lg-3 col-md-5 col-sm-12" ng-show="VIDEOSTATUS==true">
 								
 									<div class="contentHolder bg-gray" id="SuppressScrollX_1" ng-show="${data.PLAYLIST!=null }">
 										<div class="content" id="playlist">
@@ -192,8 +202,7 @@
 								<!-- END PLAYLIST -->
 								
 								<!-- div-column -->
-								<div class="col-lg-9 col-md-7 col-sm-12">
-								
+								<div class="col-lg-9 col-md-7 col-sm-12" ng-show="VIDEOSTATUS==true">
 								
 									<!-- Video Info -->
 									<div class="col-sm-12">
@@ -482,13 +491,11 @@
 					        $scope.COMMENT = response.data.COMMENT;
 					        $scope.VIDEO = response.data.VIDEO;
 					        $scope.LOGID = response.data.LOGID;
-					        
+					        $scope.VIDEOSTATUS = true;
 					        $scope.title=response.data.VIDEO.videoName;
 					        playVideo(response.data.VIDEO.youtubeUrl);
 						}else{
-							$scope.COMMENT = null;
-					        $scope.VIDEO = null;
-					        $scope.LOGID = null;
+							$scope.VIDEOSTATUS = false;
 					        $scope.title= "Not Found";
 					        playVideo(null);
 						}
