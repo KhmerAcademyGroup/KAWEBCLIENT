@@ -143,12 +143,18 @@
 						return 0;}
 					else{
 				 	 $.ajax({
-						url : "${pageContext.request.contextPath}/rest/getuseremail?email="+address,
+						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address,
 						method: "GET",
 						success: function(data){  	    							    																			
 							if(data.STATUS==true){
 								$(".sending").hide();
-								$(".check_your_email").show();
+								$(".check_your_email").show();															
+								setTimeout(function(){
+									$('#frmreset').modal('hide');
+									$("#emailaddress").val("");
+									$(".check_your_email").hide();	
+									}, 1000);
+								
 							}
 							else{
 								$(".sending").hide();

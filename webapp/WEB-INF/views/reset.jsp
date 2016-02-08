@@ -86,7 +86,7 @@
 			}
 			function validatNewPass(){
 				var name= $("#newpassword").val();
-				var characterReg = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+				var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{6,16}$/;
 				    if(!characterReg.test(name)) {
 				    	$("#newpassword").css("border", "solid 1px red");
 				    	$("#checknewpassword").text("Require and at least 6 charactors less than 16 charactors");
@@ -101,7 +101,7 @@
 		  
 			function validatConPass(){
 				var name= $("#conpassword").val();
-				var characterReg = /^[a-zA-Z0-9!@#$%^&*\+\=]{6,16}$/;
+				var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{6,16}$/;
 				    if(!characterReg.test(name)) {
 				    	$("#conpassword").css("border", "solid 1px red");
 				    	$("#checkconpassword").text("Require and at least 6 charactors less than 16 charactors");
@@ -132,7 +132,7 @@
 								 window.location = '${pageContext.request.contextPath}/login';
 							}
 							else{
-								alert("Update Fail !")
+								alert("Update fail please reset your password again !")
 							}														
 							 console.log(data);
 						}
