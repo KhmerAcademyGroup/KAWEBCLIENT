@@ -34,3 +34,11 @@
 
 <link href="${pageContext.request.contextPath}/resources/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
 		
+
+<style type="text/css">
+.property-search-wrap {
+    text-align: center;
+    padding: 10% 20px 7%;
+    margin-bottom: 30px;
+}
+</style>

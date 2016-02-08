@@ -263,32 +263,7 @@ END PAGE
 		
 		
 		
-		<div id="p-Search" class="ka-popup" style="display: none;width: 80%;">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>x</span></span>
-					</button>
-					
-					<h4 class="bolded">Search</h4>
-
-				</div>
-				<div class="modal-body" >
-					
-					
-					
-					<ul class="nav nav-tabs">
-					  <li role="presentation" class="active"><a href="#">Home</a></li>
-					  <li role="presentation"><a href="#">Profile</a></li>
-					  <li role="presentation"><a href="#">Messages</a></li>
-					</ul>
-					
-					
-					
-				</div>
-			</div>
-		</div>
+		
 
 <!--
 ===========================================================
@@ -569,10 +544,7 @@ Placed at the end of the document so the pages load faster
 					});
     			
     			
-    				$("#btSearch").click(function(){
-    					
-    					$("#p-Search").bPopup();
-    				});
+    				
     			
             });
             
@@ -597,4 +569,6 @@ Placed at the end of the document so the pages load faster
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<!-- End facebook plugin -->
+   		 
+   		 <jsp:include page="../shared/_search.jsp" />
    		    
