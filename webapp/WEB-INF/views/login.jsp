@@ -102,13 +102,13 @@
 											  <div class="modal-body" >
 												
 													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
-														 <div class="form-group">
-															<label for="exampleInputEmail1">Enter your email</label>
-															<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
-														
-															
-															<small  class="msg" style="color:red;display:none">The email is required and can't be empty</small>
-														  </div>														 																												 
+													<label> Enter your email here</label>
+													<div class="input-group">
+													
+                                      						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>                                      
+                                     						<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
+                                   						 </div>
+														 <br/>													 																												 
 														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
 													</form> 													
 											  </div>
