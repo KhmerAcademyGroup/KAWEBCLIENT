@@ -56,9 +56,16 @@
 			<li class="parent">
 				<a href="http://krou.moeys.gov.kh" target="_blank">KROU</a>
 			</li>
-			<li class="parent">
-				<a href="script:"><%-- <spring:message code="forum"/> --%> About</a>
+			<li class="parent" >
+					 <a href="${pageContext.request.contextPath}/about">
+						   About
+					 </a>
+					 <ul class="sub-menus">
+						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">About us</a></li>
+						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Team</a></li>
+					</ul>
 			</li>
+				
 			<sec:authorize access="isAuthenticated()">
 <!-- 				<li class="parent"> -->
 <%-- 					<img style="padding-top: 12px;" width="50px" src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"> --%>
