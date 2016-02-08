@@ -129,6 +129,7 @@
 							
 							if(data.STATUS==true){
 								alert("Your Password has been update ! ")
+								 window.location = '${pageContext.request.contextPath}/login';
 							}
 							else{
 								alert("Update Fail !")
