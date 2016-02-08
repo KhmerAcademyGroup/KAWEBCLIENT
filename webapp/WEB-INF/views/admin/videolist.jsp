@@ -592,15 +592,6 @@
     						$("#statusFalse").prop('checked', true);
     					}
     					
-    					/* var optionsToSelect = [data.RES_DATA.categoryName.replace(", ", "\", \"")];
-    					
-    					var select=document.getElementById("category");
-    					for(var i=0, o; i<select.options.length; i++){
-    					  o = select.options[i];
-    					  if(optionsToSelect.indexOf(o.text)!=-1){
-    					    o.selected = true;
-    					  }
-    					} */
     					var selectedCategory = data.RES_DATA.categoryName;
     					var str_array = selectedCategory.split(', ');
     					var select=document.getElementById("category");
