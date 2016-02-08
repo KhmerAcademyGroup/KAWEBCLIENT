@@ -478,18 +478,20 @@
 				
 				function loadVideo(vid){
 					$http.get("${pageContext.request.contextPath}/rest/elearning/getplayvideo?v="+ vid).then(function(response) {
-						if(response.data.STATUS == false){
-							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
+						if(response.data.STATUS != false && response.data.VIDEO.status != false){	
+					        $scope.COMMENT = response.data.COMMENT;
+					        $scope.VIDEO = response.data.VIDEO;
+					        $scope.LOGID = response.data.LOGID;
+					        
+					        $scope.title=response.data.VIDEO.videoName;
+					        playVideo(response.data.VIDEO.youtubeUrl);
+						}else{
+							$scope.COMMENT = null;
+					        $scope.VIDEO = null;
+					        $scope.LOGID = null;
+					        $scope.title= "Not Found";
+					        playVideo(null);
 						}
-						if(response.data.VIDEO.status == false){
-							window.location="${pageContext.request.contextPath}/elearning/playvideo/error404";
-						}
-				        $scope.COMMENT = response.data.COMMENT;
-				        $scope.VIDEO = response.data.VIDEO;
-				        $scope.LOGID = response.data.LOGID;
-				        
-				        $scope.title=response.data.VIDEO.videoName;
-				        playVideo(response.data.VIDEO.youtubeUrl);
 				    });
 					
 				}
