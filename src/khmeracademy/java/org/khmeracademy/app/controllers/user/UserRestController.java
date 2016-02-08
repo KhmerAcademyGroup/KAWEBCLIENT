@@ -51,5 +51,15 @@ public class UserRestController {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "user/email?email="+ email, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/rest/reset" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> resetPassword(@RequestParam(value="code") String code,@RequestParam(value="password") String password){
+		/*System.out.println(code + " "+ password);
+		return null;	*/		
+				
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/resetpassword?code="+code+"&password="+password, HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 
 }
