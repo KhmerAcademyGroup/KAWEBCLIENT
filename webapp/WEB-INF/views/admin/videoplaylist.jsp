@@ -332,9 +332,9 @@
 							+"<td>"+data.RES_DATA[i].countVideos+"</td>"
 							+"<td>"+status+"</td>"
 							+"<td>"
-								+"<a href='"+url+"/admin/elearning/playlistdetail/"+data.RES_DATA[i].playlistId+"'><i  class='icon-circle icon-xs glyphicon glyphicon-th-large btnUpdate'></i></a>"
-								+"<a  onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"') id='showFrmUpdatePlaylist' ><i  class='fa fa-pencil icon-circle icon-xs icon-info btnUpdate'></i></a>"              
-								+"<a  onclick=deletePlayList('"+data.RES_DATA[i].playlistId+"') ><i class='fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm'></i></a>"    
+								+"<a title='add video' href='"+url+"/admin/elearning/playlistdetail/"+data.RES_DATA[i].playlistId+"'><i  class='fa fa-bars icon-circle icon-xs icon-primary btnUpdate'></i></a> &nbsp;"
+								+"<a title='edit playlist' onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"') id='showFrmUpdatePlaylist' ><i  class='fa fa-pencil icon-circle icon-xs icon-info btnUpdate'></i></a> &nbsp;"              
+								+"<a title='delete playlist' onclick=deletePlayList('"+data.RES_DATA[i].playlistId+"') ><i class='fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm'></i></a> &nbsp;"    
 							+"<td>"
 						+"</tr>" ;
 				}
@@ -682,8 +682,8 @@ function listMainCategoryDetail(data){
 		///////validation create and update playlist///////////
 		function validatPlaylistname(){
 			var name= $("#listname").val();
-			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
-			    if(!characterReg.test(name)) {
+			//var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			    if(name == "" || name.length == 0 || name == null) {
 			    	$("#listname").css("border", "solid 1px red");
 			    	$("#checklistname").text("Require and at least 3 charactors less than 100 charactors");
 			    	   return false;
