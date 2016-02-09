@@ -75,7 +75,7 @@ public class TutorialRESTController {
 		@RequestMapping(value="/admin/tutorial/rest/getCategory", method= RequestMethod.GET)
 	    public ResponseEntity<Map<String, Object>> getCategoryList(){			
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
-			ResponseEntity<Map> response = rest.exchange(WSURL + "tutorial/listcategory", HttpMethod.GET , request , Map.class) ;
+			ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/category/listall", HttpMethod.GET , request , Map.class) ;
 	        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	    }
 	/* POST */
