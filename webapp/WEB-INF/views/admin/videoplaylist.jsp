@@ -332,7 +332,7 @@
 							+"<td>"+data.RES_DATA[i].countVideos+"</td>"
 							+"<td>"+status+"</td>"
 							+"<td>"
-								//+"<a><i  class='icon-circle icon-xs glyphicon glyphicon-th-large btnUpdate'></i></a>"
+								+"<a href='"+url+"/admin/elearning/playlistdetail/"+data.RES_DATA[i].playlistId+"'><i  class='icon-circle icon-xs glyphicon glyphicon-th-large btnUpdate'></i></a>"
 								+"<a  onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"') id='showFrmUpdatePlaylist' ><i  class='fa fa-pencil icon-circle icon-xs icon-info btnUpdate'></i></a>"              
 								+"<a  onclick=deletePlayList('"+data.RES_DATA[i].playlistId+"') ><i class='fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm'></i></a>"    
 							+"<td>"

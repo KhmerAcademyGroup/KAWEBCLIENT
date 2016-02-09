@@ -123,6 +123,27 @@ public class UserRestTemplateController {
 	
 	
 	//playlist
+	@RequestMapping(value="/rest/user/profile/deletevideofromplaylist/{pid}/{vid}" , method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deletevideofromplaylist(@PathVariable("pid") String pid,
+																		@PathVariable("vid") String vid){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/deletevideofromplaylistdetail/"+pid+"/"+vid, HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value="/rest/user/profile/listvideoinplaylist/{pid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listvideoinplaylist(
+										@PathVariable("pid") String pid,
+										 @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/listVideoInPlaylist/"+pid+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/rest/user/profile/togglePlaylist/{pid}" , method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> togglePlayList( @PathVariable("pid") String pid
 										){

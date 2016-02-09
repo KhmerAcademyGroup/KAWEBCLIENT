@@ -6,8 +6,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/admin")
@@ -124,7 +126,19 @@ public class AdminController {
 	    m.addAttribute("key",KEY);
 		
 		return "admin/videoplaylist";
-	}	
+	}
+	
+	@RequestMapping(value="/elearning/playlistdetail/{pid}",method=RequestMethod.GET)
+	public String videoplaylistdetail(ModelMap m, @PathVariable("pid") String pid){
+		
+	    m.addAttribute("api",IMGURL);
+	    m.addAttribute("api_url",WSURL);
+	    m.addAttribute("key",KEY);
+	    m.addAttribute("pid",pid);
+		return "admin/videoplaylistdetail";
+	}
+	
+	
 	
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	public String user(){
