@@ -28,7 +28,8 @@
 		
 		
 		
-		<div class="section">
+		
+		<%-- <div class="section">
 			<div class="container ka-container" >
 				
 				<div class="col-sm-12">
@@ -83,18 +84,34 @@
 			
 			</div><!-- /.container -->
 			
+		</div> --%>
+		
+		
+		
+		
+		<div class="section">
+			<div class="container text-center ka-container">
+				<h2><strong>Khmer Academy</strong></h2>
+				<h4 class="light-font line-height-28 margin-top-50">
+				Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br>
+				Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br>
+				Investigationes demonstraverunt lectores legere me lius quod<br>
+				</h4>
+			</div><!-- /.container -->
 		</div>
 		
 		
-		<div class="">
+		<!-- <div class="">
 			<div class="container">
 				<ol class="breadcrumb" style="background: #4b5462;">
 				  <li><a style="color: white;"  href="index.html">About</a></li>
 				  <li><a style="color: white;" href="#fakelink">Team</a></li>
 				  <li><a style="color: white;" href="#fakelink">Supporter</a></li>
 				</ol>
-			</div><!-- /.container -->
-		</div>
+			</div>/.container
+		</div> -->
+		
+		
 		
 		<div class="section">
 			<div class="container">

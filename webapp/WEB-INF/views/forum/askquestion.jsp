@@ -73,7 +73,7 @@
 															<div class="form-group">
 																<label class="col-lg-1 control-label">Category</label>
 																<div class="col-lg-11 ">
-																	<select name="category" id="category" data-placeholder="Choose a Country..." class="form-control chosen-select" tabindex="2">
+																	<select name="category" id="category" data-placeholder="Choose a category" class="form-control chosen-select" tabindex="2">
 																		<option value="Empty">&nbsp;</option>
 																		<c:forEach var="category" items="${categoryAndTags.CATEGORY}">
 																		    <option value="${category.categoryId}">${category.categoryName}</option>
@@ -100,7 +100,7 @@
 															<div class="form-group ">
 																<label class="col-lg-1 control-label">Tags</label>
 																<div class="col-lg-11">
-																	<select id="tags" name="tags" data-placeholder="Choose a Country..." class="form-control chosen-select" multiple tabindex="4">
+																	<select id="tags" name="tags" data-placeholder="Choose tags..." class="form-control chosen-select" multiple tabindex="4">
 																		<option value="Empty">&nbsp;</option>
 																		
 																		<c:set var="tags" value="${categoryAndTags.TAGS}"/>

@@ -63,6 +63,8 @@
 					 <ul class="sub-menus">
 						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">About us</a></li>
 						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Team</a></li>
+						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Supporters</a></li>
+						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Donate</a></li>
 					</ul>
 			</li>
 				
