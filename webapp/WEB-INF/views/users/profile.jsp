@@ -27,71 +27,24 @@
 	
 	<c:set var="usertype"  value="${usertype }"/>		
 	<jsp:include page="../shared/_menu.jsp" />
+	<br/>
 		
-	<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
-	
-	<div id="wrapper">
+		
+		
+	<!-- My Contend -->
+	<div class="container ">
 
 	        <!-- Sidebar -->
-	        <div id="sidebar-wrapper">
-	            
-	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;">
-	            
-	            
-	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
-					
-						<div class="panel panel-primary">
-						  <div class="panel-heading" style="background:#fff;">
-							<h3 class="panel-title">
-								<a class="block-collapse collapsed" style="color:#007500;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
-								<b>${category.maincategoryname}</b>
-								<span class="right-content">
-									<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
-								</span>
-								</a>
-							</h3>
-						  </div>
-							
-							
-
-							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
-							  <div class="panel-body" style="background:#cccccc;">
-							  	<c:forEach items="${data.PLAYLIST}" var="playlist">
-							  	
-									<c:if test="${playlist.maincategory==category.maincategory}">
-									
-										<a>${playlist.playlistName}</a><br /> 
-										
-								
-									</c:if>
-								</c:forEach>
-							  </div><!-- /.panel-body -->
-							</div><!-- /.collapse in -->
-							
-							
-						</div><!-- /.panel panel-primary -->
-						
-						
-					
-					</c:forEach>
-					
-				</div><!-- End panel group -->
-	            
-	        </div>
+	        
 	        <!-- /#sidebar-wrapper -->
 	
 	        <!-- Page Content -->
-	        <div id="page-content-wrapper" style="background:#fff;">
+	        <div id="" style="background:#fff;">
 	            <div class="container-fluid">
 	            	<div class="row">
 	            		<div class="col-lg-12">
 	            		
-	            			<!-- Start body chhoin -->
-		            		<ol class="breadcrumb default square rsaquo sm">
-								<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-								<li><a href="index.act">Khmer Academy</a></li>
-								<li class="active">My profile</li>
-							</ol>
+	            		
 							
 							<!-- ///////////////////////////////////////////////////////////// -->
 							
@@ -290,7 +243,7 @@
 														<!-- Button Post -->
 														<div class="form-group">
 															<div class="col-xs-12 ">
-																<input type="submit"  class="btn btn-info btn-perspective" value="Update"/>
+																<input type="submit"  class="btn btn-info btn-perspective" value="Update" style="left:30%"/>
 															</div>
 														</div>
 														<!-- Button Post -->
@@ -330,9 +283,9 @@
 															
 															<!-- Button Post -->
 															<div class="form-group">
-																<div class="col-lg-9 col-lg-offset-3">
-																	<input type="button" onclick="changeMyPassword();" class="btn btn-info btn-perspective" value="Update"/>
-																</div>
+																
+																	<input type="button" onclick="changeMyPassword();" class="btn btn-info btn-perspective" value="Update" style="left:30%"/>
+																
 															</div>
 															</form>
 															</div>
@@ -368,7 +321,7 @@
 																</form>
 															</div>
 															<div class="btn-group">
-																<a href="#" onclick="go('removeAllHistory',userid,'0');" data-toggle="modal" data-target="#myModal" class="btn btn-danger">
+																<a href="#" onclick="removeAllHistory(userid);"  class="btn btn-danger">
 																	<i class="fa fa-ban"></i> Clear All History
 																</a>
 															</div>
@@ -444,7 +397,7 @@
 												
 												
 												
-												<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;  z-index: 100;">
+												<div id="form-create-playlist1" class="ka-popup col-xs-12" style="display: none; width: 30%;  z-index: 100; top: 80px; margin-top:80px;">
 													<div id="form-create-playlist" class="white-popup mfp-with-anim" style="border-radius:5px">
 												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
 												  	
@@ -465,6 +418,7 @@
 														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
 														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
 												 </div>
+												 <c:if test="${usertype == 'Admin' }">
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Category</label>
 														<select class="form-control"  id="playlistcategory">
@@ -473,7 +427,7 @@
 														<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
 												 </div>
 												  
-												  <c:if test="${usertype == 'Admin' }">
+												  
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Color</label>
 														<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color">
@@ -482,15 +436,14 @@
 												  	<div class="form-group" >
 														<label for="exampleInputEmail1">Image</label>
 														<div class="col-sm-12">
-															<div class="fileinput fileinput-new" data-provides="fileinput">
-															  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
-															  <div>
-																<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-																<input type="file" id="file"   name="file">
-																
-																<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-															  </div>
-															</div>
+														
+														<div class="fileinput fileinput-new" data-provides="fileinput">
+														  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+														  <div>
+														    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="file" id="file"></span>
+														    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+														  </div>
+														</div>
 															
 														</div>
 													</div>
@@ -538,7 +491,7 @@
 	    <!-- /#wrapper -->
 	
 	
-	
+	</div>
 	<!-- right content -->
 	
 
@@ -673,7 +626,7 @@
 		var key ="<%= request.getAttribute("key") %>";
 		var api = "<%= request.getAttribute("api") %>";
 		var api_url = "<%= request.getAttribute("api_url") %>";
-		
+		//alert(userid);
 		 //my choice what list or search
 		 function chooseHistory(){
 			var key =$("#searchHistory").val();
@@ -753,7 +706,7 @@
 									+"<button type='button' class='btn btn-default btn-sm dropdown-toggle' data-toggle='dropdown'><i class='fa fa-cog'></i> </button>" 
 										+"<ul class='dropdown-menu' role='menu'>" 
 											+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'>Play</a></li>" 
-											+"<li><a href='#' onclick=go('removeFromHistory','"+data.RES_DATA[i].historyId+"',"+i+") data-toggle='modal' data-target='#myModal'>Remove from History</a></li>"
+											+"<li><a href='#' onclick=removeFromHistory('"+data.RES_DATA[i].historyId+"',"+i+")>Remove from History</a></li>"
 										+"</ul>"
 									+"</div>" 
 								+"<ul class='list-inline'>" 
@@ -848,7 +801,16 @@
 		} 
 		
 		function removeFromHistory(hid, id){ //console.log("#div"+hid); $("#div"+hid).remove(); return ;
-			
+			swal({   
+				title: "Are you sure?",   
+				text: "You will not be able to recover this ",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false }, function(){   
+					
+				
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/removefromhistory/'+hid,
 				       type:'delete',
@@ -856,8 +818,7 @@
 				       success: function(data) { 
 				    	   	if(data.STATUS == true){
 				    	   		$('#'+id).hide();
-				    	   		
-				    	   		//alert("was remove");
+				    	   		swal("Deleted!", "Your video file has been deleted.", "success"); 
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
 				                console.log("Success..." + data);
@@ -867,10 +828,19 @@
 				   		console.log("ERROR..." + data);
 				   	}
 				   }); 
+				}); 
 		} 
 		
 		function removeAllHistory(uid){
 			//alert(uid);
+			swal({   
+				title: "Are you sure?",   
+				text: "You will not be able to recover this ",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false }, function(){   
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/removeallhistory/'+uid,
 				       type:'delete',
@@ -879,7 +849,7 @@
 				    	   	if(data.STATUS == true){
 				    	   		$("#getHistory").show();
 				    	   		$("#hiscover").hide();
-				    	   		
+				    	   		swal("Deleted!", "Your video history has been deleted.", "success");
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
 				                console.log("Success..." + data);
@@ -889,6 +859,7 @@
 				   		console.log("ERROR..." + data);
 				   	}
 				   }); 
+				 }); 
 		} 
 		 
 		
@@ -1019,7 +990,7 @@
 									+"</div>" 
 								+"<ul class='list-inline'>" 
 									+"<li><a href='"+url+'/elearning/playvideo?v='+data.RES_DATA[i].videoId+"'><strong class='text-black'>"+data.RES_DATA[i].videoName+"</strong></a></li><br>"
-									+"<li><a><span class='small text-muted' style='color:#AAB2BD'>"+data.RES_DATA[i].username+"</span></a></li>"
+									+"<li><a><span class='small text-muted' style='color:#AAB2BD;font-size: 16px'>"+data.RES_DATA[i].username+"</span></a></li>"
 								+"</ul>"
 									+"<p class='hidden-xs'> </p><span class='small text-muted' style='color:#AAB2BD'>"
 									+"<i class='fa fa-eye'>&nbsp;&nbsp;"+data.RES_DATA[i].viewCounts+"</i>      &nbsp;&nbsp;&nbsp; </span>"
@@ -1070,6 +1041,14 @@
 	}
 	
 	function disableVideo(vid){
+		swal({   
+			title: "Are you sure?",   
+			text: "You will not be able to recover this",   
+			type: "warning",   
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",   
+			confirmButtonText: "Yes, delete it!",   
+			closeOnConfirm: false }, function(){  
 		//alert(vid);
 			  $.ajax({  
 				 	url: url+'/rest/user/profile/disablevideo/'+vid,
@@ -1078,7 +1057,8 @@
 			       success: function(data) { 
 			    	   	if(data.STATUS == true){
 			    	   		//alert("disable work");
-			    	   		
+			    	   		swal("Deleted!", "Your video has been disable", "success"); 
+			    
 			    	   	}
 			    	   		//$("#showresult").html(listarticles(data));
 			                console.log("Success..." + data);
@@ -1088,6 +1068,7 @@
 			   		console.log("ERROR..." + data);
 			   	}
 			   });  
+			  }); 
 	} 
 		
 	///********playlist*******/////////
@@ -1194,9 +1175,9 @@ function listPlaylistDetail(data){
 				
 				str += "<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
 							+"<div class='the-box full store-item text-center checkchb'>"
-							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 9999;'>"
+							+"<div class='setting-list all  mydiv0' style='display: block; position: absolute; width: 100%; padding-left: 3px; z-index: 101;'>"
 								//+"<input type='checkbox' value='306' class='mycheck' id='chBox0' style='margin-right: 170px;'>"
-								+"<a  onclick=go('deletePlaylist','"+data.RES_DATA[i].playlistId+"'); data-toggle='modal' data-target='#myModal' class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
+								+"<a  onclick=deletePlaylist('"+data.RES_DATA[i].playlistId+"'); class='btn btn-danger btn-md' style='float: right;margin-right: 0px;margin-top: -2px;'>"	
 								+"<i class='fa fa-trash-o'></i></a>"
 								+"<span class='inline-popups'>"
 									+"<a id='myformupdateplaylist2' onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"')  class='btn btn-default btn-md dropdown-toggle' data-effect='mfp-zoom-in' style='float: right;margin-right: 0px;margin-top: -2px;'>"
@@ -1307,6 +1288,16 @@ function mySearchPlaylist(){
 		
 		function deletePlaylist(pid){
 			//alert(pid);
+			swal({   
+				title: "Are you sure?",   
+				text: "You will not be able to recover this ",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false }, function(){   
+					
+				
 				 $.ajax({  
 					 	url: url+'/rest/user/profile/deleteplaylist/'+pid,
 				       type:'delete',
@@ -1315,6 +1306,7 @@ function mySearchPlaylist(){
 				    	   	if(data.STATUS == true){
 				    	   		//alert('playlist was deletee');
 				    	   		mystartPlaylist();
+				    	   		swal("Deleted!", "Your playlist has been deleted.", "success"); 
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
 				                console.log("Success..." + data);
@@ -1324,6 +1316,7 @@ function mySearchPlaylist(){
 				   		console.log("ERROR..." + data);
 				   	}
 				   }); 
+			 });
 		} 
 		
 		//userPlaylist();
@@ -1649,7 +1642,7 @@ function mySearchPlaylist(){
 	 	
 		function validateDOB(){
 			var name= $("#dateofbirth").val();
-			var characterReg = /^[\s0-9-:.\\/]+$/;
+			var characterReg = /^[\s0-9-:.-\\/]+$/;
 			    if(!characterReg.test(name)) {
 			    	$("#dateofbirth").css("border", "solid 1px red");
 			    	$("#checkdate").text("Invalid Date");
@@ -1718,7 +1711,7 @@ function mySearchPlaylist(){
 		
 		function validatNewPass(){
 			var name= $("#newpassword").val();
-			var characterReg = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{6,16}$/;
 			    if(!characterReg.test(name)) {
 			    	$("#newpassword").css("border", "solid 1px red");
 			    	$("#checknewpassword").text("Require and at least 6 charactors less than 16 charactors");
@@ -1734,7 +1727,7 @@ function mySearchPlaylist(){
 		
 		function validatConPass(){
 			var name= $("#conpassword").val();
-			var characterReg = /^[a-zA-Z0-9!@#$%^&*\+\=]{6,16}$/;
+			var characterReg = /^[a-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{6,16}$/;
 			    if(!characterReg.test(name)) {
 			    	$("#conpassword").css("border", "solid 1px red");
 			    	$("#checkconpassword").text("Require and at least 6 charactors less than 16 charactors");
@@ -1900,7 +1893,7 @@ function mySearchPlaylist(){
 		var publicview =false;
 		var playname=$("#listname").val();
 		var playdescription=$("#playlistdescription").val();
-		var category=$("#playlistcategory").val();
+		var category ="";
 		var color="";
 		var img="";
 		var oimg="";
@@ -1914,6 +1907,7 @@ function mySearchPlaylist(){
 			 thumnial ="mcgBfVSTKqo";
 			 color=$("#color").val();
 			 //var img="/resources/uploads/user/avatar.jpg";
+			 category=$("#playlistcategory").val();
 			img=$("#file").val();
 			oimg=$("#oimg").val();
 		}else{
@@ -1922,6 +1916,7 @@ function mySearchPlaylist(){
 			 publicview=false;
 			 thumnial ="mcgBfVSTKqo";
 			 color ="000000";
+			category="MA==";
 		} 
 		//alert("user0");
 			
@@ -1931,15 +1926,16 @@ function mySearchPlaylist(){
 		 if(img =="" && oimg ==""){
 			//alert("insert no image");
 			if(validatPlaylistname() && validatPlaylistnameDes() ){
-				
-			var img="/resources/uploads/user/avatar.jpg";
-			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
+				//alert("insert no image");
+			var img="/resources/upload/file/playlist/97bb03d0-661e-4b73-89a9-8dbc2269f6b3.jpg";
+			//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
+			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color,status);
 			}
 		}  
 		
 		//idrect update
 		else if(img =="" && oimg.length !== 0 ){
-			//alert("direct update");
+			///alert("direct update");
 			if(validatPlaylistname() && validatPlaylistnameDes() ){
 			updateProcess(playname,playdescription,userid,thumnial,publicview,category,oimg,color,status);
 			//updateProcess(n,d,u,th,p,m,bg,c,s);
@@ -1947,7 +1943,7 @@ function mySearchPlaylist(){
 		}
 		//insert image and update
 		else if(img.length !== 0 && oimg.length !== 0 ){
-			//alert("update with new image");
+			///alert("update with new image");
 			if(validatPlaylistname() && validatPlaylistnameDes() ){
 			$.ajax({
 				type : "POST",
@@ -2025,6 +2021,9 @@ function mySearchPlaylist(){
 			           		swal("Playlist Was created", "You clicked the button!", "success");
 				            	myClear();
 				            	mystartPlaylist();
+				            	$("#form-create-playlist1").bPopup().close();
+							}else{
+								//alert("not create playlist");
 							}
 			           
 			           },
@@ -2109,6 +2108,7 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
         		   swal("Playlist Was Changed", "You clicked the button!", "success");
         		   myClear();
         		   mystartPlaylist();
+        		   $("#form-create-playlist1").bPopup().close();
         	   }
            	
            },
@@ -2160,10 +2160,6 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
 		
 		
 		
-		$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
-	    $("#menu-toggle").click(function(e) {
-	        $("#wrapper").toggleClass("toggled");
-	    });
 	</script>
   
                
