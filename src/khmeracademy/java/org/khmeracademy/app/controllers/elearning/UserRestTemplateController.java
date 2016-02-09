@@ -123,7 +123,29 @@ public class UserRestTemplateController {
 	
 	
 	//playlist
-	@RequestMapping(value="/rest/user/profile/listuserplaylist" , method = RequestMethod.GET)
+	@RequestMapping(value="/rest/user/profile/togglePlaylist/{pid}" , method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> togglePlayList( @PathVariable("pid") String pid
+										){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/togglePlaylist/"+pid, HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	
+	
+	@RequestMapping(value="/rest/user/profile/searchPlaylist/{key}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> searchPlayList(
+										@PathVariable("key") String key
+										, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "/elearning/playlist/searchplaylist/"+key+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/user/profile/listallplaylist" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> listAllPlaylist(
 										 @RequestParam(value = "page", required = false , defaultValue="1") int page 
 									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
