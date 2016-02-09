@@ -29,75 +29,38 @@
 		
 		
 		
-		<%-- <div class="section">
-			<div class="container ka-container" >
-				
-				<div class="col-sm-12">
-								<div id="bs-carousel-2" class="carousel slide" data-ride="carousel">
-								  <!-- Indicators -->
-								  <ol class="carousel-indicators">
-									<li data-target="#bs-carousel-2" data-slide-to="0" class=""></li>
-									<li data-target="#bs-carousel-2" data-slide-to="1" class="active"></li>
-									<li data-target="#bs-carousel-2" data-slide-to="2"></li>
-								  </ol>
-
-								  <!-- Wrapper for slides -->
-								  <div class="carousel-inner">
-									<div class="item">
-									  <img src="${pageContext.request.contextPath}/resources/assets/img/photo/medium/img-4.jpg" style="width: 100%; height: 400px;" alt="Image slide">
-									  <div class="carousel-caption dark-bg" style="background:rgba(1,1,1,.5);width:100%;left:0;right:0;">
-										<h1>Our mission is to provide a free, world‑class education for anyone, anywhere.</h1>
-										
-									  </div><!-- /.carousel-caption -->
-									</div><!-- /.item -->
-									<div class="item active">
-									  <img src="${pageContext.request.contextPath}/resources/assets/img/photo/medium/img-5.jpg" style="width: 100%; height: 400px;" alt="Image slide">
-									  <div class="carousel-caption dark-bg" style="background:rgba(1,1,1,.5);width:100%;left:0;right:0;">
-										<h1>Our mission is to provide a free, world‑class education for anyone, anywhere.</h1>
-										
-									  </div><!-- /.carousel-caption -->
-									</div><!-- /.item -->
-									<div class="item">
-									  <img src="${pageContext.request.contextPath}/resources/assets/img/photo/medium/img-6.jpg" style="width: 100%; height: 400px;" alt="Image slide">
-									  <div class="carousel-caption dark-bg" style="background:rgba(1,1,1,.5);width:100%;left:0;right:0;">
-										<h1>Our mission is to provide a free, world‑class education for anyone, anywhere.</h1>
-										
-									  </div><!-- /.carousel-caption -->
-									</div><!-- /.item -->
-								  </div><!-- /.carousel-inner -->
-
-								  <!-- Controls -->
-								  <a class="left carousel-control" href="#bs-carousel-2" data-slide="prev">
-									<span class="glyphicon glyphicon-chevron-left"></span>
-								  </a>
-								  <a class="right carousel-control" href="#bs-carousel-2" data-slide="next">
-									<span class="glyphicon glyphicon-chevron-right"></span>
-								  </a>
-								</div>
-							</div>
-				
-			
-			
-			
-			
-			
-			
-			</div><!-- /.container -->
-			
-		</div> --%>
 		
 		
 		
 		
-		<div class="section">
+		
+		<div class="section" style="min-height: 320px;">
 			<div class="container text-center ka-container">
-				<h2><strong>Khmer Academy</strong></h2>
-				<h4 class="light-font line-height-28 margin-top-50">
+				<h2><strong>Khmer Academy is built by young & ambitious Khmer.</strong></h2>
+				<!-- <h4 class="light-font line-height-28 margin-top-50">
 				Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br>
 				Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br>
 				Investigationes demonstraverunt lectores legere me lius quod<br>
-				</h4>
+				</h4> -->
 			</div><!-- /.container -->
+		</div>
+		
+		<div class="page-title-wrap">
+			<div class="container">
+				<ol class="breadcrumb">
+				  <li><a href="index.html">About</a></li>
+				  <li class="active">People</li>
+				  <li><a href="index.html">Supporter</a></li>
+				  <li><a href="index.html">Volunteer</a></li>
+				</ol>
+			<h4 class="page-title">People</h4>
+			</div><!-- /.container -->
+			
+			<div class="border-bottom">
+				<div class="container">
+					<div class="border-bottom-color bg-info"></div>
+				</div><!-- /.container -->
+			</div><!-- /.border-bottom -->
 		</div>
 		
 		
