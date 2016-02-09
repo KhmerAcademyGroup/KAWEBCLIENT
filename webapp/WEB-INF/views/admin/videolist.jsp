@@ -424,7 +424,7 @@
     		
     		$("#search").keyup(function(){
 				if($(this).val()==""){
-					check = false;
+					check = true;
 					isSearch = false;
 					video.listVideo(1,$("#number-of-item").val());
 				}else{
@@ -442,7 +442,8 @@
     		//change row of items
     		$("#number-of-item").change(function(){
     			check = true;
-    			video.listVideo(1,$("#number-of-item").val());
+    			if(isSearch==false) video.listVideo(1,$("#number-of-item").val());
+			    else video.searchVideo(1,$("#number-of-item").val(),$("#search").val());
     		});
     		
     		
@@ -590,9 +591,24 @@
     					}else{
     						$("#statusFalse").prop('checked', true);
     					}
-    					for(var i=0;i<data.RES_DATA.categoryId.length;i++){
-    						$("#category").val(data.RES_DATA.categoryId[i]).trigger("chosen:updated");
-    					}
+    					
+    					var selectedCategory = data.RES_DATA.categoryName;
+    					var str_array = selectedCategory.split(', ');
+    					var select=document.getElementById("category");
+						var cid = [];
+						var c = 0;
+    				    for (var i = 0; i < str_array.length; i++) {
+    				        str_array[i] = str_array[i].replace(/^\s*/, "");
+    				        for(var j=0, o; j<select.options.length; j++){
+    	    					  o = select.options[j];
+    	    					  if(str_array[i]==o.text){
+    	    						cid[c] = o.value;
+    	    						c += 1;
+    	    					  }
+    	    				}    
+    				    }
+    				   $("#category").val(cid).trigger("chosen:updated");
+    					
     				}
     				
     			});

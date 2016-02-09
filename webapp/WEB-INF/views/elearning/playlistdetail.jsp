@@ -50,9 +50,9 @@
 
 	<div class="container ka-container">
 
-		<input type="text" id="address" />
+		<!-- <input type="text" id="address" />
 		<textarea rows="10" cols="20" id="message"></textarea>
-		<input type="button" id="send" value="SEND"/>
+		<input type="button" id="send" value="SEND"/> -->
 
 
 
@@ -79,7 +79,7 @@
 					</div>
 					<!-- /.media-body -->
 					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective" data-toggle="modal" onclick="PlayAll()"><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective btnplayall" data-toggle="modal" ><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
 						<span id="buttonpopup"></span>	
 					</span>
 				</div>
@@ -190,47 +190,6 @@
 
 
 
-	<div class="modal fade" id="frmup_date_playlist" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
-										  <div class="modal-dialog">
-											<div class="modal-content" style="border-radius: 5px;">
-											  <div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="DefaultModalLabel">Update playlist</h4>
-											  </div>
-											  <div class="modal-body" >
-												
-													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
-														 <div class="form-group">
-															<label for="exampleInputEmail1">Playlist name</label>
-															<input type="text" class="form-control" name="playlistname" id="updatename" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="playlistid"  id="updateid" placeholder="EG. MyTop">
-															<input type="hidden" class="form-control" name="thumbnail"  id="thumbnail" placeholder="EG. MyTop">
-															<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-														  </div>
-														  <div class="form-group">
-															<label for="exampleInputPassword1">Description</label>
-															<input type="text" name="description" class="form-control" id="updatedescription" placeholder="EG. My music">
-														 </div>
-														 <div class="form-group">
-															<label>Set View</label>
-															<select class="form-control" id="updatepublicview" name="updatepublicview" tabindex="2">
-																<option value="false">Private</option>
-																<option value="true">Public</option>
-															</select>
-														</div>
-														 	<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
-														 	 <input type="submit" id="btnupdateplaylist"   class="btn btn-success" value="Update">
-													</form> 
-													
-											  </div>
-											  <div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-											  </div><!-- /.modal-footer -->
-											</div><!-- /.modal-content -->
-										  </div><!-- /.modal-doalog -->
-										</div><!-- /#DefaultModal -->	
-										
-										<!-- ================================================================ -->
 
 
 
@@ -694,6 +653,31 @@
 		  				}); 
 										
     			});
+				
+				
+				
+
+				$(document).on('click', ".btnplayall", function() {									
+					$.ajax({ 
+						url : "${pageContext.request.contextPath}/rest/elearning/playlistdetail/"+playlistId+"?page=1&item=1",
+					    type: 'GET',
+					    beforeSend: function(xhr) {
+		                    xhr.setRequestHeader("Accept", "application/json");
+		                    xhr.setRequestHeader("Content-Type", "application/json");
+		                },
+					    success: function(data) { 					    								    			
+					    			window.location.href="/KAWEBCLIENT/elearning/playvideo?v="+data.RES_DATA[0].videoId;
+					    },
+					    error:function(data,status,er) { 
+					        console.log("error: "+data+" status: "+status+" er:"+er);
+					    }
+					});
+				});
+				
+				
+				
+				
+				
 				
 			$(document).on('keyup', "#searchYourVideo", function() {    				
     			    					

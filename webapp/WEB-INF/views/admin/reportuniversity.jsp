@@ -52,19 +52,19 @@
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
-						<!-- <div class="btn-group" id="btcheck">
+						<div class="btn-group" id="btcheck">
 							<button id="showFrmAddUniversity" type="button" class="btn btn-success">
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
-						</div> -->
+						</div>
 
-						<div class="btn-group pull-right">
+						<!-- <div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" id="search" class="form-control"
 									placeholder="Search university">
 							</form>
 
-						</div>
+						</div> -->
 						<!-- /.btn-group .pull-right -->
 					</div>
 
@@ -81,7 +81,7 @@
 								</tr>
 							</thead>
 							<tbody id="content">
-								
+							
 							</tbody>
 							
 						</table>
@@ -96,18 +96,17 @@
 				</div>
 
 
-
 			</div>
 			<!-- /.container-fluid -->
 
-		<%-- <div id="p-frmUniversity" class="ka-popup" style="display: none;width: 50%;">
+		<div id="p-frmUniversity" class="ka-popup" style="display: none;width: 50%;">
 			<form  id="frmUniversity" action="${pageContext.request.contextPath}/rest/log/university" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">List universitys</h4>
+						<h4 class="modal-title">List universities</h4>
 					</div>
 					<div class="modal-body" >
 									
@@ -125,10 +124,10 @@
 					</div>
 				</div>
 			</form>	
-		</div> --%>
+		</div>
 		
 		<div id="p-frmConfirm" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/report/university" method="POST">
+			<form  id="frmConfirm" action="${pageContext.request.contextPath}/rest/log/university" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
@@ -181,12 +180,10 @@
 	    	<tr>
 				<td>{{= NO }}</td>
 				<td>{{= universityName}}</td>
-				<td>{{= universityName}}</td>
-				<td>{{= universityName}}</td>
-				<td>{{= universityName}}</td>				
 				<td> 
-   		 			<i data-cateid="{{= universityId}}" class="glyphicon glyphicon-eye-open icon-circle icon-xs icon-info" id="showFrmUpdateUniversity"></i>
-         		</td>			
+   		 			<i data-cateid="{{= universityId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateUniversity"></i>
+            		<i data-cateid="{{= universityId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
+         		</td>
 			</tr>
    		</script>
    
@@ -196,13 +193,14 @@
 		
 		var university = {};
 		var check = true;
+		var gPage = 1; //global current page for pagination
 		
 		$(document).ready(function(){
 			
 			university.listUniversity = function(currentPage){
 				KA.createProgressBar();
 				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/report/university?page="+currentPage+"&item=20", 
+				    url: "${pageContext.request.contextPath}/rest/log/university?page="+currentPage+"&item=20", 
 				    type: 'GET',
 				    beforeSend: function(xhr) {
 	                    xhr.setRequestHeader("Accept", "application/json");
@@ -210,14 +208,17 @@
 	                },
 				    success: function(data) { 
 				    	
-				    	alert(JSON.stringify(data)); //data.RESP_DATA
-				    	return;
+				    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
+				    	return;  */
 						console.log(data);
+				    	
+				    	perPage = 20;
+				    	nextPage = (currentPage-1)*perPage;
 				    	
 						if(data.RESP_DATA.length>0){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RESP_DATA.length;i++){
-								data.RESP_DATA[i]["NO"] = i+1;
+								data.RESP_DATA[i]["NO"] = (i+1)+nextPage;
 							}
 							$("#content_tmpl").tmpl(data.RESP_DATA).appendTo("tbody#content");
 						}else{
@@ -254,6 +255,7 @@
    			        firstClass: 'first'
    			    }).on("page", function(event, currentPage){
    			    	check = false;
+   			    	gPage = currentPage;
    			    	university.listUniversity(currentPage);
    			    }); 
     		};
@@ -275,7 +277,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	university.listUniversity(1);
+				    	university.listUniversity(gPage);
 				    	$("#p-frmUniversity").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -302,7 +304,7 @@
 				    success: function(data) { 
 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
-				    	university.listUniversity(1);
+				    	university.listUniversity(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
 				    },
 				    error:function(data,status,er) { 
@@ -377,12 +379,12 @@
 			$(document).on('click',"#showFrmUpdateUniversity", function(){
 				//alert($(this).data("cateid"));
 				
-				var deptName = $(this).parent().prev().text();
+				var uniName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
 				console.log(cateId);
 				$("#universityId").val(cateId); 
-				$("#universityName").val(deptName);
+				$("#universityName").val(uniName);
 				
 				$("#p-frmUniversity").bPopup({modalClose: false});
 				//university.getUniversity($(this).data("cateid"));

@@ -1,6 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!-- BEGIN FOOTER -->
-<footer class="light-color">
+<footer class="">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-5">
@@ -83,7 +83,7 @@
 	</div><!-- /.container -->
 </footer><!-- /.section -->
 
-<div class="footer light-color">
+<div class="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
@@ -263,32 +263,7 @@ END PAGE
 		
 		
 		
-		<div id="p-Search" class="ka-popup" style="display: none;width: 80%;">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<button type="button" class="close" aria-hidden="true">
-						<span class="button b-close"><span>x</span></span>
-					</button>
-					
-					<h4 class="bolded">Search</h4>
-
-				</div>
-				<div class="modal-body" >
-					
-					
-					
-					<ul class="nav nav-tabs">
-					  <li role="presentation" class="active"><a href="#">Home</a></li>
-					  <li role="presentation"><a href="#">Profile</a></li>
-					  <li role="presentation"><a href="#">Messages</a></li>
-					</ul>
-					
-					
-					
-				</div>
-			</div>
-		</div>
+		
 
 <!--
 ===========================================================
@@ -413,15 +388,12 @@ Placed at the end of the document so the pages load faster
                 
                 
                 // SIgn up
-                $(".btSignUp").click(function(){
+                $(document).on('click',".btSignUp", function(){   
                 	$("#p-frmLogin").bPopup().close();
                 	$("#frmSignUp").trigger("reset");
                 	$("#p-frmSignUp").bPopup(/* {modalClose: false} */);
-                	if( $('#getDepartment').has('option').length == 0 ) {
-                		listDepartment();                		
-                	}
-					if( $('#getUniversity').has('option').length == 0 ) {
-                		listUniversity();
+                	if( $('#getDepartment').has('option').length == 0 || $('#getUniversity').has('option').length == 0) {
+                		listDepartment_University();               		
                 	}
 // 					KA.createProgressBar();	
 // 					setTimeout(function(){
@@ -470,9 +442,30 @@ Placed at the end of the document so the pages load faster
     	                },
     				    success: function(data) { 
     						console.log(data);
-    						if(data.RESP_DATA.length>0){
-    							$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
-    						}
+    						$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
+    						
+    						KA.destroyProgressBarWithPopup();
+    				    },
+    				    error:function(data,status,er) { 
+    				    	KA.destroyProgressBarWithPopup();
+    				        console.log("error: "+data+" status: "+status+" er:"+er);
+    				    }
+    				});
+    			};
+    			
+    			listDepartment_University = function(){
+    				KA.createProgressBarWithPopup();
+    				$.ajax({ 
+    				    url: "${pageContext.request.contextPath}/rest/listuniversity_department", 
+    				    type: 'GET',
+    				    beforeSend: function(xhr) {
+    	                    xhr.setRequestHeader("Accept", "application/json");
+    	                    xhr.setRequestHeader("Content-Type", "application/json");
+    	                },
+    				    success: function(data) { 
+    						console.log(data);
+    						$("#department_tmpl").tmpl(data.DEPARTMENT).appendTo("#getDepartment");
+    						$("#university_tmpl").tmpl(data.UNIVERSITY).appendTo("#getUniversity");
     						KA.destroyProgressBarWithPopup();
     				    },
     				    error:function(data,status,er) { 
@@ -551,10 +544,7 @@ Placed at the end of the document so the pages load faster
 					});
     			
     			
-    				$("#btSearch").click(function(){
-    					
-    					$("#p-Search").bPopup();
-    				});
+    				
     			
             });
             
@@ -579,4 +569,6 @@ Placed at the end of the document so the pages load faster
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<!-- End facebook plugin -->
+   		 
+   		 <jsp:include page="../shared/_search.jsp" />
    		    

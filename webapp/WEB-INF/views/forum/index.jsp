@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,7 +27,7 @@
 			
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">All Questions</a></li>
-				  <li><a href="#fakelink">Users</a></li>
+<!-- 				  <li><a href="#fakelink">Users</a></li> -->
 				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
 				</ol>
 				
@@ -192,10 +192,12 @@
 				<a href="javascript:" data-cateid="{{= categoryId }}" data-cate="{{= categoryName }}" id="listQuestionByCate" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
 		</script>
 
+		 <spring:message code="WSURL_IMG_URL" var="img_path"/> 
+
 		<script type="text/javascript">
 			  $(document).ready(function(){
 			  	
-				 	
+				    var img_path = '${img_path}';
 				  
 				    var question = {};
 			  		var page = 1;
@@ -261,7 +263,7 @@
 														'<td class="vu-table-td footable-last-column">'+
 															'<div style="width: 65px;" ><a  class="ka-username" style="color:#37BC9B;" href="javascript:" >'+shorten(data.RES_DATA[i]["username"], 10)+'</a></div>'+
 															'<div style="width: 65px;"><small>'+data.RES_DATA[i]["postDate"]+'</small></div>'+
-															'<div><img style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar.png" class="avatar img-circle" alt="Avatar"></div>'+
+															'<div><img style="width: 40px;" src="'+img_path + data.RES_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
 														'</td>'+
 													'</tr>';
 									
