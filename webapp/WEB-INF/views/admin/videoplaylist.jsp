@@ -560,15 +560,12 @@
 		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
 		        		//alert(data.USERPLAYLIST.status);
 		        		if(data.USERPLAYLIST.status == '0'){
-		        			//alert(data.USERPLAYLIST.status);
-		        			//$('input[name=publicview]:checked', '#formcreateplaylist').removeAttr('checked');
-	            			$("#private").attr('checked', 'checked');
-		        			
-		        			
+		        			 $("#private").prop( "checked", true );	            			
+		        			 
 	            		}else{
-	            			//$('input[name=publicview]:checked', '#formcreateplaylist').removeAttr('checked');
-	            			$("#public1").attr('checked', 'checked');
-	            			//alert('M');
+	            			//alert(data.USERPLAYLIST.status);
+	            			$("#public1").prop( "checked", true );
+
 	            			
 	            		}
 		        		
