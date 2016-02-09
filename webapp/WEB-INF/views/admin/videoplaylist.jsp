@@ -89,7 +89,8 @@
 									<th>No1</th>
 									<th>Playlist Name</th>
 									<th>Playlist Description</th>	
-									<!-- <th>Category Name</th>	 -->												
+									<th>Video Count</th>
+									<th>Status</th>													
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -140,6 +141,17 @@
 						
 						<small class="msg" style="color:red;display:none">The category  is required and can't be empty</small>
 				 </div>
+				 <div class="form-group">
+					<label for="exampleInputEmail1">Status</label>
+					<div class="radio">
+						<label> <input type="radio" name="publicview" checked="checked" id="public1" value="true" required="" > True
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="publicview" id="private" value="false" data-bv-field="publicview"> False
+						</label>
+					</div>
+				</div>
 				  
 				  <c:if test="${usertype == 'Admin' }">
 				  <div class="form-group">
@@ -150,15 +162,15 @@
 				  	<div class="form-group" >
 						<label for="exampleInputEmail1">Image</label>
 						<div class="col-sm-12">
+						
 							<div class="fileinput fileinput-new" data-provides="fileinput">
-							  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100px; height:100px;"></div>
+							  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
 							  <div>
-								<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-								<input type="file" id="file"   name="file">
-								
-								<a href="#" id="removeimage" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+								<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="file" id="file"></span>
+								<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 							  </div>
 							</div>
+							
 							
 						</div>
 					</div>
@@ -243,7 +255,7 @@
 			limit=$("#limitplaylist").val();
 			///alert(limit);
 			 $.ajax({   
-		            url: url+'/rest/user/profile/listuserplaylist/MQ==?page='+offset+'&item='+limit,
+		            url: url+'/rest/user/profile/listallplaylist?page='+offset+'&item='+limit,
 		            type: 'get',
 		            contentType: 'application/json;charset=utf-8',
 		            success: function(data){
@@ -283,7 +295,7 @@
 		
 		function listAllPlaylist(offset){
 	    	$.ajax({
-	    		url: url+'/rest/user/profile/listuserplaylist/MQ==?page='+offset+'&item='+limit,
+	    		url: url+'/rest/user/profile/listallplaylist?page='+offset+'&item='+limit,
 	            type: 'get',
 	            contentType: 'application/json;charset=utf-8',
 	            //data: JSON.stringify(JSONObject),
@@ -303,14 +315,24 @@
 		
 		function listPlaylistDetail(data){
 			var str="";
+			var status="";
 				for(var i=0; i<data.RES_DATA.length ; i++){
+					
+					if(data.RES_DATA[i].status == true){
+						status ="<i  onclick=togglePlayList('"+data.RES_DATA[i].playlistId+"') class='fa fa-check icon-circle icon-xs icon-success statusConfirm'></i>";
+					}else{
+						status ="<i  onclick=togglePlayList('"+data.RES_DATA[i].playlistId+"') class='fa fa-remove icon-circle icon-xs icon-danger statusConfirm' ></i>";
+					}
+					
 					
 					str +="<tr>"
 							+"<td>"+i+"</td>"
 							+"<td>"+data.RES_DATA[i].playlistName+"</td>"
 							+"<td>"+data.RES_DATA[i].description+"</td>"
-							//+"<td>"+data.RES_DATA[i].maincategoryname+"</td>"
+							+"<td>"+data.RES_DATA[i].countVideos+"</td>"
+							+"<td>"+status+"</td>"
 							+"<td>"
+								//+"<a><i  class='icon-circle icon-xs glyphicon glyphicon-th-large btnUpdate'></i></a>"
 								+"<a  onclick=viewPlayList('"+data.RES_DATA[i].playlistId+"') id='showFrmUpdatePlaylist' ><i  class='fa fa-pencil icon-circle icon-xs icon-info btnUpdate'></i></a>"              
 								+"<a  onclick=deletePlayList('"+data.RES_DATA[i].playlistId+"') ><i class='fa fa-trash-o icon-circle icon-xs icon-danger deleteConfirm'></i></a>"    
 							+"<td>"
@@ -327,7 +349,7 @@
 			if(key.length > 2 && characterReg.test(key)){
 				$("#search").css("border", "solid 1px green");
 				 $.ajax({  
-					 	url: url+'/rest/user/profile/searchplaylist/MQ==/'+key+'?page='+offset+'&item='+limit, 
+					 	url: url+'/rest/user/profile/searchPlaylist/'+key+'?page='+offset+'&item='+limit, 
 				       type:'get',
 				       contentType: 'application/json;charset=utf-8', // type of data
 				       success: function(data) { 
@@ -399,7 +421,8 @@
 		var img=$("#file").val();
 		var oimg=$("#oimg").val();
 		var thumnial="mcgBfVSTKqo"; 
-		var status=true;
+		var status=$('input[name=publicview]:checked', '#formcreateplaylist').val();
+		//alert(status);
 		var playid = $("#listid").val();
 		//alert('action');
 		
@@ -504,8 +527,8 @@
 			           		//alert("created");
 			           		mystart();
 			           		swal("Playlist Was created", "You clicked the button!", "success");
-				            	myClear();
-				            	
+				            myClear();
+				            $("#form-create-playlist1").bPopup().close();
 				            	
 							}
 			           
@@ -535,6 +558,19 @@
 		        		$("#playlistdescription").val(data.USERPLAYLIST.description);
 		        		$("#color").val(data.USERPLAYLIST.color);
 		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
+		        		//alert(data.USERPLAYLIST.status);
+		        		if(data.USERPLAYLIST.status == '0'){
+		        			//alert(data.USERPLAYLIST.status);
+		        			//$('input[name=publicview]:checked', '#formcreateplaylist').removeAttr('checked');
+	            			$("#private").attr('checked', 'checked');
+		        			
+		        			
+	            		}else{
+	            			//$('input[name=publicview]:checked', '#formcreateplaylist').removeAttr('checked');
+	            			$("#public1").attr('checked', 'checked');
+	            			//alert('M');
+	            			
+	            		}
 		        		
 		        	}
 		        	
@@ -592,6 +628,7 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
         		   mystart();
         		   swal("Playlist Was Changed", "You clicked the button!", "success");
         		   myClear();
+        		   $("#form-create-playlist1").bPopup().close();
         		 
         	   }
            	
@@ -708,6 +745,40 @@ function listMainCategoryDetail(data){
 				});
 		}
 		
+		function togglePlayList(pid){
+			//alert(pid);
+			swal({   
+				title: "Are you sure?",   
+				text: "You will not be toggle playlist",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, Toggle it!",   
+				closeOnConfirm: false }, function(){   
+					
+					 $.ajax({  
+						 	url: url+'/rest/user/profile/togglePlaylist/'+pid,
+					       type:'put',
+					       contentType: 'application/json;charset=utf-8', // type of data
+					       success: function(data) { 
+					    	   	if(data.STATUS == true){
+					    	   		mystart();
+									swal("Toggle!", "Your have been toggle Profile", "success"); 
+					    	   	}
+					    	   		//$("#showresult").html(listarticles(data));
+					                console.log("Success..." + data);
+					       }  ,  
+					   		error: function(data){
+					   		alert("Unsuccess" + data +"OR Empty");
+					   		console.log("ERROR..." + data);
+					   	}
+					   });
+					
+					
+					
+					
+				});
+		}
 		</script>
 
 </body>

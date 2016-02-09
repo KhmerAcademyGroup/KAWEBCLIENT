@@ -5,7 +5,9 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- BEGIN TOP NAVBAR -->
-<div class="top-navbar" style="background: #17951B;">
+
+<div class="top-navbar" style="    background: green; z-index: 99000;">
+
 	<div class="container">
 	
 		<!-- Begin logo -->
