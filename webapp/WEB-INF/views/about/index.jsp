@@ -32,9 +32,9 @@
 		
 		
 		
-		<div class="section">
+		<div class="section" style="min-height: 320px;">
 			<div class="container text-center ka-container">
-				<h2><strong>First e-learnig platform for khmer.</strong></h2>
+				<h2><strong>First e-learning platform for khmer</strong></h2>
 				<!-- <h4 class="light-font line-height-28 margin-top-50">
 				Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br>
 				Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br>
@@ -43,16 +43,23 @@
 			</div><!-- /.container -->
 		</div>
 		
-		
-		<!-- <div class="">
+		<div class="page-title-wrap">
 			<div class="container">
-				<ol class="breadcrumb" style="background: #4b5462;">
-				  <li><a style="color: white;"  href="index.html">About</a></li>
-				  <li><a style="color: white;" href="#fakelink">Team</a></li>
-				  <li><a style="color: white;" href="#fakelink">Supporter</a></li>
+				<ol class="breadcrumb">
+				  <li class="active">About</li>
+				  <li><a href="index.html">People</a></li>
+				  <li><a href="index.html">Supporter</a></li>
+				  <li><a href="index.html">Volunteer</a></li>
 				</ol>
-			</div>/.container
-		</div> -->
+			<h4 class="page-title">About</h4>
+			</div><!-- /.container -->
+			
+			<div class="border-bottom">
+				<div class="container">
+					<div class="border-bottom-color bg-info"></div>
+				</div><!-- /.container -->
+			</div><!-- /.border-bottom -->
+		</div>
 		
 		
 		<div class="section">
@@ -188,6 +195,26 @@
 			</div><!-- /.container -->
 		</div>
 		
+		
+		<div class="section">
+			<div class="container">
+				<div class="section-heading">
+					<div class="inner-border"></div>
+					<h3><strong>History</strong></h3>
+				</div><!-- /.section-heading -->
+				
+				<div id="owl-testimonial" class="owl-carousel testimonial owl-theme" style="opacity: 1; display: block;">
+					<div class="owl-wrapper-outer autoHeight" style="height: 150px;"><div class="owl-wrapper" style="width: 2280px; left: 0px; display: block;"><div class="owl-item" style="width: 1140px;">
+					<div class="item">
+						<p class="text-testi">
+							The whole idea of Khmer academy has been conceived and developed by alumni of Korea HRD center. Korea HRD center is an educational NGO based in Korea,and it trains Cambodian IT students as an outstanding programmers.
+						</p>
+					</div></div></div></div><!-- /.item -->
+					
+				</div><!-- /.container -->
+			</div>
+			
+			
 		<div class="section bg-primary text-center">
 			<div class="container">
 				<h4 class="margin-bottom-30">START WITH KHMER ACADEMY</h4>
@@ -203,23 +230,7 @@
 		
 		
 		
-		<div class="section">
-			<div class="container">
-				<div class="section-heading">
-					<div class="inner-border"></div>
-					<h3>History</h3>
-				</div><!-- /.section-heading -->
-				
-				<div id="owl-testimonial" class="owl-carousel testimonial owl-theme" style="opacity: 1; display: block;">
-					<div class="owl-wrapper-outer autoHeight" style="height: 150px;"><div class="owl-wrapper" style="width: 2280px; left: 0px; display: block;"><div class="owl-item" style="width: 1140px;">
-					<div class="item">
-						<p class="text-testi">
-							The whole idea of Khmer academy has been conceived and developed by alumni of Korea HRD center. Korea HRD center is an educational NGO based in Korea,and it trains Cambodian IT students as an outstanding programmers.
-						</p>
-					</div></div></div></div><!-- /.item -->
-					
-				</div><!-- /.container -->
-			</div>
+		
 			
 			
 			  
