@@ -131,9 +131,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Forum</strong> </h3>
+						<h3 class="margin-bottom-30"><strong>Student community</strong> </h3>
 						<p>
-						We provide our students with forum(link) where they can challenge what they are taught in video
+						We provide our students with <a href="${pageContext.request.contextPath}/forum">forum</a> where they can challenge what they are taught in video
 					    and meet new friends who share the same dream with them. We are planning to add chatting function
 					    so that students who shares the same interest can directly contact each other. 
 					    This will be the first and the largest student community in Cambodia.

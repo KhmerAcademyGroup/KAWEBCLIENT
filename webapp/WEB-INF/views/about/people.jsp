@@ -175,14 +175,34 @@
 						<div class="magnific-popup-wrap">
 							<div class="row">
 								<div class="col-xs-6 col-md-3">
-									<a class="zooming" href="assets/img/photo/medium/img-1.jpg" title="Image title here">
-									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-1.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
-									</a>
+<!-- 									<a class="zooming" href="assets/img/photo/medium/img-1.jpg" title="Image title here"> -->
+										<span class="first">
+											<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-1.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">	
+										</span>
+										<span class="second" style="display:none">
+									    	<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-7.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									    </span>
+<!-- 									</a> -->
+								    <div class="card-info" style="display:none; z-index:99999;position:absolute;background:white">
+						                <h2 class="pulls">John</h2>
+						                <h3>Frontend Inventor</h3>
+						                <p>
+						                    John invents tools and platforms for Khan Academy, like our programming environment,
+						                    exercise framework, and internationalization framework.
+						                </p>
+						                <p>
+						                    John is the creator of the jQuery JavaScript library, amongst a number of other Open Source projects, and the author of two books on JavaScript development.
+						                </p>
+						                <p class="contact-links">
+						                    <a href="http://twitter.com/jeresig" class="contact-twitter"></a>
+						                    <a href="http://ejohn.org" class="contact-blog"></a>
+						                </p>
+						            </div>
 								</div><!-- /.col-xs-6 .col-md-3 -->
 								<div class="col-xs-6 col-md-3">
 									<a class="zooming" href="assets/img/photo/medium/img-2.jpg" title="Image title here">
-									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-2.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
-									</a>
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-1.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+								    </a>
 								</div><!-- /.col-xs-6 .col-md-3 -->
 								<div class="col-xs-6 col-md-3">
 									<a class="zooming" href="assets/img/photo/medium/img-3.jpg" title="Image title here">
@@ -267,7 +287,23 @@
 	
 	
     	
-    			
+    <script>
+    	$(function(){
+    		$(".first").hover(function(){
+    			$(this).hide();
+    			$(this).next().show();
+    			$(this).next().next().show();
+//     			$(".magnific-popup-wrap").css("background-color","red");
+    		});
+    		
+    		$(".second").mouseout(function(){
+    			$(this).hide();
+    			$(this).prev().show();
+    			$(this).next().hide();
+    		});
+    		
+    	});
+    </script>
     	
 				
 	</body>
