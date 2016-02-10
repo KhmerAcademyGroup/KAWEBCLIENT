@@ -95,7 +95,7 @@
 		<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO }}</td>
-				<td>{{= categoryName}}</td>
+				<td><button class="btn btn-info">{{= categoryName}}</button></td>
 				<td>{{= views }}</td>
 				<td>{{= duration}}</td>
 				<td> 
