@@ -71,19 +71,46 @@
 <!-- 						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3> -->
 						<p>
 						We’re waiting for any kinds of ambition. You might be someone who gets stuck in the room and does coding for your own DIY game all day long. Or You might be that type of person who annoys your friends by posting thesis like movie review on facebook. Or maybe you are just curious about how your country will change and therefore how your life will change. 
-							+Volunteer link
-							(+donation link)
+						
 						</p>
+						
+						<img src="${pageContext.request.contextPath}/resources/assets/img/about/volunteer/volunteer.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+						
+							
+							
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
+							<div class="the-box">
+							<h4 class="small-title">Join to improve Khmer Academy</h4>
+								<form role="form">
+								  <div class="form-group">
+									<label>Full name</label>
+									<input type="email" class="form-control" placeholder="Enter email">
+								  </div>
+								  <div class="form-group">
+									<label>Email address</label>
+									<input type="email" class="form-control" placeholder="Enter email">
+								  </div>
+								   <div class="form-group">
+									<label>Phone</label>
+									<input type="email" class="form-control" placeholder="Enter email">
+								  </div>
+								   <div class="form-group">
+									<label>Explain us who you are, what you can do for Khmer academy(Either in Khmer or English)</label>
+									<textarea class="form-control"></textarea>
+								  </div>
+								  <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Submit</button>
+								</form>
+							</div><!-- /.the-box -->
+							
+					</div><!-- /.row -->
+					
+				</div>
 			</div><!-- /.container -->
 		</div>
 		
 		 
-		
+	
 		
 		
 		
