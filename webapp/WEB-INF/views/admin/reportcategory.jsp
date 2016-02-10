@@ -38,58 +38,31 @@
 			<!-- END SIDEBAR RIGHT -->
 			
 
-
-
-
-
-
-
 		<!-- BEGIN PAGE CONTENT -->
 		<div class="page-content">
 			<div class="container-fluid">
-
-			   <h1 class="page-heading">List Log Category</h1>
+					<br/>
+					<div class="panel panel-info">
+								  <div class="panel-heading">
+									<h1 class="panel-title">
+									<i class="fa fa-tasks"></i>
+										<a href="index.act"  >
+										List Log Category
+										
+										</a>
+									</h1>
+								  </div>
+									
+					</div><!-- /.panel panel-default -->
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
-						<!-- <div class="btn-group" id="btcheck">
-							<button id="showFrmAddCategory" type="button" class="btn btn-success">
-								<i class="fa fa-plus-square"></i> Add new
-							</button>
-						</div> -->
-
-						<!-- <div class="btn-group pull-right">
-							<form role="form">
-								<input type="text" id="search" class="form-control"
-									placeholder="Search category">
-							</form>
-
-						</div> -->
+						
 						<!-- /.btn-group .pull-right -->
 					</div>
 
-					<div class="table-responsive">
-						<table class="table table-th-block table-hover">
-							<thead>
-								<tr>
-									<th style="width: 30px;">No</th>
-									<th>University</th>									
-									<th>View</th>
-									<th>Duration</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody id="content">
-								
-							</tbody>
-							
-						</table>
-						
-						 <div id="pagination" class="pull-right">
-												
-						 </div>
-												
-												
+					<div class="table-responsive" id="showTable">
+										
 					</div>
 					<!-- /.table-responsive -->
 				</div>
@@ -98,36 +71,6 @@
 
 			</div>
 			<!-- /.container-fluid -->
-
-		<%-- <div id="p-frmCategory" class="ka-popup" style="display: none;width: 50%;">
-			<form  id="frmCategory" action="${pageContext.request.contextPath}/admin/rest/department" method="POST">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" aria-hidden="true">
-							<span class="button b-close"><span>×</span></span>
-						</button>
-						<h4 class="modal-title">List Log University</h4>
-					</div>
-					<div class="modal-body" >
-									
-									<input type="hidden"  id="categoryId" class="form-control"  name="categoryId">
-										
-									<div class="form-group">
-										<label class="col-lg-3 control-label">Department name</label>
-										<div class="col-lg-5">
-											<input type="text" id="categoryName" class="form-control" required="required" name="categoryName">
-										</div>	
-									</div>
-					</div>
-					<div class="modal-footer">
-							<button type="submit" id="btSubmit" class="btn btn-primary">Save</button>
-					</div>
-				</div>
-			</form>	
-		</div> --%>
-
-
-
 
 				<!-- BEGIN FOOTER -->
 				<jsp:include page="shared/_adminfooter.jsp" />
@@ -153,163 +96,148 @@
 	    	<tr>
 				<td>{{= NO }}</td>
 				<td>{{= categoryName}}</td>
+				<td>{{= views }}</td>
+				<td>{{= duration}}</td>
 				<td> 
-   		 			<i data-cateid="{{= categoryId}}" class="fa fa-pencil icon-circle icon-xs icon-info" id="showFrmUpdateCategory"></i>
-            		<!-- <i class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" ></i> -->
+   		 			<a href="#"><i data-cateid="{{= categoryId}}" class="fa fa-eye icon-circle icon-xs icon-danger" id="showviewReport"></i></a>            		
          		</td>
 			</tr>
    		</script>
-   
+   		
+   		<script id="contentuserbycat_tmpl" type="text/x-jquery-tmpl">
+	    	<tr>
+				<td>{{= NO }}</td>
+				<td>{{= username}}</td>
+				<td>{{= views }}</td>
+				<td>{{= duration}}</td>
+				<td> 
+   		 			<a href="#"><i data-userid="{{= userId}}" class="fa fa-eye icon-circle icon-xs icon-danger" id="showviewReportuser"></i></a>
+            		
+         		</td>
+			</tr>
+   		</script>
+   		
    		
          
 		<script type="text/javascript">		
-		
-		var category = {};
-		var check = true;
-		
-		$(document).ready(function(){
-			
-			category.listCategory = function(currentPage){
-				KA.createProgressBar();
-				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category?page="+currentPage+"&item=20", 
-				    type: 'GET',
-				    beforeSend: function(xhr) {
-	                    xhr.setRequestHeader("Accept", "application/json");
-	                    xhr.setRequestHeader("Content-Type", "application/json");
-	                },
-				    success: function(data) { 
-						console.log(data);
-						if(data.RES_DATA.length>0){
-							$("tbody#content").empty();
-							for(var i=0;i<data.RES_DATA.length;i++){
-								data.RES_DATA[i]["NO"] = i+1;
-							}
-							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
-						}else{
-							$("tbody#content").html('<tr>No content</tr>');
-						}
-				    	if(check){
-				    		category.setPagination(data.PAGINATION.totalPages,1);
-				    		check=false;
-				    	}
-				    	KA.destroyProgressBar();
-				    },
-				    error:function(data,status,er) { 
-				    	KA.destroyProgressBar();
-				        console.log("error: "+data+" status: "+status+" er:"+er);
-				    }
-				});
-			};
-			
-			category.setPagination = function(totalPage, currentPage){
-   		    	$('#pagination').bootpag({
-   			        total: totalPage,
-   			        page: currentPage,
-   			        maxVisible: 10,
-   			        leaps: true,
-   			        firstLastUse: true,
-   			        first: 'First',
-   			        last: 'Last',
-   			        wrapClass: 'pagination',
-   			        activeClass: 'active',
-   			        disabledClass: 'disabled',
-   			        nextClass: 'next',
-   			        prevClass: 'prev',
-   			        lastClass: 'last',
-   			        firstClass: 'first'
-   			    }).on("page", function(event, currentPage){
-   			    	check = false;
-   			    	category.listCategory(currentPage);
-   			    }); 
-    		};
-    		
-    		category.addOrUpdateCategory = function(){
-				KA.createProgressBarWithPopup();
-				frmData = {
-						"categoryId"   : $("#categoryId").val(),
-						"categoryName" : $("#categoryName").val()
+			$(document).ready(function(){
+				var logReport= {};
+				
+				logReport.tableLayout = function(title){
+					var str= '';
+					str += '<table class="table table-th-block table-hover" id="tblreport">'+
+								'<thead>'+
+									'<tr>'+
+										'<th style="width: 30px;">No</th>'+
+										'<th id="tbltitle">'+title+'</th>'+									
+										'<th>View</th>'+
+										'<th>Duration</th>'+
+										'<th>Action</th>'+
+									'</tr>'+
+								'</thead>'+
+								'<tbody id="content">'+								
+								'</tbody>'+
+							'</table>';
+					return str;
 				};
-				$.ajax({ 
-				    url:  $("#frmCategory").attr("action"), 
-				    type: $("#frmCategory").attr("method"),
-				    data: JSON.stringify(frmData),
-				    beforeSend: function(xhr) {
-	                    xhr.setRequestHeader("Accept", "application/json");
-	                    xhr.setRequestHeader("Content-Type", "application/json");
-	                },
-				    success: function(data) { 
-						console.log(data);
-				    	KA.destroyProgressBarWithPopup();
-				    	category.listCategory(1);
-				    	$("#p-frmCategory").bPopup().close();
-				    },
-				    error:function(data,status,er) { 
-				    	KA.destroyProgressBarWithPopup();
-				        console.log("error: "+data+" status: "+status+" er:"+er);
-				    }
+				
+				//function list report category
+				logReport.listReportCategory = function(){
+					KA.createProgressBarWithPopup();
+					$.ajax({
+						url : "${pageContext.request.contextPath}/admin/report/rest/listcategory",
+						method: "GET",
+						success: function(data){
+							console.log(data);
+							if(data.STATUS != false){
+								
+								
+								$("#showTable").html(logReport.tableLayout("Category Name"));
+								
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = i+1;
+								}
+								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+								$("#tblreport").dataTable();
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+							
+							KA.destroyProgressBarWithPopup();
+						}						
+					});
+				};
+				
+				
+				//function list report User by category
+				logReport.listReportUserByCategory = function(categoryId){
+					KA.createProgressBarWithPopup();
+					$.ajax({
+						url : "${pageContext.request.contextPath}/admin/report/rest/listuserbycategory/"+ categoryId,
+						method: "GET",
+						success: function(data){
+							console.log(data);
+							if(data.STATUS != false){
+								
+								
+								$("#showTable").html(logReport.tableLayout("User Name"));
+								
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = i+1;
+								}
+								$("#contentuserbycat_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+								$("#tblreport").dataTable();
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+							
+							KA.destroyProgressBarWithPopup();
+						}						
+					});
+				};
+				
+				//function list report User's category
+				logReport.listReportCategoryByUser = function(userId){
+					KA.createProgressBarWithPopup();
+					$.ajax({
+						url : "${pageContext.request.contextPath}/admin/report/rest/listcatebyuser/"+ userId,
+						method: "GET",
+						success: function(data){
+							console.log(data);
+							if(data.STATUS != false){
+								$("#showTable").html(logReport.tableLayout("Category By User"));								
+								$("tbody#content").empty();
+								for(var i=0;i<data.RES_DATA.length;i++){
+									data.RES_DATA[i]["NO"] = i+1;
+								}
+								$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+								$("#tblreport").dataTable();
+							}else{
+								$("tbody#content").html('<tr>No content</tr>');
+							}
+							
+							KA.destroyProgressBarWithPopup();
+						}						
+					});
+				};
+				
+				
+				
+				
+				//view list report
+				
+				logReport.listReportCategory();
+				
+				$(document).on('click', '#showviewReport', function(){					
+					logReport.listReportUserByCategory($(this).data('cateid'));					
 				});
-			};
-			
-			// Get one forum category
-			category.getCategory = function(cateid){
-				KA.createProgressBarWithPopup();
-				console.log(cateid);
-				$.ajax({ 
-				    url: "${pageContext.request.contextPath}/rest/category/"+cateid, 
-				    type: 'GET',
-				    beforeSend: function(xhr) {
-	                    xhr.setRequestHeader("Accept", "application/json");
-	                    xhr.setRequestHeader("Content-Type", "application/json");
-	                },
-				    success: function(data) { 
-						console.log(data);
-						if(data.RES_DATA != null){
-							$("#categoryId").val(data.RES_DATA.categoryId); 
-							$("#categoryName").val(data.RES_DATA.categoryName); 
-						}
-						KA.destroyProgressBarWithPopup();
-				    },
-				    error:function(data,status,er) { 
-						KA.destroyProgressBarWithPopup();
-				        console.log("error: "+data+" status: "+status+" er:"+er);
-				    }
+				
+				$(document).on('click', '#showviewReportuser', function(){						
+					logReport.listReportCategoryByUser($(this).data('userid'));					
 				});
-			};
-			
-			
-			// load all forum cateoty
-			category.listCategory(1);
-			
-			
-			
-			
-			// Show Form Add Category Popup
-			$("#showFrmAddCategory").click(function(){
-				$("#p-frmCategory").bPopup({modalClose: false});
-				$("#frmCategory").attr("method", "POST");
-				$("#frmCategory").trigger("reset");
-				$("#btSubmit").text("Add");
 			});
-			
-			// Show Form Update Category Popup
-			$(document).on('click',"#showFrmUpdateCategory", function(){
-				//alert($(this).data("cateid"));
-				$("#p-frmCategory").bPopup({modalClose: false});
-				category.getCategory($(this).data("cateid"));
-				$("#frmCategory").trigger("reset");
-				$("#frmCategory").attr("method", "PUT");
-				$("#btSubmit").text("Update");
-			});
-			
-			// Add or update Forum Category
-			$("#frmCategory").submit(function(e){
-				 e.preventDefault();
-				 category.addOrUpdateCategory();
-			});
-			
-			
-		});
 		</script>
 
 </body>
