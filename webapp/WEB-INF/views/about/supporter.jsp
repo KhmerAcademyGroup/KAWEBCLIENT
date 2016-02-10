@@ -79,9 +79,10 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Korea HRD center is an IT educational institute in Cambodia, which is built and funded by KOICA(Korea International Cooperation Agency)and Korea based `
+						IT company WEBCASH. This center is the birthplace of Khmer academy and all the related services. 
+						It has produced 3 generations of IT expert, approximately  200 of alumni, so far, and Khmer academy has been established by those 
+						future IT leader of Cambodia. 
 						</p>
 					</div><!-- /.col-sm-6 -->
 					
@@ -128,6 +129,43 @@
 			</div><!-- /.container -->
 		</div>
 		
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3 class="margin-bottom-30"><strong>Chungbuk University, (CBNU) Korea </strong> </h3>
+						<p>
+						Khmer academy and Chungbuk University of South Korea signed MOU at 3 July, 2015. 
+						We’ve agreed to share resources together including educational, research materials and human resources. 
+						So far, lots of instructors of Khmer academy went to Chungbuk University for master degree and students
+						of the university also annually comes to our organization for Volunteer work. 
+						</p>
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
+						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div>
+		
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3 class="margin-bottom-30"><strong>Ministry of Education, Youth and Sport Cambodia</strong> </h3>
+						<p>
+						Khmer academy and Ministry of Education, youth and sports, Kingdom of Cambodia signed MOU at 17 December, 2015. 
+						Through this MOU, We agreed to share every content on Khmer academy with government-run website called OEU (Open Educational Resources). 
+						Also, MoEYS agreed to encourage public schools to use contents in Khmer academy by means of conducting workshops nationwide. 
+						We also are planning to collaborate on lots of long-term projects which will shape the future of Cambodia.
+						</p>
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
+						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div>
 		
 		 <div class="section">
 			<div class="container">
@@ -135,9 +173,8 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Bright University (BBU) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and Build Bright University of Cambodia signed MOU at 3 Jun, 2015.  
+						We agreed to share academic materials
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -152,11 +189,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Europe University (AEU) Cambodia</strong> </h3>
+						<h3 class="margin-bottom-30"><strong>Asia Euro University (AEU) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and Asia Euro University of Cambodia signed MOU at 30 June, 2015.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -173,29 +208,7 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>University of Technology (IIC) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
-		
-		
-		
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>National University (CBNU) Korea</strong> </h3>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and IIC University of Technology of Cambodia signed MOU at 1 July, 2015.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -212,9 +225,7 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>University of Management (NUM) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and National University of Management of Cambodia signed MOU at 18 August, 2015.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -225,23 +236,7 @@
 		</div>
 		
 		
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Ministry of Education, Youth and Sport Cambodia</strong> </h3>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
+		
 		
 		
 		

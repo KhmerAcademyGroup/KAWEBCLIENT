@@ -171,82 +171,92 @@
 					<h3>Khmer Academy Developers</h3>
 				</div><!-- /.section-heading -->
 				<div class="row">
-					<div class="col-sm-3">
-						<div class="team-item info">
-							<h4 class="name">Randy Gibson</h4>
-							<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-24.jpg" alt="Avatar" class="img-circle avatar">
-							<p class="position">ART DIRECTOR</p>
-							<p class="about">
-							Nam liber tempor cum soluta
-							nobis eleifend option congue
-							nihil imperdiet doming id
-							quod mazim placerat facer
-							</p>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-facebook icons" data-original-title="Facebook"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-twitter icons" data-original-title="Twitter"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-google-plus icons" data-original-title="Google plus"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-dribbble icons" data-original-title="Dribbble"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-pinterest icons" data-original-title="Pinterest"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-github icons" data-original-title="Github"></i></a>
-						</div><!-- /.team-item -->
-					</div><!-- /.col-sm-3 -->
-					<div class="col-sm-3">
-						<div class="team-item info">
-							<h4 class="name">Randy Gibson</h4>
-							<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-24.jpg" alt="Avatar" class="img-circle avatar">
-							<p class="position">ART DIRECTOR</p>
-							<p class="about">
-							Nam liber tempor cum soluta
-							nobis eleifend option congue
-							nihil imperdiet doming id
-							quod mazim placerat facer
-							</p>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-facebook icons" data-original-title="Facebook"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-twitter icons" data-original-title="Twitter"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-google-plus icons" data-original-title="Google plus"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-dribbble icons" data-original-title="Dribbble"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-pinterest icons" data-original-title="Pinterest"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-github icons" data-original-title="Github"></i></a>
-						</div><!-- /.team-item -->
-					</div><!-- /.col-sm-3 -->
-					<div class="col-sm-3">
-						<div class="team-item info">
-							<h4 class="name">Randy Gibson</h4>
-							<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-24.jpg" alt="Avatar" class="img-circle avatar">
-							<p class="position">ART DIRECTOR</p>
-							<p class="about">
-							Nam liber tempor cum soluta
-							nobis eleifend option congue
-							nihil imperdiet doming id
-							quod mazim placerat facer
-							</p>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-facebook icons" data-original-title="Facebook"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-twitter icons" data-original-title="Twitter"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-google-plus icons" data-original-title="Google plus"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-dribbble icons" data-original-title="Dribbble"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-pinterest icons" data-original-title="Pinterest"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-github icons" data-original-title="Github"></i></a>
-						</div><!-- /.team-item -->
-					</div><!-- /.col-sm-3 -->
-					<div class="col-sm-3">
-						<div class="team-item info">
-							<h4 class="name">Randy Gibson</h4>
-							<img src="${pageContext.request.contextPath}/resources/assets/img/avatar/avatar-24.jpg" alt="Avatar" class="img-circle avatar">
-							<p class="position">ART DIRECTOR</p>
-							<p class="about">
-							Nam liber tempor cum soluta
-							nobis eleifend option congue
-							nihil imperdiet doming id
-							quod mazim placerat facer
-							</p>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-facebook icons" data-original-title="Facebook"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-twitter icons" data-original-title="Twitter"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-google-plus icons" data-original-title="Google plus"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-dribbble icons" data-original-title="Dribbble"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-pinterest icons" data-original-title="Pinterest"></i></a>
-							<a href="#fakelink"><i data-toggle="tooltip" title="" class="fa fa-github icons" data-original-title="Github"></i></a>
-						</div><!-- /.team-item -->
-					</div><!-- /.col-sm-3 -->
+					<div class="the-box no-border">
+						<div class="magnific-popup-wrap">
+							<div class="row">
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-1.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-1.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-2.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-2.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-3.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-3.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-4.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-4.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-5.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-5.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-6.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-6.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-7.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-7.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-8.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-8.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-1.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-1.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-2.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-2.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-3.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-3.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-4.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-4.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-5.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-5.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-6.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-6.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-7.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-7.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+								<div class="col-xs-6 col-md-3">
+									<a class="zooming" href="assets/img/photo/medium/img-8.jpg" title="Image title here">
+									<img src="${pageContext.request.contextPath}/resources/assets/img/photo/small/img-8.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+									</a>
+								</div><!-- /.col-xs-6 .col-md-3 -->
+							</div><!-- /row -->
+						</div><!-- /.magnific-popup-wrap -->
+					</div>
 				</div><!-- /.row -->
 			</div><!-- .container -->
 		</div>
