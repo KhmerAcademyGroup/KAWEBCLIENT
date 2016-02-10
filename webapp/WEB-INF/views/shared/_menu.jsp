@@ -63,10 +63,10 @@
 						   About
 					 </a>
 					 <ul class="sub-menus">
-						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">About us</a></li>
-						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Team</a></li>
-						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Supporters</a></li>
-						<li class="sub-list"><a href="#${pageContext.request.contextPath}/">Donate</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/about">About us</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/people">People</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/volunteer">Volunteer</a></li>
 					</ul>
 			</li>
 				

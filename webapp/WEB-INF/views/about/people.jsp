@@ -48,10 +48,10 @@
 		<div class="page-title-wrap">
 			<div class="container">
 				<ol class="breadcrumb">
-				  <li><a href="index.html">About</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about">About</a></li>
 				  <li class="active">People</li>
-				  <li><a href="index.html">Supporter</a></li>
-				  <li><a href="index.html">Volunteer</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/volunteer">Volunteer</a></li>
 				</ol>
 			<h4 class="page-title">People</h4>
 			</div><!-- /.container -->
