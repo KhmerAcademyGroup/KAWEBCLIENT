@@ -216,8 +216,7 @@
 										<ul class="nav nav-tabs">
 											<li class="active"><a href="#videosearch-panel"
 												data-toggle="tab">Video Search</a></li>
-											<li class=""><a href="#your-video-panel"
-												data-toggle="tab">Your video</a></li>
+											
 										</ul>
 									</div>
 									<div id="panel-collapse-1" class="collapse in">

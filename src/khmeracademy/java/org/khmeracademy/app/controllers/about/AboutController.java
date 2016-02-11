@@ -12,8 +12,19 @@ public class AboutController {
 		return "about/index";
 	}
 	
-	@RequestMapping("/team")
-	public String teamPage(){
-		return "about/team";
+	
+	@RequestMapping("/supporter")
+	public String supporterPage(){
+		return "about/supporter";
+	}
+	
+	@RequestMapping("/people")
+	public String peoplePage(){
+		return "about/people";
+	}
+	
+	@RequestMapping("/volunteer")
+	public String volunteer(){
+		return "about/volunteer";
 	}
 }
