@@ -385,7 +385,8 @@ NAVBAR
 	height: 50px;
 	padding: 20px;
 	font-size: 14px;
-	color: #aab2bd;
+	/* color: #aab2bd; */
+	color: rgba(255,255,255,0.85);
 	text-decoration: none;
 }
 .top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:hover,
@@ -3764,11 +3765,12 @@ a.block-collapse {
 }
 
 
-.panel-primary {border-color: #37BC9B;}
+.panel-primary {border-color: #D5DAE0;}
 .panel-primary > .panel-heading {
-	color: #fff;
+	/* color: #fff; */
 	background-color: #37BC9B;
-	border-color: #37BC9B;
+	/* border-color: #37BC9B; */
+	border-color: #D5DAE0;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
 	border-top-color: #37BC9B;

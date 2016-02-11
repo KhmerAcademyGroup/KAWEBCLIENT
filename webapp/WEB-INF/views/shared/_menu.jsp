@@ -6,7 +6,7 @@
 
 <!-- BEGIN TOP NAVBAR -->
 
-<div class="top-navbar" style="    background: #17951B; z-index: 99000;">
+<div class="top-navbar" style="    background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0); z-index: 99000;">
 
 	<div class="container">
 	

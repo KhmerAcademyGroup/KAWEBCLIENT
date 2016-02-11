@@ -110,7 +110,7 @@
     position: fixed;
     left: 0px;
     top:95%;
-    background: #006a00;
+    background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);;
     color:#fff;
     border:0px;
 }
