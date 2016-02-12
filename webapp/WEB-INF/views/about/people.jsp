@@ -355,7 +355,7 @@
     <script>
     	$(function(){ 
     		$(".first").hover(function(){ 
-    			$(".first").find("img").css("opacity", "0.5");
+    			$(".first").find("img").fadeTo(1, 0.5); //.css("opacity", "0.5");
     			$(this).hide();
     			$(this).next().show();
     			$(this).next().next().show();
@@ -363,7 +363,7 @@
     		});
     		
     		$(".second").mouseout(function(){
-    			$(".first").find("img").css("opacity", "1");
+    			$(".first").find("img").fadeTo(1, 1); //.css("opacity", "1");
     			$(this).hide();
     			$(this).prev().show();
     			$(this).next().hide();

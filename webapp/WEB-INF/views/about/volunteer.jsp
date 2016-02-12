@@ -82,24 +82,27 @@
 					<div class="col-sm-6">
 							<div class="the-box">
 							<h4 class="small-title">Join to improve Khmer Academy</h4>
-								<form role="form">
+								<form role="form" id="frmVolunteer" action="#">
+								
+								<div id="message"></div>
+								
 								  <div class="form-group">
 									<label>Full name</label>
-									<input type="email" class="form-control" placeholder="Enter email">
+									<input type="text" class="form-control" required="required" id="fullname" placeholder="">
 								  </div>
 								  <div class="form-group">
 									<label>Email address</label>
-									<input type="email" class="form-control" placeholder="Enter email">
+									<input type="email" class="form-control" required="required" id="email" placeholder="">
 								  </div>
 								   <div class="form-group">
 									<label>Phone</label>
-									<input type="email" class="form-control" placeholder="Enter email">
+									<input type="text" class="form-control" required="required" id="phone" placeholder="">
 								  </div>
 								   <div class="form-group">
 									<label>Explain us who you are, what you can do for Khmer academy(Either in Khmer or English)</label>
-									<textarea class="form-control"></textarea>
+									<textarea rows="5" class="form-control" required="required" id="detail"></textarea>
 								  </div>
-								  <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Submit</button>
+								  <input type="submit" class="btn btn-success" value="Submit"><i class="fa fa-sign-in"></i> 
 								</form>
 							</div><!-- /.the-box -->
 							
@@ -123,10 +126,51 @@
 		<jsp:include page="../shared/_footer.jsp" />
 		
 	
+	<script type="text/javascript">
 	
-	
-    	
-    			
+            $(document).ready(function(){
+            	
+            
+				$("#frmVolunteer").submit(function(e){
+			           		
+				         		  e.preventDefault(); // alert($(this).serialize());
+				         		  
+				         		  frmData = { 
+				         				 fullname : $("#fullname").val(),
+				         				 email : $("#email").val(),
+				         				 phone : $("#phone").val(),
+				         				 detail : $("#detail").val()
+				         				 
+				         		}; 
+				         		  console.log(frmData);
+				         		  KA.createProgressBar();
+				         		  $.ajax({
+					    	            url: "${pageContext.request.contextPath}/rest/about/volunteer",
+					    	            type: "POST",
+					    	            datatype : "JSON",
+					    	            data: JSON.stringify(frmData),
+					    	            beforeSend: function(xhr) {
+						                    xhr.setRequestHeader("Accept", "application/json");
+						                    xhr.setRequestHeader("Content-Type", "application/json");
+						                },
+					    	            success: function(data) {
+					    	            	KA.destroyProgressBar();
+					    	            	$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+						   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+						 				  				   '<strong class="alert-link">Your request has been submitted to Khmer Academy.</strong>'+ 
+						 				     '</div>');
+					    	            },
+					    	         	error: function(data){
+					    	         		KA.destroyProgressBar();
+					    	         		console.log(data);
+					    				}
+					    	        });
+				         			
+								});
+			    	
+            });
+            
+         </script>
     	
 				
 	</body>

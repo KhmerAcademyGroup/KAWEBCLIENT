@@ -572,7 +572,4 @@ Placed at the end of the document so the pages load faster
    		 
    		 <jsp:include page="../shared/_search.jsp" />
    		 
-   		 
-   		 <script src="http://192.168.178.123:8080/HRD_MEMO/resources/js/hrdmemoplugin.js"></script>
-   		 
    		    
