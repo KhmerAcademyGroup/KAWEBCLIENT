@@ -70,7 +70,7 @@
 					<div class="col-sm-6">
 <!-- 						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3> -->
 						<p>
-						We’re waiting for any kinds of ambition. You might be someone who gets stuck in the room and does coding for your own DIY game all day long. Or You might be that type of person who annoys your friends by posting thesis like movie review on facebook. Or maybe you are just curious about how your country will change and therefore how your life will change. 
+						We’re waiting for any kinds of ambition. You might be someone who gets stuck in the room and does coding for your own DIY game all day long. Or You might be that type of person who annoys your friends by posting thesis like movie review on facebook. Or maybe you are just curious about how your country will change and how your life will change with it. Come join us. Let's make future together.
 						
 						</p>
 						

@@ -79,9 +79,9 @@
 		<div class="section">
 			<div class="container text-center">
 				<h4 class="light-font line-height-28 margin-top-50">
-				We got many great supports from Cambodian people, students, institutes, universities 
+				We've got many great supports from Cambodian people, students, institutes, universities 
 				and especially Ministry of Education, Youth and Sport of Cambodia. 
-				Therefore, we have made MoU with five universities and government <br>
+				So far, we have made MoU with five universities and government <br>
 				</h4>
 			</div><!-- /.container -->
 		</div>
@@ -92,9 +92,8 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3>
 						<p>
-						Korea HRD center is an IT educational institute in Cambodia, which is built and funded by KOICA(Korea International Cooperation Agency)and Korea based `
-						IT company WEBCASH. This center is the birthplace of Khmer academy and all the related services. 
-						It has produced 3 generations of IT expert, approximately  200 of alumni, so far, and Khmer academy has been established by those 
+						Korea HRD center is an IT educational institute in Cambodia, which is built and funded by KOICA(Korea International Cooperation Agency)and WEBCASH. This center is the birthplace of Khmer academy and all the related services. 
+						Center has produced 3 generations of IT expert, approximately  200 of alumni, and Khmer academy has been established by those 
 						future IT leader of Cambodia. 
 						</p>
 					</div><!-- /.col-sm-6 -->
@@ -145,7 +144,7 @@
 						<h3 class="margin-bottom-30"><strong>Bright University (BBU) Cambodia</strong> </h3>
 						<p>
 						Khmer academy and Build Bright University of Cambodia signed MOU at 3 Jun, 2015.  
-						We agreed to share academic materials
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
@@ -160,6 +159,7 @@
 						<h3 class="margin-bottom-30"><strong>Asia Euro University (AEU) Cambodia</strong> </h3>
 						<p>
 						Khmer academy and Asia Euro University of Cambodia signed MOU at 30 June, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -180,6 +180,7 @@
 						<h3 class="margin-bottom-30"><strong>University of Technology (IIC) Cambodia</strong> </h3>
 						<p>
 						Khmer academy and IIC University of Technology of Cambodia signed MOU at 1 July, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
@@ -194,6 +195,7 @@
 						<h3 class="margin-bottom-30"><strong>University of Management (NUM) Cambodia</strong> </h3>
 						<p>
 						Khmer academy and National University of Management of Cambodia signed MOU at 18 August, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
