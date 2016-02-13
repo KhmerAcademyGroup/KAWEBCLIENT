@@ -97,7 +97,7 @@ STANDARD DESKTOP < 1024px
 	.top-navbar.shrink-nav ul.menus li.parent a{
 		height: 50px;
 		padding: 16px 25px;
-		background: green;
+		/* background: green; */
 		border-bottom: 1px solid;
 	}
 	.top-navbar ul.menus li.parent.right-icon,
@@ -110,7 +110,8 @@ STANDARD DESKTOP < 1024px
 		position: relative;
 		left: 0;
 		top: 0;
-		background: #1A212B;
+		/* background: #1A212B; */
+		background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);
 	}
 	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:hover,
 	.top-navbar ul.menus li.parent ul.sub-menus li.sub-list a:focus{

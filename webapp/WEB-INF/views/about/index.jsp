@@ -69,10 +69,10 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Our goal</strong> </h3>
 						<p>
-						Khmer academy is the first e-learning platform for Khmer people. 
-						It started out as providing cambodian students quality education material. 
-						And that’s still our biggest and urgent goal to accomplish. But our final goal is beyond that. 
-						We want to improve every cambodian’s life.  
+						Khmer academy is the first e-learning platform for Khmer people only. 
+						We, the team started out to provide Cambodian students with quality educational material. 
+						Though that's still our biggest and urgent goal to accomplish, our final goal is beyond that. 
+						We want to improve every Cambodian’s life.  
 						</p>
 					</div><!-- /.col-sm-6 -->
 					 <div class="col-sm-6">
@@ -88,10 +88,10 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>E-Learning</strong> </h3>
 						<p>
-						We offer every course in Khmer language.
+						We offer every course in Khmer.
 						If you’re new to programming, start with tutorial that touches very basic of computer. 
 						Then, move to more advanced E-learning section. In between, 
-						if  you have any questions come visit forum and post your curiosity.
+						if  you have any questions, come visit forum and post your curiosity.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -113,7 +113,7 @@
 						<p>
 						We provide our students with forum(link) where they can challenge what they are taught in video
 					    and meet new friends who share the same dream with them. We are planning to add chatting function
-					    so that students who shares the same interest can directly contact each other. 
+					    so that students who share the same interest can directly contact each other. 
 					    This will be the first and the largest student community in Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
@@ -131,9 +131,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Forum</strong> </h3>
+						<h3 class="margin-bottom-30"><strong>Student community</strong> </h3>
 						<p>
-						We provide our students with forum(link) where they can challenge what they are taught in video
+						We provide our students with <a href="${pageContext.request.contextPath}/forum">forum</a> where they can challenge what they are taught in video
 					    and meet new friends who share the same dream with them. We are planning to add chatting function
 					    so that students who shares the same interest can directly contact each other. 
 					    This will be the first and the largest student community in Cambodia.
@@ -153,10 +153,9 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>All Khmer News</strong> </h3>
 						<p>
-						This is the first platform to integrate all the news in Cambodia. 
-						News in Cambodia are still dispersed in individual websites so it’s hard for the
-						users to choose particular site that will provide them with all the news they need.
-						We’re gonna provide Cambodians with infinite sources of news of all types. 
+						All Khmer news is the first platform to integrate all the news in Cambodia. 
+						News in Cambodia is still dispersed in individual websites.So it’s hard to choose particular site that will provide all the news you want.
+						This is the infinite source of all types of news in Cambodia. 
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -172,16 +171,9 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Khmer Memo</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-						consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-						consequat, vel illum dolore eu feugiat nulla facilisis at vero eros.
-						</p>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer memo is an open-source memo application and you, the develper can download the source at memo.khmeracademy.org for free. 
+						If you embedded our source into your website, now you just have to click on Khmer Memo icon on the right side of the screen to write memo.
+						 Give yourself and visitors of your website a free, convenient notebook. No hustle and bustle between cluttered tabs anymore
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
@@ -204,7 +196,7 @@
 					<div class="item">
 						<p class="text-testi">
 						The whole idea of Khmer academy has been conceived and developed by alumni of Korea HRD center. 
-						Korea HRD center is an educational NGO based in Korea,and it trains Cambodian 
+						Korea HRD center is an educational NGO based in Korea, which trains Cambodian 
 						IT students as an outstanding programmers.						</p>
 					</div></div></div></div><!-- /.item -->
 					

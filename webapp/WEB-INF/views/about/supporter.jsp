@@ -8,7 +8,20 @@
 	<head>
 		<jsp:include page="../shared/_header.jsp" />
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.css" rel="stylesheet">
+
+	<style>
+		.morecontent span {
+	    display: none;
+		}
+		.morelink {
+		    display: block;
+		}
+	</style>
+
+
 	</head>
+ 
+ 
  
 	<body class="tooltips no-padding">
 		
@@ -66,9 +79,9 @@
 		<div class="section">
 			<div class="container text-center">
 				<h4 class="light-font line-height-28 margin-top-50">
-				We got many great supports from Cambodian people, students, institutes, universities 
+				We've got many great supports from Cambodian people, students, institutes, universities 
 				and especially Ministry of Education, Youth and Sport of Cambodia. 
-				Therefore, we have made MoU with five universities and government <br>
+				So far, we have made MoU with five universities and government <br>
 				</h4>
 			</div><!-- /.container -->
 		</div>
@@ -79,69 +92,60 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Korea HRD center is an IT educational institute in Cambodia, which is built and funded by KOICA(Korea International Cooperation Agency)and WEBCASH. This center is the birthplace of Khmer academy and all the related services. 
+						Center has produced 3 generations of IT expert, approximately  200 of alumni, and Khmer academy has been established by those 
+						future IT leader of Cambodia. 
 						</p>
 					</div><!-- /.col-sm-6 -->
 					
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+						<img style="height:270px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/kshrd.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div>
+		
+		
+				<div class="container">
+					<div class="section-heading">
+						<div class="inner-border"></div>
+						<h3>(MOU)</h3>
+					</div>
+				</div>
 		
 		<div class="section">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Webcash</strong> </h3>
+						<h3 class="margin-bottom-30"><strong>Chungbuk University, (CBNU) Korea </strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and Chungbuk University of South Korea signed MOU at 3 July, 2015. 
+						We’ve agreed to share resources together including educational, research materials and human resources. 
+						So far, lots of instructors of Khmer academy went to Chungbuk University for master degree and students
+						of the university also annually comes to our organization for Volunteer work. 
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
-		
-		 <div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>KOICA</strong> </h3>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div>
 		
 		
+		
 		 <div class="section">
 			<div class="container">
 				<div class="row">
+					<div class="col-sm-6">
+						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-BBU.jpg" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Bright University (BBU) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and Build Bright University of Cambodia signed MOU at 3 Jun, 2015.  
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
@@ -152,15 +156,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Europe University (AEU) Cambodia</strong> </h3>
+						<h3 class="margin-bottom-30"><strong>Asia Euro University (AEU) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and Asia Euro University of Cambodia signed MOU at 30 June, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
@@ -171,35 +174,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
+						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-IIC.jpg" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>University of Technology (IIC) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and IIC University of Technology of Cambodia signed MOU at 1 July, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
-		
-		
-		
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>National University (CBNU) Korea</strong> </h3>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-						</p>
-					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
@@ -212,47 +194,107 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>University of Management (NUM) Cambodia</strong> </h3>
 						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
+						Khmer academy and National University of Management of Cambodia signed MOU at 18 August, 2015.
+						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-NUM.jpg" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div>
-		
 		
 		<div class="section">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Ministry of Education, Youth and Sport Cambodia</strong> </h3>
-						<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-						tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-						quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-						</p>
+						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-MoEYS.jpg" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 					<div class="col-sm-6">
-						<img style="height: 170px;" src="${pageContext.request.contextPath}/resources/assets/img/supporter/kshrd-logo.png" class="img-responsive" alt="Section image">
+						<h3 class="margin-bottom-30"><strong>Ministry of Education, Youth and Sport Cambodia</strong> </h3>
+						<p>
+						Khmer academy and Ministry of Education, youth and sports, Kingdom of Cambodia signed MOU at 17 December, 2015. 
+						Through this MOU, We agreed to share every content on Khmer academy with government-run website called OEU (Open Educational Resources). 
+						Also, MoEYS agreed to encourage public schools to use contents in Khmer academy by means of conducting workshops nationwide. 
+						We also are planning to collaborate on lots of long-term projects which will shape the future of Cambodia.
+						</p>
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div>
+		
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3 class="margin-bottom-30"><strong>National Institute of Posts, Telecommunication and ICT, (NIPTCIT) Cambodia</strong> </h3>
+						<p>
+						28 January, 2015.		
+						</p>
+						
+						<span class="more">
+					      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					    </span>
+	    
+	    
+					</div><!-- /.col-sm-6 -->
+					<div class="col-sm-6">
+						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-NIPTCIT.jpg" class="img-responsive" alt="Section image">
+					</div><!-- /.col-sm-6 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</div>
+		
+
+		
+		
 		
 		
 		
 		
 		<jsp:include page="../shared/_footer.jsp" />
 		
+	<script>
 	
-	
-	
+	$(document).ready(function() {
+    // Configure/customize these variables.
+    var showChar = 300;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Show more >";
+    var lesstext = "Show less";
+    
+
+    $('.more').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
     	
-    			
+	</script> 			
     	
 				
 	</body>

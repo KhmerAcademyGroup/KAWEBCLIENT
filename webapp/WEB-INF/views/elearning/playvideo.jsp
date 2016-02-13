@@ -48,16 +48,14 @@
 		
 
 	        <!-- Sidebar -->
-	        <div id="sidebar-wrapper">
+	        <div id="sidebar-wrapper" style="height: auto !important;">
 	        	<br />
 	        	
-	        	<!-- History -->
-	        		<div style="padding:5px 5px;">
-	        		<div class="panel panel-primary">
-					  <div class="panel-heading" style="background:#fff;">
+	            <div class="panel panel-primary">
+					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
-							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-history">
-							<strong style="color:#880000;">RECENT VIEW</strong>
+							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-course">
+							<strong style="color:#fff;">COURSE</strong>
 							<span class="right-content">
 								<span class="right-icon">
 									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
@@ -66,42 +64,18 @@
 							</a>
 						</h3>
 					  </div>
-						<div id="panel-collapse-history" class="collapse in">
-						  <div class="panel-body">
+						<div id="panel-collapse-course" class="collapse in">
+						  <div class="panel-body" style="padding: 5px;">
 							
-							<c:forEach items="${data_user_history.RES_DATA}" var="history">
-									<c:choose>
-								      <c:when test="${fn:length(history.videoName) < 28 }">
-								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${history.videoName}</a><br />
-								      </c:when>
-								
-								      <c:otherwise>
-								      		<a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${fn:substring(history.videoName, 0, 28)}&nbsp;...</a><br />
-								      </c:otherwise>
-								    </c:choose>
-									
-									
-									
-							</c:forEach>
-							
-							
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-					</div><!-- /.panel panel-primary -->
-				</div>
-	        	
-	            <hr class="hr-style-one">
-	            <br />
-	            <strong style="padding:10px;color:#880000;" ng-show="VIDEOSTATUS==true">COURSE</strong>
-	            <div class="panel-group" id="accordion-2" style="padding:5px 5px;" ng-show="VIDEOSTATUS==true">
+							<div class="panel-group" id="accordion-2" ng-show="VIDEOSTATUS==true">
 	            
 	            
 	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
 					
 						<div class="panel panel-primary">
-						  <div class="panel-heading" style="background:#fff;">
+						  <div class="panel-heading" style="background:#F5F7FA;">
 							<h3 class="panel-title">
-								<a class="block-collapse collapsed" style="color:#006a00;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
+								<a class="block-collapse collapsed" style="color:#50a253;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
 								<b>${category.maincategoryname}</b>
 								<span class="right-content">
 									<span class="right-icon"><i class="glyphicon glyphicon-chevron-down icon-collapse"></i></span>
@@ -112,10 +86,15 @@
 							
 							
 							<div id="${category.maincategoryname}" class="collapse" aria-expanded="false" style="height: 0px;">
-							  <div class="panel-body" style="background:#006a00;">
+							  <div class="panel-body" style="padding: 0px;">
 							  	<c:forEach items="${data.PLAYLIST_SIDEBAR}" var="playlist">
 									<c:if test="${playlist.maincategory==category.maincategory}">
-										<a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;color:#fff;"><span><i class="fa fa-play-circle"></i></span>&nbsp;${playlist.playlistName}</a><br /> 
+										 <%-- <a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;"><span><i class="fa fa-play-circle"></i></span>&nbsp;${playlist.playlistName}</a><br />  
+									 --%>
+										 <a class="list-group-item mail-list" href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="height: 45px; overflow: hidden;  position: relative;    text-overflow: ellipsis; white-space: nowrap;">										
+												<span class="favorite fa fa-hand-o-right text-primary"></span>												
+												<strong class="text-info">&nbsp;${playlist.playlistName}</strong>																			
+										</a>
 									</c:if>
 								</c:forEach>
 							  </div><!-- /.panel-body -->
@@ -129,7 +108,64 @@
 					</c:forEach>
 					
 				</div><!-- End panel group -->
+							
+							
+						  </div><!-- /.panel-body -->
+						</div><!-- /.collapse in -->
+				</div><!-- /.panel panel-primary -->
 	            
+	            <!-- Recent Views -->
+	        		<div >
+	        		<div class="panel panel-primary">
+					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
+						<h3 class="panel-title">
+							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-history">
+							<strong style="color:#fff;">RECENT VIEW</strong>
+							<span class="right-content">
+								<span class="right-icon">
+									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
+								</span>
+							</span>
+							</a>
+						</h3>
+					  </div>
+						<div id="panel-collapse-history" class="collapse in">
+						  <div class="panel-body" style="padding: 0px;">
+							<div >
+							<c:forEach items="${data_user_history.RES_DATA}" var="history">
+									<c:choose>
+								      <c:when test="${fn:length(history.videoName) < 28 }">
+								      		<%-- <a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${history.videoName}</a><br />
+								      --%>
+											  <a class="list-group-item mail-list" href="playvideo?v=${history.videoId}" style="height: 45px; overflow: hidden;  position: relative;    text-overflow: ellipsis; white-space: nowrap;">										
+												<span class="favorite fa fa-play-circle text-warning"></span>
+												
+												<span>${history.videoName}</span>																			
+											  </a>
+											  
+											
+											
+								      </c:when>
+								
+								      <c:otherwise>
+								      		<%-- <a href="playvideo?v=${history.videoId}" style="cursor:pointer;color:#006a00;"><span style="color:#880000;"><i class="fa fa-play-circle"></i></span>&nbsp;${fn:substring(history.videoName, 0, 28)}&nbsp;...</a><br />
+								       --%>
+											  <a class="list-group-item mail-list" href="playvideo?v=${history.videoId}" style="height: 45px; overflow: hidden;  position: relative;    text-overflow: ellipsis; white-space: nowrap;">										
+												<span class="favorite fa fa-play-circle text-warning"></span>												
+												<span>${fn:substring(history.videoName, 0, 28)}</span>																			
+											  </a>
+								      </c:otherwise>
+								    </c:choose>
+							</c:forEach>
+							</div>
+							
+						  </div><!-- /.panel-body -->
+						</div><!-- /.collapse in -->
+					</div><!-- /.panel panel-primary -->
+				</div>
+	            
+	            
+	            	            
 	        </div>
 	        <!-- /#sidebar-wrapper -->
 	
@@ -505,7 +541,7 @@
 			    
 			});
 			
-			$("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight());
+			/* $("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight()); */
 		    $("#menu-toggle").click(function(e) {
 		        $("#wrapper").toggleClass("toggled");
 		    });
