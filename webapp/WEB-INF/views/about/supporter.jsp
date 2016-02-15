@@ -76,15 +76,15 @@
 			</div><!-- /.border-bottom -->
 		</div>
 		
-		<div class="section">
+		<!-- <div class="section">
 			<div class="container text-center">
 				<h4 class="light-font line-height-28 margin-top-50">
 				We've got many great supports from Cambodian people, students, institutes, universities 
 				and especially Ministry of Education, Youth and Sport of Cambodia. 
 				So far, we have made MoU with five universities and government <br>
 				</h4>
-			</div><!-- /.container -->
-		</div>
+			</div>/.container
+		</div> -->
 		
 		<div class="section">
 			<div class="container">
@@ -109,7 +109,7 @@
 				<div class="container">
 					<div class="section-heading">
 						<div class="inner-border"></div>
-						<h3>(MOU)</h3>
+						<h3>Memorandum of Understanding for E-Learning Service</h3>
 					</div>
 				</div>
 		
@@ -198,7 +198,7 @@
 						We had an agreement to share and promote Khmer academy to improve education of Cambodia.
 						</p>
 					</div><!-- /.col-sm-6 -->
-					<div class="col-sm-6">
+	http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=473457				<div class="col-sm-6">
 						<img style="height: 370px;" src="${pageContext.request.contextPath}/resources/assets/img/about/supporter/mou-NUM.jpg" class="img-responsive" alt="Section image">
 					</div><!-- /.col-sm-6 -->
 				</div><!-- /.row -->
@@ -214,7 +214,7 @@
 					<div class="col-sm-6">
 						<h3 class="margin-bottom-30"><strong>Ministry of Education, Youth and Sport Cambodia</strong> </h3>
 						<p>
-						Khmer academy and Ministry of Education, youth and sports, Kingdom of Cambodia signed MOU at 17 December, 2015. 
+						 Khmer academy and Ministry of Education, youth and sports, Kingdom of Cambodia signed MOU at 17 December, 2015. 
 						Through this MOU, We agreed to share every content on Khmer academy with government-run website called OEU (Open Educational Resources). 
 						Also, MoEYS agreed to encourage public schools to use contents in Khmer academy by means of conducting workshops nationwide. 
 						We also are planning to collaborate on lots of long-term projects which will shape the future of Cambodia.
