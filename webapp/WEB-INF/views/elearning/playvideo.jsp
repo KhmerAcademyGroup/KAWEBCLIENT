@@ -510,7 +510,6 @@
 				getVoteVideo(getURLParameter("v"));
 				getCommentVideo(getURLParameter("v"));
 				getUserPlayList(getURLParameter("v"));
-				
 				$scope.changeUrlVideo = function(vid){
 					stopWatch();
 					var newParam = vid + "&playlist=" + getURLParameter("playlist");
@@ -678,12 +677,13 @@
 				
 			}
 			
+			
+			
 			$("#commentform").submit(function(e){
 				e.preventDefault();
 				
 				if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
 					var vdoid = $("#commentonvideoid").val();
-					
 					$.post("${pageContext.request.contextPath}/rest/elearning/video/addcomment" , 
 						{
 							'commenttext'  : $("#commenttext").val(),
@@ -692,6 +692,7 @@
 							$("#comments").html(getCommentVideo(vdoid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
+							send(vdoid);
 						});
 					
 				}else{
@@ -702,8 +703,44 @@
 			$(window).unload(function(){
 				stopWatch();	
 		    });
-		    
 		</script>
+		
+		<script type="text/javascript">
+			var webSocket = 
+				new WebSocket('ws://'+ document.location.host + '${pageContext.request.contextPath}/websockets/comment');
+			
+			webSocket.onerror = function(event) {
+				onError(event)
+			};
+			
+			webSocket.onopen = function(event) {
+				onOpen(event)
+			};
+			
+			webSocket.onmessage = function(event) {
+				onMessage(event)
+			};
+			
+			function onMessage(event) {
+				getCommentVideo(event.data);
+				console.log(event.data);
+			}
+			
+			function onOpen(event) {
+				console.log("OPEN...");
+			}
+			
+			function onError(event) {
+				alert(event.data);
+			}
+			
+			function send(txt) {
+// 				var txt = "SENT";
+				webSocket.send(txt);
+				return false;
+			}
+		</script>
+		
 		
 	</body>
 </html>
