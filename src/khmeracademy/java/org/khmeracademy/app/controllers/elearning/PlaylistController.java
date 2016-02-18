@@ -1,11 +1,13 @@
 package org.khmeracademy.app.controllers.elearning;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.websocket.server.PathParam;
 
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/elearning")
@@ -71,12 +74,14 @@ public class PlaylistController {
 		return "/elearning/playlistdetail";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/searchplaylist/{key}",method=RequestMethod.GET)
+	public ModelAndView userType(@PathVariable("key") String key){
+		
+		System.out.println(111111111111L);
+		ResponseEntity<Map<String,Object>> plist = new SearchPlaylistController().searchPlaylist(key,1, 10);
+		System.out.println(222222222222L);
+		ModelAndView mav = new ModelAndView("/elearning/searchplaylist","plist",plist);		
+		return mav;
+	}		
 	
 }
