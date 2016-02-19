@@ -78,9 +78,9 @@ public class PlaylistController {
 	public ModelAndView userType(@PathVariable("key") String key){
 		
 		System.out.println(111111111111L);
-		ResponseEntity<Map<String,Object>> plist = new SearchPlaylistController().searchPlaylist(key,1, 10);
+		//ResponseEntity<Map<String,Object>> plist = new SearchPlaylistController().searchPlaylist(key,1, 10);
 		System.out.println(222222222222L);
-		ModelAndView mav = new ModelAndView("/elearning/searchplaylist","plist",plist);		
+		ModelAndView mav = new ModelAndView("/elearning/searchplaylist","searchkey",key);		
 		return mav;
 	}		
 	
