@@ -318,6 +318,15 @@
 				    	
 						/* console.log(data); */
 				    	
+						if(data.STATUS == false){
+							KA.destroyProgressBar();
+							$("table").after('<div class="alert alert-success alert-bold-border square fade in alert-dismissable">'+
+												  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+												  '<strong>You do not upload video yet!</strong>'+
+											  '</div>');
+							return;
+						}
+						
 				    	perPage = item;
 				    	nextPage = (currentPage-1)*perPage;
 				    	$("#totalrecord").text("Total records = " + data.PAGINATION.totalCount);

@@ -51,7 +51,8 @@
 				  <li class="active">About</li>
 				  <li><a href="${pageContext.request.contextPath}/about/people">People</a></li>
 				  <li><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
-				  <li><a href="${pageContext.request.contextPath}/about/volunteer">Volunteer</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/partner">Partner</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>
 				</ol>
 			<h4 class="page-title">About</h4>
 			</div><!-- /.container -->
@@ -146,7 +147,7 @@
 			</div><!-- /.container -->
 		</div>
 		
-		<div class="section">
+		<%-- <div class="section">
 			<div class="container">
 				<div class="row">
 					
@@ -157,15 +158,15 @@
 						News in Cambodia is still dispersed in individual websites.So it’s hard to choose particular site that will provide all the news you want.
 						This is the infinite source of all types of news in Cambodia. 
 						</p>
-					</div><!-- /.col-sm-6 -->
+					</div>
 					<div class="col-sm-6">
-<%-- 							<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image"> --%>
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
+							<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
+					</div>
+				</div>
+			</div>
+		</div> --%>
 		
-		<div class="section">
+		<%-- <div class="section">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -175,13 +176,13 @@
 						If you embedded our source into your website, now you just have to click on Khmer Memo icon on the right side of the screen to write memo.
 						 Give yourself and visitors of your website a free, convenient notebook. No hustle and bustle between cluttered tabs anymore
 						</p>
-					</div><!-- /.col-sm-6 -->
+					</div>
 					<div class="col-sm-6">
-<%-- 							<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image"> --%>
-					</div><!-- /.col-sm-6 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
+							<img src="${pageContext.request.contextPath}/resources/assets/img/elearning.png" class="img-responsive" alt="Section image">
+					</div>
+				</div>
+			</div>
+		</div> --%>
 		
 		
 		<div class="section">
@@ -204,17 +205,17 @@
 			</div>
 			
 			
-		<div class="section bg-primary text-center">
+		<!-- <div class="section bg-primary text-center">
 			<div class="container">
 				<h4 class="margin-bottom-30">START WITH KHMER ACADEMY</h4>
 				<div class="row">
 					<div class="col-sm-12 text-center">
 						<h1 class="number-fact">5872</h1>
 						<p class="content-fact">Users</p>
-					</div><!-- /.col-sm-4 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
+					</div>/.col-sm-4
+				</div>
+			</div>
+		</div> -->
 		 
 		
 		

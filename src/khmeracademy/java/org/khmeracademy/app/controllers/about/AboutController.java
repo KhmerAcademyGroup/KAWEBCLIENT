@@ -23,8 +23,13 @@ public class AboutController {
 		return "about/people";
 	}
 	
-	@RequestMapping("/volunteer")
+	@RequestMapping("/contribute")
 	public String volunteer(){
-		return "about/volunteer";
+		return "about/contribute";
+	}
+	
+	@RequestMapping("/partner")
+	public String partnerPage(){
+		return "about/partner";
 	}
 }

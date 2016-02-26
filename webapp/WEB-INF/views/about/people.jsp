@@ -51,7 +51,8 @@
 				  <li><a href="${pageContext.request.contextPath}/about">About</a></li>
 				  <li class="active">People</li>
 				  <li><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
-				  <li><a href="${pageContext.request.contextPath}/about/volunteer">Volunteer</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/partner">Partner</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>
 				</ol>
 			<h4 class="page-title">People</h4>
 			</div><!-- /.container -->

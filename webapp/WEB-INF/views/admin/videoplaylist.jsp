@@ -86,7 +86,7 @@
 						<table class="table table-th-block table-hover">
 							<thead>
 								<tr>									
-									<th>No1</th>
+									<th>No</th>
 									<th>Playlist Name</th>
 									<th>Playlist Description</th>	
 									<th>Video Count</th>
@@ -259,6 +259,16 @@
 		            type: 'get',
 		            contentType: 'application/json;charset=utf-8',
 		            success: function(data){
+		            	
+		            	console.log(data);
+		            	
+		            	if(data.STATUS == false){
+		            		$("table").after('<div class="alert alert-success alert-bold-border square fade in alert-dismissable">'+
+									  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+									  '<strong>You do not create course yet!</strong>'+
+								  '</div>');
+							return;
+						}
 		            	totalofrecord=data.PAGINATION.totalCount;
 		            	numofpage=data.PAGINATION.totalPages;
 		            	listAllPlaylist(1);

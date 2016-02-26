@@ -3,81 +3,59 @@
 <footer class="">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-md-5">
-				<h4><spring:message code="aboutus"/></h4>
-				<p>
-				<spring:message code="aboutustext"/>
-				</p>
-				<p>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Facebook" class="fa fa-facebook icon-sm icon-rounded icon-social-footer icon-facebook"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Twitter" class="fa fa-twitter icon-sm icon-rounded icon-social-footer icon-twitter"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Google plus" class="fa fa-google-plus icon-sm icon-rounded icon-social-footer icon-google-plus"></i></a>
-					<!-- <a href="#fakelink"><i data-toggle="tooltip" title="Dribbble" class="fa fa-dribbble icon-sm icon-rounded icon-social-footer icon-dribbble"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Pinterest" class="fa fa-pinterest icon-sm icon-rounded icon-social-footer icon-pinterest"></i></a>
-					<a href="#fakelink"><i data-toggle="tooltip" title="Github" class="fa fa-github icon-sm icon-rounded icon-social-footer icon-github"></i></a> -->
-				</p>
-			</div><!-- /.col-sm-5 -->
-			<div class="col-sm-6 col-md-4">
+		
+			<div class="col-sm-6 col-md-2">
+				<h4>About</h4>
+				<ul class="list">
+					<li><a href="${pageContext.request.contextPath}/about">Our mission</a></li>
+					<li><a href="${pageContext.request.contextPath}/about/people">People</a></li>
+<%-- 					<li><a href="${pageContext.request.contextPath}/about/volunteer">Our volunteers</a></li> --%>
+					<li><a href="${pageContext.request.contextPath}/about/supporter">Our Supporters</a></li>
+					<li><a href="${pageContext.request.contextPath}/about/partner">Our partners</a></li>
+					<li><a href="#${pageContext.request.contextPath}/about/contact">Contact us</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-sm-6 col-md-2">
+				<h4>Service</h4>
+				<ul class="list">
+					<li><a href="${pageContext.request.contextPath}/elearning">E-Learning</a></li>
+					<li><a href="${pageContext.request.contextPath}/tutorial">Tutorials</a></li>
+					<li><a href="${pageContext.request.contextPath}/forum">Forum</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-sm-6 col-md-2">
+				<h4>Contribute</h4>
+				<ul class="list">
+					<li><a href="#${pageContext.request.contextPath}/elearning">Facebook</a></li>
+					<li><a href="#${pageContext.request.contextPath}/tutorial">Google+</a></li>
+					<li><a href="#${pageContext.request.contextPath}/forum">Instagram</a></li>
+					<li><a href="#${pageContext.request.contextPath}/forum">Twitter</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-sm-6 col-md-2">
+				<h4>Contribute</h4>
+				<ul class="list">
+					<li><a href="${pageContext.request.contextPath}/about/contribute">Donate</a></li>
+					<li><a href="${pageContext.request.contextPath}/about/contribute">Volunteer</a></li>
+				</ul>
+			</div>
+			
+			<%-- <div class="col-sm-6 col-md-4">
 				<h4><spring:message code="contactus"/></h4>
 				
 				<p>
 				<spring:message code="contactustext"/>
 				
 				</p>
-				<!-- <div class="media media-contact">
-				  <span class="pull-left">
-					<i class="fa fa-map-marker media-object"></i>
-				  </span>
-				  <div class="media-body">
-					<address>
-					  Twitter, Inc.<br>
-					  795 Folsom Ave, Suite 600<br>
-					  San Francisco, CA 94107<br>
-					  <abbr title="Phone">P:</abbr> (123) 456-7890
-					</address>
-				  </div>/.media-body
-				</div>/.media
-				<div class="media media-contact">
-				  <span class="pull-left">
-					<i class="fa fa-envelope media-object"></i>
-				  </span>
-				  <div class="media-body">
-					<address>
-					  Full Name<br>
-					  <a href="mailto:#">first.last@example.com</a>
-					</address>
-				  </div>/.media-body
-				</div>/.media -->
-				
-			</div><!-- /.col-sm-4 -->
-			<div class="clearfix visible-sm"></div>
-			<!-- <div class="col-sm-6 col-md-2">
-				<h4>NAVIGATION</h4>
-				<ul class="list">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="index.html">About us</a></li>
-					<li><a href="index.html">Our services</a></li>
-					<li><a href="index.html">Portfolio</a></li>
-					<li><a href="index.html">Pricing</a></li>
-					<li><a href="index.html">Blog</a></li>
-				</ul>
-			</div>/.col-sm-2 -->
+			</div>
+			<div class="clearfix visible-sm"></div> --%>
+			
 			<div class="col-sm-6 col-md-3">
 				<h4><spring:message code="followus"/></h4>
 				<div class="fb-like-box" data-href="https://www.facebook.com/KhmerAcademy.Org" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-				<!-- <p>
-				Laritas est etiam processus dynamicus, qui
-				sequitur mutationem consuetudium
-				lectorum. Mirum est notare quam littera.
-				</p>
-				<form role="form">
-					<div class="input-group subscribe">
-					  <input type="text" class="form-control" placeholder="Enter email address">
-					  <span class="input-group-btn">
-						<button class="btn btn-info" type="button"><i class="fa fa-chevron-right"></i></button>
-					  </span>
-					</div>/input-group
-				</form> -->
 			</div><!-- /.col-sm-3 -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
@@ -89,13 +67,13 @@
 			<div class="col-sm-5">
 				<spring:message code="copyright"/>
 			</div><!-- /.col-sm-5 -->
-			<div class="col-sm-7 text-right">
+			<!-- <div class="col-sm-7 text-right">
 				<ul class="list-inline">
 				  <li><a href="#fakelink">All Khmer News</a></li>
 				  <li><a href="#fakelink">Employees Record</a></li>
 				  <li><a href="#fakelink">Memo</a></li>
 				</ul>
-			</div><!-- /.col-sm-7 -->
+			</div> -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /.footer -->

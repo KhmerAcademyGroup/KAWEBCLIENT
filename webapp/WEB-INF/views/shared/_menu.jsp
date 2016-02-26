@@ -52,12 +52,19 @@
 			<li class="parent">
 				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
 			</li>
+			
 			<li class="parent">
-				<a href="http://oer.moeys.gov.kh" target="_blank">OER</a>
+				<a href="http://www.moeys.gov.kh" target="_blank">MoEYS</a>
+				<ul class="sub-menus">
+					<li class="sub-list">
+						<a href="http://oer.moeys.gov.kh" target="_blank">OER</a>
+					</li>
+					<li class="sub-list">
+						<a href="http://krou.moeys.gov.kh" target="_blank">KROU</a>
+					</li>
+				</ul>
 			</li>
-			<li class="parent">
-				<a href="http://krou.moeys.gov.kh" target="_blank">KROU</a>
-			</li>
+			
 			<li class="parent" >
 					 <a href="${pageContext.request.contextPath}/about">
 						   About
@@ -66,7 +73,7 @@
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about">About us</a></li>
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/people">People</a></li>
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
-						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/volunteer">Volunteer</a></li>
+						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>
 					</ul>
 			</li>
 				

@@ -34,7 +34,7 @@
 		
 		<div class="section" style="min-height: 320px;">
 			<div class="container text-center ka-container">
-				<h2><strong>Let's build Cambida's future together</strong></h2>
+				<h2><strong>Let's build Cambodia's future together</strong></h2>
 				<!-- <h4 class="light-font line-height-28 margin-top-50">
 				Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br>
 				Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br>
@@ -51,9 +51,10 @@
 				  <li><a href="${pageContext.request.contextPath}/about">About</a></li>
 				  <li><a href="${pageContext.request.contextPath}/about/people">People</a></li>
 				  <li><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
-				  <li class="active">Volunteer</li>
+				  <li><a href="${pageContext.request.contextPath}/about/partner">Partner</a></li>
+				  <li class="active">Contribute</li>
 				</ol>
-			<h4 class="page-title">Volunteer</h4>
+			<h4 class="page-title">Join us to improve Khmer Academy</h4>
 			</div><!-- /.container -->
 			
 			<div class="border-bottom">
