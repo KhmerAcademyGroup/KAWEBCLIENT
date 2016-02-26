@@ -38,17 +38,17 @@ public class VideoAdminController {
     		@RequestParam(value="page", required=false, defaultValue="1") int page,
 			@RequestParam(value="item", required=false, defaultValue="10") int item){
 		
-		String userid = "";
-		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
-		if(!authentication.getPrincipal().equals("anonymousUser")){
-			User user = (User) authentication.getPrincipal();
-			userid = user.getUserId();
-		}else{
-			System.out.println(authentication.getPrincipal());
-		}
+//		String userid = "";
+//		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+//		if(!authentication.getPrincipal().equals("anonymousUser")){
+//			User user = (User) authentication.getPrincipal();
+//			userid = user.getUserId();
+//		}else{
+//			System.out.println(authentication.getPrincipal());
+//		}
 		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/all/u/" + userid + "?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
 	
@@ -58,17 +58,17 @@ public class VideoAdminController {
     		@RequestParam(value="page", required=false, defaultValue="1") int page,
 			@RequestParam(value="item", required=false, defaultValue="10") int item){
 		
-		String userid = "";
-		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
-		if(!authentication.getPrincipal().equals("anonymousUser")){
-			User user = (User) authentication.getPrincipal();
-			userid = user.getUserId();
-		}else{
-			System.out.println(authentication.getPrincipal());
-		}
+//		String userid = "";
+//		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+//		if(!authentication.getPrincipal().equals("anonymousUser")){
+//			User user = (User) authentication.getPrincipal();
+//			userid = user.getUserId();
+//		}else{
+//			System.out.println(authentication.getPrincipal());
+//		}
 		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/user/all/u/" + userid + "/name/"+ name + "?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/list/all/"+ name + "?page=" + page + "&item=" + item, HttpMethod.GET , request , Map.class) ;
         return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
     }
 	
