@@ -67,7 +67,7 @@
 						<div id="panel-collapse-course" class="collapse in">
 						  <div class="panel-body" style="padding: 5px;">
 							
-							<div class="panel-group" id="accordion-2" ng-show="VIDEOSTATUS==true">
+							<div class="panel-group" id="accordion-2">
 	            
 	            
 	            	<c:forEach items="${data.MAINCATEGORY}" var="category">
