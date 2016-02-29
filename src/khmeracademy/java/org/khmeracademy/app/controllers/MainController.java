@@ -25,7 +25,7 @@ public class MainController {
 		final String uri = WebURL + "/rest/mainpage/countdata";
 	    RestTemplate restTemplate = new RestTemplate();
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
-		return "home";
+		return "home_new_1";
 	}
 	
 	@RequestMapping(value="/test" , method = RequestMethod.GET)

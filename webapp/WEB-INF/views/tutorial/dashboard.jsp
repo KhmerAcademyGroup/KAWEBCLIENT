@@ -31,6 +31,8 @@
 
 
 		<div class="container">
+	
+			<jsp:include page="../shared/_banner.jsp"></jsp:include>
 
 			<div class="text-center" style="color: #2a5893; font-family: 'Lato', sans-serif;">
 				<h1><spring:message code="welcometutorialtext"/><h1>

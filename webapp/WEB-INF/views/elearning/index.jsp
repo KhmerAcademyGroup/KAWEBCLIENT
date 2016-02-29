@@ -19,6 +19,8 @@
 		<div class="section work-section">
 			<div class="container">
 			
+				<jsp:include page="../shared/_banner.jsp"></jsp:include>
+			
 				<div class="section-heading">
 					<div class="inner-border"></div>
 					<h3 style="color:#4c954d;">E-LEARNING</h3>
