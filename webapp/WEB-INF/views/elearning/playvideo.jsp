@@ -187,7 +187,7 @@
 								<!-- Video Demo -->
 								<div class="col-lg-9 col-md-7 col-sm-12">
 									
-									<div class="alert alert-danger square fade in alert-dismissable" ng-show="VIDEOSTATUS==false">
+									<div class="alert alert-danger square fade in alert-dismissable" ng-show="VIDEOSTATUS==false" style="display:none" id="videoMESSAGE">
 									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 									  <strong>Video Not Found!</strong>
 									</div>
@@ -533,6 +533,7 @@
 							$scope.VIDEOSTATUS = false;
 					        $scope.title= "Not Found";
 					        playVideo(null);
+					        $("#videoMESSAGE").show();
 						}
 				    });
 					
