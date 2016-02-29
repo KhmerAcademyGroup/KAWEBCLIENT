@@ -92,7 +92,7 @@
 										 <%-- <a href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="cursor:pointer;"><span><i class="fa fa-play-circle"></i></span>&nbsp;${playlist.playlistName}</a><br />  
 									 --%>
 										 <a class="list-group-item mail-list" href="playvideo?v=${playlist.videoId}&playlist=${playlist.playlistId}" style="height: 45px; overflow: hidden;  position: relative;    text-overflow: ellipsis; white-space: nowrap;">										
-												<span class="favorite fa fa-hand-o-right text-primary"></span>												
+												<span class="fa fa-th-list text-primary"></span>												
 												<strong class="text-info">&nbsp;${playlist.playlistName}</strong>																			
 										</a>
 									</c:if>

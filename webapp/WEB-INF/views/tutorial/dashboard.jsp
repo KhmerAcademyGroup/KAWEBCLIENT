@@ -51,7 +51,7 @@
 			<jsp:include page="../shared/_footer.jsp" />
 		<!-- END FOOTER -->
 		<script id="tlistcategory" type="text/x-jquery-tmpl">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<!-- BEGIN ITEM STORE -->
 					<div class="the-box no-border full store-item text-center">
 						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
