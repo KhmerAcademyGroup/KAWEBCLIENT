@@ -83,10 +83,10 @@
 								
 								
 								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">High School</span>
+										<span class="small-title" style="font-weight: bold;">General Education</span>
 										<br/>
 										<br/>
-										<div id="highSchool">	
+										<div id="generalEdu">	
 																    
 										</div>
 								</div>
@@ -158,9 +158,9 @@
 					recent+= "</div>";
 					$("#recent").html(recent);
 					
-					var highSchool="<div id='owl-highSchool' class='owl-carousel owl-theme'>";
+					var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
 					for(var i=0;i<10;i++){
-						highSchool+="<div class='mitem'>"
+						generalEdu+="<div class='mitem'>"
 										+"<div>"
 											+"<div class='thumbnail media-lib-item'>"
 												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='https://i.ytimg.com/vi/kagOOdh-DPA/mqdefault.jpg' alt='...'></a>"
@@ -173,8 +173,8 @@
 									+"</div>";
 					} 
 						
-					highSchool+= "</div>";
-					$("#highSchool").html(highSchool);
+					generalEdu+= "</div>";
+					$("#generalEdu").html(generalEdu);
 						
 						
 					var computerScience="<div id='owl-computerScience' class='owl-carousel owl-theme'>";
@@ -223,7 +223,7 @@
 		    function showme(){
 				var owl_recent = $("#owl-recent");
 				owl_recent.owlCarousel({
-			    items : 5, //10 items above 1000px browser width
+			    items : 4, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -233,7 +233,7 @@
 			    var owl_highSchool = $("#owl-highSchool");
 			     
 			    owl_highSchool.owlCarousel({
-			    items : 5, //10 items above 1000px browser width
+			    items : 4, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -243,7 +243,7 @@
 			    var owl_computerScience = $("#owl-computerScience");
 			     
 			    owl_computerScience.owlCarousel({
-			    items : 5, //10 items above 1000px browser width
+			    items : 4, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -253,7 +253,7 @@
 			    var owl_language = $("#owl-language");
 			     
 			    owl_language.owlCarousel({
-			    items : 5, //10 items above 1000px browser width
+			    items : 4, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
