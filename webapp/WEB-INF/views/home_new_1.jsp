@@ -30,6 +30,80 @@
 			.media-lib-item{
 				box-shadow:2px 5px 10px 0px #E8E9EE;
 			}
+			
+			.owl-carousel .item{
+				padding:0px;
+				margin:0px;
+			}
+			.owl-carousel .item img{
+				width:100%;
+			}
+			.akn-slider{
+				border:1px solid #dadada;
+				min-height:400px;
+				max-height:400px;
+				width:60%;
+				float:left;
+				overflow:hidden;
+			}
+			.akn-slider img{
+				width:100%;
+			}
+			.akn-tag{
+				z-index:1;
+				position:absolute;
+				top:16px;
+			}
+			.akn-tag p{
+				background-color:rgba(78, 156, 80, 0.64);
+				color:#fff;
+				padding:3px 7px;
+			}
+			.title{
+				position:absolute;
+				bottom:9px;
+				background-color:rgba(0, 0, 0, 0.44);
+				width:100%;
+				padding:5px 5px 0px 5px;
+			}
+			.title p{
+				color:#fff;
+			}
+			.next-akn{
+				border:1px solid #dadada;
+				float:right;
+				width:39%;
+				min-height:400px;
+			}
+			.clear{
+				clear:both;
+			}
+			
+			.button-left{
+				background:url('http://news.khmeracademy.org/resources/images/left.png');
+				border-top-right-radius:2px;
+				border-bottom-right-radius:2px;
+			}
+			.button-right{
+				right:40.3%;
+				background:url('http://news.khmeracademy.org/resources/images/right.png');
+				border-top-left-radius:2px;
+				border-bottom-left-radius:2px;
+			}
+			.button-left, .button-right{
+				cursor:pointer;
+				position:absolute;
+				min-height:50px;
+				width:30px;
+				top:calc(400px / 2 - 10px);
+				background-repeat:no-repeat;
+				background-size:30px 50px;
+				background-color:rgba(218, 218, 218, 0.52);
+			}
+			.button-left:hover, .button-right:hover{
+				background-color:rgba(218, 218, 218, 0.68);
+			}
+			
 		</style> 
 		
 	</head>
@@ -68,7 +142,42 @@
 										</div>
 								</div><!-- /.the-box -->
 								
-								
+								<div class="the-box no-border clear-padding">
+									<div class="akn-slider">
+										<div class="akn-tag">
+											<p>ព័ត៌មាន អាហារូបករណ៍</p>
+										</div>
+										<div id="owl-akn" class="owl-carousel owl-theme">
+										  <!-- <div class="item">
+										  		<img src="http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Bayern-285x170.jpg" alt="The Last of us">
+												<div class="title">
+													<p>​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370</p>
+												</div>  
+										  </div> -->
+										  <!-- <div class="item">
+										  		<img src="http://cdn02.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Feature-617x3246-285x170.jpg" alt="GTA V">
+										  		<div class="title">
+													<p>​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370</p>
+												</div>  
+										  </div>
+										  <div class="item">
+										  		<img src="http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/PAOK-285x170.jpg" alt="GTA V">
+										  		<div class="title">
+													<p>ហេង ពិទូ-ហ្សូណូ ​នឹង​ចូលរួមរំលឹក​បទ​ចម្រៀងទសវត្សរ៍​ទី​៦០</p>
+												</div>  
+										  </div> -->
+										</div>
+										<div class="slide-button">
+											<div id="sleft" class="button-left"></div>
+											<div id="sright" class="button-right"></div>
+										</div>
+									</div>
+									
+									<div class="next-akn">
+										Other
+									</div>
+									<div class="clear"></div>
+								</div>
 								
 								<!-- BEGIN OWL CAROUSEL -->
 								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
@@ -138,7 +247,53 @@
 		    	//$.post("dashboard.act", {
 				//}, function(data) {
 					
-		
+				//akn-block	
+				function display(data){
+					
+					var akn1 = "";
+					for(var j=0; j<data.length; j++){
+						akn1 += "<div class='item'>"
+								+ "<img src='"+data[j].image+"' alt='"+data[j].image+"'>"
+									+ "<div class='title'>"
+										+ "<p>​"+data[j].title+"</p>"
+									+ "</div>"  
+						  	+ "</div>"
+					}
+					$("#owl-akn").html(akn1);
+				}
+				var data = [
+					{
+						title:'​ស្គាល់​​ម៉ាក​រថយន្ត​ល្បីៗ​ ចុះ​មាន​ដឹង​ថា​ជា​ផលិតផល​ប្រទេស​​ណា​​អត់?',
+						image:'http://cdn.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Mazda-285x170.jpg'
+					},
+					 {
+						title:'​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370',
+						image:'http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Bayern-285x170.jpg'
+					 }
+				];
+				
+				display(data);
+				
+				$("#owl-akn").owlCarousel({
+				      slideSpeed : 300,
+				      paginationSpeed : 400,
+				      singleItem:true, 
+				      autoPlay:true
+				});
+				
+				var owl = $("#owl-akn");
+				
+				$("#sright").click(function(){
+				    owl.trigger('owl.next');
+			 	})
+				$("#sleft").click(function(){
+				    owl.trigger('owl.prev');
+				})
+				
+				
+				//end akn-block
+					
+					
 	 			 	var recent="";
 	 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
 					for(var i=0;i<10;i++){
