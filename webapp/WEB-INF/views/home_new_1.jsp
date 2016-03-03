@@ -142,6 +142,7 @@
 										</div>
 								</div><!-- /.the-box -->
 								
+								<!--akn-slider  -->
 								<div class="the-box no-border clear-padding">
 									<div class="akn-slider">
 										<div class="akn-tag">
@@ -160,7 +161,7 @@
 										Other
 									</div>
 									<div class="clear"></div>
-								</div>
+								</div><!--/end akn-slider  -->
 								
 								<!-- BEGIN OWL CAROUSEL -->
 								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
