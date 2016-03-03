@@ -230,9 +230,9 @@
 			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
 			    });
 			     
-			    var owl_highSchool = $("#owl-highSchool");
+			    var owl_generalEdu = $("#owl-generalEdu");
 			     
-			    owl_highSchool.owlCarousel({
+			    owl_generalEdu.owlCarousel({
 			    items : 4, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
