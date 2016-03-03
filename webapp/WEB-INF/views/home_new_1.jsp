@@ -273,93 +273,86 @@
 				    owl.trigger('owl.prev');
 				})
 				//end akn-block
-					
-					
-	 			 	var recent="";
-	 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
-					for(var i=0;i<10;i++){
-						recent+=	 "<div class='mitem'>"
-										+"<div>"
-											+"<div class='thumbnail media-lib-item'>"
-												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='https://i.ytimg.com/vi/kagOOdh-DPA/mqdefault.jpg' alt='...'></a>"
+				$.ajax({
+					url :"http://localhost:8080/KAAPI/api/elearning/playlist/playlists/recents",
+					type: "GET",
+					dataType: "JSON",
+					success: function(data){
+						var recent="";
+		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
+						$.each(data.RES_DATA, function(key, value){
+							recent+=	 "<div class='mitem'>"
+											+"<div>"
+												+"<div class='thumbnail media-lib-item'>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
+										 			+"<div class='caption text-left'>"
+														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
+													+"</div>"
+												+"</div>"
+											+"</div>"
+										 +"</div>";
+						});
+						recent+= "</div>";
+						$("#recent").html(recent);
+						
+						var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
+						$.each(data.HIGH_SCHOOL, function(key, value){
+							generalEdu+="<div class='mitem'>"
+											+"<div>"
+												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
 									 			+"<div class='caption text-left'>"
-													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>username</b></a><br>"
-													+"<span class='text-muted' style='color:#4D4D4D'>KSHRD Playlist</span></p>"
+													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
+													+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
 												+"</div>"
 											+"</div>"
-										+"</div>"
-									 +"</div>";
-					} 
-					
-					recent+= "</div>";
-					$("#recent").html(recent);
-					
-					var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
-					for(var i=0;i<10;i++){
-						generalEdu+="<div class='mitem'>"
-										+"<div>"
-											+"<div class='thumbnail media-lib-item'>"
-												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='https://i.ytimg.com/vi/kagOOdh-DPA/mqdefault.jpg' alt='...'></a>"
-										 		+"<div class='caption text-left'>"
-													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>username</b></a><br>"
-													+"<span class='text-muted' style='color:#4D4D4D'>KSHRD Playlist</span></p>"
-												+"</div>"
-											+"</div>"
-										+"</div>"
-									+"</div>";
-					} 
-						
-					generalEdu+= "</div>";
-					$("#generalEdu").html(generalEdu);
-						
-						
-					var computerScience="<div id='owl-computerScience' class='owl-carousel owl-theme'>";
-					for(var i=0;i<10;i++){
-						computerScience+="<div class='mitem'>"
+										+"</div>";
+						}); 
+							
+						generalEdu+= "</div>";
+						$("#generalEdu").html(generalEdu);
+							
+							
+						var computerScience="<div id='owl-computerScience' class='owl-carousel owl-theme'>";
+						$.each(data.COMPUTER_SCIENCE, function(key, value){
+							computerScience+="<div class='mitem'>"
 												+"<div>"
-												+"<div class='thumbnail media-lib-item'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='https://i.ytimg.com/vi/kagOOdh-DPA/mqdefault.jpg' alt='...'></a>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>username</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>KSHRD Playlist</span></p>"
+														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
 													+"</div>"
 												+"</div>"
-											+"</div>"
-										 +"</div>";
-					} 
-						
-					computerScience+= "</div>";
-					$("#computerScience").html(computerScience);	
-						
-						
-					var language="<div id='owl-language' class='owl-carousel owl-theme'>";
-					for(var i=0;i<10;i++){
-						language		+="<div class='mitem'>"
+											 +"</div>";
+						});
+							
+						computerScience+= "</div>";
+						$("#computerScience").html(computerScience);	
+							
+							
+						var language="<div id='owl-language' class='owl-carousel owl-theme'>";
+						$.each(data.LANGUAGES, function(key, value){
+							language		+="<div class='mitem'>"
 												+"<div>"
-												+"<div class='thumbnail media-lib-item'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='https://i.ytimg.com/vi/kagOOdh-DPA/mqdefault.jpg' alt='...'></a>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>username</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>KSHRD Playlist</span></p>"
+														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
 													+"</div>"
 												+"</div>"
-											+"</div>"
-										 +"</div>";
-					} 
-						
-					language+= "</div>";
-					$("#language").html(language);
-					
-						
-					showme(); 
-				//});
-		    	
-		    });
+											 +"</div>";
+						});
+						language+= "</div>";
+						$("#language").html(language);
+						showme(); 
+					}
+		    	});
+			});
 			
 		    function showme(){
 				var owl_recent = $("#owl-recent");
 				owl_recent.owlCarousel({
-			    items : 4, //10 items above 1000px browser width
+			    items : 5, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -369,7 +362,7 @@
 			    var owl_generalEdu = $("#owl-generalEdu");
 			     
 			    owl_generalEdu.owlCarousel({
-			    items : 4, //10 items above 1000px browser width
+			    items : 5, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -379,7 +372,7 @@
 			    var owl_computerScience = $("#owl-computerScience");
 			     
 			    owl_computerScience.owlCarousel({
-			    items : 4, //10 items above 1000px browser width
+			    items : 5, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
@@ -389,15 +382,13 @@
 			    var owl_language = $("#owl-language");
 			     
 			    owl_language.owlCarousel({
-			    items : 4, //10 items above 1000px browser width
+			    items : 5, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
 			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
 			    });
 		    }
-		    
-		    
 		    
 		</script>  
 		
