@@ -46,65 +46,18 @@
 		<jsp:include page="shared/_menu.jsp" />	
 		<!-- END TOP NAVBAR -->
 		
-		
-		
-		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
-		
-		<div id="wrapper" class="ka-container" >
-		
-		
-
-	        <!-- Sidebar -->
-	        <div id="sidebar-wrapper" style="height: auto !important;">
-	        	<br />
-	        	
-	            <div class="panel panel-primary">
-					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
-						<h3 class="panel-title">
-							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-course">
-							<strong style="color:#fff;">COURSE</strong>
-							<span class="right-content">
-								<span class="right-icon">
-									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
-								</span>
-							</span>
-							</a>
-						</h3>
-					  </div>
-						<div id="panel-collapse-course" class="collapse in">
-						  <div class="panel-body" style="padding: 5px;">
-							
-							<div class="panel-group" id="accordion-2" >
-				            
-				            
-				            	
-								
-							</div><!-- End panel group -->
-							
-							
-						  </div><!-- /.panel-body -->
-						</div><!-- /.collapse in -->
-				</div><!-- /.panel panel-primary -->
-	            
-	            <!-- Recent Views -->
-	        	
-	                        
-	        </div>
-	        <!-- /#sidebar-wrapper -->
-	
+<!-- 	style="background:#E8E9EE" style="background:#fff;" -->
 	        <!-- Page Content -->
-	        <div id="page-content-wrapper" style="background:#E8E9EE">
-	            <div class="container-fluid">
-	            	<div class="row" style="background:#fff;">
-	            		<div class="col-lg-12">
+	        <div class="container ka-container"  >
+	            		
 	            		
 	            			
-	            			<!-- left side -->
-				            <div class="col-sm-12 col-xs-12 the-box no-border clear-padding" id="left_side">
+	            			
+				            <div class="row">
 				            	
 				            	
 				            	<!-- Bannner -->
-				            	<div class="row" style="margin-bottom: 20px;">
+				            	<div class="row" style="margin-bottom: 20px;padding: 15px;">
 										<div class="col-lg-10">
 												<jsp:include page="shared/_banner.jsp"></jsp:include>
 										</div>
@@ -162,14 +115,10 @@
 							</div>
 						
 	                        
-	                    </div><!-- end col-lg-12 -->
-	                </div> <!-- row -->
-	            </div><!-- end container-fluid -->
+	                   
 	        </div>
 	        <!-- /#page-content-wrapper -->
 	
-	    </div>
-	    <!-- /#wrapper -->
 	    <!-- /#wrapper -->
 	    
 	    
@@ -182,10 +131,7 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
 		
 		<script type="text/javascript">
-			/* $("#sidebar-wrapper").height($("#page-content-wrapper").outerHeight()); */
-		    $("#menu-toggle").click(function(e) {
-		        $("#wrapper").toggleClass("toggled");
-		    });
+			
 			
 		    $(document).ready(function() {
 		    	
