@@ -148,24 +148,7 @@
 											<p>ព័ត៌មាន អាហារូបករណ៍</p>
 										</div>
 										<div id="owl-akn" class="owl-carousel owl-theme">
-										  <!-- <div class="item">
-										  		<img src="http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Bayern-285x170.jpg" alt="The Last of us">
-												<div class="title">
-													<p>​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370</p>
-												</div>  
-										  </div> -->
-										  <!-- <div class="item">
-										  		<img src="http://cdn02.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Feature-617x3246-285x170.jpg" alt="GTA V">
-										  		<div class="title">
-													<p>​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370</p>
-												</div>  
-										  </div>
-										  <div class="item">
-										  		<img src="http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/PAOK-285x170.jpg" alt="GTA V">
-										  		<div class="title">
-													<p>ហេង ពិទូ-ហ្សូណូ ​នឹង​ចូលរួមរំលឹក​បទ​ចម្រៀងទសវត្សរ៍​ទី​៦០</p>
-												</div>  
-										  </div> -->
+										
 										</div>
 										<div class="slide-button">
 											<div id="sleft" class="button-left"></div>
@@ -248,8 +231,7 @@
 				//}, function(data) {
 					
 				//akn-block	
-				function display(data){
-					
+				function displaySlide(data){
 					var akn1 = "";
 					for(var j=0; j<data.length; j++){
 						akn1 += "<div class='item'>"
@@ -272,7 +254,7 @@
 					 }
 				];
 				
-				display(data);
+				displaySlide(data);
 				
 				$("#owl-akn").owlCarousel({
 				      slideSpeed : 300,
@@ -289,8 +271,6 @@
 				$("#sleft").click(function(){
 				    owl.trigger('owl.prev');
 				})
-				
-				
 				//end akn-block
 					
 					
