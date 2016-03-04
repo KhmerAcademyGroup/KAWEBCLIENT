@@ -38,6 +38,9 @@
 			.owl-carousel .item img{
 				width:100%;
 			}
+			
+			
+			/* 
 			.akn-slider{
 				border:1px solid #dadada;
 				min-height:400px;
@@ -55,18 +58,21 @@
 				top:16px;
 			}
 			.akn-tag p{
-				background-color:rgba(78, 156, 80, 0.64);
+				background-color:rgb(78, 156, 80);
 				color:#fff;
 				padding:3px 7px;
 			}
 			.title{
 				position:absolute;
-				bottom:9px;
-				background-color:rgba(0, 0, 0, 0.44);
+				top:336px;
+				background-color:rgba(0, 0, 0, 0.65);
 				width:100%;
 				padding:5px 5px 0px 5px;
 			}
 			.title p{
+				color:#fff;
+			}
+			.title a{
 				color:#fff;
 			}
 			.next-akn{
@@ -102,7 +108,7 @@
 			}
 			.button-left:hover, .button-right:hover{
 				background-color:rgba(218, 218, 218, 0.68);
-			}
+			} */
 			
 		</style> 
 		
@@ -144,23 +150,40 @@
 								
 								<!--akn-slider  -->
 								<div class="the-box no-border clear-padding">
-									<div class="akn-slider">
-										<div class="akn-tag">
-											<p>ព័ត៌មាន អាហារូបករណ៍</p>
+										<div class="col-lg-8" style="padding-left: 0px;">
+											<!-- <div class="akn-tag">
+												<p>ព័ត៌មាន អាហារូបករណ៍</p>
+											</div>
+											<div id="owl-akn" class="owl-carousel owl-theme">
+											
+											</div>
+											<div class="slide-button">
+												<div id="sleft" class="button-left"></div>
+												<div id="sright" class="button-right"></div>
+											</div>  -->
+											
+											
+											<div class="panel panel-primary panel-square panel-no-border">
+													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> AKN - Scholarship </a></h3>
+													  </div>
+														
+													<ul class="list-group currency-rates widget-currency-ticker"  id="getAKN" style="height:  380px; overflow: hidden;">
+													
+														  	
+														  	
+														  	
+													</ul>
+															
+															  
+														
+											</div> 
 										</div>
-										<div id="owl-akn" class="owl-carousel owl-theme">
 										
+										<div class="col-lg-4">
+											Other
 										</div>
-										<div class="slide-button">
-											<div id="sleft" class="button-left"></div>
-											<div id="sright" class="button-right"></div>
-										</div>
-									</div>
-									
-									<div class="next-akn">
-										Other
-									</div>
-									<div class="clear"></div>
+										<div class="clear"></div>
 								</div><!--/end akn-slider  -->
 								
 								<!-- BEGIN OWL CAROUSEL -->
@@ -225,69 +248,130 @@
 		
 		<script type="text/javascript">
 			
-			
+				 function displayNews(data){
+					 var akn1 = '';
+						for(var j=0; j<data.length; j++){
+							akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
+												'<div class="row">'+
+												'<div class="col-xs-1"><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></div>'+
+												'<div class="col-xs-11"><a href="'+data[j].url+'" target="_blank">​'+shorten(data[j].title,120)+'</a></div>'+
+												'</div>'+
+										 	'</li>';
+						}
+						$("#getAKN").html(akn1);
+				} 
+			 
 		    $(document).ready(function() {
 		    	
 		    	//$.post("dashboard.act", {
 				//}, function(data) {
 					
-				//akn-block	
-				function displaySlide(data){
+		    	//akn-block	
+		    		/* $.ajax({
+					url:'${pageContext.request.contextPath}/akn/scholarship/',
+					method: 'GET',
+					success:function(data){
+							var akn1 = "";
+							for(var j=0; j<data.length; j++){
+								akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
+											'<div class="row">'+
+											'<div class="col-xs-5"><a href='"+data[j].url+"' target='_blank'>​"+data[j].title+"</a></div>'+
+											'</div>'+
+									 	'</li>';
+								  	
+								  	
+							}
+							alert(data);
+							$("#geTakn").append(akn1);
+						}
+					});   */
+		    	
+					$.ajax({
+						url:'${pageContext.request.contextPath}/akn/scholarship/',
+						method: 'GET',
+						success:function(data){
+							
+							console.log(data);
+// 							var akn1 = '<ul class="list-group currency-rates widget-currency-ticker"  style="height: 410px; overflow: hidden;">';
+// 							for(var j=0; j<data.length; j++){
+// 								akn1 += akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
+// 													'<div class="row">'+
+// 													'<div class="col-xs-5"><a href="'+data[j].url+'" target="_blank">​"'+data[j].title+'"</a></div>'+
+// 													'</div>'+
+// 											 	'</li>';
+// 							}
+// 							akn1+="</u>";
+// 							$("#getAKN").html(akn1);
+							
+							displayNews(data.RESPONSE_DATA);
+
+							
+						}
+					});	
+					
+					
+				/* function displaySlide(data){
 					var akn1 = "";
 					for(var j=0; j<data.length; j++){
 						akn1 += "<div class='item'>"
-								+ "<img src='"+data[j].image+"' alt='"+data[j].image+"'>"
+								+ "<img src='${pageContext.request.contextPath}/resources/uploads/sc.jpg' alt='"+data[j].image+"'>"
 									+ "<div class='title'>"
-										+ "<p>​"+data[j].title+"</p>"
+										+ "<p><a href='"+data[j].url+"' target='_blank'>​"+data[j].title+"</a></p>"
 									+ "</div>"  
 						  	+ "</div>"
 					}
 					$("#owl-akn").html(akn1);
 				}
-				var data = [
-					{
-						title:'​ស្គាល់​​ម៉ាក​រថយន្ត​ល្បីៗ​ ចុះ​មាន​ដឹង​ថា​ជា​ផលិតផល​ប្រទេស​​ណា​​អត់?',
-						image:'http://cdn.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Mazda-285x170.jpg'
-					},
-					 {
-						title:'​បុរស​ម្នាក់​អះអាងថា​ខ្លួន​រកឃើញ​បំណែក​នៃ​ផ្នែក​យន្តហោះ​ដែល​ទំនងជា​កម្ទេច​នៃ​យន្តហោះ​ម៉ាឡេស៊ី MH370',
-						image:'http://cdn01.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/03/Bayern-285x170.jpg'
-					 }
-				];
 				
-				displaySlide(data);
+				$.ajax({
+					url:'${pageContext.request.contextPath}/akn/scholarship/',
+					method: 'GET',
+					success:function(data){
+						
+						displaySlide(data.RESPONSE_DATA);
+						
+						$("#owl-akn").owlCarousel({
+						      slideSpeed : 300,
+						      paginationSpeed : 400,
+						      singleItem:true, 
+						      autoPlay:true
+						});
+						
+						var owl = $("#owl-akn");
+						
+						$("#sright").click(function(){
+						    owl.trigger('owl.next');
+					 	})
+						$("#sleft").click(function(){
+						    owl.trigger('owl.prev');
+						})
+						
+					}
+				}); */ 
 				
-				$("#owl-akn").owlCarousel({
-				      slideSpeed : 300,
-				      paginationSpeed : 400,
-				      singleItem:true, 
-				      autoPlay:true
-				});
 				
-				var owl = $("#owl-akn");
-				
-				$("#sright").click(function(){
-				    owl.trigger('owl.next');
-			 	})
-				$("#sleft").click(function(){
-				    owl.trigger('owl.prev');
-				})
 				//end akn-block
+				
+				
+				
 				$.ajax({
 					url :"http://localhost:8080/KAAPI/api/elearning/playlist/playlists/recents",
 					type: "GET",
 					dataType: "JSON",
+					 headers: {
+						"Authorization": "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ=="
+					 }, 
 					success: function(data){
 						var recent="";
 		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
 						$.each(data.RES_DATA, function(key, value){
 							recent+=	 "<div class='mitem'>"
 											+"<div>"
-												+"<div class='thumbnail media-lib-item'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='http://localhost:8080/KAAPI"+value.bgImage+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
+														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;' title='"+value.playlistName+"'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D' title='"+value.description+"'>"+value.description+"</span></p>"
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -300,13 +384,15 @@
 						$.each(data.HIGH_SCHOOL, function(key, value){
 							generalEdu+="<div class='mitem'>"
 											+"<div>"
-												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
+											+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
+												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='http://localhost:8080/KAAPI"+value.bgImage+"' alt='...'></a>"
 									 			+"<div class='caption text-left'>"
-													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
-													+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
+													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 												+"</div>"
 											+"</div>"
-										+"</div>";
+										+"</div>"
+									 +"</div>";
 						}); 
 							
 						generalEdu+= "</div>";
@@ -317,13 +403,15 @@
 						$.each(data.COMPUTER_SCIENCE, function(key, value){
 							computerScience+="<div class='mitem'>"
 												+"<div>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='http://localhost:8080/KAAPI"+value.bgImage+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
+														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 													+"</div>"
 												+"</div>"
-											 +"</div>";
+											+"</div>"
+										 +"</div>";
 						});
 							
 						computerScience+= "</div>";
@@ -333,11 +421,13 @@
 						var language="<div id='owl-language' class='owl-carousel owl-theme'>";
 						$.each(data.LANGUAGES, function(key, value){
 							language		+="<div class='mitem'>"
-												+"<div>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 270px; height: 170px;' src='"+value.bgImage+"' alt='...'></a>"
-										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+value.username+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>"+value.playlistName+"</span></p>"
+													+"<div>"
+													+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
+														+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='http://localhost:8080/KAAPI"+value.bgImage+"' alt='...'></a>"
+											 			+"<div class='caption text-left'>"
+															+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+														+"</div>"
 													+"</div>"
 												+"</div>"
 											 +"</div>";
@@ -390,6 +480,13 @@
 			    });
 		    }
 		    
+		    function shorten(text, maxLength) {
+				  var ret = text;
+				  if (ret.length > maxLength) {
+				  ret = ret.substr(0,maxLength-3) + " ...";
+				  }
+				  return ret;
+		 	 }
 		</script>  
 		
 	</body>

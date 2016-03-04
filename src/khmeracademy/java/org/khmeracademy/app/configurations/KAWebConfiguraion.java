@@ -3,6 +3,7 @@ package org.khmeracademy.app.configurations;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -53,7 +54,7 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
 	}
 	
 	@Bean
-	public HttpHeaders httpHeaders(){
+	public HttpHeaders header(){
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		String credentials = environment.getProperty("KHMERACADEMY.API.CLIENT.SECRET_HEADER");
@@ -130,6 +131,16 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
         multipartResolver.setMaxUploadSize(5242880);
         return multipartResolver;
     }
+	
+	@Bean
+	@Value("aknHeaders")
+	public HttpHeaders aknHeaders(){
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		String credentials = environment.getProperty("AKN.API.CLIENT.SECRET_HEADER");
+		headers.set("Authorization", "Basic " + credentials);
+		return headers;
+	}
 	
 	
 }
