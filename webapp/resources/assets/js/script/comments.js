@@ -8,7 +8,7 @@ function getCommentHTML(data, datareply, page){
 	
 		comment +=  '<hr class="hr-style-one">' +
 		  			'<li class="media">' + 
-		  				'<a class="pull-left"><img class="media-object img-responsive img-circle" src="'+ IMGURL + data[i].userImageUrl +'" alt="Avatar" style="width:40px;height:40px;" /></a>' +
+		  				'<a class="pull-left"><img class="media-object img-responsive img-circle" src="' + data[i].userImageUrl +'" alt="Avatar" style="width:40px;height:40px;" /></a>' +
 		  					'<div class="media-body">' +
 		  						'<h4 class="media-heading">' + data[i].username + '</h4>' +
 		  						'<p class="date"><small>' + data[i].commentDate + '</small></p>' +
@@ -43,7 +43,7 @@ function getCommentHTML(data, datareply, page){
 			  												comment+= '<ul class="media-list">'+
 			  												  '<li class="media">'+
 			  													'<a href="#fakelink" class="pull-left">'+
-			  													  '<img alt="Avatar" src="'+IMGURL+datareply[j].userImageUrl+'" class="media-object img-responsive img-circle" style="width:40px;height:40px;" />'+
+			  													  '<img alt="Avatar" src="'+datareply[j].userImageUrl+'" class="media-object img-responsive img-circle" style="width:40px;height:40px;" />'+
 			  													'</a>'+
 			  													'<div class="media-body">'+
 			  													  '<h4 class="media-heading">'+

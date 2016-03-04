@@ -463,13 +463,13 @@
 					<label for="txtdescription">Description</label>
 					<input type="text" name="txtdescription" class="form-control" id="txtdescription" placeholder="EG. My music">
 				 </div>
-				 <div class="form-group">
+				 <!-- <div class="form-group">
 					<label>Set View</label>
 					<select class="form-control" id="publicview" name="publicview" tabindex="2">
 						<option value="false">Private</option>
 						<option value="true">Public</option>
 					</select>
-				</div>
+				</div> -->
 				<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
 				  <button type="submit"   class="btn btn-success">Create</button>
 			</form>
@@ -570,7 +570,7 @@
 					$.post("${pageContext.request.contextPath}/rest/elearning/playlist/createplaylist",{
 						playlistname : $("#txtplaylistname").val() ,
 						description : $("#txtdescription").val() ,
-						publicview : $("#publicview").val()
+						publicview : false
 					},function(data){
 						 location.reload();
 						 $.magnificPopup.close();
@@ -661,7 +661,7 @@
 				}
 				$.get(getCommentUrl, function(data){
 				
-					if(data.STATUS==true){
+					if(data.STATUS==true){ alert(data.COMMENT[0].userImageUrl);
 						$("#comments").html(getCommentHTML(data.COMMENT, data.REPLY, page));
 						
 						if(page < parseInt(data.PAGINATION.totalPages)){

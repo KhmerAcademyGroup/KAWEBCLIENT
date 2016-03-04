@@ -165,7 +165,7 @@
 											
 											<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> AKN - Scholarship </a></h3>
+														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News - Scholarship </a></h3>
 													  </div>
 														
 													<ul class="list-group currency-rates widget-currency-ticker"  id="getAKN" style="height:  380px; overflow: hidden;">
@@ -181,7 +181,21 @@
 										</div>
 										
 										<div class="col-lg-4">
-											Other
+												<div class="panel panel-primary panel-square panel-no-border">
+													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  target="_blank"> Forum - Recent Question  </a></h3>
+													  </div>
+														
+													<ul class="list-group currency-rates widget-currency-ticker"  id="getQuestion" style="height:  380px; overflow: hidden;">
+													
+														  	
+														  	
+														  	
+													</ul>
+															
+															  
+														
+											</div> 
 										</div>
 										<div class="clear"></div>
 								</div><!--/end akn-slider  -->
@@ -227,6 +241,9 @@
 										</div>
 								</div>
 								
+								<div class="row" style="    background:rgb(78, 156, 80);text-align: center;margin: 20px 15px 20px;height: 50px;border-radius: 3px;padding-top: 3px;font-size: 30px;">
+										<a style="color: white;" href="${pageContext.request.contextPath}/elearning">Browse Courses</a>
+								</div>
 								
 							</div>
 						
@@ -246,6 +263,13 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
 		
+		 <script id="question_tmpl" type="text/x-jquery-tmpl">
+				<li class="list-group-item" style="margin-top: 0px;">
+						<div class="row">
+								<div class="col-xs-12 shortenString"><a  href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" target="_blank">​{{= title }}</a></div>
+						</div>
+				</li>
+		</script>
 		<script type="text/javascript">
 			
 				 function displayNews(data){
@@ -262,6 +286,20 @@
 				} 
 			 
 		    $(document).ready(function() {
+		    	
+		    	// Forum 
+		    		$.ajax({
+							url:'${pageContext.request.contextPath}/rest/forum/question?page=1&item=8',
+							method: 'GET',
+							success:function(data){
+								if(data.RES_DATA.length>0){
+	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
+	    						}
+							}
+					});	
+		    	// End Forum
+		    	
+		    	
 		    	
 		    	//$.post("dashboard.act", {
 				//}, function(data) {
