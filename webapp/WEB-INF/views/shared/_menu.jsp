@@ -91,7 +91,7 @@
 				
 				<li class="parent" >
 					 <a href="${pageContext.request.contextPath}/user/profile"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						    <img   style="height:140%"  src="<spring:message code="WSURL_IMG_URL"/><%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
+						    <img   style="height:140%"  src="<%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
 						   <sec:authentication property="principal.username" />
 					 </a>
 					 <ul class="sub-menus">

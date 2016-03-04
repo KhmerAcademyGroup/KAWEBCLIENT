@@ -48,7 +48,7 @@
 							<ul class="nav-user navbar-right">
 								<li class="dropdown">
 								  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-									<img src="<spring:message code="WSURL_IMG_URL"/><%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
+									<img src="<%= user.getUserImageUrl() %>" class="avatar img-circle" alt=<%= user.getUsername() %>>
 									<strong><%= user.getUsername() %></strong>
 								  </a>
 								  <ul class="dropdown-menu square primary margin-list-rounded with-triangle">

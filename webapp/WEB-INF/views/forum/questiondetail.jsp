@@ -425,7 +425,7 @@
 									$("#qDetail").html(data.RESP_DATA.detail);
 									$("#qUsername").text(data.RESP_DATA.username);
 									$("#qDate").text(data.RESP_DATA.postDate);
-									$("#qUserImage").attr("src" , img_path + data.RESP_DATA.userImageUrl);
+									$("#qUserImage").attr("src" ,  data.RESP_DATA.userImageUrl);
 									$("#likeQ,#unlikeQ").attr("data-commentid",data.RESP_DATA.commentId);
 									$("#likeQ").attr("data-type","LIKEQ");
 									$("#unlikeQ").attr("data-type","UNLIKEQ");
@@ -463,7 +463,7 @@
 										$("#likeSA,#unlikeSA").attr("data-commentid",data.RESP_DATA.commentId);
 										$("#likeSA").attr("data-type","LIKEA");
 										$("#unlikeSA").attr("data-type","UNLIKEA");
-										$("#selectedAnswerUserImage").attr("src" , img_path + data.RESP_DATA.userImageUrl);
+										$("#selectedAnswerUserImage").attr("src" ,   data.RESP_DATA.userImageUrl);
 										if(data.RESP_DATA.tag != null){
 											tags = data.RESP_DATA.tag.split(", ");
 											tagHTML = "";
@@ -542,7 +542,7 @@
 																				'<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="answerUsername">'+data.RESP_DATA[i].username+'</a></span>'+
 																			'</div>'+
 																			'<div class="text-right"><small id="answerDate">'+data.RESP_DATA[i].postDate+'</small></div>'+
-																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="'+img_path + data.RESP_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
+																			'<div class="text-right"><img style="width: 40px;" id="answerUserImage" src="'+data.RESP_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
 																		'</td>'+
 																	'</tr>'+
 																'</tbody>'+

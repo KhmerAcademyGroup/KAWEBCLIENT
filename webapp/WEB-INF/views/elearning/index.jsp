@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -45,10 +47,10 @@
 									<i class="glyphicon glyphicon-play-circle icon-plus"></i>
 									</a>
 								</div><!-- /.hover-wrap -->
-								<img src="${IMGURL}${playlist.bgImage}" alt="Img work">
+								<img src="${playlist.bgImage}" alt="Img work">
 								<div class="the-box no-border transparent no-margin">
-									<p class="project-name">${playlist.playlistName}</p>
-									<p class="project-category">${playlist.maincategoryname}</p>
+									<p class="project-name shortenString">${playlist.playlistName}</p>
+									<p class="project-category shortenString">${playlist.maincategoryname}</p>
 								</div><!-- /.the-box no-border transparent -->
 							</div><!-- /.work-item -->
 						</div><!-- /.col-sm-4 col-md-3 col-xs-6 mix -->

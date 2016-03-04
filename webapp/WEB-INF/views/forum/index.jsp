@@ -180,7 +180,7 @@
 													<td class="vu-table-td footable-last-column">
 														<div style="width: 100px;" ><a  class="ka-username" style="color:#37BC9B;" href="#" >{{= username }}</a></div>
 														<div style="width: 70px;"><small>{{= postDate }}</small></div>
-														<div><img style="width: 40px;" src="/KAWEBCLIENT/resources/assets/img/avatar/avatar-1.jpg" class="avatar img-circle" alt="Avatar"></div>
+														<div><img style="width: 40px;" src="{{= userImageUrl }}" class="avatar img-circle" alt="Avatar"></div>
 													</td>
 												</tr>
 		</script>
@@ -265,7 +265,7 @@
 														'<td class="vu-table-td footable-last-column">'+
 															'<div style="width: 65px;" ><a  class="ka-username" style="color:#37BC9B;" href="javascript:" >'+shorten(data.RES_DATA[i]["username"], 10)+'</a></div>'+
 															'<div style="width: 65px;"><small>'+data.RES_DATA[i]["postDate"]+'</small></div>'+
-															'<div><img style="width: 40px;" src="'+img_path + data.RES_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
+															'<div><img style="width: 40px;" src="'+  data.RES_DATA[i].userImageUrl+'" class="avatar img-circle" alt="Avatar"></div>'+
 														'</td>'+
 													'</tr>';
 									

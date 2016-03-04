@@ -1166,7 +1166,7 @@ function listPlaylistDetail(data){
 				
 				var img = "";
 				if(usertype =='Admin'){
-					img =  "<img src='"+api+data.RES_DATA[i].bgImage+"'  alt='Image'>"
+					img =  "<img src='"+data.RES_DATA[i].bgImage+"'  alt='Image'>"
 					//alert(api+data.RES_DATA[i].bgImage);
 				}else{
 					img = "<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
@@ -1351,8 +1351,8 @@ function mySearchPlaylist(){
 	            		 //$('#imageprofile').attr('src', url+'/'+data.RES_DATA.userImageUrl);
 	            		 $("#oldprofile").val(data.RES_DATA.userImageUrl);
 	            		 
-	            		 $('#imageprofile').attr('src',api+data.RES_DATA.userImageUrl);
-	            		 $('#avatar').attr('src',api+data.RES_DATA.userImageUrl);
+	            		 $('#imageprofile').attr('src',data.RES_DATA.userImageUrl);
+	            		 $('#avatar').attr('src',data.RES_DATA.userImageUrl);
 	            		 
 	            		listDepartments(data.RES_DATA.departmentId);
 	            		listMyUniversity(data.RES_DATA.universityId);
@@ -1515,8 +1515,8 @@ function mySearchPlaylist(){
 								//alert("image was upload");
 								//alert(data.IMG);
 								profile =data.IMG;
-								 $('#imageprofile').attr('src',api+profile);
-								 $('#avatar').attr('src',api+profile);
+								 $('#imageprofile').attr('src',profile);
+								 $('#avatar').attr('src',profile);
 								processUpdatePr(username,gender,dob,phone,profile,university,department);
 							}else{
 								//alert('image not upload');

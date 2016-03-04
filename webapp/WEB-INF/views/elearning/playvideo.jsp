@@ -250,7 +250,7 @@
 										<div class="the-box no-border store-list">
 											 <div class="media">
 					                            <a class="pull-left" >
-					                            <img class="media-object img-circle" ng-src="${IMGURL}/{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
+					                            <img class="media-object img-circle" ng-src="{{VIDEO.userImageUrl}}" alt="Avatar" style="width:50px">
 					                            <div class="clearfix visible-xs"></div>
 					                            <div class="media-body">
 					                                <a href="#"></a>
