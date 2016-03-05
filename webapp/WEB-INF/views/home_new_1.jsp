@@ -138,14 +138,14 @@
 				            	
 				            	<!-- Bannner -->
 				            	<div class="row" style="margin-bottom: 20px;padding: 15px;">
-										<div class="col-lg-10">
+										<div class="col-lg-12">
 												<jsp:include page="shared/_banner.jsp"></jsp:include>
 										</div>
-										<div class="col-lg-2">
-												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/appstore.png"/>
-												<div style="height:20px"></div>
-												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/playstore.png"/>
-										</div>
+<!-- 										<div class="col-lg-2"> -->
+<%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/appstore.png"/> --%>
+<!-- 												<div style="height:20px"></div> -->
+<%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/playstore.png"/> --%>
+<!-- 										</div> -->
 								</div><!-- /.the-box -->
 								
 								<!--akn-slider  -->

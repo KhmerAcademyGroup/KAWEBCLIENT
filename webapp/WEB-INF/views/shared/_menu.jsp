@@ -124,10 +124,13 @@
 					<li class="sub-list"><a href="?language=en"><spring:message code="lang_english"/></a></li>
 				</ul> --%>
 			</li> 
-			
 			<li class="parent right-icon">
-				<i class="fa fa-search" id="btSearch"></i>
+						<i class="fa fa-search" id="nav-icon-search"></i>
 			</li>
+					
+			<!-- <li class="parent right-icon">
+				<i class="fa fa-search" id="btSearch"></i>
+			</li> -->
 		</ul>
 		<!-- End nav menu -->
 	</div><!-- /.container -->
