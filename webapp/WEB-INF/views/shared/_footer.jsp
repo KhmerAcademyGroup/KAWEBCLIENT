@@ -337,11 +337,17 @@ Placed at the end of the document so the pages load faster
 		    	            	}else if(data == "User is disabled"){
 		    	            		alert("2 "+data);
 		    	            	}else  */
+		    	            	console.log(data);
 		    	            	if(data == "Bad credentials"){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 										  				   '<strong class="alert-link">Invalid username or password! please try again!</strong>'+ 
 														   '</div>');
+		    	            	}else if(data == 'false'){
+		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+							  				   '<strong class="alert-link">Your account has not yet confirm.</strong>'+ 
+											   '</div>');
 		    	            	}else{
 									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
  	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
@@ -494,10 +500,24 @@ Placed at the end of the document so the pages load faster
 					 					            '</div>');
 		    	            		
 		    	            		setTimeout(function(){
-		    	            			 frmData = { ka_username : $("#email").val(),
+		    	            			/*  frmData = { ka_username : $("#email").val(),
 		   	         				             ka_password : $("#password").val()
-		   	         				          }; 
-			    	            		$.ajax({
+		   	         				          }; */
+		    	            			 email =  $("#email").val();
+		    	            			 $.ajax({
+		    	     						url : "${pageContext.request.contextPath}/rest/sendmail?email="+email+"&type=signup",
+		    	     						method: "GET",
+		    	     						success: function(data){ 
+		    	     							
+				    		    	            	alert("Goto your email: "+email);
+				    		    	            	KA.destroyProgressBarWithPopup();
+				    		    	            },
+				    		    	         	error: function(data){
+				    		    	         		console.log(data);
+				    		    				}
+				    		    	        });
+		    	            			 
+			    	            		/* $.ajax({
 			    		    	            url: "${pageContext.request.contextPath}/login",
 			    		    	            type: "POST",
 			    		    	            datatype : "JSON",
@@ -508,7 +528,7 @@ Placed at the end of the document so the pages load faster
 			    		    	         	error: function(data){
 			    		    	         		console.log(data);
 			    		    				}
-			    		    	        });
+			    		    	        }); */
 		    						}, 500 );
 		    	            	}
 		    	            	console.log(data);

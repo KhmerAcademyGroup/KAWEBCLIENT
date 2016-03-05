@@ -29,6 +29,10 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 //			map.put("targetUrl", determineTargetUrl(auth));
 //			
 //			String json = new Gson().toJson(map);
+		
+		
+			
+		
 			SavedRequest savedRequest = requestCache.getRequest(request, response);
 			String targetUrl = request.getContextPath()+"/";
 			if (savedRequest != null) {
@@ -37,7 +41,12 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 			Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 			User user = (User) authentication.getPrincipal();
 			System.out.println("ajaxAuthenticationSuccessHandler " + user.getUsername());
-//		
+		
+			if(user.isUserStatus() == false){
+				targetUrl = "false";
+			}
+
+
 			response.getWriter().print(targetUrl);
 	        response.getWriter().flush();
 	        

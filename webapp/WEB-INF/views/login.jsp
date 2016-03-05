@@ -143,7 +143,7 @@
 						return 0;}
 					else{
 				 	 $.ajax({
-						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address,
+						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
 						method: "GET",
 						success: function(data){  	    							    																			
 							if(data.STATUS==true){

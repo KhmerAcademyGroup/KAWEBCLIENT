@@ -45,10 +45,12 @@ public class UserRestController {
 	
 
 	@RequestMapping(value="/rest/sendmail" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> sendMail(@RequestParam(value="email") String email){			
+	public ResponseEntity<Map<String , Object>> sendMail(@RequestParam(value="email") String email,
+			@RequestParam(value="type") String type
+			){			
 				
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "user/sendmail?email="+ email, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/sendmail?email="+ email+"&type="+type, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
@@ -56,6 +58,12 @@ public class UserRestController {
 	public ResponseEntity<Map<String , Object>> resetPassword(@RequestParam(value="code") String code,@RequestParam(value="password") String password){							
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "user/resetpassword?code="+code+"&password="+password, HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	@RequestMapping(value="/rest/confirm" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> confrimEmail(@RequestParam(value="code") String code){							
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/confirm?code="+code, HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 

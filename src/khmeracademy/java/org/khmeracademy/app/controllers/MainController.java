@@ -51,4 +51,9 @@ public class MainController {
 		return "reset";
 	}
 
+	@RequestMapping(value="/confirmemail" , method =  RequestMethod.GET)
+	public String confrimEmail(ModelMap m){
+		
+		return "confirmemail";
+	}
 }
