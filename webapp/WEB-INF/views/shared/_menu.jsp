@@ -29,8 +29,8 @@
 		</div> -->
 		<div id="search-sub" class="nav-right-info">
 			<i class="fa fa-times times-icon" id="close-search-nav"></i>
-			<form role="form">
-				<input type="text" class="form-control" placeholder="Search something...">
+			<form role="form" method="get" action="${pageContext.request.contextPath}/elearning/searchcourse">
+				<input type="text" name="searchcourse" class="form-control" placeholder="Search Course...">
 			</form>
 		</div>
 		<!-- End visible phone and search nav -->

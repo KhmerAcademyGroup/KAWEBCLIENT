@@ -65,5 +65,13 @@ public class ELearningController {
 		return "/errors/404";
 	}
 	
+	@RequestMapping( value ="/searchcourse", method = RequestMethod.GET)
+	public String searchPlaylist(ModelMap m, @RequestParam("searchcourse") String coursename) { 
+		
+		//final String uri1 = WebURL + "/rest/user/profile/listuserhistory/" + ;
+		
+		return "/elearning/searchcourse";
+	}
+	
 	
 }
