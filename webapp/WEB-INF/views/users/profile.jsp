@@ -76,7 +76,8 @@
 									<li><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
 									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> History</a></li>
 									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
-									<c:if test="${usertype == 'Admin' }">
+									
+									<%-- <c:if test="${usertype == 'Admin' }">
 									<li class="pull-right">
 <!-- 										 <span class="btn btn-group inline-popups"> -->
 												<a class="btn btn-success btn-rounded-lg"  data-toggle="modal" data-target="#uploadvideo">
@@ -84,7 +85,8 @@
 												</a>
 <!-- 										</span> -->
 									</li>	
-									</c:if>		
+									</c:if>	 --%>
+										
 								</ul>
 							  </div>
 								<div id="panel-collapse-1" class="collapse in">
