@@ -47,7 +47,7 @@
 									            	<div class="panel panel-primary filter"  data-filter="all">
 														  <div class="panel-heading" style="background:#F5F7FA;">
 															<h3 class="panel-title">
-																<a  href="#${category.maincategoryname}" class=" block-collapse collapsed" style="color:#50a253;" data-parent="#accordion-2" data-toggle="collapse"  aria-expanded="false">
+																<a  href="#${category.maincategoryname}" class=" block-collapse collapsed" style="color:#434a54;" data-parent="#accordion-2" data-toggle="collapse"  aria-expanded="false">
 																	<b>All Courses</b>
 																</a>
 															</h3>
@@ -59,7 +59,7 @@
 														<div class="panel panel-primary filter" data-filter="${category.maincategoryname}">
 														  <div class="panel-heading" style="background:#F5F7FA;">
 															<h3 class="panel-title">
-																<a class="block-collapse collapsed" style="color:#50a253;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
+																<a class="block-collapse collapsed" style="color:#434a54;" data-parent="#accordion-2" data-toggle="collapse" href="#${category.maincategoryname}" aria-expanded="false">
 																	<b>${category.maincategoryname}</b>
 																</a>
 															</h3>
