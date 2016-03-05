@@ -408,6 +408,7 @@
 												  <div class="form-group">
 													<label for="exampleInputEmail1">Playlist name</label>
 														<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
+														<input type="hidden" class="form-control" id="thumbnailUrl"   name="thumbnailUrl"  ></span>
 														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
 														<input type="text" class="form-control" onkeyup="validatPlaylistname()" name="listname" id="listname" placeholder="">
 														<small id="checklistname" class="msg" style="color:red"></small>
@@ -417,7 +418,10 @@
 														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
 														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
 												 </div>
-												 <c:if test="${usertype == 'Admin' }">
+												 
+												 
+												 
+												 <%-- <c:if test="${usertype == 'Admin' }">
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Category</label>
 														<select class="form-control"  id="playlistcategory">
@@ -446,9 +450,7 @@
 															
 														</div>
 													</div>
-													
-													
-												  </c:if>
+												  </c:if> --%>
 														 
 														
 														 	<input type="submit" id="btncreate"  value="Save" class="btn btn-success">
@@ -1070,16 +1072,22 @@
 			  }); 
 	} 
 		
-	///********playlist*******/////////
+	/**
+	** start process all playlist
+	**/
 	var limitplaylist=0;
 	var offsetplaylist=1;
 	var totalofrecordplaylist =0;
 	var numofpageplaylist=1;
 	
-	//my choice what list or search
-	 function choosePlaylist(){
+	/**
+	**choosePlaylist
+	**this function will check if u choose number of playlist to view
+	** if in search box have text it will show search and show playlist follow the number
+	** if in search box no text it will playlist follow the number
+	**/
+	 function choosePlaylist() {
 		var key =$("#searchPlaylist").val();
-		//alert(key);
 		if(key.length == 0){
 			mystartPlaylist();
 		}else{
@@ -1087,7 +1095,11 @@
 		}
 	} 
 	
-	 mystartPlaylist();
+	/**
+	**mystartPlaylist
+	**start playlist function
+	**/
+	mystartPlaylist();
 	function mystartPlaylist(){
 		limitplaylist=$("#limitPlaylist").val();
 		//alert(limitv);
@@ -1110,7 +1122,12 @@
         });	 
 	    	 
 		}
-	function loadPaginationPlaylist(){
+	
+	/**
+	**loadPaginationPlaylist
+	**show pagination of playlist
+	**/
+	function loadPaginationPlaylist() {
 		//alert(numofpagev);
 		$('.demo6_top').bootpag({
 	        total: numofpageplaylist,
@@ -1132,7 +1149,12 @@
 	    	//alert("pagination ="+num);
 	    }); 
 	}
-	function listAllPlaylist(offsetplaylist){
+	
+	/**
+	**listAllPlaylist
+	**show all playlist
+	**/
+	function listAllPlaylist(offsetplaylist) {
 		//alert(mypage);
     	
     	
@@ -1159,18 +1181,20 @@
         });	    	
 		   
 	}
-function listPlaylistDetail(data){
+	
+	/**
+	**listPlaylistDetail
+	**show all playlistdetail in view
+	**/
+function listPlaylistDetail(data) {
 		
 		var str="";
 			for(var i=0; i<data.RES_DATA.length ; i++){
 				
 				var img = "";
-				if(usertype =='Admin'){
-					img =  "<img src='"+data.RES_DATA[i].bgImage+"'  alt='Image'>"
-					//alert(api+data.RES_DATA[i].bgImage);
-				}else{
-					img = "<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
-				}
+				
+				img = "<img src='https://i.ytimg.com/vi/"+data.RES_DATA[i].thumbnailUrl+"/mqdefault.jpg' class='item-image' alt='Image'>"
+				
 				
 				str += "<div class='col-xs-12 col-sm-5 col-md-4 col-lg-' >"
 							+"<div class='the-box full store-item text-center checkchb'>"
@@ -1213,7 +1237,7 @@ function mySearchPlaylist(){
 	var key =$("#searchPlaylist").val();
 	var characterReg = /^[\ba-zA-Z0-9-_.]+$/;
 	//alert(key);
-	if(key.length > 2 && characterReg.test(key)){
+	if(key.length > 1 && characterReg.test(key)){
 		$("#searchPlaylist").css("border", "solid 1px green");
 		 $.ajax({  
 			 	url: url+'/rest/user/profile/searchplaylist/'+userid+'/'+key+'?page='+offsetplaylist+'&item='+limitplaylist, 
@@ -1668,6 +1692,7 @@ function mySearchPlaylist(){
 			    	return true;
 			    }
 		}
+		
 		//this function not use
 		function validateUserType(){
 			var name= $("#usertype").val();
@@ -1883,131 +1908,65 @@ function mySearchPlaylist(){
 	 	
 	 	
 	 	
-		
-		//whend click submit to create new playlist
-		$('#formcreateplaylist').submit(function(e){
+		/*
+		*When user Create click create playlist
+		*this is for the simple user playlist only 
+		*if admin want to create playlist for elearning please go to admin page
+		*/
+		$('#formcreateplaylist').submit(function(e) {
 			e.preventDefault();
 		
-		
-		var publicview =false;
+		var playid = $("#listid").val();
 		var playname=$("#listname").val();
 		var playdescription=$("#playlistdescription").val();
-		var category ="";
-		var color="";
-		var img="";
-		var oimg="";
-		var thumnial="mcgBfVSTKqo"; 
-		var status="";
-		var playid = $("#listid").val();
+		//user we have above : userid
+		var thumnial ="mcgBfVSTKqo";
+		var publicview =false;
+		var category ="MA==";
+		var img="null";
+		var color="null";
+		var status =false;
 		
-		 if(usertype == 'Admin'){
-			 status =true;
-			 publicview=true;
-			 thumnial ="mcgBfVSTKqo";
-			 color=$("#color").val();
-			 //var img="/resources/uploads/user/avatar.jpg";
-			 category=$("#playlistcategory").val();
-			img=$("#file").val();
-			oimg=$("#oimg").val();
-		}else{
-			oimg=$("#oimg").val();
-			status =false;
-			 publicview=false;
-			 thumnial ="mcgBfVSTKqo";
-			 color ="000000";
-			category="MA==";
-		} 
-		//alert("user0");
-			
-		//alert(publicview);
 		
-		 //create playlist no image ->well
-		 if(img =="" && oimg ==""){
-			//alert("insert no image");
+		/**
+		**if playlist id is not null mean update playlist
+		**/
+		if(playid !="" || playid.length !== 0) {
+			//alert("update");
+			thumnial =$("#thumbnailUrl").val();
 			if(validatPlaylistname() && validatPlaylistnameDes() ){
-				//alert("insert no image");
-			var img="/resources/upload/file/playlist/97bb03d0-661e-4b73-89a9-8dbc2269f6b3.jpg";
-			//createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color, status);
-			createPlayList(playname,playdescription,userid,thumnial,publicview,category,img,color,status);
-			}
-		}  
-		
-		//idrect update
-		else if(img =="" && oimg.length !== 0 ){
-			///alert("direct update");
-			if(validatPlaylistname() && validatPlaylistnameDes() ){
-			updateProcess(playname,playdescription,userid,thumnial,publicview,category,oimg,color,status);
-			//updateProcess(n,d,u,th,p,m,bg,c,s);
+				
+				var JSONObject = $.parseJSON('{"playlistId":"'+playid+'","playlistName":"'+playname+'","description":"'+playdescription+'", "userId":"'+userid+'" , "thumbnailUrl":"'+thumnial+'","publicView":"'+publicview+'" ,"maincategory":"'+category+'" ,"bgImage":"'+img+'" ,"color":"'+color+'" ,"status":"'+status+'"}');
+				
+				$.ajax({
+		           url: url+"/rest/user/profile/updateplaylist",
+		           type: 'put',
+		           contentType: 'application/json;charset=utf-8',
+		           data: JSON.stringify(JSONObject),
+		           success: function(data){
+		        	   if(data.STATUS == true){
+		        		   swal("Playlist Was Changed", "You clicked the button!", "success");
+		        		   myClear();
+		        		   mystartPlaylist();
+		        		   $("#form-create-playlist1").bPopup().close();
+		        	   }
+		           	
+		           },
+		           error: function(data){
+		           	alert("update unsuccess data");
+		           }
+		       });
 			}
 		}
-		//insert image and update
-		else if(img.length !== 0 && oimg.length !== 0 ){
-			///alert("update with new image");
-			if(validatPlaylistname() && validatPlaylistnameDes() ){
-			$.ajax({
-				type : "POST",
-				url : api_url+'/uploadfile/upload?url=playlist',
-				enctype : 'multipart/form-data',
-				data : new FormData(document.getElementById("formcreateplaylist")),
-				processData : false, // tell jQuery not to process the data
-				contentType : false, // tell jQuery not to set contentType
-				 headers : {
-						"Authorization" : "Basic "+key
-					},
-				success : function(data) {
-					if(data.STATUS == true){
-						//alert("image was upload");
-						//alert(data.IMG);
-						updateProcess(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
-					}
-			
-				},
-				error : function(data) {
-					alert("1upload unsuccess data");
-				}
-			});
-			}
-		} 
-		//insert with image
-		 else {
-			//alert("insert with image");
-			if(validatPlaylistname() && validatPlaylistnameDes() ){
-			$.ajax({
-				type : "POST",
-				url : api_url+'/uploadfile/upload?url=playlist',
-				enctype : 'multipart/form-data',
-				data : new FormData(document.getElementById("formcreateplaylist")),
-				processData : false, // tell jQuery not to process the data
-				contentType : false, // tell jQuery not to set contentType
-				 headers : {
-						"Authorization" : "Basic "+key
-					},
-				success : function(data) {
-					if(data.STATUS == true){
-						//alert("image was upload");
-						//alert(data.IMG);
-						createPlayList(playname,playdescription,userid,thumnial,publicview,category,data.IMG,color,status);
-					}
-			
-				},
-				error : function(data) {
-					alert("1upload unsuccess data");
-				}
-			});
-			}
-		} 
-
-		
-		});
-		
-		
-		
-		
-		//create playlist
-			function createPlayList(n,d,u,th,p,m,bg,c,s){
-				//alert(n +"  "+ d+"  "+u+"  "+th+"  "+p+"  "+m+"  "+bg+"  "+c+"  "+s);
-				var JSONObject = $.parseJSON('{"playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
-			   	//alert("good");
+		/**
+		**else mean playlist id null so we create new playlist
+		**/
+		else{
+			//alert("create new playlist");
+			if(validatPlaylistname() && validatPlaylistnameDes() ) {
+				
+				var JSONObject = $.parseJSON('{"playlistName":"'+playname+'","description":"'+playdescription+'", "userId":"'+userid+'" , "thumbnailUrl":"'+thumnial+'","publicView":"'+publicview+'" ,"maincategory":"'+category+'" ,"bgImage":"'+img+'" ,"color":"'+color+'" ,"status":"'+status+'"}');
+			   
 					$.ajax({
 			           url: url+'/rest/user/profile/createplaylist',
 			           type: 'post',
@@ -2029,12 +1988,19 @@ function mySearchPlaylist(){
 			           error: function(data){
 			           	alert("creation unsuccess data");
 			           }
-			       });	    	
-				}
+			       });	
+			
+			}
+		}
 		
 		
+		});
 		
-		function viewPlayList(pid){
+		/**
+		**when user click update so it will user the parameter id to query from data base 
+		** than input into playlis form for update
+		**/
+		function viewPlayList(pid) {
 			//alert(pid);
 			$.ajax({
 				url: url+'/rest/user/profile/viewplaylist/'+pid,
@@ -2044,14 +2010,15 @@ function mySearchPlaylist(){
 		        success: function(data){
 		        	//alert(data.RES_DATA.length);
 		        	if(data.STATUS == true){
-		        		listCategoryUpdate(data.USERPLAYLIST.maincategory)
 		        		//alert(data.USERPLAYLIST.playlistName);
 		        		$("#listid").val(data.USERPLAYLIST.playlistId);
 		        		$("#listname").val(data.USERPLAYLIST.playlistName);
 		        		$("#playlistdescription").val(data.USERPLAYLIST.description);
-		        		$("#color").val(data.USERPLAYLIST.color);
-		        		$("#oimg").val(data.USERPLAYLIST.bgImage);
+		        		$("#thumbnailUrl").val(data.USERPLAYLIST.thumbnailUrl);
+		        		//$("#oimg").val(data.USERPLAYLIST.bgImage);
 		        		
+		        	}else{
+		        		alert("can not view playlist");
 		        	}
 		        	
 		        },
@@ -2061,75 +2028,22 @@ function mySearchPlaylist(){
 		    });	
 		}
 		
-function listCategoryUpdate(cid){
-		//alert(cid);	
-	    	 $.ajax({
-	    		url: url+'/rest/user/profile/listcategory',
-	            type: 'get',
-	            contentType: 'application/json;charset=utf-8',
-	            //data: JSON.stringify(JSONObject),
-	            success: function(data){
-	            	//alert(data.RES_DATA.length);
-	            	if(data.STATUS == true){
-	            		var str="";
-	            		for(var i=0; i<data.RES_DATA.length ; i++){
-	            			
-							 if( data.RES_DATA[i].mainCategoryId == cid  & cid !=null){
-								str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' selected>"+data.RES_DATA[i].mainCategoryName+"</option>";
-	            			} 
-							 str += " <option value='"+data.RES_DATA[i].mainCategoryId+"' >"+data.RES_DATA[i].mainCategoryName+"</option>";
-	    				
-	            		}
-	            		
-	            		$("#playlistcategory").html(str);
-	            		
-	            	}
-	            	
-	            },
-	            error: function(data){
-	            	//alert("listAll() unseccess data");
-	            }
-	        });     	
-	     
-		}
-//update process
-function updateProcess(n,d,u,th,p,m,bg,c,s){
-	 var pid = $("#listid").val();
-	 var JSONObject = $.parseJSON('{"playlistId":"'+pid+'","playlistName":"'+n+'","description":"'+d+'", "userId":"'+u+'" , "thumbnailUrl":"'+th+'","publicView":"'+p+'" ,"maincategory":"'+m+'" ,"bgImage":"'+bg+'" ,"color":"'+c+'" ,"status":"'+s+'"}');
-   	
-		$.ajax({
-           url: url+"/rest/user/profile/updateplaylist",
-           type: 'put',
-           contentType: 'application/json;charset=utf-8',
-           data: JSON.stringify(JSONObject),
-           success: function(data){
-        	   if(data.STATUS == true){
-        		   swal("Playlist Was Changed", "You clicked the button!", "success");
-        		   myClear();
-        		   mystartPlaylist();
-        		   $("#form-create-playlist1").bPopup().close();
-        	   }
-           	
-           },
-           error: function(data){
-           	alert("update unsuccess data");
-           }
-       });	     	
-	} 
+		/**
+		**after create playlis and update will clear playlis from
+		**/
 		function myClear() {
 			$("#listid").val("");
 			$("#listname").val("");
 			$("#playlistdescription").val("");
-			$("#playlistcategory").val("");
-			$("#color").val("FFFFFF");
-			$("#file").click();
-			$("#oimg").val("");
+			$("#thumbnailUrl").val("");
 		}
 		
-		///////validation create and update playlist///////////
-		function validatPlaylistname(){
+		/**
+		**validate Playlist Name
+		**/
+		function validatPlaylistname() {
 			var name= $("#listname").val();
-			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			var characterReg = /^[\sa-zA-Z0-9]{3,100}$/;
 			    if(!characterReg.test(name)) {
 			    	$("#listname").css("border", "solid 1px red");
 			    	$("#checklistname").text("Require and at least 3 charactors less than 100 charactors");
@@ -2142,9 +2056,12 @@ function updateProcess(n,d,u,th,p,m,bg,c,s){
 			    }
 		}
 		
-		function validatPlaylistnameDes(){
+		/**
+		**validate Playlist Description
+		**/
+		function validatPlaylistnameDes() {
 			var name= $("#playlistdescription").val();
-			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*()-_=+\[\]{}|\\:?/.,]{3,100}$/;
+			var characterReg = /^[\sa-zA-Z0-9!@#$%^&*]{3,100}$/;
 			    if(!characterReg.test(name)) {
 			    	$("#playlistdescription").css("border", "solid 1px red");
 			    	$("#checkplaylistdescription").text("Require and at least 3 charactors less than 100 charactors");
