@@ -391,7 +391,6 @@
 				//end akn-block
 				
 				
-				
 				$.ajax({
 					url :"http://localhost:8080/KAAPI/api/elearning/playlist/playlists/recents",
 					type: "GET",
@@ -399,14 +398,14 @@
 					 headers: {
 						"Authorization": "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ=="
 					 }, 
-					success: function(data){
+					success: function(data){ console.log(data);
 						var recent="";
 		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
 						$.each(data.RES_DATA, function(key, value){
 							recent+=	 "<div class='mitem'>"
 											+"<div>"
-												+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='"+value.bgImage+"' alt='...'></a>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
 														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;' title='"+value.playlistName+"'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D' title='"+value.description+"'>"+value.description+"</span></p>"
@@ -422,8 +421,8 @@
 						$.each(data.HIGH_SCHOOL, function(key, value){
 							generalEdu+="<div class='mitem'>"
 											+"<div>"
-											+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
-												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='"+value.bgImage+"' alt='...'></a>"
+											+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 									 			+"<div class='caption text-left'>"
 													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
 													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
@@ -441,8 +440,8 @@
 						$.each(data.COMPUTER_SCIENCE, function(key, value){
 							computerScience+="<div class='mitem'>"
 												+"<div>"
-												+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='"+value.bgImage+"' alt='...'></a>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
 														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
@@ -460,8 +459,8 @@
 						$.each(data.LANGUAGES, function(key, value){
 							language		+="<div class='mitem'>"
 													+"<div>"
-													+"<div class='thumbnail media-lib-item' style='height: 250px;'>"
-														+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img style='width: 128px; height: 128px;' src='"+value.bgImage+"' alt='...'></a>"
+													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+														+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 											 			+"<div class='caption text-left'>"
 															+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
