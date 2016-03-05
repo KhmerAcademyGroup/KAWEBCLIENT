@@ -402,17 +402,17 @@
 						var recent="";
 		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
 						$.each(data.RES_DATA, function(key, value){
-							recent+=	 "<div class='mitem'>"
+							recent+="<div class='mitem'>"
 											+"<div>"
-												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;' title='"+value.playlistName+"'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D' title='"+value.description+"'>"+value.description+"</span></p>"
-													+"</div>"
+											+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+												+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+									 			+"<div class='caption text-left'>"
+													+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+													+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
 												+"</div>"
 											+"</div>"
-										 +"</div>";
+										+"</div>"
+									 +"</div>";
 						});
 						recent+= "</div>";
 						$("#recent").html(recent);
@@ -420,16 +420,16 @@
 						var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
 						$.each(data.HIGH_SCHOOL, function(key, value){
 							generalEdu+="<div class='mitem'>"
-											+"<div>"
-											+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-												+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-									 			+"<div class='caption text-left'>"
-													+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+												+"<div>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+													+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+										 			+"<div class='caption text-left'>"
+														+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+													+"</div>"
 												+"</div>"
 											+"</div>"
-										+"</div>"
-									 +"</div>";
+										 +"</div>";
 						}); 
 							
 						generalEdu+= "</div>";
@@ -439,16 +439,16 @@
 						var computerScience="<div id='owl-computerScience' class='owl-carousel owl-theme'>";
 						$.each(data.COMPUTER_SCIENCE, function(key, value){
 							computerScience+="<div class='mitem'>"
-												+"<div>"
-												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-													+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+													+"<div>"
+													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+														+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+											 			+"<div class='caption text-left'>"
+															+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+														+"</div>"
 													+"</div>"
 												+"</div>"
-											+"</div>"
-										 +"</div>";
+											 +"</div>";
 						});
 							
 						computerScience+= "</div>";
@@ -460,9 +460,9 @@
 							language		+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='playlistdetail.act?playlistid="+"playlistid"+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 											 			+"<div class='caption text-left'>"
-															+"<p class='small'><a class='no-underline' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
+															+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
 														+"</div>"
 													+"</div>"

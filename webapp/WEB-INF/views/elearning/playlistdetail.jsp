@@ -382,10 +382,10 @@
 		  			$.ajax({
 					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
 					method: "GET",
-					success: function(data){			console.log("llll " + playlistId);																		
-						$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
+					success: function(data){																			
+						$("#thumbnailurlinfo").attr("src",data.USERPLAYLIST.thumbnailUrl); 
 						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
-						$("#usernameinfo").text("by" + data.USERPLAYLIST.username +" | " );
+						$("#usernameinfo").text("by " + data.USERPLAYLIST.username +" | " );
 						$("#totalvideo").text(data.USERPLAYLIST.countVideos +"Videos")
 						$("#descriptioninfo").text(data.USERPLAYLIST.description);	
 						if(userid == data.USERPLAYLIST.userId){
