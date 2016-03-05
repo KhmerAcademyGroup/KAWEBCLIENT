@@ -26,6 +26,8 @@
 		
 		<div class="container ka-container" >
 		
+				<jsp:include page="../shared/_banner.jsp"></jsp:include>
+		
 			
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>

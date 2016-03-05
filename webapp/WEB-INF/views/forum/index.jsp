@@ -24,6 +24,7 @@
 		
 		<div class="container ka-container" >
 		
+				<jsp:include page="../shared/_banner.jsp"></jsp:include>
 			
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/forum">All Questions</a></li>
@@ -31,7 +32,7 @@
 				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
 				</ol>
 				
-				<jsp:include page="../shared/_banner.jsp"></jsp:include>
+				
 				
 			<h3 class="page-title"> <span id="getType">  </span> <span id="getTotalQuestion"> </span> </h3>
 			
