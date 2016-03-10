@@ -32,7 +32,7 @@
 							<c:if test="${param.logout == null}">
 								<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
 		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-									<strong class="alert-link">Please login to your Khmer Academy account!</strong>
+									<strong class="alert-link">Login to Khmer Academy!</strong>
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">
@@ -77,10 +77,10 @@
 					                    
 					                    <div class="form-group m-t-30">
 					                        <div class="col-sm-7">
-					                            <a  href="#frmreset" data-toggle='modal'>><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+					                            <a  href="#frmreset" data-toggle="modal"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 					                        </div>
 					                        <div class="col-sm-5 text-right">
-					                            <a href="/register">Create an account</a>
+					                            <a href="javascript:" class="btSignUp">Create an account</a>
 					                        </div>
 					                    </div>
 								  
@@ -92,32 +92,7 @@
 						</div>
 			
 			
-			<div class="modal fade" id="frmreset" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
-										  <div class="modal-dialog">
-											<div class="modal-content" style="border-radius: 5px;">
-											  <div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="DefaultModalLabel">Reset Password</h4>
-											  </div>
-											  <div class="modal-body" >
-												
-													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
-													<label> Enter your email here</label>
-													<div class="input-group">
-													
-                                      						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>                                      
-                                     						<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
-                                   						 </div>
-														 <br/>													 																												 
-														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
-														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
-														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:red;">Please go to your email !</label>
-													</form> 													
-											  </div>
-											  
-											</div><!-- /.modal-content -->
-										  </div><!-- /.modal-doalog -->
-										</div><!-- /#DefaultModal -->	
+										
 										
 			
 						
@@ -132,7 +107,8 @@
 		<jsp:include page="shared/_footer.jsp" />
 		
 		  <script type="text/javascript">
-		  $(document).ready(function(){
+		  /* $(document).ready(function(){
+			  
 			  $(".sending").hide();
 			  $(".check_your_email").hide();
 			  $(document).on('click', "#btn_submit", function() {									  
@@ -166,7 +142,7 @@
 					}
 				});
 			  
-		  });
+		  }); */
 		  </script>
 	</body>
 </html>

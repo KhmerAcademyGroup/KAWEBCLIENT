@@ -142,7 +142,7 @@ END PAGE
 	
 	                    <div class="form-group m-t-30">
 	                        <div class="col-sm-7">
-	                            <a href="#"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+	                            <a  href="#frmreset" data-toggle="modal"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 	                        </div>
 	                        <div class="col-sm-5 text-right">
 	                            <a href="javascript:" class="btSignUp">Create an account</a>
@@ -240,6 +240,32 @@ END PAGE
 		
 		
 		
+										<div class="modal fade" id="frmreset" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" style="margin-top:140px;">
+											<div class="modal-content" style="border-radius: 5px;">
+											  <div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="DefaultModalLabel">Reset Password</h4>
+											  </div>
+											  <div class="modal-body" >
+												
+													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
+													<label> Enter your email here</label>
+													<div class="input-group">
+													
+                                      						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>                                      
+                                     						<input type="text" class="form-control" name="email" id="emailaddress" placeholder="Enter your email !">
+                                   						 </div>
+														 <br/>													 																												 
+														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
+														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
+														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:red;">Please go to your email !</label>
+													</form> 													
+											  </div>
+											  
+											</div><!-- /.modal-content -->
+										  </div><!-- /.modal-doalog -->
+										</div><!-- /#DefaultModal -->	
 		
 		
 
@@ -543,6 +569,44 @@ Placed at the end of the document so the pages load faster
     			
     			
     				
+    			  // Reset Password
+    			  $(".sending").hide();
+	  			  $(".check_your_email").hide();
+	  			  $(document).on('click', "#btn_submit", function() {									  
+	  					var address =$("#emailaddress").val()
+	  					$(".sending").show();
+	  					if(address==""){						
+	  						$(".sending").hide(); 
+	  						return 0;}
+	  					else{
+	  				 	 $.ajax({
+	  						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
+	  						method: "GET",
+	  						success: function(data){  	    							    																			
+	  							if(data.STATUS==true){
+	  								$(".sending").hide();
+	  								$(".check_your_email").show();															
+	  								setTimeout(function(){
+	  									$('#frmreset').modal('hide');
+	  									$("#emailaddress").val("");
+	  									$(".check_your_email").hide();	
+	  									}, 1000);
+	  								
+	  							}
+	  							else{
+	  								$(".sending").hide();
+	  								alert("Invalib Email !")
+	  							}														
+	  							 console.log(data);
+	  						}
+	  					});  
+	  					}
+	  				});
+    			
+    				
+    			
+    			
+    			
     			
             });
             
