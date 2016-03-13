@@ -128,11 +128,11 @@
 							if(password==""){alert("Data empty"); return 0;}
 							
 							if(data.STATUS==true){
-								alert("Your Password has been update ! ")
+								alert("Your password has been resetted ! ")
 								 window.location = '${pageContext.request.contextPath}/login';
 							}
 							else{
-								alert("Update fail please reset your password again !")
+								alert("Your password has not been resettet. Please try again!")
 							}														
 							 console.log(data);
 						}

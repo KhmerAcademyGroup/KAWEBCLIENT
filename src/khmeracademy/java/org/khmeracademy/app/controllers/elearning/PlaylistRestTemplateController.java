@@ -121,17 +121,18 @@ public class PlaylistRestTemplateController {
 		
 		
 		
-		
-	/*public ResponseEntity<Map<String , Object>> playVideo(
-			@RequestParam(value="pid") String pid
-			){
-		System.err.println(pid);
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/listVideoInPlaylist?playlistid=" + pid, HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}*/
+		@RequestMapping(value="/rest/elearning/searchcourse" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listCategory(
+				  @RequestParam(value = "page", required = false , defaultValue="1") int page 
+				, @RequestParam(value="item" , required = false , defaultValue="20") int item
+				, @RequestParam(value="keyword" , required = false , defaultValue="") String keyword){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/searchcourse?keyword="+keyword+"&page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
 	
 		
-	
+		
+		
 	
 }

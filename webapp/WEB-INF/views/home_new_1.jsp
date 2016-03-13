@@ -137,7 +137,7 @@
 				            	
 				            	
 				            	<!-- Bannner -->
-				            	<div class="row" style="margin-bottom: 20px;padding: 15px;">
+				            	<div class="row" style="margin-bottom: 0px;padding: 15px;">
 										<div class="col-lg-12">
 												<jsp:include page="shared/_banner.jsp"></jsp:include>
 										</div>
@@ -180,7 +180,7 @@
 											</div> 
 										</div>
 										
-										<div class="col-lg-4">
+										<div class="col-lg-4" style="padding-right: 0px;">
 												<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
 														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  target="_blank"> Forum - Recent Question  </a></h3>
@@ -324,28 +324,15 @@
 						}
 					});   */
 		    	
-					$.ajax({
+					/* $.ajax({
 						url:'${pageContext.request.contextPath}/akn/scholarship/',
 						method: 'GET',
 						success:function(data){
-							
-							console.log(data);
-// 							var akn1 = '<ul class="list-group currency-rates widget-currency-ticker"  style="height: 410px; overflow: hidden;">';
-// 							for(var j=0; j<data.length; j++){
-// 								akn1 += akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
-// 													'<div class="row">'+
-// 													'<div class="col-xs-5"><a href="'+data[j].url+'" target="_blank">​"'+data[j].title+'"</a></div>'+
-// 													'</div>'+
-// 											 	'</li>';
-// 							}
-// 							akn1+="</u>";
-// 							$("#getAKN").html(akn1);
-							
 							displayNews(data.RESPONSE_DATA);
 
 							
 						}
-					});	
+					});	 */
 					
 					
 				/* function displaySlide(data){
@@ -405,10 +392,11 @@
 							recent+="<div class='mitem'>"
 											+"<div>"
 											+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-												+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+												+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 									 			+"<div class='caption text-left'>"
-													+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-													+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+													+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+													+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 												+"</div>"
 											+"</div>"
 										+"</div>"
@@ -422,10 +410,11 @@
 							generalEdu+="<div class='mitem'>"
 												+"<div>"
 												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-													+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-										 			+"<div class='caption text-left'>"
-														+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-														+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+													+"<div class='caption text-left'>"
+														+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -441,10 +430,11 @@
 							computerScience+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-											 			+"<div class='caption text-left'>"
-															+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<div class='caption text-left'>"
+															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -460,10 +450,11 @@
 							language		+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='elearning/playlistdetail/"+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
-											 			+"<div class='caption text-left'>"
-															+"<p class='small'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playlistdetail/"+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+shorten(value.playlistName,50)+"</b></a><br>"
-															+"<span class='text-muted' style='color:#4D4D4D'>"+shorten(value.description,70)+"</span></p>"
+														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<div class='caption text-left'>"
+															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 														+"</div>"
 													+"</div>"
 												+"</div>"

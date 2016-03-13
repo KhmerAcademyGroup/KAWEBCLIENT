@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService{
 				u.setCountPlaylists((Integer)userMap.get("countPlaylists"));
 				u.setCountVideos((Integer)userMap.get("countVideos"));
 				u.setUserStatus(true);
+				u.setConfirmed((boolean)userMap.get("confirmed"));
 				List<UserRole> roles = new ArrayList<UserRole>();
 				UserRole role = new UserRole();
 				role.setRoleId((String)userMap.get("userTypeId"));

@@ -693,7 +693,7 @@
 							$("#comments").html(getCommentVideo(vdoid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
-							send(vdoid);
+							//send(vdoid);
 						});
 					
 				}else{
@@ -706,7 +706,7 @@
 		    });
 		</script>
 		
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			var webSocket = 
 				new WebSocket('ws://'+ document.location.host + '${pageContext.request.contextPath}/websockets/comment');
 			
@@ -740,7 +740,7 @@
 				webSocket.send(txt);
 				return false;
 			}
-		</script>
+		</script> -->
 		
 		
 	</body>

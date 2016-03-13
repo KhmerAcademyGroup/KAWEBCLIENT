@@ -29,7 +29,6 @@
 		
 		<div class="container ka-container" >
 		
-				<jsp:include page="../shared/_banner.jsp"></jsp:include>
 		
 		
 				<ol class="breadcrumb">

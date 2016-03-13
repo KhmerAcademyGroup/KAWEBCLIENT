@@ -38,7 +38,7 @@
 							<c:if test="${param.logout != null}">
 								<div class="alert alert-info alert-bold-border square fade in alert-dismissable">
 	<!-- 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-									<strong class="alert-link">You've been logout successfully!</strong>
+									<strong class="alert-link">You've successfully logged out!</strong>
 								</div>
 							</c:if>
 								
@@ -77,8 +77,7 @@
 					                    
 					                    <div class="form-group m-t-30">
 					                        <div class="col-sm-7">
-					                            <a  href="#frmreset" data-toggle="modal"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-					                        </div>
+												<a href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>					                        </div>
 					                        <div class="col-sm-5 text-right">
 					                            <a href="javascript:" class="btSignUp">Create an account</a>
 					                        </div>

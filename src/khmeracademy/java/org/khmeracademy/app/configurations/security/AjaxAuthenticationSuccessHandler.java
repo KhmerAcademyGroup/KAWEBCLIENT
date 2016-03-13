@@ -42,8 +42,9 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 			User user = (User) authentication.getPrincipal();
 			System.out.println("ajaxAuthenticationSuccessHandler " + user.getUsername());
 		
-			if(user.isUserStatus() == false){
+			if(user.isConfirmed()== false){
 				targetUrl = "false";
+				SecurityContextHolder.getContext().setAuthentication(null);
 			}
 
 

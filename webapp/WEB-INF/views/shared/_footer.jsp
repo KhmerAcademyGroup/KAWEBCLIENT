@@ -93,7 +93,7 @@ END PAGE
 ===========================================================
 -->
 
-		<div id="p-frmLogin" class="ka-popup" style="display: none;width: 30%;">
+		<div id="p-frmLogin" class="ka-popup" style="display: none;width: 40%;">
 			<div class="modal-content">
 				<div class="modal-header">
 
@@ -142,7 +142,7 @@ END PAGE
 	
 	                    <div class="form-group m-t-30">
 	                        <div class="col-sm-7">
-	                            <a  href="#frmreset" data-toggle="modal"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+	                            <a  href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 	                        </div>
 	                        <div class="col-sm-5 text-right">
 	                            <a href="javascript:" class="btSignUp">Create an account</a>
@@ -155,8 +155,8 @@ END PAGE
 		</div>
 		
 		
-		<div id="p-frmSignUp" class="ka-popup" style="display: none;width: 30%;">
-			<div class="modal-content">
+		<div id="p-frmSignUp" class="ka-popup" style="display: none;width: 70%;">
+			<div class="modal-content" style="top:90px">
 				<div class="modal-header">
 
 					<button type="button" class="close" aria-hidden="true">
@@ -172,52 +172,56 @@ END PAGE
 	                    
 	                    <div id="message-re"></div>
 	                    
-	                    <div class="form-group ">
-	                        <div class="col-xs-12">
-	                        	<label>Email <span style="color:red">*</span></label>
-	                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="email" id="email" placeholder="Email">
-	                        </div>
-	                    </div>
 	                    
-	                    <div class="form-group ">
-	                        <div class="col-xs-12">
-	                        	<label>Username <span style="color:red">*</span></label>
-	                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('Username is required!')" oninput="setCustomValidity('')" name="username" id="username" placeholder="Username">
-	                        </div>
-	                    </div>
-	
-	                    <div class="form-group">
-	                        <div class="col-xs-12">
-	                        	<label>Password <span style="color:red">*</span></label>
-	                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is required!')" oninput="setCustomValidity('')" name="password"  id="password" placeholder="Password">
-	                        </div>
-	                    </div>
-	                    
-	                    <div class="form-group">
-	                        <div class="col-xs-12">
-	                        	<label>Confirm password <span style="color:red">*</span></label>
-	                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The Confirm Password is required!')" oninput="setCustomValidity('')" name="repassword"  id="repassword" placeholder="Confirm Password">
-	                        </div>
-	                    </div>
-	                    
-	                    <div class="form-group">
-	                    	<div class="col-xs-12">
-	                    			<label>Department <span style="color:red">*</span></label>
-									<select placeholder="Choose a department" class="form-control rounded bold-border" id="getDepartment">
-										
-									</select>
-							</div>
+	                     <div class="col-xs-6">
+			                    <div class="form-group ">
+			                        <div class="col-xs-12">
+			                        	<label>Email <span style="color:red">*</span></label>
+			                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="email" id="email" placeholder="Email">
+			                        </div>
+			                    </div>
+			                    
+			                    <div class="form-group ">
+			                        <div class="col-xs-12">
+			                        	<label>Username <span style="color:red">*</span></label>
+			                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('Username is required!')" oninput="setCustomValidity('')" name="username" id="username" placeholder="Username">
+			                        </div>
+			                    </div>
+			
+			                    <div class="form-group">
+			                        <div class="col-xs-12">
+			                        	<label>Password <span style="color:red">*</span></label>
+			                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is required!')" oninput="setCustomValidity('')" name="password"  id="password" placeholder="Password">
+			                        </div>
+			                    </div>
+			                    
+			                    <div class="form-group">
+			                        <div class="col-xs-12">
+			                        	<label>Confirm password <span style="color:red">*</span></label>
+			                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The Confirm Password is required!')" oninput="setCustomValidity('')" name="repassword"  id="repassword" placeholder="Confirm Password">
+			                        </div>
+			                    </div>
+			            </div>
+			            
+			            <div class="col-xs-6">        
+			                    <div class="form-group">
+			                    	<div class="col-xs-12">
+			                    			<label>Department <span style="color:red">*</span></label>
+											<select placeholder="Choose a department" class="form-control rounded bold-border" id="getDepartment">
+												
+											</select>
+									</div>
+								</div>
+								
+			                    <div class="form-group">
+			                    	<div class="col-xs-12">
+			                    			<label>University <span style="color:red">*</span></label>
+											<select placeholder="Choose a university" class="form-control rounded bold-border" id="getUniversity">
+												
+											</select>
+									</div>
+								</div>
 						</div>
-						
-	                    <div class="form-group">
-	                    	<div class="col-xs-12">
-	                    			<label>University <span style="color:red">*</span></label>
-									<select placeholder="Choose a university" class="form-control rounded bold-border" id="getUniversity">
-										
-									</select>
-							</div>
-						</div>
-	
 	                    
 	                    
 	                    <div class="form-group text-center m-t-40">
@@ -239,16 +243,20 @@ END PAGE
 		</div>
 		
 		
-		
-										<div class="modal fade" id="frmreset" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
-										  <div class="modal-dialog" style="margin-top:140px;">
-											<div class="modal-content" style="border-radius: 5px;">
-											  <div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="DefaultModalLabel">Reset Password</h4>
-											  </div>
-											  <div class="modal-body" >
-												
+									<div id="frmreset" class="ka-popup" style="display: none;width: 50%;">
+										  
+										  <div class="modal-content">
+												<div class="modal-header">
+								
+													<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>x</span></span>
+													</button>
+													
+													<h4 class="bolded">Reset Password</h4>
+								
+												</div>
+												<div class="modal-body" >
+													
 													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
 													<label> Enter your email here</label>
 													<div class="input-group">
@@ -259,16 +267,56 @@ END PAGE
 														 <br/>													 																												 
 														 	 <input type="button" id="btn_submit"   class="btn btn-success" value="Submit">
 														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
-														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:red;">Please go to your email !</label>
-													</form> 													
-											  </div>
-											  
-											</div><!-- /.modal-content -->
-										  </div><!-- /.modal-doalog -->
+														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:green;">We have sent a link to reset your password! Please go to your email!</label>
+													</form> 
+													
+												</div>
+											</div>
+											
+											
+											
+										  
 										</div><!-- /#DefaultModal -->	
 		
 		
 
+
+										<div id="frmSendMailToConfrim" class="ka-popup" style="display: none;width: 50%;">
+										  
+										  <div class="modal-content">
+												<div class="modal-header">
+								
+													<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>x</span></span>
+													</button>
+													
+													<h4 class="bolded">Please provide your email that you have registered with Khmer Academy!</h4>
+								
+												</div>
+												<div class="modal-body" >
+													
+													<form method="post" name="frmupdateplaylist" action="/" id="frmupdateplaylist" >
+													
+													<div id="message-resend"></div>
+													
+													<label> Enter your email here</label>
+													<div class="input-group">
+													
+                                      						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>                                      
+                                     						<input type="text" class="form-control" name="email" id="confirm_email" placeholder="Enter your email !">
+                                   						 </div>
+														 <br/>													 																												 
+														 	 <input type="button" id="btn_submit_again"   class="btn btn-success" value="Submit">
+														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
+														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:green;">we have sent you a new link to confirm your account. Please go to your email!</label>
+													</form> 
+													
+												</div>
+											</div>
+										  
+										</div>
+		
+		
 <!--
 ===========================================================
 Placed at the end of the document so the pages load faster
@@ -333,7 +381,8 @@ Placed at the end of the document so the pages load faster
             =============================================== */
             $(document).ready(function(){
                
-                $(".btLogin").click(function(){ 
+            	
+            	$(document).on('click',".btLogin", function(){ 
                 	$("#frmLogin").trigger("reset");
                 	$("#p-frmLogin").bPopup(/* {modalClose: false} */);
 // 					KA.createProgressBar();	
@@ -372,8 +421,9 @@ Placed at the end of the document so the pages load faster
 		    	            	}else if(data == 'false'){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-							  				   '<strong class="alert-link">Your account has not yet confirm.</strong>'+ 
-											   '</div>');
+							  				   '<strong class="alert-link">You have one more step to complete your account. Please go to your email to verify your email!</strong>'+ 
+											   '<br/><a href="#" id="btFrmSendMailToConf">Not yet receive email click here!</a>'+
+							  				   '</div>');
 		    	            	}else{
 									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
  	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
@@ -487,7 +537,14 @@ Placed at the end of the document so the pages load faster
     			
     			$("#frmSignUp").submit(function(e){
 	         		  e.preventDefault(); // alert($(this).serialize());
-	         		  alert($("#password").val() +" "+ $("#repassword").val());
+	         		 // alert($("#password").val() +" "+ $("#repassword").val());
+	         		  if( $("#password").val().length < 6 || $("#repassword").val().length < 6){
+	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+	  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+					  				   '<strong class="alert-link">Password must be at least 6 characters!</strong>'+ 
+									   '</div>');
+		         			  return; 
+	         		  }
 	         		  if( $("#password").val() != $("#repassword").val()){
 	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
@@ -516,26 +573,27 @@ Placed at the end of the document so the pages load faster
 		    	            	if(data.STATUS == false){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-				 				  				   '<strong class="alert-link">Email aleady exists</strong>'+ 
+				 				  				   '<strong class="alert-link">There is already an account with that email! Please use another email or <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
 				 							   '</div>');
 		    	            		KA.destroyProgressBarWithPopup();
 		    	            	}else{
-		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
-					   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-					 				  				   '<strong class="alert-link">You have been registered succssfully</strong>'+ 
-					 					            '</div>');
 		    	            		
-		    	            		setTimeout(function(){
-		    	            			/*  frmData = { ka_username : $("#email").val(),
-		   	         				             ka_password : $("#password").val()
-		   	         				          }; */
+		    	            		
+// 		    	            		setTimeout(function(){
+		    	            			
 		    	            			 email =  $("#email").val();
 		    	            			 $.ajax({
 		    	     						url : "${pageContext.request.contextPath}/rest/sendmail?email="+email+"&type=signup",
 		    	     						method: "GET",
 		    	     						success: function(data){ 
-		    	     							
-				    		    	            	alert("Goto your email: "+email);
+// 				    		    	            	alert("Goto your email: "+email);
+										
+													$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+									   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+									 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" target="_blank" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
+									 					            '</div>');
+													
+													
 				    		    	            	KA.destroyProgressBarWithPopup();
 				    		    	            },
 				    		    	         	error: function(data){
@@ -543,19 +601,8 @@ Placed at the end of the document so the pages load faster
 				    		    				}
 				    		    	        });
 		    	            			 
-			    	            		/* $.ajax({
-			    		    	            url: "${pageContext.request.contextPath}/login",
-			    		    	            type: "POST",
-			    		    	            datatype : "JSON",
-			    		    	            data: frmData, 
-			    		    	            success: function(data) {
-			    		    	            	location.href = data;
-			    		    	            },
-			    		    	         	error: function(data){
-			    		    	         		console.log(data);
-			    		    				}
-			    		    	        }); */
-		    						}, 500 );
+			    	            	
+// 		    						}, 500 );
 		    	            	}
 		    	            	console.log(data);
 		    	            },
@@ -566,6 +613,16 @@ Placed at the end of the document so the pages load faster
 		    	        });
 	         			
 					});
+    			
+    			
+    			$(document).on('click',"#btFrmreset", function(){  
+    				$("#p-frmLogin").bPopup().close();
+    				$("#p-frmSignUp").bPopup().close();
+    				$("#frmreset").bPopup();
+    			});
+    			
+    				
+    			
     			
     			
     				
@@ -579,6 +636,7 @@ Placed at the end of the document so the pages load faster
 	  						$(".sending").hide(); 
 	  						return 0;}
 	  					else{
+	  					 KA.createProgressBarWithPopup();
 	  				 	 $.ajax({
 	  						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
 	  						method: "GET",
@@ -586,25 +644,48 @@ Placed at the end of the document so the pages load faster
 	  							if(data.STATUS==true){
 	  								$(".sending").hide();
 	  								$(".check_your_email").show();															
-	  								setTimeout(function(){
-	  									$('#frmreset').modal('hide');
-	  									$("#emailaddress").val("");
-	  									$(".check_your_email").hide();	
-	  									}, 1000);
+// 	  								setTimeout(function(){
+// 	  									$('#frmreset').bPopup().close();
+// 	  									$("#emailaddress").val("");
+// 	  									$(".check_your_email").hide();	
+// 	  								}, 3000);
 	  								
 	  							}
 	  							else{
 	  								$(".sending").hide();
-	  								alert("Invalib Email !")
-	  							}														
-	  							 console.log(data);
+	  								alert("Invalid Email! Please try again!")
+	  							}					
+	  							KA.destroyProgressBarWithPopup();
 	  						}
 	  					});  
 	  					}
 	  				});
     			
-    				
-    			
+    			 $(document).on('click','#btFrmSendMailToConf',function(){
+    				 $("#p-frmLogin").bPopup().close();
+    				 $("#p-frmSignUp").bPopup().close();
+	  				 $("#frmSendMailToConfrim").bPopup();
+    			 });
+	  			  
+    			$(document).on('click','#btn_submit_again',function(){
+    				var email =$("#confirm_email").val()
+    				KA.createProgressBarWithPopup();
+    				$.ajax({
+ 						url : "${pageContext.request.contextPath}/rest/sendmail?email="+email+"&type=signup",
+ 						method: "GET",
+ 						success: function(data){ 
+ 							$("#message-resend").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+		   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+		 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a></strong>'+ 
+		 					            '</div>');
+		    	            	KA.destroyProgressBarWithPopup();
+		    	            },
+		    	         	error: function(data){
+		    	         		console.log(data);
+		    				}
+		    	        });  
+    			});
+	  			  
     			
     			
     			
