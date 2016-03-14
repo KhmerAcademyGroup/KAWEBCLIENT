@@ -661,7 +661,7 @@
 				}
 				$.get(getCommentUrl, function(data){
 				
-					if(data.STATUS==true){ alert(data.COMMENT[0].userImageUrl);
+					if(data.STATUS==true){ // alert(data.COMMENT[0].userImageUrl);
 						$("#comments").html(getCommentHTML(data.COMMENT, data.REPLY, page));
 						
 						if(page < parseInt(data.PAGINATION.totalPages)){

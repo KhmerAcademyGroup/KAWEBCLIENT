@@ -266,7 +266,7 @@
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
 				<li class="list-group-item" style="margin-top: 0px;">
 						<div class="row">
-								<div class="col-xs-12 shortenString"><a  href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" target="_blank">​{{= title }}</a></div>
+								<div class="col-xs-12 shortenString"><a  style="color:#656D78" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" target="_blank">​{{= title }}</a></div>
 						</div>
 				</li>
 		</script>
@@ -278,7 +278,7 @@
 							akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
 												'<div class="row">'+
 												'<div class="col-xs-1"><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></div>'+
-												'<div class="col-xs-11"><a href="'+data[j].url+'" target="_blank">​'+shorten(data[j].title,120)+'</a></div>'+
+												'<div class="col-xs-11"><a style="color:#656D78" href="'+data[j].url+'" target="_blank">​'+shorten(data[j].title,120)+'</a></div>'+
 												'</div>'+
 										 	'</li>';
 						}
@@ -300,81 +300,16 @@
 		    	// End Forum
 		    	
 		    	
-		    	
-		    	//$.post("dashboard.act", {
 				//}, function(data) {
 					
 		    	//akn-block	
-		    		/* $.ajax({
-					url:'${pageContext.request.contextPath}/akn/scholarship/',
-					method: 'GET',
-					success:function(data){
-							var akn1 = "";
-							for(var j=0; j<data.length; j++){
-								akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
-											'<div class="row">'+
-											'<div class="col-xs-5"><a href='"+data[j].url+"' target='_blank'>​"+data[j].title+"</a></div>'+
-											'</div>'+
-									 	'</li>';
-								  	
-								  	
-							}
-							alert(data);
-							$("#geTakn").append(akn1);
-						}
-					});   */
-		    	
-					/* $.ajax({
-						url:'${pageContext.request.contextPath}/akn/scholarship/',
-						method: 'GET',
-						success:function(data){
-							displayNews(data.RESPONSE_DATA);
-
-							
-						}
-					});	 */
-					
-					
-				/* function displaySlide(data){
-					var akn1 = "";
-					for(var j=0; j<data.length; j++){
-						akn1 += "<div class='item'>"
-								+ "<img src='${pageContext.request.contextPath}/resources/uploads/sc.jpg' alt='"+data[j].image+"'>"
-									+ "<div class='title'>"
-										+ "<p><a href='"+data[j].url+"' target='_blank'>​"+data[j].title+"</a></p>"
-									+ "</div>"  
-						  	+ "</div>"
-					}
-					$("#owl-akn").html(akn1);
-				}
-				
 				$.ajax({
 					url:'${pageContext.request.contextPath}/akn/scholarship/',
 					method: 'GET',
 					success:function(data){
-						
-						displaySlide(data.RESPONSE_DATA);
-						
-						$("#owl-akn").owlCarousel({
-						      slideSpeed : 300,
-						      paginationSpeed : 400,
-						      singleItem:true, 
-						      autoPlay:true
-						});
-						
-						var owl = $("#owl-akn");
-						
-						$("#sright").click(function(){
-						    owl.trigger('owl.next');
-					 	})
-						$("#sleft").click(function(){
-						    owl.trigger('owl.prev');
-						})
-						
+						displayNews(data.RESPONSE_DATA);
 					}
-				}); */ 
-				
-				
+				});	
 				//end akn-block
 				
 				
