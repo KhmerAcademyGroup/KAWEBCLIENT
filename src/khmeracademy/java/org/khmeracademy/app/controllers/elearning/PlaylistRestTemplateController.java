@@ -131,6 +131,13 @@ public class PlaylistRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 	
+		@RequestMapping(value="/rest/elearning/recent" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listrecent(){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/playlists/recents", HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
 		
 		
 		

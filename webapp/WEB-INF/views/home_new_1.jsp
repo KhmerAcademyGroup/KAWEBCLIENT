@@ -278,7 +278,7 @@
 							akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
 												'<div class="row">'+
 												'<div class="col-xs-1"><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></div>'+
-												'<div class="col-xs-11"><a style="color:#656D78" href="'+data[j].url+'" target="_blank">​'+shorten(data[j].title,120)+'</a></div>'+
+												'<div class="col-xs-11" style=" white-space: nowrap;width: 90%;overflow: hidden;text-overflow: ellipsis;""><a style="color:#656D78" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></div>'+
 												'</div>'+
 										 	'</li>';
 						}
@@ -314,12 +314,9 @@
 				
 				
 				$.ajax({
-					url :"http://localhost:8080/KAAPI/api/elearning/playlist/playlists/recents",
+					url :"${pageContext.request.contextPath}/rest/elearning/recent",
 					type: "GET",
 					dataType: "JSON",
-					 headers: {
-						"Authorization": "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ=="
-					 }, 
 					success: function(data){ console.log(data);
 						var recent="";
 		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";

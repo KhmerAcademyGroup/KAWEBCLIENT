@@ -421,8 +421,8 @@ Placed at the end of the document so the pages load faster
 		    	            	}else if(data == 'false'){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-							  				   '<strong class="alert-link">You have one more step to complete your account. Please go to your email to verify your email!</strong>'+ 
-											   '<br/><a href="#" id="btFrmSendMailToConf">Not yet receive email click here!</a>'+
+							  				   '<strong class="alert-link">Your email is not yet verify. Please go to your email to verify!</strong>'+ 
+											   '<br/><a href="#" id="btFrmSendMailToConf">Not yet receive mail click here!</a>'+
 							  				   '</div>');
 		    	            	}else{
 									$("#message").replaceWith('<div id="message" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 

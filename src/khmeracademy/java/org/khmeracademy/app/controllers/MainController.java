@@ -24,7 +24,7 @@ public class MainController {
 		m.addAttribute("title","Main Page");
 		final String uri = WebURL + "/rest/mainpage/countdata";
 	    RestTemplate restTemplate = new RestTemplate();
-	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+//	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 		return "home_new_1";
 	}
 	
