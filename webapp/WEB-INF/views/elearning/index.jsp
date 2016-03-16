@@ -47,7 +47,7 @@
 		<div class="section work-section">
 			<div class="container" style="margin-top: -30px;">
 			
-				<jsp:include page="../shared/_banner.jsp"></jsp:include>
+<%-- 				<jsp:include page="../shared/_banner.jsp"></jsp:include> --%>
 			
 				<div class="section-heading">
 					<div class="inner-border"></div>

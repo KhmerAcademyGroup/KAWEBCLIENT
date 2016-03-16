@@ -631,6 +631,7 @@ Placed at the end of the document so the pages load faster
 	  			  $(".check_your_email").hide();
 	  			  $(document).on('click', "#btn_submit", function() {									  
 	  					var address =$("#emailaddress").val()
+	  					console.log(address);
 	  					$(".sending").show();
 	  					if(address==""){						
 	  						$(".sending").hide(); 
