@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -201,6 +202,37 @@
 								</div><!--/end akn-slider  -->
 								
 								<!-- BEGIN OWL CAROUSEL -->
+								
+								
+							<sec:authorize access="isAuthenticated()" var="logged"/>
+								
+							<sec:authorize access="isAuthenticated()">
+								
+								<!-- Recommended Courses -->
+								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+										<span class="small-title" style="font-weight: bold;">Recommended Courses</span>
+										<br/>
+										<br/>
+									   	<div id="recommended_courses">
+									    
+										</div>
+								</div><!-- /.the-box -->
+								
+								
+								
+								<!-- Recommended Videos -->
+								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+										<span class="small-title" style="font-weight: bold;">Recommended Videos</span>
+										<br/>
+										<br/>
+									   	<div id="recommended_videos">
+									    
+										</div>
+								</div><!-- /.the-box -->
+								
+							</sec:authorize>
+								
+								
 								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
 										<span class="small-title" style="font-weight: bold;">Recent Courses</span>
 										<br/>
@@ -209,7 +241,6 @@
 									    
 										</div>
 								</div><!-- /.the-box -->
-								
 								
 								
 								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
@@ -287,6 +318,8 @@
 			 
 		    $(document).ready(function() {
 		    	
+		    	
+		    	
 		    	// Forum 
 		    		$.ajax({
 							url:'${pageContext.request.contextPath}/rest/forum/question?page=1&item=8',
@@ -314,7 +347,7 @@
 				
 				
 				$.ajax({
-					url :"${pageContext.request.contextPath}/rest/elearning/recent",
+					url :"${pageContext.request.contextPath}/rest/elearning/recent/${userid}",
 					type: "GET",
 					dataType: "JSON",
 					success: function(data){ console.log(data);
@@ -394,9 +427,59 @@
 						});
 						language+= "</div>";
 						$("#language").html(language);
+						
+						
+						if('${logged}' == 'true'){
+							
+							var recommended_courses="";
+							recommended_courses = "<div id='owl-recommend-courses' class='owl-carousel owl-theme'>";
+							$.each(data.RECOMMENDED_COURSE, function(key, value){
+								recommended_courses+="<div class='mitem'>"
+												+"<div>"
+												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+										 			+"<div class='caption text-left'>"
+														+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+													+"</div>"
+												+"</div>"
+											+"</div>"
+										 +"</div>";
+							});
+							recommended_courses+= "</div>";
+							$("#recommended_courses").html(recommended_courses);
+							
+							var recommend_videos="<div id='owl-recommend-videos' class='owl-carousel owl-theme'>";
+							$.each(data.RECOMMENDED_VIDEOS, function(key, value){
+								recommend_videos+="<div class='mitem'>"
+													+"<div>"
+													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
+														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<div class='caption text-left'>"
+															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+														+"</div>"
+													+"</div>"
+												+"</div>"
+											 +"</div>";
+							}); 
+								
+							recommend_videos+= "</div>";
+							$("#recommend_videos").html(recommend_videos);
+							
+							showRecommend();
+							
+						}
+						
+						
+						
 						showme(); 
 					}
 		    	});
+				
+		    
 			});
 			
 		    function showme(){
@@ -432,6 +515,28 @@
 			    var owl_language = $("#owl-language");
 			     
 			    owl_language.owlCarousel({
+			    items : 5, //10 items above 1000px browser width
+			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
+			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
+			    itemsTablet: [600,2], //2 items between 600 and 0
+			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
+			    });
+		    }
+		    
+		    function showRecommend(){
+		    	var owl_recommend_videos = $("#owl-recommend-videos");
+			     
+		    	owl_recommend_videos.owlCarousel({
+			    items : 5, //10 items above 1000px browser width
+			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
+			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
+			    itemsTablet: [600,2], //2 items between 600 and 0
+			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
+			    });
+			    
+			    var owl_recommend_courses = $("#owl-recommend-courses");
+			     
+			    owl_recommend_courses.owlCarousel({
 			    items : 5, //10 items above 1000px browser width
 			    itemsDesktop : [1024,4], //5 items between 1000px and 901px
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px

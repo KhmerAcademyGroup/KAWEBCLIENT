@@ -25,6 +25,14 @@ public class MainController {
 		final String uri = WebURL + "/rest/mainpage/countdata";
 	    RestTemplate restTemplate = new RestTemplate();
 //	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+	    Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			m.addAttribute("userid", user.getUserId());
+		}else{
+			 m.addAttribute("userid", "null" );
+		}
+	    
 		return "home_new_1";
 	}
 	
