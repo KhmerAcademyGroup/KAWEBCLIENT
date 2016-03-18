@@ -193,7 +193,7 @@
 									</div>
 								
 								
-									<div id="myplayerwrapper">
+									<div id="myplayerwrapper" >
 										<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>
 									</div>
 								</div>

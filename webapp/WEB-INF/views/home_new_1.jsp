@@ -15,6 +15,12 @@
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css" rel="stylesheet">
 		
+		<!-- Player -->
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video-js.css">
+	  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.css">
+		<!-- Player Responsive -->
+		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
+		
 		<style>
 			.owl-carousel .mitem{
 				/* padding: 30px 0px; */
@@ -184,16 +190,69 @@
 										<div class="col-lg-4" style="padding-right: 0px;">
 												<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  target="_blank"> Forum - Recent Question  </a></h3>
+														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  target="_blank"> Recent Courses  </a></h3>
 													  </div>
+											
+											
+												
+	            								<div  class="owl-wrapper thumbnail media-lib-item"  style="width: 100%; left: 0px; display: block;margin-top:5px">
+													
+														  <a class="no-underline" href="#" id="getHref"  style="color:#50a253;font-size: 16px;"><b id="getNewsTitle">  </b></a>
+																
+														  <div class="owl-item" style="width: 365px;">                	
+														  		<div class="mitem">                    
+														  			 <div>                      
+														  			 	<div class="" style="height: 255px;padding: 0px;"> 
+														  			 		<div id="myplayerwrapper" style="width:97%;height:190px;">
+														  			 			<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>     
+														  			 		</div>                  
+														  			 		<div class="caption text-left">                        
+														  			 			<p class="small shortenString">                        
+														  			 				 <a class="no-underline" href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4" style="color:#4D4D4D;font-size: 16px;"><b>Codeigniter 3</b></a>
+														  			 				 <br>
+														  			 				 <span class="small text-muted" style="color:#4D4D4D">19 Views | By admin</span>                  
+														  			 			</p>             
+														  			 		</div>                     
+														  			 	</div>                     
+														  			 </div>                    
+														  		</div>                   
+														  </div>
 														
-													<ul class="list-group currency-rates widget-currency-ticker"  id="getQuestion" style="height:  380px; overflow: hidden;">
+																	  
+														  <div id="topRecentVideos" style="height: 115px;overflow: overlay;"> 
+														  	  <div id="getTopRecentVideo"></div>
+														  	  <!-- 
+															  <div class="owl-item" style="width: 100px;float:left;margin-right:10px;">                	
+															  		<div class="mitem">                    
+															  			 <div>                      
+															  			 	<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">                       
+															  			 		<a href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4">                       
+															  			 			 <img width="50px" src="http://localhost:8080/KAAPI/resources/upload/file/playlist/thumbnail/codeigniter.png" alt="...">                       
+															  			 		</a>                       
+															  			 		<div class="caption text-left">                        
+															  			 			<a class="small shortenString">  
+															  			 				 <span class="small text-muted" style="color:#4D4D4D">Codeigniter</span>                  
+															  			 			</a>             
+															  			 		</div>                     
+															  			 	</div>                     
+															  			 </div>                    
+															  		</div>                   
+															  </div>
+															  -->
+															  
+															  
+														</div>  
+														  
+														   
+												</div>	 
+														
+													<!-- <ul class="list-group currency-rates widget-currency-ticker"  id="getQuestion" style="height:  380px; overflow: hidden;">
 													
 														  	
 														  	
 														  	
 													</ul>
-															
+															 -->
 															  
 														
 											</div> 
@@ -357,9 +416,9 @@
 							recent+="<div class='mitem'>"
 											+"<div>"
 											+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-												+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+												+"<a title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 									 			+"<div class='caption text-left'>"
-													+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+													+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 													+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 												+"</div>"
@@ -370,14 +429,44 @@
 						recent+= "</div>";
 						$("#recent").html(recent);
 						
+						// Show top 1 recent coursse
+						if(data.RES_DATA != null){
+							topRecentVideos = "";
+							if(data.RES_DATA[0].videos != null){
+								playVideo(data.RES_DATA[0].videos[0].youtubeUrl);
+								$("#getHref").attr("src" ,  'href="${pageContext.request.contextPath}/elearning/playvideo?v='+data.REST_DATA[0].videos[0].videoId+'&playlist='+data.REST_DATA[0].value.playlistId+'"');
+							}
+							$.each(data.RES_DATA[0].videos, function(key, value){
+								topRecentVideos +='<div class="owl-item" style="width: 100px;float:left;margin-right:10px;">'                	
+								+'<div class="mitem">'                    
+									+'<div>'                      
+										+'<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">'                       
+											+'<a href="/KAWEBCLIENT/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'">'                       
+												+'<img   src="https://i.ytimg.com/vi/'+value.youtubeUrl+'/mqdefault.jpg" alt="'+value.videoTitle+'">'                       
+											+'</a>'                       
+											+'<div class="caption text-left shortenString">'                        
+												+'<a class="small">'  
+													+'<span class="small text-muted" style="color:#4D4D4D">'+value.videoTitle+'</span>'                  
+												+'</a>'             
+											+'</div>'                     
+										+'</div>'                     
+									+'</div>'                    
+									+'</div>'                   
+								+'</div>';
+							});
+							$("#getTopRecentVideo").replaceWith(topRecentVideos);			  
+								
+						}
+						// End Show top 1 recent coursse
+						
 						var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
 						$.each(data.HIGH_SCHOOL, function(key, value){
 							generalEdu+="<div class='mitem'>"
 												+"<div>"
 												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+													+"<a title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 													+"<div class='caption text-left'>"
-														+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+														+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 													+"</div>"
@@ -395,9 +484,9 @@
 							computerScience+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<a title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 														+"<div class='caption text-left'>"
-															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 														+"</div>"
@@ -415,9 +504,9 @@
 							language		+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<a title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 														+"<div class='caption text-left'>"
-															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 														+"</div>"
@@ -437,9 +526,9 @@
 								recommended_courses+="<div class='mitem'>"
 												+"<div>"
 												+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-													+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+													+"<a title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
 										 			+"<div class='caption text-left'>"
-														+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+														+"<p class='small shortenString'><a class='no-underline' title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
 														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
 													+"</div>"
@@ -455,11 +544,12 @@
 								recommend_videos+="<div class='mitem'>"
 													+"<div>"
 													+"<div class='thumbnail media-lib-item' style='height: 250px;padding: 0px;'>"
-														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"'><img  src='"+value.thumbnailUrl+"' alt='...'></a>"
+														+"<a href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' title='"+value.videoTitle+"'><img  src='https://i.ytimg.com/vi/"+value.youtubeUrl+"/mqdefault.jpg' alt='...'></a>"
 														+"<div class='caption text-left'>"
-															+"<p class='small shortenString'><a class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
+															+"<p class='small shortenString'><a class='no-underline' title='"+value.videoTitle+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.videoTitle+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.view+" Views | By "+value.username+"</span>"
+															+"<br/><span class='small text-muted' style='color:#4D4D4D'>Course : "+value.playlistName+"</span>"
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -467,7 +557,7 @@
 							}); 
 								
 							recommend_videos+= "</div>";
-							$("#recommend_videos").html(recommend_videos);
+							$("#recommended_videos").html(recommend_videos);
 							
 							showRecommend();
 							
@@ -552,7 +642,41 @@
 				  }
 				  return ret;
 		 	 }
+		    
+		    
+		    
+		    
+		   
 		</script>  
+		
+		
+		<script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
+	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
+		<script type="text/javascript">
+			
+		    function playVideo(videoURL){
+				// save a reference to the video element
+				video = document.querySelector('video');
+				if(video==null){
+					$('#myplayerwrapper').html('<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>');
+					video = document.querySelector('video');
+				}
+				// save a reference to the video.js player for that element
+				player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+videoURL });
+	
+				// initialize the plugin with some custom options:
+				player.logobrand({
+					//height: "32px",
+					//width: "32px",
+					image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
+					destination: "http://www.khmeracademy.org/"
+				});
+				
+			}
+		</script>
+		
 		
 	</body>
 </html>
