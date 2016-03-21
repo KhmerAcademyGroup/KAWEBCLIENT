@@ -175,14 +175,52 @@
 														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News - Scholarship </a></h3>
 													  </div>
 														
-													<ul class="list-group currency-rates widget-currency-ticker"  id="getAKN" style="height:  380px; overflow: hidden;">
-													
+														<div class="panel with-nav-tabs panel-default">
+															  <div class="panel-heading">
+																<ul class="nav nav-tabs">
+																	<li class="active"><a href="#panel-home-1" data-toggle="tab" aria-expanded="true">All</a></li>
+																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" aria-expanded="false">Scholarship</a></li>
+																	<li class=""><a href="#panel-technology-1" data-toggle="tab" aria-expanded="false">Technology</a></li>
+																    <li class=""><a href="#panel-national-1" data-toggle="tab" aria-expanded="false">National News</a></li>
+																    <li class=""><a href="#panel-international-1" data-toggle="tab" aria-expanded="false">International News</a></li>
+																	<li class=""><a href="http://news.khmeracademy.org/"  target="_blank"> Other</a></li>
+																</ul>
+															  </div>
+																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
+																	<div class="panel-body">
+																		<div class="tab-content">
+																			<div class="tab-pane fade active in" id="panel-home-1">
+																				<div  id="getAKN" style="height:  330px; overflow: hidden;">
 														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-scholarship-1">
+																				<div  id="getAKNScholarship" style="height:  330px; overflow: hidden;">
 														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-technology-1">
+																				<div  id="getAKNTechnology" style="height:  330px; overflow: hidden;">
 														  	
-													</ul>
-															
-															  
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-national-1">
+																				<div  id="getAKNNational" style="height:  330px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-international-1">
+																				<div   id="getAKNInternational" style="height:  330px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<!-- /.tab-pane fade -->
+																		</div><!-- /.tab-content -->
+																	</div><!-- /.panel-body -->
+																</div><!-- /.collapse in -->
+															</div>
+							
+											  
 														
 											</div> 
 										</div>
@@ -190,7 +228,7 @@
 										<div class="col-lg-4" style="padding-right: 0px;">
 												<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  target="_blank"> Recent Courses  </a></h3>
+														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank"> Recent Courses  </a></h3>
 													  </div>
 											
 											
@@ -208,9 +246,9 @@
 														  			 		</div>                  
 														  			 		<div class="caption text-left">                        
 														  			 			<p class="small shortenString">                        
-														  			 				 <a class="no-underline" href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4" style="color:#4D4D4D;font-size: 16px;"><b>Codeigniter 3</b></a>
+														  			 				 <a id="newVideoTitile" class="no-underline" href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4" style="color:#4D4D4D;font-size: 16px;font-weight: bold"> </a>
 														  			 				 <br>
-														  			 				 <span class="small text-muted" style="color:#4D4D4D">19 Views | By admin</span>                  
+														  			 				 <span class="small text-muted" style="color:#4D4D4D" id="newVideoView"></span>                  
 														  			 			</p>             
 														  			 		</div>                     
 														  			 	</div>                     
@@ -219,7 +257,7 @@
 														  </div>
 														
 																	  
-														  <div id="topRecentVideos" style="height: 115px;overflow: overlay;"> 
+														  <div id="topRecentVideos" style="height: 122px;overflow: overlay;"> 
 														  	  <div id="getTopRecentVideo"></div>
 														  	  <!-- 
 															  <div class="owl-item" style="width: 100px;float:left;margin-right:10px;">                	
@@ -362,17 +400,22 @@
 		</script>
 		<script type="text/javascript">
 			
-				 function displayNews(data){
-					 var akn1 = '';
+				 function displayNews(block,data){
+					 var akn1 = '<table class="shortenString">';
+					 console.log(data.length);
 						for(var j=0; j<data.length; j++){
-							akn1 +='<li class="list-group-item" style="margin-top: 0px;">'+
-												'<div class="row">'+
-												'<div class="col-xs-1"><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></div>'+
-												'<div class="col-xs-11" style=" white-space: nowrap;width: 90%;overflow: hidden;text-overflow: ellipsis;""><a style="color:#656D78" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></div>'+
-												'</div>'+
-										 	'</li>';
+// 							akn1 +='<li class="list-group-item" style="margin-top: 0px;    border: 0px solid #ddd;">'+
+// 												'<div class="row">'+
+// 												'<div class="col-xs-1"><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></div>'+
+// 												'<div class="col-xs-11" style=" white-space: nowrap;width: 80%;overflow: hidden;text-overflow: ellipsis;""><a style="color:#656D78" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></div>'+
+// 												'</div>'+
+// 											''+
+// 									'</li>';
+							akn1 += '<tr style="height: 40px;"><td><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></td>'
+								   +'<td><a style="padding-left: 10px;color:#656D78;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></td></tr>';
 						}
-						$("#getAKN").html(akn1);
+						akn1 += "</table>";
+						$("#"+block).html(akn1);
 				} 
 			 
 		    $(document).ready(function() {
@@ -399,7 +442,11 @@
 					url:'${pageContext.request.contextPath}/akn/scholarship/',
 					method: 'GET',
 					success:function(data){
-						displayNews(data.RESPONSE_DATA);
+						displayNews("getAKN" ,data.ALL.RESPONSE_DATA);
+						displayNews("getAKNScholarship" ,data.SCHOLARSHIP.RESPONSE_DATA);
+						displayNews("getAKNTechnology" ,data.TECHNOLOGY.RESPONSE_DATA);
+						displayNews("getAKNNational" ,data.NATIONAL.RESPONSE_DATA);
+						displayNews("getAKNInternational" ,data.INTERNATIONAL.RESPONSE_DATA);
 					}
 				});	
 				//end akn-block
@@ -434,18 +481,23 @@
 							topRecentVideos = "";
 							if(data.RES_DATA[0].videos != null){
 								playVideo(data.RES_DATA[0].videos[0].youtubeUrl);
-								$("#getHref").attr("src" ,  'href="${pageContext.request.contextPath}/elearning/playvideo?v='+data.REST_DATA[0].videos[0].videoId+'&playlist='+data.REST_DATA[0].value.playlistId+'"');
+								$("#getHref").attr("href" ,  '${pageContext.request.contextPath}/elearning/playvideo?v='+data.RES_DATA[0].videos[0].videoId+'&playlist='+data.RES_DATA[0].videos[0].playlistId);
+								$("#getNewsTitle").text(data.RES_DATA[0].videos[0].playlistName);
+								
+								$("#newVideoTitile").text(data.RES_DATA[0].videos[0].videoTitle);
+								$("#newVideoTitile").attr("href" ,  '${pageContext.request.contextPath}/elearning/playvideo?v='+data.RES_DATA[0].videos[0].videoId+'&playlist='+data.RES_DATA[0].videos[0].playlistId);
+								$("#newVideoView").text(data.RES_DATA[0].videos[0].view + " views | By " + data.RES_DATA[0].videos[0].username);
 							}
 							$.each(data.RES_DATA[0].videos, function(key, value){
 								topRecentVideos +='<div class="owl-item" style="width: 100px;float:left;margin-right:10px;">'                	
 								+'<div class="mitem">'                    
 									+'<div>'                      
 										+'<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">'                       
-											+'<a href="/KAWEBCLIENT/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'">'                       
+											+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'">'                       
 												+'<img   src="https://i.ytimg.com/vi/'+value.youtubeUrl+'/mqdefault.jpg" alt="'+value.videoTitle+'">'                       
 											+'</a>'                       
 											+'<div class="caption text-left shortenString">'                        
-												+'<a class="small">'  
+												+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'" class="small">'  
 													+'<span class="small text-muted" style="color:#4D4D4D">'+value.videoTitle+'</span>'                  
 												+'</a>'             
 											+'</div>'                     

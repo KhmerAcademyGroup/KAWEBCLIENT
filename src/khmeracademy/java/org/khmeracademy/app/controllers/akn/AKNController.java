@@ -1,5 +1,6 @@
 package org.khmeracademy.app.controllers.akn;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,18 @@ public class AKNController {
     public ResponseEntity<Map<String, Object>> getAKNScholarship(){
 		System.out.println("AKN SCHOLARSHIP");
 		HttpEntity<Object> request = new HttpEntity<Object>(aknHeaders);
-		ResponseEntity<Map> response = rest.exchange(AKNURL + "api/article/1/8/50/0/0/", HttpMethod.GET , request , Map.class) ;
-        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		Map<String,Object> map = new HashMap<String , Object>();
+		ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/8/0/0/0/", HttpMethod.GET , request , Map.class) ;
+        map.put("ALL", all.getBody());
+        ResponseEntity<Map> scholarship = rest.exchange(AKNURL + "api/article/1/8/50/0/0/", HttpMethod.GET , request , Map.class) ;
+        map.put("SCHOLARSHIP", scholarship.getBody());
+        ResponseEntity<Map> technology = rest.exchange(AKNURL + "api/article/1/8/4/0/0/", HttpMethod.GET , request , Map.class) ;
+        map.put("TECHNOLOGY", technology.getBody());
+        ResponseEntity<Map> national = rest.exchange(AKNURL + "api/article/1/8/43/0/0/", HttpMethod.GET , request , Map.class) ;
+        map.put("NATIONAL", national.getBody());
+        ResponseEntity<Map> international = rest.exchange(AKNURL + "api/article/15/8/4/0/0/", HttpMethod.GET , request , Map.class) ;
+        map.put("INTERNATIONAL", international.getBody());
+		return new ResponseEntity<Map<String , Object>>(map , HttpStatus.OK);
 	}
 }
 

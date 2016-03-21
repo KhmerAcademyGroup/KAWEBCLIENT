@@ -41,13 +41,13 @@ public class MainController {
 		m.addAttribute("msg","Main Page");
 		
 
-		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		/*Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){
 			User user = (User) authentication.getPrincipal();
 			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
 		}else{
 			System.out.println(authentication.getPrincipal());
-		}
+		}*/
 		
 		
 		return "test";

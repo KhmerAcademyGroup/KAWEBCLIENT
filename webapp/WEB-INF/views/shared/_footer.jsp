@@ -93,9 +93,12 @@ END PAGE
 ===========================================================
 -->
 
-		<div id="p-frmLogin" class="ka-popup" style="display: none;width: 40%;">
+		<!-- Modal -->
+								
+		
+		<div id="p-frmLogin" class="ka-popup" style="display: none;width:70%">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header" style="    text-align: center;">
 
 					<button type="button" class="close" aria-hidden="true">
 						<span class="button b-close"><span>x</span></span>
@@ -104,51 +107,73 @@ END PAGE
 					<h4 class="bolded">Login to your Khmer Academy Account</h4>
 
 				</div>
-				<div class="modal-body" >
+				<div class="modal-body">
 					
-					<form class="form-horizontal m-t-20" id="frmLogin" action="${pageContext.request.contextPath}/login" method="POST">
+					
+					<div class="row">
+					
+					<form class="form-horizontal" id="frmLogin" action="${pageContext.request.contextPath}/login" method="POST">
 	                    
-	                    <div id="message"></div>
+	                    <div class="col-lg-6">
 	                    
-	                    <div class="form-group ">
-	                        <div class="col-xs-12">
-	                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_email" id="ka_email" placeholder="Email">
-	                        </div>
-	                    </div>
-	
-	                    <div class="form-group">
-	                        <div class="col-xs-12">
-	                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password"  id="ka_password" placeholder="Password">
-	                        </div>
-	                    </div>
-	
-	                    <div class="form-group ">
-	                        <div class="col-xs-12">
-	                            <div class="checkbox checkbox-primary">
-	                                <input id="checkbox-signup" type="checkbox">
-	                                <label for="checkbox-signup">
-	                                    Remember me
-	                                </label>
-	                            </div>
-	                            
-	                        </div>
-	                    </div>
+		                    <div id="message"></div>
+		                    
+		                    <div class="form-group ">
+		                        <div class="col-lg-12">
+		                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_email" id="ka_email" placeholder="Email">
+		                        </div>
+		                    </div>
+		
+		                    <div class="form-group">
+		                        <div class="col-lg-12">
+		                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password"  id="ka_password" placeholder="Password">
+		                        </div>
+		                    </div>
+		
+		                    <div class="form-group ">
+		                        <div class="col-lg-12">
+		                            <div class="checkbox checkbox-primary">
+		                                <input id="checkbox-signup" type="checkbox">
+		                                <label for="checkbox-signup">
+		                                    Remember me
+		                                </label>
+		                            </div>
+		                            
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="form-group text-center m-t-40">
+		                        <div class="col-lg-12">
+		                            <button class="btn btn-primary w-lg waves-effect waves-light" type="submit">Login</button>
+		                        </div>
+		                    </div>
+		
+		                    <div class="form-group m-t-30">
+		                        <div class="col-sm-7">
+		                            <a  href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+		                        </div>
+		                        <div class="col-sm-5 text-right">
+		                            <a href="javascript:" class="btSignUp">Create an account</a>
+		                        </div>
+		                    </div>
+	                  
+	                  	 </div>
 	                    
-	                    <div class="form-group text-center m-t-40">
-	                        <div class="col-xs-12">
-	                            <button class="btn btn-primary w-lg waves-effect waves-light" type="submit">Login</button>
-	                        </div>
-	                    </div>
-	
-	                    <div class="form-group m-t-30">
-	                        <div class="col-sm-7">
-	                            <a  href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-	                        </div>
-	                        <div class="col-sm-5 text-right">
-	                            <a href="javascript:" class="btSignUp">Create an account</a>
-	                        </div>
-	                    </div>
+	                    <div class="col-lg-6">
+	                			
+	                		<h5 class="bolded">Login with social accounts</h5>	
+	                		<button style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+	                			
+	               		</div>
+	                
+	                
 	                </form>
+	                
+	                
+	                  </div>
+	                   
+	              
+	                
 					
 				</div>
 			</div>
@@ -173,39 +198,39 @@ END PAGE
 	                    <div id="message-re"></div>
 	                    
 	                    
-	                     <div class="col-xs-6">
+	                     <div class="col-lg-6">
 			                    <div class="form-group ">
-			                        <div class="col-xs-12">
+			                        <div class="col-lg-12">
 			                        	<label>Email <span style="color:red">*</span></label>
 			                            <input class="form-control rounded bold-border" type="email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="email" id="email" placeholder="Email">
 			                        </div>
 			                    </div>
 			                    
 			                    <div class="form-group ">
-			                        <div class="col-xs-12">
+			                        <div class="col-lg-12">
 			                        	<label>Username <span style="color:red">*</span></label>
 			                            <input class="form-control rounded bold-border" type="text" required="required" oninvalid="this.setCustomValidity('Username is required!')" oninput="setCustomValidity('')" name="username" id="username" placeholder="Username">
 			                        </div>
 			                    </div>
 			
 			                    <div class="form-group">
-			                        <div class="col-xs-12">
+			                        <div class="col-lg-12">
 			                        	<label>Password <span style="color:red">*</span></label>
 			                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The password is required!')" oninput="setCustomValidity('')" name="password"  id="password" placeholder="Password">
 			                        </div>
 			                    </div>
 			                    
 			                    <div class="form-group">
-			                        <div class="col-xs-12">
+			                        <div class="col-lg-12">
 			                        	<label>Confirm password <span style="color:red">*</span></label>
 			                            <input class="form-control rounded bold-border" type="password" required="required" oninvalid="this.setCustomValidity('The Confirm Password is required!')" oninput="setCustomValidity('')" name="repassword"  id="repassword" placeholder="Confirm Password">
 			                        </div>
 			                    </div>
 			            </div>
 			            
-			            <div class="col-xs-6">        
+			            <div class="col-lg-6">        
 			                    <div class="form-group">
-			                    	<div class="col-xs-12">
+			                    	<div class="col-lg-12">
 			                    			<label>Department <span style="color:red">*</span></label>
 											<select placeholder="Choose a department" class="form-control rounded bold-border" id="getDepartment">
 												
@@ -214,12 +239,19 @@ END PAGE
 								</div>
 								
 			                    <div class="form-group">
-			                    	<div class="col-xs-12">
+			                    	<div class="col-lg-12">
 			                    			<label>University <span style="color:red">*</span></label>
 											<select placeholder="Choose a university" class="form-control rounded bold-border" id="getUniversity">
 												
 											</select>
 									</div>
+								</div>
+								
+								<div class="form-group">
+			                    	<div class="col-lg-12">
+										<h5 class="bolded">Sign up with social accounts</h5>	
+	                					<button style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+	                				</div>
 								</div>
 						</div>
 	                    
@@ -243,7 +275,7 @@ END PAGE
 		</div>
 		
 		
-									<div id="frmreset" class="ka-popup" style="display: none;width: 50%;">
+									<div id="frmreset" class="ka-popup" style="display: none;width: 70%;">
 										  
 										  <div class="modal-content">
 												<div class="modal-header">
@@ -281,7 +313,7 @@ END PAGE
 		
 
 
-										<div id="frmSendMailToConfrim" class="ka-popup" style="display: none;width: 50%;">
+										<div id="frmSendMailToConfrim" class="ka-popup" style="display: none;width: 70%;">
 										  
 										  <div class="modal-content">
 												<div class="modal-header">
