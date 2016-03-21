@@ -145,15 +145,37 @@
 				            	
 				            	<!-- Bannner -->
 				            	<div class="row" style="margin-bottom: 0px;padding: 15px;">
-										<div class="col-lg-12">
-												<jsp:include page="shared/_banner.jsp"></jsp:include>
-										</div>
+<!-- 										<div class="col-lg-12"> -->
+<%-- 												<jsp:include page="shared/_banner.jsp"></jsp:include> --%>
+<!-- 										</div> -->
 <!-- 										<div class="col-lg-2"> -->
 <%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/appstore.png"/> --%>
 <!-- 												<div style="height:20px"></div> -->
 <%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/playstore.png"/> --%>
 <!-- 										</div> -->
-								</div><!-- /.the-box -->
+
+<!-- 											<div id="owl-banner" class="owl-carousel owl-theme"> -->
+											
+												<div class="owl-carousel" id="owl-banner">
+												    <div class="item">
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA-MoEYS-Banner.png' alt=''>
+												    </div>
+													<div class='item'>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/ShortCourseBanner.png' alt=''>
+													</div>
+													<div class='item'>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KSHRD-Banner.png' alt=''>
+													</div>
+												</div>
+
+<!-- 											</div> -->
+											
+<!-- 											<div class="slide-button"> -->
+<!-- 												<div id="sleft" class="button-left"></div> -->
+<!-- 												<div id="sright" class="button-right"></div> -->
+<!-- 											</div>   -->
+
+								</div> <!-- End Banner -->
 								
 								<!--akn-slider  -->
 								<div class="the-box no-border clear-padding">
@@ -172,7 +194,7 @@
 											
 											<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News - Scholarship </a></h3>
+														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News </a></h3>
 													  </div>
 														
 														<div class="panel with-nav-tabs panel-default">
@@ -374,8 +396,67 @@
 								</div>
 								
 							</div>
+							
+							
+							
+							<div class="row" style="margin-left:0px">
+								
+								<div class="col-lg-4" style="padding-left: 0px;" >
+													<div class="panel panel-primary panel-square panel-no-border">
+														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank">Tutorials</a></h3>
+														  </div>
+												
+														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;">	
+														 	
+														 		<% for(int i=0;i<13;i++){ %>
+																<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+																	<span class="small shortenString">
+																		<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="color:#50a253;font-size: 16px;">
+																			<b>Korean, Sejong Book Part 2</b>
+																		</a>
+																	</span> <br/>
+																</div> 	
+														 		<% } %>
+															  
+															  
+															  
+														</div>
+			            								
+																  
+															
+												</div> 
+							 	 </div>
+							
+								<div class="col-lg-8" style="padding-left: 0px;margin-right:0px" >
+													<div class="panel panel-primary panel-square panel-no-border">
+														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank">Forum - Recent Questions  </a></h3>
+														  </div>
+												
+														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;">	
+														 	
+														 		<% for(int i=0;i<8;i++){ %>
+																<!-- <div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+																	<span class="small shortenString">
+																		<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="font-size: 16px;">
+																			<b>Korean, Sejong Book Part 2</b>
+																		</a>
+																	</span> <br/>
+																	<span class="small text-muted" style="color:#4D4D4D">0 Votes | 0 Answers</span>
+																</div>  -->	
+														 		<% } %>
+															  
+															  
+															  
+														</div>
+			            								
+																  
+															
+												</div> 
+							  </div>
 						
-	                        
+	                        </div>
 	                   
 	        </div>
 	        <!-- /#page-content-wrapper -->
@@ -392,11 +473,14 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
 		
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
-				<li class="list-group-item" style="margin-top: 0px;">
-						<div class="row">
-								<div class="col-xs-12 shortenString"><a  style="color:#656D78" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" target="_blank">​{{= title }}</a></div>
-						</div>
-				</li>
+				<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+						<span class="small shortenString">
+								<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="font-size: 16px;">
+										<b>Korean, Sejong Book Part 2</b>
+								</a>
+						</span> <br/>
+						<span class="small text-muted" style="color:#4D4D4D">0 Votes | 0 Answers</span>
+				</div> 
 		</script>
 		<script type="text/javascript">
 			
@@ -420,7 +504,11 @@
 			 
 		    $(document).ready(function() {
 		    	
-		    	
+		    	$('#owl-banner').owlCarousel({
+		    		navigation:false,
+		    		singleItem:true,
+		    		autoPlay:true
+		    	})
 		    	
 		    	// Forum 
 		    		$.ajax({
@@ -428,6 +516,7 @@
 							method: 'GET',
 							success:function(data){
 								if(data.RES_DATA.length>0){
+									console.log(data);
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						}
 							}

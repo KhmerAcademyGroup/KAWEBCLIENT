@@ -102,6 +102,34 @@
 										  </div><!-- /.panel-body -->
 										</div><!-- /.collapse in -->
 								</div><!-- /.panel panel-primary -->
+								
+								
+								<div class="panel panel-primary">
+									  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
+										<h3 class="panel-title">
+											<strong style="color:#fff;">KSHRD - Short Course</strong>
+										</h3>
+									  </div>
+										<div id="panel-collapse-course" class="collapse in">
+										  <div class="panel-body" style="padding: 5px;">
+											
+											<div class="panel-group work-category-wrap"" id="accordion-2" >
+					            
+					            					<a  href="#${category.maincategoryname}" class=" block-collapse collapsed" style="color:#434a54;" data-parent="#accordion-2" data-toggle="collapse"  aria-expanded="false">
+														<img src="http://localhost:8080/KAAPI/resources/upload/file/playlist/thumbnail/math1_thumbnail_ui.png"/>
+													</a>
+					            	
+									            	
+														
+									            	
+												</div><!-- End panel group -->
+											
+											
+										  </div><!-- /.panel-body -->
+										</div><!-- /.collapse in -->
+								</div><!-- /.panel panel-primary -->
+								
+								
 				</div>
 				
 				<div class="col-lg-9" style="padding-left:60px;padding-right:0">
