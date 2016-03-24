@@ -21,23 +21,19 @@
 		<jsp:include page="../shared/_menu.jsp" />
 		<!-- END TOP NAVBAR -->
 		
-		<div class="container">
-			<ol class="breadcrumb default square rsaquo sm">
-				<li><a><i class="fa fa-home"></i></a></li>
-				<li><a>Tutorials</a></li>
-				<li class="active">All Courses</li>
-			</ol>
-		</div>
+		
 
 
-		<div class="container">
+		<div class="container" style="margin-top:20px">
 	
-			<jsp:include page="../shared/_banner.jsp"></jsp:include>
+<%-- 			<jsp:include page="../shared/_banner.jsp"></jsp:include> --%>
+			
+			<div class="section-heading">
+					<div class="inner-border"></div>
+					<h3 style="color:#4c954d;">Tutorials</h3>
+				</div>
 
-			<div class="text-center" style="color: #2a5893; font-family: 'Lato', sans-serif;">
-				<h1><spring:message code="welcometutorialtext"/><h1>
-			</div>
-			<br />
+		
 			
 			<div id="listcategory"></div>	
 				

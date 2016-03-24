@@ -75,7 +75,7 @@
 						
 						</p>
 						
-						<img src="${pageContext.request.contextPath}/resources/assets/img/about/volunteer/volunteer.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
+						<img src="${pageContext.request.contextPath}/resources/assets/img/about/volunteer/about_bigdas.jpg" alt="Image" class="mfp-fade item-gallery img-responsive">
 						
 							
 							

@@ -30,7 +30,7 @@
 		
 		<!-- My Contend -->
 		
-		<div class="container ka-container" >
+		<div class="container ka-container" style='min-height:300px' >
 <!-- 
 															<div class="form-group">
 																<div class="col-lg-9 col-lg-offset-3">
@@ -62,12 +62,12 @@
 					success: function(data){  
 						if(data.STATUS==true){
 							$(".processing").hide();
-							$("#message").text("Your Email has been confirm please login !")
+							$("#message").replaceWith("<div > <h1>Email Verification!</h1> <h4>Your email is verified. Thank you.</4><h4>You have registered successfully.</h4> <br/> <a href='#' class='btn btn-primary btLogin'>Login</a> </p> </div>")
 							 //window.location = '${pageContext.request.contextPath}/login';
 						}
 						else{
 							$(".processing").hide();
-							$("#message").text("Can't confrim email again ! ");
+							$("#message").replaceWith("<div ><h1>Your email has been verified! Thank you.</h1> <br/> <a href='#' class='btn btn-primary btLogin' >Login</a></div> ");
 						}														
 						 console.log(data);
 					}

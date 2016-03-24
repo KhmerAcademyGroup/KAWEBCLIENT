@@ -1,110 +1,189 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>User Profile</title>
-	<jsp:include page="../shared/_header.jsp" />
-		<!-- sweet alert -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
-		<!-- Side Bar -->
-  		<link href="${pageContext.request.contextPath}/resources/assets/css/simple-sidebar.css" rel="stylesheet" />
-  		<!-- Player -->
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video-js.css">
-	  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.css">
-		<!-- Player Responsive -->
-		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/css/profile.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
-		<!-- chhoin  style add -->
-		<style type="text/css">
-		 
-		</style>
-</head>
-<body >
-	
-	<c:set var="usertype"  value="${usertype }"/>		
-	<jsp:include page="../shared/_menu.jsp" />
-	<br/>
-		
-		
-	<!-- My Contend -->
-	<div class="container ">
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
 
-	        <!-- Sidebar -->
-	        
-	        <!-- /#sidebar-wrapper -->
-	
+		<jsp:include page="../shared/_header.jsp" />
+		<style>
+		.owl-carousel .mitem{
+				/* padding: 30px 0px; */
+				margin-right: 10px; 
+				color: #FFF;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				text-align: center;
+			}
+			.media-lib-item:hover{
+				box-shadow: 2px 5px 10px -4px #4D4D4D;
+			}
+			.media-lib-item{
+				box-shadow:2px 5px 10px 0px #E8E9EE;
+			}
+			
+			.owl-carousel .item{
+				padding:0px;
+				margin:0px;
+			}
+			.owl-carousel .item img{
+				width:100%;
+			}
+		</style>	
+		
+	</head>
+ 
+	<body class="tooltips no-padding" >
+		
+		<!--
+		===========================================================
+		BEGIN PAGE
+		===========================================================
+		-->
+		
+		<!-- BEGIN TOP NAVBAR -->
+		<jsp:include page="../shared/_menu.jsp" />	
+		<!-- END TOP NAVBAR -->
+		
 	        <!-- Page Content -->
-	        <div id="" style="background:#fff;">
-	            <div class="container-fluid">
-	            	<div class="row">
-	            		<div class="col-lg-12">
+	        <div class="container ka-container"  style="min-height:400px" >
 	            		
-							<div class="panel with-nav-tabs panel-primary panel-square panel-no-border">
-								<center><h2>Search Result</h2></center>
-								
-								<div class="col-sm-4 col-md-3 col-xs-6 mix " style="display: inline-block;  opacity: 1;">       
-								<div class="work-item">        
-									<div class="hover-wrap">         
-										<a href="/KAWEBCLIENT/elearning/playvideo?v=ODQy&amp;playlist=NDA5"> <i class="glyphicon glyphicon-play icon-plus"></i>  </a> 
-										<a style="cursor:pointer" class="btnremovevideofromplaylist" vid="ODQy"><i class="glyphicon glyphicon-remove-sign " style="margin-left: 89%"></i></a> 
-									
-									</div> <!-- /.hover-wrap -->       
-										<i> <a href="playlistdetail.act?playlistid=1"><img src="https://i.ytimg.com/vi/MQlUFcdQw7I/mqdefault.jpg" alt="..."></a>  </i> 
-										<div class="the-box no-border transparent no-margin" style="height: 100px;">  
-											<div class="media-body">           
-											
-											<h5 class="media-heading" style="padding: 0px; margin: 0px;">          
-												<strong class="text-black">16. Upload Image</strong>          
-											</h5>          
-											<ul style="list-style: none; padding: 0px; margin: 0px;">           
-												<li class="text-muted small">by admin|2015-12-17</li>          
-												<li><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;0&nbsp;&nbsp;            
-												<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0&nbsp;&nbsp;            
-												<i class="fa fa-eye"></i>&nbsp;&nbsp;51&nbsp;&nbsp;</li>          
-											</ul>        
-											</div>        
-										</div>        <!-- /.the-box no-border transparent -->      
-								 </div>       <!-- /.work-item -->      
+	            	
+	            <div class="section-heading" style="text-align:left">
+<!-- 					<div class="inner-border"></div> -->
+					<h3 style="color:#4c954d;">Search result for "${keyword}"</h3>
+				</div>	
+	            		
+	            			
+	            	<div id="recent" style="margin-bottom:80px">
+	            		<div id="owl-recent" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+	            			<div class="owl-wrapper-outer">
+	            				
+	            				
+	            				<div id="getCourse" class="owl-wrapper" style="width: 100%; left: 0px; display: list-item;;">
+	            					
+	            					<!-- <div class="owl-item" style="width: 228px;">
+	            						<div class="mitem">
+	            							<div>
+	            								<div class="thumbnail media-lib-item" style="height: 250px;padding: 0px;">
+	            									<a href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4">
+	            										<img src="http://localhost:8080/KAAPI/resources/upload/file/playlist/default-playlist.jpg" alt="...">
+	            									</a>
+	            									<div class="caption text-left">
+	            										<p class="small">
+	            											<a class="no-underline" href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4" style="color:#50a253;font-size: 16px;">
+	            												<b>Codeigniter 3</b>
+	            											</a>
+	            											<br>
+	            											<span class="text-muted" style="color:#4D4D4D">Codeigniter 3</span>
+	            										</p>
+	            									</div>
+	            								</div>
+	            							</div>
+	            						</div>
+	            					</div> -->
+	            					
+	            					</div>
+	            				</div>
+	            			</div>
+	            			
+	            			
+	            			 <div id="loading" class="text-center" style="display: none;"><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>
+				        
+					        <div class="text-center">
+								<button class="btn btn-primary" id="btLoadMore" style=""> Load more</button>
 							</div>
-								
-								
-							
-							  
+	            			
+	            			
+	            		</div>
+	            			
+				           
+				        
+				       
+						
 	                        
-	                    	</div><!-- end col-lg-12 -->
-	                </div> <!-- row -->
-	            </div><!-- end container-fluid -->
+	                   
 	        </div>
 	        <!-- /#page-content-wrapper -->
 	
-	    </div>
 	    <!-- /#wrapper -->
-	
-	
-	</div>
-	<!-- right content -->
-	
-
-
-
-	
-	
-	<!-- End My Contend -->
-	 <jsp:include page="../shared/_footer.jsp" />
-	<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
-	 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootpag.min.js"></script>
-	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
-	   <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
-        <script type="text/javascript">
-	   
+	    
+	    
+	    
+		
+		<!-- BEGIN FOOTER -->
+		<jsp:include page="../shared/_footer.jsp" />
+		
+		
+		 <script id="course_tmpl" type="text/x-jquery-tmpl">
+								<div class="owl-item" style="width: 228px;">
+	            						<div class="mitem">
+	            							<div>
+	            								<div class="thumbnail media-lib-item" style="height: 250px;padding: 0px;">
+	            									<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+	            										<img src="{{= thumbnailUrl }}" alt="...">
+	            									</a>
+	            									<div class="caption text-left">
+	            										<p class="small shortenString">
+	            											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#50a253;font-size: 16px;">
+	            												<b>{{= playlistName }}</b>
+	            											</a>
+	            											<br>
+	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
+	            										</p>
+														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Videos | By {{= username }}</span>
+	            									</div>
+	            								</div>
+	            							</div>
+	            						</div>
+	            					</div>
+		</script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var page = 1;
+			var totalPage = 0;
+			
+			course = function (page){
+				$("#loading").show();
+	  			$("#btLoadMore").hide();
+				$.ajax({
+					url:'${pageContext.request.contextPath}/rest/elearning/searchcourse?keyword=${keyword}&page='+page+'&item=10',
+					method: 'GET',
+					 beforeSend: function(xhr) {
+		                    xhr.setRequestHeader("Accept", "application/json");
+		                    xhr.setRequestHeader("Content-Type", "application/json");
+		                },
+					success:function(data){ console.log(data);
+						if(data.RES_DATA.length>0){
+							$("#course_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
+						}
+						$("#loading").hide();
+						if(page >= data.PAGINATION.totalPages){ 
+							$("#btLoadMore").hide();
+						}else{
+							$("#btLoadMore").show();
+						}
+					}
+				});	
+			};
+			
+			course(page);
+			
+			
+			$("#btLoadMore").click(function(){  
+				page++;
+				empty = false;
+				course(page);
+				
+				
+			});
+			
+		});
 		
 		</script>
-  
-               
-	
-</body>
+		
+	</body>
 </html>

@@ -24,7 +24,15 @@ public class MainController {
 		m.addAttribute("title","Main Page");
 		final String uri = WebURL + "/rest/mainpage/countdata";
 	    RestTemplate restTemplate = new RestTemplate();
-	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+//	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+	    Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			m.addAttribute("userid", user.getUserId());
+		}else{
+			 m.addAttribute("userid", "null" );
+		}
+	    
 		return "home_new_1";
 	}
 	
@@ -33,13 +41,13 @@ public class MainController {
 		m.addAttribute("msg","Main Page");
 		
 
-		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		/*Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){
 			User user = (User) authentication.getPrincipal();
 			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
 		}else{
 			System.out.println(authentication.getPrincipal());
-		}
+		}*/
 		
 		
 		return "test";

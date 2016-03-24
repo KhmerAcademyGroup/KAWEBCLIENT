@@ -47,6 +47,7 @@ public class User implements UserDetails {
 	private String departmentName;
 	private int point;
 	private boolean userStatus;
+	private boolean isConfirmed;
 	
 	private List<UserRole> roles;
 	
@@ -266,5 +267,14 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return enabled;
 	}
-
+	public boolean isConfirmed() {
+		return isConfirmed;
+	}
+	public void setConfirmed(boolean isConfirmed) {
+		this.isConfirmed = isConfirmed;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

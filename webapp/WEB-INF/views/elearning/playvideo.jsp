@@ -175,7 +175,7 @@
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
-	            			
+	            			<h4 id="courseTitle" style="color:#4c954d;margin-bottom: 0px;font-weight: bold;">E-LEARNING</h4>
 	            		
 	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
 	            			<br />
@@ -183,6 +183,8 @@
 	            
 				            <!-- left side -->
 				            <div class="col-sm-12 col-xs-12 the-box no-border clear-padding" id="left_side">
+				            	
+				            	
 				            	
 								<!-- Video Demo -->
 								<div class="col-lg-9 col-md-7 col-sm-12">
@@ -193,7 +195,7 @@
 									</div>
 								
 								
-									<div id="myplayerwrapper">
+									<div id="myplayerwrapper" >
 										<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>
 									</div>
 								</div>
@@ -529,6 +531,8 @@
 					        $scope.VIDEOSTATUS = true;
 					        $scope.title=response.data.VIDEO.videoName;
 					        playVideo(response.data.VIDEO.youtubeUrl);
+					        console.log("Course " + response.data.PLAYLISTNAME);
+					        $("#courseTitle").text(response.data.PLAYLISTNAME);
 						}else{
 							$scope.VIDEOSTATUS = false;
 					        $scope.title= "Not Found";
@@ -661,7 +665,7 @@
 				}
 				$.get(getCommentUrl, function(data){
 				
-					if(data.STATUS==true){ alert(data.COMMENT[0].userImageUrl);
+					if(data.STATUS==true){ // alert(data.COMMENT[0].userImageUrl);
 						$("#comments").html(getCommentHTML(data.COMMENT, data.REPLY, page));
 						
 						if(page < parseInt(data.PAGINATION.totalPages)){
@@ -693,7 +697,7 @@
 							$("#comments").html(getCommentVideo(vdoid));	
 							$("#commenttext").val(null);
 							$("#commenterror").text("");
-							send(vdoid);
+							//send(vdoid);
 						});
 					
 				}else{
@@ -706,7 +710,7 @@
 		    });
 		</script>
 		
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			var webSocket = 
 				new WebSocket('ws://'+ document.location.host + '${pageContext.request.contextPath}/websockets/comment');
 			
@@ -740,7 +744,7 @@
 				webSocket.send(txt);
 				return false;
 			}
-		</script>
+		</script> -->
 		
 		
 	</body>

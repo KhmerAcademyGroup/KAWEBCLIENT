@@ -1,9 +1,14 @@
 package org.khmeracademy.app.controllers.elearning;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -65,11 +70,9 @@ public class ELearningController {
 		return "/errors/404";
 	}
 	
-	@RequestMapping( value ="/searchcourse", method = RequestMethod.GET)
-	public String searchPlaylist(ModelMap m, @RequestParam("searchcourse") String coursename) { 
-		
-		//final String uri1 = WebURL + "/rest/user/profile/listuserhistory/" + ;
-		
+	@RequestMapping( value ="/search", method = RequestMethod.GET)
+	public String searchPlaylist(ModelMap m, @RequestParam("keyword") String coursename) { 
+		m.addAttribute("keyword",coursename);
 		return "/elearning/searchcourse";
 	}
 	

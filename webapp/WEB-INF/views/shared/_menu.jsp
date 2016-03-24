@@ -12,7 +12,7 @@
 	
 		<!-- Begin logo -->
 		<div class="logo">
-			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/main_page/khmeracademy.png" alt="Logo"></a>
+			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/logo/KA-WEB-LOGO.png" alt="Logo"></a>
 		</div><!-- /.logo -->
 		<!-- End logo -->
 		
@@ -29,8 +29,8 @@
 		</div> -->
 		<div id="search-sub" class="nav-right-info">
 			<i class="fa fa-times times-icon" id="close-search-nav"></i>
-			<form role="form" method="get" action="${pageContext.request.contextPath}/elearning/searchcourse">
-				<input type="text" name="searchcourse" class="form-control" placeholder="Search Course...">
+			<form role="form" method="get" action="${pageContext.request.contextPath}/elearning/search">
+				<input type="text" name="keyword" class="form-control" placeholder="Search Course...">
 			</form>
 		</div>
 		<!-- End visible phone and search nav -->
