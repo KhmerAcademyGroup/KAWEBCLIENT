@@ -37,10 +37,15 @@ public class ELearningRestTemplateController {
 	
 	@RequestMapping(value="/rest/elearning/index" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> index(){
+		try{
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 //		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/video/listMainCategoryAndPlaylist", HttpMethod.GET , request , Map.class) ;
 		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/maincategory/listmaincategory", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	@RequestMapping(value="/rest/elearning/playvideo" , method = RequestMethod.GET)
