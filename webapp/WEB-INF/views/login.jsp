@@ -30,9 +30,9 @@
 							
 <!-- 							<h4 class="small-title">You are not authorized to access this page!</h4> -->
 							<c:if test="${param.logout == null}">
-								<div class="alert alert-warning alert-bold-border square fade in alert-dismissable">
+								<div class="alert alert-default  square fade in alert-dismissable">
 		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-									<strong class="alert-link">Login to Khmer Academy!</strong>
+									<strong class="alert-link">Login with your Khmer Academy Account</strong>
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">
@@ -44,7 +44,7 @@
 								
 
 								
-								<hr>
+								
 								<form role="form" id="frmLogin" action="${pageContext.request.contextPath}/login">
 									 
 									  <div id="message"></div>
@@ -89,6 +89,37 @@
 								
 							</div><!-- /.the-box .bg-danger .no-border-->
 						</div>
+						
+						
+						
+						
+						
+						<div class="col-sm-6">
+							<div class="the-box bg-default no-border">
+							
+								<div class="alert alert-default  square fade in alert-dismissable">
+									<strong class="alert-link">Login with your Social Account</strong>
+								</div>
+								
+								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+								
+									<div id="fb-root"></div>
+									<script type="text/javascript">
+									 (function(d, s, id){
+									     var js, fjs = d.getElementsByTagName(s)[0];
+									     if (d.getElementById(id)) {return;}
+									     js = d.createElement(s); js.id = id;
+									     js.src = "//connect.facebook.net/en_US/sdk.js";
+									     fjs.parentNode.insertBefore(js, fjs);
+									   }(document, 'script', 'facebook-jssdk'));
+									</script>
+								
+								
+								
+								
+								
+							</div><!-- /.the-box .bg-danger .no-border-->
+						</div>
 			
 			
 										
@@ -106,42 +137,50 @@
 		<jsp:include page="shared/_footer.jsp" />
 		
 		  <script type="text/javascript">
-		  /* $(document).ready(function(){
-			  
-			  $(".sending").hide();
-			  $(".check_your_email").hide();
-			  $(document).on('click', "#btn_submit", function() {									  
-					var address =$("#emailaddress").val()
-					$(".sending").show();
-					if(address==""){						
-						$(".sending").hide(); 
-						return 0;}
-					else{
-				 	 $.ajax({
-						url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
-						method: "GET",
-						success: function(data){  	    							    																			
-							if(data.STATUS==true){
-								$(".sending").hide();
-								$(".check_your_email").show();															
-								setTimeout(function(){
-									$('#frmreset').modal('hide');
-									$("#emailaddress").val("");
-									$(".check_your_email").hide();	
-									}, 1000);
-								
-							}
+		   var path =  "${pageContext.request.contextPath}";
+			/* $(document).ready(function(){
+					  
+					  $(".sending").hide();
+					  $(".check_your_email").hide();
+					  $(document).on('click', "#btn_submit", function() {									  
+							var address =$("#emailaddress").val()
+							$(".sending").show();
+							if(address==""){						
+								$(".sending").hide(); 
+								return 0;}
 							else{
-								$(".sending").hide();
-								alert("Invalib Email !")
-							}														
-							 console.log(data);
-						}
-					});  
-					}
-				});
-			  
-		  }); */
+						 	 $.ajax({
+								url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
+								method: "GET",
+								success: function(data){  	    							    																			
+									if(data.STATUS==true){
+										$(".sending").hide();
+										$(".check_your_email").show();															
+										setTimeout(function(){
+											$('#frmreset').modal('hide');
+											$("#emailaddress").val("");
+											$(".check_your_email").hide();	
+											}, 1000);
+										
+									}
+									else{
+										$(".sending").hide();
+										alert("Invalib Email !")
+									}														
+									 console.log(data);
+								}
+							});  
+							}
+						});
+					  
+				  });  */
+			
+			
 		  </script>
+		  
+		  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
+		  
+		  
+		  
 	</body>
 </html>

@@ -62,7 +62,7 @@
 			<div class="container">
 				<ol class="breadcrumb">
 				  <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-				  <li><a href="${pageContext.request.contextPath}/about/people">People</a></li>
+<%-- 				  <li><a href="${pageContext.request.contextPath}/about/people">People</a></li> --%>
 				  <li><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
 				  <li class="active">Partner</li>
 				  <li><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>

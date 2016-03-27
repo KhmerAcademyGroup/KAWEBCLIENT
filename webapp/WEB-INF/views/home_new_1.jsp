@@ -247,10 +247,14 @@
 											</div> 
 										</div>
 										
+										
+										
+										
+										
 										<div class="col-lg-4" style="padding-right: 0px;">
 												<div class="panel panel-primary panel-square panel-no-border">
 													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank"> Recent Courses  </a></h3>
+														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"> Recent Courses  </a></h3>
 													  </div>
 											
 											
@@ -279,7 +283,7 @@
 														  </div>
 														
 																	  
-														  <div id="topRecentVideos" style="height: 122px;overflow: overlay;"> 
+														  <div id="topRecentVideos" style="height: 122px;overflow: auto;"> 
 														  	  <div id="getTopRecentVideo"></div>
 														  	  <!-- 
 															  <div class="owl-item" style="width: 100px;float:left;margin-right:10px;">                	
@@ -322,102 +326,99 @@
 								
 								<!-- BEGIN OWL CAROUSEL -->
 								
-								
-							<sec:authorize access="isAuthenticated()" var="logged"/>
-								
-							<sec:authorize access="isAuthenticated()">
-								
-								<!-- Recommended Courses -->
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">Recommended Courses</span>
-										<br/>
-										<br/>
-									   	<div id="recommended_courses">
-									    
-										</div>
-								</div><!-- /.the-box -->
-								
-								
-								
-								<!-- Recommended Videos -->
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">Recommended Videos</span>
-										<br/>
-										<br/>
-									   	<div id="recommended_videos">
-									    
-										</div>
-								</div><!-- /.the-box -->
-								
-							</sec:authorize>
-								
-								
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">Recent Courses</span>
-										<br/>
-										<br/>
-									   	<div id="recent">
-									    
-										</div>
-								</div><!-- /.the-box -->
-								
-								
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">General Education</span>
-										<br/>
-										<br/>
-										<div id="generalEdu">	
-																    
-										</div>
-								</div>
-								
-								
-								
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">Computer Science</span>
-										<br/>
-										<br/>
-										<div id="computerScience">	
-																    
-										</div>
-								</div>
-								
-								<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
-										<span class="small-title" style="font-weight: bold;">Language</span>
-										<br/>
-										<br/>
-										<div id="language">	
-																    
-										</div>
-								</div>
-								
-								<div class="row" style="    background:rgb(78, 156, 80);text-align: center;margin: 20px 15px 20px;height: 50px;border-radius: 3px;padding-top: 3px;font-size: 30px;">
-										<a style="color: white;" href="${pageContext.request.contextPath}/elearning">Browse Courses</a>
-								</div>
-								
-							</div>
+						<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
 							
+						<div id="listCourse" style="display:none">
+								
+								<sec:authorize access="isAuthenticated()" var="logged"/>
+									
+								<sec:authorize access="isAuthenticated()">
+									
+									<!-- Recommended Courses -->
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">Recommended Courses</span>
+											<br/>
+											<br/>
+										   	<div id="recommended_courses">
+										    
+											</div>
+									</div><!-- /.the-box -->
+									
+									
+									
+									<!-- Recommended Videos -->
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">Recommended Videos</span>
+											<br/>
+											<br/>
+										   	<div id="recommended_videos">
+										    
+											</div>
+									</div><!-- /.the-box -->
+									
+								</sec:authorize>
+									
+									
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">Recent Courses</span>
+											<br/>
+											<br/>
+										   	<div id="recent">
+										    
+											</div>
+									</div><!-- /.the-box -->
+									
+									
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">General Education</span>
+											<br/>
+											<br/>
+											<div id="generalEdu">	
+																	    
+											</div>
+									</div>
+									
+									
+									
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">Computer Science</span>
+											<br/>
+											<br/>
+											<div id="computerScience">	
+																	    
+											</div>
+									</div>
+									
+									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+											<span class="small-title" style="font-weight: bold;">Language</span>
+											<br/>
+											<br/>
+											<div id="language">	
+																	    
+											</div>
+									</div>
+									
+									<div class="row" style="    background:rgb(78, 156, 80);text-align: center;margin: 20px 15px 20px;height: 50px;border-radius: 3px;padding-top: 3px;font-size: 30px;">
+											<a style="color: white;" href="${pageContext.request.contextPath}/elearning">Browse Courses</a>
+									</div>
+									
+								</div>
 							
+							</div>	 <!-- End List Courses -->
 							
-							<div class="row" style="margin-left:0px">
+							<div class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;">
 								
 								<div class="col-lg-4" style="padding-left: 0px;" >
 													<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank">Tutorials</a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning" >Tutorials</a></h3>
 														  </div>
 												
-														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;">	
+														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;    height: 457px;"  id="listcategory">	
 														 	
-														 		<% for(int i=0;i<13;i++){ %>
-																<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
-																	<span class="small shortenString">
-																		<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="color:#50a253;font-size: 16px;">
-																			<b>Korean, Sejong Book Part 2</b>
-																		</a>
-																	</span> <br/>
-																</div> 	
-														 		<% } %>
+														 		
+																
+														 		
 															  
 															  
 															  
@@ -431,26 +432,12 @@
 								<div class="col-lg-8" style="padding-left: 0px;margin-right:0px" >
 													<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  target="_blank">Forum - Recent Questions  </a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  >Forum - Recent Questions  </a></h3>
 														  </div>
 												
-														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;">	
-														 	
-														 		<% for(int i=0;i<8;i++){ %>
-																<!-- <div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
-																	<span class="small shortenString">
-																		<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="font-size: 16px;">
-																			<b>Korean, Sejong Book Part 2</b>
-																		</a>
-																	</span> <br/>
-																	<span class="small text-muted" style="color:#4D4D4D">0 Votes | 0 Answers</span>
-																</div>  -->	
-														 		<% } %>
-															  
-															  
-															  
+														<div class="inbox"  id="getQuestion" style="padding: 15px;  border: 1px solid #D5DAE0;">	
+																
 														</div>
-			            								
 																  
 															
 												</div> 
@@ -472,14 +459,27 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
 		
+		
+		 <script id="tlistcategory_tmpl" type="text/x-jquery-tmpl">
+					<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+								<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}"><img style="width:20px;height:20px" width="20px" height="20px" src="{{= categoryLogoUrl }}" /></a>
+								<span class="small shortenString">
+										<a title="{{= categoryName}}" class="no-underline ka-question" href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#37BC9B">
+											<b>{{= categoryName}}</b>
+										</a>
+								</span> <br/>
+					</div> 	
+		</script>
+																
+																
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
 				<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
 						<span class="small shortenString">
-								<a title="Korean, Sejong Book Part 2" class="no-underline ka-question" href="/KAWEBCLIENT/elearning/playvideo?v=NzM1&amp;playlist=MzI5" style="font-size: 16px;">
-										<b>Korean, Sejong Book Part 2</b>
+								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" style="font-size: 16px;color:#37BC9B">
+										<b>{{= title }}</b>
 								</a>
 						</span> <br/>
-						<span class="small text-muted" style="color:#4D4D4D">0 Votes | 0 Answers</span>
+						<span class="small text-muted" style="color:#4D4D4D">{{= vote }} Votes | {{= commentCount }} Answers</span>
 				</div> 
 		</script>
 		<script type="text/javascript">
@@ -518,10 +518,22 @@
 								if(data.RES_DATA.length>0){
 									console.log(data);
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
+	    						
 	    						}
 							}
 					});	
 		    	// End Forum
+		    	
+		    	// Tutorial
+				$.ajax({
+					url : "${pageContext.request.contextPath}/tutorial/rest/listcategory",
+					method: "GET",
+					success : function(data){
+						console.log(data.RES_DATA);
+						$("#tlistcategory_tmpl").tmpl(data.RES_DATA).appendTo("#listcategory");
+					}
+				});
+		    	// End Tutorial
 		    	
 		    	
 				//}, function(data) {
@@ -707,6 +719,8 @@
 						
 						
 						showme(); 
+						$("#listCourse").show();
+						$("#loading").hide();
 					}
 		    	});
 				

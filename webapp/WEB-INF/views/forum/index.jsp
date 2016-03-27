@@ -251,10 +251,10 @@
 																'<a  href="${pageContext.request.contextPath}/forum/question/'+data.RES_DATA[i]["commentId"]+'" class="ka-question">'+
 																	shorten(data.RES_DATA[i]["title"] , 80)+
 																'</a> '+
-																'<p>'+
+																/* '<p>'+
 																   '<p> '+shorten(data.RES_DATA[i]["detail"] , 230)+'</p>'+
-																'</p>'+
-																'<div class="text-left" id="getTage">'+
+																'</p>'+ */
+																'<div class="text-left" id="getTage" style="margin-top:20px">'+
 																	tagHTML+
 																'</di>'+
 															'</span>'+

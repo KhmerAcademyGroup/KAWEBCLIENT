@@ -35,7 +35,15 @@ public class ELearningController {
 	    m.addAttribute("title","E-Learning");
 	    m.addAttribute("IMGURL", IMGURL);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
-		return "/elearning/index";
+		//return "/elearning/index";
+	    Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			m.addAttribute("userid", user.getUserId());
+		}else{
+			 m.addAttribute("userid", "null" );
+		}
+	    return "/elearning/index_new_1";
 	}
 	
 	@RequestMapping(value="/playvideo" , method = RequestMethod.GET)

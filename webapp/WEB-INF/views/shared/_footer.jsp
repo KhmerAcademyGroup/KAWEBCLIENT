@@ -28,10 +28,9 @@
 			<div class="col-sm-6 col-md-2">
 				<h4>Contribute</h4>
 				<ul class="list">
-					<li><a href="#${pageContext.request.contextPath}/elearning">Facebook</a></li>
-					<li><a href="#${pageContext.request.contextPath}/tutorial">Google+</a></li>
-					<li><a href="#${pageContext.request.contextPath}/forum">Instagram</a></li>
-					<li><a href="#${pageContext.request.contextPath}/forum">Twitter</a></li>
+					<li><a href="https://www.facebook.com/KhmerAcademy.Org/" target="_blank">Facebook</a></li>
+					<li><a href="https://plus.google.com/+KhmerAcademyOrg/posts" target="_blank">Google+</a></li>
+					<li><a href="https://www.youtube.com/channel/UCnE8zj9WeCl0Jvi8mX6olww" target="_blank">Youtube</a></li>
 				</ul>
 			</div>
 			
@@ -96,15 +95,15 @@ END PAGE
 		<!-- Modal -->
 								
 		
-		<div id="p-frmLogin" class="ka-popup" style="display: none;width:70%">
+		<div id="p-frmLogin" class="ka-popup" style="display: none;width:70%;    margin-top: 100px;">
 			<div class="modal-content">
-				<div class="modal-header" style="    text-align: center;">
+				<div class="modal-header" style="text-align: center;">
 
 					<button type="button" class="close" aria-hidden="true">
 						<span class="button b-close"><span>x</span></span>
 					</button>
 					
-					<h4 class="bolded">Login to your Khmer Academy Account</h4>
+					<h4 class="bolded">Login</h4>
 
 				</div>
 				<div class="modal-body">
@@ -115,7 +114,18 @@ END PAGE
 					<form class="form-horizontal" id="frmLogin" action="${pageContext.request.contextPath}/login" method="POST">
 	                    
 	                    <div class="col-lg-6">
-	                    
+	                    	
+	                    	<h5 class="bolded">Login with you social accounts</h5>	
+	                	    <div class="form-group ">
+	                	    	<div class="col-lg-12">
+	                				<button style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+	                			</div>
+	                		</div>			
+	                    	
+	                    	<hr style="margin: 20px;">
+	                    	
+	                    	<h5 class="bolded">Login with you Khmer Academy accounts</h5>	
+	                    	
 		                    <div id="message"></div>
 		                    
 		                    <div class="form-group ">

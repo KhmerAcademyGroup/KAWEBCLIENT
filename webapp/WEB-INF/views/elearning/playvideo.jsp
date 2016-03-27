@@ -213,18 +213,18 @@
 										<c:forEach items="${data.PLAYLIST}" var="plist">
 											<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" ng-click="changeUrlVideo('${plist.videoId }')">
 												<div class="media">
-													<a class="pull-left">
+													<%-- <a class="pull-left">
 											    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
-											    	</a>
+											    	</a> --%>
 											    	<div class="clearfix visible-xs"></div>
 											    	<div class="media-body">
-											        <h4 class="media-heading">
+											        <h2 class="media-heading">
 											        	<a style="color:white">${plist.videoName}</a>
-													</h4>
-											        <ul class="list-inline" style="color:#fff;">
-											            <%-- <li class="text-muted">by ${plist.username }</li> --%>
+													</h2>
+											        <%-- <ul class="list-inline" style="color:#fff;">
+											            <li class="text-muted">by ${plist.username }</li>
 											            <li style="color:#a6a6a6;">by ${plist.username }</li>
-											        </ul>
+											        </ul> --%>
 											        </div><!-- /.media-body -->
 											    </div><!-- /.media -->
 											</div>

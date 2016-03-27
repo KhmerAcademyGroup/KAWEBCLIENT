@@ -71,7 +71,7 @@
 					 </a>
 					 <ul class="sub-menus">
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about">About us</a></li>
-						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/people">People</a></li>
+<%-- 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/people">People</a></li> --%>
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/supporter">Supporter</a></li>
 						<li class="sub-list"><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>
 					</ul>
@@ -105,7 +105,7 @@
 			</sec:authorize>
 			<sec:authorize access="isAnonymous()">
 				<li class="parent">
-					<a href="#" class="btLogin"><spring:message code="login"/></a>
+					<a href="${pageContext.request.contextPath}/login" class="btLogin9999"><spring:message code="login"/></a>
 				</li>
 				<%-- <li class="parent">
 					<a href="#" class="btSignUp"><spring:message code="signup"/></a>

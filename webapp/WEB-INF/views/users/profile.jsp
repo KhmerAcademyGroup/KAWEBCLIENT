@@ -202,7 +202,7 @@
 														<div class="form-group">
 															<label class="col-lg-3 control-label">Date of birth<span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" value="" id="dateofbirth" name="dateofbirth" data-date-format="dd-mm-yyyy" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
+																<input type="text" value="" id="dateofbirth" name="dateofbirth" data-date-format="yyyy-mm-dd" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
 																<small id="checkdate" class="help-block" style="color: red;"></small>
 															</div>
 														</div>
@@ -234,7 +234,7 @@
 																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  ><br/>
 																<div class="fileinput fileinput-new" data-provides="fileinput">
 																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
-																  <span class="fileinput-exists">Change</span><input type="file" id="image" name="image"></span>
+																  <span class="fileinput-exists">Change</span><input type="file" id="image" name="image" onchange="return ValidateFileUpload()"></span>
 																  <span class="fileinput-filename"></span>
 																  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
 																</div>
@@ -1571,12 +1571,28 @@ function mySearchPlaylist(){
 		
 		
 		function processUpdatePr(n,g,dob,phone,img,uni,dep){
-			var JSONObject = $.parseJSON('{"username":"'+n+'","gender":"'+g+'","dateOfBirth":"'+dob+'","phoneNumber":"'+phone+'","userImageUrl":"'+img+'","universityId":"'+uni+'","departmentId":"'+dep+'","userId":"'+userid+'"}');
+// 			var JSONObject = $.parseJSON('{"username":"'+n+'","gender":"'+g+'","dateOfBirth":"'+dob+'","phoneNumber":"'+phone+'","userImageUrl":"'+img+'","universityId":"'+uni+'","departmentId":"'+dep+'","userId":"'+userid+'"}');
+			console.log();
+			var JSONObject = {
+					username : n ,
+					gender : g ,
+					dateOfBirth :dob ,
+					phoneNumber : phone ,
+					userImageUrl : img ,
+					universityId : uni ,
+					departmentId : dep,
+					userId : userid
+			};
+			console.log(JSON.stringify(JSONObject));
 			$.ajax({
 	            url: url+"/rest/user/profile/updateprofile",
-	            type: 'put',
-	            contentType: 'application/json;charset=utf-8',
-	            data: JSON.stringify(JSONObject),
+	            method: 'PUT',
+	            data: JSON.stringify(JSONObject),   
+	            datatype : "JSON",
+				beforeSend: function(xhr) {
+	                    xhr.setRequestHeader("Accept", "application/json");
+	                    xhr.setRequestHeader("Content-Type", "application/json");
+	            },
 	            success: function(data){
 	            	 if(data.STATUS == true){
 	            		 swal("Profile Was Update", "You clicked the button!", "success")
@@ -1584,6 +1600,7 @@ function mySearchPlaylist(){
 	            	
 	            },
 	            error: function(data){
+	            	console.log(data);
 	            	alert("3 unsuccess data");
 	            }
 	        });	
@@ -2081,6 +2098,56 @@ function mySearchPlaylist(){
 	</script>
   
                
+               
+     <script type="text/javascript">
+	var sone = 0;	
+    function ValidateFileUpload() {
+    	
+   	 	if( document.getElementById("image").files.length == 0 ){
+			return;
+		} 
+	
+        var fuData = document.getElementById('image');
+        var FileUploadPath = fuData.value;
+        var imageSize = fuData.files[0].size;
+        var maxSize = 1024 * 1024 * 2 ;  // size 2 MB
+        if(imageSize> maxSize){
+        	alert("Please upload the image less than 2MB.1");
+        	$("#image").val('');
+//         	$('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+        }else{
+      //  alert("This is file size of image you have to controller ....."+imageSize);
+        //To check if user upload any file
+        if (FileUploadPath == '') {
+            alert("Please upload the image less than 2MB.2");
+            $("#image").val('');
+//             $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+        } else {
+            var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+			//The file uploaded is an image
+			if ( Extension == "png" || Extension == "gif" || Extension == "jpeg" || Extension == "jpg") {				    
+				
+				if (fuData.files && fuData.files[0]) {
+                    var reader = new FileReader();
+                      reader.onload = function(e) {
+                         $('#imageprofile').attr('src', e.target.result);
+                         console.log("OK");
+                    };
+                    reader.readAsDataURL(fuData.files[0]);
+                }
+
+            } 
+
+	//The file upload is NOT an image
+	else {
+	                alert("Please upload the image less than 2MB. 3");
+	                $("#image").val('');
+// 	                $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+	            }
+	        }
+	    }
+    }
+	</script> 
 	
 </body>
 </html>

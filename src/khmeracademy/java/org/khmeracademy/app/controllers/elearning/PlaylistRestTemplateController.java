@@ -153,7 +153,19 @@ public class PlaylistRestTemplateController {
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 		
+		@RequestMapping(value="/rest/elearning/index_new_1/{userid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listPlaylistByMainCategory(@PathVariable String userid){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/playlists/index_new_1/"+ userid, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
 		
+		@RequestMapping(value="/rest/elearning/index_new_1/get/{maincategoryid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listCourseByMainCategoryId(@PathVariable String maincategoryid){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/list_playlist_by_maincategoryid/"+ maincategoryid, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
 		
 		
 	
