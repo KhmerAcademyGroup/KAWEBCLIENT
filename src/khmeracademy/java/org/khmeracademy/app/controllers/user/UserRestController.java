@@ -67,4 +67,18 @@ public class UserRestController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 
+	@RequestMapping(value="/rest/login_with_fb" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> login_with_fb(@RequestBody FrmAddUser user){
+		HttpEntity<Object> request = new HttpEntity<Object>(user,header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "authentication/login_with_fb", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/rest/add_user_sc" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> add_user_sc(@RequestBody FrmAddUser user){
+		HttpEntity<Object> request = new HttpEntity<Object>(user,header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "user/add_user_sc", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 }

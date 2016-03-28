@@ -42,13 +42,12 @@
 					   
 					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
 					   $.ajax({
-							url : "http://localhost:8080/KAAPI/api/authentication/login_with_fb",
+							url : path+"/rest/login_with_fb",
 							method: "POST",
 							datatype : "JSON",
 							beforeSend: function(xhr) {
 				                    xhr.setRequestHeader("Accept", "application/json");
 				                    xhr.setRequestHeader("Content-Type", "application/json");
-				                    xhr.setRequestHeader("Authorization" , "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ==");
 				            },
 				            data: JSON.stringify({ email : fbemail, scID : fbId, scType : 2 }),
 							success: function(data){ 								
@@ -67,13 +66,12 @@
 						         				  	  gender : fbGender
 										 }; 
 										$.ajax({
-											url : "http://localhost:8080/KAAPI/api/user/add_user_sc",
+											url : path+"/rest/add_user_sc",
 											method: "POST",
 											datatype : "JSON",
 											beforeSend: function(xhr) {
 								                    xhr.setRequestHeader("Accept", "application/json");
 								                    xhr.setRequestHeader("Content-Type", "application/json");
-								                    xhr.setRequestHeader("Authorization" , "Basic S0FBUEkhQCMkOiFAIyRLQUFQSQ==");
 								            },
 								            data: JSON.stringify(frmData),
 											success: function(data){ 								

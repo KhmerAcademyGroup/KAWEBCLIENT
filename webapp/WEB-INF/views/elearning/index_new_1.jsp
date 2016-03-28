@@ -65,7 +65,7 @@
 	        <div id="sidebar-wrapper" style="height: auto !important;">
 	        	<br />
 	        	
-	            <div class="panel panel-primary">
+	            <div class="panel panel-primary" style="margin-left:10px">
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<!-- <a class="block-collapse" style="color:#006a00;" href="#panel-collapse-course"> -->
@@ -118,7 +118,7 @@
 	
 	        <!-- Page Content -->
 	        <div id="page-content-wrapper" style="background:white;">
-	            <div class="container-fluid">
+	            <div class="container">
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12" style="min-height:500px">
 	            			
