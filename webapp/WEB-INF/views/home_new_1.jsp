@@ -406,7 +406,7 @@
 							
 							</div>	 <!-- End List Courses -->
 							
-							<div class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;">
+							<div id="tutorialForum" class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;display: none">
 								
 								<div class="col-lg-4" style="padding-left: 0px;" >
 													<div class="panel panel-primary panel-square panel-no-border">
@@ -486,7 +486,7 @@
 			
 				 function displayNews(block,data){
 					 var akn1 = '<table class="shortenString">';
-					 console.log(data.length);
+// 					 console.log(data);
 						for(var j=0; j<data.length; j++){
 // 							akn1 +='<li class="list-group-item" style="margin-top: 0px;    border: 0px solid #ddd;">'+
 // 												'<div class="row">'+
@@ -516,7 +516,7 @@
 							method: 'GET',
 							success:function(data){
 								if(data.RES_DATA.length>0){
-									console.log(data);
+// 									console.log(data);
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						
 	    						}
@@ -529,7 +529,7 @@
 					url : "${pageContext.request.contextPath}/tutorial/rest/listcategory",
 					method: "GET",
 					success : function(data){
-						console.log(data.RES_DATA);
+// 						console.log(data.RES_DATA);
 						$("#tlistcategory_tmpl").tmpl(data.RES_DATA).appendTo("#listcategory");
 					}
 				});
@@ -557,7 +557,8 @@
 					url :"${pageContext.request.contextPath}/rest/elearning/recent/${userid}",
 					type: "GET",
 					dataType: "JSON",
-					success: function(data){ console.log(data);
+					success: function(data){ 
+						console.log(data);
 						var recent="";
 		 				recent = "<div id='owl-recent' class='owl-carousel owl-theme'>";
 						$.each(data.RES_DATA, function(key, value){
@@ -588,27 +589,27 @@
 								$("#newVideoTitile").text(data.RES_DATA[0].videos[0].videoTitle);
 								$("#newVideoTitile").attr("href" ,  '${pageContext.request.contextPath}/elearning/playvideo?v='+data.RES_DATA[0].videos[0].videoId+'&playlist='+data.RES_DATA[0].videos[0].playlistId);
 								$("#newVideoView").text(data.RES_DATA[0].videos[0].view + " views | By " + data.RES_DATA[0].videos[0].username);
-							}
-							$.each(data.RES_DATA[0].videos, function(key, value){
-								topRecentVideos +='<div class="owl-item" style="width: 100px;float:left;margin-right:10px;">'                	
-								+'<div class="mitem">'                    
-									+'<div>'                      
-										+'<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">'                       
-											+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'">'                       
-												+'<img   src="https://i.ytimg.com/vi/'+value.youtubeUrl+'/mqdefault.jpg" alt="'+value.videoTitle+'">'                       
-											+'</a>'                       
-											+'<div class="caption text-left shortenString">'                        
-												+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'" class="small">'  
-													+'<span class="small text-muted" style="color:#4D4D4D">'+value.videoTitle+'</span>'                  
-												+'</a>'             
+							
+								$.each(data.RES_DATA[0].videos, function(key, value){
+									topRecentVideos +='<div class="owl-item" style="width: 100px;float:left;margin-right:10px;">'                	
+									+'<div class="mitem">'                    
+										+'<div>'                      
+											+'<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">'                       
+												+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'">'                       
+													+'<img   src="https://i.ytimg.com/vi/'+value.youtubeUrl+'/mqdefault.jpg" alt="'+value.videoTitle+'">'                       
+												+'</a>'                       
+												+'<div class="caption text-left shortenString">'                        
+													+'<a href="${pageContext.request.contextPath}/elearning/playvideo?v='+value.videoId+'&playlist='+value.playlistId+'" class="small">'  
+														+'<span class="small text-muted" style="color:#4D4D4D">'+value.videoTitle+'</span>'                  
+													+'</a>'             
+												+'</div>'                     
 											+'</div>'                     
-										+'</div>'                     
-									+'</div>'                    
-									+'</div>'                   
-								+'</div>';
-							});
-							$("#getTopRecentVideo").replaceWith(topRecentVideos);			  
-								
+										+'</div>'                    
+										+'</div>'                   
+									+'</div>';
+								});
+								$("#getTopRecentVideo").replaceWith(topRecentVideos);			  
+							}	
 						}
 						// End Show top 1 recent coursse
 						
@@ -721,6 +722,7 @@
 						showme(); 
 						$("#listCourse").show();
 						$("#loading").hide();
+						$("#tutorialForum").show();
 					}
 		    	});
 				

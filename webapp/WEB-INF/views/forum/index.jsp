@@ -42,8 +42,8 @@
 				</div><!-- /.container -->
 			</div>
 	
-			<div class="row">
-					<div class="col-sm-8 col-md-9" >
+			<div class="row"  >
+					<div class="col-sm-8 col-md-9">
 						
 						<div class="section">
 								
@@ -100,7 +100,7 @@
 					<div class="col-sm-4 col-md-3">
 						
 						<!-- BEGIN SIDEBAR -->
-						<div class="section sidebar">
+						<div class="section sidebar"  style="min-height:600px" >
 							
 							<div class="panel panel-square panel-primary panel-no-border">
 							  <div class="panel-heading lg">

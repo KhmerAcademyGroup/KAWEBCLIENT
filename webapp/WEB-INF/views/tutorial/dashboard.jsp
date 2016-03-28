@@ -28,14 +28,17 @@
 	
 <%-- 			<jsp:include page="../shared/_banner.jsp"></jsp:include> --%>
 			
+			
+			
 			<div class="section-heading">
 					<div class="inner-border"></div>
 					<h3 style="color:#4c954d;">Tutorials</h3>
 				</div>
 
-		
+			<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
 			
-			<div id="listcategory"></div>	
+			
+			<div id="listcategory" style="min-height:360px"></div>	
 				
 			
 
@@ -53,7 +56,7 @@
 					<!-- BEGIN ITEM STORE -->
 					<div class="the-box no-border full store-item text-center">
 						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
-							<img alt="Image" class="item-image img-responsive" src="${pageContext.request.contextPath}/resources/uploads/{{= categoryLogoUrl}}">
+							<img alt="Image" class="item-image img-responsive" src="{{= categoryLogoUrl}}">
 						</a>
 						<div class="the-box bg-primary no-margin no-border item-des">
 
@@ -82,6 +85,7 @@
 					method: "GET",
 					success : function(data){
 						$("#tlistcategory").tmpl(data.RES_DATA).appendTo("#listcategory");
+						$("#loading").hide();
 					}
 					
 				});

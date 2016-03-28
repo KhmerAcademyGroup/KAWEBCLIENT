@@ -125,5 +125,10 @@ public class AuthenticationController {
 	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 	    System.out.println("TESTING ONLY...");
 	}
+	
+	@RequestMapping(value="/register")
+	public String register(){
+		return "register";
+	}
 
 }

@@ -2,7 +2,7 @@
 			FB.init({
 			      appId      : '733594286732881',
 			      xfbml      : true,
-			      version    : 'v2.2'
+			      version    : 'v2.1'
 			    });
 		    
 			  
@@ -25,6 +25,7 @@
 	    };
 	    
 	   	function Login(){
+	   		KA.createProgressBar();
 			FB.login(function(response) {
 			   if (response.authResponse){
 				  

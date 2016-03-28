@@ -632,7 +632,7 @@ Placed at the end of the document so the pages load faster
 										
 													$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
 									   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-									 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" target="_blank" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
+									 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
 									 					            '</div>');
 													
 													
@@ -745,16 +745,7 @@ Placed at the end of the document so the pages load faster
 	    	<option value="{{= departmentId }}">{{= departmentName }}</option>
    		</script>
    		
-   		<!-- Facebook Plugin script -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		<!-- End facebook plugin -->
+   	
    		 
    		 <jsp:include page="../shared/_search.jsp" />
    		 

@@ -79,7 +79,7 @@
 					                        <div class="col-sm-7">
 												<a href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>					                        </div>
 					                        <div class="col-sm-5 text-right">
-					                            <a href="javascript:" class="btSignUp">Create an account</a>
+					                            <a href="${pageContext.request.contextPath}/register" class="btSignUp00000">Create an account</a>
 					                        </div>
 					                    </div>
 								  
@@ -102,22 +102,15 @@
 								</div>
 								
 								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
-								
-									<div id="fb-root"></div>
-									<script type="text/javascript">
-									 (function(d, s, id){
-									     var js, fjs = d.getElementsByTagName(s)[0];
-									     if (d.getElementById(id)) {return;}
-									     js = d.createElement(s); js.id = id;
-									     js.src = "//connect.facebook.net/en_US/sdk.js";
-									     fjs.parentNode.insertBefore(js, fjs);
-									   }(document, 'script', 'facebook-jssdk'));
-									</script>
-								
-								
-								
-								
-								
+								<div id="fb-root"></div>
+								<script>(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=733594286732881";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));</script>
+									
 							</div><!-- /.the-box .bg-danger .no-border-->
 						</div>
 			
@@ -136,47 +129,9 @@
 		
 		<jsp:include page="shared/_footer.jsp" />
 		
-		  <script type="text/javascript">
+		<script type="text/javascript">
 		   var path =  "${pageContext.request.contextPath}";
-			/* $(document).ready(function(){
-					  
-					  $(".sending").hide();
-					  $(".check_your_email").hide();
-					  $(document).on('click', "#btn_submit", function() {									  
-							var address =$("#emailaddress").val()
-							$(".sending").show();
-							if(address==""){						
-								$(".sending").hide(); 
-								return 0;}
-							else{
-						 	 $.ajax({
-								url : "${pageContext.request.contextPath}/rest/sendmail?email="+address+"&type=reset",
-								method: "GET",
-								success: function(data){  	    							    																			
-									if(data.STATUS==true){
-										$(".sending").hide();
-										$(".check_your_email").show();															
-										setTimeout(function(){
-											$('#frmreset').modal('hide');
-											$("#emailaddress").val("");
-											$(".check_your_email").hide();	
-											}, 1000);
-										
-									}
-									else{
-										$(".sending").hide();
-										alert("Invalib Email !")
-									}														
-									 console.log(data);
-								}
-							});  
-							}
-						});
-					  
-				  });  */
-			
-			
-		  </script>
+		</script>
 		  
 		  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		  
