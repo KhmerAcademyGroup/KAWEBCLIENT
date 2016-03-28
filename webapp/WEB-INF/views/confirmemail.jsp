@@ -62,12 +62,12 @@
 					success: function(data){  
 						if(data.STATUS==true){
 							$(".processing").hide();
-							$("#message").replaceWith("<div > <h1>Email Verification!</h1> <h4>Your email is verified. Thank you.</4><h4>You have registered successfully.</h4> <br/> <a href='#' class='btn btn-primary btLogin'>Login</a> </p> </div>")
+							$("#message").replaceWith("<div > <h1>Email Verification!</h1> <h4>Your email is verified. Thank you.</4><h4>You have registered successfully.</h4> <br/> <a href='${pageContext.request.contextPath}/login' class='btn btn-primary btLogin9999'>Login</a> </p> </div>")
 							 //window.location = '${pageContext.request.contextPath}/login';
 						}
 						else{
 							$(".processing").hide();
-							$("#message").replaceWith("<div ><h1>Your email has been verified! Thank you.</h1> <br/> <a href='#' class='btn btn-primary btLogin' >Login</a></div> ");
+							$("#message").replaceWith("<div ><h1>Your email has been verified! Thank you.</h1> <br/> <a href='${pageContext.request.contextPath}/login' class='btn btn-primary btLogin999' >Login</a></div> ");
 						}														
 						 console.log(data);
 					}

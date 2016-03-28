@@ -15,11 +15,6 @@
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css" rel="stylesheet">
 		
-		<!-- Player -->
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video-js.css">
-	  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.css">
-		<!-- Player Responsive -->
-		<link href="${pageContext.request.contextPath}/resources/assets/css/player-responsive.css" rel="stylesheet">
 		
 		<style>
 			.owl-carousel .mitem{
@@ -212,27 +207,27 @@
 																	<div class="panel-body">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-home-1">
-																				<div  id="getAKN" style="height:  330px; overflow: hidden;">
+																				<div  id="getAKN" style="height:  315px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-scholarship-1">
-																				<div  id="getAKNScholarship" style="height:  330px; overflow: hidden;">
+																				<div  id="getAKNScholarship" style="height:  315px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-technology-1">
-																				<div  id="getAKNTechnology" style="height:  330px; overflow: hidden;">
+																				<div  id="getAKNTechnology" style="height:  315px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-national-1">
-																				<div  id="getAKNNational" style="height:  330px; overflow: hidden;">
+																				<div  id="getAKNNational" style="height:  315px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-international-1">
-																				<div   id="getAKNInternational" style="height:  330px; overflow: hidden;">
+																				<div   id="getAKNInternational" style="height:  315px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
@@ -253,73 +248,23 @@
 										
 										<div class="col-lg-4" style="padding-right: 0px;">
 												<div class="panel panel-primary panel-square panel-no-border">
-													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"> Recent Courses  </a></h3>
-													  </div>
-											
-											
-												
-	            								<div  class="owl-wrapper thumbnail media-lib-item"  style="width: 100%; left: 0px; display: block;margin-top:5px">
-													
-														  <a class="no-underline" href="#" id="getHref"  style="color:#50a253;font-size: 16px;"><b id="getNewsTitle">  </b></a>
-																
-														  <div class="owl-item" style="width: 365px;">                	
-														  		<div class="mitem">                    
-														  			 <div>                      
-														  			 	<div class="" style="height: 255px;padding: 0px;"> 
-														  			 		<div id="myplayerwrapper" style="width:97%;height:190px;">
-														  			 			<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>     
-														  			 		</div>                  
-														  			 		<div class="caption text-left">                        
-														  			 			<p class="small shortenString">                        
-														  			 				 <a id="newVideoTitile" class="no-underline" href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4" style="color:#4D4D4D;font-size: 16px;font-weight: bold"> </a>
-														  			 				 <br>
-														  			 				 <span class="small text-muted" style="color:#4D4D4D" id="newVideoView"></span>                  
-														  			 			</p>             
-														  			 		</div>                     
-														  			 	</div>                     
-														  			 </div>                    
-														  		</div>                   
+														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" >Tutorials</a></h3>
 														  </div>
-														
-																	  
-														  <div id="topRecentVideos" style="height: 122px;overflow: auto;"> 
-														  	  <div id="getTopRecentVideo"></div>
-														  	  <!-- 
-															  <div class="owl-item" style="width: 100px;float:left;margin-right:10px;">                	
-															  		<div class="mitem">                    
-															  			 <div>                      
-															  			 	<div class="thumbnail media-lib-item" style="height: 100px;padding: 0px;">                       
-															  			 		<a href="/KAWEBCLIENT/elearning/playvideo?v=ODI3&amp;playlist=MzM4">                       
-															  			 			 <img width="50px" src="http://localhost:8080/KAAPI/resources/upload/file/playlist/thumbnail/codeigniter.png" alt="...">                       
-															  			 		</a>                       
-															  			 		<div class="caption text-left">                        
-															  			 			<a class="small shortenString">  
-															  			 				 <span class="small text-muted" style="color:#4D4D4D">Codeigniter</span>                  
-															  			 			</a>             
-															  			 		</div>                     
-															  			 	</div>                     
-															  			 </div>                    
-															  		</div>                   
-															  </div>
-															  -->
+												
+														 <div class="inbox" style="    height: 395px;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
+														 	
+														 		
+																
+														 		
 															  
 															  
-														</div>  
-														  
-														   
-												</div>	 
-														
-													<!-- <ul class="list-group currency-rates widget-currency-ticker"  id="getQuestion" style="height:  380px; overflow: hidden;">
-													
-														  	
-														  	
-														  	
-													</ul>
-															 -->
 															  
-														
-											</div> 
+														</div>
+			            								
+																  
+															
+												</div>  
 										</div>
 										<div class="clear"></div>
 								</div><!--/end akn-slider  -->
@@ -347,14 +292,14 @@
 									
 									
 									<!-- Recommended Videos -->
-									<div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
+									<!-- <div class="the-box no-border clear-padding" style="margin-bottom: 0px;">
 											<span class="small-title" style="font-weight: bold;">Recommended Videos</span>
 											<br/>
 											<br/>
 										   	<div id="recommended_videos">
 										    
 											</div>
-									</div><!-- /.the-box -->
+									</div> -->
 									
 								</sec:authorize>
 									
@@ -408,10 +353,24 @@
 							
 							<div id="tutorialForum" class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;display: none">
 								
-								<div class="col-lg-4" style="padding-left: 0px;" >
+							
+								<div class="col-lg-12" style="padding-left: 0px;margin-right:0px" >
 													<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning" >Tutorials</a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  >Forum - Recent Questions  </a></h3>
+														  </div>
+												
+														<div class="inbox"  id="getQuestion" style="padding: 15px;  border: 1px solid #D5DAE0;">	
+																
+														</div>
+																  
+															
+												</div> 
+							  </div>
+								<!-- <div class="col-lg-4" style="padding-left: 0px;" >
+													<div class="panel panel-primary panel-square panel-no-border">
+														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+															<h3 class="panel-title"><a href="http://expert.khmeracademy.org" target="_blank">Expert Database</a></h3>
 														  </div>
 												
 														 <div class="inbox" style="padding: 15px;  border: 1px solid #D5DAE0;    height: 457px;"  id="listcategory">	
@@ -427,21 +386,7 @@
 																  
 															
 												</div> 
-							 	 </div>
-							
-								<div class="col-lg-8" style="padding-left: 0px;margin-right:0px" >
-													<div class="panel panel-primary panel-square panel-no-border">
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  >Forum - Recent Questions  </a></h3>
-														  </div>
-												
-														<div class="inbox"  id="getQuestion" style="padding: 15px;  border: 1px solid #D5DAE0;">	
-																
-														</div>
-																  
-															
-												</div> 
-							  </div>
+							 	 </div>  -->
 						
 	                        </div>
 	                   
@@ -465,7 +410,7 @@
 								<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}"><img style="width:20px;height:20px" width="20px" height="20px" src="{{= categoryLogoUrl }}" /></a>
 								<span class="small shortenString">
 										<a title="{{= categoryName}}" class="no-underline ka-question" href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#37BC9B">
-											<b>{{= categoryName}}</b>
+											{{= categoryName}}
 										</a>
 								</span> <br/>
 					</div> 	
@@ -476,7 +421,7 @@
 				<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
 						<span class="small shortenString">
 								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" style="font-size: 16px;color:#37BC9B">
-										<b>{{= title }}</b>
+									{{= title }}
 								</a>
 						</span> <br/>
 						<span class="small text-muted" style="color:#4D4D4D">{{= vote }} Votes | {{= commentCount }} Answers</span>
@@ -569,7 +514,7 @@
 									 			+"<div class='caption text-left'>"
 													+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-													+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+													+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
 												+"</div>"
 											+"</div>"
 										+"</div>"
@@ -579,7 +524,7 @@
 						$("#recent").html(recent);
 						
 						// Show top 1 recent coursse
-						if(data.RES_DATA != null){
+						/* if(data.RES_DATA != null){
 							topRecentVideos = "";
 							if(data.RES_DATA[0].videos != null){
 								playVideo(data.RES_DATA[0].videos[0].youtubeUrl);
@@ -610,7 +555,7 @@
 								});
 								$("#getTopRecentVideo").replaceWith(topRecentVideos);			  
 							}	
-						}
+						} */
 						// End Show top 1 recent coursse
 						
 						var generalEdu="<div id='owl-generalEdu' class='owl-carousel owl-theme'>";
@@ -622,7 +567,7 @@
 													+"<div class='caption text-left'>"
 														+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -642,7 +587,7 @@
 														+"<div class='caption text-left'>"
 															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -662,7 +607,7 @@
 														+"<div class='caption text-left'>"
 															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -684,7 +629,7 @@
 										 			+"<div class='caption text-left'>"
 														+"<p class='small shortenString'><a class='no-underline' title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Videos | By "+value.username+"</span>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -693,7 +638,7 @@
 							recommended_courses+= "</div>";
 							$("#recommended_courses").html(recommended_courses);
 							
-							var recommend_videos="<div id='owl-recommend-videos' class='owl-carousel owl-theme'>";
+							/* var recommend_videos="<div id='owl-recommend-videos' class='owl-carousel owl-theme'>";
 							$.each(data.RECOMMENDED_VIDEOS, function(key, value){
 								recommend_videos+="<div class='mitem'>"
 													+"<div>"
@@ -711,7 +656,7 @@
 							}); 
 								
 							recommend_videos+= "</div>";
-							$("#recommended_videos").html(recommend_videos);
+							$("#recommended_videos").html(recommend_videos); */
 							
 							showRecommend();
 							
@@ -767,7 +712,7 @@
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
 			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
-			    });
+			    }); 
 		    }
 		    
 		    function showRecommend(){
@@ -781,7 +726,7 @@
 			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
 			    });
 			    
-			    var owl_recommend_courses = $("#owl-recommend-courses");
+			    /* var owl_recommend_courses = $("#owl-recommend-courses");
 			     
 			    owl_recommend_courses.owlCarousel({
 			    items : 5, //10 items above 1000px browser width
@@ -789,7 +734,7 @@
 			    itemsDesktopSmall : [900,3], // betweem 900px and 601px
 			    itemsTablet: [600,2], //2 items between 600 and 0
 			    itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
-			    });
+			    }); */
 		    }
 		    
 		    function shorten(text, maxLength) {
@@ -807,32 +752,6 @@
 		</script>  
 		
 		
-		<script src="${pageContext.request.contextPath}/resources/videoplayer/libs/video-js/video.js"></script>
-	    <script src="${pageContext.request.contextPath}/resources/videoplayer/youtube.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/videoplayer/src/videojs.logobrand.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/assets/js/change-parameter-url.js"></script>
-		<script type="text/javascript">
-			
-		    function playVideo(videoURL){
-				// save a reference to the video element
-				video = document.querySelector('video');
-				if(video==null){
-					$('#myplayerwrapper').html('<video id="vid1" class="video-js vjs-default-skin" controls autoplay preload="auto"></video>');
-					video = document.querySelector('video');
-				}
-				// save a reference to the video.js player for that element
-				player = videojs(video, {'techOrder': ['youtube'], 'src': 'https://www.youtube.com/watch?v='+videoURL });
-	
-				// initialize the plugin with some custom options:
-				player.logobrand({
-					//height: "32px",
-					//width: "32px",
-					image: "${pageContext.request.contextPath}/resources/videoplayer/logoka.png",
-					destination: "http://www.khmeracademy.org/"
-				});
-				
-			}
-		</script>
 		
 		
 	</body>
