@@ -248,7 +248,7 @@
 										 			+"<div class='caption text-left'>"
 														+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-														+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -266,7 +266,7 @@
 										+"<div class='caption text-left'>"
 											+"<p class='small shortenString'><a class='no-underline' title='"+value.videoTitle+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.videoTitle+"</b></a><br>"
 											+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-											+"<span class='small text-muted' style='color:#4D4D4D'>"+value.view+" Views | By "+value.username+"</span>"
+											+"<span class='small text-muted' style='color:#4D4D4D'>"+value.view+" Views </span>"
 											+"<br/><span class='small text-muted' style='color:#4D4D4D'>Course : "+value.playlistName+"</span>"
 										+"</div>"
 									+"</div>"
@@ -293,7 +293,7 @@
 											 			+"<div class='caption text-left'>"
 															+"<p class='small shortenString'><a class='no-underline' title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -311,7 +311,7 @@
 															+"<div class='caption text-left'>"
 																+"<p class='small shortenString'><a class='no-underline' title='"+value.videoTitle+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.videoTitle+"</b></a><br>"
 																+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-																+"<span class='small text-muted' style='color:#4D4D4D'>"+value.view+" Views | By "+value.username+"</span>"
+																+"<span class='small text-muted' style='color:#4D4D4D'>"+value.view+" Views</span>"
 																+"<br/><span class='small text-muted' style='color:#4D4D4D'>Course : "+value.playlistName+"</span>"
 															+"</div>"
 														+"</div>"
@@ -425,14 +425,13 @@
 	            											<br>
 	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
 	            										</p>
-														<span class="small text-muted" style="color:#4D4D4D">By {{= username }}</span>
+														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Lessons</span> 
 	            									</div>
 	            								</div>
 	            							</div>
 	            						</div>
 	            					
 		</script>
-		
 		
 		
 	</body>

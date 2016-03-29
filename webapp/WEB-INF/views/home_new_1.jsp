@@ -172,102 +172,7 @@
 
 								</div> <!-- End Banner -->
 								
-								<!--akn-slider  -->
-								<div class="the-box no-border clear-padding">
-										<div class="col-lg-8" style="padding-left: 0px;">
-											<!-- <div class="akn-tag">
-												<p>ព័ត៌មាន អាហារូបករណ៍</p>
-											</div>
-											<div id="owl-akn" class="owl-carousel owl-theme">
-											
-											</div>
-											<div class="slide-button">
-												<div id="sleft" class="button-left"></div>
-												<div id="sright" class="button-right"></div>
-											</div>  -->
-											
-											
-											<div class="panel panel-primary panel-square panel-no-border">
-													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News </a></h3>
-													  </div>
-														
-														<div class="panel with-nav-tabs panel-default">
-															  <div class="panel-heading">
-																<ul class="nav nav-tabs">
-																	<li class="active"><a href="#panel-home-1" data-toggle="tab" aria-expanded="true">All</a></li>
-																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" aria-expanded="false">Scholarship</a></li>
-																	<li class=""><a href="#panel-technology-1" data-toggle="tab" aria-expanded="false">Technology</a></li>
-																    <li class=""><a href="#panel-national-1" data-toggle="tab" aria-expanded="false">National News</a></li>
-																    <li class=""><a href="#panel-international-1" data-toggle="tab" aria-expanded="false">International News</a></li>
-																	<li class=""><a href="http://news.khmeracademy.org/"  target="_blank"> Other</a></li>
-																</ul>
-															  </div>
-																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
-																	<div class="panel-body">
-																		<div class="tab-content">
-																			<div class="tab-pane fade active in" id="panel-home-1">
-																				<div  id="getAKN" style="height:  315px; overflow: hidden;">
-														  	
-																				</div>
-																			</div>
-																			<div class="tab-pane fade" id="panel-scholarship-1">
-																				<div  id="getAKNScholarship" style="height:  315px; overflow: hidden;">
-														  	
-																				</div>
-																			</div>
-																			<div class="tab-pane fade" id="panel-technology-1">
-																				<div  id="getAKNTechnology" style="height:  315px; overflow: hidden;">
-														  	
-																				</div>
-																			</div>
-																			<div class="tab-pane fade" id="panel-national-1">
-																				<div  id="getAKNNational" style="height:  315px; overflow: hidden;">
-														  	
-																				</div>
-																			</div>
-																			<div class="tab-pane fade" id="panel-international-1">
-																				<div   id="getAKNInternational" style="height:  315px; overflow: hidden;">
-														  	
-																				</div>
-																			</div>
-																			<!-- /.tab-pane fade -->
-																		</div><!-- /.tab-content -->
-																	</div><!-- /.panel-body -->
-																</div><!-- /.collapse in -->
-															</div>
-							
-											  
-														
-											</div> 
-										</div>
-										
-										
-										
-										
-										
-										<div class="col-lg-4" style="padding-right: 0px;">
-												<div class="panel panel-primary panel-square panel-no-border">
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" >Tutorials</a></h3>
-														  </div>
-												
-														 <div class="inbox" style="    height: 395px;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
-														 	
-														 		
-																
-														 		
-															  
-															  
-															  
-														</div>
-			            								
-																  
-															
-												</div>  
-										</div>
-										<div class="clear"></div>
-								</div><!--/end akn-slider  -->
+								
 								
 								<!-- BEGIN OWL CAROUSEL -->
 								
@@ -351,8 +256,104 @@
 							
 							</div>	 <!-- End List Courses -->
 							
-							<div id="tutorialForum" class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;display: none">
+							<div id="tutorialForum" class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;">
 								
+								<!--akn-slider  -->
+								<div class="the-box no-border clear-padding">
+										<div class="col-lg-8" style="padding-left: 0px;">
+											<!-- <div class="akn-tag">
+												<p>ព័ត៌មាន អាហារូបករណ៍</p>
+											</div>
+											<div id="owl-akn" class="owl-carousel owl-theme">
+											
+											</div>
+											<div class="slide-button">
+												<div id="sleft" class="button-left"></div>
+												<div id="sright" class="button-right"></div>
+											</div>  -->
+											
+											
+											<div class="panel panel-primary panel-square panel-no-border">
+													  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+														<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News </a></h3>
+													  </div>
+														
+														<div class="panel with-nav-tabs panel-default">
+															  <div class="panel-heading">
+																<ul class="nav nav-tabs">
+																	<li class="active"><a href="#panel-home-1" class="newsTab" data-id="getAKN" data-toggle="tab" aria-expanded="true">All</a></li>
+																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" class="newsTab" data-id="getAKNScholarship"   aria-expanded="false">Scholarship</a></li>
+																	<li class=""><a href="#panel-technology-1" data-toggle="tab" class="newsTab" data-id="getAKNTechnology"  aria-expanded="false">Technology</a></li>
+																    <li class=""><a href="#panel-national-1" data-toggle="tab" class="newsTab" data-id="getAKNNational"  aria-expanded="false">National News</a></li>
+																    <li class=""><a href="#panel-international-1" data-toggle="tab" class="newsTab" data-id="getAKNInternational"  aria-expanded="false">International News</a></li>
+																	<li class=""><a href="http://news.khmeracademy.org/"  target="_blank"> Other</a></li>
+																</ul>
+															  </div>
+																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
+																	<div class="panel-body">
+																		<div class="tab-content">
+																			<div class="tab-pane fade active in" id="panel-home-1">
+																				<div  id="getAKN" style="height:  315px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-scholarship-1">
+																				<div  id="getAKNScholarship" style="height:  315px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-technology-1">
+																				<div  id="getAKNTechnology" style="height:  315px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-national-1">
+																				<div  id="getAKNNational" style="height:  315px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<div class="tab-pane fade" id="panel-international-1">
+																				<div   id="getAKNInternational" style="height:  315px; overflow: hidden;">
+														  	
+																				</div>
+																			</div>
+																			<!-- /.tab-pane fade -->
+																		</div><!-- /.tab-content -->
+																	</div><!-- /.panel-body -->
+																</div><!-- /.collapse in -->
+															</div>
+							
+											  
+														
+											</div> 
+										</div>
+										
+										
+										
+										
+										
+										<div class="col-lg-4" style="padding-right: 0px;">
+												<div class="panel panel-primary panel-square panel-no-border">
+														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" >Tutorials</a></h3>
+														  </div>
+												
+														 <div class="inbox" style="    height: 395px;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
+														 	
+														 		
+																
+														 		
+															  
+															  
+															  
+														</div>
+			            								
+																  
+															
+												</div>  
+										</div>
+										<div class="clear"></div>
+								</div><!--/end akn-slider  -->
 							
 								<div class="col-lg-12" style="padding-left: 0px;margin-right:0px" >
 													<div class="panel panel-primary panel-square panel-no-border">
@@ -484,18 +485,28 @@
 				//}, function(data) {
 					
 		    	//akn-block	
-				$.ajax({
-					url:'${pageContext.request.contextPath}/akn/scholarship/',
-					method: 'GET',
-					success:function(data){
-						displayNews("getAKN" ,data.ALL.RESPONSE_DATA);
-						displayNews("getAKNScholarship" ,data.SCHOLARSHIP.RESPONSE_DATA);
-						displayNews("getAKNTechnology" ,data.TECHNOLOGY.RESPONSE_DATA);
-						displayNews("getAKNNational" ,data.NATIONAL.RESPONSE_DATA);
-						displayNews("getAKNInternational" ,data.INTERNATIONAL.RESPONSE_DATA);
-					}
-				});	
+		    	showNews = function(data){
+		    		$.ajax({
+						url:'${pageContext.request.contextPath}/akn/scholarship/'+data,
+						method: 'GET',
+						success:function(data){
+							console.log(data);
+							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
+						}
+					});	
+		    	};
 				//end akn-block
+				
+				showNews("getAKN");
+				
+				$(document).on('click',".newsTab" , function(){ 
+					 if ($("#"+$(this).data("id")).find('table').length > 0) {
+						 return;
+					  }else{
+						 showNews($(this).data("id"));
+					  }
+					 
+	    		});
 				
 				
 				$.ajax({
@@ -514,7 +525,7 @@
 									 			+"<div class='caption text-left'>"
 													+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 													+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-													+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+													+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 												+"</div>"
 											+"</div>"
 										+"</div>"
@@ -567,7 +578,7 @@
 													+"<div class='caption text-left'>"
 														+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-														+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -587,7 +598,7 @@
 														+"<div class='caption text-left'>"
 															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -607,7 +618,7 @@
 														+"<div class='caption text-left'>"
 															+"<p class='small shortenString'><a title='"+value.playlistName+"' class='no-underline' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 															+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-															+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+															+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 														+"</div>"
 													+"</div>"
 												+"</div>"
@@ -629,7 +640,7 @@
 										 			+"<div class='caption text-left'>"
 														+"<p class='small shortenString'><a class='no-underline' title='"+value.playlistName+"' href='${pageContext.request.contextPath}/elearning/playvideo?v="+value.videoId+"&playlist="+value.playlistId+"' style='color:#50a253;font-size: 16px;'><b>"+value.playlistName+"</b></a><br>"
 														+"<span class='text-muted' style='color:#4D4D4D'>"+value.description+"</span></p>"
-														+"<span class='small text-muted' style='color:#4D4D4D'>By "+value.username+"</span>"
+														+"<span class='small text-muted' style='color:#4D4D4D'>"+value.countVideos+" Lessons</span>" 
 													+"</div>"
 												+"</div>"
 											+"</div>"
@@ -667,7 +678,7 @@
 						showme(); 
 						$("#listCourse").show();
 						$("#loading").hide();
-						$("#tutorialForum").show();
+// 						$("#tutorialForum").show();
 					}
 		    	});
 				
