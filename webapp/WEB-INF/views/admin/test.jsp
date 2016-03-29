@@ -26,7 +26,7 @@
 			
 			
 			<!-- BEGIN SIDEBAR LEFT -->
-			<jsp:include page="shared/_leftsidebar.jsp" />
+			<%-- <jsp:include page="shared/_leftsidebar.jsp" /> --%>
 			<!-- END SIDEBAR LEFT -->
 			
 			

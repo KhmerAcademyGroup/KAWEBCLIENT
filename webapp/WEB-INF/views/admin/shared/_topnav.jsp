@@ -5,11 +5,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<div class="top-navbar">
+<div class="top-navbar" style="background:rgb(78, 156, 80)">
 				<div class="top-navbar-inner">
 					
 					<!-- Begin Logo brand -->
-					<div class="logo-brand success-color">
+					<div class="logo-brand success-color" style="background:rgb(78, 156, 80)">
 						<a href="${pageContext.request.contextPath}"><img alt="KhmerAcademy" src="${pageContext.request.contextPath}/resources/assets/img/khmeracademy.png" height="60px" ></a>
 					</div><!-- /.logo-brand -->
 					<!-- End Logo brand -->
@@ -18,14 +18,14 @@
 						
 						<!-- Begin button sidebar left toggle -->
 						<div class="btn-collapse-sidebar-left">
-							<i class="fa fa-long-arrow-right icon-dinamic"></i>
-						</div><!-- /.btn-collapse-sidebar-left -->
+							<i style="color:white" class="fa fa-long-arrow-right icon-dinamic"></i>
+						</div> 
 						<!-- End button sidebar left toggle -->
 						
 						<!-- Begin button sidebar right toggle -->
-						<div class="btn-collapse-sidebar-right">
+						<!-- <div class="btn-collapse-sidebar-right">
 							<i class="fa fa-bullhorn"></i>
-						</div><!-- /.btn-collapse-sidebar-right -->
+						</div> -->
 						<!-- End button sidebar right toggle -->
 						
 						<!-- Begin button nav toggle -->
@@ -47,7 +47,7 @@
 							%>
 							<ul class="nav-user navbar-right">
 								<li class="dropdown">
-								  <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
+								  <a style="color:white" href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
 									<img src="<%= user.getUserImageUrl() %>" class="avatar img-circle" alt=<%= user.getUsername() %>>
 									<strong><%= user.getUsername() %></strong>
 								  </a>
@@ -58,7 +58,7 @@
 									<li><a href="#fakelink">My public profile</a></li>
 									<li class="divider"></li>
 									<li><a href="lock-screen.html">Lock screen</a></li> -->
-									<li><a href="login.html">Log out</a></li>
+									<li><a href="${pageContext.request.contextPath}/login">Log out</a></li>
 								  </ul>
 								</li>
 							</ul>
@@ -70,7 +70,7 @@
 						<!-- End user session nav -->
 						
 						<!-- Begin Collapse menu nav -->
-						<div class="collapse navbar-collapse" id="main-fixed-nav">
+						<%-- <div class="collapse navbar-collapse" id="main-fixed-nav">
 							
 							<ul class="nav navbar-nav navbar-left">
 								<!-- Begin nav notification -->
@@ -132,7 +132,7 @@
 														<span class="small-caps">April 01, 2014</span>
 													</a></li>
 												</ul>
-											</div><!-- /.nav-dropdown-content scroll-nav-dropdown -->
+											</div>
 											<button class="btn btn-primary btn-square btn-block">See all notifications</button>
 										</li>
 									</ul>
@@ -356,7 +356,8 @@
 								</li>
 								<!-- End nav friend requuest -->
 							</ul>
-						</div><!-- /.navbar-collapse -->
+						</div> --%>
+						
 						<!-- End Collapse menu nav -->
 					</div><!-- /.top-nav-content -->
 				</div><!-- /.top-navbar-inner -->

@@ -101,7 +101,7 @@
 									<strong class="alert-link">Login with your Social Account</strong>
 								</div>
 								
-								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block btn-lg"><i class="fa fa-facebook"></i> Facebook</button>
 								<div id="fb-root"></div>
 								<script>(function(d, s, id) {
 								  var js, fjs = d.getElementsByTagName(s)[0];
@@ -133,7 +133,7 @@
 		   var path =  "${pageContext.request.contextPath}";
 		</script>
 		  
-		  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
+		 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		  
 		  
 		  

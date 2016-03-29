@@ -40,7 +40,7 @@
 					   fbId =  response.id;
 					   fbGender = response.gender;
 					   
-					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
+//					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
 					   $.ajax({
 							url : path+"/rest/login_with_fb",
 							method: "POST",

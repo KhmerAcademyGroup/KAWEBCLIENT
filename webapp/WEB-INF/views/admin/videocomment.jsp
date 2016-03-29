@@ -35,7 +35,7 @@
 			
 			
 			<!-- BEGIN SIDEBAR RIGHT -->
-			<jsp:include page="shared/_rightsidebar.jsp" />
+			<%-- <jsp:include page="shared/_rightsidebar.jsp" /> --%>
 			<!-- END SIDEBAR RIGHT -->
 			
 

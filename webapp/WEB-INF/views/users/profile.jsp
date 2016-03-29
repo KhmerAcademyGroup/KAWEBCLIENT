@@ -50,11 +50,11 @@
 							<!-- BEGIN PROFILE HEADING -->
 							<div class="the-box transparent full no-margin profile-heading">
 								<form enctype="multipart/form-data" action="changeusercover.act" method="post">
-								<div class="right-action">
+								<!-- <div class="right-action">
 									<input type="file" id="photoimage" name="cover" class="filestyle" data-input="false" data-iconname="fa fa-edit" onchange="return ValidateFileUpload()" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><span class="group-span-filestyle " tabindex="0"><label for="photoimage" class="btn btn-default "><span class="glyphicon fa fa-edit"></span> <span class="buttonText">Choose Cover</span></label></span></div>
-									<!-- <button class="btn btn-warning btn-square btn-xs" onchange="return ValidateFileUpload()">Change cover</button> -->
-								</div>
-								<img id="photoimg" src="${pageContext.request.contextPath}/resources/uploads/cover/profile.jpg" height="300px" class="bg-cover" alt="Image">
+									<button class="btn btn-warning btn-square btn-xs" onchange="return ValidateFileUpload()">Change cover</button>
+								</div> -->
+								<img id="photoimg" src="${pageContext.request.contextPath}/resources/assets/img/banner/KA-MoEYS-Banner.png" height="300px" class="bg-cover" alt="Image">
 								
 								<img id="avatar" class="avatar" alt="Avatar">
 								<div class="profile-info ">
@@ -72,8 +72,8 @@
 							  <div class="panel-heading" style="background-color:#558d48">
 								<ul class="nav nav-tabs">
 								
-									<li class="active"><a href="#panel-videos" data-toggle="tab"><i class="fa fa fa-eye"></i> Videos</a></li>
-									<li><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
+									<!-- <li class="active"><a href="#panel-videos" data-toggle="tab"><i class="fa fa fa-eye"></i> Videos</a></li> -->
+									<li class="active"><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
 									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> History</a></li>
 									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
 									
@@ -94,7 +94,7 @@
 										<div class="tab-content">
 										
 											<!-- ****************Videos tap *********************-->
-											<div class="tab-pane fade in active" id="panel-videos">
+											<!-- <div class="tab-pane fade in active" id="panel-videos">
 													<div id="getVideo" style=" display: none;">
 															<div class="alert alert-success fade in alert-dismissable">
 															<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><strong>No </strong> video </div>
@@ -126,13 +126,13 @@
 													
 													</div>
 													
-													<!-- page gination -->
+													page gination
 													<div class="text-center">
 				    									<div id="demo5_top" class="demo5_top"></div>
 				    								</div>
 				    							</div>
 													
-											</div>
+											</div> -->
 											
 											
 											<!--***********************user Prfile Tap ****************-->
@@ -301,7 +301,7 @@
 											</div>
 											
 											<!-- *******************start history****************** -->
-											<div class="tab-pane fade in" id="panel-history">
+											<div class="tab-pane fade in active" id="panel-history">
 													
 														<div id="getHistory" style=" display: none;">
 															<div class="alert alert-success fade in alert-dismissable">
@@ -883,7 +883,7 @@
 			}
 		} 
 		
-		mystartVideo();
+// 		mystartVideo();
 		function mystartVideo(){
 			limitv=$("#limitvideo").val();
 			//alert(limitv);
@@ -1528,7 +1528,7 @@ function mySearchPlaylist(){
 					//profile ='/resources/uploads/user/avatar.jpg';
 					 $.ajax({
 						type : "POST",
-						url : api_url+'/uploadfile/image?url=profile',
+						url : api_url+'/uploadfile/image?url=user',
 						enctype : 'multipart/form-data',
 						data : new FormData(document.getElementById("myformvalidator1")),
 						processData : false, // tell jQuery not to process the data

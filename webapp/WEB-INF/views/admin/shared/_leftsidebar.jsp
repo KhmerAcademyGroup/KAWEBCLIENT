@@ -6,6 +6,11 @@
 				<ul class="sidebar-menu">
 					<br/>
 					<li><a href="${pageContext.request.contextPath}/admin"><i class="fa fa-dashboard icon-sidebar"></i>Dashboard</a></li>
+					
+					<li style="color:rgb(78, 156, 80)">&nbsp E-Learning Management</li>
+					<li><a href="${pageContext.request.contextPath}/admin/courses"><i class="fa fa-dashboard icon-sidebar"></i>Courses</a></li>
+					
+					
 					<li>&nbsp E-Learning</li>
 					
 					<li><a href="${pageContext.request.contextPath}/admin/elearning/video"><i class="fa fa-dashboard icon-sidebar"></i>Video</a></li>

@@ -152,4 +152,9 @@ public class AdminController {
 		return "admin/usertype";
 	}	
 	
+	@RequestMapping(value="/courses",method=RequestMethod.GET)
+	public String courseManagement(){
+		return "admin/courses_management";
+	}	
+	
 }

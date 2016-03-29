@@ -35,7 +35,7 @@
 			
 			
 			<!-- BEGIN SIDEBAR RIGHT -->
-			<jsp:include page="shared/_rightsidebar.jsp" />
+			<%-- <jsp:include page="shared/_rightsidebar.jsp" /> --%>
 			<!-- END SIDEBAR RIGHT -->
 			
 			
@@ -271,7 +271,7 @@
     <script id="jlistusers" type="text/x-jquery-tmpl">
 		<div class="the-box bg-success no-border">
     		<div class="media user-card-sm">
-							<a class="pull-left" href="#"> <img class="media-object img-circle" src="${pageContext.request.contextPath}/resources/uploads/{{= userImageUrl}}" alt="Avatar"></a>
+							<a class="pull-left" href="#"> <img class="media-object img-circle" src="{{= userImageUrl}}" alt="Avatar"></a>
 							<div class="media-body">
 								<h4 class="media-heading">{{= username}}</h4>
 								<p class="text-success">{{= email}}</p>
