@@ -58,18 +58,8 @@
 						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
 							<img alt="Image" class="item-image img-responsive" src="{{= categoryLogoUrl}}">
 						</a>
-						<div class="the-box bg-primary no-margin no-border item-des">
-
-							<h4 class="bolded">{{= categoryName}}</h4>
-							<p>
-								<i class="fa fa-star text-warning"></i> <i
-									class="fa fa-star text-warning"></i> <i
-									class="fa fa-star text-warning"></i> <i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</p>
-							<div class="btn-group">
-								<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" class="btn btn-primary active">View</a>
-							</div>
+						<div class="the-box bg-info no-margin no-border item-des">
+							<h5><a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="color:white">{{= categoryName}}</a></h5>
 							<!-- /.btn-group -->
 						</div>
 						<!-- /.the-box .no-margin .no-border .item-des -->

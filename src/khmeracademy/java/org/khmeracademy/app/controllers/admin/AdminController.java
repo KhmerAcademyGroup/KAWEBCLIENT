@@ -153,7 +153,9 @@ public class AdminController {
 	}	
 	
 	@RequestMapping(value="/courses",method=RequestMethod.GET)
-	public String courseManagement(){
+	public String courseManagement(ModelMap m){
+		 m.addAttribute("WS",WSURL);
+		 m.addAttribute("KEY",KEY);
 		return "admin/courses_management";
 	}	
 	

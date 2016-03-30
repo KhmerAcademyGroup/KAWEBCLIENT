@@ -72,6 +72,14 @@
 								</select>
 							</form>
 						</div> -->
+						
+						<div class="form-group btn-group">
+								<select class="form-control mainCategories" id="mainCategory" name="mainCategory" required="required" > 
+													
+								</select>
+						</div>
+												 
+												 
 						<div class="btn-group pull-right">
 							<form role="form">
 								<input type="text" onkeyup="mySearchPlaylist()" id="search" class="form-control"
@@ -92,7 +100,7 @@
 									<th>Category</th>	
 									<th>Videos</th>
 									<th>By</th>
-									<!-- <th>Status</th>	 -->												
+									<th>Status</th>												
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -131,17 +139,17 @@
 
 
 	<div id="p-frmCourse" class="ka-popup" style="display: none;width: 80%;">
-			<form  id="frmCourse" action="${pageContext.request.contextPath}/admin/rest/category" method="POST">
+			<form  id="frmCourse" action="${pageContext.request.contextPath}/admin/course" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">Forum Category</h4>
+						<h4 class="modal-title">Courses</h4>
 					</div>
 					<div class="modal-body" >
 							<div class="row">
-									<input type="hidden"  id="mainCategoryID" class="form-control"  name="mainCategoryID">
+									<input type="hidden"  id="playlistId" class="form-control"  name="mainCategoryID">
 										
 									<div class="col-sm-6">
 										<div class="the-box bg-default no-border">
@@ -154,14 +162,12 @@
 												  </div>
 												  <div class="form-group">
 													<label>Description</label>
-													<textarea id="description" class="form-control"  required="required" name="description">
-													
-													</textarea>
+													<textarea id="description" class="form-control"  required="required" name="description"></textarea>
 												  </div>
 												  
 												  <div class="form-group">
-														<label for="exampleInputEmail1">Main category</label>
-														<select class="form-control" id="mainCategory" name="mainCategory" required="required" > 
+														<label for="exampleInputEmail1">Main categories</label>
+														<select class="form-control f-mainCategories"  id="f-mainCategory" name="f-mainCategory" required="required" > 
 														
 														</select>
 												 </div>
@@ -169,12 +175,21 @@
 												  <div class="form-group">
 														<label for="exampleInputEmail1">Status</label>
 														<select class="form-control" id="status" name="status" required="required" > 
-																<option>True (Public)</option>
-																<option>False (Private)</option>
+																<option value="true">True (Public)</option>
+																<option value="false">False (Private)</option>
 														</select>
 												 </div>
 												  
-											  
+											  <div class="form-group">	
+											 	<label for="exampleInputEmail1">Image for web 262 x 162</label>
+												<div >
+													<img id="thumnail" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
+												</div>
+												<span class="btn btn-default btn-file">
+													<span class="fileinput-new">Select image</span>
+													<input type="file" name="fileThumbnail" id="fileThumbnail">
+												</span>
+											</div>
 											
 											
 											
@@ -183,29 +198,20 @@
 									
 									<div class="col-sm-6">
 										<div class="the-box bg-default no-border">
-											 <div class="form-group">	
-											 	<label for="exampleInputEmail1">Image for web 262 x 162</label>
-												<div id="thumnail">
-													<img src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
-												</div>
-												<span class="btn btn-default btn-file">
-													<span class="fileinput-new">Select image</span>
-													<input type="file" name="file" id="file">
-												</span>
-											</div>
+											 
 											
 											
 											
 											
 											 <div class="form-group">	
-												<div id="bgImage">
+												<div>
 													<label for="exampleInputEmail1">Mobile background image 800 x 480</label>
-													<div id="thumnail">
-														<img src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-bg-playlist.jpg" class="img-responsive"/>
+													<div>
+														<img  id="bgImage" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-bg-playlist.jpg" class="img-responsive"/>
 													</div>
 													<span class="btn btn-default btn-file">
 														<span class="fileinput-new">Select image</span>
-														<input type="file" name="file" id="file">
+														<input type="file" name="fileBgImage" id="fileBgImage">
 													</span>
 												</div>
 											</div>
@@ -215,8 +221,10 @@
 												<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color" autocomplete="off" style="color: rgb(0, 0, 0); background-image: none; background-color: rgb(255, 255, 255);">
 												<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
 											</div>
-					
-					
+											
+											<div class="form-group">
+												<button type="submit" id="btSubmit" class="btn btn-primary btn-lg" style="width:100px">Save</button>
+											</div>
 										</div>
 									</div>
 								
@@ -224,10 +232,10 @@
 					</div>
 					
 					
-					
+					 
 					
 					<div class="modal-footer">
-							<button type="submit" id="btSubmit" class="btn btn-primary btn-lg" style="width:100px">Save</button>
+<!-- 							<button type="submit" id="btSubmit" class="btn btn-primary btn-lg" style="width:100px">Save</button> -->
 					</div>
 				</div>
 			</form>	
@@ -260,24 +268,31 @@
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>
 				<td>{{= maincategoryname}}</td>
-				<td>{{= countVideos}} <i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i> </td>
+				<td><i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i>{{= countVideos}}  </td>
 				<td>{{= username}}</td>
-				<!--<td>{{if status == true}}
+				<td>{{if status == true}}
 						<i data-id="{{= playlistId}}" class="fa fa-check icon-circle icon-xs icon-success"></i> 
 					{{else}} 
 						<i data-id="{{= playlistId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
-				</td>-->
+				</td>
 				<td> 
-					<i data-cateid="Nw==" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmCourse"></i>
-   		 			<i data-cateid="Nw==" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmCourse"></i>
+					<i data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmCourse"></i>
+   		 			<i data-id="{{= playlistId }}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmCourse"></i>
          		</td>
 			</tr>
+   	</script>
+   	
+   	<script id="mainCategories_tmpl" type="text/x-jquery-tmpl">
+			<option value="{{=  mainCategoryId }}"> {{= mainCategoryName }} </option>
    	</script>
    	
    	<script type="text/javascript">
    	var course = {};
    	var check = true;
+   	var bgImage = "";
+   	var thumbnailUrl = "";
+   	
    	$(document).ready(function(){
    		
    		course.courses = function(mainCategoryId,currentPage){
@@ -326,23 +341,279 @@
 			    }); 
 		}; */
 		
-   		course.courses('empty',1);
-		
+   		
 		
    		$(document).on('click',"#showFrmCourse" , function(){
 			$("#p-frmCourse").bPopup({modalClose: false});
-			$("#frmCourse").attr("method", "POST");
+			$("#frmCourse").attr("method", "PUT");
 			$("#frmCourse").trigger("reset");
-			$("#btSubmit").text("Save");
+			$("#btSubmit").text("Update");
+			course.getCourse($(this).data("id"));
 		});
    	
+   		course.mainCategories = function(){
+   			$.ajax({ 
+			    url:"${pageContext.request.contextPath}/admin/courses/maincategories", 
+			    type: 'GET',
+			    beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                },
+			    success: function(data) {  console.log(data);
+					$(".mainCategories").empty();
+					$(".mainCategories").append("<option value='empty'>Main category</option>");
+					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".mainCategories");
+					
+					$(".f-mainCategories").empty();
+					$(".f-mainCategories").append("<option value='empty'>Main category</option>");
+					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".f-mainCategories");
+					
+			    }
+   			});
+   		};
    	
-   	
-   	
+   		course.getCourse = function(courseId){
+   			$.ajax({ 
+			    url:"${pageContext.request.contextPath}/admin/course/"+courseId, 
+			    type: 'GET',
+			    beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                },
+			    success: function(data) {  console.log(data);
+			       $("#playlistId").val(data.RES_DATA.playlistId);
+			       $("#playlistName").val(data.RES_DATA.playlistName);
+			       $("#description").val(data.RES_DATA.description);
+			       $("#thumnail").attr("src" , data.RES_DATA.thumbnailUrl);
+			       $("#bgImage").attr("src" , data.RES_DATA.bgImage);
+			       $("#f-mainCategory").val(data.RES_DATA.maincategory);
+			       $("#status").val(""+data.RES_DATA.status);
+			       $("#color").val( data.RES_DATA.color);
+			       bgImage = data.RES_DATA.bgImage;
+			       thumbnailUrl = data.RES_DATA.thumbnailUrl;
+			    }
+   			});
+   		};
+   		
+   		course.updateCourse = function(){ 
+			frmData = {
+					"playlistId"   	: $("#playlistId").val(),
+					"playlistName" 	: $("#playlistName").val(),
+					"description" 	: $("#description").val(),
+					"thumbnailUrl" 	: thumbnailUrl,
+					"bgImage" 		: bgImage,
+					"maincategory" 	: $("#f-mainCategory").val(),
+					"status" 		: $("#status").val(),
+					"color" 		: $("#color").val()
+			};
+			console.log(frmData); 
+			KA.createProgressBarWithPopup();
+			$.ajax({ 
+			    url:  $("#frmCourse").attr("action"), 
+			    type: $("#frmCourse").attr("method"),
+			    data: JSON.stringify(frmData),
+			    beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                },
+			    success: function(data) { 
+					console.log(data);
+			    	KA.destroyProgressBarWithPopup();
+			    	course.courses('empty',1);
+					course.mainCategories();
+			    	$("#p-frmCourse").bPopup().close();
+			    },
+			    error:function(data,status,er) { 
+			    	KA.destroyProgressBarWithPopup();
+			        console.log("error: "+data+" status: "+status+" er:"+er);
+			    }
+			});
+		};
+		
+		course.uploadThumbnailUrl = function(){
+			var formData = new FormData();
+	     	formData.append('file',  $("#fileThumbnail")[0].files[0]);
+	     	console.log(formData);
+		     	$.ajax({
+	  	            url: "${WS}uploadfile/upload?url=playlist/thumbnail",
+	  	            type: "POST",
+	  	         	enctype : 'multipart/form-data',
+					data : formData ,
+					processData : false, // tell jQuery not to process the data
+					contentType : false, // tell jQuery not to set contentType
+		  	        beforeSend: function(xhr) {
+					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
+		  	        },
+	  	            success: function(data) {
+	  	            	console.log(data); 
+	  	            	thumbnailUrl = data.IMG;
+	  	            },
+	  	         	error: function(data){
+	  	         		console.log(data);
+	  				}
+	  	        });
+			
+		};
+		
+		course.uploadBgImage = function(){
+			var formData = new FormData();
+	     	formData.append('file',  $("#fileBgImage")[0].files[0]);
+	     	console.log(formData);
+		     	$.ajax({
+	  	            url: "${WS}uploadfile/upload?url=playlist/bgimage",
+	  	            type: "POST",
+	  	         	enctype : 'multipart/form-data',
+					data : formData ,
+					processData : false, // tell jQuery not to process the data
+					contentType : false, // tell jQuery not to set contentType
+		  	        beforeSend: function(xhr) {
+					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
+		  	        },
+	  	            success: function(data) {
+	  	            	console.log(data); 
+	  	            	bgImage = data.IMG;
+	  	            },
+	  	         	error: function(data){
+	  	         		console.log(data);
+	  				}
+	  	        });
+			
+		};
+		
+		course.updateThumbnailUrl = function(){
+			var formData = new FormData();
+	     	formData.append('file',  $("#fileThumbnail")[0].files[0]);
+	     	console.log(formData);
+		     	$.ajax({
+	  	            url: "${WS}uploadfile/update?url=playlist/thumbnail&filename="+thumbnailUrl.split("/").pop(),
+	  	            type: "POST",
+	  	         	enctype : 'multipart/form-data',
+					data : formData ,
+					processData : false, // tell jQuery not to process the data
+					contentType : false, // tell jQuery not to set contentType
+		  	        beforeSend: function(xhr) {
+					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
+		  	        },
+	  	            success: function(data) {
+	  	            	console.log(data); 
+	  	            	thumbnailUrl = data.IMG;
+	  	            },
+	  	         	error: function(data){
+	  	         		console.log(data);
+	  				}
+	  	        });
+			
+		};
+		
+		course.updateBgImage = function(){
+			var formData = new FormData();
+	     	formData.append('file',  $("#fileBgImage")[0].files[0]);
+	     	console.log(formData);
+		     	$.ajax({
+	  	            url: "${WS}uploadfile/update?url=playlist/bgimage&filename="+bgImage.split("/").pop(),
+	  	            type: "POST",
+	  	         	enctype : 'multipart/form-data',
+					data : formData ,
+					processData : false, // tell jQuery not to process the data
+					contentType : false, // tell jQuery not to set contentType
+		  	        beforeSend: function(xhr) {
+					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
+		  	        },
+	  	            success: function(data) {
+	  	            	console.log(data); 
+	  	            	bgImage = data.IMG;
+	  	            },
+	  	         	error: function(data){
+	  	         		console.log(data);
+	  				}
+	  	        });
+			
+		};
+		
+		
+		 $('#fileThumbnail').change(
+					function(event) {
+						$("#thumnail").fadeIn("fast").attr('src',
+								URL.createObjectURL(event.target.files[0]));
+						course.uploadThumbnailUrl();
+		});
+	        
+	    $('#fileBgImage').change(
+					function(event) {
+						$("#bgImage").fadeIn("fast").attr('src',
+								URL.createObjectURL(event.target.files[0]));
+						course.uploadBgImage();
+		});
+		 
+		 
+		
+		$("#frmCourse").submit(function(e){
+			 e.preventDefault();
+// 			 course.updateThumbnailUrl();
+// 			 course.updateBgImage();
+// 			 course.uploadThumbnailUrl();
+			 course.updateCourse();
+		});
+		
+		 
+   		course.courses('empty',1);
+		course.mainCategories();
+		
    	});
    	</script>
    
 		
+		
+	<script type="text/javascript">
+	var sone = 0;	
+    function ValidateFileUpload() {
+    	
+   	 	if( document.getElementById("fileBgImage").files.length == 0 ){
+			return;
+		} 
+	
+        var fuData = document.getElementById('fileBgImage');
+        var FileUploadPath = fuData.value;
+        
+        var imageSize = fuData.files[0].size;
+        var maxSize = 1024 * 1024 * 2 ;  // size 2 MB
+        if(imageSize> maxSize){
+        	alert("Please upload the image less than 2MB.1");
+        	$("#fileBgImage").val('');
+//         	$('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+        }else{
+      //  alert("This is file size of image you have to controller ....."+imageSize);
+        //To check if user upload any file
+        if (FileUploadPath == '') {
+            alert("Please upload the image less than 2MB.2");
+            $("#fileBgImage").val('');
+//             $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+        } else {
+            var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+			//The file uploaded is an image
+			if ( Extension == "png" || Extension == "gif" || Extension == "jpeg" || Extension == "jpg") {				    
+				
+				if (fuData.files && fuData.files[0]) {
+                    var reader = new FileReader();
+                      reader.onload = function(e) {
+                         $('#bgImage').attr('src', e.target.result);
+                         console.log("OK");
+                    };
+                    reader.readAsDataURL(fuData.files[0]);
+                }
+
+            } 
+
+	//The file upload is NOT an image
+	else {
+	                alert("Please upload the image less than 2MB. 3");
+	                $("#fileBgImage").val('');
+// 	                $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
+	            }
+	        }
+	    }
+    }
+	</script> 	
 
 </body>
 </html>
