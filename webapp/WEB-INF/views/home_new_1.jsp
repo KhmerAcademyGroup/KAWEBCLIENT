@@ -176,7 +176,7 @@
 								
 								<!-- BEGIN OWL CAROUSEL -->
 								
-						<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
+						
 							
 						<div id="listCourse" style="display:none">
 								
@@ -255,6 +255,8 @@
 								</div>
 							
 							</div>	 <!-- End List Courses -->
+							
+							<div id="loading"​ style="display: none" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
 							
 							<div id="tutorialForum" class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;">
 								
@@ -509,6 +511,7 @@
 	    		});
 				
 				
+				$("#loading").show();
 				$.ajax({
 					url :"${pageContext.request.contextPath}/rest/elearning/recent/${userid}",
 					type: "GET",

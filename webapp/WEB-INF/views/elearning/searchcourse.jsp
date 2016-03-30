@@ -132,7 +132,7 @@
 	            											<br>
 	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
 	            										</p>
-														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Videos | By {{= username }}</span>
+														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Lessons</span>
 	            									</div>
 	            								</div>
 	            							</div>
