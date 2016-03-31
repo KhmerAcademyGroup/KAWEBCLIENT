@@ -213,9 +213,9 @@
 										<c:forEach items="${data.PLAYLIST}" var="plist">
 											<div class="the-box no-border store-list bg-gray" style="margin-bottom:5px;padding-bottom:5px" ng-click="changeUrlVideo('${plist.videoId }')">
 												<div class="media">
-													<%-- <a class="pull-left">
+													<a class="pull-left">
 											    		<img alt="image" class="store-image img-responsive" src="https://i.ytimg.com/vi/${plist.youtubeUrl }/mqdefault.jpg" style="width:100px;height:60px">
-											    	</a> --%>
+											    	</a>
 											    	<div class="clearfix visible-xs"></div>
 											    	<div class="media-body">
 											        <h2 class="media-heading">
@@ -686,12 +686,11 @@
 			
 			$("#commentform").submit(function(e){
 				e.preventDefault();
-				
 				if($("#commenttext").val().trim()!=""&&$("#commenttext").val().trim()!=null&&$("#commenttext").val().trim()!="<br/>"){
 					var vdoid = $("#commentonvideoid").val();
 					$.post("${pageContext.request.contextPath}/rest/elearning/video/addcomment" , 
 						{
-							'commenttext'  : $("#commenttext").val(),
+							'commenttext'  : stripHTML($("#commenttext").val().trim()),
 							'v'	: vdoid
 						},function(data){ 
 							$("#comments").html(getCommentVideo(vdoid));	
@@ -708,6 +707,26 @@
 			$(window).unload(function(){
 				stopWatch();	
 		    });
+			
+			
+			function stripHTML(my_string){
+			    var charArr   = my_string.split(''),
+			        resultArr = [],
+			        htmlZone  = 0,
+			        quoteZone = 0;
+			    for( x=0; x < charArr.length; x++ ){
+			     switch( charArr[x] + htmlZone + quoteZone ){
+			       case "<00" : htmlZone  = 1;break;
+			       case ">10" : htmlZone  = 0;resultArr.push(' ');break;
+			       case '"10' : quoteZone = 1;break;
+			       case "'10" : quoteZone = 2;break;
+			       case '"11' : 
+			       case "'12" : quoteZone = 0;break;
+			       default    : if(!htmlZone){ resultArr.push(charArr[x]); }
+			     }
+			    }
+			    return resultArr.join('');
+			}
 		</script>
 		
 		<!-- <script type="text/javascript">

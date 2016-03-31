@@ -168,5 +168,16 @@ public class PlaylistRestTemplateController {
 		}
 		
 		
+		@RequestMapping(value="/rest/elearning/plalylistByMainCateogryWithPagin/{maincategoryid}" , method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>> listPlaylistsByMainCategoryWithPagin(
+				@PathVariable String maincategoryid,
+				@RequestParam(value = "page", required = false , defaultValue="1") int page 
+			   ,@RequestParam(value="item" , required = false , defaultValue="10") int item){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/byMainCategoryWithPagin/"+ maincategoryid+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+		
+		
 	
 }

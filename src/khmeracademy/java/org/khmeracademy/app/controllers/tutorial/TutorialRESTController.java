@@ -99,4 +99,14 @@ public class TutorialRESTController {
 			ResponseEntity<Map> response = rest.exchange(WSURL + "tutorial/" + tutorialId, HttpMethod.DELETE , request , Map.class) ;
 	        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	    }
+		
+		
+		@RequestMapping(value="/tutorial/rest/list_tutorial", method= RequestMethod.GET)
+	    public ResponseEntity<Map<String, Object>> listTutorial( 
+	    			  @RequestParam(value = "page", required = false , defaultValue="1") int page 
+	 		    	, @RequestParam(value="item" , required = false , defaultValue="20") int item){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "tutorial/list_tutorial?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+	        return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	    }
 }

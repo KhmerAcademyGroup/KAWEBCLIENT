@@ -43,7 +43,7 @@ public class ELearningController {
 		}else{
 			 m.addAttribute("userid", "null" );
 		}
-	    return "/elearning/index_new_1";
+	    return "/elearning/index_new_2";
 	}
 	
 	@RequestMapping(value="/playvideo" , method = RequestMethod.GET)

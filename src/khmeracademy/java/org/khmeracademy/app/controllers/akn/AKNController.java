@@ -35,27 +35,37 @@ public class AKNController {
 		HttpEntity<Object> request = new HttpEntity<Object>(aknHeaders);
 		Map<String,Object> map = new HashMap<String , Object>();
 		if(key.equals("getAKN")){
-			ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/8/0/0/0/", HttpMethod.GET , request , Map.class) ;
+			ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/12/0/0/0/", HttpMethod.GET , request , Map.class) ;
         	map.put("NEWS", all.getBody());
         	map.put("KEY", key);
 		}
 		if(key.equals("getAKNScholarship")){
-	        ResponseEntity<Map> scholarship = rest.exchange(AKNURL + "api/article/1/8/50/0/0/", HttpMethod.GET , request , Map.class) ;
+	        ResponseEntity<Map> scholarship = rest.exchange(AKNURL + "api/article/1/12/50/0/0/", HttpMethod.GET , request , Map.class) ;
 	        map.put("NEWS", scholarship.getBody());
         	map.put("KEY", key);
 		}
 		if(key.equals("getAKNTechnology")){
-	        ResponseEntity<Map> technology = rest.exchange(AKNURL + "api/article/1/8/4/0/0/", HttpMethod.GET , request , Map.class) ;
+	        ResponseEntity<Map> technology = rest.exchange(AKNURL + "api/article/1/12/4/0/0/", HttpMethod.GET , request , Map.class) ;
 	        map.put("NEWS", technology.getBody());
         	map.put("KEY", key);
 		}
 		if(key.equals("getAKNNational")){
-			ResponseEntity<Map> national = rest.exchange(AKNURL + "api/article/1/8/43/0/0/", HttpMethod.GET , request , Map.class) ;
+			ResponseEntity<Map> national = rest.exchange(AKNURL + "api/article/1/12/43/0/0/", HttpMethod.GET , request , Map.class) ;
 			map.put("NEWS", national.getBody());
 			map.put("KEY", key);
 		}
 		if(key.equals("getAKNInternational")){
-	        ResponseEntity<Map> international = rest.exchange(AKNURL + "api/article/15/8/4/0/0/", HttpMethod.GET , request , Map.class) ;
+	        ResponseEntity<Map> international = rest.exchange(AKNURL + "api/article/15/12/4/0/0/", HttpMethod.GET , request , Map.class) ;
+			map.put("NEWS", international.getBody());
+			map.put("KEY", key);
+		}
+		if(key.equals("getAKNLife")){
+	        ResponseEntity<Map> international = rest.exchange(AKNURL + "api/article/15/12/7/0/0/", HttpMethod.GET , request , Map.class) ;
+			map.put("NEWS", international.getBody());
+			map.put("KEY", key);
+		}
+		if(key.equals("getAKNSport")){
+	        ResponseEntity<Map> international = rest.exchange(AKNURL + "api/article/15/12/9/0/0/", HttpMethod.GET , request , Map.class) ;
 			map.put("NEWS", international.getBody());
 			map.put("KEY", key);
 		}

@@ -53,6 +53,7 @@
 				<a href="${pageContext.request.contextPath}/forum"><spring:message code="forum"/></a>
 			</li>
 			
+			
 			<li class="parent">
 				<a href="http://www.moeys.gov.kh" target="_blank">MoEYS</a>
 				<ul class="sub-menus">
@@ -124,7 +125,7 @@
 					<li class="sub-list"><a href="?language=en"><spring:message code="lang_english"/></a></li>
 				</ul> --%>
 			</li> 
-			<li class="parent right-icon">
+			<li class="parent right-icon" style="margin-right: -20px;">
 						<i class="fa fa-search" id="nav-icon-search"></i>
 			</li>
 					

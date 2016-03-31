@@ -95,13 +95,13 @@
 							<thead>
 								<tr>									
 									<th>No</th>
+									<th>Action</th>
 									<th>Course</th>
 									<th>Description</th>
 									<th>Category</th>	
 									<th>Videos</th>
 									<th>By</th>
 									<th>Status</th>												
-									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="content">
@@ -265,6 +265,10 @@
 	<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= playlistId }}</td>
+				<td> 
+					<i data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmCourse"></i>
+   		 			<i data-id="{{= playlistId }}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmCourse"></i>
+         		</td>
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>
 				<td>{{= maincategoryname}}</td>
@@ -276,10 +280,6 @@
 						<i data-id="{{= playlistId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
 				</td>
-				<td> 
-					<i data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmCourse"></i>
-   		 			<i data-id="{{= playlistId }}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmCourse"></i>
-         		</td>
 			</tr>
    	</script>
    	
@@ -344,7 +344,7 @@
    		
 		
    		$(document).on('click',"#showFrmCourse" , function(){
-			$("#p-frmCourse").bPopup({modalClose: false});
+			$("#p-frmCourse").bPopup();//{modalClose: false});
 			$("#frmCourse").attr("method", "PUT");
 			$("#frmCourse").trigger("reset");
 			$("#btSubmit").text("Update");
