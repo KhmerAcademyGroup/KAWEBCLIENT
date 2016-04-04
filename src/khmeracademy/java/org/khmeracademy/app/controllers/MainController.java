@@ -33,7 +33,7 @@ public class MainController {
 			 m.addAttribute("userid", "null" );
 		}
 	    
-		return "home_new_2";
+		return "home_new_3";
 	}
 	
 	@RequestMapping(value="/test" , method = RequestMethod.GET)
