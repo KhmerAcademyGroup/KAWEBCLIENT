@@ -33,10 +33,11 @@ public class CourseManagementRest {
 	
 	@RequestMapping(value="/courses/{mainCategory}" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> courses(@PathVariable("mainCategory") String mainCategory
+										, @RequestParam(value = "playlistName", required = false , defaultValue="") String playlistName 
 										, @RequestParam(value = "page", required = false , defaultValue="1") int page 
 									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/"+mainCategory+"?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/"+mainCategory+"?page="+page+"&item="+item+"&playlistName="+playlistName, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

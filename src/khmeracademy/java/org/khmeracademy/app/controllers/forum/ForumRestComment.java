@@ -41,6 +41,16 @@ public class ForumRestComment {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/rest/forum/questiondto" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listQuestionDTO(
+			  @RequestParam(value = "page", required = false , defaultValue="1") int page 
+			, @RequestParam(value="item" , required = false , defaultValue="20") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "forum/comment/listquestiondto?page="+page+"&item="+item, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	
 	@RequestMapping(value="/rest/forum/question/c/{cid}" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> listQuestionByCate(
 			  @PathVariable("cid") String cid

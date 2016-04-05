@@ -81,8 +81,8 @@
 												 
 												 
 						<div class="btn-group pull-right">
-							<form role="form">
-								<input type="text" onkeyup="mySearchPlaylist()" id="search" class="form-control"
+							<form role="form" action="#" id="frmSearch">
+								<input type="text" id="search" class="form-control"
 									placeholder="Search University">
 							</form>
 
@@ -181,7 +181,7 @@
 												 </div>
 												  
 											  <div class="form-group">	
-											 	<label for="exampleInputEmail1">Image for web 262 x 162</label>
+											 	<label for="exampleInputEmail1">Image for web 210 x 130</label>
 												<div >
 													<img id="thumnail" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
 												</div>
@@ -295,26 +295,26 @@
    	
    	$(document).ready(function(){
    		
-   		course.courses = function(mainCategoryId,currentPage){
+   		course.courses = function(mainCategoryId,currentPage,playlistName){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/courses/"+mainCategoryId+"?page="+currentPage+"&item=100", 
+			    url:"${pageContext.request.contextPath}/admin/courses/"+mainCategoryId+"?page="+currentPage+"&item=100&playlistName="+playlistName, 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
                     xhr.setRequestHeader("Content-Type", "application/json");
                 },
 			    success: function(data) {  console.log(data);
-			    	if(data.RES_DATA.length>0){
-			    		$("#totalrecord").text(data.PAGINATION.totalCount);
-						$("tbody#content").empty();
-						$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
-					}else{
-						$("tbody#content").html('<tr>No content</tr>');
-					}
-			    	/* if(check){
-			    		course.setPagination(data.PAGINATION.totalPages,currentPage,mainCategoryId);
-			    		check=false;
-			    	} */
+			    	if(data.STATUS != false){
+				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Courses");
+							$("tbody#content").empty();
+							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+			    	}else{
+			    		$("#totalrecord").text(0 + " Course");
+			    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
+								  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+								  '<strong>No course</strong>'+
+								'</div>');
+			    	}
 			    }
    			});
    		};
@@ -419,7 +419,7 @@
 			    success: function(data) { 
 					console.log(data);
 			    	KA.destroyProgressBarWithPopup();
-			    	course.courses('empty',1);
+			    	course.courses($("#mainCategory").val(),1,$("#search").val());
 					course.mainCategories();
 			    	$("#p-frmCourse").bPopup().close();
 			    },
@@ -555,8 +555,17 @@
 			 course.updateCourse();
 		});
 		
-		 
-   		course.courses('empty',1);
+		$("#frmSearch").submit(function(e){
+			e.preventDefault();
+			alert($("#search").val());
+			course.courses('empty',1,$("#search").val());
+		});
+		
+		$("#mainCategory").change(function(){
+			course.courses($("#mainCategory").val(),1,$("#search").val());
+		});
+		
+   		course.courses('empty',1,"");
 		course.mainCategories();
 		
    	});

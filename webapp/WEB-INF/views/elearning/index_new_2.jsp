@@ -141,7 +141,7 @@
 	            			<div class="owl-wrapper-outer">
 	            				
 	            				
-	            				<div id="getCourse" class="owl-wrapper" style="width: 100%; left: 0px; display: list-item;;">
+	            				<div id="getCourse" class="owl-wrapper" style="width: 101%; left: 0px; display: list-item;;">
 	            					
 	            					
 	            					
@@ -181,10 +181,10 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
 		
 		 <script id="course_tmpl" type="text/x-jquery-tmpl">
-								<div class="owl-item" style="width: 228px;">
+								<div class="owl-item" style="width: 220px;    margin-right:10px;">
 	            						<div class="mitem">
 	            							<div>
-	            								<div class="thumbnail media-lib-item" style="height: 250px;padding: 0px;">
+	            								<div class="thumbnail media-lib-item" style="height: 225px;padding: 0px;">
 	            									<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
 	            										<img src="{{= thumbnailUrl }}" alt="...">
 	            									</a>
@@ -196,7 +196,6 @@
 	            											<br>
 	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
 	            										</p>
-														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Lessons</span>
 	            									</div>
 	            								</div>
 	            							</div>

@@ -213,37 +213,37 @@
 																	<div class="panel-body">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-recent">
-																				<div  id="getRecent" class="row" style="height:  auto; overflow: hidden;">
+																				<div  id="getRecent" class="row" style="height:  701px; overflow: hidden;">
 															  							
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-general">
-																					<div  id="getGeneral" class="row" style="min-height: 453px; overflow: hidden;">
+																					<div  id="getGeneral" class="row" style="min-height: 701px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-computerBasic">
-																					<div  id="getComputerBasic" class="row" style="min-height: 453px;overflow: hidden;">
+																					<div  id="getComputerBasic" class="row" style="min-height: 701px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-language">
-																					<div  id="getLanguage" class="row" style="min-height: 453px;overflow: hidden;">
+																					<div  id="getLanguage" class="row" style="min-height: 701px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-programming">
-																					<div  id="getProgramming" class="row" style="min-height: 453px; overflow: hidden;">
+																					<div  id="getProgramming" class="row" style="min-height: 701px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-web">
-																					<div  id="getWeb" class="row" style="min-height: 453px;overflow: hidden;">
+																					<div  id="getWeb" class="row" style="min-height: 701px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-mobile">
-																					<div  id="getMobile" class="row" style="min-height: 453px; overflow: hidden;">
+																					<div  id="getMobile" class="row" style="min-height: 701px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
@@ -269,7 +269,7 @@
 															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  >Forum - Recent Questions  </a></h3>
 														  </div>
 												
-														<div class="inbox"  id="getQuestion" style="padding: 15px;    height: 579px;  border: 1px solid #D5DAE0;">	
+														<div class="inbox"  id="getQuestion" style="padding: 15px;    height: 779px;  border: 1px solid #D5DAE0;">	
 																
 											</div>	
 									 </div> 					
@@ -356,7 +356,7 @@
 															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" >Tutorials</a></h3>
 														  </div>
 												
-														 <div class="inbox" style="    height: 395px;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
+														 <div class="inbox" style="    height: auto;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
 																
 														</div>	
 									 </div> 					
@@ -381,9 +381,10 @@
 		
 		
 		 <script id="tlistcategory_tmpl" type="text/x-jquery-tmpl">
-					<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
-								<span class="small shortenString">
-										<a title="{{= categoryName}}" class="no-underline ka-question" href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#656D78">
+					<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+								<span class="small ">
+										<img width="20px" height="20px" src="{{= categoryLogoUrl }}" alt="{{= categoryName}}">
+										<a title="{{= categoryName}}" class="no-underline ka-question " href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#656D78">
 											{{= categoryName}}
 										</a>
 								</span> <br/>
@@ -392,24 +393,23 @@
 																
 																
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
-				<div class="caption text-left" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
-						<span class="small shortenString">
+				<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+						<span class="small ">
 								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" style="font-size: 16px;color:#656D78">
 									{{= title }}
 								</a>
-						</span> <br/>
-						<span class="small text-muted" style="color:#4D4D4D">{{= vote }} Votes | {{= commentCount }} Answers</span>
+						</span> 
 				</div> 
 		</script>
 		
 		
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
-					<div class="col-md-3" style="width: 50%;height:50px;display: -webkit-box;">		
-							<!--<div>
+					<div class="col-md-3" style="width: 50%;height:70px;display: -webkit-box;">	
+							<div>
 								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
-										<img width="40px" height="40px" src="{{= thumbnailUrl }}" alt="...">
+										<img width="70px" height="50px"  src="{{= thumbnailUrl }}" alt="{{= playlistName }}">
 								</a>
-							</div>-->
+							</div>
 							<div class="caption text-left  shortenString" style="padding: 10px;width:80%;padding-top: 0px;">                       
 									<p class="small shortenString">                       
 											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#656D78;font-size: 17px;">                         
@@ -454,6 +454,35 @@
 						akn1 += "</table>";
 						$("#"+block).html(akn1);
 				} 
+				 
+				 
+				function displayElearning(id,data){
+					var elearning = "";
+					for(var i=0; i<data.RES_DATA.length;i++){
+						
+						elearning +=  '<div class="col-md-3" style="width: 50%;height:70px;display: -webkit-box;">'
+										 +'<div>'
+										 +'<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">'
+										 +'<img  width="70px" height="50px" src="'+data.RES_DATA[i].thumbnailUrl+'" alt="'+data.RES_DATA[i].playlistName+'">'
+														+'</a>'
+										 +'</div>'
+										 +'<div class="caption text-left  shortenString" style="padding: 10px;width:80%;padding-top: 0px;">'                       
+										 +'<p class="small shortenString"> '                      
+										 +'<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#656D78;font-size: 16px;">'                         
+										 +'<b>'+data.RES_DATA[i].playlistName+'</b> '                 
+										 +'</a> ' 
+										 +'<br/>'
+										 +'<span class="text-muted" style="color:#4D4D4D">'+data.RES_DATA[i].description+'</span>' 
+										 +'</p>'               
+										 +'</div>'
+										 +'</div>';
+					}
+					$("#"+id).html(elearning);
+					
+					
+				}
+				
+				
 			 
 		    $(document).ready(function() {
 		    	
@@ -464,17 +493,19 @@
 		    	})
 		    	
 		    	// Forum 
+		    	showForum = function(data){ 
 		    		$.ajax({
-							url:'${pageContext.request.contextPath}/rest/forum/question?page=1&item=10',
+							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=22',
 							method: 'GET',
 							success:function(data){
 								if(data.RES_DATA.length>0){
-// 									console.log(data);
+									console.log(data);
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						
 	    						}
 							}
 					});	
+		    	};
 		    	// End Forum
 		    	
 		    	
@@ -482,14 +513,16 @@
 		    	
 		    	
 		    	// Tutorial
-				$.ajax({
+				showTutorial = function(data){ 
+		    		$.ajax({
 					url : "${pageContext.request.contextPath}/tutorial/rest/list_tutorial?item=12",
 					method: "GET",
 					success : function(data){ console.log(data);
 // 						console.log(data.RES_DATA); 
 						$("#tlistcategory_tmpl").tmpl(data.RES_DATA).appendTo("#listcategory");
-					}
-				});
+						}
+					});
+				};
 		    	// End Tutorial
 		    	
 		    	
@@ -499,14 +532,13 @@
 						url:'${pageContext.request.contextPath}/akn/scholarship/'+data,
 						method: 'GET',
 						success:function(data){
-							console.log(data);
 							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
 						}
 					});	
 		    	};
 				
 				
-				showNews("getAKN");
+				
 				
 				$(document).on('click',".newsTab" , function(){  
 					 if ($("#"+$(this).data("id")).find('table').length > 0) { 
@@ -528,11 +560,11 @@
 						success:function(data){
 							console.log(data);
 							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);
+// 							displayElearning(eID,data);
 						}
 					});	
 		    	};
 				
-		    	showElearning("empty");
 		    	
 		    	
 		    	$(document).on('click',".eTab" , function(){  
@@ -544,6 +576,13 @@
 					  }
 					 
 	    		});
+		    	
+		    	
+		    	
+		    	showElearning("empty");
+		    	showForum();
+		    	showTutorial();
+		    	showNews("getAKN");
 				
 			});
 			

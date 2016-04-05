@@ -12,7 +12,7 @@
 	
 		<!-- Begin logo -->
 		<div class="logo">
-			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/logo/KA-WEB-LOGO.png" alt="Logo"></a>
+			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/logo/khmeracademy.png" alt="Khmer Academy"></a>
 		</div><!-- /.logo -->
 		<!-- End logo -->
 		

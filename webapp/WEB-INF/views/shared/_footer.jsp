@@ -747,7 +747,7 @@ Placed at the end of the document so the pages load faster
    		
    	
    		 
-   		 <jsp:include page="../shared/_search.jsp" />
+   		
    		 
    		 
    		 <script>
