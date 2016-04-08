@@ -27,9 +27,9 @@
 <%-- 				<jsp:include page="../shared/_banner.jsp"></jsp:include> --%>
 			
 				<ol class="breadcrumb">
-				  <li><a href="${pageContext.request.contextPath}/forum">All Questions</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum"><spring:message code="fp_all_question"/></a></li>
 <!-- 				  <li><a href="#fakelink">Users</a></li> -->
-				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum/question/ask"><spring:message code="fp_ask_question"/></a></li>
 				</ol>
 				
 				
@@ -90,7 +90,7 @@
 								<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
 										
 								 <div class="text-center">
-									<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
+									<button class="btn btn-primary" id="btLoadMore" style="display:none" ><spring:message code="fp_more"/></button>
 								</div>
 						
 				</div>
@@ -104,7 +104,7 @@
 							
 							<div class="panel panel-square panel-primary panel-no-border">
 							  <div class="panel-heading lg">
-								<h3 class="panel-title">Categories</h3>
+								<h3 class="panel-title"><spring:message code="fp_category"/></h3>
 							  </div>
 							   <!-- List group -->
 								<div class="list-group" id="getCategory">
@@ -195,12 +195,11 @@
 				<a href="javascript:" data-cateid="{{= categoryId }}" data-cate="{{= categoryName }}" id="listQuestionByCate" class="list-group-item">{{= categoryName }} ({{= commentCount }})</a>
 		</script>
 
-		 <spring:message code="WSURL_IMG_URL" var="img_path"/> 
 
 		<script type="text/javascript">
 			  $(document).ready(function(){
 			  	
-				    var img_path = '${img_path}';
+				   
 				  
 				    var question = {};
 			  		var page = 1;
@@ -229,7 +228,8 @@
 	    	                    xhr.setRequestHeader("Accept", "application/json");
 	    	                    xhr.setRequestHeader("Content-Type", "application/json");
 	    	                },
-	    				    success: function(data) {  console.log(data);
+	    				    success: function(data) {  
+// 	    				    	console.log(data);
 	    						$("#getTotalQuestion").text(data.PAGINATION.totalCount + " Questions");
 	    						totalPage = data.PAGINATION.totalPages;
 	    						
@@ -345,7 +345,8 @@
 	    			
 	    			
 	    			
-	    			$("#btLoadMore").click(function(){  console.log(type);
+	    			$("#btLoadMore").click(function(){ 
+// 	    				console.log(type);
 	    				page++;
 	    				empty = false;
 // 	    				if(page > totalPage){

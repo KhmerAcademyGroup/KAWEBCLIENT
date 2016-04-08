@@ -17,10 +17,10 @@ public class CustomUserDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userService.findUserByEmail(email);
 		if(user == null){
-			System.out.println("User not found");
+//			System.out.println("User not found");
 			throw new UsernameNotFoundException("User not found");
 		}
-		System.out.println(user.getUsername());
+//		System.out.println(user.getUsername());
 		return user;
 	}
 

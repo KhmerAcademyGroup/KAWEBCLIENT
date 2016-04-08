@@ -201,7 +201,7 @@
 														"application/json");
 											},
 											success : function(data) {
-												console.log(data);
+// 												console.log(data);
 
 												/*  alert(JSON.stringify(data));
 												return;  */
@@ -294,7 +294,7 @@
 												"application/json");
 									},
 									success : function(data) {
-										console.log(data);
+// 										console.log(data);
 										KA.destroyProgressBarWithPopup();
 										category.listCategory(1);
 										$("#p-frmCategory").bPopup().close();
@@ -324,7 +324,7 @@
 												"application/json");
 									},
 									success : function(data) {
-										console.log(data);
+// 										console.log(data);
 										KA.destroyProgressBarWithPopup();
 										category.listCategory(1);
 										$("#p-frmConfirm").bPopup().close();
@@ -393,8 +393,8 @@
 
 												//$("#mainCategoryId").val(mainId);
 												KA.createProgressBarWithPopup();
-												console.log(cateId);
-												console.log(mainId);
+// 												console.log(cateId);
+// 												console.log(mainId);
 												$("#categoryName")
 														.val(cateName);
 												$(

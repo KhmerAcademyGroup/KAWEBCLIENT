@@ -437,7 +437,7 @@
 									swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
 					    	   	}
 					    	   		//$("#showresult").html(listarticles(data));
-					                console.log("Success..." + data);
+// 					                console.log("Success..." + data);
 					       }  ,  
 					   		error: function(data){
 					   		alert("Unsuccess" + data +"OR Empty");
@@ -497,7 +497,7 @@
 			
 			listVideo.Listall = function(page){
 	  			
-	  			console.log("llllllllllllll");
+// 	  			console.log("llllllllllllll");
 	  			
 	  			 $.ajax({ 
 	  				url : "${pageContext.request.contextPath}/rest/elearning/listallvideo?page="+page+"&item=4",
@@ -535,7 +535,7 @@
 				 			for(var j=0;j<videoPlaylistJson.length;j++){
 				 			 if(allVideoJson[a].videoId == videoPlaylistJson[j].videoId){
 				 		 		btn = "<input type='button' class='btn btn-danger btnremove' value='Remove' ";
-				 				 console.log(allVideoJson[a].videoId + " = "+ videoPlaylistJson[j].videoId);
+// 				 				 console.log(allVideoJson[a].videoId + " = "+ videoPlaylistJson[j].videoId);
 				 			 }			 		
 				 	}
 				 	}
@@ -609,7 +609,7 @@
     						 
     						 mystart();
     						 //alert("was add");
-    						 console.log(data + "hlll");    						 
+//     						 console.log(data + "hlll");    						 
     					}
     				});	     			       			    
     			    
@@ -631,7 +631,7 @@
     						 change.attr("class","btn btn-info btnadd");    						 
     						 //listVideo.loadData();
     						 mystart();
-    						 console.log(data);
+//     						 console.log(data);
     					}
     				});	 
     			});

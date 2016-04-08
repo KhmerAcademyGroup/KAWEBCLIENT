@@ -177,7 +177,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.RES_DATA.length>0){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RES_DATA.length;i++){
@@ -237,7 +237,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	category.listCategory(1);
 				    	$("#p-frmCategory").bPopup().close();
@@ -252,7 +252,7 @@
 			// Get one forum category
 			category.getCategory = function(cateid){
 				KA.createProgressBarWithPopup();
-				console.log(cateid);
+// 				console.log(cateid);
 				$.ajax({ 
 				    url: "${pageContext.request.contextPath}/rest/category/"+cateid, 
 				    type: 'GET',
@@ -261,7 +261,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.RES_DATA != null){
 							$("#categoryId").val(data.RES_DATA.categoryId); 
 							$("#categoryName").val(data.RES_DATA.categoryName); 

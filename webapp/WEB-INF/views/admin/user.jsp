@@ -324,7 +324,7 @@
 				    	
 				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return;    */
-						console.log(data);
+// 						console.log(data);
 				    	
 				    	var perPage = 20;
 				    	var nextPage = (currentPage-1)*perPage;
@@ -380,7 +380,7 @@
 				    	
 				    	/*  alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return; */
-						console.log(data);
+// 						console.log(data);
 				    	
 				    	var perPage = 20;
 				    	var nextPage = (currentPage-1)*perPage;
@@ -449,7 +449,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						//alert(JSON.stringify(frmData));
 						alert("success");
 				    				    	
@@ -670,7 +670,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						 /* alert(JSON.stringify(frmData));
 						 KA.destroyProgressBarWithPopup();
 						return; */ 
@@ -708,7 +708,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    					    	
 				    	//restart pagination again
@@ -806,7 +806,7 @@
 				var deptName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
-				console.log(cateId);
+// 				console.log(cateId);
 				$("#userId").val(cateId); 
 				$("#userName").val(deptName);
 				

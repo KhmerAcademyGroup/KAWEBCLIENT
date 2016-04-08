@@ -148,7 +148,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listcategory",
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								
 								
@@ -177,7 +177,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listuserbycategory/"+ categoryId,
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								
 								
@@ -205,7 +205,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listcatebyuser/"+ userId,
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								$("#showTable").html(logReport.tableLayout("Category By User"));								
 								$("tbody#content").empty();

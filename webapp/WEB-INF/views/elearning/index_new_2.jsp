@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -69,7 +70,7 @@
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<!-- <a class="block-collapse" style="color:#006a00;" href="#panel-collapse-course"> -->
-							<strong style="color:#fff;">Category</strong>
+							<strong style="color:#fff;"><spring:message code="ep_e-learning"/></strong>
 							<!-- <span class="right-content">
 								<span class="right-icon">
 									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
@@ -81,7 +82,7 @@
 						<div id="panel-collapse-course" class="collapse in">
 						  <div class="panel-body" style="padding: 5px;">
 							
-							<div class="panel-group work-category-wrap"" id="accordion-2" >
+							<div class="panel-group work-category-wrap" id="accordion-2" >
 							
 								
 				
@@ -90,7 +91,7 @@
 														  <div class="panel-heading" style="background:#F5F7FA;">
 															<h3 class="panel-title">
 																<a class="block-collapse collapsed listByMainCategory"  data-id="empty" style="color:#434a54;"  href="script:">
-																	<b id="mName">All</b>
+																	<b id="mName">ទាំងអស់</b>
 																</a>
 															</h3>
 														  </div>
@@ -133,7 +134,7 @@
 	            
 	            <div class="section-heading">
 									<div class="inner-border"></div>
-									<h3 style="color:#4c954d;">E-Learning</h3>
+									<h3 style="color:#4c954d;"><spring:message code="ep_e-learning"/></h3>
 								</div>
 	            	
 	            	<div id="recent" style="margin-bottom:80px">
@@ -154,7 +155,7 @@
 	            			 <div id="loading" class="text-center" style="display: none;"><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>
 				        
 					        <div class="text-center">
-								<button class="btn btn-primary" data-id="empty" id="btLoadMore" style=""> Load more</button>
+								<button class="btn btn-primary" data-id="empty" id="btLoadMore"><spring:message code="ep_more"/></button>
 							</div>
 	            			
 	            			
@@ -203,6 +204,23 @@
 	            					</div>
 		</script>
 		
+		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
+					<div class="col-md-3" style="width: 33%;height:70px;display: -webkit-box;">	
+							<div style="width:70px;height:50px">
+								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+										<img   src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+								</a>
+							</div>
+							<div class="caption text-left  shortenString" style="padding: 10px;width:80%;padding-top: 0px;">                       
+									<p class="small shortenString">                       
+											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#656D78;font-size: 17px;">                         
+													<b>{{= playlistName }}</b>                  
+											</a>   
+									</p>               
+							</div>
+					</div>
+		</script>
+		
 		
 		<script>
 	      jQuery(document).ready(function ($) {
@@ -227,24 +245,25 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=10",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=24",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");
 			                    xhr.setRequestHeader("Content-Type", "application/json");
 			                },
-						success:function(data){ console.log(data);
-							if(data.RES_DATA.length>0){
-								$("#course_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
+						success:function(data){ 
+// 							console.log(data);
+							if(data.STATUS == true ){
+								$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
+								if(page >= data.PAGINATION.totalPages){ 
+									$("#btLoadMore").hide();
+								}else{
+									$("#btLoadMore").show();
+								}
 							}else{
-								$("#getCourse").appendTo("<h1>No data!</h1>");
+// 								$("#getCourse").appendTo("<h1>No data!</h1>");
 							}
 							$("#loading").hide();
-							if(page >= data.PAGINATION.totalPages){ 
-								$("#btLoadMore").hide();
-							}else{
-								$("#btLoadMore").show();
-							}
 						}
 					});	
 				};

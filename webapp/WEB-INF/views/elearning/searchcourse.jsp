@@ -52,7 +52,7 @@
 	            	
 	            <div class="section-heading" style="text-align:left">
 <!-- 					<div class="inner-border"></div> -->
-					<h3 style="color:#4c954d;">Search result for "${keyword}"</h3>
+					<h3 style="color:#4c954d;"><spring:message code="pp_search_result_for"/> "${keyword}"</h3>
 				</div>	
 	            		
 	            			
@@ -92,7 +92,7 @@
 	            			 <div id="loading" class="text-center" style="display: none;"><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>
 				        
 					        <div class="text-center">
-								<button class="btn btn-primary" id="btLoadMore" style=""> Load more</button>
+								<button class="btn btn-primary" id="btLoadMore" style=""><spring:message code="pp_more"/></button>
 							</div>
 	            			
 	            			
@@ -156,7 +156,8 @@
 		                    xhr.setRequestHeader("Accept", "application/json");
 		                    xhr.setRequestHeader("Content-Type", "application/json");
 		                },
-					success:function(data){ console.log(data);
+					success:function(data){ 
+// 						console.log(data);
 						if(data.RES_DATA.length>0){
 							$("#course_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
 						}

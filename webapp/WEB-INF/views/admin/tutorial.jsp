@@ -276,7 +276,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.STATUS != false){
 							$("tbody#content").empty();
 							for(var i=0;i<data.RES_DATA.length;i++){
@@ -338,7 +338,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	tutorial.listTutorial(1);
 				    	$("#myPopup").modal("hide");
@@ -362,7 +362,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.RES_DATA != null){
 							$("#tutorialId").val(data.RES_DATA.tutorialId);
 							$("#title").val(data.RES_DATA.title); 
@@ -390,7 +390,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.STATUS == true){
 							check = true;
 							tutorial.listTutorial(1);

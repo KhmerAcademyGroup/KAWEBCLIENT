@@ -199,7 +199,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listuniversity",
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								
 								
@@ -228,7 +228,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listdepartment/"+ universityId,
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								
 								
@@ -258,7 +258,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listuserbydept/d/"+ deptId +"/u/"+ uniId ,
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								$("#showTable").html(logReport.tableLayoutUser("User Name"));								
 								$("tbody#content").empty();
@@ -284,7 +284,7 @@
 						url : "${pageContext.request.contextPath}/admin/report/rest/listcatebyuser/"+ userId,
 						method: "GET",
 						success: function(data){
-							console.log(data);
+// 							console.log(data);
 							if(data.STATUS != false){
 								$("#showTable").html(logReport.tableLayoutUser("Category By User"));								
 								$("tbody#content").empty();

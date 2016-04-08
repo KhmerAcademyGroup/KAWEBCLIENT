@@ -3,6 +3,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -47,7 +48,7 @@
 		
 		<div class="section" style="min-height: 320px;">
 			<div class="container text-center ka-container">
-				<h2><strong>Introduce our supporter</strong></h2>
+				<h2><strong><spring:message code="sp_intro_our_suppoter"/></strong></h2>
 				<!-- <h4 class="light-font line-height-28 margin-top-50">
 				Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<br>
 				Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem.<br>
@@ -61,13 +62,13 @@
 		<div class="page-title-wrap">
 			<div class="container">
 				<ol class="breadcrumb">
-				  <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+				  <li><a href="${pageContext.request.contextPath}/about"><spring:message code="m_about"/></a></li>
 <%-- 				  <li><a href="${pageContext.request.contextPath}/about/people">People</a></li> --%>
-				  <li class="active">Supporter</li>
-				  <li><a href="${pageContext.request.contextPath}/about/partner">Partner</a></li>
-				  <li><a href="${pageContext.request.contextPath}/about/contribute">Contribute</a></li>
+				  <li class="active"><spring:message code="m_supporter"/></li>
+				  <li><a href="${pageContext.request.contextPath}/about/partner"><spring:message code="m_partner"/></a></li>
+				  <li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="m_contribute"/></a></li>
 				</ol>
-			<h4 class="page-title">Supporter</h4>
+			<h4 class="page-title"><spring:message code="m_supporter"/></h4>
 			</div><!-- /.container -->
 			
 			<div class="border-bottom">
@@ -91,11 +92,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3 class="margin-bottom-30"><strong>Korea Software HRD Center</strong> </h3>
+						<h3 class="margin-bottom-30"><strong><spring:message code="sp_kshrd"/></strong> </h3>
 						<p>
-						Korea HRD center is an IT educational institute in Cambodia, which is built and funded by KOICA(Korea International Cooperation Agency)and WEBCASH. This center is the birthplace of Khmer academy and all the related services. 
-						Center has produced 3 generations of IT expert, approximately  200 of alumni, and Khmer academy has been established by those 
-						future IT leader of Cambodia. 
+						<spring:message code="sp_kshrd_detail"/> 
 						</p>
 					</div><!-- /.col-sm-6 -->
 					

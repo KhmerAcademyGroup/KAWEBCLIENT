@@ -22,8 +22,8 @@ public class MainController {
 	@RequestMapping(value="/" , method = RequestMethod.GET)
 	public String  mainPage(ModelMap m){
 		m.addAttribute("title","Main Page");
-		final String uri = WebURL + "/rest/mainpage/countdata";
-	    RestTemplate restTemplate = new RestTemplate();
+//		final String uri = WebURL + "/rest/mainpage/countdata";
+//	    RestTemplate restTemplate = new RestTemplate();
 //	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 	    Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){

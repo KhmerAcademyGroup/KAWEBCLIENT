@@ -306,7 +306,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 	                success: function(data){
-	                	console.log(data);
+// 	                	console.log(data);
 	                	if(data.STATUS != false){	
 	                		$("tbody#content").empty();
 							for(var i=0;i<data.RES_DATA.length;i++){
@@ -341,7 +341,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 	                success: function(data){
-	                	console.log(data);
+// 	                	console.log(data);
 	                	if(data.STATUS != false){	
 	                		
 	            			document.getElementById("pid").value = data.RES_DATA.id;

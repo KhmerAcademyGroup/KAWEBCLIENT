@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -32,7 +32,7 @@
 							<c:if test="${param.logout == null}">
 								<div class="alert alert-default  square fade in alert-dismissable">
 		<!-- 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-									<strong class="alert-link">Login with your Khmer Academy Account</strong>
+									<strong class="alert-link"><spring:message code="lp_login_ka"/></strong>
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">
@@ -50,16 +50,16 @@
 									  <div id="message"></div>
 									  
 									  <div class="form-group">
-										<label>Email address</label>
-										<input type="text" id="ka_email" class="form-control" placeholder="Enter email" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
+										<label><spring:message code="lp_email"/></label>
+										<input type="text" id="ka_email" class="form-control" placeholder="" required="required" oninvalid="this.setCustomValidity('The email is incorrect!')" oninput="setCustomValidity('')" name="ka_username">
 									  </div>
 									  <div class="form-group">
-										<label>Password</label>
-										<input type="password" id="ka_password" class="form-control" placeholder="Password" required="required"  oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password">
+										<label><spring:message code="lp_password"/></label>
+										<input type="password" id="ka_password" class="form-control" placeholder="" required="required"  oninvalid="this.setCustomValidity('The password is incorrect!')" oninput="setCustomValidity('')" name="ka_password">
 									  </div>
 									  
 									  
-									   <div class="form-group ">
+									   <!-- <div class="form-group ">
 					                        <div class="col-xs-12">
 					                            <div class="checkbox checkbox-primary">
 					                                <input id="checkbox-signup" type="checkbox">
@@ -69,17 +69,17 @@
 					                            </div>
 					                            
 					                        </div>
-					                    </div>
+					                    </div> -->
 					                    
 					                    <div class="form-group text-center">
-					                    	<button type="submit" class="btn btn-primary">Login</button>
+					                    	<button type="submit" class="btn btn-primary"><spring:message code="lp_login"/></button>
 					                    </div>
 					                    
 					                    <div class="form-group m-t-30">
 					                        <div class="col-sm-7">
-												<a href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>					                        </div>
+												<a href="#reset" id="btFrmreset"><i class="fa fa-lock m-r-5"></i><spring:message code="lp_forgot_pwd"/></a>					                        </div>
 					                        <div class="col-sm-5 text-right">
-					                            <a href="${pageContext.request.contextPath}/register" class="btSignUp00000">Create an account</a>
+					                            <a href="${pageContext.request.contextPath}/register" class="btSignUp00000"><spring:message code="lp_create_acc"/></a>
 					                        </div>
 					                    </div>
 								  
@@ -98,7 +98,7 @@
 							<div class="the-box bg-default no-border">
 							
 								<div class="alert alert-default  square fade in alert-dismissable">
-									<strong class="alert-link">Login with your Social Account</strong>
+									<strong class="alert-link"><spring:message code="lp_loing_with_facebook"/></strong>
 								</div>
 								
 								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block btn-lg"><i class="fa fa-facebook"></i> Facebook</button>
@@ -109,7 +109,7 @@
 								  js = d.createElement(s); js.id = id;
 								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=733594286732881";
 								  fjs.parentNode.insertBefore(js, fjs);
-								}(document, 'script', 'facebook-jssdk'));</script>
+								}(document, 'script', 'facebook-jssdk'));</script> 
 									
 							</div><!-- /.the-box .bg-danger .no-border-->
 						</div>

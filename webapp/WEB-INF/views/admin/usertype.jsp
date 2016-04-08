@@ -387,7 +387,7 @@
 				    	
 				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return; */ 
-						console.log(data);
+// 						console.log(data);
 				    	
 				    	perPage = 20;
 				    	nextPage = (currentPage-1)*perPage;
@@ -459,7 +459,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	usertype.listUsertype(gPage);
 				    	$("#p-frmUsertype").bPopup().close();
@@ -486,7 +486,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	usertype.listUsertype(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
@@ -572,7 +572,7 @@
     		                    xhr.setRequestHeader("Content-Type", "application/json");
     		                },
     					    success: function(data) { 
-	    							console.log(data);    					    	
+// 	    							console.log(data);    					    	
 	    					    	//usertype.listUsertype(gPage);
 	    					    	    								
 	    							if($(obj).data("status")===false){	    								
@@ -670,7 +670,7 @@
 				var uniName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
-				console.log(cateId);
+// 				console.log(cateId);
 				$("#usertypeId").val(cateId); 
 				$("#usertypeName").val(uniName);
 				

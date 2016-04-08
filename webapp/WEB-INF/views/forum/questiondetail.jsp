@@ -29,9 +29,9 @@
 		
 			
 				<ol class="breadcrumb">
-				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum"><spring:message code="qp_all_question"/></a></li>
 <!-- 				  <li><a href="#fakelink">Users</a></li> -->
-				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum/question/ask"><spring:message code="qp_ask_question"/></a></li>
 				</ol>
 				
 			<h2 class="page-title" id="getTotalQuestion"> </h2>
@@ -91,7 +91,7 @@
 													<td style="border-top: none;"></td>
 													<td style="border-top: none;">
 														<div>
-															<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs">Share</a> <!-- <a class="btn btn-default active btn-xs" href="#">Edit</a> --></span>
+															<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs"><spring:message code="qp_share"/></a> <!-- <a class="btn btn-default active btn-xs" href="#">Edit</a> --></span>
 															<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="qUsername"><!-- Phearun --></a></span>
 														</div>
 														<div class="text-right"><small id="qDate"><!-- Jan 18, 2016 --></small></div>
@@ -106,7 +106,7 @@
 									
 										<!-- End Question -->
 										
-										<h4 class="page-title"> <span id="totalAnswer"> </span> Answers</h4>
+										<h4 class="page-title"> <span id="totalAnswer"> </span> <spring:message code="qp_answer"/></h4>
 										
 										<!-- Selected Answer -->
 										
@@ -145,7 +145,7 @@
 													<td style="border-top: none;"></td>
 													<td style="border-top: none;">
 														<div>
-															<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs">Share</a> <!-- <a class="btn btn-default active btn-xs" href="#">Edit</a> --> </span>
+															<span class="text-left" style="color:#37BC9B;"><a href="#" class="btn btn-default active btn-xs"><spring:message code="qp_share"/></a> <!-- <a class="btn btn-default active btn-xs" href="#">Edit</a> --> </span>
 															<span class="text-right" style="float:right"><a style="color:#37BC9B;" href="#" id="selectedAnswerUsername"><!-- Phearun --></a></span>
 														</div>
 														<div class="text-right"><small id="selectedAnswerDate"><!-- Jan 18, 2016 --></small></div>
@@ -217,12 +217,12 @@
 										
 										
 										 <div class="text-center">
-											<button class="btn btn-warning" id="btLoadMore" style="display:none" > see more answers</button>
+											<button class="btn btn-warning" id="btLoadMore" style="display:none" ><spring:message code="fp_more"/></button>
 										</div>
 								
 								
 								<hr/>
-								<h4 class="page-title">Answer</h4> 
+								<h4 class="page-title"><spring:message code="qp_answer"/></h4> 
 								
 								<span id="msg"> </span>
 								
@@ -230,7 +230,7 @@
 									<div class="summernote"> </div>
 								</div>
 								
-								<button class="btn btn-primary" id="btPostAnswer">Post answer</button>
+								<button class="btn btn-primary" id="btPostAnswer"><spring:message code="qp_share_your_answer"/></button>
 						
 				</div>
 					</div><!-- /.col-sm-8 col-md-9 -->
@@ -243,7 +243,7 @@
 							
 							<div class="panel panel-no-border panel-sidebar">
 							  <div class="panel-heading">
-								<h3 class="panel-title">Related : </h3>
+								<h3 class="panel-title"><spring:message code="qp_related"/> : </h3>
 							  </div> 
 							   <ul class="media-list" id="getRelatedQuestion">
 								  <!-- <li class="media">
@@ -346,7 +346,6 @@
 				</li>
 		</script>
 		 
-		 <spring:message code="WSURL_IMG_URL" var="img_path"/> 
 
 		<script type="text/javascript">
 		
@@ -358,9 +357,7 @@
 			  var page = 1;
 		  	  var totalPage = 0;
 		  		
-		  	  var img_path = '${img_path}';
-		  	  
-		  	  console.log("path "+ img_path);
+		  	 
 		  	  
 			  $(document).ready(function(){
 				
@@ -416,10 +413,10 @@
 	    	                    xhr.setRequestHeader("Content-Type", "application/json");
 	    	                },
 	    				    success: function(data) {  
-	    				    	console.log("Question : "+data.RESP_DATA.title);  
+// 	    				    	console.log("Question : "+data.RESP_DATA.title);  
 								if(data.RESP_DATA != null ){
 									cid = data.RESP_DATA.categoryId;
-									console.log("CID " + cid);
+// 									console.log("CID " + cid);
 									questionDetail.relatedQuestion(cid);
 									$("#qTitle").text(data.RESP_DATA.title);
 									$("#qTotalVotes").text(data.RESP_DATA.vote);
@@ -502,8 +499,9 @@
 								    	
 								    	for(var i=0;i<data.RESP_DATA.length;i++){ 
 								    		tagHTML = "";
-								    		console.log(data.RESP_DATA[i].selected);
-								    		if(data.RESP_DATA[i].selected == false){  console.log(data.RESP_DATA[i].tag);
+// 								    		console.log(data.RESP_DATA[i].selected);
+								    		if(data.RESP_DATA[i].selected == false){  
+// 								    			console.log(data.RESP_DATA[i].tag);
 								    			tagHTML = "";
 				    							if(data.RESP_DATA[i].tag != null){
 													tags = data.RESP_DATA[i]["tag"].split(", ");
@@ -588,7 +586,7 @@
 	    				    success: function(data) {  
 	    				    	$("#getAnswers").empty();
 	    				    	questionDetail.getAnswerByQuestionId("${qid}",1);
-	    				    	console.log(data);
+// 	    				    	console.log(data);
 	    				    	KA.destroyProgressBar();
 	    				    },
 	    				    error:function(data) { 
@@ -604,14 +602,14 @@
 	    			$("#btPostAnswer").click(function(){
 	    				if('${userId}' == ''){
 	    					$(".btLogin").trigger('click');
-	    					console.log(0);
+// 	    					console.log(0);
 	    				}else{
-	    					console.log(1);
+// 	    					console.log(1);
 	    				}
 	    				if(		$(".summernote").code().replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").replace(' ', '').length == '' ||
 	    						$(".summernote").code().replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").replace(' ', '').length	< 40	
 	    				){
-	    					console.log("Answer must be at least 40 characters. You entered " + $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length);
+// 	    					console.log("Answer must be at least 40 characters. You entered " + $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length);
 	    					$("#msg").replaceWith('<div id="msg" class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
 							  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
 							  '<span class="alert-link">Answer must be at least 40 characters. You entered '+ $(".summernote").code().replace(' ', '').replace(/<\/p>/gi, "").replace('&nbsp;', '').replace(/<br\/?>/gi, "").replace(/<\/?[^>]+(>|$)/g, "").length+'!</span>'+
@@ -629,7 +627,7 @@
 	    					};
 	    					
 	    					questionDetail.postAnswer(jsonData);
-	    					console.log(jsonData);
+// 	    					console.log(jsonData);
 	    					$(".summernote").code('');
 	    				}
 	    				
@@ -665,8 +663,8 @@
     	    					}else if( voteType == "SA"){
     	    						$("#selectedAnswerTotalVotes").text( data.TOTAL_VOTE);
     	    					} 
-    	    					console.log(data);
-    	    					console.log(voteType);
+//     	    					console.log(data);
+//     	    					console.log(voteType);
 	    				    },
 	    				    error:function(data) { 
 	    				        console.log(data);
@@ -675,7 +673,7 @@
     				};
     				
     				$(document).on('click',"#likeQ,#unlikeQ,#likeSA,#unlikeSA,#likeA,#unlikeA", function(){
-    					console.log($(this).data("type"));
+//     					console.log($(this).data("type"));
     	    			if('${userId}' == ''){
     	    				$(".btLogin").trigger('click');
     	    			}else{
@@ -699,7 +697,7 @@
     				});
     				
     				$(document).on('click',"#selectQuestion", function(){
-    					console.log($(this).data("answerid"));
+//     					console.log($(this).data("answerid"));
     					data = {
     							 "answerId": $(this).data("answerid"),
     							 "questionId": "${qid}"

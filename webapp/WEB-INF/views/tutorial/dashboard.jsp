@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
  <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>   
+ <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -24,7 +25,7 @@
 		
 
 
-		<div class="container" style="margin-top:20px">
+		<div class="container" style="margin-top:20px;margin-bottom:50px">
 	
 <%-- 			<jsp:include page="../shared/_banner.jsp"></jsp:include> --%>
 			
@@ -32,7 +33,7 @@
 			
 			<div class="section-heading">
 					<div class="inner-border"></div>
-					<h3 style="color:#4c954d;">Tutorials</h3>
+					<h3 style="color:#4c954d;"><spring:message code="tp_tutorial"/></h3>
 				</div>
 
 			<div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>
@@ -52,11 +53,11 @@
 			<jsp:include page="../shared/_footer.jsp" />
 		<!-- END FOOTER -->
 		<script id="tlistcategory" type="text/x-jquery-tmpl">
-				<div class="col-sm-3">
+				<div class="col-sm-3" style="width: 210px;">
 					<!-- BEGIN ITEM STORE -->
 					<div class="the-box no-border full store-item text-center">
 						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
-							<img alt="Image" class="item-image img-responsive" src="{{= categoryLogoUrl}}">
+							<img alt="Image" class="item-image img-responsive" src="resources/uploads/{{= categoryLogoUrl}}">
 						</a>
 						<div class="the-box bg-info no-margin no-border item-des">
 							<h5><a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="color:white">{{= categoryName}}</a></h5>

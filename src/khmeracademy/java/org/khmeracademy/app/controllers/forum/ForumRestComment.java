@@ -135,7 +135,7 @@ public class ForumRestComment {
 		}else if(type.equalsIgnoreCase("UNLIKEA")){
 			url = "forum/vote/unlikeanswer";
 		}
-		System.out.println(url);
+//		System.out.println(url);
 		ResponseEntity<Map> response = rest.exchange(WSURL + url , HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}

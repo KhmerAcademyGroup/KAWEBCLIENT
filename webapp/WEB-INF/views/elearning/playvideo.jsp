@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" ng-app="myApp" ng-controller="myController">
 	<head>
@@ -55,7 +56,7 @@
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-course">
-							<strong style="color:#fff;">COURSE</strong>
+							<strong style="color:#fff;"><spring:message code="pp_course"/></strong>
 							<span class="right-content">
 								<span class="right-icon">
 									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
@@ -120,7 +121,7 @@
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-history">
-							<strong style="color:#fff;">RECENT VIEW</strong>
+							<strong style="color:#fff;"><spring:message code="pp_view"/></strong>
 							<span class="right-content">
 								<span class="right-icon">
 									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
@@ -175,7 +176,7 @@
 	            	<div class="row" style="background:#fff;">
 	            		<div class="col-lg-12">
 	            		
-	            			<h4 id="courseTitle" style="color:#4c954d;margin-bottom: 0px;font-weight: bold;">E-LEARNING</h4>
+	            			<h4 id="courseTitle" style="color:#4c954d;margin-bottom: 0px;font-weight: bold;"><spring:message code="ep_e-learning"/></h4>
 	            		
 	            			<input type="hidden" value="{{LOGID}}" id="hiddenLogId" />
 	            			<br />
@@ -191,7 +192,7 @@
 									
 									<div class="alert alert-danger square fade in alert-dismissable" ng-show="VIDEOSTATUS==false" style="display:none" id="videoMESSAGE">
 									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-									  <strong>Video Not Found!</strong>
+									  <strong><spring:message code="pp_video_not_found"/></strong>
 									</div>
 								
 								
@@ -275,7 +276,7 @@
 											
 											<li style="font-size:12px">
 											
-												<span><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;views</strong></span>
+												<span><strong><i class="fa fa-eye" style="padding:0px 10px"></i>{{VIDEO.viewCounts}}&nbsp;<spring:message code="pp_view"/></strong></span>
 												
 												<span id="vote">
 													 
@@ -285,24 +286,24 @@
 												<div class="btn-group">
 												
 													  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="fa  fa-plus"></i> Add To <span class="caret"></span>
+														<i class="fa  fa-plus"></i><spring:message code="pp_add_to"/><span class="caret"></span>
 													  </button>
 													  
 													  <ul class="dropdown-menu" role="menu" style="max-height: 400px;overflow: auto;padding:15px">
-														<li><a>Playlist:</a></li>
+														<li><a><spring:message code="pp_playlist"/>:</a></li>
 														<li class="divider"></li>
 														<div id="getmoreli">
 														
 														</div>
 														<li class='divider'></li>
-														<li><a href='#' onclick=popupfrmadd()>Create new playlist</a></li>
+														<li><a href='#' onclick=popupfrmadd()><spring:message code="pp_create_playlist"/></a></li>
 													  </ul>
 												</div>
 												</span>&nbsp;
 												<div class="pull-right">
 													<div class="btn-group" ng-show="VIDEO.fileUrl!=null && VIDEO.fileUrl!='' && VIDEO.fileUrl!='#'">
 													  <a class="btn btn-success" ng-href="{{VIDEO.fileUrl}}" target="_blank">
-														<i class="fa fa-download"></i> Download 
+														<i class="fa fa-download"></i> <spring:message code="pp_download"/> 
 													  </a>
 													</div>
 												</div>
@@ -350,13 +351,13 @@
 											</div>
 											<div class="form-group">
 										
-											<button type="submit" class="btn btn-primary">Submit comment</button>
+											<button type="submit" class="btn btn-primary"><spring:message code="pp_submit_comment"/> </button>
 											
 											</div>
 										</form>
 				
 										<div class="the-box no-border">
-											<h4 class="small-heading more-margin-bottom">COMMENTS</h4>
+											<h4 class="small-heading more-margin-bottom"><spring:message code="pp_comment"/></h4>
 											<ul class="media-list media-sm media-dotted" id="comments">
 										
 											</ul>
@@ -367,7 +368,7 @@
 											<input type="hidden" id="commentonvideoid" />
 											<input type="hidden" value="1" id="pagecommentvalue" />
 											<div class="loadMoreComment text-center">
-												<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary">More comment</button>
+												<button onclick="btnLoadMoreComment()" class="btn btn-xs btn-primary"><spring:message code="pp_more"/></button>
 											</div>
 										</form>
 										
@@ -457,12 +458,12 @@
 	    <div id="form-add-playlist" class="white-popup mfp-with-anim mfp-hide" >
 			<form method="post" name="frmcreateplaylist" action="/" id="frmcreateplaylist"  class="form-horizontal">
 				  <div class="form-group">
-					<label for="txtplaylistname">Playlist name</label>
+					<label for="txtplaylistname"><spring:message code="pp_playlist_name"/></label>
 					<input type="text" class="form-control" name="txtplaylistname" id="txtplaylistname" placeholder="EG. MyTop">
-					<small  class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
+					<small  class="msg" style="color:red;display:none"><spring:message code="pp_playlist_required"/></small>
 				  </div>
 				  <div class="form-group">
-					<label for="txtdescription">Description</label>
+					<label for="txtdescription"><spring:message code="pp_description"/></label>
 					<input type="text" name="txtdescription" class="form-control" id="txtdescription" placeholder="EG. My music">
 				 </div>
 				 <!-- <div class="form-group">
@@ -472,8 +473,8 @@
 						<option value="true">Public</option>
 					</select>
 				</div> -->
-				<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal">Close</button>
-				  <button type="submit"   class="btn btn-success">Create</button>
+				<button type="button" id="btclosefrmupdate" class="btn btn-default" data-dismiss="modal"><spring:message code="pp_close"/></button>
+				  <button type="submit"   class="btn btn-success"><spring:message code="pp_create"/></button>
 			</form>
 		</div>
 	    
@@ -531,7 +532,7 @@
 					        $scope.VIDEOSTATUS = true;
 					        $scope.title=response.data.VIDEO.videoName;
 					        playVideo(response.data.VIDEO.youtubeUrl);
-					        console.log("Course " + response.data.PLAYLISTNAME);
+// 					        console.log("Course " + response.data.PLAYLISTNAME);
 					        $("#courseTitle").text(response.data.PLAYLISTNAME);
 						}else{
 							$scope.VIDEOSTATUS = false;
@@ -608,7 +609,7 @@
 				if(logid !="" && logid!=null){
 					$.get("${pageContext.request.contextPath}/rest/elearning/stopwatch?logid="+ logid, function(data){
 						if(data.STATUS){
-							console.log("Stop watch video log id = " + logid);
+// 							console.log("Stop watch video log id = " + logid);
 						}
 				    });
 				}

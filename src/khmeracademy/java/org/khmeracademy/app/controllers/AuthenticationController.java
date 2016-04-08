@@ -50,7 +50,7 @@ public class AuthenticationController {
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
 		if(!authentication.getPrincipal().equals("anonymousUser")){
 			User user = (User) authentication.getPrincipal();
-			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
+//			System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
 			map.put("USERID", user.getUserId());
 			map.put("USERNAME" ,user.getUsername());
 			map.put("EMAIL", user.getEmail());
@@ -59,7 +59,7 @@ public class AuthenticationController {
 			map.put("PASSWORD", user.getPassword());
 			map.put("STATUS", true);
 		}else{
-			System.out.println(authentication.getPrincipal());
+//			System.out.println(authentication.getPrincipal());
 			map.put("STATUS", false);
 		}
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
@@ -81,7 +81,7 @@ public class AuthenticationController {
 		JSONObject request = new JSONObject();
 		request.put("ka_username", "admin@gmail.com");
 		request.put("ka_password", "123");
-		System.out.println(request.toString());
+//		System.out.println(request.toString());
 		// set headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -102,7 +102,7 @@ public class AuthenticationController {
 			map.put("STATUS", true);
 			map.put("MESSAGE", "Login successfully!");
 		}else{
-			System.out.println(authentication.getPrincipal());
+//			System.out.println(authentication.getPrincipal());
 			map.put("STATUS", false);
 		}
 		return new ResponseEntity<Map<String ,Object>>(map, HttpStatus.OK);
@@ -123,7 +123,7 @@ public class AuthenticationController {
 	    // Create a new session and add the security context.
 	    HttpSession session = request.getSession(true);
 	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-	    System.out.println("TESTING ONLY...");
+//	    System.out.println("TESTING ONLY...");
 	}
 	
 	@RequestMapping(value="/register")

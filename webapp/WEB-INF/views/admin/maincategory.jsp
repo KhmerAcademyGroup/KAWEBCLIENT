@@ -180,7 +180,7 @@
 														"application/json");
 											},
 											success : function(data) {
-												console.log(data);
+// 												console.log(data);
 
 												/*  alert(JSON.stringify(data));
 												return;  */
@@ -241,7 +241,7 @@
 														"application/json");
 											},
 											success : function(data) {
-												console.log(data);
+// 												console.log(data);
 												KA.destroyProgressBarWithPopup();
 												mainCategory.listMainCategory();
 												$("#p-frmMainCategory").bPopup().close();
@@ -258,7 +258,7 @@
 							// Get one forum category
 							mainCategory.getCategory = function(maincateid){
 								KA.createProgressBarWithPopup();
-								console.log(maincateid);
+// 								console.log(maincateid);
 								$.ajax({ 
 								    url: "${pageContext.request.contextPath}/rest/video/maincategory/"+mainCategoryId, 
 								    type: 'GET',
@@ -267,7 +267,7 @@
 					                    xhr.setRequestHeader("Content-Type", "application/json");
 					                },
 								    success: function(data) { 
-										console.log(data);
+// 										console.log(data);
 										if(data.RES_DATA != null){
 											$("#mainCategoryId").val(data.RES_DATA.mainCategoryId); 
 											$("#mainCategoryName").val(data.RES_DATA.mainCategoryIdName); 
@@ -297,7 +297,7 @@
 												"application/json");
 									},
 									success : function(data) {
-										console.log(data);
+// 										console.log(data);
 										KA.destroyProgressBarWithPopup();
 										mainCategory.listMainCategory();
 										$("#p-frmConfirm").bPopup().close();
@@ -357,7 +357,7 @@
 										var mcateName = $(this).parent().prev().text();
 										var mcateId = $(this).data("maincateid");
 										KA.createProgressBarWithPopup();
-										console.log(mcateId);
+// 										console.log(mcateId);
 										$("#mainCategoryId").val(mcateId);
 										$("#mainCategoryName").val(mcateName);
 										//alert($(this).data("cateid"));

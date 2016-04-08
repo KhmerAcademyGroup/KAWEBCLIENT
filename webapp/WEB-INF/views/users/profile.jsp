@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,9 +74,9 @@
 								<ul class="nav nav-tabs">
 								
 									<!-- <li class="active"><a href="#panel-videos" data-toggle="tab"><i class="fa fa fa-eye"></i> Videos</a></li> -->
-									<li class="active"><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> Playlist</a></li>
-									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> History</a></li>
-									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> UserProfile</a></li>
+									<li class="active"><a href="#panel-playlist" data-toggle="tab"><i class="fa fa-caret-square-o-right"></i> <spring:message code="up_playlist"/></a></li>
+									<li><a href="#panel-history" data-toggle="tab"><i class="fa fa fa-eye"></i> <spring:message code="up_history"/></a></li>
+									<li><a href="#panel-myinfo" data-toggle="tab"><i class="fa  fa-user"></i> <spring:message code="up_profile"/></a></li>
 									
 									<%-- <c:if test="${usertype == 'Admin' }">
 									<li class="pull-right">
@@ -140,21 +141,21 @@
 												<div class="tab-pane fade in" id="panel-about">
 														
 														<div class="panel panel-success">
-												      <div class="panel-heading">Profile Setting</div>
+												      <div class="panel-heading"><spring:message code="up_profile_setting"/></div>
 												      <div class="panel-body">
 												      <form class="form-horizontal bootstrap-validator-form" enctype="multipart/form-data" id="myformvalidator1"  method="post" >	
 														<div class="col-sm-8">
 														
 														<div class="form-group">
-															<label class="col-lg-3 control-label">Username<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_username"/><span class="required">*</span></label>
 															<div class="col-lg-5">
-																<input type="text" class="form-control" id="username" name="username" value="hello" data-bv-field="username">
+																<input type="text" class="form-control" id="username" name="username"  data-bv-field="username">
 																<small id="checkname" class="help-block" style="color: red;"></small>
 															</div>
 														</div>
 						
 														<div class="form-group">
-															<label class="col-lg-3 control-label">Email<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_email"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="email" class="form-control" id="myemail" name="myemail" value="" disabled="" data-bv-field="email">
 																<small id="checkemail" class="help-block" style="color: red;"></small>
@@ -162,7 +163,7 @@
 														</div>
 																					
 														<div class="form-group">
-															<label class="col-lg-3 control-label">Department<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_department"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<select name="department" id="mydepartment" class="form-control" data-bv-field="department">
 																	
@@ -171,7 +172,7 @@
 															</div>
 														</div>
 														<div class="form-group">
-															<label class=" col-lg-3 control-label">University<span class="required">*</span></label>
+															<label class=" col-lg-3 control-label"><spring:message code="up_university"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<select name="university" id="university" class="form-control" data-bv-field="university">
 																	
@@ -182,16 +183,16 @@
 														</div>
 														
 														<div class="form-group">
-																<label class="col-lg-3 control-label">Gender</label>
+																<label class="col-lg-3 control-label"><spring:message code="up_gender"/></label>
 																<div class="col-lg-5">
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="male" name="gender" value="male"  required=""  data-bv-field="gender" > Male
+																			<input type="radio" id="male" name="gender" value="male"  required=""  data-bv-field="gender" > <spring:message code="up_male"/>
 																		</label>
 																	</div>
 																	<div class="radio">
 																		<label>
-																			<input type="radio" id="female" name="gender" value="female"  data-bv-field="gender"> Female
+																			<input type="radio" id="female" name="gender" value="female"  data-bv-field="gender"> <spring:message code="up_female"/>
 																		</label>
 																	</div>
 															
@@ -200,7 +201,7 @@
 														</div>
 														
 														<div class="form-group">
-															<label class="col-lg-3 control-label">Date of birth<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_dob"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" value="" id="dateofbirth" name="dateofbirth" data-date-format="yyyy-mm-dd" class="form-control datepicker" id="calendar" data-bv-field="dateofbirth">
 																<small id="checkdate" class="help-block" style="color: red;"></small>
@@ -210,7 +211,7 @@
 														
 														
 														<div class="form-group">
-															<label class="col-lg-3 control-label">Phone number<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_phonenumber"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" data-bv-field="phonenumber">
 																<small id="checkphone" class="help-block" style="color: red;"></small>
@@ -219,7 +220,7 @@
 										
 														
 														<div class="form-group">
-															<label class="col-lg-3 control-label">User Type<span class="required">*</span></label>
+															<label class="col-lg-3 control-label"><spring:message code="up_user_type"/><span class="required">*</span></label>
 															<div class="col-lg-5">
 																<input type="text" class="form-control" id="usertype" name="usertype" disabled="" value="Subscriber" data-bv-field="usertype">
 																
@@ -233,8 +234,8 @@
 																<img id="imageprofile"  class="img-responsive img-thumbnail" style="width: 200PX; height:150px;"  alt="Image">
 																<input type="hidden" class="form-control" id="oldprofile"   name="oldprofile"  ><br/>
 																<div class="fileinput fileinput-new" data-provides="fileinput">
-																  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
-																  <span class="fileinput-exists">Change</span><input type="file" id="image" name="image" onchange="return ValidateFileUpload()"></span>
+																  <span class="btn btn-default btn-file"><span class="fileinput-new"><spring:message code="up_select_file"/></span>
+																  <span class="fileinput-exists"><spring:message code="up_change"/></span><input type="file" id="image" name="image" onchange="return ValidateFileUpload()"></span>
 																  <span class="fileinput-filename"></span>
 																  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
 																</div>
@@ -244,7 +245,7 @@
 														<!-- Button Post -->
 														<div class="form-group">
 															<div class="col-xs-12 ">
-																<input type="submit"  class="btn btn-info btn-perspective" value="Update" style="left:30%"/>
+																<input type="submit"  class="btn btn-info btn-perspective" value="<spring:message code="up_update"/>" style="left:30%"/>
 															</div>
 														</div>
 														<!-- Button Post -->
@@ -256,26 +257,26 @@
 												    
 												     <!-- change password -->
 												    <div class="panel panel-success">
-												      <div class="panel-heading">Change Password</div>
+												      <div class="panel-heading"><spring:message code="up_change_pwd"/></div>
 												      <div class="panel-body">
 												      	<div class="col-xs-12">
 												      		<form class="form-horizontal bootstrap-validator-form">
 												      		<div class="form-group">
-																<label class="col-lg-3 control-label">Current Password<span class="required">*</span></label>
+																<label class="col-lg-3 control-label"><spring:message code="up_curr_pwd"/><span class="required">*</span></label>
 																<div class="col-lg-5">
 																	<input type="password" onkeyup="validatOldPass();" class="form-control" name="oldpassword" id="oldpassword"  data-bv-field="oldpassword">
 																	<small id="checkoldpassword"  class="help-block" style="color: red;"></small></div>
 																
 															</div>
 															<div class="form-group">
-																<label class="col-lg-3 control-label">New Password<span class="required">*</span></label>
+																<label class="col-lg-3 control-label"><spring:message code="up_new_pwd"/><span class="required">*</span></label>
 																<div class="col-lg-5">
 																	<input type="password" onkeyup="validatNewPass();" class="form-control" name="newpassword" id="newpassword"  data-bv-field="oldpassword">
 																<small id="checknewpassword" class="help-block" style="color: red;"></small></div>
 																
 															</div>
 															<div class="form-group">
-																<label class="col-lg-3 control-label">Confirm Password<span class="required">*</span></label>
+																<label class="col-lg-3 control-label"><spring:message code="up_conf_pwd"/><span class="required">*</span></label>
 																<div class="col-lg-5">
 																	<input type="password" onkeyup="validatConPass(); validatebothpass()" class="form-control" name="conpassword" id="conpassword"  data-bv-field="oldpassword">
 																	<small id="checkconpassword" class="help-block" style="color: red;"></small>
@@ -301,7 +302,7 @@
 											</div>
 											
 											<!-- *******************start history****************** -->
-											<div class="tab-pane fade in active" id="panel-history">
+											<div class="tab-pane fade in" id="panel-history">
 													
 														<div id="getHistory" style=" display: none;">
 															<div class="alert alert-success fade in alert-dismissable">
@@ -313,7 +314,7 @@
 															<div class="btn-group">
 																<form role="form" id="frmSetNumrowHistory">
 																	<select class="form-control" id="limithistory" onchange="chooseHistory()" >
-																		<option value="5">5</option>searchvideo
+																		<option value="5">5</option>
 																	    <option value="10" selected="selected">10</option>
 																	    <option value="20">20</option>
 																	    <option value="50">50</option>
@@ -323,13 +324,13 @@
 															</div>
 															<div class="btn-group">
 																<a href="#" onclick="removeAllHistory(userid);"  class="btn btn-danger">
-																	<i class="fa fa-ban"></i> Clear All History
+																	<i class="fa fa-ban"></i><spring:message code="up_clear_all_history"/> 
 																</a>
 															</div>
 									
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" class="form-control" id="searchHistory" onkeyup="mySearchHistory();" placeholder="Search History">
+																	<input type="text" class="form-control" id="searchHistory" onkeyup="mySearchHistory();" placeholder="<spring:message code="up_search"/>">
 																</form>
 									
 															</div>
@@ -345,7 +346,7 @@
 													</div>
 													
 											</div><!-- ***************#panel-Playlist****************** -->
-											<div class="tab-pane fade in" id="panel-playlist">
+											<div class="tab-pane fade in active" id="panel-playlist">
 													<div class="the-box no-border" id="playlistcover">
 														<div id="getPlaylist" style=" display: none;">
 															<div class="alert alert-success fade in alert-dismissable">
@@ -364,13 +365,13 @@
 															</form>
 															</div>
 															<div class="btn-group inline-popups">
-																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> Create new playlist</a>
+																<a class="btn btn-success dropdown-toggle" id="form-create-playlist" data-effect="mfp-zoom-in"><i class="fa fa-plus"></i> <spring:message code="up_create_playlist"/></a>
 															</div>
 															
 															
 															<div class="btn-group pull-right">
 																<form role="form">
-																	<input type="text" id="searchPlaylist" onkeyup="mySearchPlaylist();" class="form-control" placeholder="Search playlistname">
+																	<input type="text" id="searchPlaylist" onkeyup="mySearchPlaylist();" class="form-control" placeholder="<spring:message code="up_search"/>">
 																</form>
 																
 															</div>
@@ -403,12 +404,12 @@
 												  <form action="" id="formcreateplaylist" enctype="multipart/form-data"  method="post">
 												  	
 												  <div class="form-group">
-													<label for="exampleInputEmail1"><h3>Playlist Form</h3></label>
+													<label for="exampleInputEmail1"><h3><spring:message code="up_playlist"/></h3></label>
 												  </div>
 												
 												
 												  <div class="form-group">
-													<label for="exampleInputEmail1">Playlist name</label>
+													<label for="exampleInputEmail1"><spring:message code="up_playlist_name"/></label>
 														<input type="hidden" class="form-control" id="oimg"   name="oimg"  ></span>
 														<input type="hidden" class="form-control" id="thumbnailUrl"   name="thumbnailUrl"  ></span>
 														<input type="hidden" class="form-control" name="listid" id="listid" placeholder="">
@@ -416,7 +417,7 @@
 														<small id="checklistname" class="msg" style="color:red"></small>
 												  </div>
 												  <div class="form-group">
-														<label for="exampleInputEmail1">Description</label>
+														<label for="exampleInputEmail1"><spring:message code="up_description"/></label>
 														<textarea class="form-control" onkeyup="validatPlaylistnameDes()" name="playlistdescription" id="playlistdescription" data-bv-field="description"></textarea>
 														<small id="checkplaylistdescription" class="msg" style="color:red"></small>
 												 </div>
@@ -455,8 +456,8 @@
 												  </c:if> --%>
 														 
 														
-														 	<input type="submit" id="btncreate"  value="Save" class="btn btn-success">
-															<input type="button"  value="Close" class="btn btn-success b-close">	
+														 	<input type="submit" id="btncreate"  value="<spring:message code="up_save"/>" class="btn btn-success">
+															<input type="button"  value="<spring:message code="up_close"/>" class="btn btn-success b-close">	
 															</form>
 														</div>
 												</div>
@@ -789,7 +790,7 @@
 				    	   		swal("Search Not Found");
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
-				                console.log("Success..." + data);
+// 				                console.log("Success..." + data);
 				       }  ,  
 				   		error: function(data){
 				   		alert("Unsuccess" + data +"OR Empty");
@@ -824,7 +825,7 @@
 				    	   		swal("Deleted!", "Your video file has been deleted.", "success"); 
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
-				                console.log("Success..." + data);
+// 				                console.log("Success..." + data);
 				       }  ,  
 				   		error: function(data){
 				   		alert("Unsuccess" + data +"OR Empty");
@@ -855,7 +856,7 @@
 				    	   		swal("Deleted!", "Your video history has been deleted.", "success");
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
-				                console.log("Success..." + data);
+// 				                console.log("Success..." + data);
 				       }  ,  
 				   		error: function(data){
 				   		alert("Unsuccess" + data +"OR Empty");
@@ -1029,7 +1030,7 @@
 			    	   		swal("Search Not Found");
 			    	   	}
 			    	   		//$("#showresult").html(listarticles(data));
-			                console.log("Success..." + data);
+// 			                console.log("Success..." + data);
 			       }  ,  
 			   		error: function(data){
 			   		alert("Unsuccess" + data +"OR Empty");
@@ -1064,7 +1065,7 @@
 			    
 			    	   	}
 			    	   		//$("#showresult").html(listarticles(data));
-			                console.log("Success..." + data);
+// 			                console.log("Success..." + data);
 			       }  ,  
 			   		error: function(data){
 			   		alert("Unsuccess" + data +"OR Empty");
@@ -1101,7 +1102,7 @@
 	**mystartPlaylist
 	**start playlist function
 	**/
-	mystartPlaylist();
+// 	mystartPlaylist();
 	function mystartPlaylist(){
 		limitplaylist=$("#limitPlaylist").val();
 		//alert(limitv);
@@ -1110,12 +1111,15 @@
             type: 'get',
             contentType: 'application/json;charset=utf-8',
             success: function(data){
-            	totalofrecordplaylist=data.PAGINATION.totalCount;
-            
-            	numofpageplaylist=data.PAGINATION.totalPages;
-            	listAllPlaylist(1);
-            	loadPaginationPlaylist();
-            	
+            	if(data.STATUS == true){
+	            	totalofrecordplaylist=data.PAGINATION.totalCount;
+	            
+	            	numofpageplaylist=data.PAGINATION.totalPages;
+	            	listAllPlaylist(1);
+	            	loadPaginationPlaylist();
+            	}else{
+//             		console.log("No data");
+            	}
         		
             },
             error: function(data){
@@ -1260,7 +1264,7 @@ function mySearchPlaylist(){
 		    	   		mystartPlaylist();
 		    	   	}
 		    	   		//$("#showresult").html(listarticles(data));
-		                console.log("Success..." + data);
+// 		                console.log("Success..." + data);
 		       }  ,  
 		   		error: function(data){
 		   		alert("Unsuccess" + data +"OR Empty");
@@ -1334,7 +1338,7 @@ function mySearchPlaylist(){
 				    	   		swal("Deleted!", "Your playlist has been deleted.", "success"); 
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
-				                console.log("Success..." + data);
+// 				                console.log("Success..." + data);
 				       }  ,  
 				   		error: function(data){
 				   		alert("Unsuccess" + data +"OR Empty");
@@ -2131,7 +2135,7 @@ function mySearchPlaylist(){
                     var reader = new FileReader();
                       reader.onload = function(e) {
                          $('#imageprofile').attr('src', e.target.result);
-                         console.log("OK");
+//                          console.log("OK");
                     };
                     reader.readAsDataURL(fuData.files[0]);
                 }

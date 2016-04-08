@@ -69,7 +69,7 @@
 							$(".processing").hide();
 							$("#message").replaceWith("<div ><h1>Your email has been verified! Thank you.</h1> <br/> <a href='${pageContext.request.contextPath}/login' class='btn btn-primary btLogin999' >Login</a></div> ");
 						}														
-						 console.log(data);
+// 						 console.log(data);
 					}
 				}); 
 			 }, 3000 );

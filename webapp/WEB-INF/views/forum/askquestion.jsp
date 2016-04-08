@@ -3,6 +3,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,7 +13,7 @@
  
 	<body class="tooltips no-padding">
 		
-		
+	
 		
 		<!--
 		===========================================================
@@ -32,12 +33,12 @@
 		
 		
 				<ol class="breadcrumb">
-				  <li><a href="${pageContext.request.contextPath}/forum">Questions</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum"><spring:message code="ap_all_question"/></a></li>
 <!-- 				  <li><a href="#fakelink">Users</a></li> -->
-				  <li><a href="${pageContext.request.contextPath}/forum/question/ask">Ask Question</a></li>
+				  <li><a href="${pageContext.request.contextPath}/forum/question/ask"><spring:message code="ap_ask_question"/></a></li>
 				</ol>
 				
-			<h2 class="page-title">Ask Question </h2>
+			<h2 class="page-title"><spring:message code="ap_ask_question"/></h2>
 			
 			<div class="border-bottom">
 				<div class="container">
@@ -46,7 +47,7 @@
 			</div>
 	
 			<div class="row">
-					<div class="col-sm-8 col-md-9" >
+					<div class="col-sm-12 col-md-12" >
 						
 						<div class="section">
 								
@@ -62,17 +63,17 @@
 														<form action="#" class="form-horizontal" id="frmPostQuestion">
 					
 															<div class="form-group ">
-																<label class="col-lg-1 control-label">Title</label>
+																<label class="col-lg-1 control-label"><spring:message code="ap_title"/></label>
 																<div>
 																	<div class="col-lg-11">
 																		<input type="text" name="title" id="title" class="form-control"   >
-																		<small id="msgTitle" class="help-block" style="color:red;display:none">The title must be more than 20 characters long!</small>
+																		<small id="msgTitle" class="help-block" style="color:red;display:none"><spring:message code="ap_title_invalid"/></small>
 																	</div>
 																</div>
 															</div>
 					
 															<div class="form-group">
-																<label class="col-lg-1 control-label">Category</label>
+																<label class="col-lg-1 control-label"><spring:message code="ap_category"/></label>
 																<div class="col-lg-11 ">
 																	<select name="category" id="category" data-placeholder="Choose a category" class="form-control chosen-select" tabindex="2">
 																		<option value="Empty">&nbsp;</option>
@@ -80,18 +81,18 @@
 																		    <option value="${category.categoryId}">${category.categoryName}</option>
 																		</c:forEach>
 																	</select>
-																	<small id="msgCategory" class="help-block" style="color:red;display:none">Please select a category!</small>
+																	<small id="msgCategory" class="help-block" style="color:red;display:none"><spring:message code="ap_cate_invalid"/></small>
 
 																</div>
 															</div>
 															
 															<div class="form-group">
-																<label class="col-lg-1 control-label">Detail</label>
+																<label class="col-lg-1 control-label"><spring:message code="ap_detail"/></label>
 																<div class="col-lg-11">
 																	<textarea class="summernote" name="detail" id="detail" >
 																	
 																	</textarea>
-																	<small id="msgDetail" class="help-block" style="color:red;display:none">The detail is required and can't be empty, and the detail must be more than 30 characters long</small>
+																	<small id="msgDetail" class="help-block" style="color:red;display:none"><spring:message code="ap_detail_invalid"/></small>
 																</div>
 																
 															</div>
@@ -99,7 +100,7 @@
 															
 															
 															<div class="form-group ">
-																<label class="col-lg-1 control-label">Tags</label>
+																<label class="col-lg-1 control-label"><spring:message code="ap_tag"/></label>
 																<div class="col-lg-11">
 																	<select id="tags" name="tags" data-placeholder="Choose tags..." class="form-control chosen-select" multiple tabindex="4">
 																		<option value="Empty">&nbsp;</option>
@@ -113,7 +114,7 @@
 																		</c:forEach>
 																		
 																	</select>
-																	<small id="msgTags" class="help-block" style="color:red;display:none">Please choose at least one tag!</small>
+																	<small id="msgTags" class="help-block" style="color:red;display:none"><spring:message code="ap_tag_invalid"/></small>
 																</div>
 															</div>
 					
@@ -121,15 +122,15 @@
 																<div class="col-lg-5 col-lg-offset-1">
 																	<div class="checkbox">
 																	  <label>
-																		<input id="acceptTerms" name="acceptTerms" type="checkbox" value=""> Accept the terms and policies </label>
-																     	<small id="msgAcceptTerms" class="help-block" style="color:red;display:none">Please accept the terms and policies!</small>
+																		<input id="acceptTerms" name="acceptTerms" type="checkbox" value=""><spring:message code="ap_accept_terms_policies"/></label>
+																     	<small id="msgAcceptTerms" class="help-block" style="color:red;display:none"><spring:message code="ap_term_polices_valid"/></small>
 																	</div>
 																</div>
 															</div>
 					
 															<div class="form-group">
 																<div class="col-lg-9 col-lg-offset-1">
-																	<button class="btn btn-primary" type="submit" id="btPostQuestion">Post Question</button>
+																	<button class="btn btn-primary" type="submit" id="btPostQuestion"><spring:message code="ap_post_question"/></button>
 																</div>
 															</div>
 														</form>
@@ -149,29 +150,22 @@
 						</div>
 					</div><!-- /.col-sm-8 col-md-9 -->
 					
-					<div class="col-sm-4 col-md-3">
+					<%-- <div class="col-sm-4 col-md-3">
 						
 						<!-- BEGIN SIDEBAR -->
 						<div class="section sidebar">
 							
 							<div class="panel panel-no-border panel-sidebar" style="background: #FFF8DC;padding: 0 15px 15px;">
 							  <div class="panel-heading panel-warning">
-								<h3 class="panel-title">របៀបសួរ : </h3>
+								<h3 class="panel-title"><spring:message code="ap_how_to_ask"/> : </h3>
 							  </div> 
-							   <p>
-															<b>យើងលើកទឹកចិត្តក្នុងការស្វែងរក មុន​នឹង​សួរ​សំណួរ</b>
-															</p>
-															<p>
-																ការ​សួរ​ត្រូវវាយចំណងជើង ជ្រើសរើស Category បន្ទាប់​មក​ចុច​វាយអត្ថបទ​សំណួរ ហើយ​ចុង​ក្រោយ ចុចរើស Tag ណា ដែល​គិត​ថា​ពាក់ព័ន្ធ
-															</p>
-															
-															<p>
-																ប្រសិន​បើ​មាន​ចម្ងល់​ សូមទាក់ទង​អភិបាល នៃគេហទំព័រ
+							  								 <p>
+														<spring:message code="ap_detail_how_to_ask"/>
 															</p>
 							</div>
 					</div>
 					
-				</div>
+				</div> --%>
 			
 			
 						
@@ -238,7 +232,7 @@
 		    	                    xhr.setRequestHeader("Content-Type", "application/json");
 		    	                },
 		    				    success: function(data) {  
-		    				    	console.log(data);
+// 		    				    	console.log(data);
 		    				    	KA.destroyProgressBar();
 		    				    },
 		    				    error:function(data) { 
@@ -276,7 +270,7 @@
 							return;
 						}
 						
-						console.log("tags " + result );
+// 						console.log("tags " + result );
 						
 						jsonData = {
 							"title": $("#title").val(),

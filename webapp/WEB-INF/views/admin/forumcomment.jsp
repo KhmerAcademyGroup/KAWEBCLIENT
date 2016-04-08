@@ -253,7 +253,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 						if(data.RESP_DATA.length>0){
 							$("tbody#CONTENTS").html('');
 							$("#CONTENT_TEMPLATE").tmpl(data.RESP_DATA).appendTo("tbody#CONTENTS");

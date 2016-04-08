@@ -71,7 +71,7 @@ public class AdminController {
 			model.addAttribute("userId", user.getUserId());
 			//System.out.println("MainController " + user.getUsername() + " Userid " + user.getUserId());
 		}else{
-			System.out.println(authentication.getPrincipal());
+//			System.out.println(authentication.getPrincipal());
 		}
 		return "admin/tutorial";
 	}

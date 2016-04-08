@@ -91,7 +91,6 @@
 				    	$("#newpassword").css("border", "solid 1px red");
 				    	$("#checknewpassword").text("Require and at least 6 charactors less than 16 charactors");
 				    	newpass=false;
-				    
 				    }else{
 				    	$("#newpassword").css("border", "solid 1px green");
 				    	$("#checknewpassword").text("");
@@ -134,7 +133,7 @@
 							else{
 								alert("Your password has not been resettet. Please try again!")
 							}														
-							 console.log(data);
+// 							 console.log(data);
 						}
 					});  
 				});

@@ -5,55 +5,45 @@
 		<div class="row">
 		
 			<div class="col-sm-6 col-md-2">
-				<h4>About</h4>
+				<h4><spring:message code="f_about"/></h4>
 				<ul class="list">
-					<li><a href="${pageContext.request.contextPath}/about">Our mission</a></li>
-					<li><a href="${pageContext.request.contextPath}/about/people">People</a></li>
+					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="f_about"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about/people"><spring:message code="f_our_mission"/></a></li>
 <%-- 					<li><a href="${pageContext.request.contextPath}/about/volunteer">Our volunteers</a></li> --%>
-					<li><a href="${pageContext.request.contextPath}/about/supporter">Our Supporters</a></li>
-					<li><a href="${pageContext.request.contextPath}/about/partner">Our partners</a></li>
-					<li><a href="#${pageContext.request.contextPath}/about/contact">Contact us</a></li>
+					<li><a href="${pageContext.request.contextPath}/about/supporter"><spring:message code="f_our_supporters"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about/partner"><spring:message code="f_our_partners"/></a></li>
+					<li><a href="#${pageContext.request.contextPath}/about/contact"><spring:message code="f_contact_us"/></a></li>
 				</ul>
 			</div>
 			
 			<div class="col-sm-6 col-md-2">
-				<h4>Service</h4>
+				<h4><spring:message code="f_service"/></h4>
 				<ul class="list">
-					<li><a href="${pageContext.request.contextPath}/elearning">E-Learning</a></li>
-					<li><a href="${pageContext.request.contextPath}/tutorial">Tutorials</a></li>
-					<li><a href="${pageContext.request.contextPath}/forum">Forum</a></li>
+					<li><a href="${pageContext.request.contextPath}/elearning"><spring:message code="f_e-learning"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/tutorial"><spring:message code="f_tutorial"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/forum"><spring:message code="f_forum"/></a></li>
+					<li><a href="http://news.khmeracademy.org" target="_blank"><spring:message code="f_news"/></a></li>
 				</ul>
 			</div>
 			
 			<div class="col-sm-6 col-md-2">
-				<h4>Contribute</h4>
+				<h4><spring:message code="f_social"/></h4>
 				<ul class="list">
-					<li><a href="https://www.facebook.com/KhmerAcademy.Org/" target="_blank">Facebook</a></li>
-					<li><a href="https://plus.google.com/+KhmerAcademyOrg/posts" target="_blank">Google+</a></li>
-					<li><a href="https://www.youtube.com/channel/UCnE8zj9WeCl0Jvi8mX6olww" target="_blank">Youtube</a></li>
+					<li><a href="https://www.facebook.com/KhmerAcademy.Org/" target="_blank"><spring:message code="f_facebook"/></a></li>
+					<li><a href="https://plus.google.com/+KhmerAcademyOrg/posts" target="_blank"><spring:message code="f_google"/></a></li>
+					<li><a href="https://www.youtube.com/channel/UCnE8zj9WeCl0Jvi8mX6olww" target="_blank"><spring:message code="f_youtube"/></a></li>
 				</ul>
 			</div>
 			
 			<div class="col-sm-6 col-md-2">
-				<h4>Contribute</h4>
+				<h4><spring:message code="f_contribute"/></h4>
 				<ul class="list">
-					<li><a href="${pageContext.request.contextPath}/about/contribute">Donate</a></li>
-					<li><a href="${pageContext.request.contextPath}/about/contribute">Volunteer</a></li>
+					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_contribute"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_volunteer"/></a></li>
 				</ul>
 			</div>
-			
-			<%-- <div class="col-sm-6 col-md-4">
-				<h4><spring:message code="contactus"/></h4>
-				
-				<p>
-				<spring:message code="contactustext"/>
-				
-				</p>
-			</div>
-			<div class="clearfix visible-sm"></div> --%>
-			
 			<div class="col-sm-6 col-md-3">
-				<h4><spring:message code="followus"/></h4>
+				<h4><spring:message code="f_follow_us_on_fb"/></h4>
 				<div class="fb-like-box" data-href="https://www.facebook.com/KhmerAcademy.Org" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 			</div><!-- /.col-sm-3 -->
 		</div><!-- /.row -->
@@ -64,15 +54,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
-				<spring:message code="copyright"/>
+				<spring:message code="f_copy_right"/>
 			</div><!-- /.col-sm-5 -->
-			<!-- <div class="col-sm-7 text-right">
-				<ul class="list-inline">
-				  <li><a href="#fakelink">All Khmer News</a></li>
-				  <li><a href="#fakelink">Employees Record</a></li>
-				  <li><a href="#fakelink">Memo</a></li>
-				</ul>
-			</div> -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /.footer -->
@@ -357,6 +340,25 @@ END PAGE
 											</div>
 										  
 										</div>
+										
+										
+									<div id="p-IfMobile" class="ka-popup" style="display: none;width: 100%;margin-top:100px;">
+										  
+										  <div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" aria-hidden="true">
+														<span class="button b-close"><span>x</span></span>
+													</button>
+													<h4 class="bolded">Khmer Academy Mobile Application</h4>
+												</div>
+												<div class="modal-body" >
+													
+                                     				<a href="#" id="dwnApp" class="btn btn-success">Download Mobile Application</a>
+                                   						
+												</div>
+											</div>
+										  
+									</div>
 		
 		
 <!--
@@ -454,7 +456,7 @@ Placed at the end of the document so the pages load faster
 		    	            	}else if(data == "User is disabled"){
 		    	            		alert("2 "+data);
 		    	            	}else  */
-		    	            	console.log(data);
+// 		    	            	console.log(data);
 		    	            	if(data == "Bad credentials"){
 		    	            		$("#message").replaceWith('<div id="message" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 		    	            		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
@@ -520,7 +522,7 @@ Placed at the end of the document so the pages load faster
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
     				    success: function(data) { 
-    						console.log(data);
+//     						console.log(data);
     						if(data.RESP_DATA.length>0){
     							$("#university_tmpl").tmpl(data.RESP_DATA).appendTo("#getUniversity");
     						}
@@ -543,7 +545,7 @@ Placed at the end of the document so the pages load faster
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
     				    success: function(data) { 
-    						console.log(data);
+//     						console.log(data);
     						$("#department_tmpl").tmpl(data.RESP_DATA).appendTo("#getDepartment");
     						
     						KA.destroyProgressBarWithPopup();
@@ -565,7 +567,7 @@ Placed at the end of the document so the pages load faster
     	                    xhr.setRequestHeader("Content-Type", "application/json");
     	                },
     				    success: function(data) { 
-    						console.log(data);
+//     						console.log(data);
     						$("#department_tmpl").tmpl(data.DEPARTMENT).appendTo("#getDepartment");
     						$("#university_tmpl").tmpl(data.UNIVERSITY).appendTo("#getUniversity");
     						KA.destroyProgressBarWithPopup();
@@ -600,7 +602,7 @@ Placed at the end of the document so the pages load faster
 	         				  	  universityId : $("#getUniversity").val(),
 	         				  	  departmentId : $("#getDepartment").val()
 	         		  }; 
-	         		  console.log(frmData);
+// 	         		  console.log(frmData);
 	         		  KA.createProgressBarWithPopup();
 	         		  $.ajax({
 		    	            url: "${pageContext.request.contextPath}/rest/signup",
@@ -646,7 +648,7 @@ Placed at the end of the document so the pages load faster
 			    	            	
 // 		    						}, 500 );
 		    	            	}
-		    	            	console.log(data);
+// 		    	            	console.log(data);
 		    	            },
 		    	         	error: function(data){
 		    	         		KA.destroyProgressBarWithPopup();
@@ -673,7 +675,7 @@ Placed at the end of the document so the pages load faster
 	  			  $(".check_your_email").hide();
 	  			  $(document).on('click', "#btn_submit", function() {									  
 	  					var address =$("#emailaddress").val()
-	  					console.log(address);
+// 	  					console.log(address);
 	  					$(".sending").show();
 	  					if(address==""){						
 	  						$(".sending").hide(); 
@@ -759,13 +761,14 @@ Placed at the end of the document so the pages load faster
 				ga('send', 'pageview');
 		</script>
 		
-								<div id="fb-root"></div>
+								
+   								 <div id="fb-root"></div>
 								<script>(function(d, s, id) {
 								  var js, fjs = d.getElementsByTagName(s)[0];
 								  if (d.getElementById(id)) return;
 								  js = d.createElement(s); js.id = id;
 								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=733594286732881";
 								  fjs.parentNode.insertBefore(js, fjs);
-								}(document, 'script', 'facebook-jssdk'));</script>
-								
+								}(document, 'script', 'facebook-jssdk'));</script> 
+   		   
    		    

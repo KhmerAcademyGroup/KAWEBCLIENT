@@ -208,7 +208,7 @@
 				    	
 				    	/* alert(JSON.stringify(data.RESP_DATA.length));
 				    	return; */ 
-						console.log(data);
+// 						console.log(data);
 				    	
 				    	perPage = 20;
 				    	nextPage = (currentPage-1)*perPage;
@@ -273,7 +273,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	department.listDepartment(gPage);
 				    	$("#p-frmDepartment").bPopup().close();
@@ -300,7 +300,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	department.listDepartment(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
@@ -380,7 +380,7 @@
 				var deptName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
-				console.log(cateId);
+// 				console.log(cateId);
 				$("#departmentId").val(cateId); 
 				$("#departmentName").val(deptName);
 				

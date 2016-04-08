@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService{
 	        ResponseEntity<Map> response = restTemplate.exchange(WSURL+"/authentication/weblogin", HttpMethod.POST , request , Map.class);
 	        Map<String, Object> map = (HashMap<String, Object>)response.getBody();
 		
-			System.out.println(map.get("USER"));
+//			System.out.println(map.get("USER"));
 			if(map.get("USER") != null){
 				Map<String , Object> userMap = (HashMap<String , Object>) map.get("USER");
 				User u = new User();
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService{
 				role.setRoleName("ROLE_"+(String)userMap.get("userTypeName"));
 				roles.add(role);
 				u.setRoles(roles);
-				System.out.println("Password " +u.getPassword());
+//				System.out.println("Password " +u.getPassword());
 				return u;
 			}
 		}catch(Exception e){

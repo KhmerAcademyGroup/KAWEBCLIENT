@@ -260,7 +260,7 @@
 		            contentType: 'application/json;charset=utf-8',
 		            success: function(data){
 		            	
-		            	console.log(data);
+// 		            	console.log(data);
 		            	
 		            	if(data.STATUS == false){
 		            		$("table").after('<div class="alert alert-success alert-bold-border square fade in alert-dismissable">'+
@@ -376,11 +376,11 @@
 				    	   		mystart();
 				    	   	}
 				    	   		//$("#showresult").html(listarticles(data));
-				                console.log("Success..." + data);
+// 				                console.log("Success..." + data);
 				       }  ,  
 				   		error: function(data){
-				   		alert("Unsuccess" + data +"OR Empty");
-				   		console.log("ERROR..." + data);
+// 				   		alert("Unsuccess" + data +"OR Empty");
+// 				   		console.log("ERROR..." + data);
 				   	}
 				   }); 
 			}else{
@@ -773,7 +773,7 @@ function listMainCategoryDetail(data){
 									swal("Toggle!", "Your have been toggle Profile", "success"); 
 					    	   	}
 					    	   		//$("#showresult").html(listarticles(data));
-					                console.log("Success..." + data);
+// 					                console.log("Success..." + data);
 					       }  ,  
 					   		error: function(data){
 					   		alert("Unsuccess" + data +"OR Empty");

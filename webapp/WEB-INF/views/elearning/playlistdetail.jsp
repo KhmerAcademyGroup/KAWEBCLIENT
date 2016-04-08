@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +80,7 @@
 					</div>
 					<!-- /.media-body -->
 					<span class="small text-muted" style="color: #37BC9B"> 
-						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective btnplayall" data-toggle="modal" ><i class="fa fa-play"></i> Play All </a>&nbsp; &nbsp; 														
+						<a href="#" data-backdrop="static" class="btn btn-default btn-perspective btnplayall" data-toggle="modal" ><i class="fa fa-play"></i><spring:message code="pp_play"/></a>&nbsp; &nbsp; 														
 						<span id="buttonpopup"></span>	
 					</span>
 				</div>
@@ -100,7 +101,7 @@
 
 <div id="loading" class="text-center"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"/></div>						
 			<div class="text-center">
-				<button class="btn btn-primary" id="btLoadMore" style="display:none" > Load more</button>
+				<button class="btn btn-primary" id="btLoadMore" style="display:none" ><spring:message code="pp_more"/></button>
 			</div>	
 
 	</div>
@@ -113,7 +114,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 class="modal-title" id="DefaultModalLabel">Add video to playlist</h4>
+												<h4 class="modal-title" id="DefaultModalLabel"><spring:message code="pp_add_to_playlist"/></h4>
 											  </div>
 							<div class="modal-body" style="padding-bottom: 0px;">
 								<div
@@ -121,9 +122,9 @@
 									<div class="panel-heading">
 										<ul class="nav nav-tabs">
 											<li class="active"><a href="#videosearch-panel"
-												data-toggle="tab">Video Search</a></li>
+												data-toggle="tab"><spring:message code="pp_video_search"/></a></li>
 											<li class=""><a href="#your-video-panel"
-												data-toggle="tab">Your video</a></li>
+												data-toggle="tab"><spring:message code="pp_your_video"/></a></li>
 										</ul>
 									</div>
 									<div id="panel-collapse-1" class="collapse in">
@@ -177,7 +178,7 @@
 							</div>
 							<div class="modal-footer" style="padding: 1px 19px 6px;">
 								<button type="button" class="btn btn-default"
-									data-dismiss="modal" id="close_modal_addvideo">Close</button>
+									data-dismiss="modal" id="close_modal_addvideo"><spring:message code="pp_close"/></button>
 							</div>
 							<!-- /.modal-footer -->
 						</div>
@@ -289,7 +290,7 @@
 		  		
 				listVideo.Listall = function(page){
 		  			
-		  			console.log("llllllllllllll");
+// 		  			console.log("llllllllllllll");
 		  			
 		  			 $.ajax({ 
 		  				url : "${pageContext.request.contextPath}/rest/elearning/listallvideo?page="+page+"&item=4",
@@ -349,7 +350,7 @@
 					 			for(var j=0;j<videoPlaylistJson.length;j++){
 					 			 if(allVideoJson[a].videoId == videoPlaylistJson[j].videoId){
 					 		 		btn = "<input type='button' class='btn btn-danger btnremove' value='Remove' ";
-					 				 console.log(allVideoJson[a].videoId + " = "+ videoPlaylistJson[j].videoId);
+// 					 				 console.log(allVideoJson[a].videoId + " = "+ videoPlaylistJson[j].videoId);
 					 			 }			 		
 					 	}
 					 	}
@@ -417,7 +418,7 @@
     	                },
     				    success: function(data) { 
     				    $("#loading").hide();
-    				       	console.log(data+ "hello");	
+//     				       	console.log(data+ "hello");	
     				       	if(data.RES_DATA != null){
 	    						if(data.RES_DATA.length>0){
 	    							$("#jlistVideoInplaylist").tmpl(data.RES_DATA).appendTo("#listVideoinPlaylist");    							    							
@@ -449,7 +450,7 @@
     				var playlistId ="${playlistid}";    				
     				$.get("${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,function(data){
     					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,    					
-    							console.log("test " + playlistId);																		    						    						
+//     							console.log("test " + playlistId);																		    						    						
     						$("#totalvideo").text(data.USERPLAYLIST.countVideos +"Videos")
     					
     				});	
@@ -518,7 +519,7 @@
     			    			
     			
     			$(document).on('click', "#btn-popup-add", function() {
-    				console.log("Hello fdassadfsadfsdafads");    				
+//     				console.log("Hello fdassadfsadfsdafads");    				
     				listVideo.Listall(1);
     				listVideo.listUserVideo(userid,1);      
     				listVideo.loadPagination_All_Video();
@@ -539,7 +540,7 @@
     						 change.val("Remove");
     						 change.attr("class","btn btn-danger btnremove");    						 
     						 listVideo.loadData();
-    						 console.log(data + "hlll");    						 
+//     						 console.log(data + "hlll");    						 
     					}
     				});	     			       			    
     			    
@@ -559,7 +560,7 @@
     					success: function(data){    						
     					change.closest('.mix').remove();    					
     					listVideo.loadData();
-    					console.log(data);    					
+//     					console.log(data);    					
     					if( $("#listVideoinPlaylist").is(':empty') ){
     						$("#listVideoinPlaylist").html(empty_video_inplaylist);
     					}
@@ -579,7 +580,7 @@
     						 change.val("Add");
     						 change.attr("class","btn btn-info btnadd");    						 
     						 listVideo.loadData();
-    						 console.log(data);
+//     						 console.log(data);
     					}
     				});	 
     			});
@@ -605,7 +606,7 @@
 	    					method: "DELETE",
 	    					success: function(data){  	    							    					
 	    						 window.location = '${pageContext.request.contextPath}/user/profile';
-	    						 console.log(data);
+// 	    						 console.log(data);
 	    					}
 	    				});	
   					  		swal(     'Deleted!',     'Congratulations! Your playlist has beed deleted !',     'success'   );
@@ -721,8 +722,8 @@
 					method: "GET",
 					success: function(data){  	    							    					
 						// window.location = '${pageContext.request.contextPath}/user/profile';
-						alert("SEnd compleate")
-						 console.log(data);
+						alert("Send compleate")
+// 						 console.log(data);
 					}
 				}); 
 			});

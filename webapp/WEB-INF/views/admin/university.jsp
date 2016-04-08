@@ -207,7 +207,7 @@
 				    	
 				    	 /* alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return;  */
-						console.log(data);
+// 						console.log(data);
 				    	
 				    	perPage = 20;
 				    	nextPage = (currentPage-1)*perPage;
@@ -272,7 +272,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	university.listUniversity(gPage);
 				    	$("#p-frmUniversity").bPopup().close();
@@ -299,7 +299,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-						console.log(data);
+// 						console.log(data);
 				    	KA.destroyProgressBarWithPopup();
 				    	university.listUniversity(gPage);
 				    	$("#p-frmConfirm").bPopup().close();
@@ -379,7 +379,7 @@
 				var uniName = $(this).parent().prev().text();
 				var cateId = $(this).data("cateid");
 				KA.createProgressBarWithPopup();				
-				console.log(cateId);
+// 				console.log(cateId);
 				$("#universityId").val(cateId); 
 				$("#universityName").val(uniName);
 				

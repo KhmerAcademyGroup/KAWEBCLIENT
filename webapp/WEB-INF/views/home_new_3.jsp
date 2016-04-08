@@ -40,78 +40,6 @@
 			.owl-carousel .item img{
 				width:100%;
 			}
-			
-			
-			/* 
-			.akn-slider{
-				border:1px solid #dadada;
-				min-height:400px;
-				max-height:400px;
-				width:60%;
-				float:left;
-				overflow:hidden;
-			}
-			.akn-slider img{
-				width:100%;
-			}
-			.akn-tag{
-				z-index:1;
-				position:absolute;
-				top:16px;
-			}
-			.akn-tag p{
-				background-color:rgb(78, 156, 80);
-				color:#fff;
-				padding:3px 7px;
-			}
-			.title{
-				position:absolute;
-				top:336px;
-				background-color:rgba(0, 0, 0, 0.65);
-				width:100%;
-				padding:5px 5px 0px 5px;
-			}
-			.title p{
-				color:#fff;
-			}
-			.title a{
-				color:#fff;
-			}
-			.next-akn{
-				border:1px solid #dadada;
-				float:right;
-				width:39%;
-				min-height:400px;
-			}
-			.clear{
-				clear:both;
-			}
-			
-			.button-left{
-				background:url('http://news.khmeracademy.org/resources/images/left.png');
-				border-top-right-radius:2px;
-				border-bottom-right-radius:2px;
-			}
-			.button-right{
-				right:40.3%;
-				background:url('http://news.khmeracademy.org/resources/images/right.png');
-				border-top-left-radius:2px;
-				border-bottom-left-radius:2px;
-			}
-			.button-left, .button-right{
-				cursor:pointer;
-				position:absolute;
-				min-height:50px;
-				width:30px;
-				top:calc(400px / 2 - 10px);
-				background-repeat:no-repeat;
-				background-size:30px 50px;
-				background-color:rgba(218, 218, 218, 0.52);
-			}
-			.button-left:hover, .button-right:hover{
-				background-color:rgba(218, 218, 218, 0.68);
-			} */
-			
 		</style> 
 		
 	</head>
@@ -128,7 +56,6 @@
 		<jsp:include page="shared/_menu.jsp" />	
 		<!-- END TOP NAVBAR -->
 		
-<!-- 	style="background:#E8E9EE" style="background:#fff;" -->
 	        <!-- Page Content -->
 	        <div class="container ka-container"  >
 	            		
@@ -140,35 +67,22 @@
 				            	
 				            	<!-- Bannner -->
 				            	<div class="row" style="margin-bottom: 0px;padding: 15px;">
-<!-- 										<div class="col-lg-12"> -->
-<%-- 												<jsp:include page="shared/_banner.jsp"></jsp:include> --%>
-<!-- 										</div> -->
-<!-- 										<div class="col-lg-2"> -->
-<%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/appstore.png"/> --%>
-<!-- 												<div style="height:20px"></div> -->
-<%-- 												<img width="100%" height="100px" src="${pageContext.request.contextPath}/resources/assets/img/main_page/playstore.png"/> --%>
-<!-- 										</div> -->
-
-<!-- 											<div id="owl-banner" class="owl-carousel owl-theme"> -->
 											
 												<div class="owl-carousel" id="owl-banner">
 												    <div class="item">
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA-MoEYS-Banner.png' alt=''>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA_MoEYS.jpg' alt='' class="img-responsive">
 												    </div>
 													<div class='item'>
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/ShortCourseBanner.png' alt=''>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/short_course.jpg' alt='' class="img-responsive">
 													</div>
 													<div class='item'>
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KSHRD-Banner.png' alt=''>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/4th.jpg' alt='' class="img-responsive">
+													</div>
+													<div class='item'>
+												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/kshrd.jpg' alt='' class="img-responsive">
 													</div>
 												</div>
 
-<!-- 											</div> -->
-											
-<!-- 											<div class="slide-button"> -->
-<!-- 												<div id="sleft" class="button-left"></div> -->
-<!-- 												<div id="sright" class="button-right"></div> -->
-<!-- 											</div>   -->
 
 								</div> <!-- End Banner -->
 								
@@ -193,7 +107,7 @@
 								<div class="col-lg-8">
 										<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning">E-Learning</a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"><spring:message code="mp_e-learning"/></a></h3>
 														  </div>
 												
 														 <div class="panel with-nav-tabs panel-default">
@@ -206,7 +120,7 @@
 																    <li class=""><a href="#panel-programming" data-toggle="tab" class="eTab"   data-mid="MQ=="  data-id="getProgramming" aria-expanded="false">Programming</a></li>
 																	<li class=""><a href="#panel-web" data-toggle="tab" class="eTab"           data-mid="MTc="  data-id="getWeb" aria-expanded="false">ការរចនា​គេហទំព័រ</a></li>
 																	<li class=""><a href="#panel-mobile" data-toggle="tab" class="eTab"        data-mid="MjE="  data-id="getMobile" aria-expanded="false">Mobile</a></li>
-																	<li class=""><a href="${pageContext.request.contextPath}/elearning"> Other</a></li>
+																	<li class=""><a href="${pageContext.request.contextPath}/elearning"> ផ្សេងៗ</a></li>
 																</ul>
 															  </div>
 																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
@@ -266,7 +180,7 @@
 							  <div class="col-lg-4" style="padding-left: 0px;" >
 							  		<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  >Forum - Recent Questions  </a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  ><spring:message code="mp_forum"/></a></h3>
 														  </div>
 												
 														<div class="inbox"  id="getQuestion" style="padding: 15px;    height: 779px;  border: 1px solid #D5DAE0;">	
@@ -281,20 +195,20 @@
 								<div class="col-lg-8">
 										<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-																<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"> All Khmer News </a></h3>
+																<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></a></h3>
 														  </div>
 												
 														 <div class="panel with-nav-tabs panel-default">
 															  <div class="panel-heading">
 																<ul class="nav nav-tabs">
-																	<li class="active"><a href="#panel-home-1" class="newsTab" data-id="getAKN" data-toggle="tab" aria-expanded="true">All</a></li>
-																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" class="newsTab" data-id="getAKNScholarship"   aria-expanded="false">Scholarship</a></li>
-																	<li class=""><a href="#panel-technology-1" data-toggle="tab" class="newsTab" data-id="getAKNTechnology"  aria-expanded="false">Technology</a></li>
-																    <li class=""><a href="#panel-national-1" data-toggle="tab" class="newsTab" data-id="getAKNNational"  aria-expanded="false">National News</a></li>
-																    <li class=""><a href="#panel-international-1" data-toggle="tab" class="newsTab" data-id="getAKNInternational"  aria-expanded="false">International News</a></li>
-																	<li class=""><a href="#panel-life" data-toggle="tab" class="newsTab" data-id="getAKNLife"  aria-expanded="false">Life</a></li>
-																	<li class=""><a href="#panel-sport" data-toggle="tab" class="newsTab" data-id="getAKNSport"  aria-expanded="false">Sport</a></li>
-																	<li class=""><a href="http://news.khmeracademy.org/"  target="_blank"> Other</a></li>
+																	<li class="active"><a href="#panel-home-1" class="newsTab" data-id="getAKN" data-toggle="tab" aria-expanded="true">ថ្មីៗ</a></li>
+																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" class="newsTab" data-id="getAKNScholarship"   aria-expanded="false">អាហារូបកណ៍</a></li>
+																	<li class=""><a href="#panel-technology-1" data-toggle="tab" class="newsTab" data-id="getAKNTechnology"  aria-expanded="false">បចេ្ចកវិជ្ជា</a></li>
+																    <li class=""><a href="#panel-national-1" data-toggle="tab" class="newsTab" data-id="getAKNNational"  aria-expanded="false">ពត៌មានជាតិ</a></li>
+																    <li class=""><a href="#panel-international-1" data-toggle="tab" class="newsTab" data-id="getAKNInternational"  aria-expanded="false">ពត៌មានអន្តរជាតិ</a></li>
+																	<li class=""><a href="#panel-life" data-toggle="tab" class="newsTab" data-id="getAKNLife"  aria-expanded="false">ជីវិត</a></li>
+																	<li class=""><a href="#panel-sport" data-toggle="tab" class="newsTab" data-id="getAKNSport"  aria-expanded="false">កីឡា</a></li>
+																	<li class=""><a href="http://news.khmeracademy.org/"  target="_blank"> ផ្សេងៗ</a></li>
 																</ul>
 															  </div>
 																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
@@ -353,7 +267,7 @@
 							  <div class="col-lg-4" style="padding-left: 0px;" >
 							  		<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" >Tutorials</a></h3>
+															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" ><spring:message code="mp_tutorial"/></a></h3>
 														  </div>
 												
 														 <div class="inbox" style="    height: auto;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
@@ -383,7 +297,7 @@
 		 <script id="tlistcategory_tmpl" type="text/x-jquery-tmpl">
 					<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
 								<span class="small ">
-										<img width="20px" height="20px" src="{{= categoryLogoUrl }}" alt="{{= categoryName}}">
+										<!--<img width="20px" height="20px" src="{{= categoryLogoUrl }}" alt="{{= categoryName}}">-->
 										<a title="{{= categoryName}}" class="no-underline ka-question " href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#656D78">
 											{{= categoryName}}
 										</a>
@@ -405,9 +319,9 @@
 		
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
 					<div class="col-md-3" style="width: 50%;height:70px;display: -webkit-box;">	
-							<div>
+							<div style="width:70px;height:50px">
 								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
-										<img width="70px" height="50px"  src="{{= thumbnailUrl }}" alt="{{= playlistName }}">
+										<img   src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
 								</a>
 							</div>
 							<div class="caption text-left  shortenString" style="padding: 10px;width:80%;padding-top: 0px;">                       
@@ -448,7 +362,7 @@
 				 function displayNews(block,data){
 					 var akn1 = '<table class="shortenString">';
 						for(var j=0; j<data.length; j++){
-							akn1 += '<tr style="height: 40px;"><td><a href="'+data[j].url+'" target="_blank">​<img style="width:20px;height:20px" height="20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></td>'
+							akn1 += '<tr style="height: 40px;"><td><a href="'+data[j].url+'" target="_blank">​<img  style="width:20px;height:20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></td>'
 								   +'<td><a style="padding-left: 10px;color:#656D78;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></td></tr>';
 						}
 						akn1 += "</table>";
@@ -498,8 +412,8 @@
 							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=22',
 							method: 'GET',
 							success:function(data){
-								if(data.RES_DATA.length>0){
 									console.log(data);
+								if(data.STATUS == true){
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						
 	    						}
@@ -558,7 +472,7 @@
 		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=20",
 						method: 'GET',
 						success:function(data){
-							console.log(data);
+// 							console.log(data);
 							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);
 // 							displayElearning(eID,data);
 						}
@@ -592,7 +506,16 @@
 		</script>  
 		
 		
-		
+		<script type="text/javascript">
+			   		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			   			$("#p-IfMobile").bPopup();
+			   			if(/Android/i.test(navigator.userAgent) ) {
+				   			$("#dwnApp").attr("href","https://play.google.com/store/apps/details?id=org.khmeracademy");
+				   		}else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+				   			$("#dwnApp").attr("href","https://itunes.apple.com/kh/app/khmer-academy/id1082906587?mt=8");
+				   		}
+			   		}
+			</script>
 		
 	</body>
 </html>
