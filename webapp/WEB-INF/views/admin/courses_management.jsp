@@ -7,7 +7,7 @@
 	<jsp:include page="shared/_adminheader.jsp" />
 	<link href="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
 	<!-- sweet alert -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
 </head>
 
 <body class="tooltips">
@@ -56,7 +56,7 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button type="button" class="btn btn-success" id="form-create-playlist" >
+							<button type="button" class="btn btn-success" id="showFrmAddCourse" >
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
@@ -95,7 +95,7 @@
 							<thead>
 								<tr>									
 									<th>No</th>
-									<th>Action</th>
+									<th>Update</th>
 									<th>Course</th>
 									<th>Description</th>
 									<th>Category</th>	
@@ -259,6 +259,7 @@
 		<!-- ./Footer Script -->
 		
 			  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
+			  <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		
 		
 		
@@ -266,8 +267,7 @@
 	    	<tr>
 				<td>{{= playlistId }}</td>
 				<td> 
-					<i data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmCourse"></i>
-   		 			<i data-id="{{= playlistId }}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmCourse"></i>
+					<i style="cursor: pointer;" title="Update" data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmUpdateCourse"></i>
          		</td>
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>
@@ -275,9 +275,9 @@
 				<td><i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i>{{= countVideos}}  </td>
 				<td>{{= username}}</td>
 				<td>{{if status == true}}
-						<i data-id="{{= playlistId}}" class="fa fa-check icon-circle icon-xs icon-success"></i> 
+						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Click to hide this course!" data-id="{{= playlistId}}" class="fa fa-check icon-circle icon-xs icon-success"></i> 
 					{{else}} 
-						<i data-id="{{= playlistId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
+						<i id="updateStatus" data-value="true" style="cursor: pointer;"  title="Click to public this course!" data-id="{{= playlistId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
 				</td>
 			</tr>
@@ -290,14 +290,15 @@
    	<script type="text/javascript">
    	var course = {};
    	var check = true;
-   	var bgImage = "";
-   	var thumbnailUrl = "";
+   	var bgImage = "default-bgimage.jpg";
+   	var thumbnailUrl = "default-playlist.jpg";
+   	var getCurrentPage = 1;
    	
    	$(document).ready(function(){
    		
    		course.courses = function(mainCategoryId,currentPage,playlistName){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/courses/"+mainCategoryId+"?page="+currentPage+"&item=100&playlistName="+playlistName, 
+			    url:"${pageContext.request.contextPath}/admin/courses/"+mainCategoryId+"?page="+currentPage+"&item=10&playlistName="+playlistName, 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
@@ -308,6 +309,10 @@
 				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Courses");
 							$("tbody#content").empty();
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							if(check){
+								course.setPagination(data.PAGINATION.totalPages,currentPage);
+					    		check=false;
+					    	}
 			    	}else{
 			    		$("#totalrecord").text(0 + " Course");
 			    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
@@ -319,7 +324,7 @@
    			});
    		};
    		
-   		/* course.setPagination = function(totalPage, currentPage,mainCategoryId){
+   		course.setPagination = function(totalPage, currentPage){
 		    	$('#pagination').bootpag({
 			        total: totalPage,
 			        page: currentPage,
@@ -335,20 +340,28 @@
 			        prevClass: 'prev',
 			        lastClass: 'last',
 			        firstClass: 'first'
-			    }).on("page", function(event, totalPage,currentPage,mainCategoryId){
+			    }).on("page", function(event, currentPage){
 			    	check = false;
-			    	course.setPagination(totalPage,currentPage,mainCategoryId);
+			    	getCurrentPage = currentPage;
+			    	course.courses($("#mainCategory").val(),currentPage,$("#search").val());
 			    }); 
-		}; */
+		}; 
 		
    		
 		
-   		$(document).on('click',"#showFrmCourse" , function(){
+   		$(document).on('click',"#showFrmUpdateCourse" , function(){
 			$("#p-frmCourse").bPopup();//{modalClose: false});
 			$("#frmCourse").attr("method", "PUT");
 			$("#frmCourse").trigger("reset");
 			$("#btSubmit").text("Update");
 			course.getCourse($(this).data("id"));
+		});
+   	
+   		$(document).on('click',"#showFrmAddCourse" , function(){
+			$("#p-frmCourse").bPopup();//{modalClose: false});
+			$("#frmCourse").attr("method", "POST");
+			$("#frmCourse").trigger("reset");
+			$("#btSubmit").text("Add");
 		});
    	
    		course.mainCategories = function(){
@@ -365,7 +378,6 @@
 					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".mainCategories");
 					
 					$(".f-mainCategories").empty();
-					$(".f-mainCategories").append("<option value='empty'>Main category</option>");
 					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".f-mainCategories");
 					
 			    }
@@ -549,20 +561,62 @@
 		
 		$("#frmCourse").submit(function(e){
 			 e.preventDefault();
-// 			 course.updateThumbnailUrl();
-// 			 course.updateBgImage();
-// 			 course.uploadThumbnailUrl();
+			 check = true;
 			 course.updateCourse();
 		});
 		
 		$("#frmSearch").submit(function(e){
 			e.preventDefault();
-			alert($("#search").val());
+			check = true;
 			course.courses('empty',1,$("#search").val());
 		});
 		
 		$("#mainCategory").change(function(){
+			check = true;
 			course.courses($("#mainCategory").val(),1,$("#search").val());
+		});
+		
+		$(document).on('click',"#updateStatus" , function(){
+			
+			var courseId = $(this).data("id");
+			var value = $(this).data("value");
+			var message = "You have changed this course to private.";	
+			var warning = "Are you sure you want to change this course to private?";
+			if(value== true){
+				message = "You have changed this course to public.";	
+				warning = "Are you sure you want to change this course to public?";
+			}
+			swal({   
+				title: "Are you sure?",   
+				text: warning,   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false }, function(){ 
+					
+					$.ajax({ 
+					    url:"${pageContext.request.contextPath}/admin/course/status/"+courseId+"/"+value, 
+					    type: "PUT",
+					    beforeSend: function(xhr) {
+		                    xhr.setRequestHeader("Accept", "application/json");
+		                    xhr.setRequestHeader("Content-Type", "application/json");
+		                },
+					    success: function(data) { 
+					    	if(data.STATUS == true){
+					    		check = true;
+								course.courses($("#mainCategory").val(),getCurrentPage,$("#search").val());
+								swal("Updated course status!", message , "success"); 
+				    	   	}
+					    },
+					    error:function(data,status,er) { 
+					    	KA.destroyProgressBarWithPopup();
+					        console.log("error: "+data+" status: "+status+" er:"+er);
+					    }
+					}); 
+				});
+			
+			
 		});
 		
    		course.courses('empty',1,"");

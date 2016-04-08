@@ -61,5 +61,12 @@ public class CourseManagementRest {
 		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/course/status/{courseid}/{value}" , method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateCourseStatus(@PathVariable("courseid") String courseId,@PathVariable("value") boolean value){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/update_status/"+courseId+"/"+value, HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 		
 }
