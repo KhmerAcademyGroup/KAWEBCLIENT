@@ -88,7 +88,7 @@
 				
 				<li class="parent" >
 					 <a href="${pageContext.request.contextPath}/user/profile"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="<%= user.getUsername() %>">
-						    <img   style="height:140%"  src="<%= user.getUserImageUrl() %>" class="avatar img-circle" alt="Avatar">
+						    <img   style="height:140%"  src="<%= user.getUserImageUrl() %>" class="avatar img-circle" alt="">
 						   <%-- <sec:authentication property="principal.username" /> --%>
 						   <% 
 						   		if(user.getUsername().length() >= 5){

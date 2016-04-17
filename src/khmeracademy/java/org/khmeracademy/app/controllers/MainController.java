@@ -1,15 +1,24 @@
 package org.khmeracademy.app.controllers;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
@@ -18,6 +27,21 @@ public class MainController {
 	
 	@Autowired
 	private String WebURL;
+	
+	@Autowired
+	private HttpHeaders header;
+	
+	@Autowired
+	private RestTemplate rest;
+	
+	@Autowired
+	private String WSURL;
+	
+	@Autowired
+	@Qualifier("aknHeaders")
+	private HttpHeaders aknHeaders;
+	
+	private String AKNURL = "http://akn.khmeracademy.org/";
 	
 	@RequestMapping(value="/" , method = RequestMethod.GET)
 	public String  mainPage(ModelMap m){
@@ -64,4 +88,20 @@ public class MainController {
 		
 		return "confirmemail";
 	}
+	
+	@RequestMapping(value="/rest/elearning/main_page" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listPlaylistsByMainCategoryWithPagin(){
+		
+		HttpEntity<Object> requestAKN = new HttpEntity<Object>(aknHeaders);
+		Map<String,Object> map = new HashMap<String , Object>();
+		ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/10/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
+		map.put("NEWS", all.getBody());
+        map.put("KEY", "getAKN");
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/main_page", HttpMethod.GET , request , Map.class) ;
+		map.put("KA", response.getBody());
+		return new ResponseEntity<Map<String , Object>>(map , HttpStatus.OK);
+	}
+	
 }

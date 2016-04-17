@@ -270,7 +270,7 @@
 											<!--  Forum -->
 											<div class="panel panel-primary panel-square panel-no-border">
 																  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-																	<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  ><spring:message code="mp_forum"/></a></h3>
+																	<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  ><spring:message code="mp_forum"/></a></h3>
 																  </div>
 														
 																<div class="inbox"  id="getQuestion" style="padding: 15px;    height: auto;  border: 1px solid #D5DAE0;">	
@@ -419,7 +419,7 @@
 																
 																
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
-				<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
+				<div class="caption text-left shortenString" style="border-bottom: 1px solid  #D5DAE0;padding-top:10px;padding-bottom: 10px;">
 						<span class="small ">
 								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" >
 									{{= title }}
@@ -496,12 +496,12 @@
 						 			"<div class='mitem'>"+
 					 	 				"<div> "+                   
 					 	 					"<div class='thumbnail media-lib-item' style='height: 170px;padding: 0px;overflow: hidden;'>"+          
-					 	 						"<a href='"+data[j].url+"'>"+                       
+					 	 						"<a href='"+data[j].url+"' target='_blank'>"+                       
 					 	 							"<img  style='height:108px'  src='"+data[j].image+"' alt='"+data[j].site.name+"'>"+
 					 	 						"</a>  "+                     
 					 	 						"<div class='caption text-left'>"+                        
 					 	 							"<p class='small'> "+                         
-						 	 							"<a href='"+data[j].url+"'><span class='text-muted' style='color:#4D4D4D'><img style='width:20px;height:20px' src='http://akn.khmeracademy.org/resources/images/logo/"+data[j].site.logo+"' alt='"+data[j].site.name+"'>"+data[j].title+"</span>    </a>"+                    
+						 	 							"<a target='_blank' href='"+data[j].url+"'><span class='text-muted' style='color:#4D4D4D'><img style='width:20px;height:20px' src='http://akn.khmeracademy.org/resources/images/logo/"+data[j].site.logo+"' alt='"+data[j].site.name+"'>"+data[j].title+"</span>    </a>"+                    
 					 	 							"</p>"+                       
 						 	 					"</div> "+                     
 						 	 				"</div>"+                     
@@ -555,22 +555,17 @@
 		    	// Forum 
 		    	showForum = function(data){ 
 		    		$.ajax({
-							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=15',
+							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=10',
 							method: 'GET',
 							success:function(data){
 									console.log(data);
 								if(data.STATUS == true){
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
-	    						
 	    						}
 							}
 					});	
-		    	};
+		    	}; 
 		    	// End Forum
-		    	
-		    	
-		    	
-		    	
 		    	
 		    	// Tutorial
 				showTutorial = function(data){ 
@@ -578,10 +573,7 @@
 					url : "${pageContext.request.contextPath}/tutorial/rest/list_tutorial?item=12",
 					method: "GET",
 					success : function(data){ console.log(data);
-// 						console.log(data.RES_DATA); 
 						$("#tlistcategory_tmpl").tmpl(data.RES_DATA).appendTo("#listcategory");
-						
-						
 					}
 					
 						
@@ -589,6 +581,17 @@
 				};
 		    	// End Tutorial
 		    	
+				//E-Learning-block	
+		    	var eID="getRecent";
+				showElearning = function(mainCategoryId){ 
+		    		$.ajax({
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=9",
+						method: 'GET',
+						success:function(data){
+							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);
+						}
+					});	
+		    	};
 		    	
 		    	//akn-block	
 		    	showNews = function(data){
@@ -615,21 +618,6 @@
 				//end akn-block
 		    
 				
-				//E-Learning-block	
-		    	var eID="getRecent";
-				showElearning = function(mainCategoryId){ 
-		    		$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=14",
-						method: 'GET',
-						success:function(data){
-// 							console.log(data);
-							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);
-// 							displayElearning(eID,data);
-						}
-					});	
-		    	};
-				
-		    	
 		    	
 		    	$(document).on('click',".eTab" , function(){  
 					 if ($("#"+$(this).data("id")).find('div').length > 0) { 
@@ -643,10 +631,30 @@
 		    	
 		    	
 		    	
-		    	showElearning("empty");
+				
+		    	var eID="getRecent";
+				showMainPageData = function(){ 
+		    		$.ajax({
+		    			url :"${pageContext.request.contextPath}/rest/elearning/main_page",
+						method: 'GET',
+						success:function(data){
+							console.log(data);
+							$("#elearning_tmpl").tmpl(data.KA.LIST_COURSE).appendTo("#"+eID);
+							$("#tlistcategory_tmpl").tmpl(data.KA.LIST_CATEGORIES).appendTo("#listcategory");
+							$("#question_tmpl").tmpl(data.KA.LIST_QUESTION).appendTo("#getQuestion");
+							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
+						}
+					});	
+		    	};
+		    	
+		    	
+		    	/* showElearning("empty");
 		    	showForum();
-		    	showTutorial();
+		    	showTutorial(); 
 		    	showNews("getAKN");
+		    	*/
+		    	
+		    	showMainPageData();
 				
 			});
 			

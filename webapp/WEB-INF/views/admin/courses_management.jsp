@@ -181,7 +181,7 @@
 												 </div>
 												  
 											  <div class="form-group">	
-											 	<label for="exampleInputEmail1">Image for web 70 x 43</label>
+											 	<label for="exampleInputEmail1">Image for web 210 x 120</label>
 												<div >
 													<img id="thumnail" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
 												</div>
