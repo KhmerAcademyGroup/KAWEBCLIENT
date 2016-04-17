@@ -47,13 +47,37 @@
 			.owl-carousel .item img{
 				width:100%;
 			}
+			
+			
+			.new-playlist{
+				position:absolute !important;
+				width:40%;
+				height:100%;
+				background-color:black;
+				opacity:.7;
+				left:60%;
+				padding-top:17%;
+			}
+			.store-item:hover  .new-playlist{
+				width:100%;
+				left:0%;
+				z-index:100;
+				cursor:pointer;
+			}
+			.new-playlist ul{
+				list-style:none;
+				padding:0px;
+				font-size:150%;
+				font-weight:bold;
+				color:white;
+			}
 	 	</style>
 	</head>
 	<body>
 	
 		<jsp:include page="../shared/_menu.jsp" />
 		
-		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
+		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-list" title="Browse Course"></i></button>
 		
 		
 		<div> 
@@ -76,7 +100,7 @@
 									<i class="glyphicon glyphicon-chevron-down icon-collapse"></i>
 								</span>
 							</span> -->
-							</a>
+							<!-- </a> -->
 						</h3>
 					  </div>
 						<div id="panel-collapse-course" class="collapse in">
@@ -132,10 +156,10 @@
 	        <div id="page-content-wrapper" style="background:white;    min-height:700px;">
 	            <div class="container">
 	            
-	            <div class="section-heading">
+	            <%-- <div class="section-heading">
 									<div class="inner-border"></div>
 									<h3 style="color:#4c954d;"><spring:message code="ep_e-learning"/></h3>
-								</div>
+								</div> --%>
 	            	
 	            	<div id="recent" style="margin-bottom:80px">
 	            		<div id="owl-recent" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
@@ -205,20 +229,31 @@
 		</script>
 		
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
-					<div class="col-md-3" style="width: 33%;height:70px;display: -webkit-box;">	
-							<div style="width:70px;height:50px">
-								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
-										<img   src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
-								</a>
-							</div>
-							<div class="caption text-left  shortenString" style="padding: 10px;width:80%;padding-top: 0px;">                       
-									<p class="small shortenString">                       
-											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#656D78;font-size: 17px;">                         
-													<b>{{= playlistName }}</b>                  
-											</a>   
-									</p>               
-							</div>
-					</div>
+					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
+																							<div class="the-box full store-item text-center checkchb">
+																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																									<div class="new-playlist">
+																										<ul>
+																											<li><i class="fa fa-play-circle"></i></li>
+																										</ul>
+																									</div>
+																								</a>
+																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+																								<div class="the-box no-margin no-border item-des">
+																									<div class="row">
+																										<div class="col-xs-12">
+																											<p class="text-danger shortenString">
+																												<strong class="text-danger">{{= playlistName }}</strong>
+																											</p>
+																										</div>
+																										<!-- /.col-xs-7 -->
+																									</div>
+																									<!-- /.row -->
+																								</div>
+																							</div>
+																							<!-- /.the-box .no-border .full .store-item -->
+																							<!-- END ITEM STORE -->
+																						</div>
 		</script>
 		
 		
@@ -245,7 +280,7 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=24",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=12",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");
