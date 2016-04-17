@@ -56,7 +56,7 @@ public class ELearningController {
 			User user = (User) authentication.getPrincipal();
 			userid = user.getUserId();
 		}else{
-			System.out.println(authentication.getPrincipal());
+//			System.out.println(authentication.getPrincipal());
 		}
 		String playlistParam = "";
 		if(pid!=null){

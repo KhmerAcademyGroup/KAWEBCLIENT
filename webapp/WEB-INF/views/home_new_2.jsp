@@ -2,6 +2,13 @@
     pageEncoding="utf-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
+
+<%
+response.setHeader("Cache-Control", "public, , max-age=86400,must-revalidate"); // HTTP 1.1.
+// response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+// response.setHeader("Expires", "120"); // Proxies.
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -139,7 +146,7 @@
 				            	
 				            	
 				            	<!-- Bannner -->
-				            	<div class="row" style="margin-bottom: 0px;padding: 15px;">
+				            	<div class="row" style="margin-bottom: 0px;padding: 15px;height:397px">
 <!-- 										<div class="col-lg-12"> -->
 <%-- 												<jsp:include page="shared/_banner.jsp"></jsp:include> --%>
 <!-- 										</div> -->

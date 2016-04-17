@@ -40,6 +40,22 @@
 			.owl-carousel .item img{
 				width:100%;
 			}
+			
+			.top-title {
+			    position: relative;
+			    background-color: rgba(1, 1, 1, 0.4);
+			    top: 106px;
+			    margin-right: 5px;
+			    min-height: 55px;
+			    max-height: 55px;
+			    width: 100%;
+			    padding: 0px 5px 0px 5px;
+			    color: #fff;
+			}
+			.top-image {
+			    margin-top: -55px;
+			}
+
 		</style> 
 		
 	</head>
@@ -103,15 +119,18 @@
 							
 							
 						<div class="row" style="margin-bottom: 30px;">
-							
-								<div class="col-lg-8">
-										<div class="panel panel-primary panel-square panel-no-border">
+						
+								<div class="row">
+								
+									<div class="col-lg-8">
+											<!--   E-Learning -->
+											<div class="panel panel-primary panel-square panel-no-border">
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
 															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"><spring:message code="mp_e-learning"/></a></h3>
 														  </div>
 												
 														 <div class="panel with-nav-tabs panel-default">
-															  <div class="panel-heading">
+															  <div class="panel-heading"  style="background:white">
 																<ul class="nav nav-tabs">
 																	<li class="active"><a href="#panel-recent" data-toggle="tab" class="eTab"  data-mid="empty" data-id="getRecent" aria-expanded="true">ថ្មីៗ</a></li>
 																	<li class=""><a href="#panel-general" data-toggle="tab" class="eTab"       data-mid="MjU="  data-id="getGeneral" aria-expanded="false">ចំណេះ​ទូទៅ</a></li>
@@ -127,37 +146,37 @@
 																	<div class="panel-body">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-recent">
-																				<div  id="getRecent" class="row" style="height:  701px; overflow: hidden;">
+																				<div  id="getRecent" class="row" style="height:  480px; overflow: hidden;">
 															  							
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-general">
-																					<div  id="getGeneral" class="row" style="min-height: 701px; overflow: hidden;">
+																					<div  id="getGeneral" class="row" style="height: 480px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-computerBasic">
-																					<div  id="getComputerBasic" class="row" style="min-height: 701px;overflow: hidden;">
+																					<div  id="getComputerBasic" class="row" style="height: 480px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-language">
-																					<div  id="getLanguage" class="row" style="min-height: 701px;overflow: hidden;">
+																					<div  id="getLanguage" class="row" style="height: 480px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-programming">
-																					<div  id="getProgramming" class="row" style="min-height: 701px; overflow: hidden;">
+																					<div  id="getProgramming" class="row" style="height: 480px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-web">
-																					<div  id="getWeb" class="row" style="min-height: 701px;overflow: hidden;">
+																					<div  id="getWeb" class="row" style="height: 480px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-mobile">
-																					<div  id="getMobile" class="row" style="min-height: 701px; overflow: hidden;">
+																					<div  id="getMobile" class="row" style="height: 480px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
@@ -174,32 +193,64 @@
 																</div><!-- /.collapse in -->
 															</div>
 			            								
-										</div>				
-													
-							   </div>
-							  <div class="col-lg-4" style="padding-left: 0px;" >
-							  		<div class="panel panel-primary panel-square panel-no-border">
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  ><spring:message code="mp_forum"/></a></h3>
-														  </div>
-												
-														<div class="inbox"  id="getQuestion" style="padding: 15px;    height: 779px;  border: 1px solid #D5DAE0;">	
-																
-											</div>	
-									 </div> 					
-								</div> 
-						</div>  	
-							
-						<div class="row" >
-							
-								<div class="col-lg-8">
+										</div>	
+										<!--  End E-Learning -->
+										
+										<!--  Tutorial -->
 										<div class="panel panel-primary panel-square panel-no-border">
+											 <div class="panel-heading" style="background:rgb(78, 156, 80)">
+												<h3 class="panel-title"><a href="/KAWEBCLIENT/tutorial">ឯកសារ</a></h3>
+											  </div>
+											  <div class="panel-body" style="padding: 15px;  padding-left:0px;   border: 1px solid #D5DAE0;">
+												<div class="list-group success square no-side-border" id="listcategory">
+													  <%-- <%for(int i=0;i<12;i++) {%>
+													  <div class="col-sm-3" style="width: 190px;    padding-right: 0px;">      
+													  	<div class="the-box no-border full store-item text-center"> 
+													  	     <div class="the-box bg-info no-margin no-border item-des">        
+													  	    	 <h5><a href="/KAWEBCLIENT/tutorial/detail/MjI=" style="color:white">Adobe Photoshop</a></h5>     
+													  	     </div>        
+													  	  </div>           
+													  </div>
+													  <% } %> --%>
+												</div>
+											  </div><!-- /.panel-body -->
+											
+											</div>
+											<!-- End Tutorial -->
+											
+											<!--  Forum -->
+											<div class="panel panel-primary panel-square panel-no-border">
+																  <div class="panel-heading" style="background:rgb(78, 156, 80)">
+																	<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"  ><spring:message code="mp_forum"/></a></h3>
+																  </div>
+														
+																<div class="inbox"  id="getQuestion" style="padding: 15px;    height: auto;  border: 1px solid #D5DAE0;">	
+																		
+																</div>	
+											 </div> 	
+											<!-- End Forum -->
+										
+										
+									</div>
+									
+									
+									
+									
+									<div class="col-lg-4">
+											<!-- News -->
+											<div class="panel panel-primary panel-square panel-no-border">
+															
+															<%-- <div class="section-heading">
+																<div class="inner-border"></div>
+																<h3 style="color:#4c954d;"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></a></h3>
+															</div> --%>
+															
 														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
 																<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></a></h3>
-														  </div>
+														  </div> 
 												
 														 <div class="panel with-nav-tabs panel-default">
-															  <div class="panel-heading">
+															  <div class="panel-heading" style="background:white">
 																<ul class="nav nav-tabs">
 																	<li class="active"><a href="#panel-home-1" class="newsTab" data-id="getAKN" data-toggle="tab" aria-expanded="true">ថ្មីៗ</a></li>
 																	<li class=""><a href="#panel-scholarship-1" data-toggle="tab" class="newsTab" data-id="getAKNScholarship"   aria-expanded="false">អាហារូបកណ៍</a></li>
@@ -215,43 +266,56 @@
 																	<div class="panel-body">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-home-1">
-																				<div  id="getAKN" style="height:  500px; overflow: hidden;">
+																					<div  id="getAKN" style="height:  auto; overflow: hidden;">
 														  	
-																				</div>
-																				
-																				<!-- <div class="row text-center">
-															  								<button class="btn btn-primary btn-xs" id="btLoadMore" style="display: inline-block;"> < </button>
-																							<button class="btn btn-primary btn-xs"  id="btLoadMore" style="display: inline-block;"> > </button>
-																				</div>  -->
-																						
+																					</div>
+																					<%-- <% for(int i=0;i<10;i++){ %>
+																					<div class="owl-item" style="width: 160px;    margin-right:10px;float: left;">                   
+																						 <div class="mitem">
+																						 	 <div>                      
+																						 	 	<div class="thumbnail media-lib-item" style="height: 170px;padding: 0px;overflow: hidden;">            
+																						 	 		<a href="/KAWEBCLIENT/elearning/playvideo?v=MTQxNA==&amp;playlist=Mzc4">                        
+																						 	 			<img src="http://cdn.sabay.com/cdn/news.sabay.com.kh/wp-content/uploads/2016/04/Featuredmey-285x170.jpg" alt="...">
+																						 	 		</a>                       
+																						 	 		<div class="caption text-left">                        
+																						 	 			<p class="small ">                          
+																							 	 			<a href="#"><span class="text-muted" style="color:#4D4D4D">	<img style="width:20px;height:20px" src="http://akn.khmeracademy.org/resources/images/logo/2acd099d-d9e3-475e-a99e-fdf693f45efb.png" alt="Business Cambodia"> ​ម៉ុង ឫទ្ធី៖ កម្មករ និងបុគ្គលិកគឺជា ដង្ហើមរបស់ខ្ញុំ ម៉ុង ឫទ្ធី៖ កម្មករ និងបុគ្គលិកគឺជា ដង្ហើមរបស់ខ្ញុំ</span>    </a>                    
+																						 	 			</p>                       
+																						 	 		</div>                      
+																						 	 	</div>                     
+																						 	 </div>                    
+																						 </div>                   
+																					</div>
+																					<%} %> --%>
+																	
 																			</div>
 																			<div class="tab-pane fade" id="panel-scholarship-1">
-																				<div  id="getAKNScholarship" style="height:  500px; overflow: hidden;">
+																				<div  id="getAKNScholarship" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-technology-1">
-																				<div  id="getAKNTechnology" style="height:  500px; overflow: hidden;">
+																				<div  id="getAKNTechnology" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-national-1">
-																				<div  id="getAKNNational" style="height:  500px; overflow: hidden;">
+																				<div  id="getAKNNational" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-international-1">
-																				<div   id="getAKNInternational" style="height:  500px; overflow: hidden;">
+																				<div   id="getAKNInternational" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-life">
-																				<div   id="getAKNLife" style="height:  500px; overflow: hidden;">
+																				<div   id="getAKNLife" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-sport">
-																				<div   id="getAKNSport" style="height:  500px; overflow: hidden;">
+																				<div   id="getAKNSport" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
@@ -261,21 +325,17 @@
 																</div><!-- /.collapse in -->
 															</div>
 			            								
-										</div>				
-													
-							   </div>
-							  <div class="col-lg-4" style="padding-left: 0px;" >
-							  		<div class="panel panel-primary panel-square panel-no-border">
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/tutorial" ><spring:message code="mp_tutorial"/></a></h3>
-														  </div>
-												
-														 <div class="inbox" style="    height: auto;overflow: hidden;padding: 15px;  border: 1px solid #D5DAE0; "  id="listcategory">	
-																
-														</div>	
-									 </div> 					
-								</div> 
+										</div>	 
+									</div>
+								</div>
+							
+								
+							  
 						</div>  
+						
+						
+						
+							
 						
 	                </div>
 	                   
@@ -295,21 +355,22 @@
 		
 		
 		 <script id="tlistcategory_tmpl" type="text/x-jquery-tmpl">
-					<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
-								<span class="small ">
-										<!--<img width="20px" height="20px" src="{{= categoryLogoUrl }}" alt="{{= categoryName}}">-->
-										<a title="{{= categoryName}}" class="no-underline ka-question " href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="font-size: 14px;color:#656D78">
-											{{= categoryName}}
-										</a>
-								</span> <br/>
-					</div> 	
+				<div class="col-sm-3" style="width: 190px; padding-right: 0px;">      
+												<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
+													  	<div class="the-box no-border full store-item text-center"> 
+													  	     <div class="the-box bg-info no-margin no-border item-des">        
+													  	    	 <h5>{{= categoryName}}</h5>     
+													  	     </div>        
+													  	  </div>        
+												</a>   
+				</div>
 		</script>
 																
 																
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
 				<div class="caption text-left shortenString" style="    border-bottom: 1px solid  #D5DAE0;margin-bottom: 5px;padding-bottom: 5px;">
 						<span class="small ">
-								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" style="font-size: 16px;color:#656D78">
+								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" >
 									{{= title }}
 								</a>
 						</span> 
@@ -359,14 +420,41 @@
 		
 		<script type="text/javascript">
 			
+					
+					
 				 function displayNews(block,data){
-					 var akn1 = '<table class="shortenString">';
+					/*  var akn1 = '<table class="shortenString">';
 						for(var j=0; j<data.length; j++){
 							akn1 += '<tr style="height: 40px;"><td><a href="'+data[j].url+'" target="_blank">​<img  style="width:20px;height:20px" src="http://akn.khmeracademy.org/resources/images/logo/'+data[j].site.logo+'" alt="'+data[j].site.name+'"></a></td>'
 								   +'<td><a style="padding-left: 10px;color:#656D78;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" href="'+data[j].url+'" target="_blank">​'+data[j].title+'</a></td></tr>';
 						}
 						akn1 += "</table>";
-						$("#"+block).html(akn1);
+						$("#"+block).html(akn1); */
+						
+						
+					var akn1="";
+					for(var j=0; j<data.length; j++){
+						akn1 += "<div class='owl-item' style='width: 160px; margin-right:10px;float: left;'>"+                
+						 			"<div class='mitem'>"+
+					 	 				"<div> "+                   
+					 	 					"<div class='thumbnail media-lib-item' style='height: 170px;padding: 0px;overflow: hidden;'>"+          
+					 	 						"<a href='"+data[j].url+"'>"+                       
+					 	 							"<img  style='height:108px'  src='"+data[j].image+"' alt='"+data[j].site.name+"'>"+
+					 	 						"</a>  "+                     
+					 	 						"<div class='caption text-left'>"+                        
+					 	 							"<p class='small'> "+                         
+						 	 							"<a href='"+data[j].url+"'><span class='text-muted' style='color:#4D4D4D'><img style='width:20px;height:20px' src='http://akn.khmeracademy.org/resources/images/logo/"+data[j].site.logo+"' alt='"+data[j].site.name+"'>"+data[j].title+"</span>    </a>"+                    
+					 	 							"</p>"+                       
+						 	 					"</div> "+                     
+						 	 				"</div>"+                     
+						 				" </div>"+                   
+						 			"</div>"+                   
+								"</div>";
+					}
+					$("#"+block).html(akn1);
+						
+						
+						
 				} 
 				 
 				 
@@ -409,7 +497,7 @@
 		    	// Forum 
 		    	showForum = function(data){ 
 		    		$.ajax({
-							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=22',
+							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=15',
 							method: 'GET',
 							success:function(data){
 									console.log(data);
@@ -445,7 +533,7 @@
 		    		$.ajax({
 						url:'${pageContext.request.contextPath}/akn/scholarship/'+data,
 						method: 'GET',
-						success:function(data){
+						success:function(data){console.log(data);
 							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
 						}
 					});	
@@ -469,7 +557,7 @@
 		    	var eID="getRecent";
 				showElearning = function(mainCategoryId){ 
 		    		$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=20",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=14",
 						method: 'GET',
 						success:function(data){
 // 							console.log(data);

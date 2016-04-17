@@ -57,7 +57,7 @@
 					<!-- BEGIN ITEM STORE -->
 					<div class="the-box no-border full store-item text-center">
 						<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
-							<img alt="Image" class="item-image img-responsive" src="resources/uploads/{{= categoryLogoUrl}}">
+							<img alt="Image" class="item-image img-responsive" src="{{= categoryLogoUrl}}">
 						</a>
 						<div class="the-box bg-info no-margin no-border item-des">
 							<h5><a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}" style="color:white">{{= categoryName}}</a></h5>
