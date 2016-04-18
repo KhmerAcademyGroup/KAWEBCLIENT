@@ -96,6 +96,7 @@
 								<tr>									
 									<th>No</th>
 									<th>Update</th>
+									<th>Thumbnail</th>
 									<th>Course</th>
 									<th>Description</th>
 									<th>Category</th>	
@@ -269,6 +270,7 @@
 				<td> 
 					<i style="cursor: pointer;" title="Update" data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmUpdateCourse"></i>
          		</td>
+				<td><img     width="70px" src="{{= thumbnailUrl}}" class="img-responsive"/></td>
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>
 				<td>{{= maincategoryname}}</td>
@@ -431,7 +433,7 @@
 			    success: function(data) { 
 					console.log(data);
 			    	KA.destroyProgressBarWithPopup();
-			    	course.courses($("#mainCategory").val(),1,$("#search").val());
+			    	course.courses($("#mainCategory").val(),getCurrentPage,$("#search").val());
 					course.mainCategories();
 			    	$("#p-frmCourse").bPopup().close();
 			    },

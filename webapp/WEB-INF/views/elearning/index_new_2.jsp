@@ -275,6 +275,7 @@
 	    	  
 				var page = 1;
 				var totalPage = 0;
+				var mainCategoryId = "empty";
 				
 				course = function (mid,page){
 					$("#loading").show();
@@ -287,7 +288,7 @@
 			                    xhr.setRequestHeader("Content-Type", "application/json");
 			                },
 						success:function(data){ 
-// 							console.log(data);
+							console.log(data);
 							if(data.STATUS == true ){
 								$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
 								if(page >= data.PAGINATION.totalPages){ 
@@ -306,16 +307,24 @@
 				course("empty",1);
 				
 				
-				$("#btLoadMore").click(function(){  
+// 				$("#btLoadMore").click(function(){   alert($(this).data("id"));
+// 					page++;
+// 					empty = false;
+// 					course($(this).data("id"),page);
+// 				});
+				
+				$(document).on('click',"#btLoadMore" , function(){     //console.log(mainCategoryId);
 					page++;
-					empty = false;
-					course($(this).data("id"),page);
+// 					empty = false;
+					course(mainCategoryId,page);
 				});
 				
-				$(document).on('click',".listByMainCategory" , function(){  
+				$(document).on('click',".listByMainCategory" , function(){   // console.log($(this).data("id"));
+					page = 1;
+					mainCategoryId = $(this).data("id");
 					$("#getCourse").empty();
-					$("#btLoadMore").attr("data-mid",$(this).data("id"));
 					course($(this).data("id"),1);
+// 					$("#btLoadMore").attr("data-id",$(this).data("id"));
 				});
 				
 			});

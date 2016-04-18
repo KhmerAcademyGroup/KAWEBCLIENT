@@ -8,7 +8,7 @@
 				<h4><spring:message code="f_about"/></h4>
 				<ul class="list">
 					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="f_about"/></a></li>
-					<li><a href="${pageContext.request.contextPath}/about/people"><spring:message code="f_our_mission"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="f_our_mission"/></a></li>
 <%-- 					<li><a href="${pageContext.request.contextPath}/about/volunteer">Our volunteers</a></li> --%>
 					<li><a href="${pageContext.request.contextPath}/about/supporter"><spring:message code="f_our_supporters"/></a></li>
 					<li><a href="${pageContext.request.contextPath}/about/partner"><spring:message code="f_our_partners"/></a></li>

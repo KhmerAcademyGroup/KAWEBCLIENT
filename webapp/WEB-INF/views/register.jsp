@@ -99,7 +99,7 @@
 						
 						 				<div class="form-group text-center m-t-40">
 					                        <div class="col-xs-12">
-					                            <spring:message code="rp_already_acc"/> <a href="#" id="btSLogin"><spring:message code="rp_login"/></a>
+					                            <spring:message code="rp_already_acc"/> <a href="${pageContext.request.contextPath}/login"><spring:message code="rp_login"/></a>
 					                        </div>
 					                    </div>
 					                    

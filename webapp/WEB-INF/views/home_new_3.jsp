@@ -562,7 +562,7 @@
 							url:'${pageContext.request.contextPath}/rest/forum/questiondto?page=1&item=10',
 							method: 'GET',
 							success:function(data){
-									console.log(data);
+// 									console.log(data);
 								if(data.STATUS == true){
 	    							$("#question_tmpl").tmpl(data.RES_DATA).appendTo("#getQuestion");
 	    						}
@@ -576,7 +576,8 @@
 		    		$.ajax({
 					url : "${pageContext.request.contextPath}/tutorial/rest/list_tutorial?item=12",
 					method: "GET",
-					success : function(data){ console.log(data);
+					success : function(data){
+// 						console.log(data);
 						$("#tlistcategory_tmpl").tmpl(data.RES_DATA).appendTo("#listcategory");
 					}
 					
@@ -602,7 +603,8 @@
 		    		$.ajax({
 						url:'${pageContext.request.contextPath}/akn/scholarship/'+data,
 						method: 'GET',
-						success:function(data){console.log(data);
+						success:function(data){
+// 							console.log(data);
 							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
 						}
 					});	
@@ -642,7 +644,7 @@
 		    			url :"${pageContext.request.contextPath}/rest/elearning/main_page",
 						method: 'GET',
 						success:function(data){
-							console.log(data);
+// 							console.log(data);
 							$("#elearning_tmpl").tmpl(data.KA.LIST_COURSE).appendTo("#"+eID);
 							$("#tlistcategory_tmpl").tmpl(data.KA.LIST_CATEGORIES).appendTo("#listcategory");
 							$("#question_tmpl").tmpl(data.KA.LIST_QUESTION).appendTo("#getQuestion");

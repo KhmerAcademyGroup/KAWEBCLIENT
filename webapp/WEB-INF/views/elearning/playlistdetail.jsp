@@ -384,7 +384,7 @@
 					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
 					method: "GET",
 					success: function(data){																			
-						$("#thumbnailurlinfo").attr("src",data.USERPLAYLIST.thumbnailUrl); 
+						$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
 						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
 						$("#usernameinfo").text("by " + data.USERPLAYLIST.username +" | " );
 						$("#totalvideo").text(data.USERPLAYLIST.countVideos +"Videos")

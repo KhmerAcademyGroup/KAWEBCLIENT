@@ -1102,7 +1102,7 @@
 	**mystartPlaylist
 	**start playlist function
 	**/
-// 	mystartPlaylist();
+	mystartPlaylist();
 	function mystartPlaylist(){
 		limitplaylist=$("#limitPlaylist").val();
 		//alert(limitv);
@@ -1112,6 +1112,7 @@
             contentType: 'application/json;charset=utf-8',
             success: function(data){
             	if(data.STATUS == true){
+            		console.log(data);
 	            	totalofrecordplaylist=data.PAGINATION.totalCount;
 	            
 	            	numofpageplaylist=data.PAGINATION.totalPages;
