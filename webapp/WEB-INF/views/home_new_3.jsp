@@ -314,7 +314,7 @@
 																</ul>
 															  </div>
 																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
-																	<div class="panel-body">
+																	<div class="panel-body" style="padding: 5px;">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-home-1">
 																					<div  id="getAKN" style="height:  auto; overflow: hidden;">
@@ -451,7 +451,7 @@
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
 					
 
-																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
+																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
 																							<div class="the-box full store-item text-center checkchb">
 																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
 																									<div class="new-playlist">
@@ -461,7 +461,7 @@
 																									</div>
 																								</a>
 																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
-																								<div class="the-box no-margin no-border item-des">
+																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
 																										<div class="col-xs-12"> 
 																											<p class="text-danger shortenString" >
@@ -496,16 +496,16 @@
 						
 					var akn1="";
 					for(var j=0; j<data.length; j++){
-						akn1 += "<div class='owl-item' style='width: 160px; margin-right:10px;float: left;'>"+                
+						akn1 += "<div class='owl-item' style='width: 116px; margin-right:5px;float: left;'>"+                
 						 			"<div class='mitem'>"+
 					 	 				"<div> "+                   
-					 	 					"<div class='thumbnail media-lib-item' style='height: 170px;padding: 0px;overflow: hidden;'>"+          
-					 	 						"<a href='"+data[j].url+"' target='_blank'>"+                       
-					 	 							"<img  style='height:108px'  src='"+data[j].image+"' alt='"+data[j].site.name+"'>"+
+					 	 					"<div class='thumbnail media-lib-item' style='height: 125px;padding: 0px;overflow: hidden;'>"+          
+					 	 						"<a href='"+data[j].url+"' target='_blank' title="+data[j].title+">"+                       
+					 	 							"<img  style='height:70px'  src='"+data[j].image+"' alt='"+data[j].site.name+"'>"+
 					 	 						"</a>  "+                     
 					 	 						"<div class='caption text-left'>"+                        
 					 	 							"<p class='small'> "+                         
-						 	 							"<a target='_blank' href='"+data[j].url+"'><span class='text-muted' style='color:#4D4D4D'><img style='width:20px;height:20px' src='http://akn.khmeracademy.org/resources/images/logo/"+data[j].site.logo+"' alt='"+data[j].site.name+"'>"+data[j].title+"</span>    </a>"+                    
+						 	 							"<a target='_blank' title="+data[j].title+" href='"+data[j].url+"'><span class='text-muted' style='color:#4D4D4D'><img style='width:20px;height:20px' src='http://akn.khmeracademy.org/resources/images/logo/"+data[j].site.logo+"' alt='"+data[j].site.name+"'>"+data[j].title+"</span>    </a>"+                    
 					 	 							"</p>"+                       
 						 	 					"</div> "+                     
 						 	 				"</div>"+                     
@@ -590,7 +590,7 @@
 		    	var eID="getRecent";
 				showElearning = function(mainCategoryId){ 
 		    		$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=9",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mainCategoryId+"?page=1&item=10",
 						method: 'GET',
 						success:function(data){
 							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);

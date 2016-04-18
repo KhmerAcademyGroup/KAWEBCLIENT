@@ -94,7 +94,7 @@ public class MainController {
 		
 		HttpEntity<Object> requestAKN = new HttpEntity<Object>(aknHeaders);
 		Map<String,Object> map = new HashMap<String , Object>();
-		ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/10/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
+		ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/12/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
 		map.put("NEWS", all.getBody());
         map.put("KEY", "getAKN");
 		

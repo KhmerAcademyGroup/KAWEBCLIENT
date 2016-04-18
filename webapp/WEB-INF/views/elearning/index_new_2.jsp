@@ -205,33 +205,12 @@
 		<script src="${pageContext.request.contextPath}/resources/assets/plugins/slider/bootstrap-slider.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.js"></script>
 		
-		 <script id="course_tmpl" type="text/x-jquery-tmpl">
-								<div class="owl-item" style="width: 220px;    margin-right:10px;">
-	            						<div class="mitem">
-	            							<div>
-	            								<div class="thumbnail media-lib-item" style="height: 225px;padding: 0px;">
-	            									<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
-	            										<img src="{{= thumbnailUrl }}" alt="...">
-	            									</a>
-	            									<div class="caption text-left">
-	            										<p class="small shortenString">
-	            											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#50a253;font-size: 16px;">
-	            												<b>{{= playlistName }}</b>
-	            											</a>
-	            											<br>
-	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
-	            										</p>
-	            									</div>
-	            								</div>
-	            							</div>
-	            						</div>
-	            					</div>
-		</script>
-		
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
-					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
+					
+
+																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
 																							<div class="the-box full store-item text-center checkchb">
-																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" title="{{= playlistName }}">
 																									<div class="new-playlist">
 																										<ul>
 																											<li><i class="fa fa-play-circle"></i></li>
@@ -239,10 +218,10 @@
 																									</div>
 																								</a>
 																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
-																								<div class="the-box no-margin no-border item-des">
+																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
-																										<div class="col-xs-12">
-																											<p class="text-danger shortenString">
+																										<div class="col-xs-12"> 
+																											<p class="text-danger shortenString" >
 																												<strong class="text-danger">{{= playlistName }}</strong>
 																											</p>
 																										</div>
@@ -281,7 +260,7 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=12",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=21",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");
