@@ -169,7 +169,7 @@
 																	<div class="panel-body">
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-recent">
-																				<div  id="getRecent" class="row" style="height:  640px; overflow: hidden;">
+																				<div  id="getRecent" class="row" style="height:  auto; overflow: hidden;">
 															  							<%-- <% for(int i=0;i<9;i++){ %>
 																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
 																							<div class="the-box full store-item text-center checkchb">
@@ -200,32 +200,32 @@
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-general">
-																					<div  id="getGeneral" class="row" style="height: 640px; overflow: hidden;">
+																					<div  id="getGeneral" class="row" style="height: auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-computerBasic">
-																					<div  id="getComputerBasic" class="row" style="height: 640px;overflow: hidden;">
+																					<div  id="getComputerBasic" class="row" style="height: auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-language">
-																					<div  id="getLanguage" class="row" style="height: 640px;overflow: hidden;">
+																					<div  id="getLanguage" class="row" style="height: auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-programming">
-																					<div  id="getProgramming" class="row" style="height: 640px; overflow: hidden;">
+																					<div  id="getProgramming" class="row" style="height: auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-web">
-																					<div  id="getWeb" class="row" style="height: 640px;overflow: hidden;">
+																					<div  id="getWeb" class="row" style="height: auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-mobile">
-																					<div  id="getMobile" class="row" style="height: 640px; overflow: hidden;">
+																					<div  id="getMobile" class="row" style="height: auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>

@@ -30,6 +30,29 @@
 			.owl-carousel .item img{
 				width:100%;
 			}
+			
+			.new-playlist{
+				position:absolute !important;
+				width:40%;
+				height:100%;
+				background-color:black;
+				opacity:.7;
+				left:60%;
+				padding-top:17%;
+			}
+			.store-item:hover  .new-playlist{
+				width:100%;
+				left:0%;
+				z-index:100;
+				cursor:pointer;
+			}
+			.new-playlist ul{
+				list-style:none;
+				padding:0px;
+				font-size:150%;
+				font-weight:bold;
+				color:white;
+			}
 		</style>	
 		
 	</head>
@@ -116,28 +139,32 @@
 		<jsp:include page="../shared/_footer.jsp" />
 		
 		
-		 <script id="course_tmpl" type="text/x-jquery-tmpl">
-								<div class="owl-item" style="width: 228px;">
-	            						<div class="mitem">
-	            							<div>
-	            								<div class="thumbnail media-lib-item" style="height: 250px;padding: 0px;">
-	            									<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
-	            										<img src="{{= thumbnailUrl }}" alt="...">
-	            									</a>
-	            									<div class="caption text-left">
-	            										<p class="small shortenString">
-	            											<a class="no-underline" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" style="color:#50a253;font-size: 16px;">
-	            												<b>{{= playlistName }}</b>
-	            											</a>
-	            											<br>
-	            											<span class="text-muted" style="color:#4D4D4D">{{= description }}</span>
-	            										</p>
-														<span class="small text-muted" style="color:#4D4D4D">{{= countVideos }} Lessons</span>
-	            									</div>
-	            								</div>
-	            							</div>
-	            						</div>
-	            					</div>
+		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
+					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
+																							<div class="the-box full store-item text-center checkchb">
+																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																									<div class="new-playlist">
+																										<ul>
+																											<li><i class="fa fa-play-circle"></i></li>
+																										</ul>
+																									</div>
+																								</a>
+																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+																								<div class="the-box no-margin no-border item-des">
+																									<div class="row">
+																										<div class="col-xs-12">
+																											<p class="text-danger shortenString">
+																												<strong class="text-danger">{{= playlistName }}</strong>
+																											</p>
+																										</div>
+																										<!-- /.col-xs-7 -->
+																									</div>
+																									<!-- /.row -->
+																								</div>
+																							</div>
+																							<!-- /.the-box .no-border .full .store-item -->
+																							<!-- END ITEM STORE -->
+																						</div>
 		</script>
 		
 		<script type="text/javascript">
@@ -150,7 +177,7 @@
 				$("#loading").show();
 	  			$("#btLoadMore").hide();
 				$.ajax({
-					url:'${pageContext.request.contextPath}/rest/elearning/searchcourse?keyword=${keyword}&page='+page+'&item=10',
+					url:'${pageContext.request.contextPath}/rest/elearning/searchcourse?keyword=${keyword}&page='+page+'&item=12',
 					method: 'GET',
 					 beforeSend: function(xhr) {
 		                    xhr.setRequestHeader("Accept", "application/json");
@@ -159,7 +186,7 @@
 					success:function(data){ 
 // 						console.log(data);
 						if(data.RES_DATA.length>0){
-							$("#course_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
+							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
 						}
 						$("#loading").hide();
 						if(page >= data.PAGINATION.totalPages){ 
