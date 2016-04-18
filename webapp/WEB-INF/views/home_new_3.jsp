@@ -376,7 +376,11 @@
 																</div><!-- /.collapse in -->
 															</div>
 			            								
-										</div>	 
+										</div>	
+										
+										<img src="${pageContext.request.contextPath}/resources/uploads/advertise/shortcourse_adv.jpg" />
+										
+										 
 									</div>
 								</div>
 							

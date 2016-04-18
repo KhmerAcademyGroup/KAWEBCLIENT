@@ -41,6 +41,15 @@
 					   fbGender = response.gender;
 					   
 //					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
+					   
+					   frmData = {  email : fbemail,
+	         				 	  username : fbname,
+	         				  	  scID : fbId,
+	         				  	  scType : 2,
+	         				  	  imageUrl : "http://graph.facebook.com/"+fbId+"/picture?type=large",
+	         				  	  gender : fbGender
+					   };
+					   
 					   $.ajax({
 							url : path+"/rest/login_with_fb",
 							method: "POST",
@@ -49,12 +58,14 @@
 				                    xhr.setRequestHeader("Accept", "application/json");
 				                    xhr.setRequestHeader("Content-Type", "application/json");
 				            },
-				            data: JSON.stringify({ email : fbemail, scID : fbId, scType : 2 }),
+//				            data: JSON.stringify({ email : fbemail, scID : fbId, scType : 2 }),
+				            data: JSON.stringify(frmData),
 							success: function(data){ 								
 								if(data.USER != null){
 									userLogin(data);
 								}else{
-									if(data.USER != null){
+									alert("OOP!");
+									/*if(data.USER != null){
 										userLogin(data);
 									}else{
 										console.log(data);
@@ -83,7 +94,7 @@
 												}
 											}
 										});  
-									}
+									}*/
 								}
 							}
 						});  
