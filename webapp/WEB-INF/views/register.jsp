@@ -157,7 +157,7 @@
 		  <script type="text/javascript">
 		  $(document).ready(function(){
 				  listDepartment_University = function(){
-						KA.createProgressBarWithPopup();
+// 						KA.createProgressBarWithPopup();
 						$.ajax({ 
 						    url: "${pageContext.request.contextPath}/rest/listuniversity_department", 
 						    type: 'GET',
@@ -172,7 +172,7 @@
 								KA.destroyProgressBarWithPopup();
 						    },
 						    error:function(data,status,er) { 
-						    	KA.destroyProgressBarWithPopup();
+// 						    	KA.destroyProgressBarWithPopup();
 						        console.log("error: "+data+" status: "+status+" er:"+er);
 						    }
 						});

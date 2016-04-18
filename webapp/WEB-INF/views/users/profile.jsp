@@ -55,7 +55,7 @@
 									<input type="file" id="photoimage" name="cover" class="filestyle" data-input="false" data-iconname="fa fa-edit" onchange="return ValidateFileUpload()" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><span class="group-span-filestyle " tabindex="0"><label for="photoimage" class="btn btn-default "><span class="glyphicon fa fa-edit"></span> <span class="buttonText">Choose Cover</span></label></span></div>
 									<button class="btn btn-warning btn-square btn-xs" onchange="return ValidateFileUpload()">Change cover</button>
 								</div> -->
-								<img id="photoimg" src="${pageContext.request.contextPath}/resources/assets/img/banner/KA-MoEYS-Banner.png" height="300px" class="bg-cover" alt="Image">
+								<img id="photoimg" src="${pageContext.request.contextPath}/resources/assets/img/banner/KA_MoEYS.jpg" height="300px" class="bg-cover" alt="Image">
 								
 								<img id="avatar" class="avatar" alt="Avatar">
 								<div class="profile-info ">

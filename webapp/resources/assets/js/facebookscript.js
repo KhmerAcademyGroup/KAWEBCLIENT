@@ -8,7 +8,7 @@
 			  
 			FB.Event.subscribe('auth.authResponseChange', function(response){
 		 	 if (response.status === 'connected'){
-		 		alert("Connected to Facebook");
+//		 		alert("Connected to Facebook");
 		  		//document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
 		  		//SUCCESS
 		  	 }else if (response.status === 'not_authorized'){
@@ -40,6 +40,13 @@
 					   fbId =  response.id;
 					   fbGender = response.gender;
 					   
+					   if(fbemail == null){
+						   KA.destroyProgressBar();
+						   alert("Email is required! You didn't provide your email from facebook. Plase try to sign up again!");
+						   location.href = path+"/register";
+						   return;
+					   }
+					   
 //					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
 					   
 					   frmData = {  email : fbemail,
@@ -64,6 +71,7 @@
 								if(data.USER != null){
 									userLogin(data);
 								}else{
+									KA.destroyProgressBar();
 									alert("OOP!");
 									/*if(data.USER != null){
 										userLogin(data);
@@ -137,7 +145,7 @@
 	  }
 	
 	  function userLogin(data){
-		  console.log(data.USER.email + " | " + data.USER.password);
+//		  console.log(data.USER.email + " | " + data.USER.password);
 			frmData = { ka_username : data.USER.email,
 				  	  ka_password : data.USER.password
 				     }; 
