@@ -7,13 +7,17 @@
 			<div class="col-sm-6 col-md-2">
 				<h4><spring:message code="f_about"/></h4>
 				<ul class="list">
-					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="f_about"/></a></li>
 					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="f_our_mission"/></a></li>
 <%-- 					<li><a href="${pageContext.request.contextPath}/about/volunteer">Our volunteers</a></li> --%>
 					<li><a href="${pageContext.request.contextPath}/about/supporter"><spring:message code="f_our_supporters"/></a></li>
 					<li><a href="${pageContext.request.contextPath}/about/partner"><spring:message code="f_our_partners"/></a></li>
 					<li><a href="#${pageContext.request.contextPath}/about/contact"><spring:message code="f_contact_us"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_contribute"/></a></li>
+					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_volunteer"/></a></li>
 				</ul>
+				
+				
+				
 			</div>
 			
 			<div class="col-sm-6 col-md-2">
@@ -36,16 +40,24 @@
 			</div>
 			
 			<div class="col-sm-6 col-md-2">
-				<h4><spring:message code="f_contribute"/></h4>
+				<h4>Download Mobile App</h4>
 				<ul class="list">
-					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_contribute"/></a></li>
-					<li><a href="${pageContext.request.contextPath}/about/contribute"><spring:message code="f_volunteer"/></a></li>
+					<li><a href="https://itunes.apple.com/kh/app/khmer-academy/id1082906587?mt=8" target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/appstore.png"></a></li>
+					<li><a href="https://play.google.com/store/apps/details?id=org.khmeracademy" target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/googleplay.png"></a></li>
 				</ul>
+				
+				
 			</div>
-			<div class="col-sm-6 col-md-3">
+			
+			<div class="col-sm-6 col-md-2">
 				<h4><spring:message code="f_follow_us_on_fb"/></h4>
 				<div class="fb-like-box" data-href="https://www.facebook.com/KhmerAcademy.Org" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 			</div><!-- /.col-sm-3 -->
+			
+			
+			
+				
+			
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </footer><!-- /.section -->
@@ -53,9 +65,14 @@
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-5">
+			<div class="col-sm-6">
 				<spring:message code="f_copy_right"/>
 			</div><!-- /.col-sm-5 -->
+			<%-- <div class="col-sm-6 text-right">
+				Download Mobile App
+				<img src="${pageContext.request.contextPath}/resources/uploads/icon/appstore.png">
+				<img src="${pageContext.request.contextPath}/resources/uploads/icon/googleplay.png">
+			</div> --%>
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /.footer -->
@@ -349,7 +366,7 @@ END PAGE
 													<button type="button" class="close" aria-hidden="true">
 														<span class="button b-close"><span>x</span></span>
 													</button>
-													<h4 class="bolded">Khmer Academy Mobile Application</h4>
+													<h4 class="bolded">KhmerAcademy is available on Mobile!</h4>
 												</div>
 												<div class="modal-body" >
 													

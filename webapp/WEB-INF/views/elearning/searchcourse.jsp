@@ -140,9 +140,11 @@
 		
 		
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
-					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
+					
+
+																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
 																							<div class="the-box full store-item text-center checkchb">
-																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																								<a title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
 																									<div class="new-playlist">
 																										<ul>
 																											<li><i class="fa fa-play-circle"></i></li>
@@ -150,11 +152,11 @@
 																									</div>
 																								</a>
 																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
-																								<div class="the-box no-margin no-border item-des">
+																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
-																										<div class="col-xs-12">
-																											<p class="text-danger shortenString">
-																												<strong class="text-danger">{{= playlistName }}</strong>
+																										<div class="col-xs-12"> 
+																											<p class="text-danger shortenString" >
+																												<strong class="text-black">{{= playlistName }}</strong>
 																											</p>
 																										</div>
 																										<!-- /.col-xs-7 -->
@@ -165,7 +167,7 @@
 																							<!-- /.the-box .no-border .full .store-item -->
 																							<!-- END ITEM STORE -->
 																						</div>
-		</script>
+		</script>	
 		
 		<script type="text/javascript">
 		$(document).ready(function(){
@@ -177,7 +179,7 @@
 				$("#loading").show();
 	  			$("#btLoadMore").hide();
 				$.ajax({
-					url:'${pageContext.request.contextPath}/rest/elearning/searchcourse?keyword=${keyword}&page='+page+'&item=12',
+					url:'${pageContext.request.contextPath}/rest/elearning/searchcourse?keyword=${keyword}&page='+page+'&item=14',
 					method: 'GET',
 					 beforeSend: function(xhr) {
 		                    xhr.setRequestHeader("Accept", "application/json");

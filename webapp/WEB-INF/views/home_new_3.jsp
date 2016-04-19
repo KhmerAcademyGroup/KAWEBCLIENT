@@ -109,16 +109,16 @@
 											
 												<div class="owl-carousel" id="owl-banner">
 												    <div class="item">
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA_MoEYS.jpg' alt='' class="img-responsive">
+												    	<a href="#"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA_MoEYS.jpg' alt='' class="img-responsive"></a>
 												    </div>
 													<div class='item'>
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/short_course.jpg' alt='' class="img-responsive">
+												    	<a href="#"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/short_course.jpg' alt='' class="img-responsive"></a>
 													</div>
 													<div class='item'>
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/4th.jpg' alt='' class="img-responsive">
+												    	<a href="http://kshrd.com.kh/" target="_blank"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/4th.jpg' alt='' class="img-responsive"></a>
 													</div>
 													<div class='item'>
-												    	<img src='${pageContext.request.contextPath}/resources/assets/img/banner/kshrd.jpg' alt='' class="img-responsive">
+												    	<a href="http://kshrd.com.kh/" target="_blank"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/kshrd.jpg' alt='' class="img-responsive"></a>
 													</div>
 												</div>
 
@@ -148,9 +148,10 @@
 									<div class="col-lg-8">
 											<!--   E-Learning -->
 											<div class="panel panel-primary panel-square panel-no-border">
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-															<h3 class="panel-title"><a href="${pageContext.request.contextPath}/elearning"><spring:message code="mp_e-learning"/></a></h3>
-														  </div>
+														<div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
+															  <a href="${pageContext.request.contextPath}/elearning" target="_blank" style=" float: left;color: white;"><h3 class="panel-title"><spring:message code="m_e-learning"/></h3></a>
+															  <a href="${pageContext.request.contextPath}/elearning" target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/></a>
+														</div>
 												
 														 <div class="panel with-nav-tabs panel-default">
 															  <div class="panel-heading"  style="background:white">
@@ -167,9 +168,13 @@
 															  </div>
 																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
 																	<div class="panel-body">
+																		
+																		<div id="e-loading" class="loading text-center" ><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
+																		
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-recent">
-																				<div  id="getRecent" class="row" style="height:  auto; overflow: hidden;">
+																				<div  id="getRecent" class="row" style="min-height:  282px; overflow: hidden;">
+																				
 															  							<%-- <% for(int i=0;i<9;i++){ %>
 																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
 																							<div class="the-box full store-item text-center checkchb">
@@ -200,44 +205,47 @@
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-general">
-																					<div  id="getGeneral" class="row" style="height: auto; overflow: hidden;">
+																					<div  id="getGeneral" class="row" style="min-height: 282px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-computerBasic">
-																					<div  id="getComputerBasic" class="row" style="height: auto;overflow: hidden;">
+																					<div  id="getComputerBasic" class="row" style="min-height: 282px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-language">
-																					<div  id="getLanguage" class="row" style="height: auto;overflow: hidden;">
+																					<div  id="getLanguage" class="row" style="min-height: 282px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-programming">
-																					<div  id="getProgramming" class="row" style="height: auto; overflow: hidden;">
+																					<div  id="getProgramming" class="row" style="min-height: 282px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-web">
-																					<div  id="getWeb" class="row" style="height: auto;overflow: hidden;">
+																					<div  id="getWeb" class="row" style="min-height: 282px;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-mobile">
-																					<div  id="getMobile" class="row" style="height: auto; overflow: hidden;">
+																					<div  id="getMobile" class="row" style="min-height: 282px; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			
 																				
 																					<!-- <div class="row text-center">
-															  								<button class="btn btn-primary btn-xs" id="btLoadMore" style="display: inline-block;"> < </button>
-																							<button class="btn btn-primary btn-xs"  id="btLoadMore" style="display: inline-block;"> > </button>
+															  								<button class="btn btn-default btn-xs" id="btLoadMore" style="display: inline-block;"> < </button>
+																							<button class="btn btn-default btn-xs"  id="btLoadMore" style="display: inline-block;"> > </button>
 																					</div> --> 		
-																						
+																					
+																					
 																			<!-- /.tab-pane fade -->
 																		</div><!-- /.tab-content -->
+																		
+																					
 																	</div><!-- /.panel-body -->
 																</div><!-- /.collapse in -->
 															</div>
@@ -247,10 +255,16 @@
 										
 										<!--  Tutorial -->
 										<div class="panel panel-primary panel-square panel-no-border">
-											 <div class="panel-heading" style="background:rgb(78, 156, 80)">
-												<h3 class="panel-title"><a href="/KAWEBCLIENT/tutorial">ឯកសារ</a></h3>
+										
+											  <div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
+													<a href="${pageContext.request.contextPath}/tutorial" target="_blank" style=" float: left;color: white;"><h3 class="panel-title"><spring:message code="m_tutorial"/></h3></a>
+													<a href="${pageContext.request.contextPath}/tutorial" target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/> </a>
 											  </div>
-											  <div class="panel-body" style="padding: 15px;  padding-left:0px;   border: 1px solid #D5DAE0;">
+														
+											  <div class="panel-body" style="padding: 15px;  padding-left:0px;   border: 1px solid #D5DAE0;min-height: 300px;" >
+											  
+											  	<div class="loading text-center" ><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
+											  	
 												<div class="list-group success square no-side-border" id="listcategory">
 													  <%-- <%for(int i=0;i<12;i++) {%>
 													  <div class="col-sm-3" style="width: 190px;    padding-right: 0px;">      
@@ -262,6 +276,9 @@
 													  </div>
 													  <% } %> --%>
 												</div>
+												
+																				
+																					
 											  </div><!-- /.panel-body -->
 											
 											</div>
@@ -269,15 +286,107 @@
 											
 											<!--  Forum -->
 											<div class="panel panel-primary panel-square panel-no-border">
-																  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-																	<h3 class="panel-title"><a href="${pageContext.request.contextPath}/forum"  ><spring:message code="mp_forum"/></a></h3>
-																  </div>
-														
-																<div class="inbox"  id="getQuestion" style="padding: 15px;    height: auto;  border: 1px solid #D5DAE0;">	
+																
+															  <div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
+																	<a href="http://kshrd.com.kh/"  target="_blank" style=" float: left;color: white;"><h3 class="panel-title">មជ្ឍមណ្ឌលកូរ៉េសហ្វវែរអេចអឌី</h3></a>
+																	<a href="http://kshrd.com.kh/"  target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/></a>
+															  </div>
+																  
+																<div class="inbox"  style="padding: 15px;    min-height: 466px;  border: 1px solid #D5DAE0;">	
 																		
+																		<div class="col-lg-6">
+																		
+																			<h5 style="font-size: 17px;"> <strong>ផ្តល់អាហារូបកណ៍ដល់និសិ្សតអាយធីរាងរាល់ឆ្នាំ</strong></h5>
+																			
+																			<h5 style="font-size: 16px;"> <strong>មក្មវិធីសិក្សា : </strong></h5>
+																			
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 10px;text-indent: 20px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         ថ្នាក់សិក្សាមូលដ្ឋាន
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 5px;text-indent: 20px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							       វគ្គសិក្សាកម្រិតខ្ពស់
+																							</a>   
+																					</span>  
+																		    </div>
+																		    <div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 5px;text-indent: 20px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							        ថ្នាក់ភាសាកូរ៉េ
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 20px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         វគ្គ​បណ្ដុះបណ្ដាលពិសេស
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    
+																		</div>	
+																		
+																		
+																		
+																		<div class="col-lg-6">
+																		
+																			<h5 style="font-size: 17px;"><strong>វគ្គសិក្សាជំនាញអាយធីបង់ថ្លៃ</strong></h5>
+																			
+																			<div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         iOS Application Development
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         Android Application Development
+																							</a>   
+																					</span>  
+																		    </div>
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							        Spring Framework
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         Oracle
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         Web Design
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																					<span class="small ">         
+																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							         Java Standard Edition(J2SE)
+																							</a>   
+																					</span>  
+																		    </div>	
+																		</div>	
+																																		
 																</div>	
+																
+																					
 											 </div> 	
 											<!-- End Forum -->
+											
 											
 											
 										
@@ -290,15 +399,13 @@
 									<div class="col-lg-4">
 											<!-- News -->
 											<div class="panel panel-primary panel-square panel-no-border">
+										  						
+										  				<div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
+																<a href="http://news.khmeracademy.org/"  target="_blank" style=" float: left;color: white;"><h3 class="panel-title"><img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></h3></a>
+																<a href="http://news.khmeracademy.org/"  target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"> <spring:message code="ep_more"/> </a>
+														 </div>
 															
-															<%-- <div class="section-heading">
-																<div class="inner-border"></div>
-																<h3 style="color:#4c954d;"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></a></h3>
-															</div> --%>
-															
-														  <div class="panel-heading" style="background:rgb(78, 156, 80)">
-																<h3 class="panel-title"><a href="http://news.khmeracademy.org/"  target="_blank"> <img  src="http://akn.khmeracademy.org/resources/images/logo/e7229712-6ba2-4b7a-94a0-f4c71df9eb9f.png" style="width:20px;height:20px"><spring:message code="mp_akn"/></a></h3>
-														  </div> 
+														
 												
 														 <div class="panel with-nav-tabs panel-default">
 															  <div class="panel-heading" style="background:white">
@@ -315,9 +422,13 @@
 															  </div>
 																<div id="panel-collapse-1" class="collapse in" aria-expanded="true">
 																	<div class="panel-body" style="padding: 5px;">
+																	
+																		<div id="k-loading" class="loading text-center" ><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
+																		
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-home-1">
-																					<div  id="getAKN" style="height:  auto; overflow: hidden;">
+																			
+																					<div  id="getAKN" style="min-height:  580px; overflow: hidden;">
 														  	
 																					</div>
 																					<%-- <% for(int i=0;i<10;i++){ %>
@@ -341,32 +452,32 @@
 																	
 																			</div>
 																			<div class="tab-pane fade" id="panel-scholarship-1">
-																				<div  id="getAKNScholarship" style="height:  auto; overflow: hidden;">
+																				<div  id="getAKNScholarship" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-technology-1">
-																				<div  id="getAKNTechnology" style="height:  auto; overflow: hidden;">
+																				<div  id="getAKNTechnology" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-national-1">
-																				<div  id="getAKNNational" style="height:  auto; overflow: hidden;">
+																				<div  id="getAKNNational" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-international-1">
-																				<div   id="getAKNInternational" style="height:  auto; overflow: hidden;">
+																				<div   id="getAKNInternational" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-life">
-																				<div   id="getAKNLife" style="height:  auto; overflow: hidden;">
+																				<div   id="getAKNLife" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-sport">
-																				<div   id="getAKNSport" style="height:  auto; overflow: hidden;">
+																				<div   id="getAKNSport" style="min-height:  580px; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
@@ -378,8 +489,24 @@
 			            								
 										</div>	
 										
-										<img src="${pageContext.request.contextPath}/resources/uploads/advertise/shortcourse_adv.jpg" />
-										
+<%-- 										<img src="${pageContext.request.contextPath}/resources/uploads/advertise/shortcourse_adv.jpg" /> --%>
+										<!--  Forum -->
+											<div class="panel panel-primary panel-square panel-no-border">
+																
+															  <div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
+																	<a href="${pageContext.request.contextPath}/forum" target="_blank" style=" float: left;color: white;"><h3 class="panel-title"><spring:message code="mp_forum"/></h3></a>
+																	<a href="${pageContext.request.contextPath}/forum" target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/></a>
+															  </div>
+																  
+																<div class="inbox"  id="getQuestion" style="padding: 15px;    min-height: 466px;  border: 1px solid #D5DAE0;">	
+																
+																	<div class="loading text-center" ><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>  
+																		
+																</div>	
+																
+																					
+											 </div> 	
+											<!-- End Forum -->
 										 
 									</div>
 								</div>
@@ -411,10 +538,10 @@
 		
 		 <script id="tlistcategory_tmpl" type="text/x-jquery-tmpl">
 				<div class="col-sm-3" style="width: 190px; padding-right: 0px;" >      
-												<a href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
+												<a target="_blank" href="${pageContext.request.contextPath}/tutorial/detail/{{= categoryId}}">
 													  	<div class="the-box no-border full store-item text-center"> 
-													  	     <div class="the-box bg-info no-margin no-border item-des">        
-													  	    	 <h5>{{= categoryName}}</h5>     
+													  	     <div class="the-box bg-default no-margin no-border item-des" style="border: 1px solid #D5DAE0; padding: 14px;">        
+													  	    	 <h5><strong style="color:#E9573F;">{{= categoryName}}</strong></h5>     
 													  	     </div>        
 													  	  </div>        
 												</a>   
@@ -425,7 +552,7 @@
 		 <script id="question_tmpl" type="text/x-jquery-tmpl">
 				<div class="caption text-left shortenString" style="border-bottom: 1px solid  #D5DAE0;padding-top:10px;padding-bottom: 10px;">
 						<span class="small ">
-								<a title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" >
+								<a  style="font-size: 15px;" target="_blank" title="{{= title }}" class="no-underline ka-question" href="${pageContext.request.contextPath}/forum/question/{{= commentId }}" >
 									{{= title }}
 								</a>
 						</span> 
@@ -453,7 +580,7 @@
 
 																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
 																							<div class="the-box full store-item text-center checkchb">
-																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																								<a target="_blank" title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
 																									<div class="new-playlist">
 																										<ul>
 																											<li><i class="fa fa-play-circle"></i></li>
@@ -543,7 +670,6 @@
 					}
 					$("#"+id).html(elearning);
 					
-					
 				}
 				
 				
@@ -594,6 +720,7 @@
 						method: 'GET',
 						success:function(data){
 							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#"+eID);
+							 $("#e-loading").hide();
 						}
 					});	
 		    	};
@@ -606,6 +733,8 @@
 						success:function(data){
 // 							console.log(data);
 							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
+							$("#k-loading").hide();
+							
 						}
 					});	
 		    	};
@@ -614,9 +743,11 @@
 				
 				
 				$(document).on('click',".newsTab" , function(){  
-					 if ($("#"+$(this).data("id")).find('table').length > 0) { 
+					 if ($("#"+$(this).data("id")).find('div').length > 0) { 
+						 $("#k-loading").hide();
 						 return; 
 					  }else{
+						 $("#k-loading").show();
 						 showNews($(this).data("id"));
 					  }
 					 
@@ -627,8 +758,10 @@
 		    	
 		    	$(document).on('click',".eTab" , function(){  
 					 if ($("#"+$(this).data("id")).find('div').length > 0) { 
+						 $("#e-loading").hide();
 						 return; 
 					  }else{
+						  $("#e-loading").show();		
 						  eID = $(this).data("id");
 						  showElearning($(this).data("mid"));
 					  }
@@ -649,6 +782,7 @@
 							$("#tlistcategory_tmpl").tmpl(data.KA.LIST_CATEGORIES).appendTo("#listcategory");
 							$("#question_tmpl").tmpl(data.KA.LIST_QUESTION).appendTo("#getQuestion");
 							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
+							$(".loading").hide();
 						}
 					});	
 		    	};

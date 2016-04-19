@@ -210,7 +210,7 @@
 
 																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
 																							<div class="the-box full store-item text-center checkchb">
-																								<a href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" title="{{= playlistName }}">
+																								<a title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" title="{{= playlistName }}">
 																									<div class="new-playlist">
 																										<ul>
 																											<li><i class="fa fa-play-circle"></i></li>
