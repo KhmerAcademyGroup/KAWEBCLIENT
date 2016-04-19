@@ -2,7 +2,7 @@ package org.khmeracademy.app.controllers.admin.management;
 
 import java.util.Map;
 
-import org.khmeracademy.app.entities.input.FrmUpdateForumCategory;
+import org.khmeracademy.app.entities.User;
 import org.khmeracademy.app.entities.input.FrmUpdatePlaylist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -10,6 +10,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,10 +64,33 @@ public class CourseManagementRest {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/course" , method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> addCourse(@RequestBody FrmUpdatePlaylist p){
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		if(!authentication.getPrincipal().equals("anonymousUser")){
+			User user = (User) authentication.getPrincipal();
+			p.setUserId(user.getUserId());
+		}
+		HttpEntity<Object> request = new HttpEntity<Object>(p,header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/course/status/{courseid}/{value}" , method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> updateCourseStatus(@PathVariable("courseid") String courseId,@PathVariable("value") boolean value){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/update_status/"+courseId+"/"+value, HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/course/listvideos/{courseid}" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listVideosInCourse(
+										  @PathVariable("courseid") String courseid
+										, @RequestParam(value = "videoTitle", required = false , defaultValue="") String videoTitle 
+										, @RequestParam(value = "page", required = false , defaultValue="1") int page 
+									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/listvideos/"+courseid+"?page="+page+"&item="+item+"&videoTitle="+videoTitle, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 		

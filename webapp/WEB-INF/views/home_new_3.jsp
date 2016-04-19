@@ -284,7 +284,7 @@
 											</div>
 											<!-- End Tutorial -->
 											
-											<!--  Forum -->
+											<!--  KSHRD -->
 											<div class="panel panel-primary panel-square panel-no-border">
 																
 															  <div class="panel-heading" style="background:rgb(78, 156, 80);height: 40px;">
@@ -292,42 +292,62 @@
 																	<a href="http://kshrd.com.kh/"  target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/></a>
 															  </div>
 																  
-																<div class="inbox"  style="padding: 15px;    min-height: 466px;  border: 1px solid #D5DAE0;">	
+																<div class="inbox"  style="padding: 15px;    min-height: 400px;  border: 1px solid #D5DAE0;">	
+																
+																		<a href="http://kshrd.com.kh/"  target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
 																		
 																		<div class="col-lg-6">
 																		
 																			<h5 style="font-size: 17px;"> <strong>ផ្តល់អាហារូបកណ៍ដល់និសិ្សតអាយធីរាងរាល់ឆ្នាំ</strong></h5>
 																			
-																			<h5 style="font-size: 16px;"> <strong>មក្មវិធីសិក្សា : </strong></h5>
+																			<h5 style="font-size: 16px;"> <strong>កម្មវិធីសិក្សា : </strong></h5>
 																			
 																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 10px;text-indent: 20px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="http://kshrd.com.kh/jsp/basiccourse.hrd" target="_blank" style="font-size: 15px;color: #4D4D4D;" target="_blank"  class="no-underline text-black"> 
 																							         ថ្នាក់សិក្សាមូលដ្ឋាន
 																							</a>   
 																					</span>  
 																		    </div>	
 																		    <div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 5px;text-indent: 20px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="http://kshrd.com.kh/jsp/advancecourse.hrd" target="_blank" style="font-size: 15px;color: #4D4D4D;" target="_blank"  class="no-underline text-black"> 
 																							       វគ្គសិក្សាកម្រិតខ្ពស់
 																							</a>   
 																					</span>  
 																		    </div>
 																		    <div class="caption text-left shortenString" style="padding-top:5px;padding-bottom: 5px;text-indent: 20px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="http://kshrd.com.kh/jsp/koreanclass.hrd" target="_blank" style="font-size: 15px;color: #4D4D4D;" target="_blank"  class="no-underline text-black"> 
 																							        ថ្នាក់ភាសាកូរ៉េ
 																							</a>   
 																					</span>  
 																		    </div>	
 																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 20px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="http://kshrd.com.kh/jsp/speciallecture.hrd" target="_blank" style="font-size: 15px;color: #4D4D4D;" target="_blank"  class="no-underline text-black"> 
 																							         វគ្គ​បណ្ដុះបណ្ដាលពិសេស
 																							</a>   
 																					</span>  
 																		    </div>	
+																		    
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 0px;">       
+																					<span class="small ">         
+																							<a href="http://www.khmeracademy.org/elearning/play.act?v=313&p=260" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
+																							       លទ្ធផលនៃនិស្សិតជំនាន់ទី២
+																							</a>   
+																					</span>  
+																		    </div>
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 0px;">       
+																					<span class="small ">         
+																							<a href="http://www.khmeracademy.org/elearning/play.act?v=1451&p=381" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
+																							       លទ្ធផលនៃនិស្សិតជំនាន់ទី៣
+																							</a>   
+																					</span>  
+																		    </div>
+																		    
+																		    
+																		    
 																		    
 																		</div>	
 																		
@@ -337,48 +357,56 @@
 																		
 																			<h5 style="font-size: 17px;"><strong>វគ្គសិក្សាជំនាញអាយធីបង់ថ្លៃ</strong></h5>
 																			
-																			<div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
-																							         iOS Application Development
-																							</a>   
-																					</span>  
-																		    </div>	
-																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
-																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
-																							         Android Application Development
-																							</a>   
-																					</span>  
-																		    </div>
-																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
-																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
-																							        Spring Framework
-																							</a>   
-																					</span>  
-																		    </div>	
-																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
-																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
-																							         Oracle
-																							</a>   
-																					</span>  
-																		    </div>	
-																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
-																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
 																							         Web Design
 																							</a>   
-																					</span>  
+																					</span> 
 																		    </div>	
-																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;">       
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
 																					<span class="small ">         
-																							<a style="font-size: 15px;color: #4D4D4D;" target="_blank" title="How to upgrade Samsung Note 2 to 4.4?" class="no-underline text-black" href="/KAWEBCLIENT/forum/question/MjM2"> 
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
 																							         Java Standard Edition(J2SE)
 																							</a>   
 																					</span>  
 																		    </div>	
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
+																					<span class="small ">         
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
+																							         Java Enterprise Edition(J2EE)
+																							</a>   
+																					</span>  
+																		    </div>
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
+																					<span class="small ">         
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
+																							         iOS Application Development
+																							</a>   
+																					</span>  
+																		    </div>	
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
+																					<span class="small ">         
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
+																							         Android Application Development
+																							</a>   
+																					</span>  
+																		    </div>
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
+																					<span class="small ">         
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
+																							        Spring Framework
+																							</a>   
+																					</span>  
+																		    </div>	
+																			<div class="caption text-left shortenString" style="padding-top:5px;padding-bottom:5px;">       
+																					<span class="small ">         
+																							<a href="https://drive.google.com/file/d/0B0XDE0S9qbl6QmNDZlFRVTA1RDA/view" target="_blank" style="font-size: 15px;color: #4D4D4D;" class="no-underline text-black"> 
+																							         Oracle
+																							</a>   
+																					</span>  
+																		    </div>	
+																		    
 																		</div>	
 																																		
 																</div>	

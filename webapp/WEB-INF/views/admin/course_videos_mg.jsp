@@ -51,7 +51,8 @@
 		<div class="page-content">
 			<div class="container-fluid">
 
-			   <h1 class="page-heading">PlayList</h1>
+			   <h2 class="page-heading">Course Title : <span id="textPlaylistName">PlayList</span></h2>
+			   <h5 class="page-heading">Main Category: <span id="textMainCategory">Main Cateogry</span></h5>
 
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
@@ -60,30 +61,11 @@
 								<i class="fa fa-plus-square"></i> Add new
 							</button>
 						</div>
-						<!-- <div class="btn-group" >
-							<form role="form">
-								<select id="limitplaylist" onclick="choosePlaylist();" class="form-control">
-									<option value="10">10</option>
-									<option value="20" selected="selected">20</option>
-									<option value="30">30</option>
-									<option value="40">40</option>
-									<option value="50">50</option>
-									<option value="100">100</option>
-								</select>
-							</form>
-						</div> -->
-						
-						<div class="form-group btn-group">
-								<select class="form-control mainCategories" id="mainCategory" name="mainCategory" required="required" > 
-													
-								</select>
-						</div>
-												 
 												 
 						<div class="btn-group pull-right">
 							<form role="form" action="#" id="frmSearch">
 								<input type="text" id="search" class="form-control"
-									placeholder="Search University">
+									placeholder="Search by title video">
 							</form>
 
 						</div>
@@ -94,15 +76,17 @@
 						<table class="table table-th-block table-hover">
 							<thead>
 								<tr>									
-									<th>No</th>
-									<th>Update</th>
-									<th>Thumbnail</th>
-									<th>Course</th>
+									<th>ID</th>
+									<th>Title</th>
+									<th>YouTube URL</th>
+									<td>File URL</td>
 									<th>Description</th>
-									<th>Category</th>	
-									<th>Videos</th>
+									<th>Post Date</th>
+									<th>Viewed Count</th>
+									<th>Commented Count</th>
 									<th>By</th>
-									<th>Status</th>												
+									<th>Status</th>
+									<th>Action</th>											
 								</tr>
 							</thead>
 							<tbody id="content">
@@ -262,45 +246,45 @@
 			  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
 			  <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		
-		
-		
-	<script id="content_tmpl" type="text/x-jquery-tmpl">
+	
+	<script id="content_tmpl" type="text/x-jquery-tmpl">	
 	    	<tr>
-				<td>{{= playlistId }}</td>
-				<td> 
-					<i style="cursor: pointer;" title="Update" data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmUpdateCourse"></i>
-         		</td>
-				<td><img     width="70px" src="{{= thumbnailUrl}}" class="img-responsive"/></td>
-				<td>{{= playlistName}}</td>
-				<td>{{= description}}</td>
-				<td>{{= maincategoryname}}</td>
-				<td><a href="${pageContext.request.contextPath}/admin/course/getvideos"><i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i>{{= countVideos}} </a> </td>
-				<td>{{= username}}</td>
-				<td>{{if status == true}}
+				<td>{{= videoId }}</td>
+				<td>{{= videoName }}</td>
+				<td>{{= youtubeUrl }}</td>
+				<td>{{= fileUrl }}</td>
+				<td>{{= videoDescription }}</td>
+				<td>{{= postDate }}</td>
+				<td>{{= viewCount }}</td>
+				<td>{{= countComment }}</td>
+				<td>{{= username }}</td>
+				<td>{{if videoStatus == true}}
 						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Click to hide this course!" data-id="{{= playlistId}}" class="fa fa-check icon-circle icon-xs icon-success"></i> 
 					{{else}} 
 						<i id="updateStatus" data-value="true" style="cursor: pointer;"  title="Click to public this course!" data-id="{{= playlistId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
-				</td>
+				</td>	
+				<td> 
+					<i style="cursor: pointer;" title="Update" data-id="{{= playlistId }}" class="fa fa-pencil icon-circle icon-xs icon-info" data-toggle="modal" id="showFrmUpdateCourse"></i>
+					<i style="cursor: pointer;" title="Update" data-id="{{= playlistId }}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmUpdateCourse"></i>
+         		</td>
+				
 			</tr>
    	</script>
    	
-   	<script id="mainCategories_tmpl" type="text/x-jquery-tmpl">
-			<option value="{{=  mainCategoryId }}"> {{= mainCategoryName }} </option>
-   	</script>
    	
    	<script type="text/javascript">
+   	
+   	
    	var course = {};
    	var check = true;
-   	var bgImage = "default-bgimage.jpg";
-   	var thumbnailUrl = "default-playlist.jpg";
    	var getCurrentPage = 1;
    	
    	$(document).ready(function(){
    		
-   		course.courses = function(mainCategoryId,currentPage,playlistName){
+   		course.videos = function(currentPage,videoTitle){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/courses/"+mainCategoryId+"?page="+currentPage+"&item=10&playlistName="+playlistName, 
+			    url:"${pageContext.request.contextPath}/admin/course/listvideos/Mzc4?page="+currentPage+"&item=10", 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
@@ -308,7 +292,7 @@
                 },
 			    success: function(data) {  console.log(data);
 			    	if(data.STATUS != false){
-				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Courses");
+				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Videos");
 							$("tbody#content").empty();
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
 							if(check){
@@ -319,7 +303,7 @@
 			    		$("#totalrecord").text(0 + " Course");
 			    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
 								  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
-								  '<strong>No course</strong>'+
+								  '<strong>No video!</strong>'+
 								'</div>');
 			    	}
 			    }
@@ -345,7 +329,7 @@
 			    }).on("page", function(event, currentPage){
 			    	check = false;
 			    	getCurrentPage = currentPage;
-			    	course.courses($("#mainCategory").val(),currentPage,$("#search").val());
+			    	course.videos(currentPage,$("#search").val());
 			    }); 
 		}; 
 		
@@ -366,26 +350,7 @@
 			$("#btSubmit").text("Add");
 		});
    	
-   		course.mainCategories = function(){
-   			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/courses/maincategories", 
-			    type: 'GET',
-			    beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Accept", "application/json");
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                },
-			    success: function(data) {  console.log(data);
-					$(".mainCategories").empty();
-					$(".mainCategories").append("<option value='empty'>Main category</option>");
-					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".mainCategories");
-					
-					$(".f-mainCategories").empty();
-					$("#mainCategories_tmpl").tmpl(data.RES_DATA).appendTo(".f-mainCategories");
-					
-			    }
-   			});
-   		};
-   	
+   		
    		course.getCourse = function(courseId){
    			$.ajax({ 
 			    url:"${pageContext.request.contextPath}/admin/course/"+courseId, 
@@ -444,120 +409,13 @@
 			});
 		};
 		
-		course.uploadThumbnailUrl = function(){
-			var formData = new FormData();
-	     	formData.append('file',  $("#fileThumbnail")[0].files[0]);
-	     	console.log(formData);
-		     	$.ajax({
-	  	            url: "${WS}uploadfile/upload?url=playlist/thumbnail",
-	  	            type: "POST",
-	  	         	enctype : 'multipart/form-data',
-					data : formData ,
-					processData : false, // tell jQuery not to process the data
-					contentType : false, // tell jQuery not to set contentType
-		  	        beforeSend: function(xhr) {
-					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
-		  	        },
-	  	            success: function(data) {
-	  	            	console.log(data); 
-	  	            	thumbnailUrl = data.IMG;
-	  	            },
-	  	         	error: function(data){
-	  	         		console.log(data);
-	  				}
-	  	        });
-			
-		};
-		
-		course.uploadBgImage = function(){
-			var formData = new FormData();
-	     	formData.append('file',  $("#fileBgImage")[0].files[0]);
-	     	console.log(formData);
-		     	$.ajax({
-	  	            url: "${WS}uploadfile/upload?url=playlist/bgimage",
-	  	            type: "POST",
-	  	         	enctype : 'multipart/form-data',
-					data : formData ,
-					processData : false, // tell jQuery not to process the data
-					contentType : false, // tell jQuery not to set contentType
-		  	        beforeSend: function(xhr) {
-					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
-		  	        },
-	  	            success: function(data) {
-	  	            	console.log(data); 
-	  	            	bgImage = data.IMG;
-	  	            },
-	  	         	error: function(data){
-	  	         		console.log(data);
-	  				}
-	  	        });
-			
-		};
-		
-		course.updateThumbnailUrl = function(){
-			var formData = new FormData();
-	     	formData.append('file',  $("#fileThumbnail")[0].files[0]);
-	     	console.log(formData);
-		     	$.ajax({
-	  	            url: "${WS}uploadfile/update?url=playlist/thumbnail&filename="+thumbnailUrl.split("/").pop(),
-	  	            type: "POST",
-	  	         	enctype : 'multipart/form-data',
-					data : formData ,
-					processData : false, // tell jQuery not to process the data
-					contentType : false, // tell jQuery not to set contentType
-		  	        beforeSend: function(xhr) {
-					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
-		  	        },
-	  	            success: function(data) {
-	  	            	console.log(data); 
-	  	            	thumbnailUrl = data.IMG;
-	  	            },
-	  	         	error: function(data){
-	  	         		console.log(data);
-	  				}
-	  	        });
-			
-		};
-		
-		course.updateBgImage = function(){
-			var formData = new FormData();
-	     	formData.append('file',  $("#fileBgImage")[0].files[0]);
-	     	console.log(formData);
-		     	$.ajax({
-	  	            url: "${WS}uploadfile/update?url=playlist/bgimage&filename="+bgImage.split("/").pop(),
-	  	            type: "POST",
-	  	         	enctype : 'multipart/form-data',
-					data : formData ,
-					processData : false, // tell jQuery not to process the data
-					contentType : false, // tell jQuery not to set contentType
-		  	        beforeSend: function(xhr) {
-					   xhr.setRequestHeader("Authorization", "Basic ${KEY}");
-		  	        },
-	  	            success: function(data) {
-	  	            	console.log(data); 
-	  	            	bgImage = data.IMG;
-	  	            },
-	  	         	error: function(data){
-	  	         		console.log(data);
-	  				}
-	  	        });
-			
-		};
 		
 		
-		 $('#fileThumbnail').change(
-					function(event) {
-						$("#thumnail").fadeIn("fast").attr('src',
-								URL.createObjectURL(event.target.files[0]));
-						course.uploadThumbnailUrl();
-		});
-	        
-	    $('#fileBgImage').change(
-					function(event) {
-						$("#bgImage").fadeIn("fast").attr('src',
-								URL.createObjectURL(event.target.files[0]));
-						course.uploadBgImage();
-		});
+	
+		
+		
+		
+		
 		 
 		 
 		
@@ -571,11 +429,6 @@
 			e.preventDefault();
 			check = true;
 			course.courses('empty',1,$("#search").val());
-		});
-		
-		$("#mainCategory").change(function(){
-			check = true;
-			course.courses($("#mainCategory").val(),1,$("#search").val());
 		});
 		
 		$(document).on('click',"#updateStatus" , function(){
@@ -621,64 +474,14 @@
 			
 		});
 		
-   		course.courses('empty',1,"");
-		course.mainCategories();
+   		course.videos(1,"");
 		
    	});
    	</script>
    
 		
 		
-	<script type="text/javascript">
-	var sone = 0;	
-    function ValidateFileUpload() {
-    	
-   	 	if( document.getElementById("fileBgImage").files.length == 0 ){
-			return;
-		} 
 	
-        var fuData = document.getElementById('fileBgImage');
-        var FileUploadPath = fuData.value;
-        
-        var imageSize = fuData.files[0].size;
-        var maxSize = 1024 * 1024 * 2 ;  // size 2 MB
-        if(imageSize> maxSize){
-        	alert("Please upload the image less than 2MB.1");
-        	$("#fileBgImage").val('');
-//         	$('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
-        }else{
-      //  alert("This is file size of image you have to controller ....."+imageSize);
-        //To check if user upload any file
-        if (FileUploadPath == '') {
-            alert("Please upload the image less than 2MB.2");
-            $("#fileBgImage").val('');
-//             $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
-        } else {
-            var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-			//The file uploaded is an image
-			if ( Extension == "png" || Extension == "gif" || Extension == "jpeg" || Extension == "jpg") {				    
-				
-				if (fuData.files && fuData.files[0]) {
-                    var reader = new FileReader();
-                      reader.onload = function(e) {
-                         $('#bgImage').attr('src', e.target.result);
-                         console.log("OK");
-                    };
-                    reader.readAsDataURL(fuData.files[0]);
-                }
-
-            } 
-
-	//The file upload is NOT an image
-	else {
-	                alert("Please upload the image less than 2MB. 3");
-	                $("#fileBgImage").val('');
-// 	                $('#photoimage1').replaceWith($('<input type="file" id="photoimage1" name="..." onchange="return ValidateFileUpload()">'));
-	            }
-	        }
-	    }
-    }
-	</script> 	
 
 </body>
 </html>
