@@ -7,8 +7,11 @@
 					<br/>
 					<li><a href="${pageContext.request.contextPath}/admin"><i class="fa fa-dashboard icon-sidebar"></i>Dashboard</a></li>
 					
-					<li style="color:rgb(78, 156, 80)">&nbsp E-Learning Management</li>
+					<li style="color:rgb(78, 156, 80)">&nbsp E-Learning V2</li>
 					<li><a href="${pageContext.request.contextPath}/admin/courses"><i class="fa fa-dashboard icon-sidebar"></i>Courses</a></li>
+					
+					<li style="color:rgb(78, 156, 80)">&nbsp KSHRD (Short/Pre-Course)</li>
+					<li><a href="${pageContext.request.contextPath}/admin/shortcourse"><i class="fa fa-dashboard icon-sidebar"></i>Students</a></li>
 					
 					
 					<li>&nbsp E-Learning</li>
