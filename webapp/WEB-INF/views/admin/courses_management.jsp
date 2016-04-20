@@ -182,7 +182,7 @@
 												 </div>
 												  
 											  <div class="form-group">	
-											 	<label for="exampleInputEmail1">Image for web 210 x 120</label>
+											 	<label for="exampleInputEmail1">Image for web 123 x 70</label>
 												<div >
 													<img id="thumnail" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
 												</div>
@@ -387,6 +387,7 @@
    		};
    	
    		course.getCourse = function(courseId){
+   			KA.createProgressBarWithPopup();
    			$.ajax({ 
 			    url:"${pageContext.request.contextPath}/admin/course/"+courseId, 
 			    type: 'GET',
@@ -405,6 +406,7 @@
 			       $("#color").val( data.RES_DATA.color);
 			       bgImage = data.RES_DATA.bgImage;
 			       thumbnailUrl = data.RES_DATA.thumbnailUrl;
+			       KA.destroyProgressBarWithPopup();
 			    }
    			});
    		};
