@@ -76,7 +76,7 @@
 								<option value="">All</option>
 								<option value="1">02:00 - 04:00 AM (Mon-Fri)</option>
 								<option value="2">06:00 - 08:00 PM (Mon-Fri)</option>
-								<option value="2">08:00 - 11:00 AM (Sat-Sun)</option>
+								<option value="3">08:00 - 11:00 AM (Sat-Sun)</option>
 							</select>
 						</div>
 						
@@ -123,6 +123,8 @@
 						
 					</div><br>
 					<div class="table-responsive">
+					
+						
 						<table class="table table-th-block ">
 							<thead>
 								<tr>
@@ -139,6 +141,8 @@
 									<th>Action</th>
 								</tr>
 							</thead>
+							
+							
 							<tbody id="content">
 								
 								
@@ -155,6 +159,7 @@
 						
 						</div>
 						
+							<div id="e-loading" class="loading text-center" style="display:none"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
 						
 					</div>
 					<!-- /.table-responsive -->
@@ -176,6 +181,9 @@
 	<jsp:include page="../shared/_scriptfooter.jsp" />
 	<!-- ./Footer Script -->
 	
+	  <script src="${pageContext.request.contextPath}/resources/assets/js/jscolor.js"></script>
+	  <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
+			  
 				
 	<script id="student_tmpl" type="text/x-jquery-tmpl">
 			<tr		
@@ -185,9 +193,9 @@
 	    	>
 				<td>{{= no }}</td>
 				<td>{{if isPaid == "t"}}
-						<i id="updateStatus" title="Unpaid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-sccess" ></i> 
+						<i id="updateIsPaid" title="Unpaid"  style="cursor: pointer;"  data-id="{{= studentDetailId}}" data-thisispad="f" class="fa fa-check icon-circle icon-xs icon-success" ></i> 
 					{{else}} 
-						<i id="updateStatus" title="Paid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
+						<i id="updateIsPaid" title="Paid"  style="cursor: pointer;"  data-id="{{= studentDetailId}}" data-thisispad="t" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
 				</td>
 				<td>{{= fullname }}</td>
@@ -199,9 +207,9 @@
 				<td>{{= registeredDate }}</td>
 				<td>{{= type }}</td>
 				<td>{{if status == "t"}}
-						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Delete!" data-id="{{= playlistId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger"></i> 
+						<i id="updateStatus" data-thisstatus="f" data-id="{{= studentDetailId}}"  style="cursor: pointer;" title="Delete!" class="fa fa-trash-o icon-circle icon-xs icon-danger"></i> 
 					{{else}} 
-						<i id="updateStatus" data-value="true" style="cursor: pointer;"  title="Recovery" data-id="{{= playlistId}}" class="fa fa-rotate-left icon-circle icon-xs icon-success" ></i> 
+						<i id="updateStatus" data-thisstatus="t" data-id="{{= studentDetailId}}" style="cursor: pointer;"  title="Recovery"  class="fa fa-rotate-left icon-circle icon-xs icon-success" ></i> 
 					{{/if}}
 				</td>
 			</tr>
@@ -214,10 +222,12 @@
 			var kshrd = {};
 			var getCurrentPage = 1;
 			var check = true;
-			frmData = {	status : 't' , shifI : 't'};
+			frmData = {	status : 't'};
 		
 			
 			kshrd.students = function(frmData , currentPage){
+				$("tbody#content").empty();
+				$("#e-loading").show();
 				console.log(frmData);
 	   			$.ajax({ 
 				    url:"${pageContext.request.contextPath}/admin/kshrd?page="+currentPage+"&item=20", 
@@ -230,7 +240,6 @@
 				    success: function(data) {  console.log(data);
 				    	if(data.STATUS != false){
 					    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Students");
-								$("tbody#content").empty();
 								$.each(data.RES_DATA, function(key,value){
 									data.RES_DATA[key]["no"] = key + 1;
 								});
@@ -239,12 +248,14 @@
 									kshrd.setPagination(data.PAGINATION.totalPages,currentPage);
 						    		check=false;
 						    	}
+				    			$("#e-loading").hide();
 				    	}else{
 				    		$("#totalrecord").text(0 + " Course");
 				    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
 									  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
 									  '<strong>No course</strong>'+
 									'</div>');
+				    		$("#e-loading").hide();
 				    	}
 				    }
 	   			});
@@ -407,7 +418,103 @@
 		});
 		
 		
+		
+			$(document).on('click',"#updateStatus" , function(){
+				
+				var value = $(this).data("thisstatus");
+				var message = "This student's course has been deleted!";	
+				var warning = "Are you sure you want to delete this student's course?";
+				if(value== true){
+					message = "This student's course has been recoveried!";	
+					warning = "Are you sure you want to recovery this student's course?";
+				}
+				frmData1 = {
+						status	  : $(this).data("thisstatus"),
+						studentDetailId	  : $(this).data("id")
+				};
+				swal({   
+					title: "Are you sure?",   
+					text: warning,   
+					type: "warning",   
+					showCancelButton: true,   
+					confirmButtonColor: "#DD6B55",   
+					confirmButtonText: "Yes, delete it!",   
+					closeOnConfirm: false }, function(){ 
+						$.ajax({ 
+						    url:"${pageContext.request.contextPath}/admin/kshrd/update_status", 
+						    type: "PUT",
+						    beforeSend: function(xhr) {
+			                    xhr.setRequestHeader("Accept", "application/json");
+			                    xhr.setRequestHeader("Content-Type", "application/json");
+			                },
+			                data : JSON.stringify(frmData1),
+						    success: function(data) { 
+						    	if(data.STATUS == true){
+						    		check = true;
+						    		kshrd.students(frmData,1);
+									swal("Updated Student's Course", message , "success"); 
+					    	   	}
+						    },
+						    error:function(data,status,er) { 
+						    	KA.destroyProgressBarWithPopup();
+						        console.log("error: "+data+" status: "+status+" er:"+er);
+						    }
+						}); 
+					});
+				
+				
+			});
+			
+			
+			$(document).on('click',"#updateIsPaid" , function(){
+				
+				var value = $(this).data("thisispad");
+				var message = "This student's course has been changed to paid!";	
+				var warning = "Are you sure you want to change this student's course to paid?";
+				if(value == true){
+					message = "This student's course has been change to unpaid!";	
+					warning = "Are you sure you want to change this student's course to unpaid?";
+				}
+				frmData1 = {
+						isPaid	  : $(this).data("thisispad"),
+						studentDetailId	  : $(this).data("id")
+				};
+				swal({   
+					title: "Are you sure?",   
+					text: warning,   
+					type: "warning",   
+					showCancelButton: true,   
+					confirmButtonColor: "#DD6B55",   
+					confirmButtonText: "Yes, delete it!",   
+					closeOnConfirm: false }, function(){ 
+						$.ajax({ 
+						    url:"${pageContext.request.contextPath}/admin/kshrd/update_ispaid", 
+						    type: "PUT",
+						    beforeSend: function(xhr) {
+			                    xhr.setRequestHeader("Accept", "application/json");
+			                    xhr.setRequestHeader("Content-Type", "application/json");
+			                },
+			                data : JSON.stringify(frmData1),
+						    success: function(data) { 
+						    	if(data.STATUS == true){
+						    		check = true;
+						    		kshrd.students(frmData,1);
+									swal("Updated Student's Course", message , "success"); 
+					    	   	}
+						    },
+						    error:function(data,status,er) { 
+						    	KA.destroyProgressBarWithPopup();
+						        console.log("error: "+data+" status: "+status+" er:"+er);
+						    }
+						}); 
+					});
+				
+				
+			});
+			
 	   		kshrd.students(frmData,1);
+	   	
+	   	
 			
 		});
 		

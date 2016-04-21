@@ -243,12 +243,12 @@
 			<version>2.0.3.RELEASE</version>
 		</dependency>
 		
-		 <!-- jxls -->
-        <dependency>
-            <groupId>net.sf.jxls</groupId>
-            <artifactId>jxls-core</artifactId>
-            <version>0.9.9</version>
-        </dependency>
+        <!-- Excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.6</version>
+		</dependency>
 
 
         

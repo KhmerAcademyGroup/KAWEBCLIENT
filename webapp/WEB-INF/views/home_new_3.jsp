@@ -294,7 +294,7 @@
 																  
 																<div class="inbox"  style="padding: 15px;    min-height: 400px;  border: 1px solid #D5DAE0;">	
 																
-																		<a href="http://kshrd.com.kh/"  target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
+																		<a href="http://kshrd.com.kh/"  target="_blank"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
 																		
 																		<div class="col-lg-6">
 																		

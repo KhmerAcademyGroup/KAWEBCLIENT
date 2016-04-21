@@ -91,17 +91,22 @@ public class MainController {
 	
 	@RequestMapping(value="/rest/elearning/main_page" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> listPlaylistsByMainCategoryWithPagin(){
-		
-		HttpEntity<Object> requestAKN = new HttpEntity<Object>(aknHeaders);
 		Map<String,Object> map = new HashMap<String , Object>();
-		ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/12/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
-		map.put("NEWS", all.getBody());
-        map.put("KEY", "getAKN");
-		
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/main_page", HttpMethod.GET , request , Map.class) ;
-		map.put("KA", response.getBody());
+		try{
+			HttpEntity<Object> requestAKN = new HttpEntity<Object>(aknHeaders);
+			ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/12/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
+			map.put("NEWS", all.getBody());
+	        map.put("KEY", "getAKN");
+			
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/main_page", HttpMethod.GET , request , Map.class) ;
+			map.put("KA", response.getBody());
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
 		return new ResponseEntity<Map<String , Object>>(map , HttpStatus.OK);
+		
 	}
 	
 }
