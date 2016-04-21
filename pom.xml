@@ -242,6 +242,14 @@
 			<artifactId>spring-social-facebook</artifactId>
 			<version>2.0.3.RELEASE</version>
 		</dependency>
+		
+		 <!-- jxls -->
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-core</artifactId>
+            <version>0.9.9</version>
+        </dependency>
+
 
         
 		<!-- <dependency>

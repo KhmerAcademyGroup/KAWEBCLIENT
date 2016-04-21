@@ -51,15 +51,14 @@
 						<div class="col-sm-2">
 							<label>Student name : </label>
 							<form role="form" action="#" id="frmSearch">
-								<input type="text" id="search" class="form-control"
+								<input type="text" id="getFullname" class="form-control"
 									placeholder="Student name">
 							</form>
 
 						</div>
-						
 						<div class="col-sm-2">
 							<label>Course :</label>
-							<select class="form-control" id="course">
+							<select class="form-control" id="getCourse">
 								<option value="">All</option>
 								<option value="1">iOS Application Development</option>
 								<option value="2">Android Application Development</option>
@@ -73,7 +72,7 @@
 						
 						<div class="col-sm-2">
 							<label>Shift :</label>
-							<select class="form-control">
+							<select class="form-control" id="getShifId">
 								<option value="">All</option>
 								<option value="1">02:00 - 04:00 AM (Mon-Fri)</option>
 								<option value="2">06:00 - 08:00 PM (Mon-Fri)</option>
@@ -83,7 +82,7 @@
 						
 						<div class="col-sm-2">
 							<label>Pay :</label>
-							<select class="form-control">
+							<select class="form-control" id="getIsPaid">
 								<option value="">All</option>
 								<option value="t">True</option>
 								<option value="f">False</option>
@@ -92,18 +91,18 @@
 						
 						<div class="col-sm-2">
 							<label>Type :</label>
-							<select class="form-control">
+							<select class="form-control" id="getTypeId">
 								<option value="">All</option>
-								<option value="1">Short Course</option>
+								<option value="1" selected>Short Course</option>
 								<option value="2">Pre Course</option>
 							</select>
 						</div>
 						
 						<div class="col-sm-2">
 							<label>Status :</label>
-							<select class="form-control">
+							<select class="form-control"  id="getStatus">
 								<option value="">All</option>
-								<option value="t">True</option>
+								<option value="t" selected>True</option>
 								<option value="f">False</option>
 							</select>
 						</div>
@@ -112,19 +111,19 @@
 						
 						<div class="col-sm-3">
 							<label>From :</label>
-							<input type="text" value="" id="fromDate" name="fromDate" data-date-format="yyyy-mm-dd" class="form-control datepicker" >
+							<input type="text" value="" id="fromDate"  data-date-format="yyyy-mm-dd" class="form-control datepicker" >
 						</div>
 						
 						
 						<div class="col-sm-3">
 							<label>To :</label>
-							<input type="text" value="" id="toDate" name="fromDate" data-date-format="yyyy-mm-dd" class="form-control datepicker" >
+							<input type="text" value="" id="toDate"  data-date-format="yyyy-mm-dd" class="form-control datepicker" >
 						</div>
 						
 						
 					</div><br>
 					<div class="table-responsive">
-						<table class="table table-th-block table-hover">
+						<table class="table table-th-block ">
 							<thead>
 								<tr>
 									<th style="width: 30px;">No</th>
@@ -179,12 +178,16 @@
 	
 				
 	<script id="student_tmpl" type="text/x-jquery-tmpl">
-	    	<tr>
+			<tr		
+					{{if status == "f"}}
+						style="background:red;color:white"  
+					{{/if}}
+	    	>
 				<td>{{= no }}</td>
-				<td>{{if isPaid == true}}
-						<i id="updateStatus" title="Paid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-success" ></i> 
+				<td>{{if isPaid == "t"}}
+						<i id="updateStatus" title="Unpaid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-sccess" ></i> 
 					{{else}} 
-						<i id="updateStatus" title="Unpaid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
+						<i id="updateStatus" title="Paid"  style="cursor: pointer;"  data-idId="{{= studentDetailId}}" class="fa fa-remove icon-circle icon-xs icon-danger" ></i> 
 					{{/if}}
 				</td>
 				<td>{{= fullname }}</td>
@@ -195,10 +198,10 @@
 				<td>{{= gender }}</td>	
 				<td>{{= registeredDate }}</td>
 				<td>{{= type }}</td>
-				<td>{{if status == true}}
-						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Click to hide this course!" data-id="{{= playlistId}}" class="fa fa-rotate-left icon-circle icon-xs icon-success"></i> 
+				<td>{{if status == "t"}}
+						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Delete!" data-id="{{= playlistId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger"></i> 
 					{{else}} 
-						<i id="updateStatus" data-value="true" style="cursor: pointer;"  title="Click to public this course!" data-id="{{= playlistId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" ></i> 
+						<i id="updateStatus" data-value="true" style="cursor: pointer;"  title="Recovery" data-id="{{= playlistId}}" class="fa fa-rotate-left icon-circle icon-xs icon-success" ></i> 
 					{{/if}}
 				</td>
 			</tr>
@@ -211,7 +214,7 @@
 			var kshrd = {};
 			var getCurrentPage = 1;
 			var check = true;
-			frmData = {};
+			frmData = {	status : 't' , shifI : 't'};
 		
 			
 			kshrd.students = function(frmData , currentPage){
@@ -270,14 +273,138 @@
 			    }); 
 		}; 
 		
-		$("#course").change(function(){
+		$("#getCourse").change(function(){
 			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
 			frmData = {
-					courseId  : $("#course").val()
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
 			};
+			console.log(frmData);
 			kshrd.students(frmData,1);
 		});
 		
+		$("#frmSearch").submit(function(e){
+			e.preventDefault();
+			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
+			frmData = {
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
+			};
+			console.log(frmData);
+			kshrd.students(frmData,1);
+		});
+		
+		$("#getShifId").change(function(){
+			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
+			frmData = {
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
+			};
+			console.log(frmData);
+			kshrd.students(frmData,1);
+		});
+		
+		$("#getTypeId").change(function(){
+			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
+			frmData = {
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
+			};
+			console.log(frmData);
+			kshrd.students(frmData,1);
+		});
+		
+		$("#getIsPaid").change(function(){
+			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
+			frmData = {
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
+			};
+			console.log(frmData);
+			kshrd.students(frmData,1);
+		});
+		
+		$("#getStatus").change(function(){
+			check = true;
+			fromDate = null;
+			toDate  = null;
+			if( $("#fromDate").val().trim() != "" || $("#toDate").val().trim() != "" ){
+				toDate =$("#toDate").val().trim();
+				fromDate =  $("#fromDate").val().trim() ;
+			}
+			frmData = {
+					courseId  : $("#getCourse").val(),
+					fullname  : $("#getFullname").val(),
+					shifId	  : $("#getShifId").val(),
+					typeId	  : $("#getTypeId").val(),
+					isPaid	  : $("#getIsPaid").val(),
+					status	  : $("#getStatus").val(),
+					registeredDate :  	 fromDate,
+					untilDate : 		 toDate
+			};
+			console.log(frmData);
+			kshrd.students(frmData,1);
+		});
 		
 		
 	   		kshrd.students(frmData,1);
