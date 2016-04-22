@@ -57,8 +57,8 @@
 				<div class="the-box no-border">
 					<div class="btn-toolbar top-table" role="toolbar">
 						<div class="btn-group" id="btcheck">
-							<button type="button" class="btn btn-success" id="showFrmAddCourse" >
-								<i class="fa fa-plus-square"></i> Add new
+							<button type="button" class="btn btn-success" id="showFrmScrapVideo" >
+								<i class="fa fa-plus-square"></i> Scrap Videos from youtulbe
 							</button>
 						</div>
 												 
@@ -123,101 +123,66 @@
 	<!-- END PAGE CONTENT -->
 
 
-	<div id="p-frmCourse" class="ka-popup" style="display: none;width: 80%;">
+	<div id="p-frmScrapVideo" class="ka-popup" style="display: none;width: 80%;">
 			<form  id="frmCourse" action="${pageContext.request.contextPath}/admin/course" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">Courses</h4>
+						<h4 class="modal-title">Scrap Videos From youtube</h4>
 					</div>
 					<div class="modal-body" >
 							<div class="row">
+								
 									<input type="hidden"  id="playlistId" class="form-control"  name="mainCategoryID">
-										
-									<div class="col-sm-6">
-										<div class="the-box bg-default no-border">
-												 
-												  <div id="message"></div>
-												  
-												  <div class="form-group">
-													<label>Playlist name</label>
-													<input type="text" id="playlistName" class="form-control"  required="required" name="playlistName">
-												  </div>
-												  <div class="form-group">
-													<label>Description</label>
-													<textarea id="description" class="form-control"  required="required" name="description"></textarea>
-												  </div>
-												  
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Main categories</label>
-														<select class="form-control f-mainCategories"  id="f-mainCategory" name="f-mainCategory" required="required" > 
-														
-														</select>
-												 </div>
-												 
-												  <div class="form-group">
-														<label for="exampleInputEmail1">Status</label>
-														<select class="form-control" id="status" name="status" required="required" > 
-																<option value="true">True (Public)</option>
-																<option value="false">False (Private)</option>
-														</select>
-												 </div>
-												  
-											  <div class="form-group">	
-											 	<label for="exampleInputEmail1">Image for web 210 x 120</label>
-												<div >
-													<img id="thumnail" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-playlist.jpg " class="img-responsive"/>
-												</div>
-												<span class="btn btn-default btn-file">
-													<span class="fileinput-new">Select image</span>
-													<input type="file" name="fileThumbnail" id="fileThumbnail">
-												</span>
-											</div>
-											
-											
-											
-										</div><!-- /.the-box .bg-danger .no-border-->
-									</div>
 									
-									<div class="col-sm-6">
+									<div class="col-sm-12">
+											<div class="form-group">
+												<label class="col-lg-2 control-label" style="text-align: right">Youtube Playlist URL : </label>
+												<div class="col-lg-7">
+													<input type="text" id="mainCategoryName" class="form-control" required="required" name="mainCategoryName">
+												</div>
+												<div class="col-lg-2">
+													<input type="button" id="mainCategoryName" class="form-control btn btn-success" required="required" name="mainCategoryName" value="Scrap">
+												</div>
+											</div>
+									</div>
+										
+									
+									
+									<div class="col-sm-12">
 										<div class="the-box bg-default no-border">
+											
+											<div class="table-responsive">
+						<table class="table table-th-block table-hover">
+							<thead>
+								<tr>									
+									<th>ID</th>
+									<th>Title</th>
+									<th>YouTube URL</th>
+									<th>Description</th>
+									<th>Action</th>											
+								</tr>
+							</thead>
+							<tbody id="contentYoutubeVideos">
+								
+							</tbody>
+						</table>
+						<br>
+						
+						<p id="totalrecord" style="color:rgb(78, 156, 80);">19 Videos</p>
+						
+												
+					</div>
 											 
 											
-											
-											
-											
-											 <div class="form-group">	
-												<div>
-													<label for="exampleInputEmail1">Mobile background image 800 x 480</label>
-													<div>
-														<img  id="bgImage" src="${pageContext.request.contextPath}/resources/assets/img/default-image/default-bg-playlist.jpg" class="img-responsive"/>
-													</div>
-													<span class="btn btn-default btn-file">
-														<span class="fileinput-new">Select image</span>
-														<input type="file" name="fileBgImage" id="fileBgImage">
-													</span>
-												</div>
-											</div>
-											
-											<div class="form-group">
-												<label for="exampleInputEmail1">Mobile background color</label>
-												<input type="text" class="form-control jscolor" name="color" id="color" placeholder="choose color" autocomplete="off" style="color: rgb(0, 0, 0); background-image: none; background-color: rgb(255, 255, 255);">
-												<small class="msg" style="color:red;display:none">The playlist nam is required and can't be empty</small>
-											</div>
-											
-											<div class="form-group">
-												<button type="submit" id="btSubmit" class="btn btn-primary btn-lg" style="width:100px">Save</button>
-											</div>
 										</div>
 									</div>
 								
 							</div>		
 					</div>
 					
-					
-					 
 					
 					<div class="modal-footer">
 <!-- 							<button type="submit" id="btSubmit" class="btn btn-primary btn-lg" style="width:100px">Save</button> -->
@@ -284,7 +249,7 @@
    		
    		course.videos = function(currentPage,videoTitle){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/course/listvideos/Mzc4?page="+currentPage+"&item=10", 
+			    url:"${pageContext.request.contextPath}/admin/course/listvideos/${playlistid}?page="+currentPage+"&item=10", 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
@@ -292,6 +257,8 @@
                 },
 			    success: function(data) {  console.log(data);
 			    	if(data.STATUS != false){
+			    			$("#textPlaylistName").text(data.RES_DATA[0].playlistName);
+			    			$("#textMainCategory").text(data.RES_DATA[0].mainCategoryName);
 				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Videos");
 							$("tbody#content").empty();
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
@@ -335,146 +302,47 @@
 		
    		
 		
-   		$(document).on('click',"#showFrmUpdateCourse" , function(){
-			$("#p-frmCourse").bPopup();//{modalClose: false});
-			$("#frmCourse").attr("method", "PUT");
-			$("#frmCourse").trigger("reset");
-			$("#btSubmit").text("Update");
-			course.getCourse($(this).data("id"));
-		});
    	
-   		$(document).on('click',"#showFrmAddCourse" , function(){
-			$("#p-frmCourse").bPopup();//{modalClose: false});
+   		$(document).on('click',"#showFrmScrapVideo" , function(){
+			$("#p-frmScrapVideo").bPopup();//{modalClose: false});
 			$("#frmCourse").attr("method", "POST");
 			$("#frmCourse").trigger("reset");
 			$("#btSubmit").text("Add");
 		});
    	
-   		
-   		course.getCourse = function(courseId){
+   		course.scrapVideos = function(data){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/admin/course/"+courseId, 
+			    url:"${pageContext.request.contextPath}/scrap/admin/videos", 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
                     xhr.setRequestHeader("Content-Type", "application/json");
                 },
 			    success: function(data) {  console.log(data);
-			       $("#playlistId").val(data.RES_DATA.playlistId);
-			       $("#playlistName").val(data.RES_DATA.playlistName);
-			       $("#description").val(data.RES_DATA.description);
-			       $("#thumnail").attr("src" , data.RES_DATA.thumbnailUrl);
-			       $("#bgImage").attr("src" , data.RES_DATA.bgImage);
-			       $("#f-mainCategory").val(data.RES_DATA.maincategory);
-			       $("#status").val(""+data.RES_DATA.status);
-			       $("#color").val( data.RES_DATA.color);
-			       bgImage = data.RES_DATA.bgImage;
-			       thumbnailUrl = data.RES_DATA.thumbnailUrl;
+			    	if(data.STATUS != false){
+			    			$("#textPlaylistName").text(data.RES_DATA[0].playlistName);
+			    			$("#textMainCategory").text(data.RES_DATA[0].mainCategoryName);
+				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Videos");
+							$("tbody#content").empty();
+							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							if(check){
+								course.setPagination(data.PAGINATION.totalPages,currentPage);
+					    		check=false;
+					    	}
+			    	}else{
+			    		$("#totalrecord").text(0 + " Course");
+			    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
+								  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
+								  '<strong>No video!</strong>'+
+								'</div>');
+			    	}
 			    }
    			});
-   		};
-   		
-   		course.updateCourse = function(){ 
-			frmData = {
-					"playlistId"   	: $("#playlistId").val(),
-					"playlistName" 	: $("#playlistName").val(),
-					"description" 	: $("#description").val(),
-					"thumbnailUrl" 	: thumbnailUrl,
-					"bgImage" 		: bgImage,
-					"maincategory" 	: $("#f-mainCategory").val(),
-					"status" 		: $("#status").val(),
-					"color" 		: $("#color").val()
-			};
-			console.log(frmData); 
-			KA.createProgressBarWithPopup();
-			$.ajax({ 
-			    url:  $("#frmCourse").attr("action"), 
-			    type: $("#frmCourse").attr("method"),
-			    data: JSON.stringify(frmData),
-			    beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Accept", "application/json");
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                },
-			    success: function(data) { 
-					console.log(data);
-			    	KA.destroyProgressBarWithPopup();
-			    	course.courses($("#mainCategory").val(),getCurrentPage,$("#search").val());
-					course.mainCategories();
-			    	$("#p-frmCourse").bPopup().close();
-			    },
-			    error:function(data,status,er) { 
-			    	KA.destroyProgressBarWithPopup();
-			        console.log("error: "+data+" status: "+status+" er:"+er);
-			    }
-			});
-		};
-		
-		
-		
-	
-		
-		
-		
-		
-		 
-		 
-		
-		$("#frmCourse").submit(function(e){
-			 e.preventDefault();
-			 check = true;
-			 course.updateCourse();
-		});
-		
-		$("#frmSearch").submit(function(e){
-			e.preventDefault();
-			check = true;
-			course.courses('empty',1,$("#search").val());
-		});
-		
-		$(document).on('click',"#updateStatus" , function(){
-			
-			var courseId = $(this).data("id");
-			var value = $(this).data("value");
-			var message = "You have changed this course to private.";	
-			var warning = "Are you sure you want to change this course to private?";
-			if(value== true){
-				message = "You have changed this course to public.";	
-				warning = "Are you sure you want to change this course to public?";
-			}
-			swal({   
-				title: "Are you sure?",   
-				text: warning,   
-				type: "warning",   
-				showCancelButton: true,   
-				confirmButtonColor: "#DD6B55",   
-				confirmButtonText: "Yes, delete it!",   
-				closeOnConfirm: false }, function(){ 
-					
-					$.ajax({ 
-					    url:"${pageContext.request.contextPath}/admin/course/status/"+courseId+"/"+value, 
-					    type: "PUT",
-					    beforeSend: function(xhr) {
-		                    xhr.setRequestHeader("Accept", "application/json");
-		                    xhr.setRequestHeader("Content-Type", "application/json");
-		                },
-					    success: function(data) { 
-					    	if(data.STATUS == true){
-					    		check = true;
-								course.courses($("#mainCategory").val(),getCurrentPage,$("#search").val());
-								swal("Updated course status!", message , "success"); 
-				    	   	}
-					    },
-					    error:function(data,status,er) { 
-					    	KA.destroyProgressBarWithPopup();
-					        console.log("error: "+data+" status: "+status+" er:"+er);
-					    }
-					}); 
-				});
-			
-			
-		});
+   		};	
+   	
 		
    		course.videos(1,"");
+   		course.scrapVideos();
 		
    	});
    	</script>

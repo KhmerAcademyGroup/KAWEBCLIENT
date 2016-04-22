@@ -103,7 +103,6 @@ public class MainController {
 			map.put("KA", response.getBody());
 		}catch(Exception e){
 			e.printStackTrace();
-			
 		}
 		return new ResponseEntity<Map<String , Object>>(map , HttpStatus.OK);
 		

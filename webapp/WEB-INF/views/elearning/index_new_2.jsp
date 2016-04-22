@@ -166,7 +166,7 @@
 	            			<div class="owl-wrapper-outer">
 	            				
 	            				
-	            				<div id="getCourse" class="owl-wrapper" style="width: 101%; left: 0px; display: list-item;;">
+	            				<div id="getCourse" class="owl-wrapper" style="width: 107%; left: 0px; display: list-item;;">
 	            					
 	            					
 	            					
@@ -208,7 +208,7 @@
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
 					
 
-																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
+																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 242px;">
 																							<div class="the-box full store-item text-center checkchb">
 																								<a title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" title="{{= playlistName }}">
 																									<div class="new-playlist">
@@ -217,7 +217,7 @@
 																										</ul>
 																									</div>
 																								</a>
-																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+																								<img  style="width:210px;height:120px" src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
 																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
 																										<div class="col-xs-12"> 
@@ -260,7 +260,7 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=21",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=15",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");

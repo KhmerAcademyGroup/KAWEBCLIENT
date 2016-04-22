@@ -284,6 +284,7 @@
 											</div>
 											<!-- End Tutorial -->
 											
+											
 											<!--  KSHRD -->
 											<div class="panel panel-primary panel-square panel-no-border">
 																
@@ -294,7 +295,7 @@
 																  
 																<div class="inbox"  style="padding: 15px;    min-height: 400px;  border: 1px solid #D5DAE0;">	
 																
-																		<a href="http://kshrd.com.kh/"  target="_blank"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
+																		<a href="http://kshrd.com.kh/"  target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
 																		
 																		<div class="col-lg-6">
 																		
@@ -413,18 +414,11 @@
 																
 																					
 											 </div> 	
-											<!-- End Forum -->
+									</div>	
 											
-											
-											
-										
-										
-									</div>
-									
-									
-									
-									
 									<div class="col-lg-4">
+											
+											<!-- News -->
 											<!-- News -->
 											<div class="panel panel-primary panel-square panel-no-border">
 										  						
@@ -436,6 +430,8 @@
 														
 												
 														 <div class="panel with-nav-tabs panel-default">
+														 
+														 
 															  <div class="panel-heading" style="background:white">
 																<ul class="nav nav-tabs">
 																	<li class="active"><a href="#panel-home-1" class="newsTab" data-id="getAKN" data-toggle="tab" aria-expanded="true">ថ្មីៗ</a></li>
@@ -615,7 +611,7 @@
 																										</ul>
 																									</div>
 																								</a>
-																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+																								<img  style="width:123px;height:70px" src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
 																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
 																										<div class="col-xs-12"> 

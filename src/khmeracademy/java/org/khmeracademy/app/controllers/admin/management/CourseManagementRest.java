@@ -83,6 +83,7 @@ public class CourseManagementRest {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	////////////// Videos ///////////////////
 	@RequestMapping(value="/course/listvideos/{courseid}" , method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> listVideosInCourse(
 										  @PathVariable("courseid") String courseid

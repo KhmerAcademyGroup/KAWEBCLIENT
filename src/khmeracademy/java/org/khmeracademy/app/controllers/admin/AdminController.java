@@ -159,8 +159,9 @@ public class AdminController {
 		return "admin/courses_management";
 	}	
 	
-	@RequestMapping(value="/course/getvideos",method=RequestMethod.GET)
-	public String listVideosInCourse(ModelMap m){
+	@RequestMapping(value="/course/getvideos/{playlistid}",method=RequestMethod.GET)
+	public String listVideosInCourse(ModelMap m, @PathVariable("playlistid") String playlistid){
+		m.addAttribute("playlistid",playlistid);
 		return "admin/course_videos_mg";
 	}	
 	

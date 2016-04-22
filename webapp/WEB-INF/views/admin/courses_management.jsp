@@ -274,7 +274,7 @@
 				<td>{{= playlistName}}</td>
 				<td>{{= description}}</td>
 				<td>{{= maincategoryname}}</td>
-				<td><a href="${pageContext.request.contextPath}/admin/course/getvideos"><i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i>{{= countVideos}} </a> </td>
+				<td><a href="${pageContext.request.contextPath}/admin/course/getvideos/{{= playlistId }}"><i class="fa fa-bars icon-circle icon-xs icon-primary btnUpdate"></i>{{= countVideos}} </a> </td>
 				<td>{{= username}}</td>
 				<td>{{if status == true}}
 						<i id="updateStatus" data-value="false" style="cursor: pointer;" title="Click to hide this course!" data-id="{{= playlistId}}" class="fa fa-check icon-circle icon-xs icon-success"></i> 
