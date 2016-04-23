@@ -126,6 +126,8 @@
 		
 		<!-- End My Contend -->
 		
+				 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
+		
 		
 		<jsp:include page="shared/_footer.jsp" />
 		
@@ -133,7 +135,6 @@
 		   var path =  "${pageContext.request.contextPath}";
 		</script>
 		  
-		 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		  
 		  
 		  

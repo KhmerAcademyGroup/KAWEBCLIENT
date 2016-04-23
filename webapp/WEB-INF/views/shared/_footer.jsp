@@ -806,7 +806,7 @@ Placed at the end of the document so the pages load faster
 								  js = d.createElement(s); js.id = id;
 								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1720375071565906";
 								  fjs.parentNode.insertBefore(js, fjs);
-								}(document, 'script', 'facebook-jssdk'));</script> 
+								}(document, 'script', 'facebook-jssdk'));</script>
 								
 								
 								
