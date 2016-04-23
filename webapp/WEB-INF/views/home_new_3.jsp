@@ -173,7 +173,7 @@
 																		
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-recent">
-																				<div  id="getRecent" class="row" style="min-height:  282px; overflow: hidden;">
+																				<div  id="getRecent" class="row" style="height:  auto; overflow: hidden;">
 																				
 															  							<%-- <% for(int i=0;i<9;i++){ %>
 																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 245px;">
@@ -205,32 +205,32 @@
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-general">
-																					<div  id="getGeneral" class="row" style="min-height: 282px; overflow: hidden;">
+																					<div  id="getGeneral" class="row" style="height:  auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-computerBasic">
-																					<div  id="getComputerBasic" class="row" style="min-height: 282px;overflow: hidden;">
+																					<div  id="getComputerBasic" class="row" style="height:  auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-language">
-																					<div  id="getLanguage" class="row" style="min-height: 282px;overflow: hidden;">
+																					<div  id="getLanguage" class="row" style="height:  auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-programming">
-																					<div  id="getProgramming" class="row" style="min-height: 282px; overflow: hidden;">
+																					<div  id="getProgramming" class="row" style="height:  auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-web">
-																					<div  id="getWeb" class="row" style="min-height: 282px;overflow: hidden;">
+																					<div  id="getWeb" class="row" style="height:  auto;overflow: hidden;">
 															  						
 																					</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-mobile">
-																					<div  id="getMobile" class="row" style="min-height: 282px; overflow: hidden;">
+																					<div  id="getMobile" class="row" style="height:  auto; overflow: hidden;">
 															  						
 																					</div>
 																			</div>
@@ -261,7 +261,7 @@
 													<a href="${pageContext.request.contextPath}/tutorial" target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/> </a>
 											  </div>
 														
-											  <div class="panel-body" style="padding: 15px;  padding-left:0px;   border: 1px solid #D5DAE0;min-height: 300px;" >
+											  <div class="panel-body" style="padding: 15px;  padding-left:0px;   border: 1px solid #D5DAE0;height:  auto;" >
 											  
 											  	<div class="loading text-center" ><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
 											  	
@@ -452,7 +452,7 @@
 																		<div class="tab-content">
 																			<div class="tab-pane fade active in" id="panel-home-1">
 																			
-																					<div  id="getAKN" style="min-height:  580px; overflow: hidden;">
+																					<div  id="getAKN" style="height:  auto; overflow: hidden;">
 														  	
 																					</div>
 																					<%-- <% for(int i=0;i<10;i++){ %>
@@ -476,32 +476,32 @@
 																	
 																			</div>
 																			<div class="tab-pane fade" id="panel-scholarship-1">
-																				<div  id="getAKNScholarship" style="min-height:  580px; overflow: hidden;">
+																				<div  id="getAKNScholarship" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-technology-1">
-																				<div  id="getAKNTechnology" style="min-height:  580px; overflow: hidden;">
+																				<div  id="getAKNTechnology" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-national-1">
-																				<div  id="getAKNNational" style="min-height:  580px; overflow: hidden;">
+																				<div  id="getAKNNational" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-international-1">
-																				<div   id="getAKNInternational" style="min-height:  580px; overflow: hidden;">
+																				<div   id="getAKNInternational" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-life">
-																				<div   id="getAKNLife" style="min-height:  580px; overflow: hidden;">
+																				<div   id="getAKNLife" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
 																			<div class="tab-pane fade" id="panel-sport">
-																				<div   id="getAKNSport" style="min-height:  580px; overflow: hidden;">
+																				<div   id="getAKNSport" style="height:  auto; overflow: hidden;">
 														  	
 																				</div>
 																			</div>
@@ -522,7 +522,7 @@
 																	<a href="${pageContext.request.contextPath}/forum" target="_blank" class="btn btn-default btn-xs" id="btLoadMore" style="float: right;"><spring:message code="ep_more"/></a>
 															  </div>
 																  
-																<div class="inbox"  id="getQuestion" style="padding: 15px;    min-height: 466px;  border: 1px solid #D5DAE0;">	
+																<div class="inbox"  id="getQuestion" style="padding: 15px;    height:  auto;  border: 1px solid #D5DAE0;">	
 																
 																	<div class="loading text-center" ><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>  
 																		

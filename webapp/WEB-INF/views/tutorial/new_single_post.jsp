@@ -349,6 +349,8 @@ function rating(){
 
 </script>
 
+<script src="http://memo.khmeracademy.org/resources/js/hrdmemoplugin.js"></script>
+
 	</body>
 
 		

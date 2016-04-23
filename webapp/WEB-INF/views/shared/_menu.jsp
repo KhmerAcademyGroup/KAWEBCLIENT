@@ -4,6 +4,9 @@
 <%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!-- BEGIN TOP NAVBAR -->
 
 <div class="top-navbar" style="    background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0); z-index: 99000;">
@@ -12,7 +15,7 @@
 	
 		<!-- Begin logo -->
 		<div class="logo">
-			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/logo/khmeracademy.png" alt="Khmer Academy"></a>
+			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/assets/img/khmeracademy.png" alt="Khmer Academy"></a>
 		</div><!-- /.logo -->
 		<!-- End logo -->
 		
@@ -110,10 +113,13 @@
 				</li>
 			</sec:authorize>
 			<li class="parent" style="width: 53px;" >
-				 <a href="?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">
+			
+<%-- 			 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> --%>
+				
+				 <a href="${pageContext.request.contextPath}?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">
 				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/kh-flag.png"  alt="Khmer">
 				 </a>
-				 <a href="?language=en" style="padding: 0 0 0 0;height: auto;width: 25px;float: right;margin-top: -24px;">
+				 <a href="${pageContext.request.contextPath}?language=en" style="padding: 0 0 0 0;height: auto;width: 25px;float: right;margin-top: -24px;">
 				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/en-flag.png"  alt="English">
 				 </a>
 			</li> 

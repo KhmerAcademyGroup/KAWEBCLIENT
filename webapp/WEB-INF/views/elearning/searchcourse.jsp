@@ -76,6 +76,11 @@
 	            <div class="section-heading" style="text-align:left">
 <!-- 					<div class="inner-border"></div> -->
 					<h3 style="color:#4c954d;"><spring:message code="pp_search_result_for"/> "${keyword}"</h3>
+					
+					<span id="notFonud" style="display: none">
+						<br/>
+						<h3 style="color:red;">មិនវីឌីអូនេះទេ!</h3>
+					</span>
 				</div>	
 	            		
 	            			
@@ -142,21 +147,21 @@
 		 <script id="elearning_tmpl" type="text/x-jquery-tmpl">
 					
 
-																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 155px;">
+																						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3" style="width: 242px;">
 																							<div class="the-box full store-item text-center checkchb">
-																								<a title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}">
+																								<a title="{{= playlistName }}" href="${pageContext.request.contextPath}/elearning/playvideo?v={{= videoId }}&playlist={{= playlistId }}" title="{{= playlistName }}">
 																									<div class="new-playlist">
 																										<ul>
 																											<li><i class="fa fa-play-circle"></i></li>
 																										</ul>
 																									</div>
 																								</a>
-																								<img  src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
+																								<img  style="width:210px;height:120px" src="{{= thumbnailUrl }}" alt="{{= playlistName }}" class="img-responsive">
 																								<div class="the-box no-margin no-border item-des" style="padding:0px;padding-top:5px">
 																									<div class="row">
 																										<div class="col-xs-12"> 
 																											<p class="text-danger shortenString" >
-																												<strong class="text-black">{{= playlistName }}</strong>
+																												<strong class="text-danger">{{= playlistName }}</strong>
 																											</p>
 																										</div>
 																										<!-- /.col-xs-7 -->
@@ -167,7 +172,7 @@
 																							<!-- /.the-box .no-border .full .store-item -->
 																							<!-- END ITEM STORE -->
 																						</div>
-		</script>	
+		</script>
 		
 		<script type="text/javascript">
 		$(document).ready(function(){
@@ -187,15 +192,17 @@
 		                },
 					success:function(data){ 
 // 						console.log(data);
-						if(data.RES_DATA.length>0){
+						if(data.STATUS == true ){
 							$("#elearning_tmpl").tmpl(data.RES_DATA).appendTo("#getCourse");
+							if(page >= data.PAGINATION.totalPages){ 
+								$("#btLoadMore").hide();
+							}else{
+								$("#btLoadMore").show();
+							}
+						}else{
+							$("#notFonud").show();
 						}
 						$("#loading").hide();
-						if(page >= data.PAGINATION.totalPages){ 
-							$("#btLoadMore").hide();
-						}else{
-							$("#btLoadMore").show();
-						}
 					}
 				});	
 			};

@@ -181,7 +181,8 @@ NAVBAR
 	-o-transition:All 0.2s ease;
 }
 .top-navbar .logo img{
-	width: 200px;
+	width: auto;
+    max-width: 160px;
 }
 
 .top-navbar .container{position: relative}

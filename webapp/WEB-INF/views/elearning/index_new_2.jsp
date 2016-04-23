@@ -90,7 +90,7 @@
 	        <div id="sidebar-wrapper" style="height: auto !important;">
 	        	<br />
 	        	
-	            <div class="panel panel-primary" style="margin-left:10px">
+	            <div class="panel panel-primary" style="margin-left:10px;margin-top: 20px;">
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<!-- <a class="block-collapse" style="color:#006a00;" href="#panel-collapse-course"> -->
@@ -154,7 +154,7 @@
 	
 	        <!-- Page Content -->
 	        <div id="page-content-wrapper" style="background:white;    min-height:700px;">
-	            <div class="container">
+	            <div class="container" style="    width: 1230px;">
 	            
 	            <%-- <div class="section-heading">
 									<div class="inner-border"></div>

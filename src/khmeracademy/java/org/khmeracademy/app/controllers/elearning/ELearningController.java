@@ -3,6 +3,8 @@ package org.khmeracademy.app.controllers.elearning;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.khmeracademy.app.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -79,7 +81,8 @@ public class ELearningController {
 	}
 	
 	@RequestMapping( value ="/search", method = RequestMethod.GET)
-	public String searchPlaylist(ModelMap m, @RequestParam("keyword") String coursename) { 
+	public String searchPlaylist(ModelMap m, @RequestParam("keyword") String coursename , HttpServletResponse response) { 
+		System.out.println(coursename);
 		m.addAttribute("keyword",coursename);
 		return "/elearning/searchcourse";
 	}

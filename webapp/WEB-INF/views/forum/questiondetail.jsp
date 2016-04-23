@@ -758,7 +758,9 @@
 								</button>
 								 You have been selected this answer to be the best answer.
 			</div>		
-		</div>		
+		</div>	
+		
+		<script src="http://memo.khmeracademy.org/resources/js/hrdmemoplugin.js"></script>	
     			
 	</body>
 </html>

@@ -39,7 +39,7 @@
 	
 		<jsp:include page="../shared/_menu.jsp" />
 		
-		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-cog fa-spin"></i></button>
+		<button class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" title="Browse Course"></i></button>
 		
 		
 		<div> 
@@ -52,7 +52,7 @@
 	        <div id="sidebar-wrapper" style="height: auto !important;">
 	        	<br />
 	        	
-	            <div class="panel panel-primary">
+	            <div class="panel panel-primary" style="margin-top: 20px;">
 					  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
 						<h3 class="panel-title">
 							<a class="block-collapse" style="color:#006a00;" data-toggle="collapse" href="#panel-collapse-course">
@@ -765,6 +765,9 @@
 				return false;
 			}
 		</script> -->
+		
+		
+		<script src="http://memo.khmeracademy.org/resources/js/hrdmemoplugin.js"></script>
 		
 		
 	</body>

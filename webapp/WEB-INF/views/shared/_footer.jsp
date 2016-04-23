@@ -350,7 +350,7 @@ END PAGE
 														 <br/>													 																												 
 														 	 <input type="button" id="btn_submit_again"   class="btn btn-success" value="Submit">
 														 	 <img src="${pageContext.request.contextPath}/resources/assets/img/sending.gif" class="sending"/><label class="sending">Sending to your email...</label>
-														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:green;">we have sent you a new link to confirm your account. Please go to your email!</label>
+														 	 &nbsp;&nbsp;&nbsp;<label class="check_your_email" style="color:green;">we have sent you a new link to confirm your account.  <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a></label>
 													</form> 
 													
 												</div>
@@ -376,6 +376,18 @@ END PAGE
 											</div>
 										  
 									</div>
+									
+									<div id="p-success" class="ka-popup" style="display: none;width: 50%;">
+										<div class="alert alert-success alert-block fade in alert-dismissable">
+															  <button type="button" class="close" aria-hidden="true">
+																<span class="button b-close"><span>x</span></span>
+															</button>
+															
+														<div id="pop-re">
+														
+														</div>
+										</div>		
+									</div>	
 		
 		
 <!--
@@ -596,9 +608,12 @@ Placed at the end of the document so the pages load faster
     				});
     			};
     			
-    			$("#frmSignUp").submit(function(e){
+    			$("#frmSignUp").submit(function(e){ 
 	         		  e.preventDefault(); // alert($(this).serialize());
 	         		 // alert($("#password").val() +" "+ $("#repassword").val());
+	         		 
+	         		
+	         		 
 	         		  if( $("#password").val().length < 6 || $("#repassword").val().length < 6){
 	         			 $("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 	  		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
@@ -654,6 +669,11 @@ Placed at the end of the document so the pages load faster
 									 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
 									 					            '</div>');
 													
+													
+													$("#pop-re").replaceWith( '<strong style="font-size: 18px;" class="alert-link">We have sent you a message at <a href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>');
+													
+													
+													$("#p-success").bPopup({modalClose: false}); 
 													
 				    		    	            	KA.destroyProgressBarWithPopup();
 				    		    	            },
@@ -784,8 +804,12 @@ Placed at the end of the document so the pages load faster
 								  var js, fjs = d.getElementsByTagName(s)[0];
 								  if (d.getElementById(id)) return;
 								  js = d.createElement(s); js.id = id;
-								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=733594286732881";
+								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1720375071565906";
 								  fjs.parentNode.insertBefore(js, fjs);
 								}(document, 'script', 'facebook-jssdk'));</script> 
+								
+								
+								
+								
    		   
    		    
