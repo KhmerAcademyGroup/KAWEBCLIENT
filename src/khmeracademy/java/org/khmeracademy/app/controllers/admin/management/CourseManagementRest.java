@@ -1,9 +1,13 @@
 package org.khmeracademy.app.controllers.admin.management;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.khmeracademy.app.entities.User;
+import org.khmeracademy.app.entities.YoutubeVideo;
 import org.khmeracademy.app.entities.input.FrmUpdatePlaylist;
+import org.khmeracademy.app.utilities.ScrapYoutubeVideo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -93,6 +97,14 @@ public class CourseManagementRest {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WSURL + "admin/courses/listvideos/"+courseid+"?page="+page+"&item="+item+"&videoTitle="+videoTitle, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/scracp/youtube_videos" , method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> listVideosInCourse(){
+		Map<String , Object> map  = new HashMap<String , Object>();
+		ArrayList<YoutubeVideo> arr = ScrapYoutubeVideo.testScrap();
+		map.put("YOUTUBE_VIDEOS", arr);
+		return new ResponseEntity<Map<String , Object>>(map, HttpStatus.OK);
 	}
 		
 }

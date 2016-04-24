@@ -4,27 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.khmeracademy.app.entities.YoutubeVideo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/scrap")
 public class ScrapController {
 
-	@RequestMapping("/admin/videos")
+	@RequestMapping(value="/admin/videos",method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> scrapVideosFromYotutube(){
 		Map<String , Object> map = new HashMap<String, Object>();
-		ArrayList<YoutubeVideo> arr = new ArrayList<YoutubeVideo>();
-		YoutubeVideo youtubeVideo = null;
+//		ArrayList<YoutubeVideo> arr = new ArrayList<YoutubeVideo>();
+//		YoutubeVideo youtubeVideo = null;
 		try{
-			Document doc = Jsoup.connect("https://www.youtube.com/playlist?list=PLWznN7ZS7n8U-tlROS8R5sYnXOSZZUrIx").get();
+			/*Document doc = Jsoup.connect("https://www.youtube.com/playlist?list=PLWznN7ZS7n8U-tlROS8R5sYnXOSZZUrIx").get();
 			Elements elementTitles = doc.select(".pl-video");
 			StringBuilder data = new StringBuilder();
 			String fullUrl = "";
@@ -40,10 +37,12 @@ public class ScrapController {
 //				youtubeVideo.setDuration(elementTitle.select(".timestamp span").text() );
 //				arr.add(youtubeVideo);
 				
-			}
+			}*/
 			map.put("RESP_DATA", map);
 		}catch(Exception exception){
 			exception.printStackTrace();	
+			map.put("STATUS", false);
+			map.put("MESSAGE", "Operation failed!");
 		}
 		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		

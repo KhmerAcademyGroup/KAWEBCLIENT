@@ -312,14 +312,14 @@
    	
    		course.scrapVideos = function(data){
    			$.ajax({ 
-			    url:"${pageContext.request.contextPath}/scrap/admin/videos", 
+			    url:"${pageContext.request.contextPath}/admin/scracp/youtube_videos", 
 			    type: 'GET',
 			    beforeSend: function(xhr) {
                     xhr.setRequestHeader("Accept", "application/json");
                     xhr.setRequestHeader("Content-Type", "application/json");
                 },
 			    success: function(data) {  console.log(data);
-			    	if(data.STATUS != false){
+			    	/* if(data.STATUS != false){
 			    			$("#textPlaylistName").text(data.RES_DATA[0].playlistName);
 			    			$("#textMainCategory").text(data.RES_DATA[0].mainCategoryName);
 				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Videos");
@@ -335,7 +335,7 @@
 								  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
 								  '<strong>No video!</strong>'+
 								'</div>');
-			    	}
+			    	} */
 			    }
    			});
    		};	
