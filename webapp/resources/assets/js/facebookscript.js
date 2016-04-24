@@ -1,8 +1,8 @@
 	window.fbAsyncInit = function() {
 			FB.init({
-			      appId      : '1720375071565906',
+			      appId      : '733594286732881', //'1720375071565906',
 			      xfbml      : true,
-			      version    : 'v2.6'
+			      version    : 'v2.1'//'v2.6'
 			    });
 		    
 			  
@@ -40,12 +40,14 @@
 					   fbId =  response.id;
 					   fbGender = response.gender;
 					   
-					   if(fbemail == null){
-						   KA.destroyProgressBar();
-						   alert("Email is required! You didn't provide your email from facebook. Plase try to sign up again!");
-						   location.href = path+"/register";
-						   return;
-					   }
+					   alert(fbemail + " | " + fbprofileimage );
+					   
+//					   if(fbemail == null){
+//						   KA.destroyProgressBar();
+//						   alert("Email is required! You didn't provide your email from facebook. Plase try to sign up again!");
+//						   location.href = path+"/register";
+//						   return;
+//					   }
 					   
 //					   alert(fbname + " | " + fbemail + " | " + fbprofileimage+ " | " +  fbGender +" | " + fbId); 
 					   
