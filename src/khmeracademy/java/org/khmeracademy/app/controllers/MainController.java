@@ -97,12 +97,20 @@ public class MainController {
 			ResponseEntity<Map> all = rest.exchange(AKNURL + "api/article/1/12/0/0/0/", HttpMethod.GET , requestAKN , Map.class) ;
 			map.put("NEWS", all.getBody());
 	        map.put("KEY", "getAKN");
-			
+	        map.put("STATUS_AKN", true);
+		}catch(Exception e){
+			e.printStackTrace();
+			map.put("MESSAGE_AKN", "Operation failed");
+			map.put("STATUS_AKN", false);
+		}
+		try{
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
 			ResponseEntity<Map> response = rest.exchange(WSURL + "elearning/playlist/main_page", HttpMethod.GET , request , Map.class) ;
 			map.put("KA", response.getBody());
 		}catch(Exception e){
 			e.printStackTrace();
+			map.put("MESSAGE_KA", "Operation failed");
+			map.put("STATUS_KA", false);
 		}
 		return new ResponseEntity<Map<String , Object>>(map , HttpStatus.OK);
 		

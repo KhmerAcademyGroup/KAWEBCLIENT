@@ -130,7 +130,7 @@
 						<button type="button" class="close" aria-hidden="true">
 							<span class="button b-close"><span>×</span></span>
 						</button>
-						<h4 class="modal-title">Scrap Videos From youtube</h4>
+						<h4 class="modal-title" >Scrap Videos From youtube</h4>
 					</div>
 					<div class="modal-body" >
 							<div class="row">
@@ -141,17 +141,23 @@
 											<div class="form-group">
 												<label class="col-lg-2 control-label" style="text-align: right">Youtube Playlist URL : </label>
 												<div class="col-lg-7">
-													<input type="text" id="mainCategoryName" class="form-control" required="required" name="mainCategoryName">
+													<input type="text" id="youtubeUrl" class="form-control" required="required" name="youtubeUrl">
 												</div>
 												<div class="col-lg-2">
-													<input type="button" id="mainCategoryName" class="form-control btn btn-success" required="required" name="mainCategoryName" value="Scrap">
+													<input type="button" id="btnScrap" class="form-control btn btn-success" name=""btnScrap"" value="Scrap">
 												</div>
 											</div>
 									</div>
-										
-									
 									
 									<div class="col-sm-12">
+									
+										<div class="row" style="margin:20px;display:none" id="playVideo">
+										
+											<iframe width="560" height="315" src="#" frameborder="0" allowfullscreen id="iframeSrc"></iframe>
+										
+										
+										</div>
+									
 										<div class="the-box bg-default no-border">
 											
 											<div class="table-responsive">
@@ -159,9 +165,13 @@
 							<thead>
 								<tr>									
 									<th>ID</th>
+									<th>Thumbnail</th>
 									<th>Title</th>
-									<th>YouTube URL</th>
+									<th>YouTube Video ID</th>
+									<th>Category</th>
+									<th>File Url</th>
 									<th>Description</th>
+									<th>Duration</th>
 									<th>Action</th>											
 								</tr>
 							</thead>
@@ -171,7 +181,7 @@
 						</table>
 						<br>
 						
-						<p id="totalrecord" style="color:rgb(78, 156, 80);">19 Videos</p>
+						<p id="totalYoutubeVideo" style="color:rgb(78, 156, 80);">19 Videos</p>
 						
 												
 					</div>
@@ -212,7 +222,21 @@
 			  <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		
 	
-	<script id="content_tmpl" type="text/x-jquery-tmpl">	
+	<script id="contentYoutubeVideos_tmpl" type="text/x-jquery-tmpl">	
+	    	<tr>
+				<td>{{= no }}</td>
+				<td><img src="//i.ytimg.com/vi_webp/{{= videoId }}/default.webp" alt="" width="72"></td>
+				<td>{{= title }}</td>
+				<td>{{= videoId }}</td>
+				<td>Select</td>
+				<td>Input</td>
+				<td>Input</td>
+				<td>{{= duration }}</td>
+				<td id="btnPlay" data-id="{{= videoId }}">Play</td>
+			</tr>
+   	</script>
+   	
+   	<script id="content_tmpl" type="text/x-jquery-tmpl">	
 	    	<tr>
 				<td>{{= videoId }}</td>
 				<td>{{= videoName }}</td>
@@ -236,6 +260,8 @@
 				
 			</tr>
    	</script>
+   	
+   	
    	
    	
    	<script type="text/javascript">
@@ -318,31 +344,38 @@
                     xhr.setRequestHeader("Accept", "application/json");
                     xhr.setRequestHeader("Content-Type", "application/json");
                 },
+                data : {"url":data},
 			    success: function(data) {  console.log(data);
-			    	/* if(data.STATUS != false){
-			    			$("#textPlaylistName").text(data.RES_DATA[0].playlistName);
-			    			$("#textMainCategory").text(data.RES_DATA[0].mainCategoryName);
-				    		$("#totalrecord").text(data.PAGINATION.totalCount+ " Videos");
-							$("tbody#content").empty();
-							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
-							if(check){
-								course.setPagination(data.PAGINATION.totalPages,currentPage);
-					    		check=false;
-					    	}
+			    	if(data.STATUS != false){
+							$("tbody#contentYoutubeVideos").empty();
+							$("#contentYoutubeVideos_tmpl").tmpl(data.YOUTUBE_VIDEOS).appendTo("tbody#contentYoutubeVideos");
+							$("#totalYoutubeVideo").text(data.YOUTUBE_VIDEOS.length+ " Videos");
 			    	}else{
 			    		$("#totalrecord").text(0 + " Course");
-			    		$("tbody#content").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
+			    		$("tbody#contentYoutubeVideos").html('<div class="alert alert-danger alert-bold-border square fade in alert-dismissable">'+
 								  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
 								  '<strong>No video!</strong>'+
 								'</div>');
-			    	} */
+			    	} 
 			    }
    			});
    		};	
    	
 		
+   		$("#btnScrap").click(function(){
+   			course.scrapVideos($("#youtubeUrl").val());
+   		});
+   		
    		course.videos(1,"");
-   		course.scrapVideos();
+   		
+   		$(document).on('click',"#btnPlay" , function(){
+   			$("#playVideo").show();
+   			$("#iframeSrc").attr("src","https://www.youtube.com/embed/"+$(this).data("id"));
+   			
+   		});
+   		
+   		
+   		
 		
    	});
    	</script>

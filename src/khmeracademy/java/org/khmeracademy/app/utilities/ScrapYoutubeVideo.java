@@ -10,10 +10,10 @@ import org.khmeracademy.app.entities.YoutubeVideo;
 
 public class ScrapYoutubeVideo {
 
-	public static ArrayList<YoutubeVideo> testScrap(){
+	public static ArrayList<YoutubeVideo> scrapVideoFromYouttube(String url){
 		ArrayList<YoutubeVideo> arr = new ArrayList<YoutubeVideo>();
 		try{	
-					Document doc = Jsoup.connect("https://www.youtube.com/playlist?list=PLWznN7ZS7n8U-tlROS8R5sYnXOSZZUrIx").get();
+					Document doc = Jsoup.connect(url).get();
 					Elements elementTitles = doc.select(".pl-video");
 					StringBuilder data = new StringBuilder();
 					String fullUrl = "";
@@ -34,11 +34,11 @@ public class ScrapYoutubeVideo {
 						
 						arr.add(y);
 					}
+					return arr;
 				}catch(Exception exception){
 					exception.printStackTrace();	
-					return null;
 				}
-		return arr;
+		return null;
 	}
 	
  /* public static void main(String[] args) throws IOException {

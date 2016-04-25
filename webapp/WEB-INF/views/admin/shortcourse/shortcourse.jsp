@@ -471,7 +471,7 @@
 				var value = $(this).data("thisispad");
 				var message = "This student's course has been changed to paid!";	
 				var warning = "Are you sure you want to change this student's course to paid?";
-				if(value == true){
+				if(value == "f"){
 					message = "This student's course has been change to unpaid!";	
 					warning = "Are you sure you want to change this student's course to unpaid?";
 				}
@@ -485,8 +485,9 @@
 					type: "warning",   
 					showCancelButton: true,   
 					confirmButtonColor: "#DD6B55",   
-					confirmButtonText: "Yes, delete it!",   
+					confirmButtonText: "Yes",   
 					closeOnConfirm: false }, function(){ 
+						KA.createProgressBarWithPopup();
 						$.ajax({ 
 						    url:"${pageContext.request.contextPath}/admin/kshrd/update_ispaid", 
 						    type: "PUT",
@@ -496,6 +497,7 @@
 			                },
 			                data : JSON.stringify(frmData1),
 						    success: function(data) { 
+						    	KA.destroyProgressBarWithPopup();
 						    	if(data.STATUS == true){
 						    		check = true;
 						    		kshrd.students(frmData,1);
@@ -507,6 +509,7 @@
 						        console.log("error: "+data+" status: "+status+" er:"+er);
 						    }
 						}); 
+						
 					});
 				
 				

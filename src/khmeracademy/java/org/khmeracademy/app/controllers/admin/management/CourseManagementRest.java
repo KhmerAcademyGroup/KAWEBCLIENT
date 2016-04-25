@@ -100,10 +100,15 @@ public class CourseManagementRest {
 	}
 	
 	@RequestMapping(value="/scracp/youtube_videos" , method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> listVideosInCourse(){
+	public ResponseEntity<Map<String , Object>> scrapVideoFromYoutube(@RequestParam("url") String url){
 		Map<String , Object> map  = new HashMap<String , Object>();
-		ArrayList<YoutubeVideo> arr = ScrapYoutubeVideo.testScrap();
-		map.put("YOUTUBE_VIDEOS", arr);
+		ArrayList<YoutubeVideo> arr = ScrapYoutubeVideo.scrapVideoFromYouttube(url);
+		if(arr != null){
+			map.put("YOUTUBE_VIDEOS", arr);	
+			map.put("STATUS", true);
+		}else{
+			map.put("STATUS", false);
+		}
 		return new ResponseEntity<Map<String , Object>>(map, HttpStatus.OK);
 	}
 		

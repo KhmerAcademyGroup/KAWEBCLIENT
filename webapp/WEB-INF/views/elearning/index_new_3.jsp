@@ -101,13 +101,13 @@
 	
 	        <!-- Page Content -->
 	        <div id="page-content-wrapper" style="background:white;    min-height:700px;">
-	            <div class="container">
+	            <div class="container" style="width:100%">
 	            
 	            <%-- <div class="section-heading">
 									<div class="inner-border"></div>
 									<h3 style="color:#4c954d;"><spring:message code="ep_e-learning"/></h3>
 								</div> --%>
-	            	<div class="col-sm-3" style="margin-left: -20px">
+	            	<div class="col-sm-2" style="margin-left: -20px">
 	            				
 	            				<div class="panel panel-primary" style="margin-top: 20px;">
 									  <div class="panel-heading" style="background: linear-gradient(#50a253, #4c954d) repeat scroll 0 0 rgba(0, 0, 0, 0);">
@@ -166,7 +166,7 @@
 	            				
 	            	</div>
 	            	
-	            	<div class="col-sm-9">
+	            	<div class="col-sm-10">
 	            	
 	            			<div id="recent" style="margin-bottom:80px;margin-top: 20px;">
 		            		<div id="owl-recent" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
@@ -272,7 +272,7 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=15",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=18",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");

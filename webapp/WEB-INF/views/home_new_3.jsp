@@ -805,7 +805,9 @@
 							$("#elearning_tmpl").tmpl(data.KA.LIST_COURSE).appendTo("#"+eID);
 							$("#tlistcategory_tmpl").tmpl(data.KA.LIST_CATEGORIES).appendTo("#listcategory");
 							$("#question_tmpl").tmpl(data.KA.LIST_QUESTION).appendTo("#getQuestion");
-							displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);
+							if(data.STATUS_AKN == true){
+								displayNews(data.KEY ,data.NEWS.RESPONSE_DATA);							
+							}
 							$(".loading").hide();
 						}
 					});	
