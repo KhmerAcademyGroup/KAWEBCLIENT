@@ -168,6 +168,11 @@
 	            	
 	            	<div class="col-sm-10">
 	            	
+	            			<div class="section-heading" style="margin-bottom: -5px;">
+								<div class="inner-border"></div>
+								<h3 style="color:#4c954d;" id="getTextMain">ទាំងអស់</h3>
+							</div>
+	            	
 	            			<div id="recent" style="margin-bottom:80px;margin-top: 20px;">
 		            		<div id="owl-recent" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
 		            			<div class="owl-wrapper-outer">
@@ -315,6 +320,7 @@
 					mainCategoryId = $(this).data("id");
 					$("#getCourse").empty();
 					course($(this).data("id"),1);
+					$("#getTextMain").text($(this).text());
 // 					$("#btLoadMore").attr("data-id",$(this).data("id"));
 				});
 				
