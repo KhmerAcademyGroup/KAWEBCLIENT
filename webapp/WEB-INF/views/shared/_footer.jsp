@@ -645,11 +645,17 @@ Placed at the end of the document so the pages load faster
 			                    xhr.setRequestHeader("Content-Type", "application/json");
 			                },
 		    	            data: JSON.stringify(frmData), 
-		    	            success: function(data) {
-		    	            	if(data.STATUS == false){
+		    	            success: function(data) { console.log(data);
+		    	            	if(data.STATUS == "FACEBOOK"){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-				 				  				   '<strong class="alert-link">There is already an account with that email! Please use another email or <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
+				 				  				   '<strong class="alert-link">This email is already registered with facebook account! Please click the Facebook button to login <br/> or  <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
+				 							   '</div>');
+		    	            		KA.destroyProgressBarWithPopup();
+		    	            	}else if(data.STATUS == false){
+		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+				 				  				   '<strong class="alert-link">There is already an account with this email! Please use another email or <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
 				 							   '</div>');
 		    	            		KA.destroyProgressBarWithPopup();
 		    	            	}else{

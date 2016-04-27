@@ -69,7 +69,7 @@
 				            },
 //				            data: JSON.stringify({ email : fbemail, scID : fbId, scType : 2 }),
 				            data: JSON.stringify(frmData),
-							success: function(data){ 								
+							success: function(data){ 		 console.log(data);						
 								if(data.USER != null){
 									userLogin(data);
 								}else{
