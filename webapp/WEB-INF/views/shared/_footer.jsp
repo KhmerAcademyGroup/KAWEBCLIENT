@@ -635,7 +635,7 @@ Placed at the end of the document so the pages load faster
 	         				  	  departmentId : $("#getDepartment").val()
 	         		  }; 
 // 	         		  console.log(frmData);
-	         		  KA.createProgressBarWithPopup();
+	         		  KA.createProgressBar();
 	         		  $.ajax({
 		    	            url: "${pageContext.request.contextPath}/rest/signup",
 		    	            type: "POST",
@@ -646,18 +646,24 @@ Placed at the end of the document so the pages load faster
 			                },
 		    	            data: JSON.stringify(frmData), 
 		    	            success: function(data) { console.log(data);
-		    	            	if(data.STATUS == "FACEBOOK"){
+		    	            	if(data.STATUS == "NOTCONFIRMED"){
+		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+				 				  				   '<strong class="alert-link">This email is already registered with KhmerAcademy, but not yet active. Please go to your email to active your account <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> or  <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend confirmed code to your email</a></strong></strong>'+ 
+				 							   '</div>');
+		    	            		KA.destroyProgressBar();
+		    	            	}else if(data.STATUS == "FACEBOOK"){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 				 				  				   '<strong class="alert-link">This email is already registered with facebook account! Please click the Facebook button to login <br/> or  <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
 				 							   '</div>');
-		    	            		KA.destroyProgressBarWithPopup();
+		    	            		KA.destroyProgressBar();
 		    	            	}else if(data.STATUS == false){
 		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
 				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
 				 				  				   '<strong class="alert-link">There is already an account with this email! Please use another email or <a href="#reset" id="btFrmreset">reset your password!</a></strong>'+ 
 				 							   '</div>');
-		    	            		KA.destroyProgressBarWithPopup();
+		    	            		KA.destroyProgressBar();
 		    	            	}else{
 		    	            		
 		    	            		
@@ -672,16 +678,16 @@ Placed at the end of the document so the pages load faster
 										
 													$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
 									   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
-									 				  				   '<strong class="alert-link">We have sent you a message at <a href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
+									 				  				   '<strong class="alert-link">We have sent you a message at <a class="btn btn-primary btn-xs" href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
 									 					            '</div>');
 													
 													
-													$("#pop-re").replaceWith( '<strong style="font-size: 18px;" class="alert-link">We have sent you a message at <a href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>');
+													$("#pop-re").replaceWith( '<strong style="font-size: 18px;" class="alert-link">We have sent you a message at <a  class="btn btn-primary btn-xs" href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>');
 													
 													
 													$("#p-success").bPopup({modalClose: false}); 
 													
-				    		    	            	KA.destroyProgressBarWithPopup();
+				    		    	            	KA.destroyProgressBar();
 				    		    	            },
 				    		    	         	error: function(data){
 				    		    	         		console.log(data);
@@ -694,7 +700,7 @@ Placed at the end of the document so the pages load faster
 // 		    	            	console.log(data);
 		    	            },
 		    	         	error: function(data){
-		    	         		KA.destroyProgressBarWithPopup();
+		    	         		KA.destroyProgressBar();
 		    	         		console.log(data);
 		    				}
 		    	        });

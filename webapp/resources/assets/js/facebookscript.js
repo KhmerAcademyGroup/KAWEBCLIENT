@@ -69,8 +69,15 @@
 				            },
 //				            data: JSON.stringify({ email : fbemail, scID : fbId, scType : 2 }),
 				            data: JSON.stringify(frmData),
-							success: function(data){ 		 console.log(data);						
-								if(data.USER != null){
+							success: function(data){ 		
+								console.log(data);		
+								if(data.STATUS == "NOTCONFIRMED"){
+									$("#message-re,#message").replaceWith('<div id="message-re" class="alert alert-danger alert-bold-border square fade in alert-dismissable"> '+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+				 				  				   '<strong class="alert-link">This email is already registered with KhmerAcademy, but not yet active. Please go to your email to active your account <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> or  <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend confirmed code to your email</a></strong></strong>'+ 
+				 							   '</div>');
+		    	            		KA.destroyProgressBar();
+								}else if(data.USER != null){
 									userLogin(data);
 								}else{
 									KA.destroyProgressBar();
