@@ -111,7 +111,7 @@
 				});
 				
 				var dis ="";
-				dis += '<center><div>'+
+				dis += '<center><div id="loading">'+
 											'<img class="img-responsive" src="${pageContext.request.contextPath}/resources/uploads/thumnail/loading2.gif"/>'+
 						'</div></center>';
 				$("#tutorialdetail").html(dis);

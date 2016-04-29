@@ -479,6 +479,7 @@
 						isPaid	  : $(this).data("thisispad"),
 						studentDetailId	  : $(this).data("id")
 				};
+				
 				swal({   
 					title: "Are you sure?",   
 					text: warning,   
@@ -486,7 +487,8 @@
 					showCancelButton: true,   
 					confirmButtonColor: "#DD6B55",   
 					confirmButtonText: "Yes",   
-					closeOnConfirm: false }, function(){ 
+					closeOnConfirm: false 
+				}, function(){ 
 						KA.createProgressBarWithPopup();
 						$.ajax({ 
 						    url:"${pageContext.request.contextPath}/admin/kshrd/update_ispaid", 
@@ -510,7 +512,7 @@
 						    }
 						}); 
 						
-					});
+				});
 				
 				
 			});

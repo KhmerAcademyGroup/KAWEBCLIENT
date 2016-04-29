@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title></title>
 		<jsp:include page="../shared/_header.jsp" />
 	</head>
  

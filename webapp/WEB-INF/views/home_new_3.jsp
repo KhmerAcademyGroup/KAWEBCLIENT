@@ -15,6 +15,7 @@
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css" rel="stylesheet">
 		
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
 		
 		<style>
 			.owl-carousel .mitem{
@@ -829,7 +830,10 @@
 		   
 		</script>  
 		
+		<sec:authorize access="isAuthenticated()" var="isLogin"/>
 		
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		<script type="text/javascript">
 			   		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			   			$("#p-IfMobile").bPopup();
@@ -839,7 +843,29 @@
 				   			$("#dwnApp").attr("href","https://itunes.apple.com/kh/app/khmer-academy/id1082906587?mt=8");
 				   		}
 			   		}
-			</script>
+			   		
+			  var path =  "${pageContext.request.contextPath}";
+			  $(document).ready(function() {
+				  //alert('${isLogin}');
+				  if('${isLogin}' == 'false'){
+					  setTimeout(function(){ 
+					   		swal({   
+								title: "Khmer Academy",   
+								text: "Do you want to login with your facebook account?",   
+								type: "info",   
+								showCancelButton: true,   
+								confirmButtonColor: "#4B66A0",   
+								confirmButtonText: "Yes",   
+								closeOnConfirm: false 
+							}, function(){ 
+								Login();
+								swal("Login Successful", "You have been logged in successfully." , "success"); 
+							});
+						  }, 5000);
+                 } 
+			  });
+			   		
+		</script>
 		
 	</body>
 </html>

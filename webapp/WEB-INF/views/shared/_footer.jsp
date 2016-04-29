@@ -666,10 +666,24 @@ Placed at the end of the document so the pages load faster
 		    	            		KA.destroyProgressBar();
 		    	            	}else{
 		    	            		
+		    	            		email =  $("#email").val();
+		    	            		
+		    	            		$("#message-re").replaceWith('<div id="message-re" class="alert alert-success alert-bold-border square fade in alert-dismissable"> '+ 
+				   		                       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'+ 
+				 				  				   '<strong class="alert-link">We have sent you a message at <a class="btn btn-primary btn-xs" href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>'+ 
+				 					            '</div>');
+								
+								
+									$("#pop-re").replaceWith( '<strong style="font-size: 18px;" class="alert-link">We have sent you a message at <a  class="btn btn-primary btn-xs" href="https://'+email+'" target="_blank">'+email+'</a><br/> <span>Please follow the link in that message to complete your Khmer Academy account!</span> <a href="https://'+email+'" target="_blank" class="btn btn-primary btn-xs">Open your mail</a> <a href="#resend" id="btFrmSendMailToConf" class="btn btn-primary btn-xs">Resend email</a></strong>');
+									
+									
+									$("#p-success").bPopup({modalClose: false}); 
+									
+			    	            	KA.destroyProgressBar();
 		    	            		
 // 		    	            		setTimeout(function(){
 		    	            			
-		    	            			 email =  $("#email").val();
+		    	            			 /* email =  $("#email").val();
 		    	            			 $.ajax({
 		    	     						url : "${pageContext.request.contextPath}/rest/sendmail?email="+email+"&type=signup",
 		    	     						method: "GET",
@@ -692,7 +706,7 @@ Placed at the end of the document so the pages load faster
 				    		    	         	error: function(data){
 				    		    	         		console.log(data);
 				    		    				}
-				    		    	        });
+				    		    	        }); */
 		    	            			 
 			    	            	
 // 		    						}, 500 );

@@ -4,23 +4,34 @@
 			      xfbml      : true,
 			      version    : 'v2.1'//'v2.6'
 			    });
-		    
-			  
+		     
+			/*FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					alert("Connected to Facebook");
+				} else if (response.status === 'not_authorized') {
+					alert("the user is logged in to Facebook - but has not authenticated your app");
+				 }else{
+					alert("the user isn't logged in to Facebook.");
+				}
+			});*/
+			
 			FB.Event.subscribe('auth.authResponseChange', function(response){
-		 	 if (response.status === 'connected'){
-//		 		alert("Connected to Facebook");
-		  		//document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
-		  		//SUCCESS
-		  	 }else if (response.status === 'not_authorized'){
-		  		alert("Failed to Connect");
-		    	//document.getElementById("message").innerHTML +=  "<br>Failed to Connect";	
-		    	//FAILED
-		    } else {
-		    		alert("Logged Out");
-		    	//document.getElementById("message").innerHTML +=  "<br>Logged Out";
-		    	//UNKNOWN ERROR
-		    }
+			 	 if (response.status === 'connected'){
+			 		alert("Connected to Facebook");
+			  		//document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+			  		//SUCCESS
+			  	 }else if (response.status === 'not_authorized'){
+			  		alert("Failed to Connect");
+			    	//document.getElementById("message").innerHTML +=  "<br>Failed to Connect";	
+			    	//FAILED
+			    } else {
+			    		alert("Logged Out");
+			    	//document.getElementById("message").innerHTML +=  "<br>Logged Out";
+			    	//UNKNOWN ERROR
+			    }
 			});	
+			
+			
 			
 	    };
 	    
@@ -39,8 +50,9 @@
 					   fbprofileimage = response.id;
 					   fbId =  response.id;
 					   fbGender = response.gender;
+					   //alert(response.birthday + " | " +  response.gender + " | " + response.age_range);
 					   
-					   alert(fbemail + " | " + fbprofileimage );
+					   //alert(fbemail + " | " + fbprofileimage );
 					   
 //					   if(fbemail == null){
 //						   KA.destroyProgressBar();
@@ -182,7 +194,7 @@
 									   '</div>');
 	            		setTimeout(function(){
 	            			location.href = data;
-	            		}, 1 );
+	            		}, 200 );
 	            		
 	            	}
 	            },
@@ -193,4 +205,8 @@
 	  }
 		
 	  
+	/*  setTimeout(function(){ 
+		  Login();
+	  }, 3000);*/
+
 	

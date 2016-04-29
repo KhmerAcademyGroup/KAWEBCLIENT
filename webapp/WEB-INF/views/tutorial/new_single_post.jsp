@@ -273,7 +273,7 @@
 				});
 				
 				var dis ="";
-				dis += '<center><div>'+
+				dis += '<center><div id="loading">'+
 											'<img class="img-responsive" src="../uploads/thumnail/loading2.gif"/>'+
 						'</div></center>';
 				$("#tutorialdetail").html(dis);
@@ -282,10 +282,12 @@
 						{ 
 					categoryid : <%= request.getParameter("cid") %>						 	
 						}, 
-						function(data){		
+						function(data){	
 							$("#tutorialdetail").html(getTutorialDetail(data));
-							rating();
+							//rating();
 							$("#tutorialdetail img").addClass("img-responsive");
+								
+							
 							
 				});
 				

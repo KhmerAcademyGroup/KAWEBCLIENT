@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Question Detail | Forum</title>
 		<jsp:include page="../shared/_header.jsp" />
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.css" rel="stylesheet">
 	</head>
@@ -418,6 +419,7 @@
 									cid = data.RESP_DATA.categoryId;
 // 									console.log("CID " + cid);
 									questionDetail.relatedQuestion(cid);
+									$("title").text(data.RESP_DATA.title);
 									$("#qTitle").text(data.RESP_DATA.title);
 									$("#qTotalVotes").text(data.RESP_DATA.vote);
 									$("#qDetail").html(data.RESP_DATA.detail);
@@ -760,7 +762,7 @@
 			</div>		
 		</div>	
 		
-		<script src="http://memo.khmeracademy.org/resources/js/hrdmemoplugin.js"></script>	
+		<!-- <script src="http://memo.khmeracademy.org/resources/js/hrdmemoplugin.js"></script>	 -->
     			
 	</body>
 </html>

@@ -4,6 +4,7 @@
 <meta name="description" content="Khmer academy is the first e-learning platform for Khmer people only. We, the team started out to provide Cambodian students with quality educational material. Though that's still our biggest and urgent goal to accomplish, our final goal is beyond that. We want to improve every Cambodian’s life.">
 <meta name="keywords" content="Khmer Academy, Khmer Learning Online, Khmer Studying IT, IT Traning in Cambodia, Khmer Forum, IT Chatting">
 <meta name="author" content="Khmer Academy">
+
 <title ng-bind-html="title">${title}</title>
 
 <!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
