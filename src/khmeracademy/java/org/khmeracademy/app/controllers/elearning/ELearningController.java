@@ -50,7 +50,7 @@ public class ELearningController {
 	
 	@RequestMapping(value="/playvideo" , method = RequestMethod.GET)
 	public String  playVideo(ModelMap m,
-			@RequestParam(value="v") String vid, 
+			@RequestParam(value="v", required = false) String vid, 
 			@RequestParam(value="playlist", required=false) String pid){
 		String userid = "";
 		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
@@ -81,7 +81,7 @@ public class ELearningController {
 	}
 	
 	@RequestMapping( value ="/search", method = RequestMethod.GET)
-	public String searchPlaylist(ModelMap m, @RequestParam("keyword") String coursename , HttpServletResponse response) { 
+	public String searchPlaylist(ModelMap m, @RequestParam(value="keyword" , required = false) String coursename , HttpServletResponse response) { 
 		System.out.println(coursename);
 		m.addAttribute("keyword",coursename);
 		return "/elearning/searchcourse";

@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@page import="org.khmeracademy.app.entities.User"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.Authentication"%>
@@ -116,10 +117,28 @@
 			
 <%-- 			 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> --%>
 				
-				 <a href="${pageContext.request.contextPath}?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">
+				<%
+				String str1 = "";
+				String str=request.getRequestURL()+"?";
+				Enumeration<String> paramNames = request.getParameterNames();
+				while (paramNames.hasMoreElements())
+				{
+				    String paramName = paramNames.nextElement();
+				    String[] paramValues = request.getParameterValues(paramName);
+				    for (int i = 0; i < paramValues.length; i++) 
+				    {
+				        String paramValue = paramValues[i];
+				        str=str + paramName + "=" + paramValue;
+				    }
+				    str=str+"&";
+				}
+				str1 = str.substring(0,str.length()-1);    //remove the last character from String
+				%>
+				
+				 <a href="?language=kh" style="    padding-left: 0px;padding-right: 0px;padding-bottom: 0px; height: auto;width: 25px;">
 				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/kh-flag.png"  alt="Khmer">
 				 </a>
-				 <a href="${pageContext.request.contextPath}?language=en" style="padding: 0 0 0 0;height: auto;width: 25px;float: right;margin-top: -24px;">
+				 <a href="?language=en" style="padding: 0 0 0 0;height: auto;width: 25px;float: right;margin-top: -24px;">
 				 	<img  src="${pageContext.request.contextPath}/resources/assets/img/en-flag.png"  alt="English">
 				 </a>
 			</li> 

@@ -830,7 +830,7 @@
 		   
 		</script>  
 		
-		<sec:authorize access="isAuthenticated()" var="isLogin"/>
+		<%-- <sec:authorize access="isAuthenticated()" var="isLogin"/>
 		
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
@@ -865,7 +865,7 @@
                  } 
 			  });
 			   		
-		</script>
+		</script> --%>
 		
 	</body>
 </html>
