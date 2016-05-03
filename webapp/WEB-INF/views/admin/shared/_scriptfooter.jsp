@@ -60,6 +60,7 @@
 	<script src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/raphael.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/plugins/morris-chart/morris.min.js"></script>
 
+
 	<!-- C3 JS -->
 	<script src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/d3.v3.min.js" charset="utf-8"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/plugins/c3-chart/c3.min.js"></script>
