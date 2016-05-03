@@ -419,7 +419,7 @@
 									cid = data.RESP_DATA.categoryId;
 // 									console.log("CID " + cid);
 									questionDetail.relatedQuestion(cid);
-									$("title").text(data.RESP_DATA.title);
+									$("title").text(data.RESP_DATA.title + " | Forum");
 									$("#qTitle").text(data.RESP_DATA.title);
 									$("#qTotalVotes").text(data.RESP_DATA.vote);
 									$("#qDetail").html(data.RESP_DATA.detail);

@@ -7,7 +7,7 @@
 		<br>
 		<div id="listalltutorials">
 			<div class="alert alert-default" style="text-align:center;background:white">
-								<img src="${pageContext.request.contextPath}/resources/uploads/thumnail/loading.gif" class="img-responsive"/>
+								<img class="img-responsive" src="${pageContext.request.contextPath}/resources/assets/img/loading.gif">
 			</div>
 			
 		</div>

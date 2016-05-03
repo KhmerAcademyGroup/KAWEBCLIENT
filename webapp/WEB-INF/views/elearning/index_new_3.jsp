@@ -188,7 +188,7 @@
 		            			</div>
 		            			
 		            			
-		            			 <div id="loading" class="text-center" style="display: none;"><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>
+		            			 <div id="loading" class="text-center" style="display: none;"><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>
 					        
 						        <div class="text-center">
 									<button class="btn btn-primary" data-id="empty" id="btLoadMore"><spring:message code="ep_more"/></button>
@@ -277,7 +277,7 @@
 					$("#loading").show();
 		  			$("#btLoadMore").hide();
 					$.ajax({
-		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=18",
+		    			url :"${pageContext.request.contextPath}/rest/elearning/plalylistByMainCateogryWithPagin/"+mid+"?page="+page+"&item=12",
 						method: 'GET',
 						 beforeSend: function(xhr) {
 			                    xhr.setRequestHeader("Accept", "application/json");

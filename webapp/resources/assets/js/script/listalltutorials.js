@@ -5,7 +5,7 @@
 
 function getTutorialLists(data){ 
 	var data = data.RES_DATA;
-	$("title").text(data[0].categoryName);
+	$("title").text(data[0].categoryName + " | Tutorials");
 	var txt="";
 	
 		txt+= '<div class="panel panel-primary panel-block-color">'+

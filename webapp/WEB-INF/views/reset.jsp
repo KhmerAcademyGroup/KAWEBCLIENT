@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Reset Password</title>
 		<jsp:include page="shared/_header.jsp" />
 	</head>
  
@@ -127,11 +128,12 @@
 							if(password==""){alert("Data empty"); return 0;}
 							
 							if(data.STATUS==true){
-								alert("Your password has been resetted ! ")
+								alert("Your password has been resetted successfully! ")
 								 window.location = '${pageContext.request.contextPath}/login';
 							}
 							else{
-								alert("Your password has not been resettet. Please try again!")
+								alert("Your password has not been resetted. Please request a new code to reset your password!")
+								$("#frmreset").bPopup();
 							}														
 // 							 console.log(data);
 						}

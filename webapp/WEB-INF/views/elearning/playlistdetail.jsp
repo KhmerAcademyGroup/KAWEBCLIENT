@@ -9,7 +9,7 @@
  <%-- <%
 		 String userid = ${userid}	;
 	%>  --%> 
-	
+<title>Course Detail | E-Learning</title>	
 <jsp:include page="../shared/_header.jsp" />
 
 <style type="text/css">
@@ -383,14 +383,19 @@
 		  			$.ajax({
 					url : "${pageContext.request.contextPath}/rest/elearning/getplaylist/"+playlistId,
 					method: "GET",
-					success: function(data){																			
-						$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
+					success: function(data){	
+						if(data.USERPLAYLIST.status ==false){
+							$("#thumbnailurlinfo").attr("src","https://i.ytimg.com/vi/"+data.USERPLAYLIST.thumbnailUrl+"/mqdefault.jpg"); 
+						}else{
+							$("#thumbnailurlinfo").attr("src",data.USERPLAYLIST.thumbnailUrl);
+						}
+						$("title").text(data.USERPLAYLIST.playlistName + " | E-Learning course detial");
 						$("#playlistnameinfo").text(data.USERPLAYLIST.playlistName);
 						$("#usernameinfo").text("by " + data.USERPLAYLIST.username +" | " );
 						$("#totalvideo").text(data.USERPLAYLIST.countVideos +"Videos")
 						$("#descriptioninfo").text(data.USERPLAYLIST.description);	
 						if(userid == data.USERPLAYLIST.userId){
-						$("#buttonpopup").html(popupButton);
+							$("#buttonpopup").html(popupButton);
 						}
 	        			listVideo.listVideoInPlaylist(playlistId,page);
 

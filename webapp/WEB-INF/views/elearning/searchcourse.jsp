@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
+		<title>Search | E-Learning</title>
 		<jsp:include page="../shared/_header.jsp" />
 		<style>
 		.owl-carousel .mitem{

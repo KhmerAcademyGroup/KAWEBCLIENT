@@ -6,16 +6,17 @@
 <html lang="en">
 	<head>
 
+		<title>Khmer Aacademy</title>
 		<jsp:include page="shared/_header.jsp" />
-		<!-- Side Bar -->
-  		<link href="${pageContext.request.contextPath}/resources/assets/css/simple-sidebar.css" rel="stylesheet" />
-  		
+		
+		
+		
   		<!-- Carousel -->
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.theme.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/owl-carousel/owl.transitions.min.css" rel="stylesheet">
 		
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">
+		<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css"> --%>
 		
 		<style>
 			.owl-carousel .mitem{
@@ -106,14 +107,14 @@
 				            	
 				            	
 				            	<!-- Bannner -->
-				            	<div class="row" style="margin-bottom: 0px;padding: 15px;">
+				            	<div class="row" style="margin-bottom: 0px;padding: 15px; margin-top: -20px;">
 											
 												<div class="owl-carousel" id="owl-banner">
 												    <div class="item">
 												    	<a href="#"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/KA_MoEYS.jpg' alt='' class="img-responsive"></a>
 												    </div>
 													<div class='item'>
-												    	<a href="#"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/short_course.jpg' alt='' class="img-responsive"></a>
+												    	<a href="${pageContext.request.contextPath}/kshrd/shortcourse/"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/short_course.jpg' alt='' class="img-responsive"></a>
 													</div>
 													<div class='item'>
 												    	<a href="http://kshrd.com.kh/" target="_blank"><img src='${pageContext.request.contextPath}/resources/assets/img/banner/4th.jpg' alt='' class="img-responsive"></a>
@@ -137,7 +138,7 @@
 							</div>	 <!-- End List Courses -->
 							
 							
-				<div  class="row" style="margin-left:0px;margin-top:40px;    margin-bottom: 70px;">
+				<div  class="row" style="margin-left:0px; margin-bottom: 70px;">
 								
 							
 							
@@ -296,7 +297,7 @@
 																  
 																<div class="inbox"  style="padding: 15px;    min-height: 400px;  border: 1px solid #D5DAE0;">	
 																
-																		<a href="http://kshrd.com.kh/"  target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg"></a>
+																		<a href="http://kshrd.com.kh/"  target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/icon_hrd.jpg" class="img-responsive"></a>
 																		
 																		<div class="col-lg-6">
 																		
@@ -335,14 +336,14 @@
 																		    
 																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 0px;">       
 																					<span class="small ">         
-																							<a href="http://www.khmeracademy.org/elearning/play.act?v=313&p=260" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
+																							<a href="http://www.khmeracademy.org/elearning/playvideo?v=MzEz&playlist=MjYw" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
 																							       លទ្ធផលនៃនិស្សិតជំនាន់ទី២
 																							</a>   
 																					</span>  
 																		    </div>
 																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 0px;">       
 																					<span class="small ">         
-																							<a href="http://www.khmeracademy.org/elearning/play.act?v=1451&p=381" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
+																							<a href="http://www.khmeracademy.org/elearning/playvideo?v=MTQ1MQ==&playlist=Mzgx" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
 																							       លទ្ធផលនៃនិស្សិតជំនាន់ទី៣
 																							</a>   
 																					</span>  
@@ -408,6 +409,13 @@
 																							</a>   
 																					</span>  
 																		    </div>	
+																		    <div class="caption text-left shortenString" style="padding-top:10px;padding-bottom: 10px;text-indent: 0px;">       
+																					<span class="small ">         
+																							<a href="http://www.khmeracademy.org/kshrd/shortcourse" target="_blank" style="font-size: 15px;" target="_blank"  class="no-underline text-danger"> 
+																							     ចុះឈ្មោះ
+																							</a>   
+																					</span>  
+																		    </div>
 																		    
 																		</div>	
 																																		
@@ -525,7 +533,7 @@
 																  
 																<div class="inbox"  id="getQuestion" style="padding: 15px;    height:  auto;  border: 1px solid #D5DAE0;">	
 																
-																	<div class="loading text-center" ><img src="/KAWEBCLIENT/resources/assets/img/loading.gif"></div>  
+																	<div class="loading text-center" ><img src="${pageContext.request.contextPath}/resources/assets/img/loading.gif"></div>  
 																		
 																</div>	
 																
@@ -830,19 +838,23 @@
 		   
 		</script>  
 		
+		<script type="text/javascript">
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	   			$("#p-IfMobile").bPopup();
+	   			if(/Android/i.test(navigator.userAgent) ) {
+		   			$("#dwnApp").attr("href","https://play.google.com/store/apps/details?id=org.khmeracademy");
+		   		}else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+		   			$("#dwnApp").attr("href","https://itunes.apple.com/kh/app/khmer-academy/id1082906587?mt=8");
+		   		}
+	   		}
+		</script>
+		
 		<%-- <sec:authorize access="isAuthenticated()" var="isLogin"/>
 		
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		<script type="text/javascript">
-			   		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-			   			$("#p-IfMobile").bPopup();
-			   			if(/Android/i.test(navigator.userAgent) ) {
-				   			$("#dwnApp").attr("href","https://play.google.com/store/apps/details?id=org.khmeracademy");
-				   		}else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
-				   			$("#dwnApp").attr("href","https://itunes.apple.com/kh/app/khmer-academy/id1082906587?mt=8");
-				   		}
-			   		}
+			   		
 			   		
 			  var path =  "${pageContext.request.contextPath}";
 			  $(document).ready(function() {

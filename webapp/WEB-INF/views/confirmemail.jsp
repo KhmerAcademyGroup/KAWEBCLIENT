@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Email Verification</title>
 		<jsp:include page="shared/_header.jsp" />
 		
 		<style type="text/css">

@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<jsp:include page="shared/_header.jsp" />		
+		<title>Register</title>
+		<jsp:include page="shared/_header.jsp" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/sweetalert2.css">		
 	</head>
  
 	<body class="tooltips no-padding">
@@ -115,21 +117,14 @@
 						
 						
 						<div class="col-sm-6">
-							<div class="the-box bg-default no-border">
+							<div class="the-box bg-default no-border" id="fbDiv" style="display:none">
 							
 								<div class="alert alert-default  square fade in alert-dismissable">
 									<strong class="alert-link"><spring:message code="rp_sign_up_with_facebook"/></strong>
 								</div>
 								
 								<button onclick="Login()" style="background:#4B66A0;border-color: #4B66A0;color: #fff;" class="btn btn-facebook btn-block btn-lg"><i class="fa fa-facebook"></i> Facebook</button>
-								<div id="fb-root"></div>
-								<script>(function(d, s, id) {
-								  var js, fjs = d.getElementsByTagName(s)[0];
-								  if (d.getElementById(id)) return;
-								  js = d.createElement(s); js.id = id;
-								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=733594286732881";
-								  fjs.parentNode.insertBefore(js, fjs);
-								}(document, 'script', 'facebook-jssdk'));</script> 
+								
 									
 							</div><!-- /.the-box .bg-danger .no-border-->
 						</div>
@@ -145,7 +140,7 @@
 		
 		
 		<!-- End My Contend -->
-		
+		<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/facebookscript.js"></script>
 		<jsp:include page="shared/_footer.jsp" />
 		
@@ -178,6 +173,10 @@
 						});
 					};
 				listDepartment_University();
+				
+				
+				$("#fbDiv").show();
+				   
 		  });
 		  </script>
 		  

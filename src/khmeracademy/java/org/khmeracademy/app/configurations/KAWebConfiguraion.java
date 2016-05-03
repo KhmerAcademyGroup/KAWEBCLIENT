@@ -123,9 +123,16 @@ public class KAWebConfiguraion extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 	
-	public void addCorsMappings(CorsRegistry registry) {
+	/*public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("*");
-    }
+    }*/
+	
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+				.allowedMethods("GET","POST","DELETE","PUT","OPTIONS","PATCH")
+				.allowedOrigins("*");
+	}
 	
 	@Bean
     public MultipartResolver multipartResolver() {

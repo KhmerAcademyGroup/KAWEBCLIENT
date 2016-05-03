@@ -1,4 +1,4 @@
-	window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
 			FB.init({
 			      appId      : '733594286732881', //'1720375071565906',
 			      xfbml      : true,
@@ -17,7 +17,8 @@
 			
 			FB.Event.subscribe('auth.authResponseChange', function(response){
 			 	 if (response.status === 'connected'){
-			 		alert("Connected to Facebook");
+			 		swal({   title: "Connecting with your facebook Account!",   text: "This alert will close in 5 seconds.",   timer: 5000,   showConfirmButton: false });
+//			 		alert("Connected to Facebook");
 			  		//document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
 			  		//SUCCESS
 			  	 }else if (response.status === 'not_authorized'){

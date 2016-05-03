@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Ask Question</title>
 		<jsp:include page="../shared/_header.jsp" />
 		<link href="${pageContext.request.contextPath}/resources/assets/plugins/summernote/summernote.min.css" rel="stylesheet">
 	</head>

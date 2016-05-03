@@ -112,7 +112,7 @@
 				
 				var dis ="";
 				dis += '<center><div id="loading">'+
-											'<img class="img-responsive" src="${pageContext.request.contextPath}/resources/uploads/thumnail/loading2.gif"/>'+
+											'<img class="img-responsive" src="${pageContext.request.contextPath}/resources/assets/img/loading.gif">'+
 						'</div></center>';
 				$("#tutorialdetail").html(dis);
 				

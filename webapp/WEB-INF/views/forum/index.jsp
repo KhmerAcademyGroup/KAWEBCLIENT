@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Forum</title>
 		<jsp:include page="../shared/_header.jsp" />
 	</head>
  
@@ -229,7 +230,13 @@
 	    	                    xhr.setRequestHeader("Content-Type", "application/json");
 	    	                },
 	    				    success: function(data) {  
-// 	    				    	console.log(data);
+	    				    	console.log(data);
+	    				    	if(data.STATUS == false){
+	    				    		$("#loading").hide();
+	    				    		$("#getTotalQuestion").text("Question Not found!");
+	    				    		return;
+	    				    	}
+	    				    	
 	    						$("#getTotalQuestion").text(data.PAGINATION.totalCount + " Questions");
 	    						totalPage = data.PAGINATION.totalPages;
 	    						
@@ -340,6 +347,7 @@
 	    				page = 1;
 	    				$("#getType").text($(this).data("tag") +" : ");
 	    				$("#btLoadMore").attr("data-tag" ,$(this).data("tag") );
+	    				alert($(this).data("tag"));
 						question.listQuestion( null , $(this).data("tag"),page);	   
 	    			});
 	    			
