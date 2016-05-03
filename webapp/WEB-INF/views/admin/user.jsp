@@ -81,12 +81,14 @@
 							<thead>
 								<tr>
 									<th style="width: 30px;">No</th>
+									<th>Photo</th>
 									<th>Name</th>
 									<th>Gender</th>
 									<th>Email</th>
 									<th>University</th>
+									<th>Registered Date</th>
 									<th>Role</th>
-									<th>Action</th>
+									<!-- <th>Action</th> -->
 								</tr>
 							</thead>
 							<tbody id="content">
@@ -94,6 +96,8 @@
 							</tbody>
 							
 						</table>
+						
+						<p id="totalrecord" style="color:rgb(78, 156, 80);"></p>
 						
 						 <div id="pagination" class="pull-right">
 												
@@ -275,16 +279,18 @@
 		<script id="content_tmpl" type="text/x-jquery-tmpl">
 	    	<tr>
 				<td>{{= NO }}</td>
-				<td>{{= username}}</td>
+				<td style="width:50px" ><img src="{{= userImageUrl }}" width="50px" height="50px"/></td>
+				<td>{{= username}} </td>
 				<td>{{= gender}}</td>
-				<td>{{= email}}</td>
+				<td>{{if scFacebookId != null }} <a href="https://www.facebook.com/{{= scFacebookId }}" target="_blank"><img src="${pageContext.request.contextPath}/resources/uploads/icon/facebook_icon.png" />{{/if}}</a> {{= email}}</td>
 				<td>{{= universityName}}</td>
+				<td>{{= registerDate }}</td>
 				<td><select data-uid="{{= userId}}" data-tid="{{= userTypeId}}" id="utypeid{{= NO}}" class="form-control usertype" tabindex="2">
 					</select>
 				</td>
-				<td>    		 			
+				<!--<td>    		 			
             		<i data-cateid="{{= userId}}" class="fa fa-trash-o icon-circle icon-xs icon-danger" data-toggle="modal" id="showFrmConfirm" ></i>
-         		</td>
+         		</td>-->
 			</tr>
    		</script>   
    		
@@ -321,7 +327,7 @@
 	                    xhr.setRequestHeader("Content-Type", "application/json");
 	                },
 				    success: function(data) { 
-				    	
+				    	console.log(data);
 				    	/* alert(JSON.stringify(data)); //data.RESP_DATA
 				    	return;    */
 // 						console.log(data);
@@ -335,6 +341,8 @@
 								data.RES_DATA[i]["NO"] = (i+1)+nextPage;
 							}
 							$("#content_tmpl").tmpl(data.RES_DATA).appendTo("tbody#content");
+							
+							$("#totalrecord").text(data.PAGINATION.totalCount+ " Users");
 							
 							//to add to user type to select
 							user.usertype();

@@ -6,7 +6,7 @@
 <html lang="en">
 	<head>
 
-		<title>Khmer Aacademy</title>
+		<title>Main Page |Khmer Aacademy</title>
 		<jsp:include page="shared/_header.jsp" />
 		
 		

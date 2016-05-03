@@ -34,7 +34,7 @@ public class ELearningController {
 	public String  index(ModelMap m){
 		final String uri = WebURL + "/rest/elearning/index";
 	    RestTemplate restTemplate = new RestTemplate();
-	    m.addAttribute("title","E-Learning");
+	    m.addAttribute("title","E-Learning | Khmer Academy");
 	    m.addAttribute("IMGURL", IMGURL);
 	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
 		//return "/elearning/index";
@@ -67,9 +67,11 @@ public class ELearningController {
 		final String uri1 = WebURL + "/rest/user/profile/listuserhistory/" + userid;
 		final String uri = WebURL + "/rest/elearning/playvideo?v=" + vid + playlistParam;
 	    RestTemplate restTemplate = new RestTemplate();
-	    m.addAttribute("title","E-Learning");
+	    Map<String, Object> model = new HashMap<String, Object>();
+	    model = restTemplate.getForObject(uri, HashMap.class);
+	    m.addAttribute("title", model.get("videoName") + " | Khmer Academy");
 	    m.addAttribute("IMGURL", IMGURL);
-	    m.addAttribute("data", restTemplate.getForObject(uri, HashMap.class));
+	    m.addAttribute("data", model);
 	    m.addAttribute("data_user_history", restTemplate.getForObject(uri1, HashMap.class));
 		return "/elearning/playvideo";
 	}
